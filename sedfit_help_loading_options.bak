@@ -1,7 +1,7 @@
-ï»¿<html>
+<html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>Loading Options</title>
 <meta name="GENERATOR" content="Microsoft FrontPage 12.0">
 <meta name="ProgId" content="FrontPage.Editor.Document">
@@ -100,7 +100,7 @@ ALV, PhotoCor, Malvern Zetasizer, or from Brookhaven Instruments</a></nobr></p>
 <p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Elimination of Spikes">Elimination
 of Spikes</a></p>
 </font><b><font COLOR="#0000ff">
-<p>Options | Loading Options | Donâ€™t Load Spikes</p>
+<p>Options | Loading Options | Don’t Load Spikes</p>
 </font></b>
 <p>This is useful mainly for work with absorbance data.&nbsp; If this switch is
 turned on, spikes (defined as an isolated jump in the absorbance signal by more
@@ -178,7 +178,7 @@ should always be the radial data, the second column the concentration
 distribution to be analyzed (e.g. in units of absorbance or fringes).</p>
 <i><font COLOR="#008000">
 <p>Please Note:</font> </i>If this option is used and the number of columns
-doesnâ€™t match that of the data, the program most likely will crash.</p>
+doesn’t match that of the data, the program most likely will crash.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Eliminate Interference Offset">Eliminate
@@ -224,7 +224,7 @@ of fringe jumps within each scan</font></a></p>
 <p>Options | Loading Options | Remove Integral Fringe Jumps (within one scan)</p>
 </font></b>
 <p>Sometimes, interference data exhibit integral fringe jumps within a single
-scan. This function iterates through each scan and looks for â€˜suddenâ€™ jumps
+scan. This function iterates through each scan and looks for ‘sudden’ jumps
 in the fringe values of more than 0.8 at neighboring radial values. If such a
 jump is found, an integral offset is added to this and all following data
 points. The new data should be <a href="#sorting equilibrium data">saved</a>.&nbsp;&nbsp;</p>
@@ -251,7 +251,7 @@ Jitter</a></p>
 interference scans can exhibit radial independent, but <a href="systematic_noise_analysis.htm"> time-dependent offsets</a>
 (jitter). This radial-invariant noise should be eliminated or taken into account
 for an optimal data analysis.</p>
-<p>The function â€˜eliminate jitterâ€™ can be used to align the data in the
+<p>The function ‘eliminate jitter’ can be used to align the data in the
 air-to-air region.&nbsp; This may be useful for the <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
 of the ls-g*(s) distribution</a>, in order to avoid <a href="sedfit_help_parameters.htm#FIT RI Noise"> calculating RI noise algebraically</a>.
 However, in all other models:</p>
@@ -274,7 +274,7 @@ the right mouse button.&nbsp; If this has been done, press YES in
 the menu box, if not, press NO, make the required radial selection, and invoke
 this menu again.</p>
 <p>The magnitude of the jitter will be stored in the RI Noise data array, and
-can be retrieved using the <a href="sedfit_help_copy.htm#Copy Data Tables"> â€˜copy RI noise tableâ€™</a> function, which allows to paste the data
+can be retrieved using the <a href="sedfit_help_copy.htm#Copy Data Tables"> ‘copy RI noise table’</a> function, which allows to paste the data
 into a spreadsheet program, such as Origin.</p>
 <p>After elimination of the jitter, data can be aligned for possible integral
 fringe offsets (<a href="#Eliminate Interference Offset">see above</a>). The new data
@@ -393,12 +393,12 @@ Intensity Data as Absorbance Data</a></p>
 <p>Options | Loading Options | Save Intensity Data as Absorbance Data</p>
 </font></b>
 <p>It can be advantageous for the determination of the bottom position or
-the buffer background absorbance, data can be collected as â€˜intensityâ€™
+the buffer background absorbance, data can be collected as ‘intensity’
 files with the XLA data acquisition software.&nbsp; These data files can be loaded and
 analyzed with S<span style="font-variant: small-caps">edfit</span> directly. However, for compatibility of
 these data files with other software, or for improved visual representation, with this function
 they can be saved as ordinary absorbance files. The file extensions
-will be automatically changed from â€˜*.ri*â€™ to â€˜*.ra*â€™. These files will
+will be automatically changed from ‘*.ri*’ to ‘*.ra*’. These files will
 have the reference intensities in the third column.</p>
 <p>(This function will also work with wavelength scans.)</p>
 <p>See also the following topic:</p>
@@ -413,7 +413,7 @@ reference and sample sector with sample. When scanned as intensity data, this
 function allows to generate two separate absorbance data sets, one for each
 channel. Of course, since there is no reference transmission recorded (this is
 simply set to the default of 1000), the data are not true absorbance data, hence
-the name â€˜pseudo-absorbanceâ€™.</p>
+the name ‘pseudo-absorbance’.</p>
 <p>Such data have <a href="systematic_noise_analysis.htm"> systematic noise components</a> that are similar in structure to
 the systematic noise components of the interference optics. Therefore, they can
 be analyzed using <a href="systematic_noise_analysis.htm"> algebraic RI and TI noise
@@ -612,10 +612,10 @@ Import DLS Data&nbsp;</p>
 <p>When working with Protein Solutions 99 Dynamics version 5.20.05, first, several raw autocorrelation data sets from Protein Solutions 99 should be
 exported in the DynaPro software with the options: analysis results,
 autocorrelation coefficients, all measurements, ASCII text, include headers.
-Then, with the â€˜Make DLS Dataâ€™ function, they can be loaded into S<span style="font-variant: small-caps">edfit</span>.
+Then, with the ‘Make DLS Data’ function, they can be loaded into S<span style="font-variant: small-caps">edfit</span>.
 This allows selection of good measurements, and to avoid bad ones.</p>
 <p>The data can then be averaged and saved in S<span style="font-variant: small-caps">edfit</span> DLS format with the
-function â€˜save mean DLS data...â€™. They can then be analyzed in terms of
+function ‘save mean DLS data...’. They can then be analyzed in terms of
 single species analysis with M and s (instead of D), or in terms of
 size-distribution analysis (Rh-distribution or D-distribution).</p>
 <p>With the Protein Solution Dynamics version 5.26.38, the format is slightly
@@ -643,13 +643,13 @@ Zetasizer NanoS.&nbsp; You can use the <a href="images/MakeDLSDAT_v1_0.zmac">Zet
 <a href="http://www.materials-talks.com/blog/2015/10/28/new-macro-to-export-dls-data-to-sedfit/">
 blog post</a> on this): </p>
 <p>** To install the macro:<br>Copy the attached file MakeDLSDAT-v1-0.zmac to 
-the folder<br>â€¦ My Documents\Malvern Instruments\Zetasizer\Macros\ExtraMacros<br>
-Start the Malvern Zetasizer software. Go to Tools â€“ Options â€“ Macros â€“ Install 
+the folder<br>… My Documents\Malvern Instruments\Zetasizer\Macros\ExtraMacros<br>
+Start the Malvern Zetasizer software. Go to Tools – Options – Macros – Install 
 new Macro<br>navigate to the ExtraMacros folder and install the MakeDLSDAT-v1-0 
 macro<br>Restart the Malvern Zetasizer software to complete the macro 
 installation.<br><br>** To use the macro:<br>Open the dts data file, 
-select(=highlight) the record you want to export, right-click â€“ Macros â€“ 
-MakeDLSDAT-v1-0 â€“ then navigate to desired folder and enter the name of the 
+select(=highlight) the record you want to export, right-click – Macros – 
+MakeDLSDAT-v1-0 – then navigate to desired folder and enter the name of the 
 file.<br> </p>
 <p>When the *.dlsdat files are later loaded into S<span style="font-variant: small-caps">edfit</span> for analysis, the data
 are transformed to the field autocorrelation function by taking the square root
