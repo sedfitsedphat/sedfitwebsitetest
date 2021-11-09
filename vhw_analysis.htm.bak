@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>intro to vHW analysis</title>
 <meta name="GENERATOR" content="Microsoft FrontPage 4.0">
 <meta name="ProgId" content="FrontPage.Editor.Document">
@@ -65,7 +65,7 @@ mixtures that do not show clearly separated sedimentation boundaries.&nbsp;&nbsp
 <p>&nbsp;</p>
 <p><u><b><a name="The principle for a single species">The principle for a single
 species</a></b></u></p>
-<p>In brief, the basis of the method is the <a href="exampleFaxen.htm"> FaxÃ©n
+<p>In brief, the basis of the method is the <a href="exampleFaxen.htm"> Faxén
 approximation</a> of the Lamm equation,
 which can be written as</p>
 <p>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -193,7 +193,7 @@ of the boundary: For example, for the molecules in the leading edge of the
 sedimentation boundary diffusion was mainly in the same direction of the
 sedimentation, while in the trailing end of the boundary, diffusion occurred
 mainly in the opposite direction.</p>
-<p>Knowing that for a single species (in the <a href="exampleFaxen.htm"> FaxÃ©n
+<p>Knowing that for a single species (in the <a href="exampleFaxen.htm"> Faxén
 approximation</a>) the s*<sub>app,i</sub> of each fraction should behave this
 way, we can analyze our data by determining graphically the s*<sub>app,i</sub>
 values of each fraction, and then fitting the time-course of the s*<sub>app,i</sub>
@@ -249,7 +249,7 @@ interpreted quantitatively.</p>
 <p><b><u><a name="The limitation for multiple species">The limitation for
 multiple species</a></u></b>&nbsp;</p>
 <p>Let's consider a mixture of two ideally sedimenting species.&nbsp;
-Following the scheme above, we can describe this situation by the sum of two FaxÃ©n
+Following the scheme above, we can describe this situation by the sum of two Faxén
 approximations&nbsp;</p>
 <p><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
 font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
