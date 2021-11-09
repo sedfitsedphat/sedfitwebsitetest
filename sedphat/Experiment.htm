@@ -1,0 +1,248 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="none, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body>
+<p><b>EXPERIMENTS</b></p>
+<p>Sedphat organizes the data in 'Experiments', which are objects that consist
+of the information of the experiment type, location of the data and list of data
+filenames, buffer conditions, sample extinction coefficients, some centrifugal
+parameters like meniscus, bottom, fitting limits, expected standard deviation
+etc.&nbsp; Once an experiment has been defined, the complete information can be
+saved (in a file *.xp) and reloaded.&nbsp; The functions for the manipulation of
+the experiments are in the Data menu.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/Data.h1.gif" width="347" height="361"></p>
+<p>For global analysis, currently up to 10 such experiments can be loaded and
+analyzed jointly.&nbsp; Relationships between some parameters of the different
+experiments can be established.</p>
+<p>The general strategy is as follows:&nbsp;&nbsp;</p>
+<p>1) load the data for a new experiment (Data-&gt;Load New ... Data)</p>
+<p>2) enter the information in the Experiment Parameters box</p>
+<p>3) specify graphically fitting limits</p>
+<p>4) save the experiment as an xp-file (Data-&gt;Save Experiment)</p>
+<p>For reloading a previously saved experiments, this simplifies to a single
+step of loading the xp-file (Data-&gt;Load Experiment).&nbsp; A reminder will
+appear to specify the partial-specific volume under standard conditions.</p>
+<p>After loading an experiment, the data will be shown in the SEDPHAT
+window.&nbsp; (Note that graphical input can be made directly in the graphs for
+each experiment.&nbsp; However, a more detailed view is possible using the
+'Display-&gt;Zoom Into 1 Data Set' function.)&nbsp; Each experiment has a number
+associated, which is the order of loading which will be the same as the order
+from left to right in the SEDPHAT window.&nbsp; Many SEDPHAT functions operate
+on specific experiments, and the user has to specify the corresponding
+experiment number.&nbsp;&nbsp;</p>
+<p>The data analysis models permit global fitting to all active experiments
+jointly, or alternatively, they permit a local fit to only a single
+experiment.&nbsp; Experiments can be excluded from the analysis in two different
+ways:&nbsp; They can be permanently removed from the SEDPHAT memory by using the
+function Data-&gt;Remove Experiment, or they can be temporarily deactivated in
+the Experiment Parameters box.&nbsp;</p>
+<p>It should be noted that not all parameters are specified in the experiment
+file:&nbsp; the <a href="PartSpecVol.htm">partial-specific volume</a> at
+standard condition (water, 20C) is defined separately.&nbsp;&nbsp;</p>
+<p>Sometimes it is necessary to edit the information of the xp-file of an
+experiment.&nbsp; It is a text file, which can be opened and changed with any
+text editor, such as the MS Notepad.&nbsp; The format of an xp-file is shown
+below.&nbsp;&nbsp;</p>
+<p><font size="1">4 (ExperimentType:  MULTISEDEQ)<br>
+<br>
+C:\xladata\DC-SIGN\RR5B\XLADA302\eq 25k250_084.Ra1 20k251_052.ra1 15k250_030.ra1<br>
+1.002200 (fBufferDensity)<br>
+0.001002 (fBufferViscosity)<br>
+0.712000 (VBAR)<br>
+6.693300 (Meniscus)<br>
+7.204400 (Bottom)<br>
+0.000000 (MAXMENISCUS)<br>
+0.000000 (MINMENISCUS)<br>
+7.212900 (MAXBOTTOM)<br>
+7.152900 (MINBOTTOM)<br>
+6.712811 (FitLeftLim)<br>
+7.134190 (FitRightLim)<br>
+0.000000 (WeightExperiment)<br>
+0.005000 (ExperimentalNoise)<br>
+0 (blocalFitTimeIndepNoise)<br>
+1 (blocalFitRINoise)<br>
+1 (blocalAutoVaryBaseline)<br>
+1 (blocalVaryBottom)<br>
+0 (blocalVaryMeniscus)<br>
+1 (blocalVaryMeniscusWarned)<br>
+0.000000 (xBaseline)<br>
+1.000000 (xConcentrationFactor)<br>
+12157.466797 (xExtinctionCoeffA)<br>
+0 (bVaryExtinctionCoeffA)<br>
+1.000000 (xExtinctionCoeffB)<br>
+0 (bVaryExtinctionCoeffB)<br>
+2 (Centerpiece)<br>
+1.000000e-06 (pLocalConcentrations[1])<br>
+1.000000e-06 (pLocalConcentrations[2])<br>
+1.000000e-06 (pLocalConcentrations[3])<br>
+1.000000e-06 (pLocalConcentrations[4])<br>
+3 (NFILES)<br>
+1 (ppMultiLocalConcentrations follow)<br>
+2.318014e-06 (ppMultiLocalConcentrations[1][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][4])<br>
+1.777017e-06 (ppMultiLocalConcentrations[2][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][4])<br>
+1.261792e-06 (ppMultiLocalConcentrations[3][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][4])<br>
+0.712000 (global VBAR20)<br>
+0.300000 (global HYDRATION)<br>
+1.200000 (pathlength)<br>
+</font></p>
+<p>The individual entries are self-explanatory, except for a few entries.&nbsp;
+The most important one, and maybe the only one that may require manual change is
+the third line:</p>
+<p><font size="1">C:\xladata\DC-SIGN\RR5B\XLADA302\eq 25k250_084.Ra1 20k251_052.ra1 15k250_030.ra1</font></p>
+<p>This is the location of the actual raw data files.&nbsp; When moving the data
+to a different computer or a different directory, it is usually necessary to
+change the directory information appropriately.&nbsp; The directory is followed
+(separated by one empty space character) by the data filenames to be
+loaded.&nbsp; If you want to remove some data from the set, they can be simply
+deleted here, but an according change in line 34 specifying the total number of
+files is necessary.&nbsp; </p>
+<p>Most other parameters can be changed with the Experiment Parameter box from
+within SEDPHAT (although you may want to save the experiment after the
+changes).&nbsp; Exceptions are the values for MAXMENISCUS and MINMENISCUS etc.,
+which are the constraints for the meniscus location when floating this
+parameter.&nbsp; They can be changed from within SEDPHAT by switching the
+fitting mark off, closing the Experiment Parameter box, reopening the Experiment
+Paramter box, and switching the fitting mark on again.&nbsp; This will cause
+SEDPHAT to ask for the constraints for this parameter.&nbsp; </p>
+<p>The concentration values in the xp-file are just save the best-fit local
+concentration.&nbsp; They are model-dependent, and are only partially used
+automatically.&nbsp; </p>
+<p>&nbsp;</p>
+<p><b>LOAD NEW DATA</b></p>
+<p>The Data menu of SEDPHAT allows loading of four different types of
+experiments:</p>
+<p>* Data-&gt;Load New Sedimentation Velocity Data:&nbsp; this is data from a
+single centrifuge cell comprising the time-course of sedimentation.&nbsp; This
+will be treated and requires information just like in SEDFIT.</p>
+<p>* Data-&gt;Load New Sedimentation Equilibrium Data:&nbsp; a single scan from
+one centrifuge cell in sedimentation equilibrium.&nbsp; Global analysis will be
+accomplished by loading many such sedimentation equilibrium experiments. </p>
+<p>* Data-&gt;Load New Multi-Speed Equilibrium Data:&nbsp; a set of scans from
+one centrifuge cell in sedimentation equilibrium at different rotor
+speeds.&nbsp; Requires all scans to be acquired at the same wavelength (and with
+the same optical system, respectively).&nbsp; Defining data at different rotor
+speeds jointly as a multi-speed equilibrium set, as opposed to using several
+separate sedimentation equilibrium experiments has significant advantages.&nbsp;
+It permits the use of additional constraints, i.e. mass conservation, same
+meniscus and bottom position, and also permits the calculation of time-invariant
+but radial-dependent baseline signals. </p>
+<p>* Data-&gt;Load New DLS Data:&nbsp; Data from dynamic light scattering will
+be treated just like in SEDFIT.&nbsp; Loading dynamic light scattering data in
+SEDPHAT requires *.dlsdat data, which can be generated with SEDFIT from the
+original data files.</p>
+<p>Lateron in the analysis, some models permit to establish additional
+relationships between these data sets.&nbsp; Currently implemented are links in
+the sample concentration.&nbsp; This can be useful, for example, when
+sedimentation equilibrium absorbance data are available from the same cell at
+the same time, but acquire at a different wavelength.&nbsp; Because the sample
+concentration has to be the same, the extinction coefficient for all but one of
+these experiments can be treated as floating parameters. </p>
+<p>For all of these types, familiarity with SEDFIT, its graphical user
+interface, data input conventions and analysis modes is required, and will be
+assumed in this help file.&nbsp; </p>
+<p>The specifics on how to load files is exactly the same as in SEDFIT, with one
+very important exception:&nbsp; </p>
+<p><b><font color="#FF0000">file and directory names cannot have any whitespace
+characters, such as a space or tab. For example, accessing from a directory
+called &quot;<a href="file:///c:/xla%20data/eq">c:\xla data\eq</a>&quot; will
+NOT work, but &quot;<a href="file:///c:/xladata/eq">c:\xladata\eq</a>&quot;
+will.&nbsp; The same requirements exist for the xp-files and any other files of
+SEDPHAT.</font></b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>The Experiment Parameters Box</b></p>
+<p>This box appears immediately after loading new data, and can also be accessed
+at any time from the top-level menu. </p>
+<p><img border="0" src="images/Experi2.jpg" width="567" height="471"></p>
+<p>The first line specifies the experiment type.&nbsp; Line 2 shows the path and
+filename of the xp-file and in parenthesis the filenames of some of the
+experimental raw data.&nbsp; (In case the experiment has not been saved as an xp-file
+before, the filenames of the raw data is shown twice, as in the above example).
+Line 3 allows to enter any comments, such as sample ID, buffer composition, etc.</p>
+<p>In the left half, there is a check box for making the experiment active or
+inactive, which controls if this experiment will be included in the global fit
+or temporarily excluded.</p>
+<p>The noise field is the expected standard deviation of the measurement
+error.&nbsp; Since the global fit will minimize the global chi-square, which is
+essentially the ratio between the rms deviation of the fit and the measurement
+error, a low value of the noise entry will make the chi-square of this
+particular data set larger, and therefore makes its contribution to the global
+fit more important.&nbsp; Therefore, this is the point where one can weight the
+different experiments differently against each other.&nbsp; The default entry in
+the noise field will depend on the data type.</p>
+<p>The &quot;extra xp weight&quot; and the &quot;signal factor&quot; fields are
+currently disabled and are likely to be removed in later versions.</p>
+<p>On the right-hand side at the top are the specifics for the buffer
+condition:&nbsp; partial-specific volume at experimental conditions, the buffer
+density and viscosity.&nbsp; The default values for the latter two are the
+standard conditions (water at 20C).&nbsp; <font color="#FF0000"><b>Note that all
+parameters in SEDPHAT will be corrected to standard conditions.&nbsp; </b></font>This
+is one of the main differences to SEDFIT, which (except for the inhomogeneous
+solvent models) always reports results under experimental conditions.&nbsp;
+SEDPHAT will always report s-values, D-values, etc. for standard
+conditions.&nbsp; This is necessary because different experiments may have
+different experimental conditions.&nbsp; SEDPHAT actually calculates with
+parameters at standard conditions, and for each experiment translates them to
+the experimental conditions specified in the fields of the Experiment Parameters
+Box. </p>
+<p>Below is a field that contains information on the centerpiece type (2 for
+double sector, and 6 for six-channel).&nbsp; This information is used for mass
+balance calculations.&nbsp; Next to this is the field for the optical pathlength
+of the centerpiece.&nbsp; This is usually 12 mm, but short ones with 3 mm are
+also sometimes used.&nbsp; For DLS data, these two fields can be ignored.</p>
+<p>Some models for self-associating or hetero-associating systems use molar
+concentration units.&nbsp; This requires knowledge of the extinction coefficient
+at the wavelength of the data acquisition, or more generally a molar signal
+increment (e.g., for interference optical AUC data with 12 mm centerpieces, it
+would be ~3.3 times the molar mass).&nbsp; Current models have one or two
+different components (self-association uses only species 'A', hetero-association
+both 'A' and 'B').&nbsp; The extinction coefficients can be treated as floating
+parameters (check the box next to this field) if the local concentrations are
+linked to those of another experiment with known extinction
+coefficients.&nbsp;&nbsp; </p>
+<p>At the bottom left are the different options for the baselines:&nbsp; a
+single baseline offset, a different baseline offset for each file in the set (RI
+noise, stands for radial-invariant noise), or time-invariant noise, which means
+a constant but radial-dependent background profile common to all scans in the
+set of this experiment. </p>
+<p>At the bottom right are the fields for the meniscus and bottom
+position.&nbsp; The values usually are graphically entered in the same way as in
+SEDFIT, but they can also be specified numerically here.&nbsp; Important is the
+check-mark on the left of the meniscus and bottom field, which indicate if this
+is a unknown local parameter to be optimized in the fit.&nbsp; If that's the
+case, the boundary constraints for the meniscus and bottom will have to be
+entered in the message boxes that will appear immediately after closing the
+Experimental Parameter box.</p>
+<p>&nbsp;</p>
+<p>After the Experiment Parameter Box is closed, for new experiments the fitting
+limits should be set. This can be made graphically in the SEDPHAT window.&nbsp;
+(Note that a more detailed view is possible using the 'Display-&gt;Zoom Into 1
+Data Set' function.)</p>
+<p>It is strongly recommended to save the experiment after all the input has
+been made.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+
+</html>

@@ -1,0 +1,778 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Hydrodynamic Size-Distribution Analysis</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>&nbsp; </h2>
+<h2>Size Distribution Analysis </h2>
+<p>This is only a brief description of the basic concepts.&nbsp; For more 
+detailed information, see the book
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Different levels of sedimentation analysis and the problem of heterogeneity">Different
+levels of sedimentation analysis and the problem of heterogeneity</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#A General Introduction To Size-Distributions">A
+general and more formal introduction to size-distributions</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#An example from the calculation of apparent sedimentation coefficient distributions ls-g*(s)">An
+example from the calculation of apparent sedimentation coefficient distributions
+ls-g*(s)</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The principle of regularization">The
+principle of regularization</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Maximum entropy regularization">Maximum
+entropy regularization</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">Tikhonov-Phillips versus maximum entropy regularization,
+and the use of Monte-Carlo statistics</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The difference between smoothing and regularization">The
+difference between smoothing and regularization</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The implementation in Sedfit">The
+implementation in S<span style="font-variant: small-caps">edfit</span></a>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Parameters for size-distribution analysis in Sedfit">Parameters
+for size-distribution analysis in S<span style="font-variant: small-caps">edfit</span></a>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Note: this 
+tutorial does not yet include the information on Bayesian enhancement of the 
+distributions.&nbsp; For more information, a basic introduction is given in the 
+reference</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="2">P.H. Brown, A. Balbo, P. Schuck (2007) Using prior knowledge in the 
+determination of macromolecular size-distributions by analytical 
+ultracentrifugation. </font>
+<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17521163">
+<font size="2">Biomacromolecules 8 (2007) 2011-2024</font></a><font size="2"> </font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a name="Different levels of sedimentation analysis and the problem of heterogeneity"><b>Different
+levels of sedimentation analysis and the problem of heterogeneity</b></a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Let's consider the
+simplest possible analysis of sedimentation data: We look at the displacement of
+the sedimentation boundary with time.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><img border="0" src="images/sizedi10.gif" width="466" height="353"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The boundary
+positions at the different times are indicated here by the different color
+vertical lines.&nbsp; We could get a very precise s-value if we minimize
+diffusion effects.&nbsp; This can be done by applying a high centrifugal field
+to increase the sedimentation rate so as to form nice and sharp sedimentation
+boundaries. However, it is clear that this neglects an enormous amount of
+information contained in the shape of the evolving concentration distributions.<span style="mso-spacerun: yes">&nbsp;
+</span>It also does not permit the analysis of molar mass, and the
+characterization of different protein subpopulations.<span style="mso-spacerun: yes">&nbsp;&nbsp;</span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The simplest
+approach of taking the boundary shape into account is to interpret the spread of
+the boundary as the result from the diffusion of a single species:<span style="mso-spacerun: yes">&nbsp;&nbsp;</span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><img border="0" src="images/sizedi11.gif" width="466" height="353"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">In principle this
+permits the determination of the diffusion coefficient and the molar mass of the
+sedimenting species.<span style="mso-spacerun: yes">&nbsp; </span>However, in
+practice this approach frequently fails, because it requires the protein under
+study to be highly homogeneous.<span style="mso-spacerun: yes">&nbsp;&nbsp;</span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><span style="mso-spacerun: yes">Unfortunately,
+in practice we have most of the time </span>heterogeneous mixtures where the
+root-mean-square displacement from diffusion is in the same order as the
+separation of species due to their different sedimentation rate.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><img border="0" src="images/sizedi12.gif" width="466" height="353"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This is
+illustrated here schematically as the sum of two diffusionally broadened
+boundaries (series of s-shaped colored lines) with different rates of
+displacement in the upper and the lower species.&nbsp; What we experimentally
+measure in such as situation is the noisy black curve, which is the sum of the
+components.&nbsp; Obviously, the boundary spread is broader than the diffusional
+spread of either component.&nbsp; In this situation, all known data
+transformations and extrapolation techniques frequently fail to provide either a
+good description of diffusion properties of the mixture or a resolution of the
+sedimentation coefficients of the different species.<span style="mso-spacerun:
+yes">&nbsp;</span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This is the
+fundamental problem of centrifugal size-distribution analysis:&nbsp; How can we
+extract from the experimental boundary shapes reliable information on
+heterogeneity and diffusion?</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><u><a name="A General Introduction To Size-Distributions"><b>A general and
+more formal introduction to size-distributions</b></a></u></p>
+<p>The analysis of distributions addresses the problem that we may not have a
+homogenous population of molecules in solution, but an a mixture of different
+molecules.&nbsp; This can occur, for example, when it is not possible to achieve
+100% purification of the molecules of interest.&nbsp; In this case, analyzing
+the sedimentation data in terms of a sedimentation coefficient distribution
+allows to quantify the impurities and focus attention to the main species
+only.&nbsp; In other cases, there may be heterogeneity intrinsic to the
+molecules under study, such as micro-heterogeneity in the glycosylation of a protein, the
+existence of different oligomeric species of the same macromolecular component,
+or because the macromolecules are produced by a statistical polymerization
+process.&nbsp; &nbsp; </p>
+<p>An excellent introduction to the problem of analyzing size-distributions was
+given by Provencher<sup><a href="#Provencher">1</a></sup>.&nbsp; The main points
+can be seen by considering the difference between a direct and indirect measurement.&nbsp; A
+good approximation of a direct experiment for measuring the molar mass of a
+molecule is mass spectrometry (assuming only single charged ions), where we get
+very precise and very sharp peaks for each species, and size-distributions can
+(ideally) be observed simply as the envelope of all peaks.&nbsp; Importantly,
+the determination of a species of one molar mass does not interfere with the
+detection of a molecule with another molar mass.&nbsp;&nbsp;</p>
+<p>In contrast, an example for an indirect measurement is sedimentation
+equilibrium.&nbsp; Here, what's measured is not directly the molar mass, but
+instead the radial concentration profile of the molecules, from which the molar
+mass is calculated by curve-fitting of the type</p>
+<p>(1)<span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-16.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-16.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">
+<img src="images/size-d3.gif" v:shapes="_x0000_i1025" width="355" height="51"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893706">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893616">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893556">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893383">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893277">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>The first line of this equation is the well-known expression for
+sedimentation equilibrium, and in the second line this is formally simplified into the product of a
+concentration factor and a characteristic function.&nbsp; In this particular
+example, the characteristic function, called a<sub>theo</sub>(r,M), describes
+the shape of the concentration profile of a single species of a certain molar
+mass M.&nbsp; If we have a size-distribution instead of a single species, what
+is measured for a distribution of molecules of different sizes is a
+superposition of the radial profiles of all species:</p>
+<p>(2)<span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/size-d4.gif" v:shapes="_x0000_i1025" width="240" height="29"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058893844">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>The resulting analysis problem of deriving the molar mass distribution c(M)
+from the measured data a(r) is called an inverse problem, and Eq. 2 is called a
+Fredholm integral equation of the first kind. They are
+frequently 'ill-posed' if the characteristic function a<sub>theo</sub>(r,M)
+(i.e. the kernel of the integral equation) is smooth and not very much different
+for different values of M, and if the measurement contains noise:</p>
+<p>(3)<span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/size-d5.gif" v:shapes="_x0000_i1025" width="308" height="29"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058894350">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1058894239">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>An example of smooth functions are exponentials.&nbsp; As will be seen below,
+the difficulty is
+that in this case, many completely different distributions c(M) can model the
+measured data essentially equally well.&nbsp;&nbsp;</p>
+<p>Fortunately, in sedimentation velocity the situation is much better.&nbsp;
+Here, the characteristic functions are not exponentials, but the Lamm equation
+solutions, and the analogue of Eq. 3 has the form</p>
+<p>(3b)&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d9.gif" width="351" height="33"></p>
+<p>(the size-distribution is expressed as a sedimentation coefficient
+distribution c(s).) Importantly, the measured data are two-dimensional,
+i.e. they are a function of radius and time, and the Lamm equation distributions
+L(s,D(s),r,t) predict the evolution in both space and time.&nbsp; This additional dimension significantly increases the data basis and also the
+potential for discriminating different species.&nbsp; However, though not as
+bad, the underlying problem is still the same.&nbsp;&nbsp;</p>
+<p>Let's go back to the original size-distribution problem c(M) in Eq. 3 to
+analyze the problem.&nbsp;
+If a direct inversion of Eq. 3 was
+attempted, the particular solution c(M) can contain strong oscillations and be dependent on the details of the
+noise.&nbsp; This is very important to understand, as this will also contain the
+key to solving the problem.&nbsp; One way of expressing the problem
+mathematically is that the quantity</p>
+<p>(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d7.gif" width="216" height="42">&nbsp;</p>
+<p>vanishes if <i>m</i> grows to infinity (for any integrable function K(x,y) --
+this is the lemma of Riemann-Lebesgue<sup><a href="#Provencher">1</a></sup>).&nbsp;
+What does this mean for our
+size-distribution problem?&nbsp; Suppose that a size-distribution c*(M) is a
+sinus-shaped oscillation <i>c*(M) = sin(2</i><font face="Symbol">p</font><i>M/M<sub>0</sub>)</i>
+with a period <i>M<sub>0</sub></i> . The 'kernel' K(x,y) is in our example the
+exponential a<sub>theo</sub>(r,M).&nbsp; From eq. 4, it follows that the
+integral</p>
+<p>(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d8.gif" width="223" height="51"></p>
+<p>vanishes as the period of the sinusoid oscillation shrinks (<i>M<sub>0</sub></i>
+-&gt; 0, corresponding to the oscillations getting higher frequency).&nbsp; If
+this integral vanishes, as a consequence, you could add such a high-frequency
+oscillation to our 'true' size-distribution without changing anything:</p>
+<p>(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d10.gif" width="433" height="57"></p>
+<p>If we ignore this problem and simply invert Eq. 3, in general we will get
+such oscillations, to an extent that depends on very small details of the data,
+i.e. on the noise.&nbsp; In general, we do not know if some feature of the
+calculated distribution c(M) is due to these oscillations, or if it is an
+essential feature of the molecules under study.&nbsp;&nbsp;&nbsp;</p>
+<p>The following will illustrate this point with an example from the apparent
+sedimentation coefficient distribution, and it will introduce new aspects
+that will be helpful for solving the problem.</p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a name="An example from the calculation of apparent sedimentation coefficient distributions ls-g*(s)"><b><u>An
+example from the calculation of apparent sedimentation coefficient distributions
+ls-g*(s)</u></b></a></p>
+<p>One particular simple example for size-distributions is the apparent
+sedimentation coefficient distribution g*(s)<sup><a href="#ls-g*(s) ref">2</a></sup>.&nbsp;
+The apparent sedimentation coefficient distribution can be defined by an
+integral equation</p>
+<p>(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d11.gif" width="188" height="30">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with <img border="0" src="images/size-d12.gif" width="295" height="66"></p>
+<p>i.e. as the differential concentration distribution g*(s) of non-diffusing
+particles, each of which sediments as a step-function U(s,r,t).&nbsp; (This
+sedimentation model is described in more detail <a href="sedfit_help_ls-gs.htm">here</a>.)&nbsp;
+How can we calculate the g*(s) distribution in Eq. 7?&nbsp; We can simply discretize the
+integral sign in Eq. 7 into a summation</p>
+<p>(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d15.gif" width="230" height="60">&nbsp;</p>
+<p>which
+(ignoring the constant scaling factor <font face="Symbol">D</font>s for the
+moment) leads directly to a simple linear least-squares problem&nbsp;</p>
+<p>(9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/size-d16.gif" width="277" height="69"></p>
+<p>that can be directly solved for the distribution <i>g*<sub>i</sub></i>
+ .&nbsp;
+Such discretization of the integral equation works for most size-distribution
+analyses.</p>
+<p>How does this work in practice?&nbsp; The following graph shows four
+different ls-g*(s) distributions that were obtained from analysis of the data
+above.&nbsp; They differ in the discretization (or 'resolution' as termed in the
+software) of the sedimentation coefficients
+(how many values between 0.2 and 12.5 S).&nbsp;&nbsp;</p>
+<p><img border="0" src="images/size-d17.gif" width="420" height="358"></p>
+<p>(For clarity of this graph only, the distributions were shown here with
+different offset.) The cyan colored curve is with a very coarse discretization, using only 20
+values.&nbsp; Because of the coarseness, the quality of the fit (match between
+the step-functions and the data) is not great, with an rms deviation of
+0.034.&nbsp; The green curve uses 50 s-values, giving a much better fit with an
+rms deviation of 0.026.&nbsp; The blue one is calculated with 200 s-values, with
+a slightly lower rms value of 0.025.&nbsp; It is obvious that a finer
+discretization helps only in the beginning, and that further refinement actually
+leads to <b> significant oscillations</b>.&nbsp; The better the original integral
+equation is approximated, the more we see precisely the effect predicted above
+to produce oscillating distributions.&nbsp;&nbsp;</p>
+<p> At this point, one could simply try
+to make a compromise between coarseness of the distribution and goodness of fit,
+and select maybe the green curve as the best one.&nbsp;&nbsp;However, there's a better way to get a smooth distribution:&nbsp; The red
+curve is also calculated with 200 s-values, and it has an rms deviation of
+0.0253 -- just slightly higher than the blue curve that was the best-fit
+solution with 200 s-values (with rms = 0.025).&nbsp; It is clearly a better
+representation than either the green or the blue one.&nbsp; Importantly, the rms
+deviation of the red curve of 0.0253 is still within the statistical limits of
+rms values that could be obtained from the 200 s-value analysis (blue curve)
+just by chance (<a href="sedfit_help_fstatistics.htm">F-statistics</a>)!&nbsp;
+The method used for calculating this red curve is called
+regularization.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="The principle of regularization"><u>The
+principle of regularization</u></a></b></p>
+<p>The most important
+elements of regularization are illustrated in the preceding example:&nbsp; It is
+a method to solve integral equations (e.g. size-distributions) without the
+oscillations, by accepting a slightly worse quality of fit, but still within the
+statistically acceptable limits.&nbsp; This can be done by constrained
+optimization:&nbsp; instead of minimizing only the sum of squares in Eq. 9, we
+simultaneously minimize a second property that penalizes the unwanted
+oscillations.&nbsp; One important aspect of regularization is that the choice of
+the penalty term represents our prior knowledge or expectations of a 'good'
+solution.&nbsp;&nbsp;As a consequence, dependent on our prior knowledge, there
+will be different mathematical expressions serving as a penalty term.&nbsp;</p>
+<p>In our example from above, the case of the
+apparent sedimentation coefficient distribution ls-g*(s), we know that g*(s) is
+always diffusionally broadened. Therefore, we expect a smooth solution and we
+can use the higher derivative of the distribution as a measure (Tikhonov-Phillips regularization).&nbsp; In the following equation, the second
+term is a discretized approximation of integral over the squared total second derivative of the distribution:</p>
+<p>(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="images/size-d19.gif" width="510" height="72"></p>
+<p>The factor <font face="Symbol">a</font>
+helps to balance the two goals of achieving a good fit and getting a small total
+second derivative.&nbsp; This balancing process can be done in the following
+way:&nbsp; First, we calculate the unconstrained solution (setting <font face="Symbol">a</font>
+= 0); this will give the overall best fit, but will contain oscillations (in our
+example above the blue curve, rms = 0.025).&nbsp; Then, using statistical
+principles of how much the rms error can fluctuate for a given number of noisy
+data points just by chance (see <a href="sedfit_help_fstatistics.htm">F-statistics</a>),
+we calculate what increase in the rms error would correspond to a probability
+that just matches a
+preset confidence level (in our case 0.0253 on a 68% confidence level).&nbsp; Now we slowly turn on the
+constraint.&nbsp; What happens is that the rms of the fit increases for values <font face="Symbol">a</font>
+&gt; 0 (because the unconstrained solution was by definition the best-fit). By
+carefully adjusting <font face="Symbol">a</font>, we can match the rms increase
+that we would statistically tolerate on a given confidence level. [This rms
+increase is typically in the order of &lt; 1%, dependent on the number of data
+points, this can be calculated separately using the <a href="sedfit_help_calculator.htm#Calculate F-distribution">calculator</a>.]&nbsp;&nbsp;</p>
+<p><img border="0" src="images/size-d20.gif" width="611" height="402"></p>
+<p>This procedure can
+be illustrated if we imagine the space of all possible distributions,
+arranged according to the rms deviations by which they describe our data under
+consideration.&nbsp; The overall best-fit distribution has likely positive and
+negative values, but we only want to consider the subset of distributions that are entirely positive (squared area).&nbsp; Of those, the
+blue one has the best rms.&nbsp; A further subset of the positive functions are
+the ones that are smooth and positive.&nbsp; Increasing smoothness leads to
+higher rms, therefore smoother functions are further away from the overall
+best-fit.&nbsp; We make a circle around all functions that have a statistically
+acceptable rms value. The function that we calculate by regularization is the
+one just on the edge of this circle, within the subset of smooth and positive
+functions.&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Maximum entropy regularization">Maximum
+entropy regularization</a></b></u></p>
+<p>As mentioned
+above, different regularization procedures emphasize different expected
+properties of the distribution.&nbsp; If we do not expect the distribution for
+principal reasons to be smooth (like the ls-g*(s) distributions), other
+regularization terms can work better.&nbsp; One regularization that does not
+assume smoothness, but uses parsimony in a different sense is maximum entropy.&nbsp; Here, we maximize the entropy of the
+distribution calculated as the integral over c lnc, which is the Shannon entropy
+of the distribution.&nbsp; In
+the context of distribution of Lamm solutions c(s), this will take the following
+form:</p>
+<p>(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-19.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02">
+<img src="images/size-d22.gif" v:shapes="_x0000_i1025" width="444" height="59"></ins></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059580086">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></p>
+<p>(where c(s) is the sedimentation coefficient distribution, and L(s,D(s),r,t)
+are Lamm equation solutions for each species with sedimentation coefficient s
+and an estimate of the diffusion coefficient D(s), and <font face="Symbol">a</font>
+is here again the regularization parameter with the same properties as above.)</p>
+<p>What is the motivation for choosing this regularization functional?&nbsp;
+Because the integral over the expression c lnc is a measure of the information content (<a href="#Press ref">4</a>,<a href="#5.ref">5</a>),
+what this regularization favors is the distribution with the <i>minimal
+information</i>.&nbsp; A Bayesian approach is used (i.e. a statistical formalism
+which allows the use of prior probabilities in the data interpretation), with the prior assumption
+that in the absence of other information, all s-values are equally likely.&nbsp;
+(Some modifications in this prior assumption can be build in.)&nbsp; The
+connection to the term 'entropy' is that the sum over c lnc corresponds to the
+number of 'microstates' that can generate a distribution.&nbsp; We choose the
+distribution that has the minimal information (maximal entropy) of all
+distributions that fit the data equally well within our pre-defined
+confidence level.&nbsp; This will produce the distribution with the minimal
+information necessary to explain the data.&nbsp; According to the principle of
+Occams razor, this will reduce the likelihood of over-interpretation of the
+data.&nbsp;&nbsp;</p>
+<p>Maximum entropy regularization is very widely used in many different physical
+techniques, because it has many useful properties.&nbsp; One important property
+is that maximum entropy tolerates isolated sharp peaks, thus making this the
+regularization of choice for size-distribution analysis of mixtures of discrete
+particles.&nbsp; Another useful property is that the entropy is a global
+property of the distribution, and it does not make use of neighborhood relationship of different s-values (in
+contrast to the second derivative regularization shown above).</p>
+<p>&nbsp;</p>
+<p><b><u><a name="Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">Tikhonov-Phillips versus maximum entropy regularization,
+and the use of Monte-Carlo statistics</a></u></b></p>
+<p>Both Tikhonov-Phillips and maximum entropy regularization select the most
+parsimonious distribution from the set of all that give statistically acceptable
+fits of the data (within the predetermined confidence interval).&nbsp; In
+principle, therefore, both are valid results of the analysis.&nbsp;&nbsp;</p>
+<p>They differ, however, in the choice of the best distribution among all
+possible ones, on the basis of different prior knowledge about the
+distribution.&nbsp; Parsimony is defined as small total curvature in the second
+derivative Tikhonov-Phillips approach, whereas it is taken as the least information content in the maximum entropy method.&nbsp; There are situations where we know that
+either one method would fit better to the sample under study.&nbsp;</p>
+<p>Situations where we expect to obtain smooth distributions are better described
+by the minimal second derivative.&nbsp; These are, for example, the <i>apparent</i>
+sedimentation coefficient distribution ls-g*(s) (which for fundamental reasons
+is diffusionally broadened and therefore cannot have sharp peaks), and the study
+of broad distributions of synthetic polymers (where we may know that the
+statistical nature of the synthesis leads to a quasi-continuous
+size-distribution without sharp peaks).&nbsp; A possible disadvantage of the
+second derivative regularization is that sharp peaks will be broadened.</p>
+<p>On the other hand, maximum entropy does allow for a limited number of very
+sharp peaks, and is therefore a very powerful model and the method of choice for
+a mixture of discrete macromolecules.&nbsp; Known limitations of maximum entropy
+are a tendency to merge two very close peaks, and a tendency to produce
+oscillations if applied to broad distributions.&nbsp;</p>
+<p>Because both methods result in statistically acceptable fits, it is also
+legitimate to chose empirically which method works best for a given problem.
+However, I recommend to clearly state (e.g. in Materials and Methods) which
+regularization method was chosen, and also what the predefined confidence limit
+was.</p>
+<p>One way to explore the space of statistically acceptable fits is the use of <a href="sedfit_help_monte_carlo_simulations.htm">Monte-Carlo
+statistics</a>. In this method, many data sets are generated that are very
+similar to the experimental data but differ in the details of the noise.&nbsp; A
+statistical analysis of the set of distributions obtained helps to quantify the
+effect of noise on the best-fit distribution.</p>
+<p>&nbsp;</p>
+<p><b><a name="The difference between smoothing and regularization"><u>The
+difference between smoothing and regularization</u></a></b></p>
+<p>When considering the second-derivative regularization described above, one
+could be tempted to mistake regularization for a smoothing operation.&nbsp;
+Despite the fact that maximum entropy can allow sharp spikes in the
+size-distribution, which clearly contradicts this notion, it is worthwhile to
+clarify the fundamental differences between smoothing and
+regularization.&nbsp;&nbsp;</p>
+<!--mstheme--></font><table border="1" width="100%" bordercolordark="#000000" bordercolorlight="#000000">
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;<!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>smoothing</b><!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>regularization</b><!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">process:&nbsp;&nbsp;</p>
+      <!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">1) calculate the distribution,&nbsp;
+      <p style="line-height: 150%">2) make it smooth by some operation (e.g. sliding box, cut
+      high-frequency components, etc.)<!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">1) calculate the distribution
+      <p style="line-height: 150%">2) use prior knowledge to define a second constraint</p>
+      <p style="line-height: 150%">3) optimize simultaneously fit of the data and constraint<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">parsimony criterion:</p>
+      <!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">mostly empirical</p>
+      <!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">can be well-defined, for example by statistical or other
+      properties of the solution</p>
+      <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">computational effort:</p>
+      <!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">simple two-step calculation</p>
+      <!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">root-finding convoluted into the regression of data,
+      requiring many iterative steps</p>
+      <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">does the distribution fit the data?</p>
+      <!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">don't know; there is no connection of the final result with
+      the data regression</p>
+      <!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">fits the data on predefined confidence level</p>
+      <!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">does the distribution still possess the essential
+      features?&nbsp;</p>
+      <!--mstheme--></font></td>
+    <td width="30%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">don't know; smoothing could have eliminated, e.g., important
+      spikes</p>
+      <!--mstheme--></font></td>
+    <td width="64%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+      <p style="line-height: 150%">cannot eliminate features if they are essential to explain
+      the data</p>
+      <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>Most importantly, smoothing introduces bias into the result because it makes
+uncontrolled changes.&nbsp; There is no feedback step that allows to assess if
+the smoothed distribution really represents the original data.&nbsp; Such a
+feedback step is included in the regularization, making it statistically
+sound.&nbsp; A confidence level is predefined, and the parsimony of the solution
+is adjusted only within that predefined limit.&nbsp; This makes regularization a
+rational method for identifying the essential features of the distribution,
+rather than a method that makes the result look 'better'.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="The implementation in Sedfit">The
+implementation of size-distribution analysis in S<span style="font-variant: small-caps">edfit</span> </a></b></u></p>
+<p>In the following, we describe in detail the calculation of the <a href="sedfit_help_cs.htm">distribution
+of Lamm equation solutions c(s)</a>.&nbsp; In this approach, we model the data
+as a superposition of <a href="LammEqSolutions.htm">solutions to the Lamm
+equation</a> L(s,D(s),r,t):</p>
+<p><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt"></span></span>(12)<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; <img src="images/sizedi2.gif" v:shapes="_x0000_i1025" width="197" height="29"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059581563">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>All distributions models in S<span style="font-variant: small-caps">edfit</span> 
+are implemented with the same basic strategy, although they may differ in the
+kernel (i.e. the single-species model function) in different models.&nbsp; The
+first step in the calculation is the discretization of the integral into a
+summation, as&nbsp;</p>
+<p>(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-16.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins datetime="1999-11-12T17:02"><img src="images/sizedi3.gif" v:shapes="_x0000_i1025" width="281" height="51"></ins></span></p>
+<p>where we have discretized the s-values in a grid of <i>N</i> values (<a href="#parameter resolution">resolution</a>,
+usually between 50 and 300) between a minimum value (<a href="#s-min">s-min</a>)
+and a maximum value (<a href="#s-max">s-max</a>).&nbsp; Automatically, this
+discretization causes the distribution function <i>c(s<sub>k</sub>) </i> to be represented by <i>N</i>
+values&nbsp;<i>c<sub>k</sub></i>. Also indicated as discrete values are here the
+experimental data points <i>a</i> at the radii <i>r<sub>i</sub></i> and the time of the
+scans <i>t<sub>j</sub></i>.&nbsp; We can consider <a href="systematic_noise_analysis.htm">systematic
+noise</a> by including terms for time-invariant noise <i>b<sub>i</sub></i> for
+each radial value and radial-invariant noise for each scan <font face="Symbol">b</font><i><sub>j</sub></i>.&nbsp;&nbsp;</p>
+<p>First, the model functions L(s<sub>k</sub>,D(s<sub>k</sub>),r,t) are
+calculated for each grid point <i>s<sub>k</sub></i> and stored in the
+memory.&nbsp; This may require substantial amounts of RAM, which is why at least
+128 MB are recommended for these analyses.&nbsp; Obviously, this step takes
+longer for larger values of <i>N</i>.&nbsp;</p>
+<p>Equation 13 is linear, and as described in the section on <a href="systematic_noise_analysis.htm">systematic
+noise</a> for the direct boundary modeling with discrete species (Eq. 6), we
+obtain a linear equation system for the unknown concentrations <i>c<sub>k</sub></i>.&nbsp;
+We can formulate this equation system as a symmetric normal equation</p>
+<p>(14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-48.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02">
+</ins></span><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-51.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02">
+<img src="images/sizedi1.gif" v:shapes="_x0000_i1025" width="243" height="109"></ins></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059586806">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059586540">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></p>
+<p>with the inhomogeneity <b>y</b>, the normal matrix <b>A</b>, and the
+concentration vector <b>c</b>.&nbsp; The hats over the quantities <i>a</i> and <i>L</i>
+denote here the transformations for the systematic noise analysis (combine Eq. 3
+and 8 in <a href="systematic_noise_analysis.htm">systematic noise page</a>).&nbsp;
+Calculation of the normal system (<b>A</b> and <b>y</b>) is the second step of
+the calculation.&nbsp; Each element requires summation over all data points,
+which can be quite computationally extensive, for example, with interference
+optical data which can easily have 100,000 data points.&nbsp; Because this is a <i>N
+</i>x <i>N </i>system, this effort increases quadratically with <i>N</i>.&nbsp;</p>
+<p>This is followed by solving the quadratic linear system.&nbsp; S<span style="font-variant: small-caps">edfit</span> 
+ uses the
+Cholesky decomposition.&nbsp; There is an easy way to ensure non-negativity of
+all concentration values algebraically with the algorithm NNLS from Lawson and
+Hanson (<a href="#ref6.LawsonHanson">ref 6</a>), adapted for use with normal
+equations.&nbsp; This step is very fast and stable even for very large <i>N</i>.&nbsp;
+This unconstrained solution allows to evaluate the chi-square of the fit.&nbsp;
+Using the predefined <a href="#confidence level (F-ratio)">confidence level</a>
+and <a href="sedfit_help_fstatistics.htm">F-statistics</a>, we can also
+calculate the chi-square increase that we want to achieve by regularization.</p>
+<p>With the abbreviations from Eq. 14, the constrained size-distribution problem
+for Tikhonov-Phillips regularization by second derivative is&nbsp;&nbsp;</p>
+<p><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-14.0pt"> </span></span>(15a)<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-14.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059587397">
+ </o:OLEObject>
+</xml><![endif]--><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-5.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins datetime="1999-11-12T17:02">
+<img src="images/sizedi5.gif" v:shapes="_x0000_i1025" width="103" height="21"></ins></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059638717">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span>
+</span></p>
+<p>where <b>B</b> denotes the square of the second derivative matrix (as given
+in 18.5.12 in <a href="#Press ref">ref 4</a>).&nbsp; Because this is still a
+linear equation system, it can be solved easily for any value of the
+regularization parameter <font face="Symbol">a</font>, and the resulting
+chi-square of the regularized solution is calculated.&nbsp; A root-finding
+algorithm is used to adjust <font face="Symbol">a</font> to yield exactly the
+predefined chi-square.</p>
+<p>The maximum entropy regularization is more complicated.&nbsp; This
+problem is nonlinear, and with the abbreviations of Eq. 14, can be written as</p>
+<p>(15b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-16.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><img src="images/sizedi4.gif" v:shapes="_x0000_i1025" width="248" height="53"></span></ins><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059587278">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></p>
+<p>S<span style="font-variant: small-caps">edfit</span> uses a Marquardt-Levenberg
+algorithm to calculate the minimum of Eq. 15b for any value of <font face="Symbol">a</font>.&nbsp;
+Because we already have the concentrations <b>c</b> for the unregularized
+solution, we take this as an initial starting guess, and chose first a very low
+value of <font face="Symbol">a</font>.&nbsp; This will lead to a very small
+increase in chi-square.&nbsp; S<span style="font-variant: small-caps">edfit</span>
+increases <font face="Symbol">a</font> in small increments, each time using the
+concentrations from the previous <font face="Symbol">a</font>-value as a new
+starting guess.&nbsp; The chi-square increase is monitored, and the procedure is
+stopped when the preset value is reached.&nbsp; Although there may be several
+hundred unknown c-values involved in this nonlinear problem, the method
+describes starts from very good starting guesses, and proceeds in many steps
+with only small changes of <font face="Symbol">a</font> in each of which only
+very small adjustments in the concentration values need to be made.&nbsp;
+Essentially, we move the concentration values 'adiabatic' from the unregularized
+to the regularized solution, making use of the continuity of the best-fit
+concentration as a function of <font face="Symbol">a</font>.&nbsp;&nbsp;</p>
+<p>For the maximum entropy method, this root-finding during the regularization
+is the third major computational task, and S<span style="font-variant: small-caps">edfit</span>
+makes screen outputs that allow to monitor progress (the value of <font face="Symbol">a</font>,
+the entropy, and the P-value corresponding to the current chi-square
+increase).&nbsp;</p>
+<p>After the concentration values c(s<sub>k</sub>) are calculated, their <i>sum</i>
+corresponds to the total loading concentration.&nbsp; This is because during the
+discretization of Eq. 12 in the form of Eq. 13 ignores the constant factor <font face="Symbol">D</font>s
+(that would originate from the differential ds of the integral).&nbsp; In order
+to really get the solution of the original integral equation, the distribution
+is finally rescaled, such that the <i>integral</i> will correspond to the
+loading concentration.&nbsp; This can introduce changes of the distribution
+shape, if the underlying grid points s<sub>k</sub> were not chosen equidistant
+(as is the case, e.g. in the molar mass distribution models, where the M-grid is
+spaced with a 2/3-power).&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Parameters for size-distribution analysis in Sedfit">Parameters
+for size-distribution analysis in S<span style="font-variant: small-caps">edfit</span> </a></b></u></p>
+<p>Several parameters in S<span style="font-variant: small-caps">edfit</span>
+are common to all size-distribution models.&nbsp; These are related to the range
+and discretization of the distribution, and to the regularization.</p>
+<p><a name="parameter resolution"><b>resolution</b></a>:&nbsp;This is the number
+of values between the minimum and maximum of the distribution range.&nbsp; This
+number <i>N</i> controls the resolution of the distribution.&nbsp; For example,
+for sedimentation coefficient distribution with s-min = 3 S and s-max = 13 S, a
+resolution value of <i>N</i> = 100 would mean that the s-grid has increments of
+0.1S.&nbsp; Obviously, a larger number is required for covering a larger range,
+while a small value may be sufficient for a small range.&nbsp; The computation
+time increases quadratically with <i>N</i>.&nbsp; Values can theoretically range
+from as little as 10 to 1000, although practical ranges are 50 - 300.</p>
+<p><a name="s-min"><b>s-min</b></a>:&nbsp; (corresponding to M-min, D-min, or
+R-min for molar mass, diffusion coefficient, or Stokes-radius
+distributions)&nbsp; This is the smallest value of the distribution.&nbsp; The
+value should be well below the smallest s-value that occurs in the sample.&nbsp;
+For very small s-values (&lt; 1S), dependent on the rotor speed, a correlation
+with the baseline parameters can occur, but this is not a problem for the
+interpretation of the rest of the distribution.</p>
+<p><a name="s-max"><b>s-max</b></a>: This is the largest value of the
+distribution.&nbsp; It should be larger than the largest species in the
+distribution.&nbsp; If the calculated distribution shows a increase toward
+s-max, most likely there are larger species present, and the value of s-max
+should be increased.&nbsp;</p>
+<p><a name="confidence level (F-ratio)"><b>confidence level (F-ratio)</b></a>:
+This parameter controls the amount of regularization used.&nbsp; It has a
+different meaning for different ranges:&nbsp; From 0 to 0.5, no regularization
+is used.&nbsp; Values from 0.5 to 0.999 correspond to probabilities P
+(confidence levels).&nbsp; From these P-values, the desired chi-square increase
+allowed for the parsimony constraint of the regularization is calculated with <a href="sedfit_help_fstatistics.htm">F-statistics</a>.&nbsp;
+A value of 0.51 will cause very little regularization; values of 0.68 to 0.90
+would correspond to commonly used confidence levels (usually, with 50 scans or
+more the chi-square increase corresponding to a probability of 0.7 is of the
+order of 0.1%), while values close to 0.99 would cause very high
+regularization.&nbsp; The relationship of these values with probabilities can be examined using the <a href="sedfit_help_calculator.htm#Calculate F-distribution">F-statistics
+calculator</a>.&nbsp;&nbsp;If numbers &gt; 1 are entered, they are taken directly as
+chi-square ratios (as there are no probabilities &gt; 1).&nbsp; For example, a
+value of 1.1 will result in regularization with 10% chi-square increase.&nbsp;
+(In this way, chi-square increase values can be used without utilizing the
+F-statistics.)&nbsp;</p>
+<p>Another control common to most size-distribution models is the <b>choice of
+regularization procedure</b>, i.e. between Tikhonov-Phillips 2nd derivative and
+maximum entropy regularization.&nbsp; Some guidelines for this choice are given <a href="#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">above</a>,
+and the setting can be changed using the <a href="sedfit_help_size_distribution_options.htm">size-distribution
+option menu</a>.&nbsp;&nbsp;&nbsp;</p>
+<p>Finally, most of the distributions require <b>additional parameters </b>that
+are characteristic to the model.&nbsp; For example, because the Lamm equation
+solutions require two parameters, s and D, the diffusion coefficients must be
+estimated for each s-value.&nbsp; This estimate can be made in different ways,
+which reflect different prior knowledge or prior assumptions on the sample, or
+approximations.&nbsp; These are explained in the help-pages of the <a href="sedfit_help_cs.htm">c(s)
+distribution model</a>, <a href="sedfit_help_cs_with_other_prior.htm">c(s)
+with prior knowledge</a>, <a href="sedfit_help_cm.htm">c(M)
+distribution model</a>, and <a href="sedfit_help_cm_with_other_prior.htm">c(M)
+with prior knowledge</a>.&nbsp;&nbsp;</p>
+<p>More practical information can be found in the <a href="tutorial_sizedistributions.htm">tutorial
+for size-distribution analysis</a>.</p>
+<p>It should be noted that <a href="compressibility_of_water_and_organic_solvents.htm#Sedimentation coefficient distributions in compressible solvents">corrections
+for compressible solvents </a>can be applied without further difficulty.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font size="1">References:</font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="Provencher">1.</a> S.W. Provencher. (1982) A constrained regularization method for inverting
+data represented by linear algebraic or integral equations. Comp. Phys. Comm.
+27:213-227</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ls-g*(s) ref">2.</a> P. Schuck and P. Rossmanith (2000) <a name="ref ls-g*(s)"> Determination of the sedimentation
+coefficient distribution g*(s) by least-squares boundary modeling.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">Biopolymers</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">
+54:328-341</a>.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref c(s) pub">3.</a> P. Schuck (2000) <a name="ref c(s)"> Size distribution analysis of macromolecules by
+sedimentation velocity ultracentrifugation and Lamm equation modeling.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">
+78:1606-1619</a>.&nbsp;</font> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="Press ref">4.</a> W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery. (1992)
+Numerical Recipes in C. University Press, Cambridge</font> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="5.ref">5.</a> A.K. Livesey, J. Skilling. (1985) Maximum Entropy
+Theory.&nbsp; Acta Cryst. A41, 113-122</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref6.LawsonHanson">6.</a> C.L. Lawson and R.J. Hanson. (1974) Solving Least Squares Problems.
+Prentice-Hall, Englewood Cliffs, New Jersey</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">web pages related
+to this topic:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="tutorial_sizedistributions.htm">tutorial
+for size-distribution analysis</a>,&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="sedfit_example.htm">example
+for using S<span style="font-variant: small-caps">edfit</span></a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"> <a href="lsgofs_distribution.htm">ls-g*(s)
+distribution</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="sedfit_help_cs.htm">c(s)
+distribution model</a>, and <a href="sedfit_help_cs_with_other_prior.htm">c(s)
+with prior knowledge</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="sedfit_help_cm.htm">c(M)
+distribution model</a>, and <a href="sedfit_help_cm_with_other_prior.htm">c(M)
+with prior knowledge</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="sedfit_help_ls-gs.htm">ls-g*(s)
+distribution model</a>, <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
+of ls-g*(s) to infinite time</a>, <a href="sedfit_help_van_holde-weischet.htm">van
+Holde-Weischet analysis</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="compressibility_of_water_and_organic_solvents.htm#Sedimentation coefficient distributions in compressible solvents">compressibility
+of water and organic solvents</a></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,225 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>independent ideal species</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;noninteracting&nbsp;discrete&nbsp;species&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="7749" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Independent Species Model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Non-Interacting Discrete Species</p>
+</font></b>
+<p>This model describes the concentration distribution of one or more (up to four) non-interacting
+and ideally sedimenting species.&nbsp; In case of more than one species, the
+model functions are superpositions of the distributions of the individual species.&nbsp;
+<b>The concentrations of each species are expressed in the total loading
+concentration and fractional loading concentrations.&nbsp;</b>&nbsp;</p>
+<p>If the number of species is not well known (including knowledge of possible
+small fragments or larger aggregates), it can be determined in a <a href="sedfit_help_cs.htm">c(s)
+analysis</a> as the number of peaks in the continuous sedimentation coefficient
+distribution.&nbsp; From this analysis, also the starting values for the
+s-values of each species can be taken. This is illustrated in the <a href="sedfit_example.htm">example
+of how to use S<span style="font-variant: small-caps">edfit</span></a>.&nbsp;</p>
+<p>This model allows to calculate the concentrations, molar masses, diffusion
+coefficients, and the sedimentation coefficients of discrete species.&nbsp;
+Starting guesses for s and M (or D) must be provided, and can be optimized by
+non-linear regression in the <a href="sedfit_help_fit.htm">fit</a>
+command.&nbsp; Because this model is linear in the concentration of each
+species, no starting guesses for the concentrations are necessary - they will be
+optimized already with a simple <a href="sedfit_help_run.htm">run</a>
+command.&nbsp;</p>
+<p>For non-interacting ideally sedimenting molecules, sedimentation is described by the Lamm equation&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="LammEqSolutions.htm"> <img SRC="images/Image16.gif" WIDTH="188" HEIGHT="45"></a></p>
+<p>It describes the evolution of the concentration c<sub>k</sub>(r,t) of a species with
+sedimentation coefficient s and diffusion coefficient D in a sector-shaped cell,
+and in the presence of a
+centrifugal field with angular velocity <font face="Symbol">w</font>).&nbsp; In S<span style="font-variant: small-caps">edfit</span>, the Lamm equation is
+solved numerically by the finite element technique.&nbsp; Details on the <a href="LammEqSolutions.htm">solution of the Lamm equation</a>
+are described <a href="LammEqSolutions.htm">here</a> (and in refs <a href="../sedfitweb/references.htm#ref sedimentation of peptides">1</a>
+and <a href="../sedfitweb/references.htm#ref moving grid Lamm Eq">2</a>).&nbsp;
+Although the primary measured parameters in a sedimentation experiment are s and
+D, the parameters can be transformed to s and M by use of the Svedberg equation</p>
+<p><img SRC="images/Image7.gif" WIDTH="100" HEIGHT="44"></p>
+<p>(see <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>).&nbsp; In this case, the partial-specific volume and solution
+density has to be specified (see <a href="sedfit_help_set_vbarxrho.htm">set
+v-bar and rho</a>).&nbsp; Using M as the boundary spreading parameter can allow
+input of the frequently known molar mass, or simpler interpretation of
+oligomeric stoichiometry, and this setting is therefore the default.&nbsp; On
+the other hand, the diffusion coefficients may be known from dynamic light
+scattering experiments.&nbsp;</p>
+<p>A number of <a href="#Variants">variants</a> are available, as well as <a href="sedfit_help_fitting_options.htm">fitting
+options</a>.</p>
+<p>The parameters for this model are entered in the parameter input box (<b><font COLOR="#0000ff"><a href="sedfit_help_parameters.htm">Parameters</a></font></b>):</p>
+<p><img border="0" src="images/noninteractingbox.gif" align="left" width="443" height="301"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">upper section
+specifying&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">up to 4 components</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">middle section
+with experimental conditions</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">lower section with
+Lamm equation and&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">nonlinear
+regression parameters</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><font color="#FF00FF"><b>Note:&nbsp; for a generalization of this model, look
+at the <a href="file:///C:/peter/website/sedfithelpweb/sedphat/hybrid_local_continuos_global_discrete.htm" target="_parent">S<span style="font-variant: small-caps">edPHaT</span>
+hybrid continuous/discrete model</a>.</b></font></p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The upper sections
+specifies the parameters for each of the four components (or species), each with
+four controls:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">1) The <a name="different components"><b>different
+components</b></a> are switched on/off according to the status of the check-mark
+next to the label 'component 1', 'component 2', etc.&nbsp; If the species are
+switched off, it's sedimentation will not be simulated and it will be
+ignored.&nbsp; (It should be made sure that no parameters of this component are
+marked for non-linear optimization).&nbsp; In the parameter box shown, for
+example, only 2 species are used.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">2) the <a name="concentration field"><b>concentration
+field</b></a>  <span style="background-color: #FFFF00"> gives either the total loading concentration (for the first active
+component), or a fraction of the total loading concentration (all following
+concentrations).</span>&nbsp; In the example above, the total concentration is 2, and
+the concentrations of species 2 is 10%, which means the concentration of species
+1 is 1.8, that of species 2 is 0.2.&nbsp; The units are signal units, i.e.
+interference fringes or OD<sub>1.2 cm</sub> at the wavelength chosen.&nbsp; If
+the check-mark is switched on, then the concentration will be optimized.&nbsp;
+Because the loading concentrations are linear parameters in this model, if
+checked, they will be optimized in both the <a href="sedfit_help_run.htm">run</a>
+and <a href="sedfit_help_fit.htm">fit</a> commands.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">3) the <a name="molar mass or diffusion coefficient field"><b>molar
+mass or diffusion coefficient field</b></a> contains the information governing
+boundary spreading. If the parameters are set to <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">(s,M)</a>
+the field is labeled 'M' (as in the example), and entry is the molar mass of the
+species in units of Dalton.&nbsp; The buoyancy term is governed by the
+partial-specific volume and buffer density, which needs to be specified <a href="sedfit_help_set_vbarxrho.htm">here</a>.&nbsp;
+(Please note that there's only one v-bar for all species, which means the molar
+mass values may have to be corrected if the different species have different
+v-bar.) If the parameters are set to <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">(s,D)</a>,
+the field is labeled 'D' and the entries are diffusion coefficients in 10<sup>-7</sup>cm<sup>2</sup>/sec
+(buoyancy parameter are not relevant in this case).&nbsp; This is a nonlinear
+parameter.&nbsp; If the check-mark is set, this parameter will be optimized in
+the <a href="sedfit_help_fit.htm">fit</a> command, while the goodness of the
+starting guesses can be assessed (no optimization) with the <a href="sedfit_help_run.htm">run</a>
+command.&nbsp; The parameter may also be constrained to the value shown
+(check-mark absent), which can be useful, for example, if the molar mass of the
+species is known.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">4) the <a name="sedimentation coefficient field"><b>sedimentation
+coefficient field</b></a> shows the s-value of the component in Svedberg units.
+Because this is a nonlinear parameter, it will be optimized only if the
+check-mark is set and the <a href="sedfit_help_fit.htm">fit</a> command is
+used.&nbsp;&nbsp;(For <a href="sedfit_faqs.htm#flotation">flotation</a>, use
+negative values and <a href="sedfit_help_set_vbarxrho.htm">set v-bar</a> = 0)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>The middle section contains controls that depend on experimental parameters.
+The parameters of the middle and lower section are <b><u><a name="parameters common to many models">parameters
+common to many models</a></u></b>. These are:</p>
+<p>1) a checkbox ‘<b><a name="FIT TI Noise">FIT TI Noise</a></b>’.&nbsp; If
+checked, the boundary analysis is combined with an unknown radial-dependent
+background profile that remains constant in time (<b>T</b>ime <b>I</b>nvariant).&nbsp;
+This is calculated algebraically and explicit background profiles are used for
+direct boundary modeling (see <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a>, and ref <a href="../sedfitweb/references.htm#ref noise analysis">3</a>).&nbsp;
+Mostly, this function will be used when analyzing interference optical data,
+although application to absorbance data can occasionally be useful, too (<a href="../sedfitweb/references.htm#ref noise analysis">3</a>).&nbsp;
+It is switched on for interference data by default.&nbsp; After the
+time-invariant background is calculated, it can be <a href="sedfit_help_subtract_calculated_noise.htm">subtracted</a>
+from the data for better inspection of the fit.&nbsp; Because this TI noise
+consists of linear parameters, it will be calculated in both the <a href="sedfit_help_run.htm">run</a>
+and the <a href="sedfit_help_fit.htm">fit</a> command.</p>
+<p>2) a check box ‘<b><a name="FIT RI Noise">FIT RI Noise</a></b>’.&nbsp; If
+checked, this adds to the model the possibility of a baseline offset that is constant in radial direction, but different for each scan.&nbsp;
+Like the TI noise, this is calculated algebraically (see <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a> and ref <a href="../sedfitweb/references.htm#ref noise analysis">3</a>),
+each time when the <a href="sedfit_help_run.htm">run</a> and the <a href="sedfit_help_fit.htm">fit</a>
+command are used.&nbsp; It is switched on for interference data by default,
+because of the small up-and-down displacement (jitter) always involved in
+sequences of interference scans.&nbsp; Also, the integral fringe displacement
+sometimes encountered in interference data can count as RI noise.&nbsp; <b>Please
+note:&nbsp; </b>No correction for jitter or fringe displacement should be
+performed before the analysis.&nbsp; The best-fit displacements will be result
+of the analysis, and can be <a href="sedfit_help_subtract_calculated_noise.htm">subtracted</a>
+from the data after the boundary modeling.</p>
+<p>3) the field <b><a name="Baseline">Baseline</a></b> allows to enter and
+optimize a constant baseline
+that is common to all scans and that is constant in radial direction. If this is
+checked, it will be optimized with each simulation. It is recommended to keep
+the baseline parameter floated for absorbance data (except when working with
+very small molecules and small sedimentation rates, when some correlation with
+the molar mass can be possible if simultaneously floating the bottom
+parameter).&nbsp;</p>
+<p>4) the <b><a name="Meniscus">Meniscus</a></b>&nbsp; position of the solution
+column will generally show the radius value that has been graphically determined
+when loading the files.&nbsp; However, the value can also be entered or changed here. The value of the meniscus
+position is very important for measuring the sedimentation velocity.&nbsp; When
+the field is marked, the meniscus is treated as a nonlinear fitting parameter,
+to be optimized in the <a href="sedfit_help_fit.htm">fit</a> command.&nbsp; In this case, constraints for a
+the lowest and highest possible values are necessary (as judged from graphical
+inspection of the data), and a prompt will
+automatically ask for these values when closing the parameter box. They should be carefully entered, since the
+default interval could be off.&nbsp; The range constraints can also be set through
+the <a href="sedfit_help_fitting_options.htm#Constraints for Fitting of Meniscus and Bottom">fitting
+options</a>.</p>
+<p>5) the <b><a name="Bottom">Bottom</a> </b>position of the cell is shown here,
+as graphically entered.&nbsp; Analogous to the meniscus field, it can be entered
+or modified here.&nbsp; Also, the bottom value can be treated as a fitting
+parameter (when checked) to be optimized in the <a href="sedfit_help_fit.htm">fit</a>
+command. Also,
+constraints for a the lowest and highest possible values are necessary when
+floated, and a
+prompt will automatically ask for these values (which can be modified through
+the <a href="sedfit_help_fitting_options.htm#Constraints for Fitting of Meniscus and Bottom">fitting
+options</a>).&nbsp; Fitting for the bottom position is very important when
+back-diffusion of the species from the bottom is modeled, because the exact
+bottom position is very difficult to locate graphically.&nbsp; Analysis with
+floating bottom will mostly be required for small molecules with high diffusion
+constants, at low rotor speeds, or in approach-to-equilibrium analyses.&nbsp; It
+should be noted, though, that in approach-to-equilibrium analyses at low rotor
+speed the simultaneous floating of the three parameters bottom, baseline, and
+molar mass can lead to slight correlation (although generally any two will be
+well-determined).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><u><a name="Variants">Variants</a></u></b></p>
+<p>A number of variants of the non-interacting models are available, including
+those with modified initial distribution (for <a href="sedfit_help_analytical_zone_centrifugation.htm">analytical
+zone centrifugation</a>), and different geometries (<a href="sedfit_help_other_geometries.htm#Special Geometry">linear
+Lamm equation</a> and <a href="sedfit_help_other_geometries.htm#Electrophoresis">electrophoresis</a>).&nbsp;
+Further, it is possible to include the <a href="sedfit_help_sedimentation_time_offset.htm">starting
+time of sedimentation as a fitting parameter</a> (this is for empirical fitting
+of the approach to equilibrium), or treat the sedimentation coefficients as a
+time-dependent quantities and <a href="sedfit_help_timedependent_sedimentation.htm">analyze
+s(t)</a>.</p>
+<p><font color="#FF00FF"><b>Please note: Starting from version 8.5, when using
+this model with s and D as fitting parameters, there will be the option to
+consider (and fit for) non-ideality parameters for the first component.&nbsp; </b></font></p>
+
+<!--mstheme--></font></body>
+
+</html>

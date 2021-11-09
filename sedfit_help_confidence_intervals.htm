@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Confidence Intervals</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;Confidence&nbsp;Intervals&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_error_contours.htm" target="">Error&nbsp;Contours</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_monte_carlo_simulations.htm" target="">Monte&nbsp;Carlo&nbsp;Simulations</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="27614"
+-->
+</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate Confidence Interval</p>
+</font><b><font COLOR="#0000ff">
+<p>Statistics | Confidence Interval for s</p>
+<p>Statistics | Confidence Interval for M</p>
+</font></b>
+<p>These functions allow calculating the confidence intervals of s or
+M of the first component, respectively, of the <a href="sedfit_help_independent_ideal_species.htm">discrete
+species model</a> (both functions work very similar).&nbsp; If the other components are of interest, they should
+be exchanged and brought into the position of the first species.)</p>
+<p>The calculation performed by S<span style="font-variant: small-caps">edfit</span> works as follows: Starting from the best
+fit value, the parameter whose error limit is sought is moved to a non-optimal
+value and kept fix. Then, all other parameters are floated and allowed to
+compensate this constraint. The resulting variance of the fit is observed, and
+the parameter in question is moved a little bit further, again followed by
+constrained fit, etc. Goal is to bring the variance of the constrained fit close
+to the value that is predicted by <a href="sedfit_help_fstatistics.htm">F-statistics</a>
+for the given confidence limit. The parameter value that corresponds to this
+variance increase constitutes one error limit. Once one error limit is
+established, a similar series of constrained fits is performed, moving the
+parameter in question into the opposite direction. This will give the other
+error limit. These errors are not necessarily symmetric (!) and take
+correlation, positivity and other constraints of the parameters into account.</p>
+<p>Both functions follow these steps:</p>
+<p><b><font color="#FF0000">1) First, it is necessary for realistic results that before calculating
+the confidence interval the best-fit has been found. This should be verified by
+a couple times invoking the <a href="sedfit_help_fit.htm">Fit</a> function
+and ensuring that the parameter don’t change anymore.&nbsp;&nbsp;</font></b></p>
+<p>2) a confidence level has to be specified (typically 0.68 or 0.95)</p>
+<p>3) a test-interval needs to be specified, which should ideally be 1/4 of
+expected standard deviation of the parameter, <b>or smaller</p>
+</b>
+<p>4) a message box reminds to make sure to start from best-fit situation, and
+that all unknown parameter should be floated</p>
+<p>5) a series of multiple fitting operations will start, one can follow the
+test parameters in the display (first moving up, then going down).&nbsp; This
+step can take a while.&nbsp; <b>The procedure should not be interrupted,
+otherwise artificially low error estimates will be produced</b>.&nbsp; <i><font color="#FF0000">Occasionally,
+it can be observed that during the series of fits a rms error lower than the
+initial 'best-fit' is found.&nbsp; In this case, the parameter values should be
+noted, the procedure should be aborted, and restarted with the new best-fit
+values.&nbsp; This can happen, in particular, with fits that include many
+floating parameters that can get caught in a combination that represents a local
+minimum (as opposed to a global minimum).</font></i>&nbsp;&nbsp; </p>
+<p>6) at the end, a message box appears with the result: best-fit value (lower
+limit, upper limit). Also displayed is the rmsd of the fit that was calculated
+to be the statistical cutoff value.</p>
+<p>&nbsp;</p>
+<i><font COLOR="#008000">
+<p>Please Note:</p>
+ </font></i><i><font COLOR="#008000">
+<p>If the procedure does not converge, try a different (e.g. slightly smaller) test interval for s.</p>
+</font></i>
+<p>&nbsp;</p>
+<p>See also: <a href="sedfit_help_fstatistics.htm">F-statistics</a>, <a href="sedfit_help_error_contours.htm">error
+contour maps</a></p>
+<!--mstheme--></font></body>
+
+</html>

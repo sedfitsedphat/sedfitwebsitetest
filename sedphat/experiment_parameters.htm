@@ -1,0 +1,288 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>experiment parameters</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="data1.htm" target="">data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="display.htm" target="">display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="model.htm" target="">model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;experiment&nbsp;parameters&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="options.htm" target="">options</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="5666" endspan -->
+</font></p>
+<h2>Experimental Parameters</h2>
+
+<p>This box appears immediately after loading new data, and can also be accessed
+at any time from the top-level menu.&nbsp; It contains those local parameters
+which are more related to the physical configuration of the experiment.&nbsp; </p>
+
+<p>How this box looks depends on the experiment type.&nbsp; Let's start with the </p>
+
+<p><b><a name="Sedimentation Velocity Box">Sedimentation Velocity Box</a></b></p>
+<p><img border="0" src="menubilder/experi2.jpg" width="435" height="418"></p>
+<p>&nbsp;</p>
+<p>The first line specifies the <a name="experiment type"><b>experiment type</b></a>.&nbsp;
+This cannot be changed.&nbsp; (You could edit the xp-file, but I cannot see how
+this might be useful.)&nbsp;&nbsp;</p>
+<p>The second line shows the <a name="path and filename"><b> path and
+filename</b></a> of the xp-file and in parenthesis the filenames of some of the
+experimental raw data.&nbsp;&nbsp;</p>
+<p>Line 3 allows to enter any <a name="comments"><b>comments</b></a>, such as a sample ID, buffer composition,
+or whatever you like to remember about this experiment.</p>
+<p>Then follow a number of check-boxes and numbers. Starting from the top left
+corner:</p>
+<p><a name="Active"><b>Active</b></a>&nbsp;is a check box for making the experiment active or
+inactive, which controls if this experiment will be included in the global fit
+and global run functions of the model, or if they will temporarily excluded.</p>
+<p>The <a name="noise"><b> noise</b></a> field is the expected standard deviation of the measurement
+error.&nbsp; Since the global fit will minimize the global chi-square, which is
+essentially the ratio between the rms deviation of the fit and the measurement
+error, a low value of the noise entry will make the chi-square of this
+particular data set larger, and therefore makes its contribution to the global
+fit more important.&nbsp; Therefore, <font color="#FF0000"> this is the point where one can
+determine how to weight the
+different experiments</font> against each other.&nbsp; The default entry in
+the noise field will depend on the data type.&nbsp;&nbsp;For more information, 
+follow this link on the <a href="statistics.htm#measure for the goodness of fit">
+measure for the goodness of fit</a>.</p>
+<p>Below is a field that contains information on the <a name="centerpiece type"><b>centerpiece
+type</b></a> (2 for
+double sector, and 6 for six-channel).&nbsp; This information is used for mass
+balance calculations in sedimentation equilibrium, which are dependent on the
+cell geometry.&nbsp; Just below is the field for the optical <a name="pathlength"><b> pathlength</b></a>
+of the centerpiece.&nbsp; This is usually 12 mm, but short ones with 3 mm are
+also sometimes used.&nbsp; For DLS data, these two fields can be ignored.&nbsp; 
+The field for <b>rotor type</b> can assume values of 0 (no information), 4 
+(4-hole rotor), and 8 (8-hole rotor) [this information is used to correct for
+<a href="#mass cons. w. rotor stretch">rotor stretching</a> in the Multi-Speed 
+Equilibrium model.&nbsp; Following is the field <b>
+<a name="no backdiffusion necessary">no backdiffusion necessary</a></b> - check 
+this if the data are not influenced by back-diffusion from the bottom of the 
+cell - this will automatically switch off the backdiffusion in Lamm equation 
+solutions of reactive systems. </p>
+<p>On the right-hand side at the top are the specifics for the buffer
+condition:&nbsp; <a name="partial-specific volume at experimental conditions"><b>partial-specific volume at experimental
+conditions</b></a> (see the <a href="partspecvols.htm">Concepts for Getting
+Started page on v-bars</a>) the <a name="buffer density"><b> buffer
+density</b></a> and <b> <a name="buffer viscosity">buffer viscosity</a> </b>(all 
+at experimental conditions).&nbsp; The temperature field by default has the 
+average temperature taken from the scan files, but can be edited and saved.</p>
+<p>The default values for the density and viscosity are the
+standard conditions (water at 20C).&nbsp; <font color="#FF0000"><b>Using the 
+input about the experimental conditions, all
+parameters in S<span style="font-variant: small-caps">edPHaT </span>will be corrected to standard conditions.&nbsp; </b></font>This
+is one of the main differences to S<span style="font-variant: small-caps">edfiT</span>, which (except for the inhomogeneous
+solvent models) always reports results under experimental conditions.&nbsp; S<span style="font-variant: small-caps">edPHaT</span>
+will always report s-values, D-values, etc. for standard
+conditions.&nbsp; This is necessary because different experiments may have
+different experimental conditions.&nbsp; S<span style="font-variant: small-caps">edPHaT
+</span>actually calculates with
+parameters at standard conditions, and for each experiment translates them to
+the experimental conditions specified in the fields of the Experiment Parameters
+Box.&nbsp; (If you do not want S<span style="font-variant: small-caps">edPHaT</span> 
+to make any corrections, accept the defaults (pretend the experiment was already 
+done at standard conditions, in which case no further correction will take 
+place.)&nbsp; But generally it's definitely worth the trouble of looking up the correct
+parameters - most likely you'll need the anyway sooner or later.&nbsp; Once
+you've entered them here, save the experiment and you them stored with the data. </p>
+<p><i><font color="#FF00FF">New in version 1.9: Once one experiment has been 
+loaded, the default density, v-bar, and viscosity settings will be those of 
+experiment 1. </font></i>&nbsp;</p>
+<p>Moving to the middle row of parameter fields, on the left we find the
+baseline parameters.&nbsp; The <a name="fit baseline"><b>fit baseline</b></a>
+checkbox will add a single parameter for a constant offset.&nbsp; For
+multi-speed sedimentation equilibrium data, this baseline is shared for all
+rotor speeds.&nbsp; For sedimentation data, it can be useful to check the <a name="fit RI Noise"><b>fit RI Noise</b></a><b>
+</b>box, which adds a 'radial-invariant' offset for each scan in the current
+experiment.&nbsp; This can take care of the jitter in interference optical
+sedimentation velocity data, or some baseline shifts between the scans at
+different rotor speeds in multi-speed sedimentation equilibrium data.&nbsp; The <a name="fit TI Noise"><b>fit TI Noise</b></a>
+box switches on a radial-dependent baseline profile common to all scans of
+sedimentation velocity or multi-speed sedimentation equilibrium data.&nbsp; This
+can be used to account for systematic spikes in the data, caused by dust or
+scratches on the windows in absorption optics, or by the common effects of
+imperfections on any optical surface in interference optical data.&nbsp; The RI
+noise and the TI noise are calculated by algebraic techniques, for an
+introduction see the <a href="../systematic_noise_analysis.htm">S<span style="font-variant: small-caps">edfiT
+</span>tutorial on systematic noise</a>. </p>
+<p>In the center are is the section for entering <b><a name="meniscus">meniscus</a></b>
+and <a name="bottom"><b>bottom</b></a> of the solution column.&nbsp; They can be
+optimized in the non-linear regression by checking the box next to the
+parameters.&nbsp; For DLS data, ignore these parameters (but don't optimize
+them).&nbsp; You can enter them graphically, too, like in S<span style="font-variant: small-caps">edPHaT</span>.&nbsp;
+If you switch on the optimization of meniscus and bottom, you will be asked for
+upper and lower bounds for these parameters.&nbsp; <font color="#FF0000">Please
+note:&nbsp; set the upper and lower bounds carefully, as the default is not
+always a good value and may constrain the fit to poor menicus or bottom
+positions.</font> If you want to change the bounds for meniscus and bottom,
+uncheck the optimization in the experimental parameter box, close the box,
+reopen the box, and re-check the fitting marks for meniscus and bottom.&nbsp;
+This will give you a chance to double-check or modify these values. </p>
+<p>Just to the right is the field to <a name="redirect men./bot"><b>redirect
+men./bot</b></a>, i.e. to copy the meniscus and bottom parameters from another
+experiment and use them as parameters of the current experiment.&nbsp; For an
+introduction to shared local parameters, <a href="parameters1.htm#Share Local Parameters">follow
+this link</a>.&nbsp; You can switch parameter sharing on for this experiment by
+checking the box, and entering the <a href="experiment1.htm#Experiment Number:">experiment
+number</a> that should serve as a parent experiment (i.e. which provides the
+parameter values) with regard to this parameter.&nbsp; Sharing will
+automatically copy any option of the parent experiment to optimize or fix
+meniscus or bottom.&nbsp; Sharing meniscus and bottom is highly recommended when
+the data originate from the same solution column. </p>
+<p>The bottom fields specify <a name="extinction coefficients"><b>extinction
+coefficients</b></a> for a species A (default species in self-association
+models) and a species B and C (used only for hetero-association models).&nbsp; Note
+that extinction coefficients will not be used for the non-interacting
+models.&nbsp; Enter the values in <b><font color="#FF0000">molar extinction
+coefficients per cm</font></b>. (Pathlengths will be taken care of automatically
+by S<span style="font-variant: small-caps">edPHaT</span>).&nbsp; You can
+optimize these parameters by checking their box, and you can also share those of
+another experiment.&nbsp;&nbsp; </p>
+<p><font color="#0000FF" size="2">Please note:&nbsp; You should not fit both the
+extinction coefficients and concentration parameters, unless you have
+essentially fixed one of them through sharing.&nbsp; For an example of
+multi-wavelength sedimentation equilibrium analysis, see the <a href="parameters1.htm#Examples for global analysis and shared local parameter configurations:">examples
+in the introduction to shared parameters</a>.</font> </p>
+<p>For interference optical centrifuge data, substitute the molar extinction
+coefficient with the signal increment.&nbsp; An example:&nbsp; We get ~ 3.3
+fringes per mg/ml of solution with a 12 mm pathlength cell.&nbsp; If we have a
+100 kDa protein, 1 mg/ml is 10<font face="Symbol">m</font>M. The specific signal
+increment would be (3.3/1.2)*10<sup>5</sup>/Mol.&nbsp; In general, it would be
+(3.3Mw/1.2), if Mw is the molar mass of the protein.&nbsp;&nbsp; </p>
+<p>&nbsp;</p>
+<p>The <b><a name="Sedimentation Equilibrium Box">Sedimentation Equilibrium Box</a></b></p>
+<p><img border="0" src="menubilder/experi3.jpg" width="437" height="438"></p>
+<p>looks like the velocity box, but has fewer entries.&nbsp; RI and TI noise are 
+disabled, since a single equilibrium profile cannot define these noise 
+parameters.&nbsp; Obviously, in equilibrium the viscosity is irrelevant.</p>
+<p>&nbsp;</p>
+<p>The <b><a name="Multi-Speed Equilibrium Box">Multi-Speed Equilibrium Box</a></b></p>
+<p><img border="0" src="menubilder/experi4.jpg" width="438" height="443"></p>
+<p>is like the sedimentation equilibrium box, but it can allow RI noise, which 
+in this context is a Baseline that is dependent on the rotor speed, and TI 
+noise, which stands for a radial-dependent baseline.&nbsp; See
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15003564">
+Analytical Biochemistry 326:234-256</a>&nbsp; <font face="Verdana">(<a href="../images/SedimentationEquilibriumAnalysis.pdf">preprint</a>)</font> 
+for how to use this option.&nbsp; The two fields 'TI noise rotor stretch' and 
+'<b><a name="mass cons. w. rotor stretch">mass cons. w. rotor stretch</a></b>' will determine if the stretching of the rotor is 
+taking into account for calculating the radial-dependent baseline, and for mass 
+conservation, respectively.&nbsp; The extent of rotor stretching will depend on 
+the <b><a name="rotor type">rotor type</a></b>, which can assume values of 0 (no 
+rotor information), 4 (4-hole rotor), and 8 (8-hole rotor).&nbsp; </p>
+<p>&nbsp;</p>
+<p>The <b><a name="DLS Data Box">DLS Data Box</a></b></p>
+<p><img border="0" src="menubilder/experi5.jpg" width="444" height="246"></p>
+<p>is much simpler.&nbsp; The fields have the same meaning as in the 
+sedimentation models.</p>
+<p>&nbsp;</p>
+<p>The <b><a name="Isotherm Box">Isotherm Box</a></b></p>
+<p><img border="0" src="menubilder/experi6.jpg" width="435" height="352"></p>
+<p>is also similar to the previous ones.&nbsp; </p>
+<p>Notice that you have to select the type of isotherm:&nbsp; </p>
+<p><u>sw isotherm:</u>&nbsp; weight-average s-values, determined by integration 
+of c(s) profiles of S<span style="font-variant: small-caps">edfiT</span> over 
+all species participating in the interaction - this is for all models, 
+independent of the time-scale of the reaction kinetics</p>
+<p><u>Mw isotherm:</u>&nbsp; weight-average molar mass values - can be 
+determined by fitting single-species model of S<span style="font-variant: small-caps">edfiT</span> 
+to equilibrium data.&nbsp; This is also for all models, independent of the 
+time-scale of the reaction kinetics </p>
+<p><u>partial-conc. isotherm:</u>&nbsp; for <b>slow</b> interacting systems 
+where the c(s) peak positions remain independent of loading composition.&nbsp; 
+Data are amplitudes of c(s), determined by integration of c(s) peaks in S<span style="font-variant: small-caps">edfiT</span>.&nbsp; </p>
+<p><u>Gilbert sw fast:</u>&nbsp; for <b>fast</b> interacting systems, which can 
+be discerned from c(s) peaks showing peaks positions depending on loading 
+composition.&nbsp; Data are the weight-average s-value of the fast boundary 
+component in c(s), as determined by integration in S<span style="font-variant: small-caps">edfiT</span>.</p>
+<p><u>Gilbert partial conc:</u>&nbsp; for <b>fast</b> interacting systems, which 
+can be discerned from c(s) peaks showing peaks positions depending on loading 
+composition.&nbsp; Data are the amplitudes of both the undisturbed boundary and 
+the reaction boundary component in c(s), as determined by integration in S<span style="font-variant: small-caps">edfiT</span>.</p>
+<p>For format 
+requirements, see <a href="data1.htm#Load New Isotherm Data">here</a>. </p>
+<p>An overview of isotherm analyses in S<span style="font-variant: small-caps">edphaT</span> 
+can be found <a href="isotherm_analysis.htm">here</a>.</p>
+<p>&nbsp;</p>
+<p><b>The <a name="ITC data box">ITC data box</a></b></p>
+<p><img border="0" src="menubilder/experi7.jpg" width="421" height="446"></p>
+<p>Here, there are a number of specific entries referring to an isothermal 
+titration calorimetry experiment, where one macromolecule is in a cell, to which 
+a binding partner is added in step-wise increments.</p>
+<p><u>cell conc [uM]</u>:&nbsp; This is the initial concentration of interacting 
+macromolecules in the cell.</p>
+<p><u>syringe conc [uM]:</u>&nbsp; This is the concentration of binding partner 
+in the syringe.</p>
+<p><u>recalculate concs:</u>&nbsp; The precision of concentration values in the 
+raw data table exported from the Microcal ITC is not very high.&nbsp; (In part, 
+this is because concentrations are in mM units, as opposed to the micromolar 
+units used here.).&nbsp; The use of the ligand and titrant concentrations from 
+the raw data table can lead to apparent oscillations and noise on the calculated 
+isotherm, due to truncation of concentration values.&nbsp; Therefore, it is 
+generally preferable to recalculate the concentration of ligand and analyte 
+after each titration step, based on the total volume in the cell and the 
+titration volumes in each step.&nbsp; </p>
+<p><u>titration of:</u>&nbsp; Obviously, titration experiments can be performed 
+in different orientations, even for a two-component interaction of A and B.&nbsp; 
+In multi-site models, by convention, the molecule termed &quot;A&quot; is the one having 
+two sites for B.&nbsp; This terminology is part of the model, and cannot be 
+changed.&nbsp; Therefore, the identity of the molecules in cell and syringe must 
+be specified.&nbsp; Clearly, this is crucial for<b> global fits of titrations in 
+multiple orientations</b>.&nbsp; For three-component interactions, one can 
+imagine using a mixture of two molecules in either the syringe or the cell.&nbsp; 
+In this case, the molar ratio of the mixture needs to be specified.&nbsp; For 
+ternary interactions where a reacting binary mixture is in the syringe, the 
+complex formation in the syringe is taken into account.</p>
+<p>The &quot;<b>fit baseline</b>&quot; field is straightforward - if checked this adds a 
+floating baseline for this experiment to the parameters.&nbsp; The
+<a name="ITCslope"><b>slope</b> </a>field will determine whether or not a slope 
+will be fitted, in units of kcal/mol per injection.</p>
+<p>The button &quot;<b><a name="ITClocal incompetent ...">local incompetent ...</a></b>&quot; 
+will make the incompetent fraction of A, B, or C, respectively a local parameter 
+for this particular experiment only.&nbsp; This can make sense if several 
+experiments are fitted globally with data that were collected from different 
+preparations or batches of proteins.&nbsp; If the box below the button is 
+checked, the incompetent fraction will be a fitting parameter.&nbsp; The value 
+given in the field is in fractions of total (i.e. enter a value of 0.05 instead 
+of 5%).&nbsp; The <b>max</b> field is a possibility to limit the incompetent 
+fraction.&nbsp; For example, if you know that at most 10% of material is 
+incompetent, enter a value 0.1 here.&nbsp; This constraint for the upper limit 
+of incompetent fraction is active only if the incompetent fraction is determined 
+to be a local parameter.</p>
+<p>More information on isothermal titration calorimetry analysis, and format 
+requirements can be found <a href="isothermal_titration_calorimetry.htm">here</a>.</p>
+<p>&nbsp;</p>
+<p><b><a name="Surface Binding Isotherm Box">Surface Binding Isotherm Box</a></b></p>
+<p><img border="0" src="menubilder/experi8.jpg" width="423" height="267"></p>
+<p>The data-type specific parameters to be entered are:</p>
+<p><u>surface conc. A:</u>&nbsp; This is the signal of <b>immobilized active A</b>.&nbsp; 
+For example, this can be the difference in signal in RU before and after 
+immobilization.&nbsp; </p>
+<p><u>signal B/A and signal C/A:</u>&nbsp; It is possible to account for the 
+fact that the soluble analyte B (or C) have different signal contributions, for 
+example, due to differences in molar mass.&nbsp; In this case, set signal B/A to 
+the ratio Mw(B)/Mw(A).</p>
+<p>More information on analyzing surface binding isotherms and format 
+requirements can be found <a href="surface_binding_isotherms.htm">here</a>.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+<p>After the Experiment Parameter Box is closed, for new experiments the fitting
+limits should be set. This can be made graphically in the S<span style="font-variant: small-caps">edPHaT</span>
+window.&nbsp;
+(Note that a more detailed view is possible using the '<a href="display.htm">Display-&gt;Zoom Into 1
+Data Set</a>' function.)&nbsp; I strongly recommend that you <a href="data1.htm#Save Experiment"> save the experiment</a>
+in an xp-file after all the input has
+been made.&nbsp; This will allow to conveniently and reproducibly retrieve the
+entire data selections and settings.</p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

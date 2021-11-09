@@ -1,0 +1,62 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>statistics</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2"><!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;Statistics&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="15089" -->
+</font></p>
+<h2>the statistics menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+<p>&nbsp;</p>
+<p> S<span style="font-variant: small-caps">edfit</span>  has a few functions
+for statistical analysis of the results from modeling the data.&nbsp;&nbsp;</p>
+<p>Besides the <a href="sedfit_help_fstatistics.htm#Runs Test">Runs Test</a>,
+which is calculated for every fit, S<span style="font-variant: small-caps">edfit</span>
+has functions for calculating confidence intervals for sedimentation
+coefficients and molar mass values.&nbsp; This is done by the method of
+constraining the parameter of interest to sub-optimal values, fitting for all
+other parameters, and monitoring the increase of the rms error of the fit.&nbsp;
+The cut-off increase is calculated using <a href="sedfit_help_fstatistics.htm">F-statistics</a>.&nbsp;
+While this is process is automated for s and M in the <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete species model</a>, only partially automated functions are available for
+mapping two-dimensional error contours of <a href="sedfit_help_selfassociation.htm">monomer-dimer
+self-association models</a>.&nbsp;&nbsp;</p>
+<p>For more complex problems or confidence levels for parameters in other
+models, they can be calculated by moving the parameter of interest manually to
+sequentially less optimal values, until the cutoff value of the rmsd increase is
+reached (which can be obtained from the <a href="sedfit_help_calculator.htm#Calculate F-distribution">F-statistics
+calculator</a> function).&nbsp; This strategy is explained in detail by Johnson
+&amp; Straume (<a href="#ref1">ref1</a>).&nbsp;&nbsp;</p>
+<p>A different way for analyzing the statistical properties of the results is
+recommended for the size-distribution analyses, which is Monte-Carlo
+simulations.&nbsp;</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/sedfit4.gif" align="left" width="343" height="163"></p>
+<p>&nbsp;</p>
+<p><!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="sedfit_help_confidence_intervals.htm" target="">Confidence&nbsp;Intervals</a></nobr><br> <nobr><a href="sedfit_help_error_contours.htm" target="">Error&nbsp;Contours</a></nobr><br> <nobr><a href="sedfit_help_monte_carlo_simulations.htm" target="">Monte&nbsp;Carlo&nbsp;Simulations</a></nobr><!--webbot bot="Navigation" endspan i-checksum="51072"
+-->
+ </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>related topics: <a href="sedfit_help_fstatistics.htm">F-statistics</a>, <a href="sedfit_help_fstatistics.htm#Runs Test">Runs
+Test</a></p>
+<p>&nbsp;</p>
+<p><font size="1"><b>References:</b></font></p>
+<p><font size="1">(<a name="ref1">1</a>) </font><font size="1">M.L. Johnson and
+M. Straume (1994). Comments on the analysis of sedimentation equilibrium
+experiments.&nbsp; In: Modern Analytical Ultracentrifugation (Schuster TM and
+Laue TM, eds) Birkhauser, Boston, p.37-65</font></p>
+<!--mstheme--></font></body>
+
+</html>

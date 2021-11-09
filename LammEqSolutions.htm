@@ -1,0 +1,550 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Lamm Equation solutions</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>Solving the Lamm equation&nbsp;</h2>
+<p>Note, as of 2007,a significant update and improvement in the Lamm equation 
+solution is implemented, as described in </p>
+<p><font color="#CC3300"><b>P.H. Brown, P. Schuck (2007) A new adaptive 
+grid-size algorithm for the simulation of sedimentation velocity profiles in 
+analytical ultracentrifugation. </b></font></p>
+<p><font color="#CC3300"><b>Click on this link to read how this works: </b>
+<a href="images/CompPhysComm_LammEq.pdf">Computer Physics Communications in 
+press</a><b><br>
+&nbsp;</b></font></p>
+<p><b>This work is not yet included in this introductory page.</b></p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Introduction">Introduction</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Why numerical solutions">Why numerical solutions?</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The finite difference approach">The finite difference approach and its limitation</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The finite element solution by Claverie">The finite element solution by Claverie</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The moving frame of reference finite element solution">The moving frame of reference finite element solution</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The implementation in sedfit">The implementation in S<span style="font-variant: small-caps">edfit</span></a></p>
+<p>&nbsp;</p>
+<p><a name="Introduction"><b>Introduction</b></a></p>
+<p>The Lamm equation describes the evolution of the concentration distribution
+c(r,t) of a species with sedimentation coefficient s and diffusion coefficient D
+in a sector-shaped volume and in the centrifugal field <font face="Symbol">w</font><sup>2</sup>r.&nbsp;
+It is a partial differential equation that, in the simplest case, takes the
+following form,</p>
+<p>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq3.gif" width="199" height="51"></p>
+<p>which can be derived from a mass conservation equation with the local
+diffusion fluxes D(dc/dr) and the local sedimentation fluxes cs<font face="Symbol">w</font><sup>2</sup>r.&nbsp;&nbsp;</p>
+<p>Typical shapes of families of concentration distributions described by the
+Lamm equation look like this (centrifugal force pointing to the right, details
+would depend on the time-scale and rotor speed):</p>
+<p><img border="0" src="images/toppag1.gif" width="267" height="203">(a)<img border="0" src="images/toppag2.gif" width="279" height="212">(b)</p>
+<p><img border="0" src="images/toppag3.gif" width="295" height="229">(c)<img border="0" src="images/toppag4.gif" width="242" height="186">(d)</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/toppag5.gif" width="276" height="213">(e)<img border="0" src="images/toppag6.gif" width="262" height="200">(f)</p>
+<p><font size="1">[for species with initially uniform distribution, sedimenting at different
+values of s and D: (a) intermediate s and D; (b) intermediate s, low D; (c) high
+s, low D; (d) low s, high D; (e) flotation with intermediate s and D; (f)
+sedimentation with intermediate s and D with initial lamellar distribution of
+c(r)]</font></p>
+<p>Some general features can be observed:&nbsp;&nbsp;</p>
+<p>(1) the centrifugal field causes concentration gradients (d) or sedimentation
+boundaries (a, b, c, e);&nbsp;</p>
+<p>(2) diffusion broadens this boundary with time (visible best in a, b, e,
+f);&nbsp;</p>
+<p>(3) radial dilution (visible best in a, b, c) or radial concentration (for
+floatation in e), which is caused by the sector-shaped solution column;&nbsp;</p>
+<p>(4) end effects of the solution column due to accumulation of the material at
+one end (omitted in a, b, c, but visible in d, e) and depletion from
+the other end of the solution column;&nbsp;</p>
+<p>(5) after a long time, an exponential equilibrium distribution is approached
+(visible best at low speeds or high D, such as in d)</p>
+<p>(6) it should be noted that, although the Lamm resembles a diffusion
+equation, it has an extra transport term s<font face="Symbol">w</font><sup>2</sup>r
+which is position dependent.&nbsp; It varies by about 15 - 20% for typical
+experimental situations. </p>
+<p>These features make the Lamm equation difficult to solve, and eliminate the
+possibility of a closed analytical solution.&nbsp; Since it was introduced in
+1929, because of the great practical importance, several approximate analytical
+solutions have been derived for different limiting cases (see the monograph by
+Fujita, 1962).&nbsp; </p>
+<p>The simplest approximation is that by <a name="Faxén"> Faxén</a>
+(1929),
+which can be written as</p>
+<p>(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/ImageFaxen.gif" WIDTH="328" HEIGHT="61"></p>
+<p>with the meniscus position <i>r<sub>m</sub></i>, the boundary position of a
+non-diffusing species <i>r*(t)=r<sub>m</sub>exp(</i><font face="Symbol">w</font><sup>2</sup>st)
+and the error function <font FACE="Symbol">F</font>.&nbsp; It has a first term
+describing radial dilution, a second term (1-<font FACE="Symbol">F)</font> for
+the diffusional spreading, and the movement of r*(t) describes the boundary
+movement.&nbsp; This solution describes qualitatively many features of Lamm
+equation solutions, in particular curves of the type in example (a).&nbsp;
+However, it is quantitatively not very precise, and it does not describe many
+features of the Lamm equation, such as the accumulation of material at the
+bottom of the cell, or the interdependence of the effects of diffusional
+spreading, radial dilution and the radial-dependence of the force.&nbsp;&nbsp;(Faxén
+solutions according to Eq. 2 can be calculated with the <a href="sedfit_help_calculator.htm#Calculate Faxen Solution">calculator
+function of S<span style="font-variant: small-caps">edfit</span></a>.&nbsp;
+Examples of the accuracy can be found <a href="exampleFaxen.htm">here</a>.) </p>
+<p>Improved analytical solutions have been developed, including higher-order
+terms of analytical serial expansions, which give excellent approximations for
+ranges of parameter values (s, D, <font face="Symbol">w</font>) resembling many commonly encountered experimental configurations (Holladay, 1979; Behlke, 1997;
+Philo, 1997).&nbsp;&nbsp; </p>
+<p>&nbsp; </p>
+<p><b><a name="Why numerical solutions">Why numerical solutions?</a></b></p>
+<p>A completely different strategy for solving the Lamm equation are numerical
+simulations.&nbsp; Instead of formulating approximate analytical expressions for
+the concentration distribution as a function of time,
+the numerical simulations aim to develop computer algorithms that mimic the
+evolution of the concentration distribution with time.&nbsp; Given any distribution
+c(r,t), the elementary step in the numerical algorithms is the calculation of the
+distribution at a later time c(r,t+<font face="Symbol">D</font>t).&nbsp;
+Many different strategies have been developed (Bethune and Kegeles, 1961, Cann
+and Kegeles, 1974, Claverie, et al., 1975, Cox, 1965, Dishon, et al., 1966,
+Marque, 1992, Minton, 1992, Sartory, et al., 1976, Schuck et al, 1998, and
+Schuck, 1998).&nbsp;</p>
+<p>In S<span style="font-variant: small-caps">edfit</span>, numerical simulations are implemented for the following reasons: </p>
+<p>* Although the numerical simulations may require hundreds or thousands of
+iteration steps, these steps can be made computationally very efficient, so that
+there is no relevant difference in computation speed to the approximate
+analytical solutions. </p>
+<p>* The approximate analytical expressions are based on truncated serial
+expansions that converge best for certain ranges of parameters (s, D, <font face="Symbol">w</font>,
+t) or initial conditions.&nbsp; In fact, many of the analytical solutions are
+based on idealizations such as infinite solution columns. In contrast, the numerical solutions, if properly designed,
+are naturally very flexible to adapt much better to different parameter values
+and initial conditions.&nbsp; For example, a well-designed algorithm can give equal
+precision for all curves (a) to (e) shown above, as well as many other
+situations.&nbsp; It is even possible to take experimental scans as initial
+conditions for the simulation of the evolution in time.&nbsp;&nbsp; </p>
+<p>* The precision is easily
+controlled to be well below experimental errors of data acquisition for all
+cases.&nbsp; This can be achieved by sufficient discretization in the spatial
+variable and adaptive step-size control in the time variable.&nbsp;&nbsp; </p>
+<p>*&nbsp;Numerical solutions allow
+the acceleration phase of the rotor to be included in the simulation.&nbsp; </p>
+<p>* They can be naturally extended to take chemical reactions
+and concentration-dependent sedimentation into account.&nbsp;&nbsp; </p>
+<p>However, numerical solutions can also have drawbacks: If they are not
+properly designed, they may converge only very slowly to the correct solution,
+and exhibit spatial and temporal oscillations in the concentration
+distributions.&nbsp; Therefore, in the following the different strategies and
+their advantages and disadvantages are briefly described.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="The finite difference approach"><b>The finite difference approach and its limitation</b></a></p>
+<p>The simplest way of simulating Lamm equation solutions is the division of the
+radial variable into a series of compartments (i = 1...N, for example with equal
+width <font face="Symbol">D</font>r).&nbsp; Consideration of the diffusion and
+sedimentation fluxes between the compartments allows to predict the evolution of
+the concentration in each compartment.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-bottom: 0"><img border="0" src="images/finitediff.gif" align="left" width="257" height="106"></p>
+<p style="line-height: 100%; margin-top: 0"><font size="1">Example for the
+division of a boundary (red) into a series of compartments with different
+concentrations (visualized as rectangular boxes of different heights).</font></p>
+<p>&nbsp;</p>
+<p>This is inspired by compartment
+models as commonly used in models for chemical kinetics, and the&nbsp; intuitive
+application of compartments for the spatial discretization.</p>
+<p>If one writes the concentrations in each compartment in vector form <font FACE="Arial Black">c</font>(r,t),
+the concentration changes occurring within a small time-interval <font face="Symbol">D</font>t
+can be formally expressed as</p>
+<p>(3a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image20.gif" WIDTH="188" HEIGHT="21">
+, or (3b)&nbsp;&nbsp;&nbsp; <img SRC="images/Image24.gif" WIDTH="164" HEIGHT="21"></p>
+<p>(with the identity matrix <b>I </b>and a propagation matrix <b>E</b>; this
+follows from the linearity of the Lamm equation.)&nbsp; If we count the fluxes going into
+and out of any compartment, we obtain for the discretized net diffusion fluxes -(D/<font face="Symbol">D</font>r)[c(i+1)
+- 2 c(i) + c(i-1)] and for the net sedimentation fluxes <font face="Symbol">w</font><sup>2</sup>[c(i-1)r(i-1)
+- c(i)r(i)].&nbsp; As a consequence, one arrives at the following form of the propagation matrix <font FACE="Arial Black">E</font>&nbsp;</p>
+<p>(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image21.gif" WIDTH="332" HEIGHT="273">&nbsp;</p>
+<p>This is a tridiagonal system, and the evolution Eq. 3 can easily be solved for series of
+time-steps (Schuck et al., 1998).&nbsp;&nbsp;</p>
+<p>One problem commonly encountered with such propagation schemes as in Eq. 3 is
+an oscillation caused by sequential too high and too low concentration estimates
+in
+neighboring compartments, which alternate in sign with each time-step.&nbsp;
+Once formed, such oscillations can often amplify.&nbsp; They can originate, for example,
+in regions of high concentration gradients.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>A very effective way around this problem was described by <a name="Crank and Nicholson (1947)"> Crank and Nicholson
+(1947)</a>.&nbsp; The idea is to dampen the oscillations and get higher
+precision of the time-steps by evaluating concentrations in the right-hand side
+of Eq. 3a in the <i>middle during the
+time-step <font FACE="Symbol">D </font>t</i>, approximated as (<font FACE="Arial Black">c</font>(t)
++ <font FACE="Arial Black">c</font>(t+<font FACE="Symbol">D</font>t))/2.&nbsp;
+The physical basis for this is that as the concentrations change gradually
+during the time-step <font FACE="Symbol">D</font>t, so do the fluxes, which are
+proportional to the concentrations.&nbsp; Although we do not calculate the exact
+form of these changes during the time-step <font FACE="Symbol">D</font>t, it is
+a good assumption that the average flux during <font FACE="Symbol">D</font>t is
+proportional to the average concentration during <font FACE="Symbol">D</font>t,
+which we approximate by the arithmetic mean of c(t) and c(t+<font FACE="Symbol">D</font>t).&nbsp;
+At first, it may seem that this is a circular argument, since we don't know c(t+<font FACE="Symbol">D</font>t)
+yet, but a simple inspection of the equation 3a shows that in fact (<font FACE="Arial Black">c</font>(t)
++ <font FACE="Arial Black">c</font>(t+<font FACE="Symbol">D</font>t))/2 can be
+used in place of <font FACE="Arial Black">c</font>(t) in the right-hand side,
+and the resulting equation can be easily rearranged to solve for <font FACE="Arial Black">c</font>(t+<font FACE="Symbol">D</font>t)
+as</p>
+<p>(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image23.gif" width="261" height="30"></p>
+<p>The Crank-Nicholson scheme gives a significant improvement in speed and
+accuracy of the simulation.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>The finite difference approach is fast and works very well for small molecules (high D, or low
+rotor speeds).&nbsp;&nbsp;However, for larger s-values with smaller diffusion
+coefficients the approximation becomes poor, because the discretization into
+compartments creates an artificial diffusion term of a magnitude proportional to
+<font FACE="Symbol">w</font><sup>2</sup>s<font FACE="Symbol">D</font>r , where <font FACE="Symbol">D</font>r
+is the size of a single compartment (Schuck et al., 1998).&nbsp; For high D, the
+extra diffusion term can be neglected, but for small D it cannot, unless a very
+fine grid (small <font FACE="Symbol">D</font>r) is used, which is very
+inefficient.&nbsp;&nbsp;</p>
+<p>The origin of this error can&nbsp; be seen as follows:&nbsp; Assume the ideal
+linear translation of a boundary in the absence of diffusion and radial
+dilution, as approximated by the compartment model.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/finitediffsketch.jpg" align="left" width="227" height="462">At time 0 it
+may look like a perfect rectangular boundary, with empty compartments #1 and #2,
+and equally filled compartments #3 to #6.&nbsp;</p>
+<p>&nbsp;</p>
+<p>After a time-increment sufficient for the boundary to move just half the size
+of the compartment, <font FACE="Symbol">D</font>r/2, the concentration distribution
+would move as&nbsp; indicated by the blue dashed lines.&nbsp; However, in our
+discretization scheme this means that half the concentration of each
+compartment flows into the right-hand neighbor compartment, and based on this we calculate the new
+concentrations in each compartment.&nbsp; Because just half the concentration is
+left in compartment #3, it is half the height.&nbsp;</p>
+<p>After another time-increment, again half of the concentration in each
+compartment flows to the right - leaving 25% in #3, 75% in #4, and 100% in #5
+and #6.&nbsp;</p>
+<p>It can be seen that instead of translating the rectangular boundary, the
+compartment discretization acts like a <i>diffusion </i>of the boundary; the
+interpretation of compartments as spatial elements introduces bias in the
+spatial distribution.</p>
+<p>This effect is well-known in numerical mathematics and referred to as
+'numerical diffusion'.&nbsp; In the appropriate text-books, you can find that in
+order to avoid this 'numerical diffusion' the simulation may require several
+orders of magnitude finer grid size than the physical scales of primary interest
+(Durran, 1999).</p>
+<p>In summary, the finite difference scheme is a good method for the Lamm
+equation only for small s and large D.&nbsp; The inherent problem is that the
+sedimentation term is not well described by the compartment model, which leads
+to poor convergence of this algorithm to the correct distribution, and requires very fine discretization.&nbsp;
+Although successive grid refinements can be incorporated into nonlinear
+regression, the finite element methods described in the following are
+significantly more efficient (Schuck et al., 1998).</p>
+<p>&nbsp;</p>
+<p><a name="The finite element solution by Claverie"><b>The finite element solution by Claverie</b></a></p>
+<p>Claverie has introduced the finite element technique to the problem of
+solving the Lamm equation, which is less empirically (or physically) motivated,
+and instead a more
+mathematically based approach.&nbsp; Nevertheless, it has many intuitive
+features. Instead of the approximation of the boundary by 'rectangular'
+compartments, the boundary is described as the mathematical sum of triangular-shaped
+elements called hat-functions:</p>
+<p>(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/ClaverieHats.gif" width="144" height="50"></p>
+<p>where each of the hat-function looks like, for example, the red one indicated
+below (triangle in left figure).&nbsp;</p>
+<p><img border="0" src="images/ClaverieHatEq.gif" width="451" height="141"></p>
+<p>As can be easily verified, they have the property that when neighboring hat-functions added up, they
+describe a step-wise linear function (e.g. the red line).&nbsp; Eq. 6 separates the spatial and the
+time variable, and the problem reduces to the question of how much of each
+element is required to describe the boundary well at a later time (such as the
+reduced magnitude of the red triangle in the right figure above).&nbsp;&nbsp;</p>
+<p>The trick of getting equations for the amplitudes c<sub>k</sub>(t) of each
+triangle is the
+multiplication of the Lamm equation with one element P<sub>k</sub>(r) followed
+by integration over rdr from meniscus to bottom (equivalent to the volume
+integral in the sector-shaped cell).&nbsp; Integration by parts of the rhs can
+be performed, exploiting the vanishing total flux at the meniscus and bottom (Claverie,
+et al., 1975), and we arrive at</p>
+<p>(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq15.gif" width="380" height="66">&nbsp;&nbsp;&nbsp;
+[for all k]</p>
+<p>Finally, we insert our approximation Eq. 6 (renaming our running variable to
+j) into Eq. 7, which leads to an equation system</p>
+<p>(8a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img SRC="images/Image28.gif" width="517" height="56"> [for all k]</p>
+<p>It should be noted that since the hat-functions P<sub>k</sub>(r) are simple,
+the derivatives dP<sub>k</sub>(r)/dr are very simple, too.&nbsp; Also, since the
+spatial variable only occurs in the form of the hat functions, we
+can easily calculate analytically the integrals for all (j,k), and abbreviate Eq.
+8a to&nbsp;</p>
+<p>(8b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image29.gif" width="358" height="53"></p>
+<p>This is a linear equation system that can be easily solved.&nbsp; The matrices <b>A</b><sup>(1)</sup>, <b>A</b><sup>(2)</sup> and <b>B</b> are
+tridiagonal (because the pair-wise integral over the hat-functions is only
+non-zero for identical or neighboring hats), and their numerical values can be found <a href="images/ClaverieMatrices.c">here</a>
+(as C-code). Discretization of the time-variable and writing the concentrations
+in vector-form leads to the equation system&nbsp;</p>
+<p>(9a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image30.gif" WIDTH="320" HEIGHT="32">&nbsp;</p>
+<p>or in <a href="#Crank and Nicholson (1947)"> Crank-Nicholson</a> scheme</p>
+<p>(9b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image31.gif" width="498" height="37"></p>
+<p>This is a triangular equation system very similar to the one derived above
+for finite difference system, but because of the use of hat-functions instead of the
+compartments, it does not introduce the artificial diffusion term!&nbsp;&nbsp;</p>
+<p>For calculating the evolution in time, Eq. 9b can be used, as long as the
+time-steps <font FACE="Symbol">D</font>t are not too large.&nbsp; Initially, or
+when rapid changes in the concentration profiles take place, a small <font FACE="Symbol">D</font>t
+has to be used, while near equilibrium very large <font FACE="Symbol">D</font>t
+may be tolerable (and preferable).&nbsp; Therefore, to keep the discretization error small but
+the simulation efficient, it is very useful to adjust the size of the time-step
+dynamically after each step (Schuck et al., 1998).&nbsp;&nbsp;</p>
+<p>This simulation of sedimentation works extremely well for small and
+medium-sized molecules; it provides a very high precision at only moderate
+computational cost.&nbsp; The algorithm has problems, however, in the case of
+large molecules, where the sedimentation flux is much larger than
+diffusion.&nbsp; In this case, the sedimentation boundary is very steep, and
+very small time-steps are required in order avoid too large changes in the c<sub>k</sub>(t)
+values when the boundary moves across the compartments.&nbsp; In fact, the
+algorithm is unstable for the limiting case of no diffusion (where
+even very small time-steps can lead to negative concentrations c<sub>k</sub>(t),
+followed by large oscillations).&nbsp; This is not very appealing, especially since there is a simple analytical solution of the Lamm equation for particles without
+diffusion:</p>
+<p>(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq4.gif" width="296" height="66"></p>
+<p>describing a rectangular step at the position <i>r<sub>m</sub>exp(</i><font face="Symbol">w</font><sup>2</sup>st<i>)</i>
+with radial dilution.&nbsp; This problem is solved by the moving frame of
+reference approach.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="The moving frame of reference finite element solution"><b>The moving frame of reference finite element solution</b></a></p>
+<p>The basic idea for an algorithm that solves the Lamm equation in a stable and
+efficient manner for all limiting cases is the movement of all radial grid (reference) points
+exactly like a non-diffusing particle (Schuck, 1998).&nbsp; Viewed from this
+reference frame, there is no sedimentation visible, just diffusion, which by
+itself is a comparatively simple computational problem.&nbsp; This is similar to
+the idea of transformations of the radial variable that was employed for the
+derivation of the approximate analytical solutions of the Lamm equation (Faxén,
+1929 and others, see Fujita 1962), but incorporated here in the finite element
+framework.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/LammEq5.gif" width="443" height="118"></p>
+<p>As indicated in this schematic view, in this algorithm the hat functions at
+the different grid points <i>sediment</i> with the particle, such that the
+relative changes in the amplitudes of our hat functions remain small, which allows higher precision and efficiency at
+large sedimentation flux.&nbsp; Mathematically, we can formulate this idea by
+approximating the
+sedimentation profiles with a linear combination of time-dependent hat functions P<sub>k</sub>(r,t)
+(similar to the approximation with static hat functions in
+Eq. 6)&nbsp;</p>
+<p>(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq7.gif" width="164" height="60"></p>
+<p>Here, the hat functions are - like in the Claverie approach - step-wise
+defined triangles</p>
+<p>(12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq8.gif" width="490" height="215"></p>
+<p>but with grid points r<sub>k </sub>that change with time as&nbsp;</p>
+<p>(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq14.gif" width="435" height="72"></p>
+<p>where the position r<sub>k</sub>(t) is that of an ideal sedimenting particle
+with an s-value s<sub>G</sub>  .&nbsp; The exponential movement of the
+grid-points is abbreviated as <font face="Symbol">a</font>(t-t<sub>0</sub>).&nbsp;
+Only the meniscus <i>m</i> and bottom <i>b</i> are fix, since they have to denote
+the constant solution column position measured as distance from the center of
+rotation.&nbsp;</p>
+<p>There is one obvious problem - how can we choose a good set of radial grid
+points for the entire simulation, when they permanently&nbsp; 'sediment' towards
+the bottom of the simulated centrifuge cell?&nbsp; The key is to use a properly
+spaced initial grid consistent with the movement of grid points, and then to
+change the grid at well-defined times.&nbsp; This works as follows:</p>
+<p>If we choose initially the radial grid exponentially as&nbsp;</p>
+<p>(14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq10.gif" width="347" height="35"></p>
+<p>combined with the movement in time described by Eq. 13, we find that after a
+well-defined time&nbsp;</p>
+<p>(15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq11.gif" width="233" height="41"></p>
+<p>the grid is mapped precisely onto itself:&nbsp;</p>
+<p>(16)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq12.gif" width="320" height="30"></p>
+<p>This is a very useful property.&nbsp; Because (except for the meniscus and bottom) every grid point is now exactly
+where it's right-hand neighbor was before, we change the grid by removing the
+point N-1, and inserting a new second point (designating the previous second
+point now as #3).&nbsp; This is illustrated in the
+following cartoon:</p>
+<p><img border="0" src="images/LammEq13.gif" width="580" height="192"></p>
+<p>In this way, if our time-increments are exactly <font face="Symbol">D</font>t<sub>swap</sub>,
+all grid points remain virtually stationary except for their index!.&nbsp;
+Therefore, the movement can be accomplished
+by simply <i>renumbering</i> all indices from 2 to N-2.&nbsp; (This procedure is
+similar to the phenomenon when looking at a spinning wheel with a stroboscopic
+lamp that has the same frequency as the rotation.)&nbsp;&nbsp;</p>
+<p>As described in (Schuck, 1998), the complete algorithm can be mathematically
+put together in a form very similar to the Claverie algorithm described
+above:&nbsp; Multiplication of the Lamm equation with our (now time-dependent)
+hat function P<sub>k</sub>(r,t) and partial integration leads to&nbsp;</p>
+<p>(17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq16.gif" width="413" height="66"></p>
+<p>Insertion of our approximation of c(r,t) as superposition of time-dependent
+hat functions (Eq. 11, with the running index now called 'j') gives us expressions for
+the matrix elements</p>
+<p>(18)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq17.gif" width="628" height="66"></p>
+<p>New here (in comparison with Eq. 8a) is the <i>time-derivative</i> of P<sub>j</sub>(r,t),
+which can be easily calculated as&nbsp;</p>
+<p>(19)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq18.gif" width="360" height="84"></p>
+<p>(except for the first and last hat function, which has one leg that stays
+constant in time). At this point, we can transform Eq. 18 by change of variable <font face="Symbol">r</font>(r,t)
+= r/<font face="Symbol">a</font>(t-t<sub>0</sub>), which corresponds to the transition to
+the moving frame of reference.&nbsp; This allows us to separate the
+time-dependence of our hat functions P<sub>k</sub>(r,t) out of the
+integrals.&nbsp; Analogous to the case of the Claverie approach, the resulting
+integrals can be calculated analytically and are abbreviated as <b>A</b><sup>(1)</sup>,<b>A</b><sup>(2)</sup> 
+, <b>A</b><sup>(3) </sup>and <b>B</b>.&nbsp; Their numerical values can be found
+<a href="images/movehatmatrices.c">here</a> (in C-code).&nbsp; Since we have the constant position of meniscus and bottom, the corner 2x2
+sub-matrices are time-dependent, but all other elements are not.</p>
+<p>Using the matrix notation, we can simplify Eq. 18 to</p>
+<p>(20)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/LammEq19.gif" width="483" height="62"></p>
+<p>which is very similar to Eq. 8b in the Claverie approach.&nbsp; There are two
+important differences:&nbsp; 1) there is the factor <font face="Symbol">a</font>(t-t<sub>0</sub>) which takes into
+account the changing diffusion distances in the moving reference frame (because
+of the stretching of the reference frame); 2) there is an extra term with <b>A</b><sup>(3)</sup>,
+which was introduced by the time-derivative of the hat-functions.&nbsp;
+Importantly, it can be shown that <b>A</b><sup>(2)</sup>
+- <b>A</b><sup>(3) </sup>= 2<b>B</b>, which <i>eliminates the sedimentation term
+for s = s<sub>G</sub></i>, i.e. when the frame of reference sediments with the
+same s-value as the particle.&nbsp; The remaining expression from combination of <b>A</b><sup>(2)</sup>
+ and <b>A</b><sup>(3) </sup>to 2<b>B</b> describes only radial dilution.&nbsp;
+These are the properties we wanted to achieve with the moving hat
+algorithm.&nbsp;</p>
+<p>In summary, we have formulated a finite element solution that essentially
+requires only diffusion and radial dilution to be calculated if we use <i>s = s<sub>G</sub></i>.
+As a
+consequence, the limiting case of no or small diffusion is trivial to solve with
+this algorithm.&nbsp; On the other hand, if we choose <i>s<sub>G</sub></i> small
+we can simulate the case of high diffusion and low sedimentation coefficient
+similar as in the Claverie approach, to which it is identical in the case <i>s<sub>G</sub></i>
+= 0.&nbsp;&nbsp;</p>
+<p>Similar to the other approaches described above, Eq. 20 can be used with
+higher precision in the <a href="#Crank and Nicholson (1947)">Crank-Nicholson</a>
+scheme.&nbsp; For details see Schuck (1998).&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="The implementation in sedfit">The implementation in </a> S<span style="font-variant: small-caps">edfit</span> &nbsp;</b></p>
+<p>Because the moving grid simulation requires time-steps not larger than <font face="Symbol">D</font>t<sub>swap
+</sub>given by Eq. 15, the moving grid with <i>s = s<sub>G</sub></i> is only
+used for cases with <i><font face="Symbol">w</font><sup>2</sup>s </i>larger than
+a threshold value (can be adjusted in the menu <a href="sedfit_help_fitting_options.htm#Set s for changing Lamm equation algorithm">fitting
+options</a>). The grid is not moved (<i>s<sub>G</sub></i> = 0, equivalent to the
+Claverie approach) in cases with smaller sedimentation velocity, utilizing the
+possibility of an adaptive time-step control where a static finite element algorithm works
+efficiently enough.&nbsp; This automatic transition between the methods gives
+usually the fastest solution of the Lamm equation.&nbsp;&nbsp;</p>
+<p>Several control parameters for the simulation can be changed in S<span style="font-variant: small-caps">edfit</span> (e.g., the number of radial grid
+points, a tolerance parameter for the adaptive step-size; see the <a href="sedfit_help_parameters.htm">parameter box</a>).&nbsp;
+Also, for the interested user, the different algorithms can be chosen with
+different parameters, fixed <font face="Symbol">D</font>t, <i>s<sub>G</sub></i>,
+etc, in order to enable exploration of the effect of these parameters on the
+execution time and precision.&nbsp;&nbsp;</p>
+<p>In both algorithms, changes in the rotor speed with time can be simulated by
+simply calculating the Eqs. 20 and 9b using a different average rotor-speed for
+each time-interval <font face="Symbol">D</font>t.&nbsp; This is useful for <a href="sedfit_help_loading_options.htm#Simulate Rotor Acceleration Phase">simulating
+the acceleration phase</a> of the experiment.</p>
+<p>As a variant, a <a href="sedfit_help_other_geometries.htm#linear Lamm equation">linearized
+version of the Lamm equation</a> can be solved, which is useful when working
+with external loading cells.&nbsp; Further, a <a href="sedfit_help_other_geometries.htm#Electrophoresis">linear
+Lamm equation with constant force</a> (as an electrophoresis model) has been
+implemented.&nbsp; In both cases, the algorithm is the same, only requiring
+exchange of the matrix elements.</p>
+<p>Rapid <a href="sedfit_help_selfassociation.htm">self-association</a> of the
+sedimenting macromolecule (i.e. self-association where the local
+re-equilibration of the oligomeric species is fast compared to the sedimentation
+and diffusion process) is simulated by using locally weight-average
+sedimentation coefficients and gradient average diffusion coefficients, as
+described first by Cox (1965), but implemented into the finite element
+algorithms.&nbsp; This requires additional development of s and D into
+hat-functions:</p>
+<p>(21)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a name="self-assoc equations"><img border="0" src="images/LammEq20.gif" width="370" height="132"></a></p>
+<p>If these sums are inserted and carried through the same finite element formalism, all the integrals will
+contain three hat functions with three different indices, and the matrix
+equations expand to tensor equations.&nbsp; These can still be calculated very efficiently, in particular since the Crank-Nicholson scheme can be replaced by a
+more general predictor-corrector scheme (Schuck, 1998).</p>
+<p>Similarly, <a href="sedfit_help_nonideal_sedimentation.htm">non-ideality</a>
+in form of concentration-dependent s(c) and D(c) is implemented analogous to the
+discretization in Eq. 21.&nbsp;</p>
+<p>The extension of the algorithm to heterogeneous associations (A + B &lt;-&gt;
+C) requires the solution of a set of three Lamm equations, coupled with chemical
+reaction terms.&nbsp; The finite element solution of the coupled system has been
+derived, and is currently in the implementation stage.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>Note, as of 2007,a significant update and improvement in the Lamm equation 
+solution is implemented, as described in </p>
+<p><font color="#CC3300"><b>P.H. Brown, P. Schuck (2007) A new adaptive 
+grid-size algorithm for the simulation of sedimentation velocity profiles in 
+analytical ultracentrifugation. </b></font></p>
+<p><font color="#CC3300"><b>Click on this link to read how this works: </b>
+<a href="images/CompPhysComm_LammEq.pdf">Computer Physics Communications in 
+press</a><b><br>
+&nbsp;</b></font></p>
+<p><b>This work is not yet included in this introductory page.</b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font size="1">References:</font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Behlke,
+J., and O. Ristau. 1997. Molecular Mass Determination by Sedimentation Velocity
+Experiments and Direct Fitting of the Concentration Profiles.<i> Biophys. J. </i>72:428-434</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Bethune,
+J.L., and G. Kegeles. 1961. Countercurrent distribution of chemically reacting
+systems. I. Polymerization. <i>J. Phys. Chem.</i> 65:433-438</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1">P.H. Brown, P. Schuck 
+(2007) A new adaptive grid-size algorithm for the simulation of sedimentation 
+velocity profiles in analytical ultracentrifugation. <font COLOR="#CC3300">
+<a href="images/CompPhysComm_LammEq.pdf">Computer Physics Communications in 
+press</a></font><br>
+P.H. Brown, P. Schuck (2006) Macromolecular size-and-shape distributions by 
+sedimentation velocity analytical ultracentrifugation. <font COLOR="#000000">
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16565040&query_hl=5&itool=pubmed_docsum">
+Biophysical Journal 90:4651-4661</a></font></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Cann,
+J.R., and G. Kegeles. 1974. Theory of Sedimentation for kinetically controlled
+dimerization reactions. <i>Biochemistry</i> 13:1868-1874</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Claverie,
+J.-M., H. Dreux, and R. Cohen. 1975. Sedimentation of generalized systems of
+interacting particles. I. Solution of systems of complete Lamm equations. <i>Biopolymers.</i>
+14:1685-1700.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Cox,
+D. J. 1965. Computer simulation of sedimentation in the ultracentrifuge. II.
+Concentration-independent sedimentation. <i>Arch. Biochem. Biophys. </i>112:259-266.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"> J. Crank and P. Nicholson.
+1947 A practical method for numerical
+evaluation of solutions of partial differential equations of the heat-conducting
+type. Proc. Cambridge Philos. Soc. 43:50-67</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1">J. Dam, C.A. 
+Velikovsky, R.A. Mariuzza, C. Urbanke, P. Schuck (2005) Sedimentation velocity 
+analysis of heterogeneous protein-protein interactions: Lamm equation modeling 
+and sedimentation coefficient distributions c(s).&nbsp; </font>
+<font COLOR="#CC3300" size="1">
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3">
+Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3"> 
+89:619-634</a></font><font size="1"> </font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Dishon,
+M., Weiss, G.H., and D.A. Yphantis. 1966. Numerical solutions of the Lamm
+equation. I. Numerical procedure. <i>Biopolymers</i> 4:449-455.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Durran,
+D.R. Numerical methods for wave equations in geophysical fluid dynamics.&nbsp;
+Springer, New York, 1999, p. 139</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Faxén,
+H. 1929. Über eine Differentialgleichung aus der physikalischen Chemie. <i>Ark.
+Mat. Astr. Fys. </i>21B:1-6.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Fujita,
+H. 1962. Mathematical Theory of Sedimentation Analysis. Academic Press, New York</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Holladay,
+L.A. 1979. An approximate solution of the Lamm equation. <i>Biophys. Chem. </i>10:187-190Lamm,
+O. 1929. Die Differentialgleichung der Ultrazentrifugierung. <i>Ark. Mat. Astr.
+Fys. </i>21B:1-2</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Marque,
+J. 1992. Simulation of the time course of macromolecular separations in an
+ultracentrifuge. II. Controlling the solute concentration. <i>Biophys. Chem. </i>42:23-27</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Minton,
+A.P. 1992. Simulation of the time course of macromolecular separations in an
+ultracentrifuge. I. Formation of a cesium chloride density gradient at 25ºC. <i>Biophys.
+Chem. </i>42:13-21</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">Philo,
+J.S. 1997. An improved Function for Fitting Sedimentation Velocity Data for
+Low-Molecular-Weight Solutes. <i>Biophys. J. </i>72:435-444</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"> P. Schuck,
+C.E. McPhee, and G.J. Howlett. (1998) Determination of
+sedimentation coefficients for small peptides. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9449347&amp;dopt=Abstract">Biophysical Journal</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9449347&amp;dopt=Abstract">
+74:466-474</a></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">P. Schuck (1998) Sedimentation analysis of non-interacting and
+self-associating solutes using numerical solutions to the Lamm equation. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">
+75:1503-1512</a></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tut lsgofs</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><u><b><a name="The use of the apparent sedimentation coefficient distribution ls-g*(s)">The
+use of the apparent sedimentation coefficient distribution ls-g*(s)</a></b></u> </p>
+<p>For preparation of this topic, please read the <a href="tutorial_lsgofs.htm">
+tutorial on ls-g*(s)</a>.</p>
+<p>Although the c(s) distribution has big advantages in resolution over the
+apparent sedimentation coefficient distribution g*(s), there are situations
+where the deconvolution of diffusion is not desired or necessary (e.g. when
+working with very large particles where diffusion is negligible, or just as
+comparison to the results of the dcdt analysis).&nbsp; <b>It should be noted
+that because ls-g*(s) is a direct boundary model, we do not need to constrain the
+data set as much as in the dcdt transformation</b>.&nbsp; There is no broadening from too many scans.&nbsp;
+Details are described in this <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">reference</a>.&nbsp;
+<b>However, the number of scans included should not be so large as to lead to a 
+bad fit.</b>&nbsp;
+</p>
+<p><font size="1">(Please note that ls-g*(s) should not be applied to small sets
+of interference scans where the boundary has not yet cleared the meniscus,
+because of correlations of the small s-values with the unknown time-invariant
+baseline.)&nbsp;</font>
+</p>
+<p>S<span style="font-variant: small-caps">edfit</span> 
+ has implemented the g*(s) in the form of a <a href="sedfit_help_ls-gs.htm">least-squares
+direct boundary model ls-g*(s)</a>.&nbsp; This is described in the <a href="lsgofs_distribution.htm">introduction
+to ls-g*(s)</a>, serves as an example in the <a href="sizedistributions.htm#An example from the calculation of apparent sedimentation coefficient distributions ls-g*(s)">introduction
+to size-distributions</a>, and in the <a href="sedfit_help_ls-gs.htm">help-page
+for ls-g*(s)</a>.&nbsp; Here, we only describe its practical application to the
+BSA data set. Another application can be seen in the <a href="sedfit_example.htm">example
+of using S<span style="font-variant: small-caps">edfit</span></a>. </p>
+<p><font color="#FF0000"><i>NEW:&nbsp; Please note the new <a href="sedfit_help_size_distribution_options.htm#Integrate Distribution">integration
+tool</a>, which allows calculating the weight-average s-value of the sedimenting
+species!</i></font></p>
+<p>The application of the ls-g*(s) analysis has many similarities to the c(s)
+analysis, but it is much simpler because of the absence of deconvolution of
+diffusion  and as a result it gives only much lower resolution.</p>
+<p>Select the model</p>
+<p><img border="0" src="images/tutori46.gif" width="620" height="473"></p>
+<p>An information box will
+appear as a reminder that with ls-g*(s) the regularization method will be
+changed:</p>
+<p><img border="0" src="images/tutori47.gif" width="325" height="99"></p>
+<p>the relevance of this is described in detail in the <a href="sizedistributions.htm#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">introduction
+to the size-distribution</a> -- we can accept this default setting.&nbsp;
+Dependent on the previous parameter settings, a second message may appear</p>
+<p><img border="0" src="images/tutori48.gif" width="194" height="98"></p>
+<p>with the reminder that taking into account the acceleration phase of the
+rotor is not required in the g*(s) model.</p>
+<p>We have to press the <a href="sedfit_help_parameters.htm">parameter</a> menu
+to get to the settings:</p>
+<p><img border="0" src="images/tutori49.gif" width="332" height="303"></p>
+<p>The meaning of the parameters is the same as with the c(s) distribution
+above, except that there are much fewer parameters.&nbsp; Basically, we need to
+adjust s-min and s-max to give the proper s-range (we know already that a
+reasonable range would be 1 to 12).&nbsp; The resolution does not need to be
+nearly as high as in the c(s) analysis, because we will not need to describe any
+sharp peaks.</p>
+<p>Simply executing a <a href="sedfit_help_run.htm">Run</a> command will give us
+the ls-g*(s) distribution:</p>
+<p><img border="0" src="images/tutori8.jpg" width="665" height="566"></p>
+<p>As mentioned above, the quality of the fit is in general very poor, as the
+apparent sedimentation coefficient distributions do not describe
+diffusion.&nbsp; Therefore, unless we are dealing with very large particles or 
+very high rotor speeds where diffusion is negligible, we have to reduce the 
+number of scans in the fit to get a reliable analysis.</p>
+<p>For example, considering only scans 90 to 129, we get a more reasonable fit 
+if we use a high value for the 'resolution' field.&nbsp; (The latter decreases 
+the size of the step-function, and allows to differentiate the misfit due to 
+finite discretization from misfit due to significant diffusion).</p>
+<p><img border="0" src="images/tutori9.jpg" width="440" height="369"></p>
+<p><img border="0" src="images/tutori10.jpg" width="665" height="566"></p>
+<p>&nbsp;</p>
+<p>If applied to the same data subset, the result of ls-g*(s) and dcdt will be
+the same, with the exception if a very large data set with large <font face="Symbol">D</font>t
+is used, or for very small sedimentation coefficients, where the direct boundary
+model ls-g*(s) is more advantageous. As described in the <a href="sizedistributions.htm">introduction
+to the size-distribution theory</a>, due to the use of regularization there is
+very little noise apparent in the distribution (without <a href="sizedistributions.htm#The difference between smoothing and regularization">smoothing</a>).&nbsp; </p>
+<p>In some cases, it may be desirable to optimize in a non-linear regression the
+position of the meniscus.&nbsp; One such case is when working with very large
+macromolecules at low rotor speed, where the deformations of the meniscus can
+make a graphical determination very difficult.</p>
+<p><i><b><font color="#FF0000">Note the new tool for <a href="sedfit_help_size_distribution_options.htm#Integrate Distribution"> integration of the
+distribution and calculating the weight-average s-value</a> over a selected
+range.&nbsp;</font></b></i></p>
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,777 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Compressibility of Water and Organic Solvents</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>Compressibility of Water and Organic Solvents&nbsp;</h2>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Why bother?">Why
+bother?</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Aqueous vs organic solvents">Aqueous
+versus organic solvents</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Historical overview">A
+short historical overview</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Shapes of macromolecular sedimentation profiles in compressible solvents">Shapes
+of macromolecular sedimentation profiles in compressible solvents</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The pressure and density distribution across the solution column">The
+pressure and density distribution across the solution column</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Finite element solutions of the Lamm equation with solvent compressibility">Finite
+element solutions of the Lamm equation with solvent compressibility</a>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Analytical solutions for sedimentation of non-diffusing particles in a compressible solvent">Analytical
+solutions for sedimentation of non-diffusing particles in a compressible solvent</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Sedimentation coefficient distributions in compressible solvents">Sedimentation
+coefficient distributions in compressible solvents</a></p>
+<p>&nbsp;</p>
+<p><b><a name="Why bother?">Why bother?</a>&nbsp;</b></p>
+<p>At the centrifugal fields obtained at high rotor speed, pressure builds up
+&gt; 30 MPa, and the compressibility of the solvent is large enough to generate
+density gradients along the solution column.&nbsp; According to tables from
+Svedberg's book (<a href="#ref1">1</a>), the density changes can be &gt;
+1%.&nbsp; Although this appears small, the effects are amplified as changes in
+the buoyancy of the sedimenting macromolecules.&nbsp;</p>
+<p>How large are these effects?&nbsp; That depends on the solvent,
+macromolecule, rotor speed, solution column length, etc., but here are some
+examples:</p>
+<p>The <font color="#FF0000"> red</font> lines a 50 kDa protein (v-bar 0.73 ml/g) sedimenting at 60,000 rpm.
+Black are the distributions neglecting the compressibility of water (for details
+see ref <a href="#ref2">2</a>).</p>
+<p><img border="0" src="images/compre1.gif" width="473" height="362"></p>
+<p>This effect may not seem a lot, but considering the precision that we usually
+get from the experimental data and from modeling, this is highly
+significant.&nbsp; In terms of errors in the sedimentation coefficient or in
+molar mass values, the following shows the effects of ignoring compressibility
+of water (12 mm column, 60,000 rpm, see <a href="#ref2">2</a>):</p>
+<p><img border="0" src="images/compre2.gif" width="476" height="361">(errors in s: <font color="#00FF00">squares</font>,
+errors in M <font color="#0000FF">circles</font>)</p>
+<p>Generally, for proteins at high rotor speeds we have a few percent
+error.&nbsp; However, it can be significantly larger if back-diffusion is a
+significant part of the sedimentation process, because that involves the regions
+that are more compressed.&nbsp;(The transition whether the error in M results in
+an over- or underestimate depends on the extent of backdiffusion.)</p>
+<p>It's true we can minimize the effect by going to lower solution column, but
+we'd have to reduce it a lot to really eliminate the problem:</p>
+<p><img border="0" src="images/compre3.gif" width="475" height="649"><font size="2">(top: relative error
+in s for a 10 kDa protein at 60,000 rpm; bottom: relative errors in s for a <font color="#FF9933">10
+kDa </font>and <font color="#008000">100 kDa </font>protein with a 12 mm column)</font></p>
+<p>Likewise, obviously the compression increases with higher rotor speed, but
+again we'd have to sacrifice a lot of resolution by going to rotor speeds low
+enough to really make a difference.</p>
+<p><font color="#FF0000"><blink>As you can see, the errors can be fairly large
+even for proteins in aqueous solution.&nbsp;&nbsp;</blink></font></p>
+<p>The detailed effects naturally will depend on the specific data set analyzed,
+but the errors can be very relevant, for example, when comparing the
+experimental s-value with theoretical ones predicted from structure.&nbsp; They
+can be much larger for proteins that have a density closer to solution density
+(i.e., higher v-bar, buffers with higher density for example those with D<sub>2</sub>O,
+etc.).&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="Aqueous vs organic solvents">Aqueous vs organic solvents</a></b></p>
+<p>Organic solvents are commonly known to be more compressible than water.&nbsp;
+For example, the density of toluene at the base of a 12 mm column spinning at
+60,000 rpm is higher by 2.5% than at the meniscus.&nbsp; <font color="#FF0000">For
+polystyrene in toluene, this translates to a change in buoyancy of ~ 10% </font>-
+quite significant!<font color="#FF0000">&nbsp; </font>If you want to reduce the
+analysis to boundaries close to the midpoint of the cell, it's still an error of
+5%.&nbsp; Mosimann &amp; Signer have even described a <font color="#FF0000">28%
+change in buoyancy across the solution column for nitrocellulose in acetone</font>
+(<a href="#ref4">4</a>). Although the latter system may appear obscure for
+modern protein scientist, the effects are substantial enough to serve as a
+reminder for keeping compressibility in mind.&nbsp;&nbsp;&nbsp;</p>
+<p><b>It is a common belief that compressibility is an important issue for organic
+solvents, but not for aqueous.&nbsp; I think this is a myth, perhaps
+conveniently avoiding the computational challenges of taking solvent
+compressibility into account:&nbsp; The numerical value of the compressibility
+coefficient <font color="#FF0000">for water is 4.59 x 10<sup>-4</sup>/MPa, while
+that for toluene is 8.94 x 10<sup>-4</sup>/MPa</font> - that's only a factor of
+~ 2 difference, and it's only a factor of ~ 3-4 for the most compressible
+organic solvents!&nbsp; Obviously, this is not a qualitative difference.</b></p>
+<p>&nbsp;</p>
+<p><b><a name="Historical overview">A short historical overview</a></b></p>
+<p>Already Svedberg 1940 in his book (<a href="#ref1">1</a>) has recognized the
+solvent compressibility to be a significant factor in the precise determination
+of sedimentation coefficients.&nbsp; He recommended corrections to be always
+applied for organic solvents, but for water only at higher rotor speeds and
+longer solution columns.&nbsp; As mentioned above, Mosimann &amp; Signer (1944)
+have described significant compressibility effects (<a href="#ref4">4</a>).&nbsp;
+In 1954, Schachman has published a study on pressure effects (<a href="#ref10">10</a>),
+and later in his book (1959) he noted that the large gains in experimental
+precision at the time will make pressure corrections more important (<a href="#ref5">5</a>).
+For isopycnic density gradient sedimentation, water compressibility has been
+shown to be significant and was routinely considered by Vinograd et al. in 1962
+(<a href="#ref6">6</a>).&nbsp;</p>
+<p>On the theoretical side, Oth and Desreux have described in 1954 an
+approximate correction of compressibility through an extrapolation procedure to
+zero pressure (<a href="#ref7">7</a>). Fujita has thought about this problem,
+deriving in 1956 an approximate description of the effect of hydrostatic
+pressure on the concentration distribution of non-diffusing particles (<a href="#ref8">8</a>)
+(see below),
+noting later in his book that the extrapolation of Oth and Desreux was probably
+difficult to use with experimental data (<a href="#ref9">9</a>).&nbsp;&nbsp;</p>
+<p>After this period, I found very little published on this topic.&nbsp; This
+appears a bit strange, as many theoretical and practical studies on
+ultracentrifugation methodology have been published later (including topics that
+may appear nowadays rather obscure).&nbsp; Possible reasons for this neglect
+could perhaps be the lack of progress without the benefit of modern computation,
+and/or the judgment that estimated errors in aqueous solutions would be
+tolerable.&nbsp; The latter should be reconsidered, however, given the precision
+that we currently achieve experimentally, and the improvement of the analytical
+procedures.</p>
+<p>&nbsp;</p>
+<p><b><a name="Shapes of macromolecular sedimentation profiles in compressible solvents">Shapes
+of macromolecular sedimentation profiles in compressible solvents</a>&nbsp;</b></p>
+<p>The increasing density of the solvent towards the bottom of the cell causes a
+continuous increase of buoyancy and reduction of the sedimenting force.&nbsp; On
+the propagation of the boundary, this is the effect of a deceleration:&nbsp;</p>
+<p><img border="0" src="images/compre4.gif" width="389" height="319"></p>
+<p>shown here in <font color="#FF0000"> red</font> are the sedimentation profiles of polystyrene in toluene,
+for comparison in <font color="#0000FF"> dashed blue </font> are the calculated profiles without
+compressibility.&nbsp; It is very clear how the red boundaries propagate slower
+and lag behind the dashed blue ones.&nbsp; This feature is similar for the
+example of proteins in water shown above.&nbsp; The effect is less closer to the meniscus
+and stronger closer to the bottom.</p>
+<p>A second feature of compressibility effects is a steepening of the boundaries.&nbsp; (This can cause the
+molar mass estimates to be too large - or diffusion coefficient estimates to be
+too small.)&nbsp; Slower sedimentation at higher radii causes the reduction of
+the boundary spreading.&nbsp;&nbsp;</p>
+<p>Also note that the plateau concentrations are much higher than without
+compressibility.&nbsp; Normally, the square dilution rule with sector-shaped
+centerpieces causes the flux into any volume element in the plateau region
+from the left to be equal to the flux out of the volume element to the right.&nbsp; Because
+of the radial-dependent buoyancy, this is not the case in compressible
+media.&nbsp; The macromolecules sediment slower at higher radii, i.e. generating
+a smaller flux out of a volume element of the plateau than the flux into the
+volume element.&nbsp; As a result, there is less pelleting of the material at
+the bottom, and instead the macromolecule piles up continuously in the 'plateau'
+region. This is illustrated here (again for polystyrene in toluol):</p>
+<p><img border="0" src="images/compre5.gif" width="430" height="485"></p>
+<p>The lower plot is a magnified view of the 'plateau' regions, and shows how
+they slope upwards because of the decelerated sedimentation.&nbsp; The <font color="#00FF00"> dashed
+green </font> lines are the theoretical analytical profiles for non-diffusing
+particles, as derived below.&nbsp;&nbsp;</p>
+<p>The same effect also causes the equilibrium (and approach to equilibrium)
+profiles to be less steep than what they would be in incompressible media.&nbsp;
+The following is the equilibrium profile of a 2 kDa peptide in aqueous buffer at
+60,000 rpm: <font color="#0000FF"> blue solid line </font> is the expected profile in
+water (compressible!), the <font color="#FF0000"> red dotted
+line </font> is the steeper profile for an incompressible medium.&nbsp;&nbsp;&nbsp;</p>
+<p><img border="0" src="images/compre6.gif" width="794" height="662"></p>
+<p>Neglect of compressibility would here give a 4% too low molar mass value, or
+alternatively, if the molar mass was known from sequence or mass spec, maybe we
+would wrongly conclude that the partial-specific volume was 0.745 ml/g instead
+the true value of 0.730 ml/g.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="The pressure and density distribution across the solution column"><b>The
+pressure and density distribution across the solution column&nbsp;</b></a></p>
+<p>There are different levels of approximation to describe the pressure and
+density distribution.&nbsp; The simplest description starts with calculating the
+pressure at any point in the solution column as&nbsp;</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-6.0pt">(Eq. 1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre7.gif" v:shapes="_x0000_i1025" width="166" height="26"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124116426">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with pressure <i>p</i>, solvent density <font face="Symbol">r</font><sub>0</sub>,
+rotor speed <font face="Symbol">w</font>, radius <i>r</i> and meniscus <i>m</i>).&nbsp;
+After that, we consider that the solvent is compressible and its density changes
+with pressure according to</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-6.0pt">(Eq. 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre8.gif" v:shapes="_x0000_i1025" width="122" height="24"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124116568">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;&nbsp;</p>
+<p>(with solvent density <font face="Symbol">r</font>, standard density <font face="Symbol">r</font><sub>0</sub>,
+and compressibility <font face="Symbol">k</font>). Taken together, we get the
+radial-dependent density as&nbsp;</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-6.0pt">(Eq. 3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre9.gif" v:shapes="_x0000_i1025" width="218" height="26"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124116680">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>This is a pretty good approximation for common solvents.&nbsp; The problem
+with that is, of course, that the first equation for the pressure assumed the
+solvent density to be constant, whereas the result in the end tells us that it's
+changing with radius (which we know is true).&nbsp; However, it is correct in
+the limit of low compressibility, because the density doesn't change that much
+to completely invalidate our pressure estimate in Eq. 1.&nbsp; For example, for toluene it
+underestimates the solvent density at the bottom of the cell by ~ 2.5% -- and we're
+talking about a 2.5% error in the description of something that itself leads
+only to a few percent change in s and D - that's not bad at all, and we'll make
+use of that later on.&nbsp;</p>
+<p>A theoretically more satisfying description of the density and pressure
+distribution can be arrived at by coupling the two from the outset:&nbsp; The
+differential change in density with a small increase in pressure is</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-5.0pt">(Eq. 4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre10.gif" v:shapes="_x0000_i1025" width="72" height="22"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124117238">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>and, in turn, the differential change in pressure with radius is given by the
+local weight of the solution column as</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-5.0pt">(Eq. 5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre11.gif" v:shapes="_x0000_i1025" width="98" height="26"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124117352">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>With the boundary condition that the solvent density at the meniscus is the
+standard density <font face="Symbol">r</font><sub>0</sub>, we can solve this
+coupled set of differential equations and get</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-33.0pt">(Eq. 6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/compre12.gif" v:shapes="_x0000_i1025" width="246" height="96"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124117504">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>This expression looks different but is numerically similar to Eq. 98 in the
+Schachman book (<a href="#ref5">5</a>), which was derived with Eq. 2 instead of
+the differential Eq. 4, generating differences only from the third Taylor term
+on.&nbsp; However, it is quite different from the more complicated expression given by Fujita
+1956 (<a href="#ref9">9</a>), which I believe contains some error, maybe a typo
+or something; I just could not verify Fujita's expression (even with automatic
+symbolic math software).&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="Finite element solutions of the Lamm equation with solvent compressibility">Finite
+element solutions of the Lamm equation with solvent compressibility&nbsp;</a></b></p>
+<p>In order to describe the sedimentation of a macromolecule in an inhomogeneous
+solvent, we can use the Lamm equation</p>
+<p><span style="font-size:10.0pt;mso-bidi-font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-text-raise:-14.0pt;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;mso-bidi-font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-text-raise:-14.0pt;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><img src="images/compre13.gif" v:shapes="_x0000_i1025" width="186" height="46"></span><span style="font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118373">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>but have to consider that the sedimentation and diffusion coefficients are
+not constant, but change locally due to the local solvent density.&nbsp; In
+general, this requires local corrections for solvent viscosity</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+<img src="images/compre14.gif" v:shapes="_x0000_i1025" width="254" height="48"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118438">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with normal viscosity <font face="Symbol">h</font><sub>20,w</sub>, local
+viscosity <font face="Symbol">h</font><i>(r,t)</i>) and for solvent density</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/compre15.gif" v:shapes="_x0000_i1025" width="374" height="54"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118519">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with normal solvent density <font face="Symbol">r</font><sub>20,w</sub>,
+local density <font face="Symbol">r</font><i>(r,t)</i>, normal partial-specific
+volume <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-3.0pt">
+</span><span style="mso-text-raise: -3.0pt">v-bar</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118739">
+ </o:OLEObject>
+</xml><![endif]-->
+</span> and apparent partial-specific volume <font face="Symbol">F</font>').&nbsp;
+The corrections can be conveniently expressed with the factors <font face="Symbol">a</font>
+and <font face="Symbol">b</font>.&nbsp; Constants are the diffusion coefficient D<sub>20,w</sub> and the sedimentation
+coefficient s<sub>20,w</sub> under normal conditions.&nbsp; The problem of Eq.
+7-9 is solved in a general way in ref <a href="#ref3">3</a>.&nbsp; The strategy
+used takes the finite element Lamm equation method described in the <a href="LammEqSolutions.htm#The moving frame of reference finite element solution">Lamm
+equation tutorial</a>, but extends it to expand the factors <font face="Symbol">a</font>
+and <font face="Symbol">b</font> also in terms of combination of elements P<sub>k</sub>(r,t)</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-34.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-34.0pt">
+<img src="images/compre16.gif" v:shapes="_x0000_i1025" width="162" height="98"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119093">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>The problem at hand with solvent compressibility is simpler than in the general case, because the viscosity
+is treated as being constant, because the density is not time-dependent, and
+because we do not consider solvation to be significantly different from standard
+conditions.&nbsp; (This is not true, for example, for self-forming density
+gradients, see the <a href="dynamic_density_gradients.htm">dynamic density
+gradient tutorial</a>. We also ignore here the issue of pressure effects on
+proteins (<a href="#ref11">11</a>), their solvation, conformation, or interactions.)&nbsp;</p>
+<p>The additional terms from the expansion Eq. 10 cause the matrix elements <b>A</b><sup>(1)
+</sup>and <b>A</b><sup>(2)</sup> 
+ to become sums over tensor elements</p>
+<p><span style="mso-text-raise: -8.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+11a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">
+<img src="images/compre17.gif" v:shapes="_x0000_i1025" width="142" height="30"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119682">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+</span><span style="mso-text-raise:-8.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+11b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+<img src="images/compre18.gif" v:shapes="_x0000_i1025" width="166" height="30"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119693">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>, which leads us to the new matrices <b>A</b><sup>(1*) </sup>and <b>A</b><sup>(2*)</sup>.&nbsp;
+Analytical expressions for the tensors are derived in ref <a href="#ref3">3</a>.&nbsp;
+We can see, though, that for time-independent solvent properties such as the
+density gradients caused by compressibility, we have to make the summation over
+the tensors Eq. 11 only once, therefore not causing any noticeable increase in
+computation time compared to 'ideal' sedimentation. These replacements entirely
+encode the specifics of the solvent and the new local sedimentation and
+diffusion fluxes.&nbsp; </p>
+<p>Throughout the this treatment, we assumed that the compressibility of the
+macromolecules of interest is negligible compared to the solvent.&nbsp; For
+globular proteins, this is a good approximation, as folded proteins have
+ordinarily compressibilities only about 10-20% of that of water (<a href="#ref11">11</a>).&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="Analytical solutions for sedimentation of non-diffusing particles in a compressible solvent">Analytical
+solutions for sedimentation of non-diffusing particles in a compressible solvent</a></b></p>
+<p>It can be very useful to have analytical expressions for the concentration
+profiles of non-diffusing particles.&nbsp; They are a good model for very large
+particles, such as large protein complexes or dispersions in synthetic
+macromolecular chemistry.&nbsp; They can also serve as useful models in the
+apparent sedimentation coefficient distribution ls-g*(s).&nbsp; Finally, they
+can independently validate the results from the finite element solutions of the
+Lamm equation.</p>
+<p>A non-diffusing particle sediments according to the equation </p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-7.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-7.0pt">
+<img src="images/compre19.gif" v:shapes="_x0000_i1025" width="98" height="26"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120514">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>which can be integrated assuming that it was initially at the meniscus,
+resulting in the well-known expression</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">
+<img src="images/compre20.gif" v:shapes="_x0000_i1025" width="132" height="30"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120560">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>which describes the movement of the sedimentation boundary of an ensemble of
+non-diffusing particles.&nbsp; The corresponding expression for the plateau
+concentration is the well-known radially constant plateau</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-7.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+14)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-7.0pt">
+<img src="images/compre21.gif" v:shapes="_x0000_i1025" width="162" height="26"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120743">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120712">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>Although Eq. 12-14 are not valid in compressible media, they point the way
+for how to solve the problem in compressible solvents, since we can try to look
+for appropriate substitute expressions.&nbsp; </p>
+<p>We start with the equation of motion in a density gradient</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+15)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+<img src="images/compre22.gif" v:shapes="_x0000_i1025" width="146" height="46"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120833">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>which looks like Eq. 12, but reflects the local changes in the sedimentation
+rate due to the changing buoyancy (there's no viscosity effect
+considered).&nbsp; Like Eq. 13, this can be integrated, if we make use of the
+simple density distribution of Eq. 3&nbsp;&nbsp; </p>
+<p><span style="mso-text-raise: -6.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<img src="images/compre9.gif" v:shapes="_x0000_i1025" width="218" height="26"></span></p>
+<p>(this leads to a differential equation of the type y' = ay + by<sup>3</sup>,
+which can be analytically solved).&nbsp; A particle initially at a radius r<sub>0</sub>
+will later be at the radius R</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-42.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+16)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-42.0pt">
+<span style="mso-text-raise:-17.0pt">
+<img src="images/compre29.gif" v:shapes="_x0000_i1025" width="388" height="108"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124125026">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124121708">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124121454">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124121298">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>&nbsp;&nbsp; <span style="mso-text-raise: -42.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-6.0pt"><span style="mso-text-raise:-42.0pt">
+<img src="images/compre24.gif" v:shapes="_x0000_i1025" width="104" height="26"></span></span></span></p>
+<p>&nbsp;&nbsp; <span style="mso-text-raise: -6.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-6.0pt">
+<img src="images/compre25.gif" v:shapes="_x0000_i1025" width="80" height="24"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124121077">
+ </o:OLEObject>
+</xml><![endif]-->
+<span style="mso-text-raise:-42.0pt"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124121058">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124120983">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(apologies for the typo in the preprint).&nbsp; If we insert <i>r<sub>0</sub> = m</i>, then we get the boundary position at
+time <i>t</i>, i.e. a direct replacement of Eq. 13.&nbsp; In fact, Eq. 16
+contains the well-known Eq. 13 as a special case for <font face="Symbol">k</font>
+= 0.&nbsp; </p>
+<p>This is the boundary position, but how can we get to the 'plateau'
+shape?&nbsp; The trick is to utilize a form of mass conservation.&nbsp; Since we
+formulated Eq. 16 in a more general way, not constraining the initial position
+of the particle to be at the meniscus, we can also calculate where particles end
+up that were initially somewhere else in the solution.&nbsp; For example, we can
+consider what happens to the particles at the radii r<sub>0</sub> and r<sub>1</sub>:&nbsp;
+</p>
+<p><img border="0" src="images/compre34.gif" width="404" height="265"></p>
+<p>they move to positions R<sub>0</sub> and R<sub>1</sub> at a later time.&nbsp;
+Since the propagation from r to R is a monotonous function (which means no
+particle can pass another one, because there's no diffusion), all the stuff
+between r<sub>0</sub> and r<sub>1</sub> will also end up later between R<sub>0</sub>
+and R<sub>1</sub>.&nbsp; </p>
+<p>Let's do the mass balance for the stuff between the two radii:&nbsp; initially we have </p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+17)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-text-raise: -42.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<span style="mso-text-raise:-17.0pt">
+</span></span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/compre35.gif" v:shapes="_x0000_i1025" width="184" height="52"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127251">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124126568">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with <i>c(r,0)</i> the initial concentration distribution, which we could
+assume constant) and later we have </p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+18)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-text-raise: -42.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<span style="mso-text-raise:-17.0pt">
+</span></span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/compre36.gif" v:shapes="_x0000_i1025" width="182" height="52"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127309">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124126714">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>Mass balance requires that M = M*.&nbsp; How does this solve the problem?&nbsp;
+After all, we know only the integration limits but not c(r,t)??&nbsp; If we write the rhs of Eq. 17 and 18
+differently, by making r<sub>1</sub> only slightly larger than r<sub>0</sub> (r<sub>1</sub>
+=&nbsp; r<sub>0</sub> + <font face="Symbol">D</font>r) we have&nbsp; </p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+19)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/compre37.gif" v:shapes="_x0000_i1025" width="212" height="52"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127032">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(where we made use of our knowledge of Eq. 13, R<sub>0</sub> = R(r<sub>0</sub>,t)
+and R<sub>1</sub>= R(r<sub>0</sub>+<font face="Symbol">D</font>r,t)).&nbsp; From
+here, division by <font face="Symbol">D</font>r and going to the infinitesimal
+limit for both sides permits the application of the calculus formula&nbsp;</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+20)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+<img src="images/compre38.gif" v:shapes="_x0000_i1025" width="246" height="34"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127682">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(in our case, on the lhs f(r) is rc(r,0) and g(<font face="Symbol">D</font>r) is r<sub>0</sub>+<font face="Symbol">D</font>r, and
+on the rhs f(r) is rc(r,t) and g(<font face="Symbol">D</font>r) is R(r<sub>0</sub>+<font face="Symbol">D</font>r,t)), leading to</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+21)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+<img src="images/compre39.gif" v:shapes="_x0000_i1025" width="248" height="46"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127884">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>or rearranged, we have the shape of the 'plateau', given the propagation law
+R(r,t)</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-30.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+22)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-30.0pt">
+<img src="images/compre40.gif" v:shapes="_x0000_i1025" width="200" height="66"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124127912">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>This equation is quite general, and already contains the square dilution law
+for sector shaped cells.&nbsp; </p>
+<p>The basic idea here is that mass conservation can couple our propagation law
+to the density distribution.&nbsp; The key observation is, as illustrated above,
+that anything initially within a small volume element will stay in the same volume
+element after we propagate it's boundaries.&nbsp; Therefore, if we know how the
+boundaries move and if we know the initial distribution, we can predict the
+shape of the distribution at any later time.&nbsp; This is simply because we
+know how the stuff gets diluted and stretched or how it piles up because the
+particles slow down and squeeze together. (Another analogy would be to make two
+marks on a piece of rubber and then stretch it - you would be able to readily tell the
+decrease of the mass per unit length simply by telling how far the marks have
+moved apart.) </p>
+<p>For the propagation Eq. 16 in the density gradient from compressible
+solvents, assuming homogeneous loading, we get the following plateau shape:</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-33.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+23)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-33.0pt">
+<img src="images/compre41.gif" v:shapes="_x0000_i1025" width="524" height="102"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124128695">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>The only remaining difficulty in Eq. 23 is that it specifies the shape of the
+'plateau' in an odd way - the left hand side is an implicit function, which
+means we know how the distribution changes shape during the propagation, but we
+also have to calculate separately <i>where</i> the particles are located at a
+given time.&nbsp; That poses no computational difficulty, however, since we can
+simply have the computer make a map of where particles from a given initial radii
+(e.g. equidistant spaced throughout the solution column) end up with Eq. 16, and then evaluate Eq. 23 for what
+the plateau concentration is at those particular radii.&nbsp; (In other words,
+we just can't ask directly 'what is the concentration at this particular radius
+r at the time t', but have to observe 'a particle initially at r<sub>0</sub>
+will end up at R(r<sub>0</sub>,t), and at that time, the local concentration is
+as given by the right-hand side of Eq. 23'.) </p>
+<p>In this way we have arrived at the analytical solutions of the Lamm equation
+for non-diffusing particles in a compressible solvent.&nbsp; The solution is
+approximate in a sense that it is valid in the limit of low compressibility (due
+to the use of Eq. 3), but this is a very good approximation for common
+solvents.&nbsp; I have tested this solution to be numerically consistent with
+the finite element Lamm equation solutions in the limit of very small D (<a href="#ref2">2</a>).
+</p>
+<p>&nbsp;</p>
+<p><b><a name="Sedimentation coefficient distributions in compressible solvents">Sedimentation
+coefficient distributions in compressible solvents</a></b></p>
+<p>As we have seen above, it is possible to adjust the finite element solutions
+of the Lamm equation to sedimentation in compressible media without noticeable loss of
+performance.&nbsp; Therefore, they can be used just as the finite element Lamm
+equation solutions in incompressible media as kernels for sedimentation
+coefficient distributions c(s) and c(M).&nbsp; Calculating c(s) and c(M) poses
+no further difficulty, and you can refer to the <a href="sizedistributions.htm">tutorial
+on sedimentation coefficient distributions</a>. </p>
+<p><font color="#FF0000">Note that in the compressible solvent mode, the entries
+for v-bar, density and viscosity in the parameter box are under normal
+conditions.</font></p>
+<p>It is interesting to see what are the errors in the distributions if we
+neglect compressibility: The following example shows c(s) and c(M) distributions
+based on simulated data of a 100 kDa polystyrene in toluene (s = 0.8 S, 12mm
+column, 60,000 rpm)</p>
+<p><img border="0" src="images/compre42.gif" width="464" height="351"></p>
+<p>In <font color="#0000FF"> blue</font> is the correct distribution, in <font color="#FF00FF"> magenta</font> the one arrived at when
+ignoring compressibility.&nbsp; A similar calculation for a 100 kDa protein in
+PBS (s = 5 S, 12 mm column, 60,000 rpm) gives the following results:</p>
+<p><img border="0" src="images/compre43.gif" width="427" height="302">&nbsp;</p>
+<p>The errors from ignoring compressibility of water are not as large as in
+toluene, but still quite significant.</p>
+<p>As mentioned above, our analytical solutions for non-diffusing particles can
+be used without further complications to calculate ls-g*(s) distributions that
+take into account solvent compressibility.&nbsp; For the example above of an 0.8
+S polystyrene sample in toluene, we can compare the result of ls-g*(s) with
+solvent compressibility (<font color="#0000FF">blue</font>) with g*(s) (<font color="#FF00FF">magenta</font>), or the van Holde-Weischet
+results (<font color="#FF0000">red</font>, scaled).</p>
+<p><img border="0" src="images/compre44.gif" width="377" height="319"></p>
+<p>Note that for all sedimentation coefficient distributions in the
+inhomogeneous solvent mode, the s-values will be transformed to standard
+conditions.</p>
+<p>&nbsp;</p>
+<p><b>References</b></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref1">(1)</a>
+T. Svedberg and K.O. Pedersen (1940) Die Ultrazentrifuge.&nbsp; Theodor
+Steinkopff, Dresden. </font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref2">(2)</a>
+P. Schuck (2003) A model for sedimentation in inhomogeneous media. II.
+Compressibility of aqueous and organic solvents.&nbsp; <u><a href="images/CompressibleSolvents.pdf">Biophysical
+Chemistry</a></u><a href="images/CompressibleSolvents.pdf"> </a> <a href="images/DynamicDenistyGradients.pdf">
+108:187-200</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref3">(3)</a>
+P. Schuck (2003) A model for sedimentation in inhomogeneous media. I. Dynamic
+density gradients from sedimenting co-solutes.&nbsp; <u><a href="images/DynamicDenistyGradients.pdf">Biophysical
+Chemistry</a></u><a href="images/DynamicDenistyGradients.pdf"> </a></font>
+<a href="images/DynamicDenistyGradients.pdf"><font size="2">108:201-214</font></a></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref4">(4)</a>
+H. Mosimann and R. Signer (1944) Helv. Chim. Acta 27:1123</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref5">(5)</a>
+H.K. Schachman (1959) Ultracentrifugation in Biochemistry.&nbsp; Academic Press,
+New York.</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref6">(6)</a>
+J. Vinograd and J.E. Hearst (1962) Equilibrium sedimentation of macromolecules
+and viruses in a density gradient.&nbsp; Fortschritte der Chemie organischer
+Naturstoffe 20:373-422.</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref7">(7)</a>
+J. Oth and V. Desreux. (1954) Bull. Soc. Chim. Belges 63:133</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref8">(8)</a>
+H. Fujita (1962) Mathematical theory of sedimentation analysis.&nbsp; Academic
+Press, New York.</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref9">(9)</a>
+H. Fujita (1956) J. Am. Chem. Soc 63:1092</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref10">(10)</a>
+P.Y. Cheng and H.K. Schachman (1954) The effect of pressure on sedimentation and
+compressibility measurements in the ultracentrifuge.&nbsp; J. Am. Chem. Soc.
+77:1498-1501</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref11">(11)</a>
+B. Gavish, E. Gratton, C.J. Hardy (1983) Adiabatic compressibility of globular
+proteins.&nbsp; PNAS 80:750-754</font></p>
+
+<!--mstheme--></font></body>
+
+</html>

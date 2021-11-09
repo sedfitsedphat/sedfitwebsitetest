@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tutorial for getting started</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1" face="Verdana">
+<!--webbot bot="Navigation" s-type="siblings" s-orientation="horizontal" s-rendering="text" b-include-home="FALSE" b-include-up="TRUE" u-page s-target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;tutorial&nbsp;for&nbsp;getting&nbsp;started&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="2050" endspan -->
+</font></p>
+<h2><font face="Verdana">Typical workflow for using SEDPHAT</font></h2>
+<p>These are the typical steps for a S<span style="font-variant: small-caps">edphat</span> 
+analysis:</p>
+<p>0) sometimes preparation of files:&nbsp; convert DLS raw data into dlsdat 
+files with <a href="../sedfit_help_loading_options.htm#Generating DLS Data Files" target="_blank">Options-&gt;Loading
+Options-&gt;Import DLS Data</a>&quot; of S<span style="font-variant: small-caps">edfiT</span>, 
+or rename data with
+<a target="_blank" href="../sedfit_help_loading_options.htm#Save Raw Data Set">Options-&gt;Loading
+Options-&gt;Save Raw Data</a>&quot; of S<span style="font-variant: small-caps">edfiT </span>
+to make them easier to identify.&nbsp;
+</p>
+<p>1) generate an xp-file for each experiment.&nbsp; Here, you load the raw 
+data, using the functions &quot;<a href="data1.htm#Load New Sedimentation Velocity Data">Data-&gt;Load 
+New ... Data</a>&quot;.&nbsp; An <a href="experiment1.htm">experiment box</a> will 
+appear prompting you to enter the experimental conditions, like buffer density, 
+viscosity, partial-specific volume of the molecules, noise and baseline 
+parameters, extinction coefficients (see also
+<a href="experiment_parameters.htm">Experimental Parameters</a>).&nbsp; Enter 
+meniscus, bottom, and fitting limits now (usually graphically, like in S<span style="font-variant: small-caps">edfiT</span>, 
+but the meniscus and bottom can also be entered numerically in the experiment 
+box).</p>
+<p>2) save this xp file, using the function <a href="data1.htm#Save Experiment">
+Data-&gt;Save Experiment</a>. This will allow you later to reload exactly the same 
+experiment, with exactly the same selection of raw data, and the same settings 
+(you'll not need to enter any of the previous values again).&nbsp; This will 
+generate an xp-file on your disk.&nbsp; Note that this will not save the raw 
+data, but only a text-file with the pointer to the data, and the additional 
+information.&nbsp; For details look at
+<a href="experiment1.htm#Storage of the xp-files:">Experiments</a>.</p>
+<p><i><font size="2">Note:&nbsp; It is recommended to save the data are in a path that 
+has 'white-space' characters:&nbsp; 'c:\My Data' is bad, but 'c:\MyData' or 'c:\My_Data' 
+is OK (likewise, 'c:\My Documents\...' or 'c:\XLA Data' are bad).&nbsp; Also, 
+don't use the Desktop!&nbsp; SEDPHAT should be able to deal with white-space 
+characters from version 4.1b and later.&nbsp; </font></i></p>
+<p><b><font color="#FF00FF">repeat steps 1 - 2 for all your data channels you 
+want to analyze.</font></b></p>
+<p>3) load several (or sometimes only one) xp-file, using
+<a href="data1.htm#Load Experiment">Data-&gt;Load Experiment</a> .&nbsp; Note you 
+can also drag and drop xp-files into the S<span style="font-variant: small-caps">edphat</span> 
+window.</p>
+<p>4) choose the analysis <a href="model.htm">model</a>.&nbsp; Initialize, 
+according to the model, the local and global <a href="parameters1.htm">
+parameters</a>, establish <a href="parameters1.htm#Share Local Parameters">links</a> 
+to combine local parameters into shared parameters (maybe meniscus, bottom, 
+local concentration, extinction coefficients), set appropriate constraints in 
+the model, such as mass conservation, molar ratios of loading concentration. </p>
+<p>5) save the S<span style="font-variant: small-caps">edphat</span> 
+configuration with <a href="data1.htm#Configuration Functions">Data-&gt;Save 
+Configuration</a>. This will allow you to reproduce later the exact combination 
+of data and model.&nbsp; If you are planning to do several alternative analyses 
+involving the same data, then answer yes to the option to include new xp-files.&nbsp; 
+See more details on this in <a href="configurations.htm">Configurations</a>.</p>
+<p>6) execute the model using the <a href="run.htm">Run</a> function.&nbsp; This 
+is a way to evaluate the quality of your initial guesses of the non-linear 
+parameters.&nbsp; </p>
+<p><font color="#FF00FF"><b>maybe go back and repeat steps 4 - 6 to refine your 
+starting guesses until the model functions are at least in the rough vicinity of 
+the data</b></font> </p>
+<p>7) optimize the parameters with the <a href="fit.htm">Fit</a> function.&nbsp; 
+(For some types of fits, I prefer Simplex method, for others the Marquardt-Levenberg.&nbsp; 
+You may want to do both sequentially to make sure you have really found the best 
+fit (<a href="options.htm#Marquardt-Levenberg">Options-&gt;Fitting Options</a>)</p>
+<p>8) save the results by saving (or updating
+<a href="data1.htm#Configuration Functions">Data-&gt;Update Configuration</a> 
+[control - U]) your configuration <b>and save all experiments </b>(<a href="data1.htm#Save All Experiments">Data-&gt;Save 
+All Experiments</a> [control - A]).&nbsp; Note that saving the experiments at 
+this point also saves the local parameters.&nbsp; (The latter may conflict in 
+different alternative analyses, which is why each configuration should have 
+their own copy of the xp-files.)&nbsp; This step allows you to precisely 
+recreate this analysis later from scratch by double-clicking the sedphat-file in 
+your file-manager.</p>
+<p><font color="#FF00FF"><b>mabye go back to repeat steps 4 - 8 to produce 
+alternative analyses, relax or increase constraints, make controls </b>(like 
+'would the data fit assuming there was no binding...', etc., )</font></p>
+<p>9) <a href="concepts_for_getting_started.htm#Documentation of the Fit">
+document the analysis</a>: make a screenshot (Alt-PrntScrn), paste it into 
+powerpoint, write comments to it.&nbsp; Note that you may want to copy the S<span style="font-variant: small-caps">edphat</span> 
+screen also in the state where it shows you the numerical details of all 
+parameters, you can recall these by
+<a href="display.htm#Show Last Fit Info Again">Display-&gt;Show Last Fit Info Again</a>.&nbsp; 
+Note also that the title bar of the S<span style="font-variant: small-caps">edphat</span> 
+window contains the path of the current configuration file which you can use to 
+recreate the analysis.</p>
+<p>10) export the results and <a href="copy.htm">copy</a> the data tables to a 
+spreadsheet in your favorite plotting software. </p>
+<p>&nbsp;</p>
+<p>If you have problems, have a look at the <a href="troubleshooting.htm">
+troubleshooting and frequent questions</a> page.</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

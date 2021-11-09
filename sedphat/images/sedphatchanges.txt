@@ -1,0 +1,303 @@
+
+renamed version 6.1
+07/17/08: * for ternary systems: implement ITC titration of BC into mixture of AC
+07/16/08: * change behavior of xp input box when redirecting extinction coefficient (make analogous to meniscus redirection)
+07/16/08: * fix initial error message "cannot find species.ini"
+
+renamed version 6.05 beta
+07/05/08: * enable analysis of the fluorescence optical AUC
+07/05/08: * don't ask for concentration linking in SE analyses when only 1 xp is loaded
+07/05/08: * enable fluorescence data file analysis for SV
+
+renamed version  6.04beta
+06/24/08: * fix bug that could cause crash in Simplex optimization
+
+renamed version 6.02
+
+05/08/08 * multi-threding and new Lamm equation solutions for non-interacting species
+
+04/30/08 * add draggable lines to GUI, also show min and max of fitting limits for meniscus and bottom
+04/29/08 * enable sounds
+04/29/08 * remember preferences
+04/03/08 * fix copying data in partial boundary mode
+
+renamed version 5.14
+01/25/08 * fix bug not saving and reloading experimental ITC cell volume
+
+renamed version 5.13
+11/16/07 * enable ABB model for population isotherms
+10/12/07 * fix bug when reloading configs mixing up inactive experiments
+
+renamed version 5.01
+07/29/07 * fix bug that can causing double correction of buffer density and viscosity in some SV self-association isotherms
+07/29/07 * add optional display of individual species in sedimentation equilibrium analysis
+06/15/07 * fix bug causing occasional crash for isotherms containing only a single data point
+05/08/07 * fix bug causing instability in multi-wavelength c(s) when changing grid sizes
+05/08/07 * fix bug in saving of intermediate fitting results in temporary configuration 
+04/25/07 * Bayesian prior expectations in distribution models
+renamed version 5.0
+
+renamed version 4.4b
+12/22/06 * fix bug with left double click
+
+renamed version 4.4
+10/05/06 * partial boundary fit of SV data for TI+RI noise models (temporarily disabled from xp box)
+10/02/06 * in hybrid discrete/continuous model: show apparent s* from diffusion broadening
+				(estimated at time of last scan or boundary midpoint reaching right fitting limit)
+09/29/06 * continuous color temperature for AUC scans
+09/11/06 * enable reading of CSC Bindworks ITC data
+09/08/06 * increase max # iterations in Nelder-Mead optimization 20fold (to 100,000)
+09/08/06 * make field for ITC cell volume in xp parameter box
+08/21/06 * function to suppress screen redraw
+
+renamed version 4.3
+08/20/06 * improve stepper for moving hat Lamm equation stepper
+08/20/06 * ignore exported temperature from SEDFIT xp files
+08/08/06 * fix bug in integration when integration range exceeds high s-limit of distribution
+08/07/06 * switch off question for vbar in all ITC analysis
+08/07/06 * save temperature in xp
+08/05/06 * fix bug in ITC for some data sets dropping first data point
+08/01/06 * fix bug in ITC dilution experiments with pre-complexes in the syringe 
+07/31/06 * copy and paste of configurations
+07/31/06 * enable installation from any directory
+07/31/06 * improve display for ITC xp (titration type and kcal/mol instead cal/mol)
+07/28/06 * for ITC models improve approximation accounting for volume change on measured heats during injection
+06/22/06 * introduce separate vbar of non-participating species
+06/15/06 * keep track of cumulative TI and RI noise estimates, restore to raw data offsets
+06/15/06 * simulated annealing optimization
+06/15/06 * switch to eliminate rotor acceleration (and use instead effective sedimentation times based on w^2t) is moved to Lamm equation options 
+06/15/06 * function to have xp's switch place (will carry links along with experiments, but not in multi-signal analysis)
+06/15/06 * make display functions recognize if there's only one experiment loaded
+06/13/06 * don't plot experiment if inactive
+
+04/21/06 * for ITC: introduce optional baseline slope
+04/21/06 * for ITC: introduce optional local incompetent fractions with upper limit
+04/21/06 * enable changing temperature in xp parameter box of EQ and Multi-speed EQ data type
+04/20/06 * fix bug in ternary models when floating enthalpy cooperativity for second site of B 
+04/20/06 * fix bug in ternary models when floating enthalpy for second site
+
+03/11/06 * make mass action law calculator
+03/10/06 * after loading new data, automatically prompt to save xp-file. 
+03/10/06 * make raw data files droppable for *.isothem, *.DAT, *.dlsdat, *.surfisotherm as "load new ... " function
+03/09/06 * fix crash for certain type of triple protein interations by ITC
+
+renamed version 4.1
+
+02/22/06 * fix fullscale function for pop-isotherm
+02/14/06 * for triple complexes with floating incompetent C:  fix bug in misassigning incomp. B
+02/14/06 * wider path information field in xp box
+02/14/06 * ABBCC ternary multi-site model for SEQ,SV,ITC,isotherms
+02/10/06 * ABBC ternary two-site model for SEQ,SV,ITC,isotherms
+02/04/06 * enable loading from any directory
+02/04/06 * enable zoom and integration of distribution functions
+
+renamed version 4.07
+
+12/23/05 * recognize Job analysis isotherms (make pretty fit curves in Job concentration scheme)
+11/15/05 * make default xp filename with extension ".xp"
+11/15/05 * prevent reading of junk characters in comment line.
+
+renamed version 4.06 and released
+
+10/26/05 * extend 'testing' mode to SE self-association and 1:1 and 1:2 hetero-association (allowing extinction to be user-modified during run)
+10/26/05 * make control box reminding that 'testing' mode is not to be used during fitting
+10/26/05 * fix bug introduced in last version leading to factor 2 in SE distributions of A+B<->AB model
+10/24/05 * fix bug not setting baseline to 0 in SV when not optimized.
+10/24/05 * make shutting off backdiffusion adaptive (back-diffusion still not switched off for instant. self-assoc SV)
+
+renamed version 4.05
+
+10/18/05 * update default config format
+10/18/05 * switch off 'testing mode' default
+
+renamed version 4.04 and released
+
+09/27/05 * enable ITC titration of C into A for binary experiment of ternary interaction
+09/25/05 * switch multi-site ITC data entry to relative differences in enthalpy of different sites
+09/25/05 * allow ternary interaction of ITC data when injectant is a reacting mixture, taking into account pre-existing heats of binding in the syringe
+09/25/05 * allow editing of temperature entry in SV and DLS data types
+09/18/05 * automatically switch off fitting of Mw when exiting 'single species of interacting system' model
+09/18/05 * fix bug that can under certain conditions cause crash when switching to triple interaction model with velocity data
+
+renamed version 4.02
+
+09/13/05 * fix bug introduced in scaling of concentration parameters when fitting DLS data 
+09/09/05 * fix bug that prevented adding non-participating species to sedimentation equilibrium hetero-associations 
+09/09/05 * allow control of extinction coefficients for each species in SV testing mode
+08/24/05 * add surface binding data type
+07/27/05 * fix bug in monomer mass of kinetic self-association models
+07/19/05 * conformational change model
+07/19/05 * fix bug when using simulated scans during rotor acceleration 
+
+renamed version 4.01
+06/22/05 * implement Faxen model for central boundary slope
+06/23/05 * enable self-association models for population isotherms
+
+renamed version 4.0
+05/29/05 * drag-and-drop for sedphat_PAR global model files
+05/19/05 * add deep copy and save configurations and experiments
+05/19/05 * for function changing xp to full scale display, add 'for all' option
+05/16/05 * include sedphat_PAR files in file filters when loading models
+05/15/05 * make parameter display and input boxes adaptive to type of experiments loaded
+05/14/05 * add single species model (for interacting systems with MC)
+05/12/05 * add ITC data type
+05/12/05 * add third component, extinction coefficient C
+05/12/05 * remove concentration factor from display
+05/12/05 * fix bug in heterogeneous association models when linking concentrations of B in sed eq. without mass conservation 
+
+renamed version 3.1
+
+04/03/05 * fix bug showing short fitted line for isotherms with decreasing order
+03/09/05 * include a negative signal in hybrid discrete/continuous
+
+release version 3.0
+
+02/07/05 * write default configuration automatically at first start-up
+01/31/05 * remove automatic linking meniscus/bottom for multi-signal analysis
+01/31/05 * enable multi-signal SV
+01/31/05 * set default pathlength for isotherm models to 1.2
+11/26/04 * Gilbert isotherms for A + B + B <--> AB + B <--> ABB systems
+11/18/04 * Gilbert isotherms for A+B<->AB systems 
+
+release version 2.1
+
+09/25/04 * fix bug in Monte-Carlo causing crash when loading mixed data types
+09/22/04 * fix bug causing crash when copying fit table or residuals table from single file
+09/03/04 * partial population isotherms for A+B<->AB systems
+
+06/30/04 * make function to look at local rmsd for each experiment
+06/30/04 * change bug when loading xp files with too long comment
+06/28/04 * improve fitting of concentration of non-participating species
+06/28/04 * fix bug when using the TI noise in the hetero-association SV models
+06/28/04 * fix bug not restoring [B]/[A] molar ratio from saved configurations
+06/27/04 * add F-statistics calculator for critical chi-square
+
+release as version 2.0
+
+06/12/04 * make input box for Lamm equation parameters
+06/06/04 * include reaction kinetics
+06/06/04 * fix scaling of hybrid/discrete graph (when normalizing the distribution) 
+
+04/20/04 * automatically switch of floating s-values if there's only equilibrium experiments loaded 
+04/14/04 * make xp functions recognize if there's only one experiment loaded
+
+04/08/04 * menu function to set max dcc
+04/08/04 * store nGridSize and s for changing methods in configuration file
+
+04/02/04 * xp-files can be used as command line argument (i.e. double-click xp-files in windows to start sedphat)
+03/22/04 * fix bug in saving datatype information in sw and Mw isotherms
+03/20/04 * add sedreact structure
+
+release as version 1.9b
+
+03/20/04 * temporarily disable thermodynamic non-ideality in equilibrium models until algorithm improved
+
+
+02/20/04 * add thermodynamic non-ideality to self-association equilibrium models
+02/06/04 * enable multiple file dropping at once
+01/24/04 * modify suggested max and min ranges for meniscus and bottom to include always current estimates
+01/23/04 * switch regularization off during Marquardt-Levenberg optimization
+01/17/04 * make sedphat accept drag and drop of xp files and and configuration files
+01/17/04 * make sedphat accept command line argument of configuration file to be opened
+01/16/04 * automatically save intermediate fitting configurations to a file
+01/16/04 * check if files to be loaded exist, provide chance to locate
+01/06/04 * make menu function for toggling Marquardt-Levenberg vs Simplex optimiziation
+01/03/04 * make multiwavelength s-velocity analysis
+
+12/29/03 * keyboard shortcuts 'x' for xperimental paramters, 'c' and 'w' to read/write configuration
+12/28/03 * implement saving default model
+12/28/03 * save/read configurations
+12/28/03 * fix bug in normalization of continuous segments of hybrid discrete/continuous model
+12/04/03 * introduce s-values as parameters for heterogeneous association models (needed for isotherm modeling)
+12/03/03 * make a structure enabling to save and restore default global parameters
+12/02/03 * add an additional, non-interacting species to the association models
+12/01/03 * if an experiment is already loaded, use existing values of vbar, rho, eta, extA, extB, rotor, etc. as default for defining next experiment
+
+11/26/03 * show fitted curves only where modeled, change residuals scale, vertical plot distances
+11/26/03 * make different parameter boxes for different experiment types
+11/20/03 * add structure for new data type 'isotherm'
+11/20/03 * add rotor type information to experimental parameters, correction for rotor stretching in multisedeq analysis with TI noise
+
+11/14/03 * fix bug in algebraic optimization of baseline when using components not in sequence in the non-interacting model
+10/04/03 * include self-association 1-4-8 and 1-m-n for sedimentation equilibrium
+9/28/03 *include mixed association models for sedimentation equilibrium
+9/28/03 *rename to version 1.6
+
+
+9/28/03 *fix bug in sharing parameters for heterogeneous associations,
+	     *upload as version 1.5c
+
+release of version 1.5
+
+9/20/03:  rearrange menu
+9/20/03:  change default concentrations when switching to species with mass conservation model
+9/15/03:  disable printing
+8/22/03:  fix bug in loading single file after loading velocity
+
+7/16/03: include relative s-values in mixed discrete/continuous model
+
+7/11/03:  renamed version to version 1.5
+
+07/08/03:
+* change clipboard format of copied data sets, when using data sets with different
+  lengths: make entry of zero for empty cells (instead of no entry, which can
+  create difficulty when pasting into spreadsheets)
+
+07/07/03:
+* include separate links between concentrations for species A and B in
+  hetero-associations
+* enable specifying concentration A and molar ratio B/A for heter-associations
+  with mass conservation
+
+06/26/03:
+* fix bug in reversing double redirection
+* make redirections part of the experiment parameter box
+
+06/13/03:
+* fix bug causing crash of global parameter input boxes
+* allow optimization of meniscus and bottom for c(M (ff0)) distributions
+
+05/21/03:
+* increase # of experiments, draw tighter on screen
+
+05/14/03:
+* include new model with hybrid c(s), discrete species for global analysis
+
+05/06/03:
+* fix bug causing crash in monomer-n-mer model with low Mw
+
+04/19/03:
+* add link between extinction coefficients of different experiments
+* redesign local parameter box, get rid of unneccessary stuff
+
+04/18/03:
+* add link between meniscus and bottom position of different experiments
+* make new save-all function, automatically suggest at exit of program
+
+04/17/03:
+* remove restriction of directory names
+
+04/02/03:
+* add non-ideal sedimentation to self-association models
+
+02/09/03:
+* prompt for new maximal and minimal meniscus and bottom parameters if they are
+  unknown, each time when they are graphically relocated
+
+02/01/03:
+* make monomer-dimer-tetramer sedimentation equilibrium model
+* display experiment name instead of weight
+
+* fix bug preventing large Monte-Carlo raw data files to be read for continuation
+
+12/10/02:
+* fix bug that caused screen problems after a while: eliminate extra calls to font creation for the display of fit info
+(the extra calls exhausted Windows resources which required restarting of the computer)
+
+
+12/02/02:  some of the changes from the transition to version 1.1
+* new A+B<->AB model for equilibrium
+* new A+B+B<->AB+B<->ABB model for equilibrium
+* fix bug in homogeneous association for mass balance sedimentation equilibrium
+* add Monte-Carlo error analysis
+* allow saving fitted data

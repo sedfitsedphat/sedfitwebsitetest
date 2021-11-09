@@ -1,0 +1,510 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>data</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;data&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="display.htm" target="">display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="model.htm" target="">model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment_parameters.htm" target="">experiment&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="options.htm" target="">options</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="45117" endspan --></font></p>
+<h2>Data</h2>
+<p>The data menu provides the main functions to generate, save, load, and remove
+experimental data files (or data channels).&nbsp; For the general concepts on
+how to use the experiments, see <a href="experiment1.htm">this getting started
+page</a>.</p>
+<p><font color="#FF0000"><b>You must first generate an experiment file before
+you can load it.</b></font>&nbsp; This can be done using the function &quot;Load
+New...&quot;, followed by input of the necessary parameters (entering the
+parameters in <a href="experiment_parameters.htm">Experimental Parameters</a>,
+and graphically as described in detail in <a href="../sedfit_help_LoadNewData.htm" target="_blank"> S<span style="font-variant: small-caps">edfiT</span> 
+help</a>), and then saving them as 'xp-files'.&nbsp;&nbsp;</p>
+<p><img border="0" src="menubilder/data1.1.gif" width="299" height="454"></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Load Experiment">Load Experiment</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Save Experiment">Save Experiment</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Save All Experiments">Save All Experiments</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Remove Experiment">Remove Experiment</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Load New ... Data">Load New ... Data</a>:&nbsp;
+<a href="#Load New Sedimentation Velocity Data">Sedimentation Velocity</a>,
+<a href="#Load New Sedimentation Equilibrium Data">Sedimentation Equilibrium</a>,
+<a href="#Load New Multi-Speed Equilibrium Data">Multi-Speed Equilibrium</a>,
+<a href="#Load New DLS Data">DLS</a>, <a href="#Load New Surface Binding Data">
+Isotherm</a>, <a href="#Load New Surface Binding Data">ITC</a>,
+<a href="#Load New Surface Binding Data">Surface Binding Isotherm</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Edit Data Files">Edit Data Files</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Save Fit Data">Save Fit Data</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Save TI Noise in File">Save TI Noise In File</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2"><a href="#Model">Model 
+-&gt;</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#update current configuration">update current configuration</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#save current configuration">save current configuration as</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#read configuration from file">read configuration from file</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#set current configuration as default startup">set current 
+configuration as startup default</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#copy all data and save as new config">reset default configuration</a></font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#copy all data and save as new config">copy all data and save as new 
+config</a></font></p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Load Experiment">Load Experiment</a><!--mstheme--></font></h3>
+<p>This allows you to load a previously saved 'xp-file' and include it in the
+global analysis. Once you've generated an 'xp-file', you will not need to
+specify each time the data filenames, meniscus, bottom, fitting limits, baseline
+requirements, extinction coefficients, buffer conditions, etc.&nbsp; This is all
+automatically loaded.&nbsp; See <a href="experiment1.htm">Experiments</a> for
+details.</p>
+<p>keyboard shortcut is control-E.</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Save Experiment">Save Experiment</a><!--mstheme--></font></h3>
+<p>This will save the current experimental parameters of a specific experiment
+to a file (under a new filename).&nbsp; This will include the parameters in the <a href="experiment_parameters.htm">Experimental
+Parameters</a> box, and some of the local concentration or molar ratio
+parameters.&nbsp;</p>
+<p>The particular experiment is selected according to it's <a href="experiment1.htm#Experiment Number:">experiment
+number</a> (same order as the display, left to right).&nbsp;</p>
+<p><img border="0" src="menubilder/data1.1.jpg" width="364" height="152"></p>
+<p>What is not saved are links describing the sharing of local parameters.&nbsp;
+They need to be manually re-established (and they are obviously dependent on
+experiment number, i.e. order of loading the experiments).</p>
+<h3><!--mstheme--><font color="#003366"><a name="Save All Experiments">Save All Experiments</a><!--mstheme--></font></h3>
+<p>This is a convenient command to save the current status of all loaded
+experiments to their respective files.&nbsp; Note that this only updating the
+files, which means it will overwrite older parameters contained in the xp-files.&nbsp;
+If this is not desired, you can use the previous &quot;Save Experiment&quot;
+command and specify new filenames.&nbsp;</p>
+<p>keyboard shortcut is control-A</p>
+<h3><!--mstheme--><font color="#003366"><a name="Remove Experiment">Remove Experiment</a><!--mstheme--></font></h3>
+<p>This function will remove a specific experiment (referred to by experiment
+number) from the global analysis.&nbsp; For only temporarily removing an
+experiment from consideration in a global fit, but without removing it from the S<span style="font-variant: small-caps">edPHaT</span> 
+memory, you can use the '<a href="experiment_parameters.htm#Active">active</a>'
+checkbox to inactivate an experiment.&nbsp; Alternatively, if you just want to
+execute a <a href="run.htm">Run</a> or <a href="fit.htm">Fit</a> command for a
+single experiment, you can do that with the '<a href="run.htm">Single Experiment
+Run</a>' or '<a href="fit.htm">Single Experiment Fit</a>' functions.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New ... Data">Load New ... Data</a><!--mstheme--></font></h3>
+<p>This family of functions have the purpose to load raw data files, request 
+appropriate ancillary experimental information, and to generate a complete 
+Experiment in the memory of SEDPHAT, which can be saved as an xp-file (by 
+default the user will be prompted to enter a filename for the associated xp-file).&nbsp; 
+This xp-file is what in the future will be loaded (using the Load Experiment 
+function), instead of the raw data.&nbsp; In this way, we don't have to enter 
+the ancillary information twice.</p>
+<p>The Load New... functions are automatically invoked when using drag-and-drop of 
+certain raw data files (like *.dat for ITC, *.isotherm for isotherms, *.dlsdat 
+for DLS data, and *.surfisotherm for surface binding isotherms).</p>
+<p>These functions are specific to the different data types:</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New Sedimentation Velocity Data">Load New Sedimentation
+Velocity Data</a><!--mstheme--></font></h3>
+<p>This is data from a
+single centrifuge cell comprising the time-course of sedimentation.&nbsp; This
+sedimentation velocity data is loaded just as in S<span style="font-variant: small-caps">edfiT</span>.
+For more detailed instructions, see the <a href="../sedfit_help_LoadNewData.htm"> S<span style="font-variant: small-caps">edfiT</span> 
+help web</a>.&nbsp;&nbsp;After selecting the data, an experiment box will appear 
+and information needs to be supplied.&nbsp; For details, see the
+<a href="experiment_parameters.htm#Sedimentation Velocity Box">Sedimentation 
+Velocity Box</a>.</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New Sedimentation Equilibrium Data">Load New Sedimentation
+Equilibrium Data</a><!--mstheme--></font></h3>
+<p>This function loads a single sedimentation equilibrium profile and makes it
+into an experiment.&nbsp; Obviously, you should only select a single file when
+using this function. Global analysis will be
+accomplished by loading many such sedimentation equilibrium experiments, i.e.
+executing this command many times, each time generating a new data channel. 
+After selecting the data, an experiment box will appear and information needs to 
+be supplied.&nbsp; For details, see the
+<a href="experiment_parameters.htm#Sedimentation Velocity Box">Sedimentation 
+Equilibrium Box</a>.</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New Multi-Speed Equilibrium Data">Load New Multi-Speed
+Equilibrium Data</a><!--mstheme--></font></h3>
+<p>This allows to load several sedimentation equilibrium profiles at once into a
+combined experiment (data channel).&nbsp; <font color="#FF0000">They have to be
+from the same cell, be acquiring with the same signal (i.e. same wavelength or
+all interference data), but be at different rotor speeds.</font>&nbsp; The
+advantage of loading such files together is that they can be conveniently
+prescribed to have a common baseline (or radial baseline profiles).&nbsp; They
+also automatically have the same meniscus, bottom, extinction coefficient, and
+loading concentration.&nbsp; Although the latter parameters could be defined to
+be shared, setting multiple scans at different rotor speeds up as a multi-speed
+sedimentation equilibrium experiment is more straightforward.</p>
+<p><font color="#0000FF"><font size="1">Note:&nbsp; Multi-speed equilibrium data
+sets can have disadvantages when mass conservation is not used and concentration
+parameters are to be shared.&nbsp; In this case, the concentration parameters are
+shared between pairs of files (1st in exp. #1 with 1st in exp. #2, 2nd in exp.
+#1 with 2nd in exp. #2, etc.).&nbsp; Therefore, two multi-speed equilibrium
+experiments without mass conservation but with shared concentrations have to be
+equivalent in the number and sequence of loaded scans.&nbsp; Because of these
+complications, sharing in this situation is currently not enabled between
+multi-speed equilibrium experiments.</font>&nbsp;</font></p>
+<p>For more details on the implications of multi-speed sedimentation equilibrium
+baseline parameters, see the <a href="parameters1.htm#Examples for global analysis and shared local parameter configurations:">parameters
+introduction</a> and the examples.&nbsp;</p>
+<p>After selecting the data, an experiment box will appear and information needs 
+to be supplied.&nbsp; For details, see the
+<a href="experiment_parameters.htm#Multi-Speed Equilibrium Box">Multi-Speed 
+Equilibrium Box</a>.</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New DLS Data">Load New DLS Data</a><!--mstheme--></font></h3>
+<p>This loads an autocorrelation function from dynamic light scattering into an
+experiment channel.&nbsp; The format is a 'dlsdat-file' as generated by S<span style="font-variant: small-caps">edfiT</span>.&nbsp;
+Therefore, you have to use S<span style="font-variant: small-caps">edfiT </span>first,
+use the function &quot;<a href="../sedfit_help_loading_options.htm#Generating DLS Data Files" target="_blank">Options-&gt;Loading
+Options-&gt;Import DLS Data</a>&quot; of S<span style="font-variant: small-caps">edfiT</span>,
+and save the data (which is automatically done in the 'dlsdat' format). S<span style="font-variant: small-caps">edfiT</span>
+allows you to read raw autocorrelation data files exported in a variety of
+formats from Brookhaven Instruments, Protein Solutions, and ALV.&nbsp;</p>
+<p>After selecting the data, an experiment box will appear and information needs 
+to be supplied.&nbsp; For details, see the
+<a href="experiment_parameters.htm#DLS Data Box">DLS Data Box</a>.</p>
+<h3><!--mstheme--><font color="#003366">&nbsp;<!--mstheme--></font></h3>
+<h3><!--mstheme--><font color="#003366"><a name="Load New Isotherm Data">Load New Isotherm Data</a><!--mstheme--></font></h3>
+<p>For an overview of SV isotherm analysis, see <a href="isotherm_analysis.htm">
+this page</a>.&nbsp; </p>
+<p>This function allows to load an ASCII (ANSI) txt file (tab delimited) containing 
+isotherm data of weight-average sedimentation coefficients as a function of 
+concentration (sw(c)), or weight-average molar mass values (Mw(c)) as a function 
+of concentration.&nbsp; </p>
+<p>For more detailed analysis of rapid interacting systems, isotherms are 
+available for the s-value of the fast component of the reaction boundary and for 
+the amplitudes of the undisturbed and the reaction boundary component of the 
+asymptotic boundary based on Gilbert-Jenkins theory.&nbsp; The amplitudes and 
+weight-average s-values of the reaction boundary can be obtained from 
+integration of the c(s) profiles in S<span style="font-variant: small-caps">edfiT</span>.</p>
+<p>For slowly interacting systems, isotherms for the partial populations of the 
+different species are available.&nbsp; These also are apparent from integration 
+of the c(s) profiles in S<span style="font-variant: small-caps">edfiT</span>.</p>
+<p>Isotherm analysis is only implemented for interacting models, i.e. 
+self-association and hetero-association.</p>
+<p>For hetero-association data, obviously two concentrations, that of total A 
+and total B is needed.&nbsp; In this case, the pairs (cA,cB) should be ordered 
+in sequence of increasing cA for each cB, e.g. (cA1,cB1) (cA2,cB1) (cA3,cB1) 
+(cA1,cB2)...&nbsp; It is also possible to load several data files, each of which 
+has a constant cB.&nbsp; SEDPHAT tries to recognize a system in the pairs of (cA,cB) 
+and use a one-dimensional trajectory for the isotherm.&nbsp; Recognized pairs 
+are, for example, titrations with constant A or constant B, proportional (or 
+equimolar) A and B, and Job analysis isotherms.&nbsp; If a system is not 
+recognized, one-dimensional trajectories (fitted lines) are displayed for each 
+recognized segment, or (if there's no system apparent) for each data point.&nbsp; See <a href="experiment1.htm">Experiments</a> for
+details.</p>
+<p>The format is depending on the type of isotherm.&nbsp; </p>
+<p>1) <a name="isotherms of weight-average s-values or Mw values">isotherms of 
+weight-average s-values or Mw values</a>:</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA1&nbsp;&nbsp;&nbsp; 
+concB1&nbsp;&nbsp;&nbsp; sw1</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA2&nbsp;&nbsp;&nbsp; 
+concB2&nbsp;&nbsp;&nbsp; sw2</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA3&nbsp;&nbsp;&nbsp; 
+concB3&nbsp;&nbsp;&nbsp; sw3</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA4&nbsp;&nbsp;&nbsp; 
+concB4&nbsp;&nbsp;&nbsp; sw4</font></p>
+<p>or (for self-association models)</p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA1&nbsp;&nbsp;&nbsp; 
+sw1</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA2&nbsp;&nbsp;&nbsp; 
+sw2</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA3&nbsp;&nbsp;&nbsp; 
+sw3</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA4&nbsp;&nbsp;&nbsp; 
+sw4</font></p>
+<p>where concA1 stands for the <b>micromolar </b>total concentration of 
+component A at the first data point, concB1 for the <b>micromolar</b> total 
+concentration of component B at the first data point, and sw1 the observed 
+weight-average sedimentation coefficient.&nbsp; sw can be extracted best from 
+integrating c(s) profiles in S<span style="font-variant: small-caps">edfiT</span>.&nbsp; 
+The preferred file extension is &quot;*.isotherm&quot; for these data files.&nbsp; </p>
+<p>After selecting the data, an experiment box will appear and information needs 
+to be supplied.&nbsp; For details, see the
+<a href="experiment_parameters.htm#Isotherm Box">Isotherm Box</a>.&nbsp; Notice 
+that you have to select the type of isotherm, either sw-isotherm or Mw-isotherm.</p>
+<p>&nbsp;</p>
+<p>2) <a name="partial population isotherms for slow reactions">partial population 
+isotherms for slow reactions:</a></p>
+<p>The first line must be &quot;PARTIAL CONCENTRATION 
+ISOTHERM&quot; followed by the number of components and the number of species.&nbsp; 
+The next lines are the loading concentrations of the components A, B, followed 
+by the measured population (in signal units) of the species.&nbsp; The following 
+example is for an interaction of the type A + B &lt;--&gt; AB, which was two 
+components (A and B) and three species (free A, free B, and complex AB)</p>
+<p>PARTIAL CONCENTRATION ISOTHERM 2 3<br>
+1 1 0.089 0.101 0.0102<br>
+3 3 0.233 0.263 0.105<br>
+10 10 0.561 0.739 0.705<br>
+30 30 1.172 1.541 3.295<br>
+&nbsp;</p>
+<p>In version 3.0, partial population isotherms are currently implemented only 
+for this reaction A + B &lt;--&gt; AB.</p>
+<p>3)
+<a name="isotherms of the fast boundary component from Gilbert-Jenkins theory">
+isotherms of the fast boundary component of rapidly interacting systems from 
+Gilbert-Jenkins theory</a></p>
+<p>have the format </p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA1&nbsp;&nbsp;&nbsp; 
+concB1&nbsp;&nbsp;&nbsp; sw1</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA2&nbsp;&nbsp;&nbsp; 
+concB2&nbsp;&nbsp;&nbsp; sw2</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA3&nbsp;&nbsp;&nbsp; 
+concB3&nbsp;&nbsp;&nbsp; sw3</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA4&nbsp;&nbsp;&nbsp; 
+concB4&nbsp;&nbsp;&nbsp; sw4</font></p>
+<p>(this is the same format as isotherms of weight-average s-values)</p>
+<p>4)
+<a name="isotherms of amplitudes of the reaction boundary from Gilbert-Jenkins theory">
+isotherms of amplitudes of the undisturbed and reaction boundary of rapidly 
+interacting systems from Gilbert-Jenkins theory</a></p>
+<p style="margin-top: 0; margin-bottom: 0">GILBERT PARTIAL CONCENTRATION 
+ISOTHERM 2 2<br>
+<font face="Times New Roman">concA1&nbsp;&nbsp;&nbsp; concB1&nbsp;&nbsp;&nbsp; 
+amplitude_slow_1 amplitude_fast_1</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA2&nbsp;&nbsp;&nbsp; 
+concB2&nbsp;&nbsp;&nbsp; amplitude_slow_2 amplitude_fast_2</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA3&nbsp;&nbsp;&nbsp; 
+concB3&nbsp;&nbsp;&nbsp; amplitude_slow_3 amplitude_fast_3</font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font face="Times New Roman">concA4&nbsp;&nbsp;&nbsp; 
+concB4&nbsp;&nbsp;&nbsp; amplitude_slow_4 amplitude_fast_4</font></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">Note that the format of the Gilbert 
+population isotherms is always in this form, independent of the interaction 
+model.&nbsp; The reason is that each two-component mixture will only exhibit two 
+boundaries - the undisturbed and one reaction boundary. </p>
+<p style="margin-top: 0; margin-bottom: 0">In version 3.0, analysis models based 
+on Gilbert-Jenkins theory have been implemented for single-site and two-site 
+binding.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New ITC Data">Load New ITC Data</a><!--mstheme--></font></h3>
+<p>For an overview of isothermal titration calorimetry analysis, see
+<a href="isothermal_titration_calorimetry.htm">this page</a>.&nbsp; The data 
+file has to be an ASCII table containing heats, injection volumes, injectant and 
+titrant concentrations, etc, as described in the
+<a href="isothermal_titration_calorimetry.htm">Concepts for Getting Started 
+section on ITC</a>.&nbsp; After selecting the raw data table, the
+<a href="experiment_parameters.htm#ITC data box">ITC parameter box</a> pops up, 
+which is described <a href="experiment_parameters.htm#ITC data box">here</a>.</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Load New Surface Binding Data">Load New Surface Binding Equilibrium Data</a> 
+(Flow)<!--mstheme--></font></h3>
+<p>For an overview of surface binding equilibrium analysis, see the
+<a href="surface_binding_isotherms.htm">Concepts for Getting Started section on 
+Surface Binding Isotherms</a>.&nbsp; The data file has to be an ASCII table 
+containing the surface concentration of A (in arbitrary surface binding units), 
+the concentration of soluble B, and the surface binding signal (in the same 
+units as A), for example,</p>
+<p>100 1 10<br>
+100 5 20<br>
+100 10 50<br>
+100 50 80<br>
+100 100 90<br>
+100 200 95<br>
+100 500 99</p>
+<p>Note that the surface concentration of A (in this example a value of '100'), 
+can later be treated as a fitting parameter.&nbsp; Also, it will be the same for 
+each concentration of B.&nbsp; Nevertheless, the first column is a necessary 
+component of the data.&nbsp; The second column is the concentration of soluble 
+B, in micromolar units. The third column is the surface binding signal, measured 
+in steady-state.&nbsp; </p>
+<p>This file can be generated, for example, with the notepad (or any other ASCII 
+text editor), and the default extension is &quot;*.surfisotherm&quot;. After selecting the 
+raw data table, the
+<a href="experiment_parameters.htm#Surface Binding Isotherm Box">Surface Binding 
+parameter box</a> pops up, which is described
+<a href="experiment_parameters.htm#Surface Binding Isotherm Box">here</a>.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Edit Data Files">Edit Data Files</a><!--mstheme--></font></h3>
+<p>Just a simple helper function for opening the experiment files, using the
+notepad.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Save Fit Data">Save Fit Data</a><!--mstheme--></font></h3>
+<p>Saves the theoretical model data (e.g. radial signal distributions or
+autocorrelation function) into a file.&nbsp; Filenames will be used as the raw
+data, but with the first character replaced by an 'f'.&nbsp; I recommend to
+create a new directly to avoid overwriting the raw data files.&nbsp; Conventions
+are similar as in the <a href="../sedfit_help_datautilities.htm#Save Fits">corresponding
+S<span style="font-variant: small-caps">edfiT</span> function</a>.&nbsp;&nbsp;</p>
+<p>However, S<span style="font-variant: small-caps">edphaT </span>will ask if
+you want to add normally distributed noise to this model function.&nbsp;
+Ordinarily, you probably want to chose 0, i.e. to add no noise.&nbsp;&nbsp;</p>
+<p><img border="0" src="menubilder/data1.2.jpg" width="364" height="152"></p>
+<p>Adding noise provides a very convenient way to generate simulated data, using
+the experimental data set as a template.</p>
+<h3><!--mstheme--><font color="#003366"><a name="Save TI Noise in File">Save TI Noise in File</a><!--mstheme--></font></h3>
+<p>If you have specified for a particular experiment to consider a
+radial-dependent baseline profile, then you can save this into a file.&nbsp; The
+filename will be TIN.rxx, and you may want to save it into a special directory
+for each experiment.&nbsp; The analogous S<span style="font-variant: small-caps">edfiT</span>
+function is <a href="../sedfit_help_datautilities.htm#Save Systematic Noise">Data-&gt;Save
+Systematic Noise-&gt;Save Noise in File</a>.</p>
+<p>As an alternative, you can also access and perhaps more conveniently store
+the noise parameters using the <a href="copy.htm">copy</a> function of S<span style="font-variant: small-caps">edphaT</span>
+and pasting the data in a spreadsheet of your favorite plotting program.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Model">Model</a><!--mstheme--></font></h3>
+<p>This pops up the submenu:</p>
+<p><img border="0" src="menubilder/data1.2.gif" width="267" height="98"></p>
+<p>for organizing model parameters:&nbsp; </p>
+<p>1) <a name="Save current global parameters in file">Save current global 
+parameters in file</a>: This function saves a file to the harddisk that contains 
+the information about the current model.&nbsp; The file will have an extension 
+&quot;*.sedphat_PAR&quot;.&nbsp; After saving the model parameters, they can be reloaded, 
+thereby providing a way to restore the exact set of parameters, and a way of 
+storing and documenting the results. </p>
+<p><font color="#FF0000">Note that some of the models include local parameters, 
+which are stored in the experiment files (xp - files) [like loading 
+concentrations, meniscus position, etc.].&nbsp; Therefore, the restoration of 
+the current analysis may not be successful if it is based on saving the model 
+only.&nbsp; For this reason, it is recommended to use the more complete 
+functions for saving </font><a href="#Configuration Functions">
+<font color="#FF0000">configurations</font></a><font color="#FF0000">. </font></p>
+<p>2) <a name="Read global parameters from file:">Read global parameters from 
+file:</a> A previously saved set of parameters from a &quot;*.sedphat_PAR&quot; file can 
+be loaded into the current S<span style="font-variant: small-caps">edphaT</span> 
+session and applied to the data analysis.&nbsp; Note that if the saved model is 
+not the currently selected model, the model can be switched to the one in the 
+file. </p>
+<p><b><font color="#FF00FF">Note: from version 4.0:&nbsp; the *.sedphat_PAR 
+files can be applied to currently loaded data by drag-and-drop of this file into 
+the open S<span style="font-variant: small-caps">edphaT</span> session.</font></b></p>
+<p>3) <a name="Save current global parameters as default:">Save current global 
+parameters as default:</a>&nbsp; Frequently it is useful to have the parameters 
+of a given model already pre-adjusted according to your interests.&nbsp; For 
+example, if you work frequently with the same set of molecules, it may be very 
+convenient to start up the models already with the correct known molar mass, 
+s-values, etc.&nbsp; This is a convenience, but in the long run saves a lot of 
+time and avoids errors.&nbsp; You can use that also as a quick temporary storage 
+for intermediate results that you want to fall back to in the course of an 
+analysis.</p>
+<p>Note: the default files for the different models are all in the directory &quot;<a href="file:///c:/sedfit">c:\sedfit</a>&quot; 
+and have all different names, ending with &quot;*.ini&quot;, like &quot;124.ini&quot; for the 
+monomer-dimer-tetramer model.&nbsp; The names are automatically assigned and 
+cannot be changed.</p>
+<p>4) <a name="Read default global parameters from file">Read default global 
+parameters from file</a>:&nbsp; Sometimes the fitting algorithm diverges or the 
+analysis doesn't take a reasonable course.&nbsp; With this function you can 
+quickly go back to your default parameters (or your intermediate results, if you 
+have stored them as default parameters). </p>
+<p>5) <a name="Set current model as startup default">Set current model as 
+startup default</a>: Beyond customizing the default parameters in each model, 
+you can set the current model to be the default model that S<span style="font-variant: small-caps">edphaT</span> 
+starts up with.</p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Configuration Functions">Configuration Functions</a><!--mstheme--></font></h3>
+<p>Configurations are the subject of this part of the data menu:&nbsp; </p>
+<p><img border="0" src="menubilder/data1.3.gif" width="301" height="109"></p>
+<p>For an introduction to the idea of configurations and specific details on the 
+file structure, see <a href="configurations.htm">Configurations</a>.</p>
+<p>1) <b><a name="update current configuration">update current configuration</a>:</b>&nbsp; If the current state of the S<span style="font-variant: small-caps">edphaT</span> 
+analysis (the model combined with the data) has been saved in a configuration 
+file (&quot;*.sedphat&quot;), this function allows a quick update of this file.&nbsp; This 
+provides a quick way to keep you documentation up-to-date during the course of 
+an analysis.&nbsp; The keyboard shortcut is control-U.&nbsp; If no configuration 
+filename has been saved yet, it will automatically ask for one.</p>
+<p><font color="#0000FF">Note that the current configuration name will be lost 
+after a change in either the model or the experiments loaded.</font></p>
+<p>2) <b><a name="save current configuration">save current configuration</a>:</b>&nbsp; Generates a file &quot;*.sedphat&quot; that 
+describes the complete state of the analysis.&nbsp; Information in the sedphat-file 
+are the paths of all the experiment files (xp-files) loaded, the global 
+parameters like vbar(20), and all links between local parameters of the 
+experiments. It will also automatically write a &quot;*.sedphat_PAR&quot; file with the 
+type and global parameters of the current model.&nbsp; </p>
+<p><font color="#0000FF">Because sometimes you may want to make different 
+analyses of the same data with different models, and because different models 
+may change the local parameters stored in the xp-file (like meniscus position, 
+etc.) it is advisable to make a new copy of the current xp-files for each 
+configuration.&nbsp; That way, the complete information about the analysis can 
+be stored in a reproducible way, and several alternative analyses of the same 
+data may co-exist.</font></p>
+<p><font color="#0000FF">The name of the current configuration file is shown in 
+the title bar of the S<span style="font-variant: small-caps">edphaT</span> 
+window.</font></p>
+<p><font color="#FF0000">Note that much of the information stored relies on the 
+exact location of your xp-files and the sedphat_PAR file on your computer.&nbsp; 
+If you move your analysis between different computers, it is best to use exactly 
+the same directory structure.&nbsp; Alternatively, you can edit the sedphat 
+files with the notepad and adjust the pathname of the xp and the sedphat_PAR 
+files.</font></p>
+<p><font color="#FF0000"><b>Do not use directories with white-space characters, 
+e.g. &quot;My Documents&quot;, &quot;XLA DATA&quot; or the desktop.</b></font></p>
+<p>The keyboard shortcut is control-W. </p>
+<p>3) <b><a name="read configuration from file">read configuration from file</a>:</b>&nbsp; This is a way to restore a 
+previous S<span style="font-variant: small-caps">edphaT</span> configuration and 
+exactly reproduce an analysis.&nbsp; It reloads the data, the model, the global 
+parameters, and restores all links between the data sets.&nbsp; Be aware that 
+the file structure is important (see above), otherwise S<span style="font-variant: small-caps">edphaT</span> 
+won't find the data. </p>
+<p>The keyboard shortcut is control-C. </p>
+<p>You can also associate &quot;*.sedphat&quot; files with sedphat.exe [single right-click 
+on sephat file, select &quot;Open With&quot;, &quot;Choose Program&quot;, &quot;Browse&quot;, find sedphat.exe, 
+and check &quot;Always use the selected program...&quot;.&nbsp; This will allow you to 
+simply double click on any sedphat file from within your file manager and start 
+a new copy of S<span style="font-variant: small-caps">edphaT</span> showing the 
+saved analysis.&nbsp; </p>
+<p>4) <b><a name="set current configuration as default startup">set current configuration as default startup</a>: </b>This can be useful if 
+you want to continue or extend the current analysis later.</p>
+<p>5) <b><a name="reset default configuration">reset default configuration</a>:</b>&nbsp; reverses the previous procedure 
+and switches back to the startup default configuration, consisting of no 
+experiments, and the species analysis as the simplest model.</p>
+<p>6) <b><a name="copy all data and save as new config">copy all data and save 
+as new config</a>:</b>&nbsp; This function allows to make a physical copy of all 
+data belonging to all xp-files loaded in this configuration, and generates a
+<a href="configurations.htm#Path-Independent Configurations">Path-Independent 
+Configuration</a>. This can be very helpful to move data and analysis files to 
+different computers.&nbsp; </p>
+<p>&nbsp;</p>
+<p>Additionally, there are two clipboard operations for configurations:
+<a href="copy.htm#copy and paste the current configuration">Copy current 
+configuration and paste configuration</a>.</p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Exit">Exit</a><!--mstheme--></font></h3>
+<p>This closes the program. Results of the data analysis should be stored
+manually, using either the <a href="../sedfit_help_datautilities.htm#Save Fits">save
+fit command</a>, the <a href="../sedfit_help_copy.htm">copy commands</a>, the <a href="../sedfit_help_notes.htm">notebook</a>,
+or other methods.&nbsp; I would encourage using some partial storage of the
+local parameters by updating the experiments with the <a href="#Save All Experiments">Save
+All Experiments</a> command (see the <a href="concepts_for_getting_started.htm">Concepts
+for Getting Started</a>).</p>
+
+<!--mstheme--></font></body>
+
+</html>

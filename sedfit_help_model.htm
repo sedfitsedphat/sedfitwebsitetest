@@ -1,0 +1,184 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>model</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;Model&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="64789" endspan -->
+</font></p>
+<h2>the model menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h2>
+<p>allows the selection of the sedimentation analysis model.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><img border="0" src="images/sedfit1.gif" align="left" width="295" height="403"></p>
+<p>
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a></nobr><br> <nobr><a href="sedfit_help_selfassociation.htm" target="">self-association</a></nobr><br> <nobr><a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a></nobr><br> <nobr><a href="sedfit_help_cm.htm" target="">c(M)</a></nobr><br> <nobr><a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a></nobr><br> <nobr><a href="sedfit_help_cs.htm" target="">c(s)</a></nobr><br> <nobr><a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a></nobr><br> <nobr><a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a></nobr><br> <nobr><a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a></nobr><br> <nobr><a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a></nobr><br> <nobr><a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a></nobr><br> <nobr><a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a></nobr><br> <nobr><a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a></nobr><br> <nobr><a href="sedfit_help_dls.htm" target="">DLS</a></nobr><br> <nobr><a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a></nobr><br> <nobr><a href="sedfit_help_special.htm" target="">Special</a></nobr><!--webbot bot="Navigation" i-checksum="32263" endspan -->
+ </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p> S<span style="font-variant: small-caps">edfit</span> contains numerous
+models and methods for data analysis.&nbsp; Central are the <b> direct boundary
+models</b>.&nbsp; They follow the strategy of expressing all sedimentation processes by the
+underlying equations, and of directly modeling the raw data by least-squares
+regression.&nbsp; When necessary, the noise structure of the data is also
+explicitly modeled by least squares.&nbsp;&nbsp;Because this concept makes it necessary to specify the type of sedimentation
+process, many different models are needed to accommodate the different
+experimental situations encountered. Also, different models can be used
+reflecting the different knowledge about the sample (e.g., number of
+species).&nbsp;&nbsp;&nbsp;</p>
+<p>In the following, a brief overview of the models is given, but reading the
+more specific information following the links below is highly
+recommended.&nbsp;&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">&nbsp;&nbsp;&nbsp;
+<font size="1">Most of the models are based on numerical solutions of the Lamm
+equation<sup><a href="#1)">1</a></sup>, which is the partial differential
+equation describing the evolution of concentration distribution with time (see <a href="LammEqSolutions.htm">introduction
+to Lamm equation solutions</a>).&nbsp;
+The Lamm equation is very general, and can be used to analyze species as small
+as salts up to virtually unlimited size, can describe sedimentation and flotation, allows the
+incorporation of the rotor acceleration into the model, allows modeling of experiments using layering techniques, and more.&nbsp; The numerical algorithms
+for solving the Lamm equation are optimized for speed and precision, and do not
+require any user intervention (although all relevant parameters are available
+for change for the interested user). They use the finite element technique. For
+small s-values, it follows the strategy originally described by Claverie<sup><a href="#2)">2</a></sup>,
+but combined with a Crank-Nicholson scheme<sup><a href="#3)">3</a></sup> for
+increased precision and a more efficient adaptive driver of the
+time-steps.&nbsp; Details can be found in ref. <a href="#4)">4</a>. For higher
+precision and speed at large s-values, S<span style="font-variant: small-caps">edfit</span>
+uses a new finite element approach with a moving frame of reference<sup><a href="#5)">5</a></sup>
+, also combined with Crank-Nicholson scheme.&nbsp; There is an automatic
+switchover between the methods. Systematic noise is calculated algebraically<a href="#6)"><sup>6</sup></a>.&nbsp;</font></p>
+<p>Models are available for independent ideal species, species with a continuous
+size-distribution, species in rapid
+self-association equilibrium (monomer-dimer, monomer-trimer,
+monomer-dimer-tetramer, and monomer-tetramer-octamer), or non-ideal
+concentration-dependent sedimentation of the type s(c) = s0/(1+kc) (including
+terms for the concentration dependence of D).&nbsp;&nbsp;</p>
+<p>For the independent ideal species, either a known discrete number of species
+can be used, or distribution functions for an unknown number of species are
+available<sup><a href="#7)">7</a></sup>.&nbsp; There is a large variation of the
+distribution functions that can be selected according to the different prior
+knowledge available.&nbsp; Such prior can be knowledge of the approximate shape
+of the molecules, their diffusion coefficient, partial-specific volume, the
+molar mass for molecules that can undergo a conformational change, etc.&nbsp;
+Further, the distribution can be either a sedimentation coefficient (or
+flotation coefficient) distribution c(s) or a molar mass distribution c(M)<sup><a href="#7)">7</a></sup>.&nbsp;&nbsp;&nbsp;</p>
+<p>In a <a name="typical scenario"> typical scenario</a> with a previously uncharacterized sample, one would for
+example do a c(s) analysis first, using some knowledge about the nature of the
+molecules to obtain information on purity, s-values, number of species and
+relative amounts.&nbsp; (For a detailed description on how to perform this
+analysis, see the help-page of this model).&nbsp; Usually, it is very useful to
+run the same sample at a range of concentrations and at different rotor
+speeds.&nbsp; This will reveal if the molecules can be described as ideal
+non-interacting particles, or if there is a concentration dependence for an
+associating system, and the presence of hydrodynamic nonideality.&nbsp; After
+that, for non-interacting species, one would use the information on the number
+of species and switch to the discrete species Lamm equation model.&nbsp; Here,
+the s-values from the c(s) analysis can be used, and either constraining the
+molar mass to that known from sequence (or hypothesized for the oligomers) or
+fitting for the molar mass.&nbsp; (If the molar mass is the quantity of
+interest, a relatively low rotor speed is most useful because it allows for
+considerable diffusional spreading, while highest resolution and precision in
+the sedimentation coefficient (and molecular shape) is usually obtained at the
+highest possible rotor speed.)&nbsp; Alternatively, if there is knowledge on the
+molecules, their self-association, conformational change, etc, one would of
+course choose one of the specific models.&nbsp;</p>
+<p>In part for comparison with previous sedimentation analysis strategies, and
+to complete the tool-box for velocity analysis, the
+g*(s) method and the van Holde-Weischet G(s)<a href="#8)"><sup>8</sup></a> is
+available.&nbsp; While I would recommend using direct boundary modeling for
+quantitative analysis whenever possible, the g*(s) and G(s) transformations can
+be very useful as additional tools, for example, for diagnostic purpose and
+semi-quantitative description of the data, in particular where an appropriate
+explicit boundary model is not yet available.&nbsp;&nbsp;</p>
+<p>The g*(s) method is calculated in S<span style="font-variant: small-caps">edfit</span>
+by least squares and direct boundary modeling, termed ls-g*(s)<a href="#9)"><sup>9</sup></a>.&nbsp;
+This method is not limited to small data sets, as no approximation of dcdt is
+involved, and can therefore be used conveniently with both absorbance and
+interference data.&nbsp; ls-g*(s) is a very good model for the sedimentation of
+very large particles where diffusion can be neglected.&nbsp; The extrapolation
+of ls-g*(s) to infinite time<a href="#10)"><sup>10</sup></a> is a link between
+g*(s) and G(s), and can be considered an extension of the van Holde-Weischet
+method to interference data containing systematic noise components.</p>
+<p>Some other methods closely related to conventional sedimentation velocity analysis
+are also included in S<span style="font-variant: small-caps">edfit</span>.&nbsp;
+These are those for analytical zone centrifugation<a href="#11)"><sup>11</sup></a> (sedimentation velocity using
+a synthetic boundary layering technique), dynamic light scattering (substituting
+the Lamm equation solutions by appropriate decaying exponentials for the
+autocorrelation functions), and electrophoresis (obeying a Lamm equation in
+linear geometry with constant force).&nbsp; Finally, some special modifications
+for time-dependent sedimentation are available.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><b>References:</b></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="1)">1)</a>
+O. Lamm. (1929) Die Differentialgleichung der Ultrazentrifugierung. Ark.
+Mat. Astr. Fys. 21B:1-4</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="2)">2)</a>
+J.-M. Claverie, H. Dreux and R. Cohen. (1975) Sedimentation of generalized
+systems of interacting particles. I. Solutions of systems of complete Lamm
+equations.&nbsp; Biopolymers 14:1685-1700</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="3)">3)</a>
+J. Crank and P. Nicholson. (1947) A practical method for numerical
+evaluation of solutions of partial differential equations of the heat-conducting
+type. Proc. Cambridge Philos. Soc. 43:50-67</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="4)">4)</a>
+P. Schuck, C.E. McPhee, and G.J. Howlett. (1998) Determination of
+sedimentation coefficients for small peptides. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9449347&amp;dopt=Abstract">Biophysical Journal</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9449347&amp;dopt=Abstract">
+74:466-474</a>.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="5)">5)</a>
+P. Schuck (1998) Sedimentation analysis of non-interacting and
+self-associating solutes using numerical solutions to the Lamm equation. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">
+75:1503-1512</a>.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="6)">6)</a> P. Schuck and B. Demeler (1999) Direct sedimentation analysis of
+interference-optical data in analytical ultracentrifugation. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">
+76:2288-2296</a>.&nbsp;&nbsp;</font>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="7)">7)</a> P. Schuck (2000) Size distribution analysis of macromolecules by
+sedimentation velocity ultracentrifugation and Lamm equation modeling. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">
+78:1606-1619</a>.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="8)">8)</a>
+&nbsp; K.E. van Holde and W.O. Weischet. (1978) Boundary
+analysis of sedimentation velocity experiments with monodisperse and
+paucidisperse solutes. Biopolymers 17:1387-1403. </font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="9)">9)</a>
+ P. Schuck and P. Rossmanith (2000) Determination of the sedimentation
+coefficient distribution g*(s) by least-squares boundary modeling. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">Biopolymers</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">
+54:328-341</a>.
+</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="10)">10)</a>
+ in preparation</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="11)">11)</a>
+J. Lebowitz, M. Teale, and P.W. Schuck (1998) Analytical band
+centrifugation of proteins and protein complexes. <i><u>Biochemical Society
+Transactions</u></i> 26:745-749.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

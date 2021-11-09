@@ -1,0 +1,61 @@
+'--------------------------------------------------------------------------------------------
+'##VERSION 1.0 - 29th September 2015 - Ulf Nobbmann - tested on DTSv7.11
+'##DESCRIPTION Exports the selected size record in a dts measurement file to an external ASCII
+'##DESCRIPTION file with extension .DLSDAT for direct import into SEDFIT (delay and corrfct)
+'--------------------------------------------------------------------------------------------
+
+Option Explicit
+
+Sub Main
+	On Error GoTo export_error
+	' obtain the users selection
+	Dim selectedrecords As Selection
+	Set selectedrecords = Application.ActiveDocument.ActiveWindow.Selection
+	Dim outputstring As String
+    Dim acftimes() As Double
+    Dim acf() As Double
+    Dim NumChannels As Integer
+    Dim i As Long
+	Dim record As Measurement
+	Set record = selectedrecords.Item(1)
+	If selectedrecords.Count <> 1 Or record.Type<>mtSizeOnly Then
+		VistaErr.VistaMsgBox("You need to select one (and only one) size record for export")
+		Exit Sub
+	End If
+	'create the file for the new result
+	Dim fileName As String
+	fileName = GetFilePath("","dlsdat",Application.DefaultFilePath,"Enter a file name to export the data to",3)
+	If fileName = "" Then
+		Exit Sub
+	End If
+	Dim oldDoc As Document
+	Set oldDoc = Application.ActiveDocument 'the current file
+     ' Get the selected record and find times and corrfct values
+        'Make sure a Size record is selected
+        ' Set Result = sel.Item(1)
+        If (record.Type <> mtSizeOnly) Then
+            MsgBox ("Selected record is not a Size measurement")
+        Else
+        acf = record.Size.ACFData
+        acftimes = record.Size.ACFLagTimes
+        NumChannels = UBound(acf())
+        Open fileName For Append As #1
+            ' Write correlation delay channels and correlation data to file
+            Print #1," "
+            outputstring = "A" & " " & Format(record.Details.ActualTemperature, "00.000000") & " " & "1 1.00" & " " & Format(record.SOP.Dispersant.DispersantRI, "0.000000")
+            outputstring = outputstring & " " & Format(record.SOP.Dispersant.Viscosity/100, "0.000000") & " " & Format(record.SOP.ScatteringAngle, "###.000000")
+            outputstring = outputstring & " " & Format(record.SOP.Wavelength*1e-09, "0.000000e-00")
+            Print #1,outputstring
+            For i = 0 To NumChannels - 1 Step 1
+                outputstring = "   " & Format(acftimes(i)*1e-06, "0.00000e-00")  & "  " & Format(acf(i), "0.00000e-00") ' & vbCrLf seems to not be needed
+                ' MyString="pre-tab" & vbTab & "post-tab"
+                Print #1,outputstring
+            Next i
+        Close 1
+        End If
+	Exit Sub
+
+export_error:
+	VistaErr.VistaMsgBox( Err.Description, vbCritical )
+	Err.Clear
+End Sub

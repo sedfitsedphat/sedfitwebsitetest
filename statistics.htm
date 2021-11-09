@@ -1,0 +1,157 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>statistics</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><!--webbot bot="Navigation" i-checksum="0" endspan -->
+</font></p>
+<h2>Statistics</h2>
+
+<p><img border="0" src="menubilder/statis4.gif" width="287" height="100"></p>
+
+<p>&nbsp;</p>
+
+<p>There are three major tools for error analysis:&nbsp;&nbsp;</p>
+<p>1) F-statistics</p>
+<p>2) covariance matrix</p>
+<p>3) Monte-Carlo analysis</p>
+<p>&nbsp;</p>
+<p>In practice, the most reliable approach for error analysis is the projections 
+of the error surface method.&nbsp; Although the absolute value of chi-square (‘global 
+red. chi-square’ in the S<span style="font-variant: small-caps">edPHaT </span>
+window display)&nbsp; should not be interpreted without absolute knowledge on 
+the noise in the data, the relative increase of chi-square comparing the 
+original and the new fit is a statistical quantity that can be evaluated using 
+the F-statistics.&nbsp; </p>
+<p>For example, to determine the error limits on a binding constant, follow 
+these steps: </p>
+<p>0) Make sure you have the best fit. (Repeat the optimization a few times 
+alternating the <a href="options.htm#Marquardt-Levenberg">Simplex and 
+Marquardt-Levenberg</a> method.)&nbsp; Save the current configuration (usually 
+with new xp files).</p>
+<p>1) Calculate the critical value for chi-square (Statistics -&gt; Critical 
+chi-square for error surface projections).&nbsp; </p>
+<p>2) Set the value of the binding constant at a non-optimal value close to the 
+best-fit parameter (for example, increase log(K<sub>A</sub>) by 0.1), and fix 
+the binding constant.&nbsp; Keep all other unknown parameters floating just like 
+in the previous fit.&nbsp; </p>
+<p>3) Execute a new fit.&nbsp; If the original fit was the best fit, then 
+current fit will have a higher chi-square value.&nbsp; Three things may happen:</p>
+<p>3a) If a chi-square value smaller than the original best-fit value is 
+observed, which can sometimes happens with complex error surfaces, you have just 
+found a better fit! Go back to step 0.</p>
+<p>3b) If the new value exceeds the critical value, then the modified binding 
+constant is already outside of the error interval.&nbsp; Go back to step 2 and repeat 
+with a smaller step (closer to the previous best-fit.&nbsp; </p>
+<p>3c) If the new chi-square value is higher than the original best-fit value, 
+but lower than the critical value, fix log(K<sub>A</sub>) at a value a bit 
+further from the best-fit value and re-fit.&nbsp; Repeat Step 2/3 until the current 
+chi-square value is exceeding the critical value, indicating that one of the 
+limits of log(K<sub>A</sub>) error interval has been found.&nbsp; </p>
+<p>4) Reload the best-fit configuration and repeat the procedure 2/3 by changing 
+log(K<sub>A</sub>) in the other direction.</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"> <a name="F-statistics"><b>F-statistics</b></a> &nbsp;<!--mstheme--></font></h3>
+<p> is explained in detail in
+the <a href="../sedfit_help_fstatistics.htm" target="_blank"> S<span style="font-variant: small-caps">edfiT
+</span>help section on F-statistics</a>.&nbsp; It is based on generating a
+series of fits, constraining the parameter in question to non-optimal values
+(starting close to the optimum and moving away), and observing at which point
+the resulting fit (optimizing all other parameters) worsens the chi-square by a
+certain critical factor.&nbsp; The implementation of this is straightforward in S<span style="font-variant: small-caps">edPHaT</span>.&nbsp;
+The critical values of the reduced chi-square are calculated in the function &quot;<a name="Critical chi-square for error surface projections">Critical 
+chi-square for error surface projections</a>&quot;.&nbsp; The approximation used is 
+that both numbers of degrees of freedom are equal to the number of data points.&nbsp; 
+This is a very good approximation for global fits with lots of data points.&nbsp; 
+(A more exact value can be calculated using the <a href="../sedfit_help_calculator.htm#Calculate F-distribution">calculator
+in S<span style="font-variant: small-caps">edfiT</span></a> after counting the 
+number of fitted parameters.) For details, see <i>Bevington: Data Reduction
+in the Physical Sciences</i>.</p>
+<p> &nbsp;</p>
+<h3><!--mstheme--><font color="#003366">The <a name="covariance matrix"><b>covariance matrix</b></a> &nbsp;<!--mstheme--></font></h3>
+<p> is based on the
+local approximation of the error surface as a paraboloid, which permits for
+linear models the exact prediction of error intervals.&nbsp; It is quite fast,
+but because it is based on a linearized approximation of the error surface in
+the minimum, it usually significantly underestimates the real errors associated
+with the parmeters.&nbsp; (In the implementation in S<span style="font-variant: small-caps">edPHaT</span>,
+it uses numerical differentiation like the <a href="fit.htm#Marquardt-Levenberg">Marquardt-Levenberg</a>
+algorithm [Press et al.])</p>
+<p><font color="#FF00FF">Note: Although the error estimates from the covariance
+matrix are not always realistic, the covariance matrix is an excellent tool to
+study parameter correlation, and to compare error estimates under different
+configurations of floating parameters.&nbsp; </font><font color="#0000FF" size="2">For
+example, in some cases the consideration of radial-dependent systematic noise
+for multi-speed sedimentation equilibrium data can significantly increase the
+uncertainty of the parameters.&nbsp; This will be reflected in the covariance
+matrix calculated with and without the TI noise.&nbsp; If, after switching the
+TI noise on, the covariance matrix does not change much, then the TI noise is
+well-defined by the data and does not correlate with any of the model parameters
+of interest.&nbsp;&nbsp;</font><font color="#FF00FF">&nbsp;</font></p>
+<p>An example of the output of the covariance matrix looks like this:</p>
+<p><img border="0" src="menubilder/statis5.jpg" width="814" height="245"></p>
+<p>In the first line, you find the chisquare of the fit.&nbsp; The second line
+is the best-fit parameters (this is useful in order to figure out the sequence
+of how the global and local parameters are listed). The third line is are the
+normalized gradients of the error surface. Then comes the covariance
+matrix.&nbsp; The most important numbers are in the second column and are given
+in parenthesis:&nbsp; these are the error estimates associated with the
+parameters on the left.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366">The <a name="Monte-Carlo analysis"><b>Monte-Carlo analysis</b></a> &nbsp;<!--mstheme--></font></h3>
+<p> is in
+theory a very safe way to calculate errors:&nbsp; It is based on generating
+hypothetical data sets based on the best-fit distributions but with a new set of
+normally distributed noise (this is the way it's implemented in S<span style="font-variant: small-caps">edPHaT</span>).&nbsp;
+Each set is analyzed, and from many hundred or thousand of iterations a
+distribution of the parameters is calculated, which contain the uncertainties
+for each parameter.&nbsp; (See also the <a href="../sedfit_help_monte_carlo_simulations.htm" target="_blank">Monte-Carlo
+analysis for distributions in S<span style="font-variant: small-caps">edfiT</span></a>).</p>
+<p>In practice, the drawback of the Monte-Carlo method is that it may not be
+easy to really optimize each generated data set.&nbsp; In particular with
+complicated error surfaces that have flat minima, I have observed incorrect
+optimization causing errors in the parameter distributions.&nbsp; I would
+recommend the Monte-Carlo for cases when you can easily converge with the
+Marquardt-Levenberg algorithm to the global best-fit.&nbsp; In complicated cases
+of global fits where you need to switch back and forth from Marquardt-Levenberg
+and Nelder-Mead to find the optimum fit, I would advise against the Monte-Carlo
+analysis and recommend the F-statistics instead.&nbsp; (In F-statistics, you
+have control at each stage to make sure you are really optimizing the
+parameters.)&nbsp;&nbsp;</p>
+<p>For executing the Monte-Carlo analysis, you need to specify the number of
+iterations (test things out with 100, first, and then go to 1000 or more), the
+confidence level (default is 0.68), and the directory where to put the
+intermediate results.&nbsp; If you already did part of the Monte-Carlo in the
+identical configuration, you can add the new iterations to the previous
+ones.&nbsp; You will see the progress for each iteration in the S<span style="font-variant: small-caps">edPHaT</span>
+window. In the end, you will get output of the following form:</p>
+<p><img border="0" src="menubilder/statis6.jpg" width="639" height="212"></p>
+<p>Each row corresponds to one parameter.&nbsp; First is the parameter name,
+then the average bi-directional error (averaged between plus and minus
+direction), then the parameter interval comprising the central percentile (i.e.
+central 68% of the data for 1 standard deviation), and, for comparison, the
+simple standard deviation assuming that the parameter values are distributed
+normally.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>The <a name="regularization"><b>regularization</b></a> menu is for continuous
+distributions in S<span style="font-variant: small-caps">edPHaT</span>, which
+are not yet released for the most part.&nbsp; You'll be able to switch here
+between different regularization procedures (see <a href="../sedfit_help_size_distribution_options.htm#Regularization by maximum entropy principle" target="_blank">regularization
+in S<span style="font-variant: small-caps">edfiT</span></a>).&nbsp;&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

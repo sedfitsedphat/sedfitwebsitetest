@@ -1,0 +1,1099 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>The tutorial data used here is from a sedimentation equilibrium 
+experiment run to examine the relationship between a receptor protein</title>
+<style>
+<!--
+p.MsoBodyText
+	{margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Arial;
+	color:black; margin-left:0in; margin-right:0in; margin-top:0in}
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:Arial;
+	margin-left:0in; margin-right:0in; margin-top:0in}
+-->
+</style>
+</head>
+
+<body>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoBodyText"><b>
+<a name="Tutorial for the Sedimentation Equilibrium Analysis of a Protein-DNA Interaction.">Tutorial for the Sedimentation Equilibrium Analysis of 
+a Protein-DNA Interaction.</a></b></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">by Andrea Balbo</font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">This tutorial will serve as a detailed and hands-on 
+example how to analyze heterogeneous protein interactions by sedimentation equilibrium with SEDPHAT.&nbsp; It will show how to
+</font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* prepare equilibrium data files for analysis in SEDFIT</font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* setup multi-speed sedimentation equilibrium 
+experiments, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* combine them in a global analysis, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* set up links between experiments, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* determine extinction coefficients for multi-wavelength 
+analysis, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* use mass conservation, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* use different noise models, </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* deal with v-bar issues, and </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">* assess the goodness of fit.&nbsp; </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">These aspects are treated as required specifically for 
+the present example, but can be applied similarly to other systems.&nbsp; </font> </p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">It will consist of four parts:</font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">I&nbsp;&nbsp;
+<a href="#1) Experimental Details and Downloading Data">Experimental details and 
+downloading data</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 1:
+<a href="#Loading and sorting data in SEDFIT">Loading and Sorting data in SEDFIT</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">II&nbsp;
+<a href="#II)  analysis of the DNA with a non-interacting single-species model">
+Analysis of the DNA with a non-interacting single-species model</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 2: <span style="color: black">
+<a href="#Selecting the .xp files from Cell 1, and opening in SEDPHAT">Selecting 
+the .xp files from Cell 1, and opening in SEDPHAT</a></span></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 3: <span style="color: black">
+<a href="#Choosing a model and setting up parameters for a first fit">Choosing a model and setting up parameters for a first fit</a>&nbsp;&nbsp;&nbsp; </span>
+</font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 4: <span style="color: black">
+<a href="#Save configuration">Save configuration</a></span></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 5: <a href="#Run and Fit">Running and Fitting</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 6:
+<a href="#Interpreting the Result">Interpreting the Result</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">III <a href="ProteinTutorial.htm">Analysis of the protein 
+with a non-interacting single-species model</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 7:
+<a href="ProteinTutorial.htm#Selecting the .xp files from Cell 2, and opening in SEDPHAT">
+Selecting the .xp files from Cell 2, and opening in SEDPHAT</a></font></p>
+
+<p class="MsoNormal" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 8: <span style="color: black">
+<a href="ProteinTutorial.htm#Step 7:  Choosing a model and setting up parameters for a first fit">
+Choosing a model and setting up parameters for a first fit&nbsp;</a></span><span style="color: black; display: none">&nbsp;</span></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 9:
+<a href="ProteinTutorial.htm#Step 9:  Save configuration">Save configuration</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 10:
+<a href="ProteinTutorial.htm#Step 10:  Run and Fit">Running and Fitting</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 11:
+<a href="ProteinTutorial.htm#Step 11: Results for the Protein">Results for the 
+Protein</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">IV <a href="MixTutorial.htm">Analysis of the mixture</a> </font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 12:
+<a href="MixTutorial.htm#Step 12:  Selecting the .xp files from Cells 3-7 and opening them in Sedphat.">
+Loading xp-files for the Mixture</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 13:
+<a href="MixTutorial.htm#Step 13:  Choosing a model and setting up parameters for a first fit">
+Choosing a model and setting up the parameters and links</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 14:
+<a href="MixTutorial.htm#Step 14:  Save configuration">Save Configuration</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 15:
+<a href="MixTutorial.htm#Step 15: Run and Fit the Single-Site Model">Run and Fit 
+the Single-Site Model</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 16:
+<a href="MixTutorial.htm#Step 16: Run and Fit the Two-Site Model">Run and Fit 
+the Two-Site Model</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 17:
+<a href="MixTutorial.htm#Step 17: Two-site model with non-equivalent sites or cooperativity">
+Two-site model with non-equivalent or cooperative sites</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 18:
+<a href="MixTutorial.htm#Step 18: Making different baseline assumptions">Making 
+different baseline assumptions</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+<font face="arial">&nbsp;&nbsp;&nbsp; Step 19:
+<a href="MixTutorial.htm#Step 19: On the statistical error analysis">On the 
+statistical error analysis</a></font></p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">
+&nbsp;</p>
+
+<p class="MsoBodyText" style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp; </p>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoBodyText"><b>
+<a name="1) Experimental Details and Downloading Data">I) Experimental Details 
+and Downloading Data</a></b></p>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoBodyText">The tutorial data used here is from a sedimentation 
+equilibrium experiment run to examine the relationship between a receptor 
+protein and ligand, in this case DNA.&nbsp; <span style="color: black">Samples were as follows:</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="2">DNA 
+concentration &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Protein concentration</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(microM)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(microM)</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----</font></span></p>
+<p class="MsoNormal" style="text-indent: .25in; margin-left: -.25in; margin-right: -27.0pt; margin-top: 0in; margin-bottom: .0001pt">
+<span style="color: black"><font size="2">Cell # 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;15.0</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.3</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.0</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0</font></span></p>
+<p class="MsoNormal"><span style="color: black"><font size="2">Cell # 
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 15.0</font></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Three speeds were run; 16k, 24k, 
+and 30k and scans were taken at 3 wavelengths; 280, 260 and 230.&nbsp;&nbsp; 280 and 260 
+nm because these are characteristic wavelengths for the protein and DNA, 
+respectively, and 230 nm to try to get better sensitivity at lower 
+concentrations.&nbsp; Scan settings were 0.001 cm radial interval, 20 averages. [For 
+an introduction in the theory of sedimentation equilibrium, and a step-by-step protocol of how to 
+plan and conduct the experiment, see
+<a href="http://www.nih.gov/od/ors/dbeps/PBR/AUCProtocols.htm">here</a>.]</span></p>
+<p class="MsoNormal"><span style="color: black; display: none">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">An archive of the raw data is available for
+<a href="0510Tutorial2_files/XLA386.zip">download</a>.&nbsp; In order to follow along exactly with the 
+screenshots below, decompress the data into the following directory:</span><span style="color: #FF3300; font-weight:700">c:\AUCprojects\TutorialData\XLA386…</span></p>
+<p class="MsoNormal"><span style="display: none">&nbsp;</span></p>
+<p class="MsoNormal">During the experiment, the scans were set up at the XLA computer 
+as an ‘Equilibrium Method’, started with the 
+‘Start Method Scan’ button.&nbsp; The method was set up to go through all three 
+wavelengths, and to take scans in 6 h intervals.&nbsp; This way, we end up with all 
+the scans in a single directory, named 00001.ra1, 00002.ra1., etc., sequentially 
+named according to scan time, with all the different wavelengths and rotor speed 
+mixed up in this directory. </p>
+<p class="MsoNormal"><span style="color: black; display: none">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">The plan for our Sedphat 
+analysis is to first analyze the DNA (cell 1) and the protein (cell 2) 
+separately to determine MW and extinction coefficient.&nbsp; Then, using this 
+calculated data, we’ll analyze the remaining cells of the 2 components in 
+mixtures to determine stoichiometry and binding constants of the interaction.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">To begin, collect the following 
+data about the 2 component:</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">* from buffer composition (using 
+SEDNTERP):&nbsp; <u>buffer density =1.00379 </u>and <u>buffer viscosity 
+= 0.010267</u></span></p>
+<p class="MsoNormal">* <span style="color: black">from the&nbsp; amino acid composition of the protein 
+(using SEDNTERP), the <u>theoretical Mw of the protein is 8869 Da</u>, the <u>molar extinction 
+coefficient (at 280 nm) =&nbsp; 8480 </u>and the <u>partial specific volume (V-bar) 
+is 0,743</u></span></p>
+<p class="MsoNormal">* u<span style="color: black">sing the DNA sequence and 
+one of the many Oligo analysis tools on the web, we found the <u>theoretical molecular weight of the DNA = 14087 
+Da </u>and the <u>extinction coefficient 
+(at 260 nm ) of the DNA = 449100</u>. </span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><i><font size="2">We did not observe any problem with the 
+wavelength inaccuracy of the XLA, mostly probably because of the shallow 
+gradients of the absorbance profiles where we measured (always stay with maxima 
+or minima), and for 230 nm because the monochromator window is wide enough for 
+the strong emission line of the lamp to pass through even if it is one or two nm 
+off.&nbsp; (This may depend on proper wavelength calibration. If you experience 
+a problem, maybe try to do an intensity wavelength scan from 200 to 250 nm on an 
+empty cell, and determine the intensity maximum, and chose that as your far UV 
+wavelength.)</font></i>&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><span style="color: black">Summary of Step 1:&nbsp; 
+<a name="Loading and sorting data in SEDFIT">Loading 
+and sorting data in SEDFIT</a></span></b></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">(Note there is a tu<span style="color: black; display: none">torial 
+for how to do this with equilibrium data from 6-channel cells
+<a href="tutorials.htm">here</a>.)</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">In this section, it is shown how 
+all the sedimentation equilibrium (SE) scan data from our 
+run is opened in <span style="font-variant: small-caps">SEDFIT</span> , sorted 
+and saved as xp file ready for
+<span style="font-variant: small-caps">SEDPHAT</span>. <span style="font-variant: small-caps">&nbsp;SEDFIT</span> 
+will save one .xp file for each wavelength per cell, for example, 
+Cell1_280.xp&nbsp;&nbsp;&nbsp; Even if there has been several scans made during 
+the approach to equilibrium, <span style="font-variant: small-caps">SEDFIT</span> 
+will select the latest scan, which will be used here to ensure that the data is in equilibrium 
+(or as close as possible).&nbsp; When opened, each .xp 
+file contains&nbsp; several scan patterns, one for each speed.&nbsp; In addition to .xp files, .RA 
+(absorbance) files renamed to contain rotor speed and wavelength information in 
+the filename will be 
+saved.</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">
+<span style="font-variant: small-caps">SEDPHAT</span> organizes the data in 
+'Experiments', which are objects that consist of the information of the 
+experiment type, location of the data and list of data filenames, buffer 
+conditions, sample extinction coefficients, some centrifugal parameters like 
+meniscus, bottom, fitting limits, expected standard deviation, etc. </span></p>
+<p class="MsoNormal"><span style="color: black">
+<a href="http://www.analyticalultracentrifugation.com/sedphat/experiment1.htm" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedphat/experiment1.htm</a></span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;</span></p>
+<p class="MsoNormal"><u><span style="color: black">This step in more detail</span></u></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Open
+<span style="font-variant: small-caps; font-weight:700">SEDFIT</span> (not
+<span style="font-variant: small-caps">SEDPHAT</span> yet).&nbsp; From the
+<span style="font-variant: small-caps">Sedfit</span> window, go to “load new 
+files” under the Data top menu.&nbsp; </span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/loadnewfiles.png" width="227" height="367"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Select the correct file 
+location.&nbsp;</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/0510Tu4.jpg" width="358" height="263"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">O<span style="color: black">pen <u>all</u> the Ra scans 
+from the SedEquil experiment at once by highlighting the first scan, holding 
+down the “shift” key, highlighting the last Scan and clicking the Open button.&nbsp; 
+Here, we open 630 scans total (90 scans each from the 7 cells of the Sed Equil 
+run).&nbsp; </span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/0510Tu5.jpg" width="556" height="393"></p>
+<p class="MsoNormal"><span style="color: black">Load every file (answer '1' to 
+the prompt 'load every n'th file').</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><i><font size="2">[If you have collected intensity scans 
+during the experiment, then select all &quot;ri&quot; scans (there will be no &quot;ra&quot; scans).&nbsp; 
+You can also do the same thing with all &quot;ip&quot; scans if you have worked with 
+interference optics.]</font></i></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">For more detail about loading 
+data from <span style="font-variant: small-caps">Sedfit</span>, go to:</span></p>
+<p class="MsoNormal"><span style="color: black">
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm</a></span></p>
+<p class="MsoNormal">
+<span style="font-family: Times New Roman; color: black; display: none">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">The pattern below shows all 
+Absorbance scans opened at once with the meniscus (red) and the bottom (blue) limits of the 
+solution column set.&nbsp; This will be fine-adjusted later.&nbsp; Then, set the inner (left 
+green line) and outer limits (right green line) to mark the data analysis 
+limits.&nbsp; At this point, this will get the limits simply in the ballpark, 
+they will be adjusted 
+later for each experiment.&nbsp; <i><font size="2">[As an alternative, if we had 
+loaded only data from one cell, we could do the fine-adjustment here.&nbsp; This 
+can be a good idea, for example, when dealing with the intensity data.]</font></i></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Allscans2.png" width="697" height="200"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"></p>
+<p class="MsoNormal"></p>
+<p class="MsoNormal"><span style="color: black">For more details about setting 
+limits, go to:</span></p>
+<p class="MsoNormal">
+<span style="font-size: 12.0pt; font-family: Arial; color: black">
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm</a></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoBodyText">Then, from the <span style="font-variant: small-caps">
+Sedfit</span> “options” top menu go to&nbsp; “loading options” and click on “Sort Eq 
+Data&quot;.&nbsp; (More general information on this function can be found
+<a href="../sedfit_help_loading_options.htm#sorting equilibrium data">here</a>)&nbsp; </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/sortEQdata.png" width="462" height="461"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoBodyText">A files window will open, so select a location and 
+filename and hit “Save” to save and sort the Eq data.</p>
+<p class="MsoNormal">For the purpose of this tutorial, we create a directory c:\SedphatTutorial\TutorialEQData</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/fileLocations.png" width="744" height="380"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">&nbsp;A message appears asking 
+you to make xp files - always answer&nbsp;yes to this question since we're going 
+to analyze the data in SEDPHAT and use these xp files.</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/xpfiles.png" width="183" height="97"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Then, a series of windows will 
+appear.&nbsp; First, buffer density.&nbsp;</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/bufferden.png" width="274" height="128"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">If you know your buffer 
+density from <span style="font-variant: small-caps">SednTerp,</span> enter it here:</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/bufferDensity.png" width="270" height="126"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Next, partial-specific volume.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/vbar.png" width="274" height="127"></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Enter 0.743 - the value from SednTerp calculated from the 
+amino acid sequence <b>for the protein</b>.&nbsp; This does not seem right, 
+because we're dealing here with the DNA.&nbsp; However, what counts is the 
+buoyant molar mass, and entering different values for v-bar will simply shift 
+the scale of the apparent molar mass.&nbsp; Since the buoyant molar mass is 
+additive during for complex formation, the <b>apparent </b>molar masses of the 
+protein and DNA will also be additive, if we <b>calculate everything on the same 
+v-bar scale</b>. Otherwise, all species, including the complexes, will have 
+different v-bars, which is difficult to keep track of.&nbsp; The downside of 
+calculating with everything on the same vbar scale is that if we wanted to know 
+the true molar mass, the apparent molar mass has to be converted </span>using 
+the partial-specific volume of the species in question.&nbsp; The advantage is 
+that this way, we don't have to worry about the v-bar values.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Note also that here we don't really know the vbar of the 
+DNA. It could probably be predicted using the base composition, but this 
+procedure introduces errors similar to the prediction of vbar of the protein.&nbsp; 
+What we're going to do here is to simply pretend we know the vbar, and then 
+determine the apparent molar mass of the DNA and the protein.&nbsp; We'll 
+double-check later that these are reasonable values.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This issue is explained in more depth in
+<a href="http://www.analyticalultracentrifugation.com/sedphat/partspecvols.htm">
+http://www.analyticalultracentrifugation.com/sedphat/partspecvols.htm</a>.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">The next two windows ask for 
+molar extinction coefficient of A and B.&nbsp; Use the default values here.&nbsp; Later 
+while</span></p>
+<p class="MsoNormal"><span style="color: black">entering experimental 
+parameters, these values will be entered according to wave length</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp; Hit OK</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/ExtincA.png" width="271" height="125"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp; Hit OK</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/ExtincB.png" width="273" height="124"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">With all this information, <span style="font-variant: small-caps">Sedfit
+</span>will proceed and generate a series of new files comprising the 'sorted' 
+Eq data.&nbsp; This means <span style="font-variant: small-caps">Sedfit
+</span>will save into the new folder only the latest scans at each wave length for each 
+cell i.e. the ones that are in equilibrium.&nbsp; Notice that the RA files also 
+include the speed and the acquisition wavelength in the filename.&nbsp; This 
+facilitates the identification of files.&nbsp; </span></p>
+<p class="MsoNormal"><span style="color: black">The xp files will bundle the 
+scans taken from the same cell at the same wavelength into a <b>multi-speed 
+sedimentation equilibrium structure</b>, which can be loaded directly with
+<span style="font-variant: small-caps">SEDPHAT.</span></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This is how this should look like (using the Windows 
+Explorer [which you may want to set up to see the file details]):</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/EQfiles.png" width="785" height="517"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This concludes Step 1, and the preparation of the SE scans 
+for analysis.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><u><b>
+<a name="II)  analysis of the DNA with a non-interacting single-species model">
+II)&nbsp; analysis of the DNA with a non-interacting single-species model</a></b></u></p>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><span style="color: black">Summary of Step 2:&nbsp; 
+<a name="Selecting the .xp files from Cell 1, and opening in SEDPHAT">Selecting 
+the .xp files from Cell 1, and opening in SEDPHAT</a></span></b></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">We are going to load the first 
+three xp files;&nbsp; all from cell 1 (contains 1 component, DNA), each taken at a different wavelength.&nbsp; &nbsp; Load 
+each xp file by highlighting and hitting the open button.&nbsp; They will appear 
+in the <span style="font-variant: small-caps">Sedphat</span> window one at a 
+time, from left to right, as they are loaded. In this step, we will also set the 
+fitting limits and meniscus and bottom.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">In more detail:</p>
+<p class="MsoNormal"><b><span style="color: black">&nbsp;</span></b></p>
+<p class="MsoNormal"><span style="color: black"><b>First, open
+<span style="font-variant: small-caps">SEDPHAT </span></b></span></p>
+<p class="MsoNormal"><span style="color: black">From the 
+<span style="font-variant: small-caps">Sedphat</span> window, under 
+the top menu” data”, go to Load experiment.&nbsp;</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Sedphatstart.png" width="271" height="416"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Find the folder containing your Sorted EQ data.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Allxpfiles.png" width="556" height="395"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Highlight the first file (here 
+cell1_231.xp).&nbsp; After loading the first .xp 
+file, a window will appear with the v-bar value that you entered previously.</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hit 
+Ok.&nbsp; </span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Afterloading.png" width="274" height="127"></p>
+<p class="MsoNormal"><span style="color: black">You will need to re-enter this 
+data later when adding experimental parameter values.</span></p>
+<p class="MsoNormal">After that, load the second file (cell1_260.xp) and the 
+third (cell1_280.xp).</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black; font-style:italic">
+<font size="2">An alternative way to load xp files is to open Windows Explorer and just drag and 
+drop the file cell1_231.xp into the Sedphat window.&nbsp; </font></span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Loadheading.png" width="636" height="37"></p>
+<p class="MsoNormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="0510Tutorial2_files/LoadXP.png" width="794" height="595"></p>
+<p class="MsoNormal"><i><span style="color: black"><font size="2">After the first file is open in
+<span style="font-variant: small-caps">SedphaT</span>, the window asking for the 
+global v-bar value appears. 
+</font> </span><font size="2">&nbsp;</font></i></p>
+<p class="MsoBodyText">
+<img border="0" src="0510Tutorial2_files/Afterloading.png" width="274" height="127"></p>
+<p class="MsoBodyText"><i><span style="color: black"><font size="2">Like above, 
+enter the value for the protein. </font> </span><font size="2">Hit OK. (More later on the fact that we’re looking at the 
+DNA, and the vbar is that of the protein.) Now, load, by dragging and dropping, the second data set.&nbsp; 
+This will be cell1_260.xp.&nbsp; Then load the third, which is cell1_280.xp.</font></i>&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Either way, we end up the the following picture, showing all the xp files for cell 1, at the different wavelengths.&nbsp; We 
+have loaded all 3 wavelengths from cell #1 of the Sed EQ run.&nbsp; Also notice that 
+each experiment (each wavelength), contains 3 scans, one at each speed.&nbsp; In 
+this case, 16k, 24k and 30k.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNA3xpFiles.png" width="706" height="542"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Next, adjust the meniscus and bottom 
+of the solution column if needed and adjust the inner and outer data limits, 
+making sure the outer data limit stays &lt; 1.5 OD.&nbsp; This works exactly the way as 
+in <span style="font-variant: small-caps">SEDFIT, </span>except that you click 
+with the mouse into the section on the screen of the respective experiment.&nbsp; If you’re not 
+familiar with that, please go back to the <span style="font-variant: small-caps">
+SEDFIT </span>tutorials.&nbsp; Specifically, for more details about setting limits, 
+go to:&nbsp;
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm</a></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Then, from Display,” show last 
+fit info again” or hit control –O to show identity of each file.</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/Display2.png" width="283" height="245"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">This will also show the setting 
+of the default <span style="font-variant: small-caps">SEDPHAT</span> parameters 
+in the default model (not fitted yet.)</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNAxpFilesDisBig.png" width="757" height="555">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">In order to update the 
+experiments with the settings for the fitted limits, use the function </span></p>
+<p class="MsoNormal"><span style="color: black">Data-&gt;Save All Experiments.&nbsp; </span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/ProSaveAllExp.png" width="265" height="113"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">This will copy the current 
+fitting limits into the xp files on the hard drive, so that they will be 
+restored the next time you load the experiments.&nbsp; Generally, be aware that 
+files on the hard drive and memory state of <span style="font-variant: small-caps">
+SEDPHAT</span> are different things, and changes in the
+<span style="font-variant: small-caps">SEDPHAT</span> window are not updated to 
+the files unless you explicitly request this.</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">&nbsp;</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><span style="color: black">Summary of Step 3: 
+<a name="Choosing a model and setting up parameters for a first fit">Choosing a model and setting up parameters for a first fit</a>&nbsp;</span></b><span style="color: black; display: none">&nbsp;</span></p>
+<p class="MsoBodyText">&nbsp;&nbsp;&nbsp; </p>
+<p class="MsoBodyText">After all files are loaded and you are happy with the 
+placements of the data limits, it is time to set up the configurations for the 
+analysis.&nbsp; We begin by choosing a model and then, follow along the top menu to 
+adjust global parameters, local parameters and experimental parameters.&nbsp; These <span style="color: black">describe properties of a 
+particular experiment, like loading concentration, baseline parameter, meniscus 
+position, but also the extinction coefficient at the particular wavelength 
+used.&nbsp;&nbsp;In
+<span style="font-variant: small-caps">SedPHaT</span>, the local parameters are 
+subdivided in the concentration parameters, accessed in the
+<a href="http://www.analyticalultracentrifugation.com/sedphat/local_parameters.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+Local Parameters</a> menu, and the
+<a href="http://www.analyticalultracentrifugation.com/sedphat/experiment_parameters.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+Experiment Parameters</a>, which contain those related to the physical setup of 
+the experiment.&nbsp;&nbsp;</span></p>
+<p class="MsoBodyText">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">
+For more Parameter information, go to:&nbsp;
+<a href="http://www.analyticalultracentrifugation.com/sedphat/parameters1.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedphat/parameters1.htm</a>&nbsp;&nbsp;&nbsp; </span></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">In this case, we choose the <b>
+monomer-dimer self-association model</b>.&nbsp; </span></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+This Step will also describe how to set up the links between experiments:&nbsp; 
+Since we're looking at xp files from the same cells at different wavelengths, we 
+will link all bottom parameters to one, link all concentration parameters to 
+one, and we can float all but one extinction coefficients.</p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">In detail:&nbsp; </span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Go to the function 
+Model-&gt;Monomer-Dimer Self-Association</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/ProModel.png" width="354" height="187"></p>
+<p class="MsoNormal"><span style="color: black">(Don’t panic - we’ll fit only a 
+single species, but are going to use an interacting model in order to exploit 
+the mass conservation features and express the fit in molar concentrations.)</span></p>
+<p class="MsoNormal"><span style="color: black; display: none">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">Then, open the parameter box by 
+using the menu function “Global Parameters”:&nbsp; </span></p>
+<p class="MsoNormal"><span style="color: black">
+<img border="0" src="0510Tutorial2_files/ProGlobParaTop.png" width="262" height="42"></span></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/0510Tu8.jpg" width="377" height="253"></p>
+<p class="MsoNormal"><span style="color: black">Here, we enter the theoretical 
+MW of the monomer, in this case DNA, turn on the mass conservation (check the 
+box to the left of ‘Mass Conservation’) . Default the rest. &nbsp; <b>Turn off 
+the Dimer (un-check) and enter 0 for log(Ka), this will change this model to 
+represent the monomer only.&nbsp; </b>The S values are insignificant, 
+we are looking at equilibrium data. (just make sure they are not floated, i.e. 
+make sure they are un-checked).&nbsp;&nbsp;&nbsp; Hit OK.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><i><font size="2">[In future versions (4.0 and later), 
+there will be an extra model for a monomeric species, which does not require 
+using the monomer-dimer model at log(Ka)=0.&nbsp; Otherwise, it will have the 
+same functionality for the present purpose.]</font></i></p>
+<p class="MsoNormal"><img border="0" src="0510Tutorial2_files/DNATut1.jpg" width="348" height="267"></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+<span style="font-family: Times New Roman; color: black; display: none">&nbsp;</span></p>
+<p class="MsoNormal"><span style="color: black">Next, use the function Local 
+Parameters from the top menu.</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/0510Tu7.gif" width="259" height="42"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">In the local parameters, the 
+concentration of the single species is entered for each experiment through a 
+series of windows.&nbsp;&nbsp; Since we are looking at the same AUC cell (cell 1) here, we 
+can link the concentrations of experiments # 2 and # 3 to exp #1 in the following 
+windows when asked.&nbsp; This tells the 
+program to take only a single value for the concentration of cell 1.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This is how this is done:&nbsp; Start with Experiment # 1.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local1.png" width="273" height="124"></p>
+<p class="MsoNormal">
+Experiment 1 will serve to hold our concentration parameters, so we will not 
+redirect it:&nbsp; 'concs of exp #1 linked to exp # 1'</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local2.png" width="273" height="126"></p>
+<p class="MsoNormal">Next, <span style="color: black">enter the loading 
+concentration of DNA (an estimate will do at this stage). </span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local3.png" width="269" height="124"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Link the concentration of exp # 
+2 to experiment #1 from the following 2 windows:</span></p>
+<p class="MsoNormal">For Experiment # 2:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local4.png" width="271" height="126"></p>
+<p class="MsoNormal">Specify that the 'concs of exp#2 will be linked to exp# 1'</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local5.png" width="274" height="126"></p>
+<p class="MsoNormal">As mentioned above, this will direct <span style="color: black"> <span style="font-variant: small-caps">
+SEDPHAT</span> </span>that exp# 2 will not have an independent concentration 
+parameter, since it is the same cell as exp# 1.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Similarly, l<span style="color: black">ink the 
+concentration of exp # 3 to experiment #1:</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local6.png" width="273" height="127"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/local7.png" width="273" height="125"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Now, the individual experimental parameters for each 
+experiment will be set up.&nbsp; Go to Experimental Parameters on the top menu.</span>&nbsp;
+<img border="0" src="0510Tutorial2_files/heading.png" width="497" height="21"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This window will appear: </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/editexp1.png" width="272" height="127"></p>
+<p class="MsoNormal">Let's start with the first experiment.&nbsp; Hitting OK here will display the parameter window 
+(below) for 
+exp # 1.&nbsp; </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/expara1.png" width="438" height="390">l
+</p>
+<p class="MsoNormal">Look at the lower section for the extinction coefficients:&nbsp; Experiment # 1 is at <span style="color: black">&nbsp;wavelength 
+230 - enter a starting guess.&nbsp; Just from looking at the raw scans, it 
+appears that the 230 absorption is little more than 1/2 of that at 260 nm, so we 
+enter half the value of the extinction coefficient at 260 nm.&nbsp; But we don't 
+know it exactly, therefore we will check this parameter, so that it will be 
+floated and optimized in the fit. </span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Next, look at the middle section on the left dealing with 
+the rotor<span style="color: black">:&nbsp; we will fit for “mass cons.w.rotor stretch&quot;.&nbsp; 
+This will take into account that at different rotor speeds the rotor stretches, 
+which changes slightly the mass balance across the cell. </span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"> <span style="color: black">In the middle, <b>check the 
+field for the bottom</b>.&nbsp;&nbsp;Fitting for the bottom position is very 
+important, since mass conservation analysis integrates from meniscus and bottom, 
+but we don't know exactly where the bottom of the cell is.&nbsp; <i>
+<font size="2">[If you don't use mass conservation analysis (see the global 
+parameter window shown above), then you don't need to float for the bottom of 
+the cell.]&nbsp; </font></i> </span>These issues are described in
+<font face="Verdana, Arial, Helvetica"><font size="2">
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15003564">
+Analytical Biochemistry 326:234-256</a>&nbsp; </font><font face="Verdana" size="2">(<a href="http://www.analyticalultracentrifugation.com/images/SedimentationEquilibriumAnalysis.pdf">preprint</a>). </font></font>
+We don't fit for the meniscus position, because it is far less important for 
+mass conservation analysis.</p>
+<p class="MsoNormal"> &nbsp;</p>
+<p class="MsoNormal">Double-check the following parameters: </p>
+<p class="MsoNormal">* <span style="color: black">V-bar value 0.743&nbsp; Note 
+that the v-bar value is that of the <b>protein </b>(see above)</span></p>
+<p class="MsoNormal">* <span style="color: black">Buffer density 
+1.003790</span></p>
+<p class="MsoNormal"><span style="color: black">* Centerpiece: 2 – 
+(double-sector centerpiece)</span></p>
+<p class="MsoNormal">* P<span style="color: black">athlength: 1.2 (standard 12mm thickness centerpiece)</span></p>
+<p class="MsoNormal">* <span style="color: black">Rotor type: 8 (8-hole rotor An 50 TI)</span></p>
+<p class="MsoNormal">* <span style="color: black">Fit 
+baseline is checked as default, but the other fits i.e. RI noise, TI noise, are 
+options.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">After parameters are in place, hit the OK button and these 
+windows will appear:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/setrange1.png" width="270" height="127"></p>
+<p class="MsoNormal">
+OK them both.&nbsp; This is the default variation allowed for the bottom 
+position. </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/setrange2.png" width="272" height="126"></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">That will 
+bring us to exp #2. </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/editexp2.png" width="273" height="128"></p>
+<p class="MsoNormal">As before, the experimental parameters window for 
+experiment # 2 will appear.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/expara2.png" width="435" height="393"></p>
+<p class="MsoNormal"><span style="color: black">For exp #2 at 260 nm, the 
+theoretical extinction coefficient&nbsp;is entered, as found from the DNA sequence.&nbsp;
+<b>It is fixed (not checked)</b>.&nbsp; This is because we know this value from the 
+sequence, and will use it&nbsp;to scale the concentration values. <i>
+<font size="2">[Later, the 
+concentration value will be floated in the global fit.&nbsp; We cannot float 
+simultaneously the concentrations and all extinction coefficients.&nbsp; Since we’ll 
+linked the concentration values of all xp files, we can float all <b>but one </b>
+extinction coefficient.&nbsp; Since we have to keep one extinction coefficient 
+fixed, and the obvious choice is to do this in the experiment at 260 nm, since 
+here we have a theoretical extinction coefficient value.]</font></i></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">For the bottom:&nbsp; Put a checkmark next to the bottom 
+field to fit <span style="color: black">for this parameter.&nbsp; Note, however, in this case, we 
+<b>redirect 
+the bottom to exp #1 </b>(since it is the same cell) by checking the box &quot;redirect mem./bot.&quot;and entering 1 in the box underneath it.&nbsp; 
+This uses the constraint that one cell has only one bottom position, and we 
+don't need more then one parameter to describe it.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">Here also, we fit for mass 
+cons.w.rotor speed.&nbsp; And a</span>gain, also double-check the following 
+parameters: </p>
+<p class="MsoNormal">* <span style="color: black">V-bar value 0.743&nbsp; Note 
+that the v-bar value is that of the <b>protein </b>(see above)</span></p>
+<p class="MsoNormal">* <span style="color: black">Buffer density 
+1.003790</span></p>
+<p class="MsoNormal"><span style="color: black">* Centerpiece: 2 – 
+(double-sector centerpiece)</span></p>
+<p class="MsoNormal">* P<span style="color: black">athlength: 1.2 (standard 12mm thickness centerpiece)</span></p>
+<p class="MsoNormal">* <span style="color: black">Rotor type: 8 (8-hole rotor An 50 TI)</span></p>
+<p class="MsoNormal">* <span style="color: black">Fit 
+baseline is checked as default, but the other fits i.e. RI noise, TI noise, are 
+options.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Hit OK and this window appears:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/attention.png" width="321" height="98"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Hit OK, to get to exp #3</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/editexp3.png" width="275" height="129"></p>
+<p class="MsoNormal">
+and the parameters window.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/expara3.png" width="438" height="391"></p>
+<p class="MsoNormal"><span style="color: black">For exp #3, the extic coeff is 
+entered at about ½ that of wavelength 260 (exp#2), a starting estimate obtained 
+just from looking at the scans (we get about half the OD values at corresponding 
+radii and rotor speeds).&nbsp; We fit for mass conservation and again,&nbsp; 
+the bottom fitting is directed to exp #1.&nbsp; Specify everything else as shown 
+and described above.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Hit OK</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/attention.png" width="321" height="98"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b><span style="color: black">Summary of Step 4:&nbsp; 
+<a name="Save configuration">Save configuration</a></span></b></p>
+<p class="MsoNormal"><span style="color: black">The combination of a set of 
+experiments, the model, the model parameters, and the links between the 
+experiments and shared parameters is termed 'configuration'.&nbsp; By saving 
+configuration files, we have a starting point to later change models or re-enter 
+new parameters.</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">For more info about configurations, go to:<span style="font-size: 12.0pt; font-family: Arial; color: black"><a href="http://www.analyticalultracentrifugation.com/sedphat/configurations.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">http://www.analyticalultracentrifugation.com/sedphat/configurations.htm</a></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">To do this, from the top &quot;Data&quot; 
+menu, go to &quot;save current configuration as&quot;. </span></p>
+<p>
+<img border="0" src="0510Tutorial2_files/Saveconfig.png" width="278" height="401"></p>
+<p class="MsoNormal">Select a folder and name for this initial configuration.</p>
+<p class="MsoNormal"><span style="color: black">&nbsp;<img border="0" src="0510Tutorial2_files/configFile.png" width="559" height="386"></span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">&nbsp;Always answer &quot;Yes&quot; to 
+this question</span></p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/newXPfiles.png" width="180" height="97"></p>
+<p class="MsoNormal">
+(it will leave the old xp files intact - just in case we need to come back to 
+them at a later point, perhaps they are being used by a different 
+configuration).</p>
+<p class="MsoNormal">As shown in the Windows Explorer, this function creates a 
+bunch of files:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/TutConfigsfile.png" width="793" height="278"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">These are a file &quot;*.sedphat&quot; 
+that describes the complete state of the analysis.&nbsp; The information in the sedphat-file 
+are the paths of all the experiment files (xp-files) loaded, the global 
+parameters like vbar(20), and all links between local parameters of the 
+experiments. It will also automatically write a &quot;*.sedphat_PAR&quot; file with the 
+type and global parameters of the current model.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Because sometimes you may want to make different analyses 
+of the same data with different models, and because different models may change 
+the local parameters stored in the xp-file (like meniscus position, etc.) it is 
+advisable to make a new copy of the current xp-files for each configuration.&nbsp; 
+That way, the complete information about the analysis can be stored in a 
+reproducible way, and several alternative analyses of the same data may 
+co-exist.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="color: black">You can load a <u>previously saved</u> 
+configuration into Sedphat by dragging-and-dropping a 'sedphat' file into the 
+Sedphat window <u>from Explorer.</u>&nbsp;&nbsp; Sedphat will automatically load 
+the 'sedphat'-file and its associated 'sedphat_PAR' data.&nbsp; </span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">After saving, have a look at the title bar of the <span style="font-variant: small-caps">Sedphat </span>
+window:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/headingName.png" width="473" height="37"></p>
+<p class="MsoNormal">It will now reflect the name of the current configuration. Note that much of the information stored relies 
+on the exact location of your xp-files and the sedphat_PAR file on your 
+computer.&nbsp; If you move your analysis between different computers, it is best to 
+use exactly the same directory structure.&nbsp; Alternatively, you can edit the 
+sedphat files with the notepad and adjust the pathname of the xp and the 
+sedphat_PAR files.</p>
+<p class="MsoNormal"><b>Do not use directories with white-space characters, e.g. 
+&quot;My Documents&quot;, &quot;XLA DATA&quot; or the desktop. The keyboard shortcut is control-W.</b>
+</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNAadjDisBig.png" width="736" height="558"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">You can load a previously saved configuration into 
+<span style="font-variant: small-caps">Sedphat </span>by dragging-and-dropping a 'sedphat' file into the 
+<span style="font-variant: small-caps">Sedphat</span> window from Explorer<u>.</u>
+<span style="font-variant: small-caps">Sedphat</span> will automatically load the 'sedphat'-file and its associated '<span style="font-variant: small-caps">sedphat</span>_PAR' 
+data.&nbsp; OR....go to&nbsp;&nbsp; <b>Data &gt;&gt;read configuration from file. </b>&nbsp; 
+This is a way to restore a previous <span style="font-variant: small-caps">SedphaT</span> configuration and exactly reproduce 
+an analysis.&nbsp; It reloads the data, the model, the global parameters, and 
+restores all links between the data sets.&nbsp; Be aware that the file structure is 
+important (see above), otherwise <span style="font-variant: small-caps">SedphaT</span> won't find the data. The keyboard 
+shortcut is control-C</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><i><font size="2">[Note addition from version 4.0 and 
+later:&nbsp; There is a new function &quot;copy all data and save as new config&quot;, 
+which will create copies of all the raw data files, xp files and configuration 
+files, and store them in a new folder without absolute path names.&nbsp; This 
+makes it easier to document, move, and archive an analysis.]</font></i></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><b>Summary of Step 5:&nbsp; <a name="Run and Fit">Run and Fit</a></b></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Background: <span style="font-variant: small-caps">SedPHaT</span> makes 
+the same distinction between &quot;Run&quot; and &quot;<a href="http://www.analyticalultracentrifugation.com/sedphat/fit.htm" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">Fit</a>&quot; as in <span style="font-variant: small-caps">SedfiT</span>.&nbsp; In brief, 
+the Run command executes a model, i.e. it performs a simulation using the parameters 
+values that 
+were entered as starting guesses in the global, local, and experimental parameters section.&nbsp;&nbsp;It does 
+optimize all linear parameters, which do not require starting guesses, but does not optimize the (usually more 
+difficult) non-linear parameters.&nbsp;&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The importance of the distinction between &quot;Run&quot; and &quot;Fit&quot; is that for non-linear regression, one needs 
+good starting estimates for the nonlinear parameters.&nbsp; Without them, the fit can 
+frequently converge in local minima, and the best-fit may not be found.&nbsp; There 
+is no good alternative to just ('manually') exploring different parameter 
+ranges, and position them so that they'll be able to converge to the overall 
+best fit.&nbsp;&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">In the process of exploring the parameter space, you will 
+need to assess what the current parameter values do to the model.&nbsp; This is done 
+with the Run command.&nbsp; See also
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_run.htm#The difference between the Run and the Fit command:" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+The difference between 'run' and 'fit' in  </a>
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_run.htm#The difference between the Run and the Fit command:">
+<span style="color: #009999; text-decoration: underline">sedfit</span></a> </p>
+<p class="MsoNormal">and http://www.analyticalultracentrifugation.com/sedphat/run.htm</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">In <span style="font-variant:small-caps">SedPHaT</span>, 
+you can start the non-linear regression for a single experiment or for all of 
+them.&nbsp; Limiting the regression can sometimes be useful at a first stage in order 
+to converge parameters for which a particular data set has very significant 
+information without swamping it with the data from all other experiments.&nbsp; It 
+can also be useful to converge the local parameters (such as local 
+concentrations), before doing a global fit, to avoid poor initial estimates of 
+local parameters throw off the global parameters.&nbsp;</p>
+<p class="MsoNormal">You can interrupt a fit by pressing any key. This will 
+execute the model for the so far best parameters found. (Don't press a key twice 
+in a short interval, in order not to abort the calculation of the so far best 
+model.)</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This is how this is applied here:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">From the top menu, execute a global run from:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/globalrun.png" width="156" height="59"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Below are the results of the Global run.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNAglobRunBig.png" width="735" height="559"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">(If the window does not look like that, try to use the 
+function Display-&gt;Data Range, which zooms in to show the fitted data best.)</p>
+<p class="MsoNormal">This is obviously not a great fit, but it is good enough 
+for what we are looking for at this stage:&nbsp; The fitted curves (lines) have 
+shapes similar as the data.&nbsp; Even though they don't match well, yet, this 
+is a good starting point.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Now we will do a fit:</p>
+<p class="MsoNormal"><i><font size="2">[It can be advantageous to begin with a Nelder-Mead simplex optimization, 
+by making sure that 'Marquardt-Levenberg' in the Fitting Options is unchecked.</font></i></p>
+<p class="MsoNormal">
+<i><font size="2">
+<img border="0" src="0510Tutorial2_files/MandSfit.png" width="303" height="107"></font></i></p>
+<p class="MsoNormal"><i><font size="2">For more fitting information, go to: http://www.analyticalultracentrifugation.com/sedphat/fit.htm]</font></i></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Select the function Global Fit from:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/globalFit.png" width="147" height="58"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This will start the fit, during which you will notice the 
+parameter numbers change.&nbsp; In particular, you can look at the 'locrmsd' 
+fields and see the error of fit decrease.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><i><font size="2">[During the fit, if you have specified a configuration filename,  a new 
+set of &quot;*.<span style="font-variant: small-caps">sedphat</span>&quot; files and &quot;*.<span style="font-variant: small-caps">sedphat</span>_PAR&quot; 
+files (and copies of the xp-files) was generated that stores the so far best 
+intermediate results during the optimization.&nbsp; These files will be preceded 
+by '~'.&nbsp; This enables the
+<a href="http://www.analyticalultracentrifugation.com/sedphat/data1.htm#Configuration Functions" target="_parent" style="color: #009999; text-decoration: underline; text-underline: single">
+restoration</a> of the so far best fit in case the optimization crashes later on 
+or is lost for some reason.]</font></i></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">1st Fit results:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNAfrstFITBig3.png" width="736" height="559"></p>
+<p class="MsoNormal">Not a bad fit at all.&nbsp; The global reduced chi-square 
+number is 1.26.&nbsp; In the usual meaning, it would be 1.00 for a perfect fit, 
+but this depends on the correct estimation of the experimental noise (the field 
+in the upper left corner of the Experiment input boxes), which we usually don't 
+know very well. Therefore, we use this only as s relative measure.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">But try to make it better by fitting for RI 
+noise.&nbsp; This is time dependent/radial 
+independent noise that takes into consideration that the baseline changes with 
+rotor speed but generally remains flat.&nbsp; The reason for choosing this 
+option here is the fact that the residuals of the first experiments are all 
+flat, but offset vertically relative to each other, indicating a possible 
+baseline issue.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">To do this, from the experimental parameter top menu, edit all 3 
+experiments and fit for RI noise in each experimental parameters box:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/RInoise2.png" width="439" height="396"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Starting another global fit produces these results:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNAfitwRInsBig.png" width="735" height="560"></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">A better fit here...notice the reduced chi squared is now 
+1.139, and the rms error 
+values are a bit better.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Now, to be sure that we have found the global best-fit, we 
+switch to the Marquardt-Levenberg method: </p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/MLtoggle.png" width="307" height="109"></p>
+<p class="MsoNormal">(leave the “Fit M and S” 
+alone - this should remain checked).&nbsp; The Marquardt-Levenberg method has a 
+way to better home in to the best-fit when close to the optimum. </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This results in:</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/DNA3rdFitwMLbig.png" width="735" height="558"></p>
+<p class="MsoNormal">This is virtually the same as before in the Simplex fit, 
+showing that we are in the overall global best-fit.&nbsp;&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">We will save this result to the hard-drive, so that we can 
+always restore this fit.&nbsp; Choose 'update current configuration':</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/updateConfig.png" width="275" height="402"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Yes!&nbsp; Update the xp files also.</p>
+<p class="MsoNormal">
+<img border="0" src="0510Tutorial2_files/updateXPconfig.png" width="257" height="112"></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Step 6:&nbsp; <a name="Interpreting the Result">
+Interpreting the Result</a></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">There are a couple of things we are looking for.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">1) We notice the <b>fit quality </b>is excellent.&nbsp; The 
+residuals are pretty random and small. This will give us confidence in the 
+numbers.&nbsp; To be sure, we should also conduct a rigorous analysis of the 
+error limits for each parameter - and we'll show how to do that in the analysis 
+of the mixture - but the model of a single monomeric species is simple enough 
+that we won't need to worry about it at this point. </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Another interesting point to note here is that there is no 
+reason to believe mass conservation is not valid. This supports using mass 
+conservation also when analyzing the mixture.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">2) Look at the <b>Mw value </b>of 23.9 kDa.&nbsp; This is 
+quite a bit higher than the initial estimate, which we took as the true Mw from 
+base sequence.&nbsp; However, this is only an <b>apparent</b> molar mass, on the 
+v-bar scale of 0.743.&nbsp; The buoyant molar mass is 23.9*(1-0.743*1.0038) = 
+6.07 kDa.&nbsp; This is the only relevant quantity for sedimentation. Knowing 
+that the true molar mass of the oligo is 14.1 kDa, we can calculate the vbar as 
+vbar = (1/1.0038)*(1-6.07/14.1) = 0.57 ml/g, which is in the range of vbar 
+values known for nucleic acids.&nbsp; (The lower value 0.57 ml/g means nucleic 
+acids are much more dense, i.e. they displace less water and have lower 
+buoyancy, and therefore their apparent mass on a v-bar scale of the protein 
+appears much higher than their true mass.)</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">For the interaction to be studied, the apparent mass of 
+23.9 kDa will be the value we use, in conjunction with the v-bar value of the 
+protein of 0.743.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">3) The <b>extinction coefficients </b>are 449100 OD/Mcm at 
+260 nm (this was fixed to the theoretical value), 186,400 OD/Mcm at 230 nm, and 
+269,600 OD/Mcm at 280 nm.&nbsp; These values will also be used as fixed prior 
+knowledge for the multi-wavelength analysis of the mixture of DNA with protein.&nbsp; </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">
+<a href="#Tutorial for the Sedimentation Equilibrium Analysis of a Protein-DNA Interaction.">
+go to top</a></p>
+<p class="MsoNormal"><a href="ProteinTutorial.htm">go to next step - analysis of 
+the protein with a non-interacting single-species model</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Error Contours</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_confidence_intervals.htm" target="">Confidence&nbsp;Intervals</a>&nbsp;]</nobr> <nobr>[&nbsp;Error&nbsp;Contours&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_monte_carlo_simulations.htm" target="">Monte&nbsp;Carlo&nbsp;Simulations</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="11155"
+-->
+</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate Error Contour Maps</p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Statistical Analysis | s,M rmsd Contour</p>
+<p>Options | Statistical Analysis | s1,s2 rmsd Contour</p>
+<p>Options | Statistical Analysis | K Contour</p>
+</font></b>
+<p>These functions automate the repeated fitting required in the evaluation of
+the statistical accuracy of the best-fit parameters via <a href="sedfit_help_fstatistics.htm">F-statistics</a>.
+The principle behind the F-statistics error analysis is constraining one
+parameter (the one for which the error estimates are being calculated) while
+optimizing (floating) all others to achieve the best-fit given this one
+constraint. F-statistics can predict the increase of the sum of squares that is
+associated e.g. with one standard deviation contour (depending on the number of
+data points and the overall best-fit sum of squares). This procedure, as
+described in <i>Bevington: Data Reduction in the Physical Sciences</i> and in <i>Press
+et al.: Numerical Recipes in C</i>, incorporates correlation of the fit
+parameters into the error estimates, and does not make assumptions about the
+shape of error contour map.</p>
+<p>The S<span style="font-variant: small-caps">edfit</span> functions can be helpful to calculate 2-dimensional confidence
+intervals. The functions <i>s,M rmsd contour</i>, and <i>s1,s2 rmsd contour </i>can
+trace a given confidence limit (to be specified by the user as a given rmsd
+level) in a 2-parameter space, floating all parameters other than s and M (or
+s1, and s2, respectively). Also, limits for the parameter range and the
+resolution for which the map is examined have to be provided.&nbsp; If the rmsd for
+tracing is specified as 0, all best-fits rmsd in the entire grid of the
+specified grid are calculated.</p>
+<p>The <i>K contour</i> function is analogous to the other contours, but
+calculates the rmsd only for a given grid of K-values (association constants),
+while floating all other parameters.</p>
+<p>The results are stored as a ASCII table in the specified file for further
+analysis.</p>
+<font COLOR="#ff0000">
+<p>Please Note: These functions are very time-consuming and the independent
+determination of the confidence level is required (the <a href="sedfit_help_calculator.htm">F-statistics
+calculator </a>function can be used). Also, while the algorithm that traces a
+given confidence level in the error surface can be extremely useful in reducing
+the computation time, it sometimes can loose the trace, or leave the trace
+incomplete. This can result in reduced apparent confidence intervals. <b>For
+these reasons, these functions should only be considered as aides, automating
+part of the computationally intensive and repetitive fitting procedures. Control
+calculations should be performed, and critical evaluation is absolutely crucial.</p>
+</b></font><!--mstheme--></font></body>
+
+</html>

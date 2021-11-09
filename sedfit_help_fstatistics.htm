@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>F-statistics</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="F Statistics">F Statistics</a></p>
+</font>
+<p>For analyzing the quality of fits obtained with different parameter values,
+the variance of the fit (chi-square) is a very useful statistical quantity. The
+ratio of the chi-square of two fits is distributed like a Fisher (F)
+distribution. Therefore, this distribution can be used to judge if a given
+variance increase (e.g. after change of a parameter value) has a magnitude in a
+range that could occur just by statistical error in the data (assuming normally
+distributed noise), or if the variance increase is significant.</p>
+<p> S<span style="font-variant: small-caps">edfit</span>  has a <a href="sedfit_help_calculator.htm#Calculate F-distribution">F-statistics
+calculator</a> in the Options menu.&nbsp; The calculator is used in the <a href="sedfit_example.htm">example
+for using S<span style="font-variant: small-caps">edfit</span></a> for testing
+the significance of a contaminating species, and the confidence limit of an
+s-value.&nbsp;</p>
+<p>The principle mostly adopted when using the F-statistics for parameter error analysis is to
+constrain one parameter (the one for which the error estimates are being
+calculated) while optimizing (floating) all others to achieve the best-fit given
+this one constraint.&nbsp; Obviously, because of the constraint in the first
+parameter, the chi-square of the distribution increases.&nbsp; F-statistics can predict the increase of the sum of squares that
+is associated e.g. with one standard deviation contour of the parameters.&nbsp;
+This will depend also on the number of data points and the overall best-fit sum
+of squares.&nbsp; This procedure, as described in <i>Bevington: Data Reduction
+in the Physical Sciences</i> and in <i>Press et al.: Numerical Recipes in C</i>,
+incorporates correlation of the fit parameters into the error estimates, and
+does not make assumptions about the shape of error contour map. The F-statistics
+is implemented as described in Johnson &amp; Straume (<a href="#ref1">ref1</a>).</p>
+<p>A second usage for the F-statistics is to decide if the signal contribution
+from a species is significant or not.</p>
+<i><u>
+<p>See also:</u> <a href="sedfit_help_calculator.htm">calculate variance ratios</a>,
+</i><a href="sedfit_help_confidence_intervals.htm">calculate confidence
+intervals</a>, <a href="sedfit_help_error_contours.htm">make error contour maps</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Runs Test">Runs Test</a></p>
+</font>
+<p>The display after simulation and during the fitting procedure contains the
+runs-test. It gives a measure, Z, for how random the residuals are, based on the
+sequence of the sign (positive or negative) of the residuals. The Z-value gives
+the number of standard deviations by which the given number of runs is
+statistically different from the expectation value for normally distributed
+noise. For Z-values smaller than 2-4, the residuals are pretty random, for very
+large Z-values the residuals are non-random, and have systematics (runs or
+positive or negative residuals).</p>
+<p>This feature is useful to assess the statistical quality of the fit, in
+particular, when the large number of scans does obscure their inspection for
+randomness.</p>
+<p>This test is implemented as described in ML Johnson, Methods Enzymol 1992,
+(Numerical Methods volume 210) p 96.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font size="1"><b>References:</b></font></p>
+<p><font size="1">(<a name="ref1">1</a>) </font><font size="1">M.L. Johnson and
+M. Straume (1994). Comments on the analysis of sedimentation equilibrium
+experiments.&nbsp; In: Modern Analytical Ultracentrifugation (Schuster TM and
+Laue TM, eds) Birkhauser, Boston, p.37-65</font></p>
+<!--mstheme--></font></body>
+
+</html>

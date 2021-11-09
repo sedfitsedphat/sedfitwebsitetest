@@ -1,0 +1,452 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Size Distribution Options</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Up</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="43570" endspan -->
+</p>
+<h1>size-distribution options&nbsp;</h1>
+<p>A detailed introduction of the <a href="sizedistributions.htm#The principle of regularization">principle
+of regularization</a>, the <a href="sizedistributions.htm#Maximum entropy regularization">maximum
+entropy method</a>, the <a href="sizedistributions.htm#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">differences
+between maximum entropy and Tikhonov-Phillips regularization</a> and other
+topics are presented in the <a href="sizedistributions.htm">size-distribution
+tutorial</a>.&nbsp;</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/sedfit140.gif"></p>
+<p><nobr>The following options are available for size-distributions:</nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0"><nobr>
+<a href="#Transforming s-distributions">Transformation of sedimentation
+coefficient into Stokes radius distributions</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0"><nobr>
+<a href="#Tikhonov-Phillips regularization using 2nd derivative">Regularization
+by Tikhonov-Philips 2nd derivative</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0"><nobr><a href="#Regularization by maximum entropy principle">Regularization
+by maximum entropy</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0">
+<a href="#show both regularizations">Show both regularizations</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0">
+<a href="#use prior probabilities">Use Prior Probabilities</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom:0">
+<a href="#Prior Discrete Species">Prior Knowledge of Discrete Species</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Integrate Distribution">Integrate Distribution</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#use integration ranges from file">use c(s) integration ranges from 
+file</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#transform differntial to integral distribution">Transform differential to integral distribution</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#back-transform g(s*) to boundary model">Transform g(s*) to direct
+boundary model</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#transform c(s) to c(M)">
+transform c(s) to c(M)</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#compute with multiple threads">compute with multiple threads</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#suppress baseline correlation in Max Ent">suppress baseline 
+correlation in Max Ent</a></p>
+<p><a name="Transforming s-distributions"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Transforming
+s-distributions</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Transform s-Distribution to
+r-Distribution</p>
+</font></b>
+<p>This function allows several transformations of a previously calculated
+sedimentation coefficient distribution (e.g. obtained from ls-g*(s)). These can
+only be calculated in sequence:</p>
+<p>1) s(app) into s(20)&nbsp; [this can be done separately with the
+<a href="sedfit_help_calculator.htm#s20w from sxp">calculator function</a>]</p>
+<p>2) c(s20) into a distribution of hydrodynamic radii c(R). (since s~r^2, a
+correction factor of 2r will be inserted for transformation of the integral ds
+into dr) [this transformation from Stokes radii to s-values can be done 
+separately using a <a href="sedfit_help_calculator.htm#Rh(s)">calculator 
+function</a>]</p>
+<p>3) corrections for a radius-dependent signal contribution (such as caused by
+Mie scattering).</p>
+<p>For the correction of the signal, a file with the signal as a function of
+hydrodynamic radius must be provided, expressed in a power-series</p>
+<p>signal(r) = a0 + a1*r + a2*r^2 + a3*r^3 + ... (with r in units of nm)</p>
+<p>The format of the file should be a simple list of coefficients:</p>
+<p>a0</p>
+<p>a1</p>
+<p>a2</p>
+<p>with as many lines (and numbers) as coefficients to be taken into account.
+The distribution c(R) will be divided by this function signal(r), to give
+relative concentrations as a function of Stokes-radius R.</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Tikhonov-Phillips regularization using 2nd derivative">Tikhonov-Phillips
+regularization using 2nd derivative</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Regularization by Tikhonov-Phillips 2nd
+derivative</p>
+</font></b>
+<p>The details of this technique are also outlined in the <a href="sizedistributions.htm#The principle of regularization">introduction
+to size-distributions</a>.&nbsp; In brief, in contrast to maximum entropy, the Tikhonov-Phillips method implemented here
+uses a second-derivative operator for regularization.</p>
+<font SIZE="2">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image6.gif" width="382" height="42"></p>
+</font>
+<p>This represents a constrained fit, where the first term represents the
+unconstrained fit with a distribution, e.g. <i>c(M)</i>, and the second term is
+the second derivative constraint. The constraint is controlled by the parameter <font FACE="Symbol">a</font>,
+which can be adjusted with the use of <a href="sedfit_help_calculator.htm#Calculate F-distribution">F-statistics</a>.&nbsp;
+The use of this constraint allows one to select the smoothest distribution of
+all distributions that lead to a fit that is statistically indistinguishable from the
+unconstrained case. This strategy is frequently used to suppress noise in the
+inversion of Fredholm integral equations, using <i>a priori</i> information that
+the sought distribution is smooth.&nbsp; Please note the <a href="sizedistributions.htm#The difference between smoothing and regularization">difference
+between smoothing and regularization</a>.&nbsp;</p>
+<p>This prior knowledge of smoothness of the distribution can be well justified
+for <a href="sedfit_help_ls-gs.htm"> g*(s) distributions</a> because of the broadening of the ‘true’
+sedimentation coefficient distribution g(s) via diffusion.&nbsp; This diffusional
+broadening can be imagined as a convolution of the true distribution by a
+Gaussian.&nbsp; Therefore, we know that this apparent sedimentation coefficient
+distribution must be smooth, because Gaussian-shaped for a single species, or a
+superposition of Gaussians for several species.</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: This regularization seems to
+work better with ls-g*(s) than the maximum entropy regularization. Therefore,
+this option is switched on when using the ls-g*(s) model.
+</font></p>
+<p>&nbsp;</p>
+</i>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Regularization by maximum entropy principle">Regularization
+by maximum entropy principle</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Regularization by Maximum Entropy</p>
+</font></b>
+<p>In brief, the <a href="sizedistributions.htm#Maximum entropy regularization"> maximum entropy principle</a> can be used for regularization of a
+distribution analysis by executing a constrained fit:</p>
+<font SIZE="2">
+<p><img SRC="images/Image5.gif" width="413" height="42"></p>
+</font>
+<p>The first term represents the unconstrained linear Lamm equation fit with a
+distribution, e.g. <i>c(M)</i>, and the second term is the maximum entropy
+constraint. The constraint is controlled by the parameter <font FACE="Symbol">a</font>,
+which can be adjusted with the use of <a href="sedfit_help_calculator.htm#Calculate F-distribution">F-statistics</a>.&nbsp;</p>
+<p>The specific form of the maximum entropy functional is derived from the
+statistical (Bayesian) consideration that in the absence of any prior knowledge
+on the distribution <i>c(M)</i>, all the <i>M</i> values are <i>a priori</i>
+equally probable. The form <i>clog(c)</i> can be shown by combinatorial methods
+to be proportional to the number of microstates that can form the macroscopic
+distribution <i>c(M)</i>. This can also be related to the informational entropy
+introduced by Shannon. For a more complete description, see the <a href="sizedistributions.htm">introduction
+to size-distributions</a>, or, e.g. Press et al.
+Numerical Recipes in C.</p>
+<p>The use of the maximum entropy functional as a constraint allows one to
+calculate the distribution (e.g. <i><a href="sedfit_help_cm.htm">c(M)</a></i> 
+or <a href="sedfit_help_cs.htm">c(s)</a>) that fits the data well (statistically
+indistinguishable from the unconstrained case), but provides only the minimal
+information required to fit the data.&nbsp; In other words, this allows us to
+deviate only as little as possible from the underlying principle of not giving
+any preference to any particular value of <i>M</i>, and in this way extract only
+the essence of the data.</p>
+<p>In practice such regularization is often used for suppressing noise
+amplification in the inversion of Fredholm integral equations.</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: Maximum entropy helps suppress
+artificial oscillation in the derived size-distributions. In my hands, it worked
+better than the <a href="#Tikhonov-Phillips regularization using 2nd derivative"> Tikhonov-Phillips</a> second derivative regularization when using
+the continuous Lamm equation model. However, for regularizing the least-squares
+g*(s), the Tikhonov-Phillips seems to work better.</p>
+</font></i>
+<p>&nbsp;</p>
+<p><a name="show both regularizations">
+<font face="Roman" size="6" color="#FF0000">Show Both Regularizations</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Show both regularizations</p>
+</font></b>
+<p>When this function is switched on, both maximum entropy and Tikhonov Philips 
+regularizations will be displayed. This setting can be saved in the startup 
+preferences.&nbsp; When copying the distribution to the clipboard, the user has 
+to specify which trace to copy.</p>
+<p>&nbsp;</p>
+<p><a name="use prior probabilities">
+<font face="Roman" size="6" color="#FF0000">Use Prior Probabilities</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Use Prior Probabilities</p>
+</font></b>
+<p><b>(keyboard shortcut: control-W)</b></p>
+<p>This functions allows to switch on or off the use of Bayesian prior 
+expectations for weighting the regularization.&nbsp; This can lead to strong 
+enhancement of resolution.&nbsp; The general concept and the detailed 
+implementation is described in </p>
+<p>
+<font size="2">P.H. Brown, A. Balbo, P. Schuck (2007) Using prior knowledge in the 
+determination of macromolecular size-distributions by analytical 
+ultracentrifugation. </font>
+<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17521163">
+<font size="2">Biomacromolecules 8 (2007) 2011-2024</font></a><font size="2"> </font> </p>
+<p>which <font color="#800080"><b><span style="background-color: #FFFF00">the 
+user is strongly recommended to read </span></b></font>before using this 
+function.&nbsp; The following just describes the input parameters:</p>
+<p><img border="0" src="images/prior.jpg">'</p>
+<p>The top left checkbox switches the use of prior expectation on or off.&nbsp; 
+There are currently three types of prior implemented:</p>
+<p>1) <b>From File: </b>This allows to use a two-column ASCII file specifying 
+the probability distribution.&nbsp; The format is the same as the format 
+generated when
+<a href="sedfit_help_datautilities.htm#Save Calculated Distribution">saving 
+sedimentation coefficient distributions</a>.&nbsp; The checkbox &quot;GJT&quot; file 
+indicates a different format: that generated when
+<a href="sedphat/isotherm_analysis.htm#saving GJT boundaries">saving 
+Gilbert-Jenkins boundary shapes in SEDPHAT</a>. Regarding the terminology, it is 
+recommended to address this c(s) as c<sup>(P</sup><sup>)</sup>(s).</p>
+<p>2) <b>Select Peaks from Current Distribution:</b>&nbsp; This is the same as 
+the keyboard shortcut control-X.&nbsp; This is an implementation of the idea 
+that all species should be delta-peaks (e.g., for mixtures of pure proteins each 
+with a single conformation and no microheterogeneity).&nbsp; From an existing 
+c(s) distribution, the peaks are automatically detected.&nbsp; For each, a 
+(numerical representation of a) delta-peak is placed at the weight-average 
+s-value integrated across the peak.&nbsp; <b>Note - for this, a conventional c(s) 
+analysis needs to be performed first before using this option.&nbsp; </b>It is 
+suggested to refer to this c(s) version as c<sup>(P<font face="Symbol">d</font></sup><sup>)</sup>(s)</p>
+<p>3)&nbsp; <b>From Gauss/Delta-Peaks:</b>&nbsp; This allows the user to 
+manually specify several peaks to put emphasis at the indicated locations.&nbsp; 
+When the width parameter is set zero, a delta-function is used.&nbsp; The 
+amplitude is governing the area of the Gaussian.&nbsp; Typically useful values 
+have been between 1 and 1000, but other positive values can be used, as well. 
+(Amplitudes of zero switch the Prior off.)&nbsp; Note that the Gaussian is 
+calculated <i>on the grid of s-values</i>, which can distort the Gaussian 
+substantially if the width is on the same scale or smaller than the distance 
+between neighboring s-values in the distribution.&nbsp; Again, for clarity it is 
+recommended to refer to this c(s) as c<sup>(P)</sup>(s).</p>
+<p><b><font color="#800080">When running Bayesian analyses, make sure that
+</font></b></p>
+<p><b><font color="#800080">1) Use Prior is selected.</font></b></p>
+<p><b><font color="#800080">2) either one of the types of prior is selected.</font></b></p>
+<p><b><font color="#800080">The prior is then shown as red dashed line in the 
+distribution window.</font></b></p>
+<p>After the prior expectation has been specified, do a RUN command to use the 
+prior in the calculation of the distribution.</p>
+<p>When using the prior for the c(s,ff0) distribution, after closing the input 
+box shown above, you will get a chance to input separately the prior in the 
+f/f0- dimension.&nbsp; You'll be asked the same information about location, 
+width, and amplitude of expected f/f0 values.&nbsp; When you're done enter a 
+value of 0.&nbsp; If you don't want any prior in the f/f0 dimension, then say 
+YES to the question &quot;do you want to use the prior&quot;, but then enter 0 for the 
+first f/f0 value.</p>
+<p>&nbsp;</p>
+<p><a name="Prior Discrete Species"><font face="Roman" size="6" color="#FF0000">
+Prior Knowledge of Discrete Species</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Prior Knowledge of Discrete Species</p>
+</font></b>
+<p>this is a shortcut for the execution of the above command switching on the 
+Bayesian modeling with the option &quot;Select Peaks from Current Distribution&quot;, 
+followed by a RUN command.&nbsp; This permits the simplified workflow:</p>
+<p>1) calculate a normal c(s) distribution</p>
+<p>2) use control-X to calculate the c(s) with the expectation that all peaks 
+should be sharp.&nbsp; It should be useful, for example, for mixtures of pure 
+proteins each with a single conformation and no microheterogeneity.</p>
+<p>3) inspect the areas of the resulting peaks:&nbsp; a notepad file will pop up 
+that shows how much material is <b>unaccounted</b> for by the discrete peaks.&nbsp; 
+As described in </p>
+<p>
+<font size="2">P.H. Brown, A. Balbo, P. Schuck (2007) Using prior knowledge in the 
+determination of macromolecular size-distributions by analytical 
+ultracentrifugation. </font>
+<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17521163">
+<font size="2">Biomacromolecules 8 (2007) 2011-2024</font></a><font size="2"> </font> </p>
+<p>this can be an indication that the expectation of truly monodisperse material 
+in each peak is not sufficient to explain the data: either previously unresolved 
+smaller peaks exist (as shown by the distribution now obtained, with the amounts 
+indicated), or the underlying assumption is not true. </p>
+<p>Note that the Bayesian analysis can only give you different distributions 
+that fit the data equally well.&nbsp; Which of the distributions is more likely 
+the true one depends on the reliability of the prior that was supplied to the 
+analysis.&nbsp; In any case, however, the Bayesian analysis lets us explore the 
+range of possible distributions that fit the data equally well. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Integrate Distribution"><font face="Roman" size="6" color="#ff0000">Integrate
+Distributions</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | Integrate</p>
+</font></b>
+<p>This function allows integration of the distribution over a specified
+range.&nbsp; This can be useful to measure the fraction of material sedimenting
+with a given s-value (e.g., the area of a peak), as well as the weight-average
+s-value of this material. </p>
+<p><font color="#FF00FF"><b>Please note:</b> Starting from version 8.5, this
+integration function has the keyboard shortcut ctrl-i</font>&nbsp; </p>
+<p>First, the range needs to be specified.&nbsp; A message box will appear that
+reminds that this function works exactly as the zooming tool for the
+distribution plot: </p>
+<p><img border="0" src="images/tutori52.gif" width="405" height="96"> </p>
+<p> For that, the mouse will change
+into a crosshair, and the user is expected to draw a rectangle covering the
+desired range of s-values (or M-values, respectively) while the right mouse
+button is pressed.&nbsp;This works in exactly the same way as the rescaling
+function for the distribution plot (for an example of the rescaling function, <a href="tutorial_displaydistribution.htm#usage of new rescale distribution function">follow
+this link</a>). </p>
+<p>The y-value of the rectangle is irrelevant.&nbsp; <a href="tutorial_displaydistribution.htm#usage of new integration tool for distributions">In
+our BSA example</a>, if we want to analyze the ~6.7S peak, we can specify the
+range with this rectangle: </p>
+<p><img border="0" src="images/tutori59.gif" width="690" height="495"> </p>
+<p>Releasing the right mouse button after spanning the rectangle will
+immediately display the information </p>
+<p><img border="0" src="images/tutori60.gif" width="304" height="120"> </p>
+<p>on the integration range, the loading concentration (0.25 fringes) of the
+material under the specified peak and it's fraction of the total loading
+concentration (3.8%), as well as the weight-average s-value of the material,
+which is 6.68S.&nbsp; </p>
+<p>It should be noted, however, that the fraction of the total material (the
+3.8%) does include all peak, including the artificial ones at small
+s-values!&nbsp; In order to get the true fraction of the <i>sedimenting </i>material,
+we need to integrate over the range of sedimenting material, and calculate the
+fractions of the individual peaks appropriately.&nbsp; </p>
+<p>An example of the usage of the integration tool is shown <a href="tutorial_displaydistribution.htm#usage of new integration tool for distributions">here</a>. </p>
+<p><i><b><font color="#FF00FF">New in version 8.7:</font></b>&nbsp; <font color="#008000">An
+additional output is added to the integration result message: the square root of
+the second central moment of the distribution in the selected range.&nbsp; This
+is essentially the standard deviation, which can be used as a measure for the
+spread of the distribution.&nbsp; This can be useful measure to distinguish
+different samples, provided the data are acquired under similar
+conditions.&nbsp; Please note that the spread will be governed not only by the
+polydispersity of the macromolecular sample, but also by the regularization
+procedure (i.e. the P-value used, the signal-to-noise ratio of the data, number
+of data points, etc.) - see the <a href="sizedistributions.htm">size-distribution
+tutorial</a>.</font></i> </p>
+<p>New in version 9.3:&nbsp; The result of the integration will automatically be 
+added into the clipboard.</p>
+<p>&nbsp;</p>
+<p><a name="use integration ranges from file">
+<font face="Roman" size="6" color="#FF0000">use c(s) integration ranges from 
+file</font></a></p>
+<font COLOR="#0000ff">
+<b>
+<p>Options | Size-Distribution Options | use c(s) integration ranges from file</p>
+</b>
+</font>
+<p>This option allows to automatically apply multiple, pre-defined integration 
+limits.&nbsp; Instead of drawing an integration range with the mouse, when this 
+option is switched on (it can be made the default), the integration limits are 
+taken from a specified file.&nbsp; The format of this file is a two-column 
+ASCII, with tab or empty space separation.</p>
+<p>The file (default extension *.dat) is specified when switching the option on.&nbsp; 
+To change the file, you have to switch the option off, first, and then on again.</p>
+<p>For example, the file</p>
+<p><img border="0" src="images/sedfit15.jpg"></p>
+<p>will produce, after integration is invoked, the output</p>
+<p><img border="0" src="images/sedfit16.jpg"></p>
+<p>The numbers are automatically silently put into the clipboard, as well, ready 
+for pasting into a spreadsheet program.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="transform differntial to integral distribution"><font face="Roman" size="6" color="#ff0000">Transform
+Differential to Integral Distribution</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | transform differential to integral
+distribution</p>
+</font></b>
+<p>This function integrates the differential size-distributions (e.g. c(s)) and
+generates an integral distribution (denoted here as C(s)), following the
+equation </p>
+<p>&nbsp;&nbsp;&nbsp; <img border="0" src="images/sedfit111.gif" width="130" height="66"></p>
+<p>This can sometimes be useful for comparison with other integral
+distributions.&nbsp; By design, the integral distribution is scaled to the total
+loading concentration, i.e. C(s-max) = c<sub>tot</sub>.&nbsp; </p>
+<p>&nbsp;</p>
+<p><a name="back-transform g(s*) to boundary model"><font face="Roman" size="6" color="#ff0000">Back-transform
+g(s*) to direct boundary model</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Size-Distribution Options | transform g(s*) (as ASCII) to direct
+boundary model</p>
+</font></b>
+<p>The current implementations of the dc/dt method to calculate g(s*) are
+algorithms to transform and average experimental data into the space of apparent
+sedimentation coefficients, producing the distribution g(s*).&nbsp; One drawback
+of this approach is that there is no control how well the transformed data still
+represent the experimental data.&nbsp; From <a href="lsgofs_distribution.htm">the
+framework of the ls-g*(s) distribution</a>, however, it is quite straightforward
+to build a boundary model from the g(s*) distribution by piecing together the
+step-functions corresponding to each s* value.&nbsp; After the macromolecular
+sedimentation boundaries corresponding to g(s*) have been reconstructed this
+way, the time-invariant noise and/or radial-invariant noise components can be
+calculated algebraically (restoring the degrees of freedom eliminated in the
+time-derivative dc/dt).&nbsp;&nbsp;</p>
+<p>As a result, you can compare if the g(s*) distribution is a realistic
+representation of the data or not.&nbsp; You will get an rms error of the g(s*)
+model, which may be used, for example, as a direct and rational criterion if too
+many scans were used in dcdt or not.</p>
+<p>This approach and the results are described in detail in <b><font size="3"> <u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">Analytical
+Biochemistry </a></u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">320:104-124</a></font></b>.</p>
+<p>Instructions for use of this model are simple (a reminder will be given when
+using it): After calculating g(s*) by dcdt (for example using DCDT+), write the
+distribution data to an ASCII file with error estimates, and then select this
+file in sedfit.&nbsp; Note that you should not correct the s-values to s20,w -
+you need to use uncorrected s-values.</p>
+
+<p>&nbsp;</p>
+<p><a name="transform c(s) to c(M)"><font face="Roman" size="6" color="#FF0000">
+transform c(s) to c(M)</font></a></p>
+<font COLOR="#0000ff">
+<b>
+<p>Options | Size-Distribution Options | transform c(s) to c(M)</p>
+</b>
+</font>
+<p>This is a quick way to get from c(s) to c(M) without changing the model.&nbsp; 
+It includes the proper renormalization (M-distributions are shown on a M^(2/3) 
+power grid) that usually requires re-running if one changes the model from c(s) 
+to c(M).</p>
+<p>&nbsp;</p>
+<p><a name="compute with multiple threads">
+<font face="Roman" size="6" color="#FF0000">compute with multiple threads</font></a></p>
+<font COLOR="#0000ff">
+<b>
+<p>Options | Size-Distribution Options | compute with multiple threads</p>
+</b>
+</font>
+<p>Many computers now have processors with multiple cores, i.e. they are able to 
+run multiple jobs concurrently.&nbsp; This can speed things up significantly.&nbsp; 
+When this option is switched on, SEDFIT can make use of that for the most 
+time-consuming step of calculating normal equations (and this will be further 
+exploited in the future for other features). </p>
+<p>When invoking this menu function, a message appears:</p>
+<p><img border="0" src="images/sedfit142.gif"></p>
+<p>To switch this on, click on 'yes' .&nbsp; Then enter the number of computing 
+cores available on your computer (or the number you want to use)</p>
+<p><img border="0" src="images/sedfit143.gif"></p>
+<p>If you are not sure how many processor cores you have, right-click your mouse 
+on the Windows taskbar and invoke the Task Manager.&nbsp; Select the Performance 
+tab and you will see a picture of the current CPU usage.&nbsp; Note that the CPU 
+Usage History field may have multiple small graphs.&nbsp; The number of graphs 
+in this field is the number of cores you have.&nbsp; </p>
+<p><img border="0" src="images/sedfit19.jpg"></p>
+<p>In this case, the number is 8 (on a dual-processor quad-core workstation).
+</p>
+<p>&nbsp;</p>
+<p><a name="suppress baseline correlation in Max Ent">
+<font face="Roman" size="6" color="#FF0000">suppress baseline correlation in Max 
+Ent</font></a></p>
+<font COLOR="#0000ff">
+<b>
+<p>Options | Size-Distribution Options | suppress baseline correlation in Max 
+Ent</p>
+</b>
+</font>
+<p>When using the standard maximum entropy regularization for data that do not 
+allow to distinguish well the baseline from the signal in the smallest s-value 
+of the distribution, it used to be that the resulting baseline correlation can 
+create a large increasing signal in the distribution.&nbsp; When the present 
+option is toggled on, this correlation is suppressed by using the Bayesian 
+expectation that the signal at s-min should vanish if possible.&nbsp; If the 
+resulting distribution still shows a half-peak at the lowest s-value it means 
+that there really is sedimenting material present, and one may want to lower the 
+s-min value to get a better description of that material.</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+
+<!--mstheme--></font></body>
+
+</html>

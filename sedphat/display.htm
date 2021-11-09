@@ -1,0 +1,89 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>display</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="data1.htm" target="">data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;display&nbsp;]</nobr> <nobr>[&nbsp;<a href="model.htm" target="">model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment_parameters.htm" target="">experiment&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="options.htm" target="">options</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="61239" endspan --></font></p>
+<h2>Display</h2>
+<p><img border="0" src="menubilder/displa4.gif" width="282" height="308"></p>
+<p>These functions basically also work in S<span style="font-variant: small-caps">edphaT</span> like
+the corresponding ones in S<span style="font-variant: small-caps">edfiT</span>.&nbsp;
+See the <a href="../sedfit_help_display.htm"> S<span style="font-variant: small-caps">edfiT</span>
+help web</a> for reference.&nbsp; The 'Range' functions and 'Data Mark Size'
+work on
+a specific experiment, whereas 'Show Data', 'Show Residuals', 'Subtract All
+Systematic Noise From Raw Data' are global functions.</p>
+<p><font color="#FF0000"><b>Note that you can use mouse functions to zoom and
+unzoom into particular regions of any data set.</b></font></p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>There are two new functions here:&nbsp;&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Zoom In 1 Data Set">Zoom In 1 Data Set</a><!--mstheme--></font></h3>
+<p>will blow up one particular experiment and to show it over the entire S<span style="font-variant: small-caps">edphaT</span>
+window.&nbsp; For example, you can cycle through all the data and look at the
+details of each.&nbsp; Reference to each experiment is made by <a href="experiment1.htm#Experiment Number:">Experiment
+Number</a>.&nbsp;&nbsp;</p>
+<p><font color="#FF0000">Note:&nbsp; You can get back to see all, if you call
+the function and specify to zoom into experiment zero.</font></p>
+<p>This function can also be very useful to set meniscus and bottom in a more
+detailed view.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Show Experiments Stacked">Show Experiments Stacked</a> <!--mstheme--></font></h3>
+<p>is a toggle that will switch the display of four or more experiments simply
+as a linear sequence from left to right, or in two rows (upper rows are counted
+left to right before the lower row).&nbsp; The latter 'stacked' configuration is
+the default. </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Switch Order of Experiments">Switch Order of Experiments</a> <!--mstheme--></font></h3>
+<p>Sometimes it is possible to get a better overview of a global fit of several 
+data sets when the experiments are placed in a certain order.&nbsp; This 
+function lets one change the existing order of the experiments by having two 
+experiments switch places.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>As mentioned above, the other functions mirror those of S<span style="font-variant: small-caps">edfiT</span>.&nbsp;
+Just as a reminder, </p>
+<h3><!--mstheme--><font color="#003366"><a name="Show Last Fit Info Again">Show Last Fit Info Again&nbsp;</a> <!--mstheme--></font></h3>
+<p> is very useful to just repeat the text output from
+the last fit.&nbsp; This normally disappears after re-sizing the S<span style="font-variant: small-caps">edphaT</span>
+window.&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Subtract All Systematic Noise From Raw Data">Subtract All
+Systematic Noise From Raw Data</a><!--mstheme--></font></h3>
+<p>allows to get a clearer view of the sedimentation profiles.&nbsp; It acts on
+those experiments that have both TI and RI noise enabled in the <a href="experiment_parameters.htm">Experimental
+Parameters</a> box.&nbsp; </p>
+<p>Subtracting noise is usually essential for interference optical sedimentation
+velocity profiles, but should be done sparingly for multi-speed sedimentation
+equilibrium data.&nbsp; </p>
+<p><font color="#FF0000">Note that after subtracting the systematic noise from
+the raw data, you have to keep the same settings of the TI and RI noise for all
+subsequent analyses (unless you reload the original raw data from the hard
+drive).&nbsp; Otherwise, you will introduce a bias into the analysis.</font></p>
+<h3><!--mstheme--><font color="#003366"><a name="Restore Systematic Noise">Restore Systematic Noise</a><!--mstheme--></font></h3>
+<p>SEDPHAT keeps track of sequential noise removal operations, and this function 
+restores the original noise of the experimental raw data, reversing all previous 
+noise subtraction operations.&nbsp;&nbsp;&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Display Thermodynamic Information">Display Themodynamic Information</a><!--mstheme--></font></h3>
+<p>This function will display an ASCII text file with global fitting parameters 
+of affinity, enthalpy change, and entropy change, as well as their differentials 
+for cooperative interactions.&nbsp; The precise parameters given will depend on 
+the model.</p>
+<p>The text will be saved on the harddrive in a file that has the same name as 
+the current configuration, appended by &quot;_thermo_results.txt&quot;.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

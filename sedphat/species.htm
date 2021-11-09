@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>species and linear fractional boundary model</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hetero-associations.htm" target="">hetero-associations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="mixedassoc.htm" target="">mixedAssoc</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="ternary_systems.htm" target="">ternary&nbsp;systems</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="35878" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Species Analysis<!--mstheme--></font></h3>
+
+<p>This model fits all active data globally with up to 4 independent
+species.&nbsp; The specific characteristics of this model is that no assumption
+on the population of the different species, their signal increment, and
+relationship between different experiments is made.&nbsp; All data sets are
+simply fit by a combination of these species, without regard for the signal
+amplitudes of the contributions of each species.&nbsp; However, all experiments
+are fit with the same M, s, D values for each species.&nbsp; The basic question
+is here - 'what's in there' and not 'how much'.&nbsp;&nbsp;</p>
+<p>There are no local parameters to set, because all partial concentrations are
+linear fitting parameters.&nbsp; Also, there are no shared concentration
+parameters.&nbsp; Partial concentrations for each species (and each data file
+for multi-speed equilibrium experiments) are given in the text output on the
+screen, in signal units.&nbsp; For sedimentation equilibrium, the reference
+radius is the bottom position of the cell.</p>
+<p>It does not make sense in this model to float meniscus or bottom position of
+sedimentation equilibrium experiments.&nbsp; There's no mass conservation for
+sedimentation equilibrium (that's in a different model, see <a href="species_with_mass_conservation.htm">here</a>).</p>
+<p>&nbsp;</p>
+<p>This is the parameter box:</p>
+<p>&nbsp;</p>
+<p><img border="0" src="menubilder/specie1.jpg" width="576" height="255"></p>
+<p>The parameter box works similar as the one in <a href="../sedfit_help_independent_ideal_species.htm" target="_blank"> S<span style="font-variant: small-caps">edfiT</span></a>.&nbsp;
+In the upper half, it has 4 fields, one for each species.&nbsp; You can activate
+a species (include it in the fit) by checking the box in the upper left corner
+of the field.&nbsp; Specify the molar mass and s-value accordingly, and check
+the values if you want to optimize them in non-linear regression.&nbsp;
+Everything else has pretty much the same meaning as in <a href="../sedfit_help_independent_ideal_species.htm" target="_blank"> S<span style="font-variant: small-caps">edfiT</span></a>.
+</p>
+<p>Note that you can select the <a href="fit.htm#Marquardt-Levenberg">Marquardt-Levenberg
+optimization</a> algorithm, the default is simplex algorithm.&nbsp; </p>
+<p>Each value of M and s automatically determines D via Svedberg equation.&nbsp;
+You can switch to a basis of s and D using the <a href="options.htm#Fit M and s">'Fit
+M and s</a>' toggle in the options menu.&nbsp;&nbsp; </p>
+<p>If you need more species, use the <a href="hybrid_local_continuos_global_discrete.htm">hybrid
+local continuous and global discrete model</a>, which has up to 10
+species.&nbsp; </p>
+<p>&nbsp;</p>
+<p><font color="#FF00FF">Please note:&nbsp; Do not enter s-values of zero, these
+components will be switched off, even in sedimentation equilibrium.&nbsp; When
+dealing with sedimentation equilibrium experiments only, do not optimize
+s-values. </font></p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Linear Fractional Boundary Model">Linear Fractional Boundary Model</a><!--mstheme--></font></h3>
+
+<p>This model is for sedimentation velocity only.&nbsp; It is a way to extract 
+very simple information from the translation and diffusional spread of the 
+sedimentation boundary, based on the <a href="../exampleFaxen.htm">Faxen 
+approximation</a> of the Lamm equation. </p>
+<p>The application of this model requires data that are free of systematic noise 
+parameters.&nbsp; This can be achieved best by fitting the data with a 
+continuous c(s) model (making sure it is an excellent fit),and using the 
+function &quot;Data -&gt; Copy all data and save as new config&quot; and agreeing to the 
+option to subtract TI and RI noise from the data&quot;.&nbsp; This step is necessary 
+because only a certain user-defined percentile of the boundary will be fitted, 
+and this requires the assessment of the boundary height for each scan.&nbsp; In 
+the new xp-file, uncheck the TI and RI noise box.&nbsp; Then switch to the 
+Linear Fractional Boundary Model. The parameter box looks like this:</p>
+<p>&nbsp;</p>
+<p><img border="0" src="menubilder/specie2.gif" width="173" height="218"></p>
+<p>&nbsp;</p>
+<p>Mapp is the molar mass derived from the slope of the boundary, and s the 
+s-value from the translation.&nbsp; The &quot;boundary fraction fitted&quot; determines 
+the size of the central portion of the boundary to be fitted.&nbsp; For example, 
+0.8 means the boundary will be fitted between 10% and 90% of its plateau value. 
+0.5 would mean the fit will take from 25% to 75% of the boundary, which is used 
+in the following example:</p>
+<p>&nbsp;</p>
+<p><img border="0" src="menubilder/specie4.jpg" width="1081" height="754"></p>
+<p>&nbsp;</p>
+<p>As can be seen, the fitting function is only a diagonal line, which is aimed 
+at fitting the central slope of the boundaries.&nbsp; The fitted data are 
+indicated by the horizonal green lines, which indicate the lower and upper limit 
+of the data.&nbsp; </p>
+<p>Note:&nbsp; To establish the plateau level, the conventional radial fitting 
+limits (indicated by the vertical green lines) must be at least 0.1 cm from the 
+boundary (i.e. at least 0.1 cm plateau must be established) in each scan to be 
+included in the fitting.&nbsp; Below is a setting where this conditions is not 
+fulfilled.&nbsp; Notice the step-functions in the fitted distributions, which 
+indicate the absence of a suitable plateau.&nbsp; They will not be included in 
+the fitted data.&nbsp; </p>
+<p>&nbsp;</p>
+<p><img border="0" src="menubilder/specie5.jpg" width="891" height="882"></p>
+<p><b><font color="#0000FF">Obviously, this is not a precise way to determine 
+the molar mass.&nbsp; Many other models will be much better for that.&nbsp; 
+However, the linear boundary fraction model can serve as an empirical 
+parameterization of the boundary.&nbsp; This can be useful for 'model-free' 
+comparison of boundary shapes, for example, where more detailed models are not 
+available.</font></b></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,560 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+</head>
+
+<body>
+
+<p class="MsoBodyText"><font face="Arial">
+<a href="DNATutorial_2.htm#Tutorial for the Sedimentation Equilibrium Analysis of a Protein-DNA Interaction.">back to 
+the start of the tutorial</a></font></p>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoBodyText"><font face="Arial"><u><b>
+<a name="III) Analysis of the protein with a non-interacting single-species model">
+III) Analysis of the protein with a non-interacting single-species model</a></b></u></font></p>
+
+<p class="MsoBodyText"><font face="Arial">The third step of this tutorial is the 
+characterization of the protein by itself.&nbsp; The data are as described
+<a href="DNATutorial_2.htm#1) Experimental Details and Downloading Data">before</a>.&nbsp; 
+The protein by itself is in cell 2 of the run. We also have already used <span style="color: black"> <span style="font-variant: small-caps">Sedfit</span> </span>
+to prepare the SE raw data files and generate the xp-files for all cells.&nbsp; 
+We don't need to redo this.&nbsp; Therefore, we jump directly to the next step, 
+loading the protein data into a new <span style="color: black"> <span style="font-variant: small-caps">Sedphat</span> 
+window.</span>
+</font></p>
+<p>&nbsp;</p>
+<p><b><font face="Arial">Step 7:
+<a name="Selecting the .xp files from Cell 2, and opening in SEDPHAT">Selecting 
+the .xp files from Cell 2, and opening in SEDPHAT</a></font></b></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">We are going to load the first 
+three xp files;&nbsp; all from cell&nbsp;2, each is a different wave length.&nbsp; &nbsp; 
+From the <span style="font-variant: small-caps">Sedphat</span> window, go to 
+&quot;Load Experiment&quot; from the Data top menu.&nbsp; Locate your .xp files and load 
+each xp file by highlighting and hitting the open button.&nbsp; They will appear 
+in the <span style="font-variant: small-caps">Sedphat</span> window one at a time, from left to right, as they are loaded. 
+When linking data, this order of loading is something to take into consideration.&nbsp; </span>
+</font>
+</p>
+<p class="MsoNormal"><font face="Arial">In detail:</font></p>
+<p class="MsoNormal"><font face="Arial">Open a new <span style="font-variant: small-caps">Sedphat</span> 
+window and select:&nbsp; </font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProLoadExp.png" width="274" height="61"></font></p>
+<p><font face="Arial">Here, we begin the loading with cell2_281.xp (the scans are taken at 280 
+wavelength),  </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProOpenEx.png" width="555" height="397"></font></p>
+<p><font face="Arial">Select 'Open'.&nbsp; <span style="color: black">After the first file is open in
+<span style="font-variant: small-caps">SedphaT</span>, the window below appears.</span></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Afterloading.png" width="274" height="127"></font><span style="color: black"><font face="Arial"> </font> </span>
+</p>
+<p>
+<span style="color: black"><font face="Arial"> Here, the v-bar value (from the amino acid sequence) that you entered earlier while&nbsp; “sortingEQ data in
+<span style="font-variant: small-caps">Sedfit </span>is displayed.&nbsp; </font> </span>
+<font face="Arial">Hit OK. </font> </p>
+<p><font face="Arial">Then load cell2_260.xp, then finally cell2_231.xp.&nbsp; Highlight 
+each .xp file one-at-a-time and &quot;Open&quot;.&nbsp; They will appear in the
+<span style="font-variant: small-caps">Sedphat</span> window in the order that 
+they were loaded from left to right.</font></p>
+<p>&nbsp;</p>
+<p><i><font face="Arial" size="2">As an alternative loading style, you can drag and drop 
+files from Explorer.&nbsp; Below, Explorer is opened and the .xp files are 
+dragged from Explorer into the <span style="font-variant: small-caps">Sedphat</span> 
+window space one at a time.&nbsp; </font></i></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProSphExWin.png" width="566" height="422"></font></p>
+<p class="MsoBodyText">&nbsp;</p>
+<p class="MsoBodyText"><font face="Arial">After all three .xp files from cell #2 have been loaded 
+(below), notice that each experiment (each wavelength), contains 3 scans, one at 
+each speed.&nbsp; In this case, 16k, 24k and 30k.<span style="color: black"><b>&nbsp;
+</b>Each experiment has a number associated, which is the order of loading.&nbsp; 
+This will be the same as the order of the plots from left to right in the
+<span style="font-variant: small-caps">Sedphat </span>window (upper row before 
+lower row).&nbsp; Many 
+<span style="font-variant: small-caps">Sedphat </span>&nbsp;functions operate on specific experiments, and the 
+user has to specify the corresponding experiment number.&nbsp;  </span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black; display: none">&nbsp;<img border="0" src="0510Tutorial2_files/Pro3ExpOpen.png" width="620" height="466"></span></font></p>
+<p class="MsoNormal"><font face="Arial">In order to see the data at a better 
+magnification, use Display-&gt;Data Range (or keyboard shortcut Control-D).&nbsp; 
+This will make it appear larger:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro3DisInfoBig.png" width="682" height="560"></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Adjust the meniscus and bottom 
+of the solution column if needed and adjust the inner and outer data limits, 
+making sure the outer data limit stays &lt; 1.5 OD.&nbsp; This works exactly the same 
+way as in SEDFIT, except that you click into the section on the screen of the 
+respective experiment.&nbsp; If you're not familiar with that, please go back to 
+the SEDFIT tutorials.&nbsp; For more details about setting limits, go to:&nbsp;
+<a href="http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm" style="color: #009999; text-decoration: underline; text-underline: single">
+http://www.analyticalultracentrifugation.com/sedfit_help_LoadNewData.htm</a></span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Then, from Display, &quot;show last 
+fit info again&quot;, or hit control-O to show the identity of each file.&nbsp;
+</span></font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Display2.png" width="283" height="245"></font></p>
+<p class="MsoNormal">
+<font face="Arial">
+This 
+will also show the setting of the default <span style="font-variant: small-caps">
+Sedphat </span>parameters (not fitted yet) as in the window below.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro3wDisInfoBig2.png" width="681" height="558"></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">In order to update the 
+experiments with the settings for the fitted limits, use the function 
+Data&gt;Save&gt;All Experiments.</span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black"><img border="0" src="0510Tutorial2_files/ProSaveAllExp.png" width="265" height="113"></span></font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<span style="color: black">This will copy the current 
+fitting limits into the xp files on the hard drive, so that they will be 
+restored the next time you load the experiments.&nbsp; Generally, be aware that 
+files on the hard drive and state of <span style="font-variant: small-caps">
+SEDPHAT</span> are different things, and changes in the
+<span style="font-variant: small-caps">SEDPHAT</span> window are not updated to 
+the files unless you explicitly request this. </span></font></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+<font face="Arial">
+<a name="Step 7:  Choosing a model and setting up parameters for a first fit">
+<b>Step 8:&nbsp; <span style="color: black">Choosing a model and setting up 
+parameters for a first fit&nbsp;</span></b><span style="color: black; display: none">&nbsp;</span></a></font></p>
+<p class="MsoNormal"><font face="Arial"><b><span style="color: black">Summary:&nbsp; </span></b>After all files are loaded and you are happy with the 
+placements of the data limits, it is time to set up the configurations for the 
+run.&nbsp; We begin by choosing a model, then follow along the top menu to 
+adjust global parameters, local parameters and experiment parameters.<span style="color: black">&nbsp; </span>
+These describe properties of a particular experiment, like loading 
+concentration, baseline parameter, meniscus position but also the extinction 
+coefficient at the particular wavelength used.<span style="color: black">&nbsp; 
+Like before for the DNA, in this case, we choose the <b>
+monomer-dimer self-association model</b>.&nbsp; At this stage we will also set 
+up the links between the xp files loaded.</span></font></p>
+<p class="MsoNormal">
+<font face="Arial">This Step will also describe how to set up the links between 
+experiments:&nbsp; Since we're looking at xp files from the same cells at 
+different wavelengths, we will link all bottom parameters to one, link all 
+concentration parameters to one, and we can float all but one extinction 
+coefficients.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black"><u>In detail:</u>&nbsp; Go to the function 
+Model-&gt;Monomer-Dimer Self-Association</span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black"><img border="0" src="0510Tutorial2_files/ProModel.png" width="354" height="187"></span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">(Again, we’ll fit only a 
+single species, but are going to use an interacting model in order to exploit 
+the mass conservation features and express the fit in molar concentrations.)</span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Then, open the global parameter box by 
+using the menu function “Global Parameters”</span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black"><img border="0" src="0510Tutorial2_files/ProGlobParaTop.png" width="262" height="42"></span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">
+<img border="0" src="0510Tutorial2_files/ProGlobPara.png" width="377" height="254">&nbsp;  </span>
+</font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">
+Here, we enter the theoretical 
+MW of the protein  monomer, fit for mass conservation (check the 
+box to the left of ‘Mass Conservation’) . <b>Turn off the Dimer (un-check) and 
+enter 0 for log(Ka).&nbsp; </b>Make sure nothing else is checked.&nbsp; The s-values are not 
+significant because we are looking at equilibrium data.&nbsp; Then, hit OK.</span></font></p>
+<p class="MsoNormal"><i><font size="2" face="Arial">[In future versions (4.0 and later), 
+there will be an extra model for a monomeric species, which does not require 
+using the monomer-dimer model at log(Ka)=0.&nbsp; Otherwise, it will have the 
+same functionality for the present purpose.]</font></i></p>
+<p class="MsoNormal"><font face="Arial" size="2">
+<img border="0" src="0510Tutorial2_files/DNATut1.jpg" width="348" height="267"></font></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Next, use the function Local 
+Parameters from the top menu.</span></font></p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/ProLocalPara.png" width="250" height="41"></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">In the local 
+parameters, the concentration of the single species is entered for each 
+experiment through a series of windows.&nbsp;&nbsp; Since we are looking at only 
+Cell #2, we can link the concentrations of experiments # 2 and # 3 to exp # 1 in 
+the following windows when asked.&nbsp; This will tell the program to take only 
+a single value for the concentration of cell 1. </span></font></p>
+<p class="MsoNormal"><font face="Arial">F<span style="color: black">irst, choose 
+Experiment 1: </span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">
+<img border="0" src="0510Tutorial2_files/local1.png" width="273" height="124"></span></font></p>
+<p class="MsoNormal"><font face="Arial">This will not be redirected, but contain 
+our single concentration parameter, and therefore we link 'concs of exp #1' to 
+exp # 1.</font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black"><img border="0" src="0510Tutorial2_files/local2.png" width="273" height="126"> </span>
+</font></p>
+<p class="MsoNormal"><font face="Arial">The concentration value we enter is our 
+loading concentration of 15 microM.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProConcWin.png" width="271" height="125"></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Next, we go 
+to experiment 2:</span></font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/local4.png" width="271" height="126"></font></p>
+<p class="MsoNormal"><font face="Arial">W<span style="color: black">e link the 
+concentration of exp # 2 to experiment #1, indicating that it is the same 
+concentration (and allowing us to float the extinction coefficient instead).</span></font></p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/local5.png" width="274" height="126"></font></p>
+<p class="MsoNormal"><font face="Arial">Finally, go to <span style="color: black">
+exp 3</span></font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/local6.png" width="273" height="127"></font></p>
+<p class="MsoNormal">
+<font face="Arial">and l<span style="color: black">ink the concentration of exp 
+# 3 to experiment #1 </span>&nbsp;&nbsp;</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/local7.png" width="254" height="125"></font></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Now, the individual parameters for each 
+experiment will be set up.&nbsp; Go to Experiment Parameters on the top menu.</span>&nbsp;</font></p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/heading.png" width="497" height="21"></font></p>
+<p class="MsoNormal"><font face="Arial">This window will appear&nbsp;&nbsp;
+</font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/editexp1.png" width="272" height="127">
+</font> </p>
+<p class="MsoNormal"><font face="Arial">Hitting OK here will display the&nbsp; parameter window 
+(below) for 
+exp # 1.&nbsp; </font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProExpPara1.png" width="439" height="389"></font></p>
+<p class="MsoNormal"><font face="Arial">Experiment # 1 is at <span style="color: black">&nbsp;wavelength 
+280 so we will enter the theoretical extinction coefficient of the protein (from
+<span style="font-variant: small-caps">SedNTerp</span>) and leave it fixed 
+(un-checked).&nbsp; This will be our reference for determining the 
+concentrations, and allowing us, in turn, to float the extinction coefficients 
+at the other wavelengths. </span></font></p>
+<p class="MsoNormal"><font face="Arial"> <span style="color: black">We will fit for the bottom and mass conservation with rotor 
+stretch.&nbsp; Check the following parameters:&nbsp; v-bar, buffer density, 
+centerpiece (2=double-sector centerpiece), Rotor type: (8=8-hole rotor An50 Ti), 
+Fit baseline is checked as a default, but the other fits i.e., RI noise, TI noise, 
+are options.&nbsp;&nbsp;&nbsp;&nbsp; </span></font></p>
+<p class="MsoNormal"><font face="Arial">After the parameters are in place, hit the OK button and these 
+windows will appear:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProWin1.png" width="270" height="125">&nbsp;&nbsp;
+<img border="0" src="0510Tutorial2_files/ProRangWin2.png" width="269" height="125">
+</font> </p>
+<p class="MsoNormal"><font face="Arial">We will agree to these default limits on 
+the variation of the bottom position.&nbsp; </font></p>
+<p class="MsoNormal"><font face="Arial">This will open the window for the next 
+experimental parameter box:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/editexp2.png" width="273" height="128">&nbsp;
+</font> </p>
+<p class="MsoNormal"><font face="Arial">Then hit OK to&nbsp; open the Parameter box for experiment 
+# 2.</font></p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/ProExpPara2.png" width="437" height="389"></font></p>
+<p class="MsoNormal"><font face="Arial">Experiment # 2 is at <span style="color: black">wavelength 
+260 so we will enter an extinction coefficient of about 1/2 of the one entered 
+at 280 and we will fit for it (check the box to the right of it).&nbsp; Since we 
+are looking at the same cell (just as we linked the concentration values) we are 
+going to link the bottom and meniscus fitting to exp# 1.&nbsp; To do this, check the box 
+to the left of either Meniscus or Bottom, the check &quot;redirect men./bot. box on 
+the right and underneath in the space, type 1.&nbsp; This will direct the 
+meniscus and bottom of experiment # 2 to experiment # 1.&nbsp; Look at the other 
+parameters as described above to make sure they match exp. # 1.&nbsp; </span>
+</font></p>
+<p class="MsoNormal"> <font face="Arial"> <span style="color: black">Then hit OK and this box will 
+appear to remind you that the meniscus and bottom are linked to exp # 1.&nbsp; 
+Hit OK.&nbsp;</span></font></p>
+<p class="MsoNormal"> <font face="Arial"> <span style="color: black">&nbsp;<img border="0" src="0510Tutorial2_files/attention.png" width="321" height="98"> </span>
+</font></p>
+<p class="MsoNormal"><font face="Arial">Next, exp #3 windows appear.&nbsp; First:</font></p>
+<p class="MsoNormal"><font face="Arial">&nbsp;<img border="0" src="0510Tutorial2_files/editexp3.png" width="275" height="129">&nbsp;
+</font> </p>
+<p class="MsoNormal"><font face="Arial">Then, the parameters box for exp. #3:</font></p>
+<p class="MsoNormal"><font face="Arial">&nbsp;<img border="0" src="0510Tutorial2_files/ProExpPara3.png" width="437" height="390"></font></p>
+<p class="MsoNormal"><font face="Arial">Experiment # 3 is at <span style="color: black">wavelength 
+230 so we will enter an extinction coefficient of about 5 times that of 8480 (at 
+wavelength 280) and fit for it (check the box to the left of it).&nbsp; Since 
+we are still looking at the same cell, the bottom and meniscus will 
+also be linked to experiment # 1 in the same way we did in exp. # 2.&nbsp; To do this, check the box to the left of Bottom, the check &quot;redirect men./bot. 
+box on the right.&nbsp; Underneath in the space, type 1.&nbsp; This will direct 
+the meniscus and bottom of experiment # 3 to experiment # 1.&nbsp; Look at the 
+other parameters as described above to make sure they match exp. # 1.&nbsp; 
+Then hit OK.&nbsp; This reminder will again appear:</span></font></p>
+<p class="MsoNormal"> <font face="Arial"> <span style="color: black"><img border="0" src="0510Tutorial2_files/attention.png" width="321" height="98">&nbsp; </span>
+</font></p>
+<p class="MsoNormal"> <font face="Arial"> <span style="color: black">Hit OK.</span></font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font face="Arial"><b><span style="color: black">
+<a name="Step 9:  Save configuration">Step 9:&nbsp; Save configuration</a></span></b></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Since setting 
+up the fit and the links was a lot of work which we don't want to redo, we'll 
+save the configuration. </span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">To begin, from the top &quot;Data&quot; 
+menu, go to &quot;save current configuration as&quot;. </span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">
+<img border="0" src="0510Tutorial2_files/Saveconfig.png" width="278" height="401">&nbsp;&nbsp; </span>
+</font></p>
+<p class="MsoNormal"><font face="Arial">Locate a destination folder and name this initial configuration.</font></p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/ProInitConfigs.png" width="552" height="392"></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">Generally, it 
+is a good idea to answer &quot;Yes&quot; to this 
+question</span></font></p>
+<p class="MsoNormal"><font face="Arial"><span style="color: black">
+<img border="0" src="0510Tutorial2_files/newXPfiles.png" width="180" height="97"></span></font></p>
+<p class="MsoNormal"><font face="Arial">(this will make sure we won't override 
+local parameters saved in the xp file.)&nbsp; </font></p>
+<p class="MsoNormal">
+<font face="Arial">Now, the name of the current configuration file is shown in the 
+title bar of the <span style="font-variant: small-caps">Sedphat </span>window.
+</font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProInitConHeadingSm.png" width="608" height="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font> </p>
+<p class="MsoNormal"><font face="Arial">If we look at the contents of our 'TutorialConfigs' 
+folder, we can see now set of new files containing the configuration that we've 
+just saved. </font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProInitConfigFiles.png" width="552" height="349"></font></p>
+<p class="MsoNormal">
+<font face="Arial">Note that much of the information stored relies 
+on the exact location of your xp-files and the 
+<span style="font-variant: small-caps">sedphat</span>_PAR file on your 
+computer.&nbsp; If you move your analysis between different computers, it is best to 
+use exactly the same directory structure.&nbsp; Alternatively, you can edit the 
+<span style="font-variant: small-caps">sedphat </span>files with the notepad and adjust the pathname of the xp and the 
+sedphat_PAR files.&nbsp;
+</font> </p>
+<p class="MsoNormal"><i><font size="2" face="Arial">[Note addition from version 4.0 and 
+later:&nbsp; There is a new function &quot;copy all data and save as new config&quot;, 
+which will create copies of all the raw data files, xp files and configuration 
+files, and store them in a new folder without absolute path names.&nbsp; This 
+makes it easier to document, move, and archive an analysis.]</font></i></p>
+<p class="MsoNormal">
+<font face="Arial"> <b>Do not use directories with white-space characters, e.g. 
+&quot;My Documents&quot;, &quot;XLA DATA&quot; or the desktop. The keyboard shortcut is control-W.</b>
+</font> </p>
+<p class="MsoNormal"><font face="Arial">You can load a previously saved configuration into 
+<span style="font-variant: small-caps">Sedphat </span>by dragging-and-dropping a 'sedphat' file into the 
+<span style="font-variant: small-caps">Sedphat</span> window from Explorer<u>.</u>
+<span style="font-variant: small-caps">Sedphat</span> will automatically load the 'sedphat'-file and its associated '<span style="font-variant: small-caps">sedphat</span>_PAR' 
+data.&nbsp; OR....go to&nbsp;&nbsp; <b>Data &gt;&gt;read configuration from file. </b>&nbsp; 
+This is a way to restore a previous <span style="font-variant: small-caps">SedphaT</span> configuration and exactly reproduce 
+an analysis.&nbsp; It reloads the data, the model, the global parameters, and 
+restores all links between the data sets.&nbsp; Be aware that the file structure is 
+important (see above), otherwise <span style="font-variant: small-caps">SedphaT</span> won't find the data. The keyboard 
+shortcut is control-C.</font></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><font face="Arial"><b><a name="Step 10:  Run and Fit">Step 
+10:&nbsp; Run and Fit</a></b></font></p>
+<p class="MsoNormal"><font face="Arial">In order to get started, we double-check 
+that our starting estimates get us reasonably close into the ballpark of the 
+data.
+</font> </p>
+<p class="MsoNormal"><font face="Arial">From the top menu, execute a global run:&nbsp;
+</font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalrun.png" width="156" height="59"></font></p>
+<p class="MsoNormal">
+<font face="Arial">The result is this:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProRunBig2.png" width="682" height="556"></font></p>
+<p class="MsoNormal"><font face="Arial">This seems to be pretty close to good 
+values, certainly enough to start the non-linear optimization algorithms.&nbsp; 
+First, we like to use the Nelder-Mead simplex optimization.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MandSfit.png" width="303" height="107"></font></p>
+<p class="MsoNormal"><font face="Arial">Then, start a Global Fit from:&nbsp;&nbsp;</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalFit.png" width="147" height="58"></font></p>
+<p class="MsoNormal">
+<font face="Arial">resulting in:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProFirstFitBig2.png" width="682" height="558">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font> </p>
+<p class="MsoNormal"><font face="Arial">For the data at 280 and 260 nm, the fit 
+looks pretty good, but not for the 230 data (at the right).&nbsp; We can try 
+(like with the DNA) to make it better by fitting for RI noise (i.e. allowing for 
+a rotor-speed dependence of the baseline), and by bring in the outer data limit for exp #3 
+in a bit (just in case the scan is too steep or the data are getting into a 
+non-linear range - although this generally shouldn't be the case as long as 
+we're at OD &lt; 1.5).&nbsp; For RI noise fitting, go back to each experiment 
+parameters box and check RI noise as in the window below:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/RInoise2.png" width="439" height="396"></font></p>
+<p class="MsoNormal"><font face="Arial">Do this for all cells.&nbsp; Performing another Global Fit gives us these results:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro2ndFitwRInoiseBig.png" width="682" height="557"></font></p>
+<p class="MsoNormal"><font face="Arial">This is a better fit, but experiment # 3 
+still looks bad.&nbsp; 
+It is possible that we have some low molecular weight impurity in the sample, 
+perhaps a degradation product of the protein, which does not absorb at 260 or 
+280 nm but does contribute to the signal at 230 nm (maybe a peptide without 
+aromatic amino acids).&nbsp; For the analysis, we won't need the 230 nm data, 
+since two wavelenghts will be enough to discriminate the protein and the DNA.&nbsp;&nbsp;&nbsp; </font></p>
+<p class="MsoNormal"><font face="Arial">Therefore, to see what the fit would be 
+without it, we can go into exp # 3 experiment parameters and make it inactive.&nbsp; 
+Before doing that however, update this configuration by going to the following 
+menu</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProUpdateConfig.png" width="273" height="303"></font></p>
+<p class="MsoNormal"><font face="Arial">This window appears...ALWAYS say &quot;Yes&quot; 
+to this question.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProUpdateXP.png" width="254" height="110"></font></p>
+<p class="MsoNormal"><font face="Arial">Then, to inactivate exp #3, from the top menu 
+choose Experiment Parameters</font></p>
+<p class="MsoNormal"><img border="0" src="0510Tutorial2_files/Protei1.gif" width="952" height="19"></p>
+<p class="MsoNormal"><font face="Arial">, edit experiment # 3 </font> </p>
+<p class="MsoNormal"><font face="Arial"><img border="0" src="0510Tutorial2_files/editexp3.png" width="275" height="129"></font></p>
+<p class="MsoNormal"><font face="Arial">and get to the parameters window.&nbsp; 
+Just under the comment line, there's a small check box beside &quot;active&quot;.&nbsp; By 
+un-checking this box, experiment # 3 will become inactive (i.e. temporarily not 
+be considered in the fit, although drawn in the sedphat window).
+</font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProExp3Off.png" width="435" height="388"></font></p>
+<p class="MsoNormal"><font face="Arial">Then do another global fit with 
+experiment # 3 inactive:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProExp3offBig.png" width="681" height="559"></font></p>
+<p class="MsoNormal">
+<font face="Arial">Now, the rmsd values for the 280 and 260 data are great, and 
+the fits appear perfect.&nbsp; We decide to leave out the 230 nm data. </font></p>
+<p class="MsoNormal"><font face="Arial">Remove exp #3 completely from the configuration this way:&nbsp; 
+First from top menu go to Data&gt;Remove Experiment</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProRemvExp.png" width="263" height="113"></font></p>
+<p class="MsoNormal"><font face="Arial">select experiment # 3</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProRvmExWin.png" width="269" height="124"></font></p>
+<p class="MsoNormal"><font face="Arial">After hitting OK, this window appears; a reminder to 
+re-link the concentrations and the meniscus/bottom fitting of exp #2 to exp #1.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProRestbLinks.png" width="388" height="96"></font></p>
+<p class="MsoNormal"><font face="Arial">The concentration and meniscus/bottom fitting links will 
+have to be reestablished between exp #1 and exp #2.&nbsp; To do this, go back to 
+Local parameters in the top menu to re-link the concentration in experiment #2 
+to exp #1 and then to the experiment parameter to re-link the meniscus/bottom 
+fitting in exp #2 to exp #1.&nbsp; To see this in detail, please refer to Step 
+#3 of this Tutorial. After removing exp #3, notice that the title bar of the new 
+configuration is blank (since it was changed).</font></p>
+<p class="MsoNormal"><font face="Arial">Now do a new fit:&nbsp; </font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro2WLfitBigger.png" width="681" height="557"></font></p>
+<p class="MsoNormal"><font face="Arial">This is the same as we had with the 230 
+nm data inactive.&nbsp; Save this configuration with a new name.&nbsp;
+</font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProSaveConfigs.png" width="272" height="377"></font></p>
+<p class="MsoNormal">
+<font face="Arial">To the question</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/newXPfiles.png" width="180" height="97"></font></p>
+<p class="MsoNormal">
+<font face="Arial">answer yes.</font></p>
+<p class="MsoNormal"><font face="Arial">A look into our TutorialConfigs folder 
+shows us all of the configuration files so far.</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProFinalFilesSm.png" width="688" height="404"></font></p>
+<p class="MsoNormal"><font face="Arial">After saving the last configuration, notice that the 
+new file name is now in the title bar. </font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro2WLwTitleBigger.png" width="682" height="556"></font></p>
+<p class="MsoNormal"><font face="Arial">Although we had a very good fit, we 
+should make sure that we're really in the global optimum.&nbsp; Therefore, we 
+fit again using the Marquardt-Levenberg algorithm to home in on the optimum.&nbsp; Under the &quot;Option&quot; top menu go to &quot;Fit Options&quot; and 
+toggle on the Marquardt-Levenberg fit.&nbsp; (Don't touch the &quot;fit M and s&quot; 
+fitting option.) This will look like this:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MLtoggle.png" width="307" height="109"></font></p>
+<p class="MsoNormal"><font face="Arial">Then repeat a Global Fit </font> </p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Pro2WLwMLfitOnBigger.png" width="681" height="557"></font></p>
+<p class="MsoNormal"><font face="Arial">Compare these results with the previous fit and they look 
+very much the same. So, consider this the best fit and update the configuration:</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProUpdateConfig.png" width="273" height="303"></font></p>
+<p class="MsoNormal"><font face="Arial">and the .xp files</font></p>
+<p class="MsoNormal">
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProUpdateXP.png" width="254" height="110"></font></p>
+<p class="MsoNormal">
+&nbsp;</p>
+<p class="MsoNormal">
+<b><font face="Arial"><a name="Step 11: Results for the Protein">Step 11: 
+Results for the Protein</a></font></b></p>
+<p><font face="Arial">Note the following points:</font></p>
+<p><font face="Arial">1) The <b>fit quality </b>is excellent.&nbsp; The 
+residuals are pretty random and small. This will give us confidence in the 
+numbers.&nbsp; As for the DNA before, there is no 
+indication to believe mass conservation is not valid. This supports using mass 
+conservation also when analyzing the mixture.</font></p>
+<p><font face="Arial">2) The <b>Mw value </b>is 9.3 kDa.&nbsp; This is 
+slightly higher than the theoretical Mw of 8.7 kDa.&nbsp; The v-bar used was 
+0.743 ml/g, which is correct for the protein, and therefore the observed Mw 
+should be identical to the theoretical Mw of the protein.&nbsp; Nevertheless, 
+either the Mw value is 7% too high, or, correspondingly the true vbar value is 
+0.726 ml/g ( Mb = 9.3*(1-0.743*1.0038); vbar = (1/1.0038)*(1-Mb/Mtrue)). This 
+deviation could be within the error of the prediction of vbar from amino acid 
+sequence (because the larger surface/volume ratio, the error in the tabulated 
+vbar is larger for smaller proteins).&nbsp; Alternatively, we could be dealing 
+with a contamination with a few percent of protein aggregate.&nbsp; At this 
+stage, it is usually a good idea to check the c(s) from a sedimentation velocity 
+experiment to see if there was any evidence of such contamination.&nbsp; If not, 
+this is within the usual range of precision, and we will accept the value of 9.3 
+kDa (and use it in the analysis of the mixture), continuing to use 0.743 ml/g as 
+our vbar scale.</font></p>
+<p><font face="Arial">3) The <b>extinction coefficient </b>are 4868 OD/Mcm at 
+260 nm, and 8480 OD/Mcm at 280 nm (this was fixed to the theoretical value).&nbsp; These values will also be used as fixed prior 
+knowledge for the multi-wavelength analysis of the mixture of DNA with protein.&nbsp;
+</font> </p>
+<p>&nbsp;</p>
+<p>
+<font face="Arial">
+<a href="#III) Analysis of the protein with a non-interacting single-species model">go to top</a></font></p>
+<p><font face="Arial"><a href="MixTutorial.htm">go to next step - 
+analysis of the mixtures</a></font></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

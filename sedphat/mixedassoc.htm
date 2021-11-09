@@ -1,0 +1,152 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>mixedAssoc</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hetero-associations.htm" target="">hetero-associations</a>&nbsp;]</nobr> <nobr>[&nbsp;mixedAssoc&nbsp;]</nobr> <nobr>[&nbsp;<a href="ternary_systems.htm" target="">ternary&nbsp;systems</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="4020" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Mixed association models<!--mstheme--></font></h3>
+
+<p>These models are only implemented for sedimentation equilibrium data.</p>
+
+<p>mixed association:&nbsp; incompetent species are incompetent for both
+monomer-dimer and heterogeneous association</p>
+<p>&nbsp;</p>
+<p>* log or lg means log10</p>
+
+<p>* a species not participating in the association can be specified (check the 
+'add non-participating species' field) This is simply an additional component, 
+perhaps an impurity, which has nothing to do with the associating molecules.</p>
+
+<p>&nbsp;</p>
+
+<p>1) Monomer-Dimer A, A2 binding B, forming heterogeneous complexes AB, AAB,
+and BAAB</p>
+
+<p><img border="0" src="menubilder/mixeda10.jpg" width="514" height="469"></p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-47.0pt">
+<img src="menubilder/mixeda1.gif" v:shapes="_x0000_i1025" width="234" height="130"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1126815320">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>with K<sub>A12</sub>: monomer-dimer association constant (microscopic =
+macroscopic)</p>
+<p>K<sub>AB</sub>: microscopic heterogeneous binding constant of B to A&nbsp; </p>
+<p><font face="Symbol">a</font><sub>A</sub>:&nbsp; macroscopic cooperativity
+constant of K<sub>[AA]B</sub>/K<sub>AB</sub>, i.e. enhancement of AB interface
+through the dimerization of A. If there's no microscopic cooperativity here, the
+macroscopic value of this parameter is the statistical factor 2 (or log10(<font face="Symbol">a</font><sub>A</sub>)
+= 0.30103).</p>
+<p><font face="Symbol">a</font><sub>A</sub><sup>M</sup>: macroscopic
+cooperativity constant K<sub>[BAA]B</sub>/K<sub>[</sub><sub>AA]B</sub>, i.e.
+enhancement of binding of the second B to the free A of a preformed AAB complex
+through the presence of a prior B (either via B-B interactions, or modifications
+of the free protomer of A in the AAB complex) (microscopic = macroscopic).&nbsp;
+If there's no microscopic cooperativity here, the macroscopic value of this
+parameter is the statistical factor 1/4 (or log10(<font face="Symbol">a</font><sub>A</sub><sup>M</sup>)
+= -0.60206).</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>1) Monomer-dimer A, A2, and monomer-dimer B, B2, forming heterogeneous
+complexes AB, AAB, BBA, and BAAB</p>
+<p><img border="0" src="menubilder/mixeda11.jpg" width="656" height="449"></p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-47.0pt">
+</span><span style="mso-text-raise:-68.0pt">
+<img src="menubilder/mixeda3.gif" v:shapes="_x0000_i1025" width="386" height="186"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1126817783">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1126817610">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1126815320">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>with K<sub>A12</sub>: monomer-dimer association constant of A (microscopic =
+macroscopic)</p>
+<p>with K<sub>B12</sub>: monomer-dimer association constant of B (microscopic =
+macroscopic)</p>
+<p>K<sub>AB</sub>: microscopic heterogeneous binding constant of B to A&nbsp; </p>
+<p><font face="Symbol">a</font><sub>A</sub>:&nbsp; macroscopic cooperativity
+constant of K<sub>[AA]B</sub>/K<sub>AB</sub>, i.e. enhancement of AB interface
+through the dimerization of A. If there's no microscopic cooperativity here, the
+macroscopic value of this parameter is the statistical factor 2 (or log10(<font face="Symbol">a</font><sub>A</sub>)
+= 0.30103).</p>
+<p><font face="Symbol">a</font><sub>B</sub>:&nbsp; analogous to <font face="Symbol">a</font><sub>A</sub>
+- macroscopic cooperativity constant of K<sub>[</sub><sub>BB]A</sub>/K<sub>AB</sub>,
+i.e. enhancement of AB interface through the dimerization of B. If there's no
+microscopic cooperativity here, the macroscopic value of this parameter is the
+statistical factor 2 (or log10(<font face="Symbol">a</font><sub>B</sub>) =
+0.30103).</p>
+<p><font face="Symbol">a</font><sub>A</sub><sup>M</sup>: macroscopic
+cooperativity constant K<sub>[BAA]B</sub>/K<sub>[AA]B</sub>, i.e. enhancement of
+binding of the second B to the free A of a preformed AAB complex through the
+presence of a prior B (either via B-B interactions, or modifications of the free
+protomer of A in the AAB complex). If there's no microscopic cooperativity here,
+the macroscopic value of this parameter is the statistical factor 1/4 (or log10(<font face="Symbol">a</font><sub>A</sub><sup>M</sup>)
+= -0.60206).</p>
+<p><font face="Symbol">a</font><sub>B</sub><sup>M</sup>: macroscopic
+cooperativity constant K<sub>[BBA]A</sub>/K<sub>[BB]A</sub>, i.e. enhancement of
+binding of the second A to the free B of a preformed BBA complex through the
+presence of a prior A (either via A-A interactions, or modifications of the free
+protomer of B in the BBA complex). If there's no microscopic cooperativity here,
+the macroscopic value of this parameter is the statistical factor 1/4 (or log10(<font face="Symbol">a</font><sub>A</sub><sup>M</sup>)
+= -0.60206).</p>
+<p>There is the relationship:&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-16.0pt">
+</span></span></p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-16.0pt">
+<img src="menubilder/mixeda4.gif" v:shapes="_x0000_i1025" width="130" height="50"></span></span></p>
+<p>&nbsp;</p>
+<p>All models provide the possibility of adding an additional species that is 
+unrelated to the reactive species.&nbsp; </p>
+<p><img border="0" src="menubilder/self-a34.gif" width="150" height="115"></p>
+<p>This can be used to describe, for example, a contaminant, or IF signals from 
+sedimenting buffer salts.&nbsp; The presence of such components, and their 
+estimated molar mass and s-value may be obtained from c(s) analysis with sedfit.&nbsp; 
+The purpose of the vbar in this section allows this species to be used in a 
+flexible way in density contrast experiments (e.g. to describe the free 
+detergent micelle). </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1126818481">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

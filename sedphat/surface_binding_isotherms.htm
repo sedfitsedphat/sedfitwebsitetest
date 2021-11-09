@@ -1,0 +1,81 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>surface binding isotherms</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;surface&nbsp;binding&nbsp;isotherms&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="28956" endspan --></font></p>
+
+<h2>Surface binding isotherms</h2>
+<p>This data type is for an experiment where one measures steady-state binding 
+of a soluble molecule to surface-immobilized sites.&nbsp; The concentration of 
+the soluble molecule is held constant, for example, by virtue of a flow system.&nbsp; 
+These data can be derived, for example, from a Biacore SPR instrument.&nbsp; </p>
+
+<p>For a 1:1 interaction, the concentration-dependence of the fractional 
+saturation of the surface sites follows a Langmuir isotherm.&nbsp; More complex 
+models are available, as well, and are planned to be implemented in the future.&nbsp; 
+When using the parameter boxes, by convention, the immobilized molecule is the 
+binding partner &quot;A&quot;.&nbsp; </p>
+
+<p>For using this model, one needs first to generate an ASCII text-file with the 
+following format:</p>
+<p style="margin-top: 0; margin-bottom: 0">SignalImmobA&nbsp;&nbsp;&nbsp; ConcB1&nbsp;&nbsp;&nbsp; 
+Signal1</p>
+<p style="margin-top: 0; margin-bottom: 0">SignalImmobA&nbsp;&nbsp;&nbsp; ConcB2&nbsp;&nbsp;&nbsp; 
+Signal2</p>
+<p style="margin-top: 0; margin-bottom: 0">SignalImmobA&nbsp;&nbsp;&nbsp; ConcB3&nbsp;&nbsp;&nbsp; 
+Signal3</p>
+<p style="margin-top: 0; margin-bottom: 0">SignalImmobA&nbsp;&nbsp;&nbsp; ConcB4&nbsp;&nbsp;&nbsp; 
+Signal4</p>
+<p style="margin-top: 0; margin-bottom: 0">SignalImmobA&nbsp;&nbsp;&nbsp; ConcB5&nbsp;&nbsp;&nbsp; 
+Signal5</p>
+<p style="margin-top: 0; margin-bottom: 0">...</p>
+<p>where &quot;SignalImmobA&quot; refers to the surface concentration of the immobilized 
+molecule in arbitrary units (such as RU).&nbsp; Note that the surface concentration of A  can later be treated as a fitting parameter.&nbsp; Also, it will be the same for 
+each line. &quot;ConcB1&quot;, &quot;ConcB2&quot;, etc. are the concentrations of the soluble 
+binding partner, in <b>micromolar </b>units.&nbsp; &quot;Signal1&quot;, &quot;Signal2&quot;, ... 
+refers to the measured steady-state surface binding value in the same units as &quot;SignalImmobA&quot; 
+(such as RU).</p>
+<p>The default extension is &quot;*.surfisotherm&quot;.&nbsp; For loading this 
+data, use the function &quot;Data-&gt;Load New Surface Binding Equilibrium Data (Flow)&quot;.&nbsp; 
+A file selection box will appear that lets you select the *.surfisotherm file 
+with the raw data.&nbsp; After that, the
+<a href="experiment_parameters.htm#Surface Binding Isotherm Box">Surface Binding 
+parameter box</a> pops up:</p>
+<p><img border="0" src="menubilder/experi8.jpg" width="423" height="267"></p>
+<p>The data-type specific parameters to be entered are:</p>
+<p><u>surface conc. A:</u>&nbsp; This is the signal of <b>immobilized active A</b>.&nbsp; 
+For example, this can be the difference in signal in RU before and after 
+immobilization.&nbsp; The value shown here will be the value &quot;SignalImmobA&quot; used 
+in the file.</p>
+<p><u>signal B/A and signal C/A:</u>&nbsp; It is possible to account for the 
+fact that the soluble analyte B (or C) have different signal contributions, for 
+example, due to differences in molar mass.&nbsp; In this case, set signal B/A to 
+the ratio Mw(B)/Mw(A).</p>
+<p>When done, press &quot;OK&quot;, and then save the data as xp-file with the function
+<a href="data1.htm#Save Experiment">Data-&gt;Save Experiment</a>.</p>
+<p>The data analysis proceeds as in other data analysis, with the selection of 
+the model, the estimation of starting parameters, the Run and the Fit command.&nbsp; 
+You can save the analysis in a configuration file.&nbsp; </p>
+<p><b>Note, the data will be independent on things like s-values, enthalpies, 
+concentration parameters, rate constants, etc.&nbsp; Please don't float these 
+parameters during the fit.</b></p>
+<p>&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

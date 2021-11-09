@@ -1,0 +1,199 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tmppars</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0">back to
+<a href="sedfit_help_fit.htm">fit</a></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0">&nbsp;</p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1"> The fitting procedure will store temporary best-fit parameters
+in the file ~tmppars.* (in the data directory, with the same extension as the
+data files) to allow restoring the analysis in case of a crash of the program.
+Sometimes, the cause of the crash is a floating parameter that does not
+influence the quality of the fit, and therefore can assume an unlimited number,
+causing the crash.&nbsp; In this case, when reloading the data, the attempt to
+restore the fit will fail.&nbsp; However, the tmppars file can be edited with
+the notepad, and the parameter with the very large number can be set to 1.000000</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0">&nbsp;</p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">The
+following format for the ~tmppars file
+is used:</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0">&nbsp;</p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">1)
+sedfit running or closed</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">2)
+component 1 exists?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">3)
+component 1 concentration</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">4)
+component 1 float concentration?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">5)
+component 1 diffusion coefficient/molar mass</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">6)
+component 1 float diffusion coefficient/molar mass?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">7)
+component 1 sedimentation coefficient</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">8)
+component 1 float sedimentation coefficient?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">9)
+component 1 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">10)
+component 1 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">11)
+component 2 exists?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">12)
+component 2 concentration</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">13)
+component 2 float concentration?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">14)
+component 2 diffusion coefficient/molar mass</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">15)
+component 2 float diffusion coefficient/molar mass?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">16)
+component 2 sedimentation coefficient</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">17)
+component 2 float sedimentation coefficient?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">18)
+component 2 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">19)
+component 2 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">20)
+component 3 exists?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">21)
+component 3 concentration</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">22)
+component 3 float concentration?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">23)
+component 3 diffusion coefficient</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">24)
+component 3 float diffusion coefficient/molar mass?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">25)
+component 3 sedimentation coefficient/molar mass</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">26)
+component 3 float sedimentation coefficient?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">27)
+component 3 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">28)
+component 3 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">29)
+component 4 exists?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">30)
+component 4 concentration</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">31)
+component 4 float concentration?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">32)
+component 4 diffusion coefficient/molar mass</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">33)
+component 4 float diffusion coefficient/molar mass?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">34)
+component 4 sedimentation coefficient</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">35)
+component 4 float sedimentation coefficient?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">36)
+component 4 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">37)
+component 4 not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">38)
+baseline</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">39)
+float baseline?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">40)
+meniscus</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">41)
+bottom </font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">42)
+data left analysis limit</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">43)
+data right analysis limit&nbsp;&nbsp;&nbsp; </font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">44)
+grid size</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">45)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">46)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">47)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">48)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">49)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">50)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">51)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">52)
+not used</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">53)
+partial specific volume</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">54)
+buffer density</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">55)
+1</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">56)
+1</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">57)
+1</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">58)
+automatic choice of finite element method?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">59)
+use (s,M) as parameter space?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">60)
+use moving frame of reference?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">61)
+use Claverie static frame of reference?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">62)
+1<br>
+63) 0.1</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">64)
+0.5</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">65)
+Tolerance</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">66)
+fixed dt?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">67)
+ideal discrete species model?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">68)
+monomer-dimer model?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">69)
+monomer-trimer model?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">70)
+monomer-dimer-tetramer model?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">71)
+concentration dependent sedimentation?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">72)
+continuous distribution?</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">73)
+constant initial condition</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">74)
+experimental initial condition</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">75)
+fit time-invariant noise</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">76)
+automatic choice of simulation method</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">77)
+automatic choice of s-value for frame of reference</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">78)
+vary t0 of simulation</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">79)
+t0 of simulation</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">80)
+fit radial-invariant noise</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">81)
+simulate acceleration phase of rotor</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">82)
+monomer-tetramer-octamer model</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">83)
+(not used)</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0"><font size="1">84)
+(not used)</font></p>
+<p style="text-indent: 0; line-height: 100%; word-spacing: 0; margin: 0">&nbsp;</p>
+<!--mstheme--></font></body>
+
+</html>

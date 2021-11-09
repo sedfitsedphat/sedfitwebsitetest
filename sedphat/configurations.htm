@@ -1,0 +1,199 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>configurations</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;configurations&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="29659" endspan --></font></p>
+
+<h2>CONFIGURATIONS</h2>
+<p> <font color="#FF00FF"><b>From version 4.0 and higher, S<span style="font-variant: small-caps">edphat</span> 
+can generate two different kinds of configurations, see the
+<a href="#Path-Independent Configurations">Path-Independent Configurations </a>
+below.</b></font></p>
+<p> S<span style="font-variant: small-caps">edphat</span> can save its current 
+state (version 1.9 and above).&nbsp; The combination of a set of experiments, 
+the model, the model parameters, and the links between the experiments and 
+shared parameters is termed 'configuration'.&nbsp; </p>
+<p> You create a configuration by using the function
+<a href="data1.htm#Configuration Functions">Data-&gt;Save Current Configuration As</a>. 
+This will make a 'sedphat' file on your disk.&nbsp; The path of the current 
+configuration will be identified in the title bar of the S<span style="font-variant: small-caps">edphat</span> 
+window, and it can be updated as the analysis proceeds.&nbsp; For the menu 
+functions see the <a href="data1.htm#Configuration Functions">Data menu</a>.&nbsp; 
+A change in the model or a change in the loaded experiments will require a new 
+configuration file to be named.</p>
+<p> At this point, another file called *.sedphat_PAR will also be created.&nbsp; 
+This file contains the information on the nature of the model and the parameters 
+values.&nbsp; </p>
+<p> You can load a configuration into S<span style="font-variant: small-caps">edphat</span> 
+by dragging-and-dropping a 'sedphat' file into the S<span style="font-variant: small-caps">edphat</span> 
+window.&nbsp; This is true also for the sedphat_PAR files, which only switch the 
+model and apply the global parameter values saved in this file.</p>
+<p> Follow this procedure for enabling S<span style="font-variant: small-caps">edphat</span> 
+to be started up with a configuration by double-clicking the 'sedphat' file 
+(some of the details may be dependent on your Windows version):&nbsp; </p>
+<p style="margin-top: 0; margin-bottom: 0"> <font size="2" color="#0000FF">1) 
+double-click a 'sedphat' file (or right-click and select the menu 'open')</font></p>
+<p style="margin-top: 0; margin-bottom: 0"> <font size="2" color="#0000FF">2) 
+Windows will tell you that it does not know how to open 'sedphat' files</font></p>
+<p style="margin-top: 0; margin-bottom: 0"> <font size="2" color="#0000FF">3) 
+use the option to 'select a program from a list</font></p>
+<p style="margin-top: 0; margin-bottom: 0"> <font size="2" color="#0000FF">4) 
+the list of programs known to Windows does not contain S<span style="font-variant: small-caps">edphat</span> 
+.&nbsp; Therefore, use 'Browse' and navigate to the 'c:\sedfit\sedphat.exe' file 
+(if you have it copied to the default location). </font></p>
+<p style="margin-top: 0; margin-bottom: 0"> <font size="2" color="#0000FF">5) 
+check 'Always use the selected program to open this kind of file', and OK.</font></p>
+<p style="margin-top: 0; margin-bottom: 0"> &nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0"> This will associate S<span style="font-variant: small-caps">edphat</span> 
+with 'sedphat' files permanently on your computer.</p>
+<p> A configuration on the disk is a ANSI text file, which can be edited with 
+any text editor.&nbsp; An example of a configuration file is the following:</p>
+<p><font face="Times New Roman" size="2">experiments:<br>
+1 1 C:\sedfitworkshop\data\singlespeciescofM\vel.xp<br>
+2 1 C:\sedfitworkshop\data\singlespeciescofM\eq.xp<br>
+3 1 C:\sedfitworkshop\data\singlespeciescofM\dls.xp<br>
+-1 0 end<br>
+0.730000 0.300000 (vbar20, hydration)<br>
+g 2 (#global parameters)<br>
+1 0.000459<br>
+40000.000000 (CompressLimit)<br>
+model:<br>
+1 (species analysis) <br>
+parameter file:<br>
+C:\sedfitworkshop\data\singlespeciescofM\all2.sedphat_PAR<br>
+links:<br>
+20 (iMaxExp)<br>
+7 (#links)<br>
+1 1 1 1 1 0 0<br>
+2 2 2 2 2 0 0<br>
+3 3 3 3 3 0 0<br>
+4 4 4 4 4 0 0<br>
+5 5 5 5 5 0 0<br>
+6 6 6 6 6 0 0<br>
+7 7 7 7 7 0 0<br>
+8 8 8 8 8 0 0<br>
+9 9 9 9 9 0 0<br>
+10 10 10 10 10 0 0<br>
+11 11 11 11 11 0 0<br>
+12 12 12 12 12 0 0<br>
+13 13 13 13 13 0 0<br>
+14 14 14 14 14 0 0<br>
+15 15 15 15 15 0 0<br>
+16 16 16 16 16 0 0<br>
+17 17 17 17 17 0 0<br>
+18 18 18 18 18 0 0<br>
+19 19 19 19 19 0 0<br>
+20 20 20 20 20 0 0<br>
+&nbsp;</font></p>
+<p>It starts with a list of experiments, sequentially numbered, with a list of 
+pathnames to the relevant xp-files.&nbsp; Note that the xp-files themselves have 
+the reference to the raw data.</p>
+<p>Next are the standard global parameters:&nbsp; vbar, hydration (not used 
+yet), solvent compressibility (water is default), and a rotor speed threshold 
+for considering compressibility in the sedimentation models (not implemented yet 
+in version 1.9).</p>
+<p>Important are the next entries, the type of model, and the filename where the 
+model parameters are stored.&nbsp; This is a second file with the same name as 
+the 'sedphat' file, but with the extension 'sedphat_PAR'.&nbsp; This sedphat_PAR 
+file contains the settings of the global parameters, and can be loaded 
+separately like a model file (see
+<a href="data1.htm#Read global parameters from file:">loading models</a>).&nbsp; 
+However, you don't need to do that when you load a configuration, S<span style="font-variant: small-caps">edphat</span> 
+will automatically load the 'sedphat'-file and its associated 'sedphat_PAR' 
+data.</p>
+<p><font color="#FF00FF"><b>Important: If you move your data to a different 
+computer, you need to copy the sedphat file, the sedphat_PAR file, the xp-files, 
+and the raw data.&nbsp; Further, they need to be in the correct directory 
+structure as indicated in the files.&nbsp; (If you cannot reproduce the 
+directory structure, you can edit the sedphat-file and the xp-files and type the 
+correct directory names.)&nbsp; To save path-independent configurations, see 
+below.</b></font></p>
+<p>You may notice that S<span style="font-variant: small-caps">edphat</span> 
+creates a set of configuration files like the current configuration by preceded 
+by a '~' character during fitting.&nbsp; This is to enable a restoration of the 
+so far best fit.&nbsp;&nbsp; </p>
+
+<p>You can also save a configuration as the startup default, which will cause S<span style="font-variant: small-caps">edphat</span> 
+to automatically startup by loading the current data, selecting the model, and 
+having the current parameters.&nbsp; This may be useful, for example, if you 
+have to perform a sequence of similar analyses, or if you want to continue later 
+where you left off. </p>
+
+<p>&nbsp;</p>
+
+<p><b><u><a name="Path-Independent Configurations">Path-Independent 
+Configurations</a></u></b></p>
+<p>Slightly different types of configurations can be achieved using the function 
+&quot;Data-&gt;Copy All Data And Save As New Config&quot;.&nbsp; This function will create a
+<b>folder</b> with the sedphat extension, along with all the files described 
+above, as well as <b>copies</b> of all the raw data files used.&nbsp; </p>
+
+<p>An example: Let's assume you want to save a configuration termed 
+ABanalysis.sedphat to the folder c:\data.&nbsp; Let's assume the xp-files SV1.xp 
+and SV2.xp are loaded, each of which points to sedimentation velocity 
+experiments with 100 scans (termed 00001.ra1... 00100.ra1 and 
+00001.ra2...00100.ra2).&nbsp; This function will create a subfolder c:\data\ABanalysis.sedphat, 
+as well as a <b>file</b> of the same name, within that folder.&nbsp; It also 
+creates subdirectories that contain copies of the actual raw data of all the 
+experiments loaded.&nbsp; </p>
+
+<p>The following files can be found:</p>
+
+<p style="margin-top: 0; margin-bottom: 0">
+c:\data\ABanalysis.sedphat\ABanalysis.sedphat</p>
+
+<p style="margin-top: 0; margin-bottom: 0">
+c:\data\ABanalysis.sedphat\ABanalysis.sedphat_PAR</p>
+
+<p style="margin-top: 0; margin-bottom: 0">c:\data\ABanalysis.sedphat\SV1.xp</p>
+
+<p style="margin-top: 0; margin-bottom: 0">c:\data\ABanalysis.sedphat\SV2.xp</p>
+
+<p align="left" style="margin-top: 0; margin-bottom: 0">
+c:\data\ABanalysis.sedphat\SV1.xp\00001.ra1 ... 00100.ra1</p>
+
+<p style="margin-top: 0; margin-bottom: 0">c:\data\ABanalysis.sedphat\SV2.xp\00001.ra2 
+... 00100.ra2</p>
+
+<p>The last two lines are folders, each containing copies of the original raw 
+scans.&nbsp; The xp-files SV1.xp and SV2.xp are not pointing anymore to the 
+original raw scans, but to the copies contained in the subfolder.&nbsp; In the 
+xp-files, the third line will read&nbsp; </p>
+
+<p style="margin-top: 0; margin-bottom: 0">&quot;_SV2.xp&quot; &quot; 00001.ra2 00002.ra2 ... 
+00100.ra2&quot;</p>
+
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">The underscore &quot;_&quot; preceding the 
+folder name will be the convention that the specified subfolder with the raw 
+data can be found in the same folder as the xp-file itself.&nbsp; </p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">If the complete contents of the 
+folder c:\data\ABanalysis.sedphat (including subfolders with the actual data) is 
+archived or otherwise copied to a different location of the computer, the 
+configuration can find all the necessary files.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">It is probably not practical to 
+routinely replace all configurations with path-independent configurations, 
+because this would lead to a proliferation of copies of the original data files 
+on your computer, and require a lot of storage space.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

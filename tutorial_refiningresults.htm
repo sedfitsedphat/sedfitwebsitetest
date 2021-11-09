@@ -1,0 +1,164 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tut refining</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><u><b><a name="Interpreting and refining the results">Interpreting and
+refining the results</a></b></u></p>
+<p>First, although the rmsd of 0.0074 seems quite good, the residuals are not
+evenly distributed.&nbsp; This can be seen from the large residuals in the vicinity of
+the meniscus, as well as&nbsp;the difference between the data and calculated
+curves if we zoom in (by pulling a rectangle with the right mouse button) in the
+meniscus region:&nbsp;</p>
+<p><img border="0" src="images/tutori13.gif" width="621" height="152"></p>
+<p>Double-click with the right mouse button (or press ctrl-D) to get back to the
+previous view.</p>
+<p>An even better way to inspect the result is to create a <a href="sedfit_help_residuals_bitmap.htm">residual
+bitmap</a>:</p>
+<p>Note: this may be checked already by default.&nbsp; If not, invoke the 
+following function:</p>
+<p><img border="0" src="images/tutori14.gif" width="652" height="473"></p>
+<p>A little input box will appear for entering the scale of the bitmap,
+recommending the default of 0.05 for maximal black-white scale:</p>
+<p><img border="0" src="images/tutori16.gif" width="275" height="127"></p>
+<p>Hit OK, and you'll see the residuals bitmap in the S<span style="font-variant: small-caps">edfit</span> 
+ window:</p>
+<p><img border="0" src="images/tutori17.gif" width="652" height="474"></p>
+<p>Because the size of the bitmap depends on the radial interval of the data and
+the number of scans, it may not fit entirely into the S<span style="font-variant: small-caps">edfit</span> 
+ window on your screen, even if the S<span style="font-variant: small-caps">edfit</span> 
+ window is maximized on your computer screen.&nbsp; Therefore, to see it in
+full, one can export the bitmap with the <a href="sedfit_help_copy.htm#Copy Residuals Bitmap">Copy</a>
+command and paste it into, e.g. PowerPoint. This will show the full bitmap:</p>
+<p><img border="0" src="images/tutori18.gif" width="1277" height="129"></p>
+<p>Obviously, there is a strong diagonal stripe indicating the mismatch between
+the data and the calculated curve.&nbsp; <b>At this stage, with large systematic
+residuals, artifacts can occur in the c(s) distribution.&nbsp;</b>&nbsp;&nbsp;</p>
+<p>In order to improve the analysis, we have to refine the
+calculation.&nbsp;&nbsp;</p>
+<p>Invoke the Parameter box, and change the frictional ratio parameter to a
+value of 1.2.&nbsp; The parameter box should look like this:</p>
+<p><img border="0" src="images/tutori35.jpg"></p>
+<p>Execute the <b>Run</b> command:</p>
+<p><img border="0" src="images/tutori20.gif" width="620" height="476"></p>
+<p>As can be seen, this makes the main peak sharper (note the scale has changed
+in the c(s) distribution), and gives a significantly better rmsd.&nbsp; Further,
+as can be seen from the residuals bitmap, and the systematic deviations in the
+vicinity of the meniscus are much less.</p>
+<p>This demonstrates that the setting of the frictional ratio does not change
+the gross information (i.e. the main peak at 4-5 S), but it can modify
+considerably the quality of the fit, and also the details of the distribution
+for the species of lower abundance.&nbsp;&nbsp;</p>
+<p>Therefore, in order to get the true best-fit distribution c(s), we will
+optimize the settings of the frictional ratio and the meniscus in a non-linear
+regression.</p>
+<p>When working with long-column interference data and a high scan frequency,
+and with a computer &lt; 1 GHz, I would recommend to reduce the number of scans
+for the non-linear regression.&nbsp; Do this by loading new files but use only
+every 2nd or 3rd scan (see <a href="sedfit_help_LoadNewData.htm">Load New Files</a>
+command):</p>
+<p><img border="0" src="images/tutori26.gif" width="274" height="127"></p>
+<p>Then go to the parameter box, and enter the following values:</p>
+<p>1) Improve the distribution range:&nbsp; The partial peaks at the extreme
+values of our s-range (i.e. at s-min and s-max) in our preliminary analysis
+indicate that our s-range was slightly too tight:&nbsp; There was a little bit
+of a peak visible at 10 S, indicating that there may be something sedimentation
+with an s-value equal or larger than 10S.&nbsp; Therefore, set the s-max value
+to 11.&nbsp; Likewise, there is a partial peak visible at 1 S, indicating a
+possible contribution of a small sedimenting species.&nbsp; Set the s-min value
+to 0.5.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>2) Because we want to use non-linear regression for the frictional ratio,
+check the box next to this parameter. Do the same thing with the meniscus in
+order to optimize this parameter.&nbsp; Both of these parameters (which may be
+slightly correlated) may be responsible for some residual mismatch in the
+meniscus region.&nbsp;&nbsp;</p>
+<p>In the end, the box should look like this:</p>
+<p><img border="0" src="images/tutori38.jpg"></p>
+<p>When pressing OK, a series of input boxes appears prompting you to enter
+constraints for the <a href="sedfit_help_fitting_options.htm#Constraints for Fitting of Meniscus and Bottom">variation
+of the meniscus and bottom</a>.&nbsp; Here, I would recommend to accept the
+default values.</p>
+<p>Next, click on the <a href="sedfit_help_fit.htm">Fit</a> command in the
+top-level menu. This will start a non-linear regression using the simplex
+procedure.&nbsp; The screen output during the fit includes the status of the c(s) analysis in the first 2 lines (or 3 lines,
+respectively, when using regularization).&nbsp; Additionally, we see in the third line the simplex
+number (here '3'), and number of steps calculated so far in this simplex (here
+'0').&nbsp; The fourth line shows the current rmsd value (this may temporarily
+increase when restarting a new simplex), followed by the so far best-fit values
+for the frictional ratio and bottom and
+meniscus. </p>
+<p>New in version 9.2: The graphs for the bitmap, data, residuals, and the 
+distribution can update during the fit (dependent on the
+<a href="sedfit_help_fitting_options.htm#fit updating preferences">preferences 
+settings</a>).</p>
+<p><font color="#008000">New in version 8.7: it is  possible to
+calculate the ellipsoidal axial ratios corresponding to this best-fit frictional
+ratio conveniently using the <a href="sedfit_help_calculator.htm#Calculate shapes from frictional ratio">calculator
+function</a>.&nbsp;</font> </p>
+<p>The fit takes approximately a minute or less.&nbsp; Because the
+simplex procedure can exhibit difficulties in convergence, the fit can be
+interrupted by <b>pressing the space bar once</b>.&nbsp; This will stop the
+current c(s) analysis, and will restart the c(s) analysis using the best-fit
+values.&nbsp; </p>
+<p>After convergence, we find something similar to</p>
+<p><img border="0" src="images/tutori31.jpg"></p>
+<p>At this point, if the data set had been reduced for the non-linear
+regression, we could reload the data, using all the files</p>
+<p><img border="0" src="images/tutori29.gif" width="274" height="127"></p>
+<p>Please note that the previous best-fit values for the frictional ratio of
+1.24 and the meniscus are still maintained.</p>
+<p>Click on the <a href="sedfit_help_run.htm">Run</a> command (<b>not</b> the
+Fit command, as we have already performed the non-linear regression) in the
+top-level menu, and we will get the following output:</p>
+<p><img border="0" src="images/tutori42.jpg"></p>
+<p>The rmsd of the fit has improved to ~0.005 and the systematics in the
+residual bitmap is substantially reduced, as visible in the more uniform gray (again, visible best if using the <a href="sedfit_help_copy.htm#Copy Residuals Bitmap">copy
+bitmap</a> command): </p>
+<p><img border="0" src="images/tutori32.gif" width="1283" height="129"></p>
+<p>&nbsp;</p>
+<p><font color="#FF0000"><i>NEW:&nbsp; This distribution can be expanded by
+using the new command for <a href="sedfit_help_display.htm#Rescale Distribution Plot">rescaling
+the distribution plot</a> in the distribution menu. Also, using the new <a href="sedfit_help_size_distribution_options.htm#Integrate Distribution">integration
+tool</a>, we can calculate the loading concentration and weight-average s-value
+under each of the peaks.</i></font></p>
+<p>At this point, we can integrate the distribution.&nbsp; A convenient way to 
+achieve this is via the keyboard shortcut control-M. </p>
+<p><img border="0" src="images/tutori43.jpg"></p>
+<p>This displays little boxes that have the Mw as title and can be clicked.&nbsp; 
+For example, click on the 115 kDa box: </p>
+<p>a message appears with further information about the material in this peak</p>
+<p><img border="0" src="images/tutori44.jpg"></p>
+<p>and the sedfit window changes to</p>
+<p><img border="0" src="images/tutori45.jpg"></p>
+<p>highlighting with the intensity of red where the species from that peak 
+contribute to the raw data.&nbsp; (The intensity of red is governed by the 
+diffusional envelope of the sedimenting species).&nbsp; In the distribution 
+itself, the segment of the distribution is highlighted over which the automatic 
+integration stretches.</p>
+<p><b>Bayesian analysis:</b></p>
+<p>We can use the Bayesian analysis tool to implement the idea that we know all 
+species are pure and monodisperse (i.e. in case we had done a mass spec to 
+ensure the absence of microheterogeneity) and sediment with a single s-value.&nbsp; 
+In this case, <b>control-X </b>automatically places delta-function peaks into 
+the prior probability underlying the regularization.</p>
+<p>The result shows sharper peaks, as expected:</p>
+<p><img border="0" src="images/tutori50.jpg"></p>
+<p>Also, a notepad file pops up reminding us how much material is not accounted 
+for in the peaks:</p>
+<p><img border="0" src="images/tutori51.jpg"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_displaydistribution.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,205 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>sedimentation velocity for reactive systems</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+<style type="text/css">
+.auto-style6 {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+</style>
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="1710" --></font></p>
+
+<h2>REACTIVE SYSTEMS IN SEDIMENTATION VELOCITY</h2>
+<p class="auto-style6">As documentation please refer to the following books, 
+which have specific information on SEDFIT and SEDPHAT functions as side-bars 
+nested into the description of theory and experiment of analytical 
+ultracentrifugation (AUC):</p>
+<p class="auto-style6">
+<a href="https://www.crcpress.com/Basic-Principles-of-Analytical-Ultracentrifugation/Schuck-Zhao-Brautigam-Ghirlando/p/book/9781498751155">
+https://www.crcpress.com/Basic-Principles-of-Analytical-Ultracentrifugation/Schuck-Zhao-Brautigam-Ghirlando/p/book/9781498751155</a></p>
+<p class="auto-style6">
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948</a></p>
+<p class="auto-style6">
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Interacting-Systems/Schuck-Zhao/p/book/9781138035287">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Interacting-Systems/Schuck-Zhao/p/book/9781138035287</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font color="#FF0000"><b>New in version 2.0</b></font></p>
+<p>Sedimentation velocity simulations for reacting systems have been added.&nbsp; 
+This includes <b><font color="#FF0000">self-associating systems</font></b>, as 
+well as <b><font color="#FF0000">hetero-associating systems</font></b> both with
+<b><font color="#FF0000">finite reaction kinetics</font></b> and with
+<font color="#FF0000"><b>instantaneous equilibrium</b></font> (on the time-scale 
+of sedimentation).</p>
+<p>These models can be used to directly model the sedimentation boundary for 
+reacting systems.&nbsp; It is an alternative to the analysis of the analysis of 
+the <a href="isotherm_analysis.htm">isotherm of weight-average 
+s-values and of reaction boundaries of fast reactive systems using 
+Gilbert-Jenkins theory</a>.&nbsp; The boundary modeling extracts more information from the 
+sedimentation data, specifically on the <b><font color="#FF0000">reaction 
+kinetics</font></b>. However, this comes at the cost of increased susceptibility 
+to all factors that may lead to artifacts in the boundary spreading.&nbsp; </p>
+<p>For a detailed discussion of the relative merits of the direct boundary 
+modeling with Lamm equation solutions for reactive systems, Gilbert-Jenkins 
+theory based isotherm analysis, and analysis of weight-average s-values, please 
+see the following references:</p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 6">
+J. Dam, C.A. Velikovsky, R.A. Mariuzza, C. Urbanke, P. Schuck (2005) 
+Sedimenetation velocity analysis of heterogeneous protein-protein interactions: 
+Lamm equation modeling and sedimentation coefficient distributions c(s).&nbsp;
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3">Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3"> 
+89:619-634</a> </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 6">
+J. Dam, P. Schuck (2005) Sedimentation velocity analysis of heterogeneous protein-protein interactions: 
+Sedimentation coefficient distributions c(s) and asymptotic boundary profiles 
+from Gilbert-Jenkins theory.&nbsp;&nbsp;&nbsp;
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863474&query_hl=3">Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863474&query_hl=3"> 
+89:651-666</a> </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 6">
+&nbsp;</p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<b>A powerpoint presentation on the <a name="Gilbert-Jenkins theory">
+Gilbert-Jenkins theory</a> and its use for sedimentation velocity analysis of 
+reactive systems can be downloaded from
+<a href="../images/GilbertJenkins_cofs.pdf">here</a>.</b></p>
+<p>&nbsp;</p>
+<p><b><a name="Lamm equation model for reactive systems">Lamm equation model for 
+reactive systems</a></b></p>
+<p>The reaction kinetics model simulates the chemical conversion kinetics of the 
+interacting species during the sedimentation process. For systems with off-rate 
+constants &gt; 0.01/sec, the reaction can be considered essentially instantaneous 
+on the time-scale of sedimentation under most conditions (exceptions are 
+theoretically possible for extremely large molecules sedimented at extremely 
+high rotor speed).&nbsp; Therefore the sedimentation profiles become nearly 
+identical to those calculated under conditions where the mass action law is 
+fulfilled instantaneously at all times throughout the cell.&nbsp; This second 
+case limiting is also implemented in S<span style="font-variant: small-caps">edphat </span>
+independently from the reaction kinetics model.&nbsp; [The instantaneous mass 
+action law model for self-associations is a special case of the Lamm equation 
+with locally weight-average s-values and gradient-average D-values, but no such 
+relationship exists for heterogeneous associations.]&nbsp; </p>
+<p>Modeling the boundary shape is the most direct way to extract the entire 
+information content from the sedimentation process. Shown below is an example 
+for the boundaries of a A+B&lt;--&gt;AB reaction with concentrations equimolar at 
+2xKd, with an off-rate constant of 1x10(-3)/sec (bold lines), in comparison with 
+the same system in instantaneous equilibrium (thin lines), which produces 
+steeper boundaries. </p>
+<p><img border="0" src="menubilder/sedime17.gif" width="786" height="483"></p>
+<p>In comparison, the thin lines in the next figure are for an off-rate constant 
+of 1x10(-5)/sec, which produces broader boundaries which already partially 
+separate (the same koff = 1x10(-5)/sec data are plotted again as bold lines).
+</p>
+<p><img border="0" src="menubilder/sedime19.gif" width="788" height="487"></p>
+<p>These differences may be exploited to gain information on the stability of 
+complexes.&nbsp; In the global model, thermodynamic binding parameters can be 
+determined.</p>
+<p>For reactive systems studied by sedimentation velocity, it is a good idea to 
+start with the <a target="_blank" href="../sedfit_help_cs.htm">c(s) analysis of S<span style="font-variant: small-caps">edfiT</span></a> 
+, in order to get a feel for the time-scale of the reaction.&nbsp; Generally, 
+experiments are needed over a range of concentrations, covering conditions where 
+species are dissociated and concentrations &gt; 10Kd where they are mostly 
+assembled.&nbsp; If in the c(s) analysis the peak positions remain constant 
+(allowing for the broadening at very low signal-noise ratio) and only the area 
+changes, the reaction is slow on the time-scale of sedimentation.&nbsp; However, 
+if the peak position changes, this indicates a reaction fast on the time-scale 
+of sedimentation.&nbsp; The following normalized c(s) curves illustrate this 
+behavior for a fast (5x10(-3)/sec) self-association reaction on the left, and 
+and a slow one (5x10(-5)/sec) on the right (at concentrations 1/10, 1/3, 1, 3, 
+and 10 times the Kd). </p>
+<p><img border="0" src="menubilder/sedime20.jpg" width="636" height="255"></p>
+<p>A similar behavior is seen for fast (left) and slow (right) heterogeneous 
+associations (binding constants identical to the previous figure):</p>
+<p><img border="0" src="menubilder/sedime21.jpg" width="624" height="234"></p>
+<p>The c(s) analysis will aid in estimating the initial values for the s-values, 
+equilibrium constants, and off-rate constants.&nbsp; Further, the integration of 
+c(s) over all reactive species leads to the
+<a href="data1.htm#Load New Isotherm Data">isotherm of weight-average s-values</a>, 
+which can be analyzed independently to elucidate the reaction scheme, the 
+binding constants, and to estimate the species s-values.&nbsp; This is a 
+rigorous approach independent on the scale of the reaction kinetics.&nbsp; (The 
+relative merits of the direct modeling of the boundary shape versus isotherm 
+analysis has been discussed for rapid self-associating systems in
+<font size="2"> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12895474&amp;dopt=Abstract">Analytical
+Biochemistry 320:104-124</a></u></i></font><font size="2" face="Verdana"> (<a href="../images/ProteinSelfAssociation_AnalBiochem.pdf">preprint</a>)).&nbsp; </font>
+For slow systems, where each species population can be identified, integration 
+of all species populations can be an independent approach to analyze the binding 
+isotherm through each <b>species concentrations as a function of loading 
+concentration</b>.&nbsp; For fast reactive systems, SEDPHAT has models for the 
+use of Gilbert-Jenkins theory for the quantitative analysis of the s-value and 
+amplitude of the reaction boundary.</p>
+<p>&nbsp;</p>
+<p><font color="#FF0000"><b>Details of the implementation of the direct boundary model 
+and tips for its practical use in fitting:</b></font></p>
+<p>Internally, S<span style="font-variant: small-caps">edphat </span>
+will switch automatically between the instantaneous equilibrium and the finite 
+reaction kinetics model if the off-rate constants are equal or faster than 
+0.1/sec.&nbsp; In other words, if the values for log10(k-) are -1 or larger 
+(e.g., 1), the mass action law based algorithm is used. </p>
+<p>In the other extreme, complexes with koff values smaller than -6 (koff &lt; 
+1x10(-6)/sec) will lead to sedimentation profiles nearly identical to those of 
+independently sedimenting populations of the free and complex species of the 
+loading mixture.&nbsp; (This special case is not internally converted.)</p>
+<p>For modeling, it is important to globally model sedimentation data from a 
+range of loading concentrations that lead to the population of all species.&nbsp;
+</p>
+<p>The specifics for the input of the relevant reaction parameters are described 
+in the <a href="self-association.htm">self-association models</a> and the
+<a href="hetero-associations.htm">hetero-association models</a>. </p>
+<p><b>When working with the reactive system models, it may be required to make 
+sure that numeric stability is achieved, and that the simulation is efficient.&nbsp; 
+This can be controlled in the settings of the
+<a href="options.htm#Lamm equation options for sedimentation/reaction systems">
+Lamm equation options</a>.&nbsp; The following points are for optimizing the 
+algorithm and for troubleshooting: </b></p>
+<p><b>* if the sedimentation velocity data do not include back-diffusion, 
+specify this either in the
+<a href="experiment_parameters.htm#no backdiffusion necessary">experimental 
+parameter box</a>, or in the corresponding
+<a href="options.htm#shut off back-diffusion">Lamm equation options field</a>.&nbsp;
+</b></p>
+<p><b>* if the simulations are too slow, change the
+<a href="options.htm#Set grid size">grid size</a> (usually not much below 50 per 
+mm solution column), increase the settings for
+<a href="options.htm#maximum chemical reaction per step">reaction per step</a> 
+and <a href="options.htm#maximum relative sedimentation per step">sedimentation 
+per step</a> (not above 1), and/or set the
+<a href="options.htm#correction level">correction level</a> to the setting 1. 
+This may be required for initial fitting.</b></p>
+<p><b>* if the simulations do not converge, increase the
+<a href="options.htm#Set grid size">grid size</a> (e.g., 1000), increase the 
+settings for <a href="options.htm#maximum chemical reaction per step">reaction 
+per step</a> and <a href="options.htm#maximum relative sedimentation per step">
+sedimentation per step</a> (e.g., 0.1), and/or modify the
+<a href="options.htm#correction level">correction level</a> (usually the setting 
+1 should be best, but 2 or 3 may in some cases be superior). </b></p>
+<p>Currently, hydrodynamic non-ideality not included in the reaction kinetic 
+models. (Exception is the instantaneous equilibrium of self-associating 
+systems.)</p>
+<p>All models provide the possibility of adding an additional species that is 
+unrelated to the reactive species.&nbsp; This can be used to describe, for 
+example, a contaminant, or IF signals from sedimenting buffer salts. 
+Concentrations estimates of this un-related species are entered in the
+<a href="local_parameters.htm#concentration of the non-participating species can be specified">
+local parameters menu</a>.&nbsp; The presence of such components, and their 
+estimated molar mass and s-value may be obtained from c(s) analysis with SEDFIT. </p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

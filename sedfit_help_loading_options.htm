@@ -1,0 +1,661 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Loading Options</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_set_vbarxrho.htm" target="">set&nbsp;vbarxrho</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="inhomogeneous_solvent.htm" target="">Inhomogeneous&nbsp;Solvent</a>&nbsp;]</nobr> <nobr>[&nbsp;Loading&nbsp;Options&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fitting_options.htm" target="">Fitting&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_calculator.htm" target="">Calculator</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_size_distribution_options.htm" target="">Size&nbsp;Distribution&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sounds.htm" target="">Sounds</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="33848" -->
+</p>
+<h1 style="line-height: 100%; margin-top: 0; margin-bottom: 0">loading
+options&nbsp;</h1>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit118.gif" width="302" height="461"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>Data can be loaded
+in </nobr> S<span style="font-variant: small-caps">edfit</span>    <nobr>with a
+large variety of different options:</nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Filename Conventions">old filename convention</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Set Number of Data Columns"> special format with n columns</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* 
+<a href="#Set Radial Resolution"> ignoring spikes</a> in the
+(absorbance) data</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Set Radial Resolution">set radial resolution</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Also, there are several functions for pre-processing data, which are
+not required for S<span style="font-variant: small-caps">edfit</span>:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Eliminate Interference Offset">eliminate interference
+offset</a> (a mostly cosmetic operation, as interference analyses usually are
+performed with consideration of RI noise, making the calculations invariant to
+vertical displacements)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Elimination of fringe jumps within each scan">remove
+integral fringe shifts within one scan</a> </nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Eliminate Jitter">eliminate jitter</a> (also not required
+if RI noise is calculated algebraically, which is generally more precise)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Subtract blank scan from data set">subtract blank scan</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Add or Subtract Simulated Sedimentation Data">add
+or subtract simulated sedimentation data</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#correct erroneous IF radial calibration">add
+noise to data or multiply signals</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Subtract Constant Value from Scan">subtract constant value from scan</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#correct erroneous IF radial calibration">correct
+erroneous IF calibration</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#add constant time to data">add
+constant time and <font face="Symbol">w</font><sup>2</sup>t to data</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Then there are 
+utility functions for preparing sedimentation equilibrium analyses:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Test approach to equilibrium">test approach to equilibrium</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#sorting equilibrium data">sort eq data to disk</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>Additional functions serve for data transformation and storage:</nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Save Intensity Data as Absorbance Data">save intensity data
+as absorbance data</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Save Intensity Data as Two Pseudo-Absorbance Data Sets">save
+intensity data as two pseudo-absorbance data sets</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* 
+<a href="#sorting equilibrium data">save raw data set</a> </nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Save Raw Data In 3 Subsets">save raw data set in 3 subsets</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#exclude radial region">exclude region from raw data</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#exclude worst scan">exclude worst scan</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* 
+<a href="#exclude radial region">invert
+raw data</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>For the initial data (if a scan is used to initialize the Lamm
+equation)</nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="sedfit_help_SetInitialData.htm#Extrapolation of Initial Data">set polynomial order
+for extrapolation of initial data</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>Functions
+useful when working with dynamic light scattering data:</nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* <a href="#Generating DLS Data Files"> make DLS data from Protein Solutions 99,
+ALV, PhotoCor, Malvern Zetasizer, or from Brookhaven Instruments</a></nobr></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><nobr>* save mean DLS data in </nobr> S<span style="font-variant: small-caps">edfit</span> 
+<nobr> format</nobr></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Elimination of Spikes">Elimination
+of Spikes</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Don’t Load Spikes</p>
+</font></b>
+<p>This is useful mainly for work with absorbance data.&nbsp; If this switch is
+turned on, spikes (defined as an isolated jump in the absorbance signal by more
+than, e.g. 0.4) will be eliminated from the data set. The checkmark indicates the
+status of this switch. By default, this switch (elimination of spikes) is turned
+on.&nbsp; When switching this option <b>on</b>, an input box appears that makes
+it possible to define the threshold of what is considered a spike.&nbsp; This
+may help to clear up exceptionally noisy absorbance data with lots of
+outliers.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Set Radial Resolution"><font face="Roman" size="6" color="#FF0000">
+Set Radial Resolution</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Loading Options | set radial resolution</p>
+</font></b>
+<p>This is a new function in version 9.2 and higher.&nbsp; It allows to 
+pre-average neighboring data points within a scan, in order to speed up a 
+preliminary data analysis.&nbsp; This function is controlled by specifying the 
+(average) radial increment of data points that are desired.&nbsp; </p>
+<p><b>If a value of 0.001 or less is entered, all data points are loaded and 
+pre-averaging is switched off.&nbsp; </b>Higher values will switch pre-averaging 
+on.&nbsp; Pre-averaging will reduce slightly the noise of the data, but 
+obviously limit the radial precision.&nbsp; Statistically, there is no advantage 
+of pre-averaging, only a slight (and sometimes perhaps negligible) loss of 
+precision.&nbsp; However, this comes with a potentially large gain in 
+computational time.&nbsp; I suggest that this may be useful for routine-analyses 
+and preliminary analyses aimed at surveying reasonable fitting parameters, but 
+should be switched off for the final fit.</p>
+<p>For example, with values of 0.002, the typical number of data points within 
+an interference optical scan is reduced approximately by a factor 3.&nbsp; This 
+can speed up processing in the c(s) distribution considerably, since the step of 
+calculating the normal equations is dependent on the square of number of data 
+points.</p>
+<p>The radial resolution currently used is displayed in the first line of the 
+fitting info text.&nbsp; </p>
+<p>When changing this setting, you have the option to save the new value as a 
+default parameter.&nbsp; If you do that, each time new data is loaded, this 
+setting will be used.&nbsp; You can switch this off by changing the setting back 
+to 0.001 and setting this as the default.</p>
+<p>When the currently used value is changed, SEDFIT will offer to reload the 
+data and re-execute the currently used analysis model.&nbsp; </p>
+<p>&nbsp;</p>
+<p><a name="Filename Conventions"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Filename
+Conventions</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Loading Options | Old Filename Convention</p>
+</font></b>
+<p>&nbsp;</p>
+<p>If the old 4-hole rotor software is used, the naming conventions for the data
+files are different from the newer conventions. For example, in the old software
+the sequence of data files is represented in incrementing the number of the
+extension and the cell number is encoded in the filename, while in the newer
+software does it the other way around.</p>
+<p>This menu function is intended to help adapting the S<span style="font-variant: small-caps">edfit</span> program to these
+different data names.<i><font COLOR="#008000"></p>
+</font></i>
+<p>This option is by default <i>off</i> (i.e. newer filename conventions are the
+default). The status of this switch is indicated by a check mark in the menu.</p>
+<i><font COLOR="#ff0000">
+<p>Please Note: This option is not fully supported in all functions, and may be
+abandoned in the future.</p>
+</font></i>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Set Number of Data Columns">Set
+Number of Data Columns</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Set n Columns</p>
+</font></b>
+<p>If this switch is turned on, the user defines the number of columns in a data
+set. This allows to use data that deviate from the default format from the XLA/XLI
+in that they have additional data columns.&nbsp; The header structure has to
+remain the same as the XLA/XLI data files.&nbsp; If this function is turned on,
+a input box appears that allows to set the number of columns. The first column
+should always be the radial data, the second column the concentration
+distribution to be analyzed (e.g. in units of absorbance or fringes).</p>
+<i><font COLOR="#008000">
+<p>Please Note:</font> </i>If this option is used and the number of columns
+doesn’t match that of the data, the program most likely will crash.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Eliminate Interference Offset">Eliminate
+Interference Offset</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Eliminate Interference Offset</p>
+</font></b>
+<p>Interference data sometimes have integral fringe offsets, which are artifacts
+from the data acquisition software.&nbsp; Although this is not necessary for
+data analysis in S<span style="font-variant: small-caps">edfit</span>   because
+of the <a href="systematic_noise_analysis.htm">algebraic systematic noise
+calculation</a>, this function may be useful for comparing results or for other
+purposes.&nbsp;</p>
+<p>This menu function allows to align all the
+data at one specific radial point. The alignment algorithm will add new integral
+offsets to all scans such that at the specifically selected radial point, they
+all have a fringe value that is as close as possible to the fringe value of scan
+#1. Therefore, a good selection of the radial point is a region in the plateau,
+where little change occurs during the observed sedimentation process.</p>
+<p>A potential problem might occur if no point can be found within the solution
+column that does not change less than 0.5 fringes during the time observed.
+After alignment of the data, the new data can be 
+<a href="#sorting equilibrium data">saved</a>
+for documentation or analysis with
+other methods.</p>
+<b><font COLOR="#ff0000">
+<p>However, the alignment is not necessary, if the option <i>fit RI noise</i> is
+switched on in the <a href="sedfit_help_parameters.htm#FIT RI Noise"> parameter box</a></font></b><font COLOR="#ff0000"><b>.&nbsp;
+This switch is ON by default for interference data, and will calculate the RI noise
+automatically (see <a href="tutorial_sizedistributions.htm">tutorial</a>).&nbsp;
+This is the recommended treatment.&nbsp;&nbsp;</b></font></p>
+<p>The reason is that the
+algebraic elimination of jitter in the scans can without any further problems
+be applied to the integral shifts as well. Calculated radial invariant noise offsets <b>including
+integral fringe shifts</b> can be <a href="sedfit_help_subtract_calculated_noise.htm"> subtracted from the raw data</a><b>
+</b>after or at any
+stage of the analysis.&nbsp; The same is true for time-invariant noise.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Elimination of fringe jumps within each scan"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Elimination
+of fringe jumps within each scan</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Loading Options | Remove Integral Fringe Jumps (within one scan)</p>
+</font></b>
+<p>Sometimes, interference data exhibit integral fringe jumps within a single
+scan. This function iterates through each scan and looks for ‘sudden’ jumps
+in the fringe values of more than 0.8 at neighboring radial values. If such a
+jump is found, an integral offset is added to this and all following data
+points. The new data should be <a href="#sorting equilibrium data">saved</a>.&nbsp;&nbsp;</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: This function has not yet been
+optimized.&nbsp; Several rounds of executing
+this functions may be needed to remove multiple jumps within one scan.
+</font></p>
+<p><font color="#008000">Starting from version 8.5, the threshold value can be
+entered by the user, and as an option, the existence of a fringe jump can be
+judged from the residuals (this is useful for steep boundaries and requires
+prior modeling)</font></p>
+<u><font COLOR="#ff0000">
+<p>Important:</font></u><font COLOR="#ff0000"> Meniscus, bottom, and left and
+right fitting limit must be set before using this function.</p>
+</font></i>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Eliminate Jitter">Eliminate
+Jitter</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Eliminate Jitter</p>
+</font></b>
+<p>Probably due to vibrations and thermal fluctuations in the ultracentrifuge,
+interference scans can exhibit radial independent, but <a href="systematic_noise_analysis.htm"> time-dependent offsets</a>
+(jitter). This radial-invariant noise should be eliminated or taken into account
+for an optimal data analysis.</p>
+<p>The function ‘eliminate jitter’ can be used to align the data in the
+air-to-air region.&nbsp; This may be useful for the <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
+of the ls-g*(s) distribution</a>, in order to avoid <a href="sedfit_help_parameters.htm#FIT RI Noise"> calculating RI noise algebraically</a>.
+However, in all other models:</p>
+<p><b><font COLOR="#ff0000">the jitter elimination is not necessary, if the option <i>fit RI noise</i> is
+switched on in the <a href="sedfit_help_parameters.htm#FIT RI Noise"> parameter box</a></font></b><font COLOR="#ff0000"><b>.&nbsp;
+This switch is ON by default for interference data, and will calculate the RI noise
+automatically (see <a href="tutorial_sizedistributions.htm">tutorial</a>).&nbsp;
+Algebraic calculation of jitter is the recommended treatment, as it results
+generally in better fits.&nbsp;&nbsp;(However, jitter elimination may be
+advantageous when extrapolating ls-g*(s) to infinite time.)</b></font></p>
+<b><p>When using this function, it is assumed that the viewing window of the data plot defines the
+air-to-air in which the alignment should take place. Note:&nbsp; This is not the
+fitting range between the green lines, but simply the range of data displayed in
+the data plot.&nbsp; </b>Therefore,
+usually one would have to change the displayed section of the data. This can be
+done by using the appropriate <a href="sedfit_help_plot_range.htm#Setting the Display Range with the Right Mouse Button">mouse</a>
+or <a href="sedfit_help_plot_range.htm#Setting the Display Range">keyboard</a>
+ functions, i.e. generally by pulling a rectangle around the desired data with
+the right mouse button.&nbsp; If this has been done, press YES in
+the menu box, if not, press NO, make the required radial selection, and invoke
+this menu again.</p>
+<p>The magnitude of the jitter will be stored in the RI Noise data array, and
+can be retrieved using the <a href="sedfit_help_copy.htm#Copy Data Tables"> ‘copy RI noise table’</a> function, which allows to paste the data
+into a spreadsheet program, such as Origin.</p>
+<p>After elimination of the jitter, data can be aligned for possible integral
+fringe offsets (<a href="#Eliminate Interference Offset">see above</a>). The new data
+can be <a href="#sorting equilibrium data">saved</a> for documentation or analysis with other methods.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Subtract blank scan from data set">Subtract
+blank scan from data set</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Subtract Blank Scan</p>
+</font></b>
+<p>When working with interference data and external loading cells, it can be
+advantageous to subtract a single scan from a set of scans. For example, a
+before-blank or after-blank taken before or after the experiment, respectively,
+can be subtracted from equilibrium profiles (or approach-to-equilibrium)
+profiles to reduce the influence of time-invariant noise components. (For a
+discussion, see for example, Ansevin et al., Anal Biochem 1970, 237-261). The
+new data can then be saved.</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Add or Subtract Simulated Sedimentation Data">Add
+or Subtract Simulated Sedimentation Data</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Add or Subtract Simulated Sedimentation Data</p>
+</font></b>
+<p>As an additional tool for examining experimental data, there is the option to
+subtract simulated theoretical sedimentation profiles from the experimental
+data.&nbsp; The way this works is that the current model functions (i.e. the
+solid lines shown in the sedfit window as a result of executing any
+sedimentation model) are simply subtracted from the data.&nbsp; For example, one
+could just run a simulation for a sedimenting species at a given concentration
+(NOT CHECK the fit concentration field, or any of the baseline or systematic
+noise fields), and execute the 'Add or Subtract' function after that.&nbsp; This
+allows playing with the data and generating &quot;what-if&quot; scenarios.&nbsp;
+[For example, this function was used to simulate the sedimentation of mixtures
+of self-associating and non-interacting species.]&nbsp; However, it is obviously
+not something that should be done with any real data analysis.&nbsp;&nbsp;</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Add Noise to Data">Add
+Noise To Data or Multiply Signals</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Add Noise to Data</p>
+</font></b>
+<p>As a simulation tool, it can be convenient to reload the previously fitted
+and saved curves, and add normally distributed noise.&nbsp; This can be a useful
+strategy for reanalyzing data.&nbsp; (It can be used like an iteration of a <a href="sedfit_help_monte_carlo_simulations.htm">Monte-Carlo
+simulation</a>, but that would be tedious. It's more useful to generate
+simulated sedimentation profiles from scratch, using existing data as a
+rotor-speed and time-interval template.)</p>
+<p>Similarly, it can be useful sometimes to multiply the scans.&nbsp; For 
+example, although this is normally not necessary, when using 3 mm cells, the 
+data can be converted back to the same relationship between concentration and 
+signal as the 12 mm cells by multiplication by 4.</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><a name="Subtract Constant Value from Scan">
+<font face="Roman" size="6" color="#FF0000">Subtract Constant Value from Scan</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Loading Options | Subtract Constant Value from Scan</p>
+</font></b>
+<p>Sometimes it can be useful to be able to subtract a known baseline from the 
+scans.&nbsp; This is accomplished in this function.</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="correct erroneous IF radial calibration">Correct
+Erroneous IF Radial Calibration</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Correct erroneous IF radial calibration</p>
+</font></b>
+<p>You may have accidentally relied during the sedimentation experiment on a
+false radial calibration.&nbsp; If the correct radial calibration can be
+determined later, this can be used to simply transform the radial values of the
+data to their correct position.&nbsp;&nbsp;</p>
+<p>For radial calibration, one looks at the fringe display and shadow of the
+calibrated masks in the counterbalance. Relevant is the position of the
+transition between fringes and the grey shadow area, which are located at 5.85
+cm and 7.15 cm, respectively.&nbsp; If the radial calibration points have been
+chosen incorrectly - do the correct radial calibration and enter in S<span style="font-variant: small-caps">edfit</span>
+the (true) location of the previous calibration points.</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><a name="add constant time to data"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Add
+Constant Time and
+</font><font face="Symbol" SIZE="6" COLOR="#ff0000">w</font><font face="Roman" size="6" color="#FF0000"><sup>2</sup></font><font FACE="Roman" SIZE="6" COLOR="#ff0000">t
+To Data
+</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Loading Options | Add Constant Time and w^2t to data</p>
+</font></b>
+<p>If there is an intermittent power-failure during the run, the Optima XLA/I
+usually recovers and continues the run.&nbsp; Sometimes, if the power-failure
+was only very short, there is virtually no influence on the rotor speed and the
+macromolecular sedimentation (the rotor speed at the time of power restoration
+is printed out on the centrifuge).&nbsp; The data therefore may be perfectly
+good.&nbsp; Unfortunately, in some cases the power loss erases the memory of the
+Optima of the run length, i.e. the elapsed time and <font face="Symbol">w</font><sup>2</sup>t.&nbsp;
+This files after the power failure will therefore have an incorrect entry of
+these parameters, and are too small by a constant value.&nbsp; The difference
+between the true elapsed second and the value entered in the files can be worked
+out from the last file before the power-failure and the difference in the time
+stamps of the files.&nbsp; This can be used to calculate a constant offset in
+the elapsed seconds and the <font face="Symbol">w</font><sup>2</sup>t needed to
+fix the files.&nbsp;&nbsp;&nbsp;</p>
+<p><b>Ordinarily, this function is not needed for sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.</b></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Save Intensity Data as Absorbance Data">Save
+Intensity Data as Absorbance Data</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Save Intensity Data as Absorbance Data</p>
+</font></b>
+<p>It can be advantageous for the determination of the bottom position or
+the buffer background absorbance, data can be collected as ‘intensity’
+files with the XLA data acquisition software.&nbsp; These data files can be loaded and
+analyzed with S<span style="font-variant: small-caps">edfit</span> directly. However, for compatibility of
+these data files with other software, or for improved visual representation, with this function
+they can be saved as ordinary absorbance files. The file extensions
+will be automatically changed from ‘*.ri*’ to ‘*.ra*’. These files will
+have the reference intensities in the third column.</p>
+<p>(This function will also work with wavelength scans.)</p>
+<p>See also the following topic:</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Save Intensity Data as Two Pseudo-Absorbance Data Sets">Save
+Intensity Data as Two Pseudo-Absorbance Data Sets</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Save Intensity as 2 Pseudo-Absorbance Data sets</p>
+</font></b>
+<p>For sedimentation velocity studies, it is possible to generate fill both
+reference and sample sector with sample. When scanned as intensity data, this
+function allows to generate two separate absorbance data sets, one for each
+channel. Of course, since there is no reference transmission recorded (this is
+simply set to the default of 1000), the data are not true absorbance data, hence
+the name ‘pseudo-absorbance’.</p>
+<p>Such data have <a href="systematic_noise_analysis.htm"> systematic noise components</a> that are similar in structure to
+the systematic noise components of the interference optics. Therefore, they can
+be analyzed using <a href="systematic_noise_analysis.htm"> algebraic RI and TI noise
+decomposition</a>. There will be small
+correlation of the additional noise and baseline parameters with species of
+small sedimentation coefficient. For larger particles, however, this is not the
+case. Therefore, this method can effectively double the capacity of a AUC run
+for velocity experiments. This method is described in:</p>
+<font SIZE="2">
+<p>S.R. Kar, J.S. Kinsbury, M.S. Lewis, T.M. Laue, and P. Schuck. (2000)
+Analysis of transport experiments using pseudo-absorbance data. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10998273&amp;dopt=Abstract">Analytical
+Biochemistry</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10998273&amp;dopt=Abstract"> 285:135-142</a></p>
+</font>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Save Raw Data Set">Save
+Raw Data Set</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading Options | Save Raw Data Set</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading Options |<a name="Save Raw Data In 3 Subsets"> Save 
+6-channel Raw
+Data In 3 Subsets</a></p>
+</font></b>
+<p>This menu function allows to save the data set that is being fitted. This can
+be useful, for example, after elimination of spikes, or after alignment of
+integral interference offset, in order to facilitate data analysis using other
+software. Also, equilibrium data can be loaded, and saved using this option to
+eliminate their spikes.</p>
+<p>The filename specified in the file input dialog box is appended by the
+original filename and extension.</p>
+<p><i><b><font color="#FF00FF">New in version 8.7:&nbsp; </font></b>There is the
+option to rename the files to extend the filename to include the wavelength and
+the rotor speed, e.g. &quot;20k280_001.ra2&quot; instead of
+&quot;00001.ra2&quot;.&nbsp; This can be very convenient when sorting
+sedimentation equilibrium files that were generated using the equilibrium method
+of the Beckman XLA/I operating software.</i></p>
+<p>When the raw data are saved in three subsets, the current directory is used,
+and the first character of the filename will be changed to &quot;i&quot; for
+inner sector, &quot;m&quot; for middle sector, or &quot;o&quot; for outer
+sector, respectively. The radii where to cut the data are asked from the user,
+suggesting 6.2 and 6.7, which are just in the middle between the sectors for the
+six-channel centerpieces. Further, a integer will be added or subtracted to the
+scans such that the signal in between the cut radii (i.e. 6.0, 6.45 and 6.95)
+will be as close to zero as possible. This function therefore should be
+convenient to simplify subsequent data processing in equilibrium analyses, but
+separating the different subsets, and eliminating some estimated integral fringe
+shift.</p>
+<p>&nbsp;</p>
+<p><a name="Test approach to equilibrium">
+<font face="Roman" size="6" color="#FF0000">Test Approach To Equilibrium</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading 
+Options | Test Approach To Equilibrium</p>
+</font></b>
+<p>This function will allow testing for attainment of sedimentation equilibrium 
+in real-time or after all scans have been collected.&nbsp; It creates three 
+graphs:&nbsp; 1) the rmsd of all scans relative to the last scan (as introduced 
+first in WINMATCH): this curve should asymptotically level off at a value that 
+is close to the noise of data acquisition.&nbsp; 2) an inset showing the last 
+scan which serves as a reference: this is good to see to make sure there are no 
+regions of optical artifacts included in the comparison. 3) a plot of the radial 
+profile of the difference between the last two scans. This is a different way to 
+assess whether the solution is in sedimentation equilibrium, because the 
+difference should be random and close to the noise of data acquisition.</p>
+<p><img border="0" src="images/sedfit21.jpg"></p>
+<p>This can be done for multiple cells at once, all data types, different 
+wavelengths side-by-side (just not mixed interference and absorbance/intensity 
+data).&nbsp; Also, this allows for scans to be loaded the cover scan series at 
+different rotor speeds.&nbsp; The data from the highest rotor speed (usually the 
+most recent series) is indicated by the circles.</p>
+<p>When using this function, one must pay attention to properly choose the 
+regions of scans without optical artifacts.&nbsp;&nbsp; </p>
+<p>After setting up the scans to examine for equilibrium, a question appears</p>
+<p><img border="0" src="images/sedfit144.gif"></p>
+<p>Click on 'yes' for automatically including new scans into the analysis, as 
+they are being saved onto the harddrive. SEDFIT checks every 1 minute to see if 
+there are new scans of the types loaded.&nbsp; </p>
+<p>&nbsp;</p>
+<p><a name="sorting equilibrium data">
+<font face="Roman" size="6" color="#FF0000">Sorting Equilibrium Data</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading 
+Options | Sort Eq. Data</p>
+</font></b>
+<p>This function is solving the following problem: A sedimentation equilibrium 
+experiment can be conducted using the &quot;Equilibrium Method&quot; in the XLA/I 
+software.&nbsp; This allows to specify time-points and rotor speeds for a series 
+of scans.&nbsp; The XLA/I software saves all scans taken with this method in one 
+directory, and all scans from different rotor speeds, wavelengths, temperatures, 
+are all saved with an incrementally increasing filenames 00001.ra1, etc.&nbsp; 
+For the sedimentation equilibrium analysis, we need to specify which of these 
+scans was the last one taken with a particular wavelength at a particular rotor 
+speed.&nbsp; This can be very tedious.&nbsp; </p>
+<p><b>The function &quot;sort eq. data&quot; simplifies this task, by performing the 
+appropriate file selection, data transformation (if necessary from intensity to 
+absorbance), blank subtraction (if necessary for interference scans), copying 
+and renaming the files (to display rotor speed and wavelength in the filename) 
+and assembly into xp-files ready for SEDPHAT equilibrium analysis.&nbsp; </b></p>
+<p>An example of its use can be found in the tutorial of
+<a href="sedphat/DNATutorial_2.htm#Loading and sorting data in SEDFIT">
+sedimentation equilibrium analysis with SEDPHAT</a>. This will clarify the steps 
+involved.&nbsp; </p>
+<p>Points to consider:</p>
+<p>* do not load data from different optical systems at once.</p>
+<p>* if dealing with 6-channel cells, use the function &quot;<a href="#Save Raw Data In 3 Subsets">Save 
+6-channel Raw Data In 3 Subsets</a>&quot; prior to this function.</p>
+<p>* SEDFIT will consider scans to be at the same wavelengths, if the wavelength 
+entry is less than 5 nm apart (this takes into account the error in the 
+monochromator wavelength control)</p>
+<p>* when acquiring intensity data, you can load them all at once, and they will 
+automatically be transformed to absorbance data.&nbsp; The inspection of the 
+intensity data can be very useful in order to assess the fitting limits.&nbsp; 
+This is true, in particular, if you look at the data cell by cell.&nbsp; <b>
+Fitting limits and meniscus and bottom specified after loading the data will be 
+maintained in the xp-files</b>, and this is a convenient time to do this (you 
+may need to constrain fitting limits further later, but at least you can 
+determine limits for the maximal data sets).</p>
+<p>* you can load data from all different cells at once, but not if you need to 
+subtract blanks.&nbsp; You will only have the chance to specify a single blank, 
+therefore if you have interference data and want to subtract blank scans, do the 
+cells one by one.</p>
+<p>&nbsp;</p>
+<p><a name="exclude radial region"><font face="Roman" size="6" color="#FF0000">
+Exclude Region from Raw Data</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading 
+Options | exclude region from raw data</p>
+</font></b>
+<p><font color="#FF00FF"><b>New in version 9.2:&nbsp; </b></font>Sometimes one 
+may want to exclude a radial region in the middle of the scans from data 
+analysis, for example, because of a scratch in the window causing artifactual 
+peaks in the middle of otherwise good scans.&nbsp; If the peak does not consist 
+only of a single deviating data point (in which case the function to
+<a href="#Elimination of Spikes">eliminate spikes</a> can be used to ignore this 
+point), it is possible to exclude the whole region of the scan.&nbsp; </p>
+<p>The way to specify which region is going to be excluded is to use the zoom-in 
+tool, such that <b>only the data to be deleted are shown in the data window</b>.&nbsp; 
+After this preparation, use this loading options function, and the currently 
+displayed region will be eliminated from the representation of the scans <b>in 
+the SEDFIT memory</b>.&nbsp; </p>
+<p>In order to make this change permanent, you have to save data back to the 
+hard disk, which works exactly as the <b><a href="#sorting equilibrium data">Save Raw 
+Data</a></b>. </p>
+<p>&nbsp;</p>
+<p><a name="exclude worst scan"><font face="Roman" size="6" color="#FF0000">
+Exclude worst scan</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading 
+Options | exclude worst scan</p>
+</font></b>
+<p><font color="#FF00FF"><b>New in version 9.2:&nbsp; </b></font>It is possible 
+that a single scan shows deviations that indicate an artifact of data 
+acquisition.&nbsp; This may be discerned, for example, from inspection of the
+<a href="sedfit_help_residuals_bitmap.htm">residual bitmap</a>.&nbsp; If a 
+distinct horizontal line is visible in this bitmap, it may be a result of a bad 
+scan, for example, from an odd vibration of the camera.&nbsp; Likewise, when 
+dealing with systems with large refractive index signals, it is possible that 
+for selected scans the fringe tracking algorithm fails.&nbsp; This may be 
+repaired with the function
+<a href="#Elimination of fringe jumps within each scan">'eliminate fringe jumps 
+within each scan'</a> (see above), but that is not always successful. In these 
+cases, may be justified to simply exclude this scan from consideration.&nbsp; </p>
+<p>In order to identify which scan is the bad one, in previous versions we had 
+to search for the largest local rms deviation in the file 'scanrms.dat'.&nbsp; 
+This is now easier with this function, which automatically identifies the worst 
+scan, and excludes it from the list of loaded files.&nbsp; </p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="invert data">Invert Raw Data</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading Options |
+Invert Raw Data&nbsp;</p>
+</font></b>
+<p>This menu function allows to multiply the raw data loaded with -1.&nbsp; This
+can be useful when sample and reference side in the ultracentrifuge cell are
+swapped.&nbsp; If this happens, and if the optical density of the sample is
+above a threshold, the photomultiplier adjustment of the absorbance optics can
+cause some obviously noticeable artifacts.&nbsp; However, below a certain OD
+threshold, everything is perfectly fine, except all the apparent absorbance
+values are negative.&nbsp; Multiplying by -1 then converts everything back to
+normal absorbance data.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Generating DLS Data Files"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Generating
+DLS Data Files</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading Options |
+Import DLS Data&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">(Protein Solutions
+99, ALV, Brookhaven, PhotoCor or 2 column ASCII)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Loading Options | Save Mean DLS Data in S<span style="font-variant: small-caps">edfit
+</span> format</p>
+</font></b>
+<p><img border="0" src="images/dlsmenu.gif" width="603" height="177"></p>
+<p>&nbsp;</p>
+<p>This assumes intensity autocorrelation data from homodyne configuration
+(referred to as 'self-beating' in BIC instruments).</p>
+<p>When working with Protein Solutions 99 Dynamics version 5.20.05, first, several raw autocorrelation data sets from Protein Solutions 99 should be
+exported in the DynaPro software with the options: analysis results,
+autocorrelation coefficients, all measurements, ASCII text, include headers.
+Then, with the ‘Make DLS Data’ function, they can be loaded into S<span style="font-variant: small-caps">edfit</span>.
+This allows selection of good measurements, and to avoid bad ones.</p>
+<p>The data can then be averaged and saved in S<span style="font-variant: small-caps">edfit</span> DLS format with the
+function ‘save mean DLS data...’. They can then be analyzed in terms of
+single species analysis with M and s (instead of D), or in terms of
+size-distribution analysis (Rh-distribution or D-distribution).</p>
+<p>With the Protein Solution Dynamics version 5.26.38, the format is slightly
+different.&nbsp; Export the experimental data as &quot;this experiment
+only&quot;, with the options 'parameter settings', 'autocorrelation
+coefficients', and 'cumulants datalog'.&nbsp; The options are to load the entire
+time course as different files, or to load only the average data.&nbsp; Note
+that in version 5.26.38, marked measurements are excluded from the exported data
+and from the averaging.</p>
+<p>For the Brookhaven data, the *.dat file is read and directly saved as *.dlsdat
+file. In the process, the counts per channel are divided by the measured
+baseline entry of the BIC data to generate the normalized autocorrelation
+function.&nbsp; Two different BIC ASCII data formats can be read, that of the
+9kdlsw32.exe ver. 3.19 (we bought it in 2000, running under Windows), and data
+from an older DOS version (this has only 13 entries before the two-column time-vs-counts
+data).&nbsp;&nbsp;</p>
+<p>For the ALV data files, they need to be generated by the ALV-5000/E.V.
+2.0.6.2, saved as ALV-5000 Data ASCII.&nbsp; </p>
+<p>The 2 column ASCII option allows to use a simple file with the 
+autocorrelation data as pairs of correlation time and count rate (tab or space 
+delimited).&nbsp; All other information will be entered separately.</p>
+<p>The 2 column ASCII g(2)-1 is a function that was written for Malvern 
+Zetasizer NanoS.&nbsp; You can use the <a href="images/MakeDLSDAT_v1_0.zmac">Zetasizer export macro</a> writen by Ulf Nobbmann 
+(please also see his
+<a href="http://www.materials-talks.com/blog/2015/10/28/new-macro-to-export-dls-data-to-sedfit/">
+blog post</a> on this): </p>
+<p>** To install the macro:<br>Copy the attached file MakeDLSDAT-v1-0.zmac to 
+the folder<br>… My Documents\Malvern Instruments\Zetasizer\Macros\ExtraMacros<br>
+Start the Malvern Zetasizer software. Go to Tools – Options – Macros – Install 
+new Macro<br>navigate to the ExtraMacros folder and install the MakeDLSDAT-v1-0 
+macro<br>Restart the Malvern Zetasizer software to complete the macro 
+installation.<br><br>** To use the macro:<br>Open the dts data file, 
+select(=highlight) the record you want to export, right-click – Macros – 
+MakeDLSDAT-v1-0 – then navigate to desired folder and enter the name of the 
+file.<br> </p>
+<p>When the *.dlsdat files are later loaded into S<span style="font-variant: small-caps">edfit</span> for analysis, the data
+are transformed to the field autocorrelation function by taking the square root
+(sqrt (fabs(coefficient - 1)), but using the sign of (g(2)-1)). </p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

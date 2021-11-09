@@ -1,0 +1,311 @@
+<html>
+
+<head>
+<msthemeseparator align="center">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>analytical ultracentrifugation direct boundary modeling with sedfit</title>
+
+<meta name="resource-type" content="document">
+<meta name="generator" content="Microsoft FrontPage 12.0">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="revisit-after" content="15 days">
+<meta name="classification" content="Science">
+<meta name="description" content="analytical ultracentrifugation strategies for data analysis. Describes the mathematical concepts for sedimentation velocity analysis. A software,
+sedfit, can be downloaded and online reference is provided. Tutorials on direct boundary modeling, systematic noise calculation, size-distribution analysis, regularization, g*(s)
+analysis, and van Holde-Weischet analysis are available.">
+<meta name="keywords" content="analyitical ultracentrifugation, sedfit, AUC, XL-I, XL-A, direct boundary modeling, size-distribution analysis, systematic noise decomposition,regularization, maximum entropy, c(s) method, hydrodyanmic analysis, ">
+<meta name="robots" content="ALL">
+<meta name="distribution" content="Global">
+<meta name="rating" content="General">
+<meta name="copyright" content="">
+<meta name="author" content="Schuck">
+<meta http-equiv="reply-to" content="webmaster@analyticalultracentrifugation.com">
+<meta name="language" content="English">
+<meta name="doc-type" content=" " ">
+<meta name="doc-class" content="Completed">
+<meta name="doc-rights" content="Copywritten Work">
+
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+<style type="text/css">
+.auto-style5 {
+	text-align: left;
+	direction: ltr;
+	vertical-align: baseline;
+	font-family: Calibri;
+	font-size: 10.5pt;
+	margin-top: 0pt;
+	margin-bottom: 3.0pt;
+}
+</style>
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="1">[<a href="download.htm">download</a>] [<a href="getting_started.htm">getting
+started</a>] [<a href="examples.htm">examples</a>] [<a href="tutorials.htm">tutorials</a>]
+[<a href="sedfit_help.htm">sedfit help</a>] [<a href="sedfit_faqs.htm">FAQs</a>]
+[<a href="references.htm">references</a>] [<a href="links_to_other_auc_sites.htm">links
+to other AUC sites</a>] [<a href="contact.htm">contact</a>] [
+<a href="AUCsearch.htm">Search</a> ] [
+<a href="sedphat/default.htm">sedphat</a> ]
+
+
+<!-- Google CSE Search Box Begins  -->
+<form action="http://www.analyticalultracentrifugation.com/AUCsearch.htm" id="searchbox_012813870047456169378:urh0xzoop4i">
+  <input type="hidden" name="cx" value="012813870047456169378:urh0xzoop4i" />
+  <input type="hidden" name="cof" value="FORID:11" />
+</form>
+
+</font>
+<h1><font size="6">S<span style="font-variant: small-caps">edfit&nbsp;&nbsp;</span></font></h1>
+<p>This website provides information on S<span style="font-variant: small-caps">edfit</span>, a software
+for the analysis of analytical ultracentrifugation and other hydrodynamic data,
+written at the National Institutes of Health and distributed without charge for
+research use. The program can be <a href="download.htm"> downloaded</a> from
+here, and it is also available directly from
+<a href="https://sedfitsedphat.nibib.nih.gov/software/default.aspx">
+sedfitsedphat.nibib.nih.gov</a>, or it can be sent as an email attachment from 
+the author on request).&nbsp;</p>
+<p>As documentation please refer to the following books, which have specific 
+information on SEDFIT and SEDPHAT functions as side-bars nested into the 
+description of theory and experiment of analytical ultracentrifugation (AUC):</p>
+<p>
+<a href="https://www.crcpress.com/Basic-Principles-of-Analytical-Ultracentrifugation/Schuck-Zhao-Brautigam-Ghirlando/p/book/9781498751155">
+https://www.crcpress.com/Basic-Principles-of-Analytical-Ultracentrifugation/Schuck-Zhao-Brautigam-Ghirlando/p/book/9781498751155</a></p>
+<p>
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948</a></p>
+<p>
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Interacting-Systems/Schuck-Zhao/p/book/9781138035287">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Interacting-Systems/Schuck-Zhao/p/book/9781138035287</a></p>
+<p>A general introduction to the study of protein interactions by analytical 
+ultracentrifugation can be found at the website of our lab at NIH (<a href="https://sedfitsedphat.nibib.nih.gov/software/default.aspx">DMAS/LCIMB/NIBIB</a>).&nbsp; 
+This includes an <a href="http://dbeps.ors.od.nih.gov/documents/AUC_intro.pdf">introduction to the general principles of AUC</a> and detailed
+<a href="http://dbeps.ors.od.nih.gov/documents/protocols.pdf">experimental 
+protocols</a>. &nbsp;</p>
+
+<p>&nbsp;The main
+purpose of this website is to provide  additional information for using
+the software, such as an <a href="sedfit_help.htm"> online help</a> reference information,
+and background information (<a href="tutorials.htm">tutorials</a>) on direct boundary modeling, <a href="sedfit_faqs.htm">FAQs</a>,
+<a href="references.htm">references</a>, <a href="examples.htm">
+examples</a> and more.&nbsp; </p>
+<p>&nbsp;</p>
+
+<p style="text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; punctuation-wrap: hanging; margin-top: 0pt; margin-bottom: 0pt">
+&nbsp;</p>
+<p style="text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; punctuation-wrap: hanging; margin-top: 0pt; margin-bottom: 0pt">
+<span style="font-size: 16.0pt; font-family: Calibri; color: #0000B4; font-weight: bold">
+for
+upcoming <a href="workshop.htm">workshops</a>: see 
+https://sedfitsedphat.nibib.nih.gov/workshop/default.aspx</span></p>
+<p style="text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; punctuation-wrap: hanging; margin-top: 0pt; margin-bottom: 0pt">&nbsp;</p>
+
+<p style="unicode-bidi: embed; punctuation-wrap: hanging; " class="auto-style5">
+&nbsp;</p>
+
+<p style="unicode-bidi: embed; punctuation-wrap: hanging; " class="auto-style5">
+&nbsp;</p>
+
+<p> Please join the
+<a href="https://list.nih.gov/cgi-bin/wa.exe?SUBED1=SEDFIT-L&A=1">Sedfit Users Group 
+email list</a> (reaches currently &gt; 900 AUC users) for technical advice and discussions with other users on software 
+issues and applications. You can also sign up to the <a href="https://list.nih.gov/archives/sedphat-l.html">
+SEDPHAT-L</a> listserv for discussion of applications of SEDPHAT and questions 
+of global analysis of ITC, AUC, DLS, SPR, and other biophysical techniques.</p>
+<msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>The main features of S<span style="font-variant: small-caps">edfit </span>include:&nbsp;</p>
+<msthemelist border="0" cellpadding="0" cellspacing="0" width="100%">
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">analysis of data from:&nbsp; sedimentation velocity, dynamic light
+scattering, and sedimentation equilibrium.&nbsp;
+Sedimentation velocity data can be acquired using absorbance or interference optics,
+in conventional loading configuration or synthetic boundary, analytical zone
+centrifugation, and different cell geometries<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">continuous size-distributions c(s) with many variants of prior knowledge for sedimentation velocity
+analysis with maximum entropy regularization<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">size-and-shape distributions c(s,M)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">Bayesian incorporation of prior for enhanced resolution of distributions<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">Lamm equation models for: discrete non-interacting species,
+self-associating systems (1-2, 1-3, 1-2-4, 1-4-8, 1-m-n), non-ideal sedimentation 
+  --&gt; see extension for global analysis of interacting systems in 
+    <a target="_blank" href="sedphat/sedphat.htm">S<span style="font-variant: small-caps">edphat</span></a><span style="font-variant: small-caps"> </span>
+  	<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">apparent sedimentation coefficient distribution ls-g*(s) and van
+Holde-Weischet analysis G(s) (both for absorbance and interference data)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">all sedimentation velocity models for
+direct boundary modeling with algebraic noise elimination<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">corrections for water compressibility (and compressible organic solvents)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">continuous size-distribution models for dynamic light scattering and
+sedimentation equilibrium&nbsp;<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+    <p style="margin-bottom: 2"> numerous statistical functions, loading options, and general purpose tools<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+    <p style="margin-bottom: 2"> extension to global analysis in 
+    <a target="_blank" href="sedphat/sedphat.htm">S<span style="font-variant: small-caps">edphat</span></a><span style="font-variant: small-caps"> </span>
+  	<!--mstheme--></font></td></tr>
+	</table><!--mstheme--><font face="Verdana, Arial, Helvetica">
+    <p style="margin-bottom: 2"> S<span style="font-variant: small-caps">edfit </span>
+    is closely related to S<span style="font-variant: small-caps">edphat</span>, 
+    which provides global modeling capability for both sedimentation equilibrium 
+    and sedimentation velocity data.&nbsp; It also can serve as a platform for 
+    the global analysis of a variety of isotherms from different biophysical 
+    disciplines.&nbsp; <msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p style="margin-bottom: 2"><b><i>NEW:&nbsp;</i></b></p>
+<msthemelist border="0" cellpadding="0" cellspacing="0" width="100%">
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>accounts for finite time of absorbance scanning</b><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>Extended multi-threading support for faster analysis on computers 
+	with multi-core processors</b><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>Bayesian prior knowledge for enhanced resolution of c(s) </b>(links 
+	to
+	<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17521163">
+	paper</a> and
+	<a href="sedfit_help_size_distribution_options.htm#use prior probabilities">
+	how to use in SEDFIT</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>faster Lamm equation solutions </b>(<a href="images/CompPhysComm_LammEq.pdf">description</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>new optimization tools: Marquardt-Levenberg and simulated annealing</b> 
+	(<a href="sedfit_help_fitting_options.htm#Marquardt-Levenberg">how to use in 
+	SEDFIT</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>real-time testing for attainment of sedimentation equilibrium</b> (<a href="sedfit_help_loading_options.htm#sorting equilibrium data">how 
+	to use in SEDFIT</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>
+	<a href="sedfit_help_size_distribution_options.htm#compute with multiple threads">
+	multi-thread support</a></b><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><b>new user interface </b>(new color scheme, wizard messages, graphical 
+	editing of data points and scans, dragging limits with the mouse,
+	<a href="sedfit_help_LoadNewData.htm#Changing Cells">quick change of cells</a>,
+	<a href="sedfit_help_size_distribution_options.htm#use integration ranges from file">
+	pre-set limits for automatic integration</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">version 9.4: new specialized c(s) models (<a href="sedfit_help_cs_with_other_prior.htm#c(s) for wormlike chain">wormlike 
+  chain</a>,
+  <a href="sedfit_help_cs_with_other_prior.htm#c(s) with fix f/f0 and floating vbar">
+  floating vbar</a>), extended calculator,
+  <a href="sedfit_help_display.htm#Show Peak Mw in c(s)">display</a>, and other 
+  utility functions (improved 6-channel data support)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">version 9.3: <a href="c(s,m)_and_c(s,).htm">size-and-shape distributions c(s,f) and c(s,M)</a>, 
+  and the scale-relationship free <a href="c(s,m)_and_c(s,).htm#General c(s,*)">general c(s,*)</a><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><a href="sounds.htm">sounds</a>, 
+  <a href="sedfit_help_fitting_options.htm#Serialize Fit">serialization</a> of analysis (apply the same analysis automatically 
+  to data from several cells)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">version 9.2:&nbsp; optional speeding up of c(s) analyses by slight
+  <a href="sedfit_help_loading_options.htm#Set Radial Resolution">radial 
+  pre-averaging of scans</a>, faster
+  <a href="sedfit_help_fitting_options.htm#permeable bottom">Lamm equation 
+  solutions with permeable bottom model</a>,
+  <a href="sedfit_help_cs_with_other_prior.htm#c(s) with M(s) table">c(s) model 
+  with user-defined M-s relationship</a>,
+  <a href="sedfit_help_fitting_options.htm#fit updating preferences">optional 
+  updating of display while fiitting</a>, restoring previous c(s) analyses, 
+  loading data via drag-and-drop, importing SEDPHAT xp-files, and other new and 
+  improved utility functions.<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new tutorials on&nbsp; <a href="compressibility_of_water_and_organic_solvents.htm">solvent compressibility</a>,
+    and <a href="dynamic_density_gradients.htm">self-forming
+    density gradients</a><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new S<span style="font-variant: small-caps">edphat</span> <a href="sedphat/hybrid_local_continuos_global_discrete.htm">hybrid
+    bimodal c(s)-discrete species model</a>  combining 2 c(s) distributions with
+    discrete species, for example allowing to link molar mass into integral
+    multiples<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">version 8.9: <a href="export_to_sedphat.htm">Export data to S<span style="font-variant: small-caps">edphat</span></a>, 
+    and spawn S<span style="font-variant: small-caps">edphat</span>
+    automatically with current data (and c(s) hybrid model). <!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new in version 8.8 (03/04): maintenance update with a few bug fixes and 
+  added flexibility <!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new in version 8.7 (09/03): sedimentation in <a href="inhomogeneous_solvent.htm">inhomogeneous
+    solvents</a>, like sedimenting co-solutes and compressible solvents,
+    including corrections for <font color="#FF0000"> <a href="compressibility_of_water_and_organic_solvents.htm">water
+    compressibility</a></font>;
+    extended Monte-Carlo error analysis for weight-average s-values or
+    concentrations of trace components; <a href="sedfit_help_calculator.htm#Differential second moment integration">
+    differential second moment method for sw</a>; faster c(s)
+    fitting; improved ellipsoid shape calculator; <font color="#FF0000"><a href="sedfit_help_cs_with_other_prior.htm#c(s) with bimodal ff0">bimodal
+    c(s)</a></font> with two f/f0 parameters, back-transform for g(s*), several new utilities and bug fixes<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new mode for <a href="realtime.htm"><b><i>REALTIME</i></b></a> analysis<!--mstheme--></font></td></tr>
+</table><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><i>NEW
+REFERENCES:</i></b></p>
+<msthemelist border="0" cellpadding="0" cellspacing="0" width="100%">
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">Bayesian analysis of trace components (<a href="http://www.springerlink.com/content/7722t7511527671h/">AAPS 
+	Journal 10 (2008) 481-493</a>) <!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">Bayesian prior knowledge (<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=17521163">Biomacromolecules 
+	8 (2007) 2011-2024</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new Lamm equation solutions (<a href="images/CompPhysComm_LammEq.pdf">Computer 
+	Physics Communications in press</a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">size-and-shape distributions c(s,M) and scale-free general c(s,*) (<a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?tool=pubmed&pubmedid=16565040">Biophysical 
+	Journal 90 (2006) 4651-4661 full text </a>)<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">interpreting c(s) for reacting systems:&nbsp;
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863474&query_hl=3">Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863474&query_hl=3"> 
+89:651-666</a> and
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3">Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3"> 
+89:619-634</a> <!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">tutorial <a href="images/AUCinProteinScience.pdf">
+review</a> of analytical ultracentrifugation in protein science (Protein Science 11 (2002) 2067-2079)&nbsp;&nbsp;<!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">new review of the strategies and numerical methods for sedimentation
+    coefficient distributions in <a href="images/methodinenzymology.pdf">Methods
+in Enzymology (in press)</a><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica">studies of strategies for using sedimentation velocity for protein
+    self-association: <font size="3"><u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">Analytical
+Biochemistry </a></u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">320:104-124</a></font><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><font size="3">macromolecular sedimentation in the presence of sedimenting
+    co-solutes (dynamic density gradients): <u><a href="images/DynamicDenistyGradients.pdf">Biophysical
+Chemistry</a></u><a href="images/DynamicDenistyGradients.pdf"> 108:187-200</a></font><!--mstheme--></font></td></tr>
+	<msthemelist><td valign="baseline" width="42"><!--mstheme--><font face="Verdana, Arial, Helvetica"><img src="_themes/sedfit-spiral/spibul1a.gif" width="15" height="15" hspace="13" alt="bullet"><!--mstheme--></font></td><td valign="top" width="100%"><!--mstheme--><font face="Verdana, Arial, Helvetica"><font size="3">corrections for solvent compressibility <u><a href="images/CompressibleSolvents.pdf">Biophysical
+Chemistry</a></u><a href="images/CompressibleSolvents.pdf"> 108:201-214</a></font><!--mstheme--></font></td></tr>
+</table><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>A snapshot from the direct boundary modeling of data from a sample of IgG,
+analyzed with a c(s) distribution of Lamm equation solutions illustrates the
+rich information contained in sedimentation velocity data.&nbsp;</p>
+<p><img border="0" src="images/sedfit95.gif" width="596" height="475"></p>
+<p>This example also illustrates some of the main ideas of S<span style="font-variant: small-caps">edfit</span>:
+loading data from the entire sedimentation process, use of systematic noise
+decomposition (and subtraction), modeling with finite element solutions of the
+Lamm equation.&nbsp; If we expand the scale of the continuous sedimentation
+distribution c(s) with maximum entropy regularization shown above, it can be
+seen that the c(s) analysis reveals the presence of
+several oligomeric species and a smaller species:</p>
+<p><img border="0" src="images/sedfit91.gif" width="518" height="423"></p>
+<msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>&nbsp;</p>
+<p>Similarly, the analysis of data from a BSA sample</p>
+<p><img border="0" src="images/sedfit108.gif" width="633" height="249"></p>
+<p>shows the presence of dimer and trimer in the
+sedimentation coefficient distribution c(s)</p>
+<p><img border="0" src="images/tutori39.gif" width="409" height="317"></p>
+<p>Transformation to a molar mass distribution (assuming that all species have a
+similar frictional ratio) is consistent with the oligomeric BSA
+species:</p>
+<p><img border="0" src="images/tutori45.gif" width="423" height="317"></p>
+<p> Analyses free of scale-relation ship assumptions of similar frictional 
+ratios are available, such as the two-dimensional
+<a href="c(s,m)_and_c(s,).htm#c(s,ffo)">size-and-shape distribution c(s,f), 
+c(s,M)</a>, and the <a href="c(s,m)_and_c(s,).htm#General c(s,*)">general c(s,*)</a>.&nbsp;&nbsp; </p>
+<p> <img border="0" src="images/defaul38.gif" width="751" height="244"></p>
+<p> S<span style="font-variant: small-caps">edfit</span>  offers several different
+options for utilizing different prior knowledge on the sample under study (such as the
+number of discrete species, a self-association model, etc.).&nbsp; More
+information on these examples can be found in the <a href="tutorial_sizedistributions.htm">step-by-step
+tutorial</a> (BSA) and the <a href="sedfit_example.htm">example for using S<span style="font-variant: small-caps">edfit</span></a>
+(IgG).&nbsp;</p>
+<p>For questions please contact the
+<a href="https://list.nih.gov/cgi-bin/wa.exe?SUBED1=SEDFIT-L&A=1">Sedfit Users Group 
+email list</a> .</p><br><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"><p><b><a name="DISCLAIMER:"><font size="2">DISCLAIMER STATEMENT:</font></a></b></p>
+<p><b><font size="2">The information contained herein is provided as a service 
+with the understanding that the author makes no warranties, either expressed or 
+implied, concerning the accuracy, completeness, reliability, or suitability of 
+the information.</font></b></p>
+<p>&nbsp;</p>
+<p><font size="1">[<a href="download.htm">download</a>] [<a href="getting_started.htm">getting
+started</a>] [<a href="examples.htm">examples</a>] [<a href="tutorials.htm">tutorials</a>]
+[<a href="sedfit_help.htm">sedfit help</a>] [<a href="sedfit_faqs.htm">FAQs</a>]
+[<a href="references.htm">references</a>] [<a href="links_to_other_auc_sites.htm">links
+to other AUC sites</a>] [<a href="contact.htm">contact</a>]</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

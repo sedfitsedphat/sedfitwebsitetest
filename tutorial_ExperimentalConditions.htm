@@ -1,0 +1,88 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><b><u><a name="Experimental considerations">Experimental considerations</a></u></b></p>
+<p>For a detailed direct boundary analysis, there are a few requirements that
+need to be taken into account before doing the experiment.&nbsp;&nbsp;</p>
+<p>This tutorial assumes general familiarity with the experimental setup.&nbsp; 
+For detailed information, see the
+<a href="http://www.nih.gov/od/ors/dbeps/PBR/Applications/Protocols.pdf">experimental 
+protocols</a> on the website of the
+<a href="http://www.nih.gov/od/ors/dbeps/PBR/AUC.htm">PBR/DBEPS</a> at NIH. </p>
+<p>One of the most important points is that the rotor is thoroughly equilibrated
+with respect to temperature in order to avoid convection.&nbsp; (If you have
+convection, the only rigorous analysis methods possible are the <a href="sedfit_help_SetInitialData.htm">Lamm
+equation initialized with an experimental scan</a> [single macromolecular
+component only], or the <a href="sedfit_help_calculator.htm#Differential second moment integration">differential
+second moment method </a>[gives sw only].) I had most
+success with the following procedure:&nbsp; After inserting the rotor and the
+optics into the ultracentrifuge, I set the desired temperature on the control
+panel and start evacuating the rotor chamber.&nbsp; Note that the temperature
+reading of the rotor may not be very accurate, and there can be a large jump
+when the vacuum goes below 100 micron.&nbsp; I do <b>not</b> start the rotor
+yet.&nbsp; With the rotor sitting at zero rpm, I observe the rotor
+temperature.&nbsp; If the vacuum is far below 100 micron, and the reading of the
+rotor temperature coincides with the set-point of the temperature, I wait 1 hour
+to have good thermal equilibration of the rotor, before I start the run.&nbsp;
+Please note that there is no 3000 rpm phase, because sedimentation at the low
+rpm although small, dependent on the system studied, may lead to boundary
+deformations and propagate systematic error into the data.&nbsp; (This is
+apparently not as important for methods like g(s*), which primarily use the <font face="Symbol">w</font><sup>2</sup>t
+information from the files, and do not model the shape of the boundary).&nbsp;
+If an initial phase at low rotor speed is needed (e.g. for setting up the
+optics), make sure to stop the run, shake the cells up, and restart the
+run.&nbsp; Unfortunately, usually that increases the rotor temperature by a few
+degrees, so that thermal equilibration must be reestablished by waiting at zero
+rotor speed.&nbsp;</p>
+<p>I use the rotor acceleration at the maximal setting, as during the
+acceleration clearly sedimentation takes place (this can be easily observed with
+the interference optical system).&nbsp; Although S<span style="font-variant: small-caps">edfit</span> 
+can calculate the Lamm equation solutions with a uniform acceleration (<a href="sedfit_help_loading_options.htm#Simulate Rotor Acceleration Phase">see
+Loading Options</a>), it seems best to approximate as good as possible the ideal
+assumption of instantaneous acceleration to the full speed.</p>
+<p>Scanning should be started as soon as possible, because the complete
+sedimentation process is informative and important for an optimal
+analysis.&nbsp; In direct boundary modeling, there is no need for the molecules
+to clear the meniscus.&nbsp; If setting up the parameters in the control
+software of the optics is complicated, it should be done before the start of the
+run (and cells should be mixed after that before starting the run).&nbsp;
+Similarly, the scans should proceed until the sedimentation is complete, i.e.
+until the smallest species vanishes into the optical artifacts in the bottom
+region.&nbsp; Unless it is known that the sedimentation is very slow, I usually
+set the scan rate to the highest possible value.&nbsp; It is not recommended to
+use Sedfit for the analysis of small data subsets, for example those in the
+early part of the sedimentation, as this will only have limited information.</p>
+<p>Besides these considerations how to do the ultracentrifuge run, there are
+also requirements for the sample in order to apply c(s) analysis.&nbsp; Because
+c(s) is based on Lamm equation solutions describing mixtures of independent
+ideally sedimenting species, the sample should not exhibit non-ideal
+sedimentation (i.e. concentration-dependent s and D), and should not be in rapid
+association equilibrium.&nbsp;&nbsp;&nbsp;</p>
+<p>An example data set with BSA suspended in phosphate buffered saline is
+described in the following, and can be downloaded <a href="images/bsa.zip">here</a>.&nbsp;
+Please note that in this particular example, the experiment was not conducted to
+completion, and ideally one would want to have approximately double the number
+of scans.&nbsp;</p>
+<p><a href="images/bsa.zip">download BSA data</a></p>
+<p>This data was acquired with the interference optics.&nbsp; Most of the
+following will be the same with absorbance data, with the exception of the few
+steps regarding the <a href="systematic_noise_analysis.htm">subtraction of
+systematic noise</a>&nbsp; (although, occasionally, this can be useful for
+absorbance data, too).</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_loaddata.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

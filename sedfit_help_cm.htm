@@ -1,0 +1,267 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>c(M)</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;c(M)&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="26299" endspan --></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">continuous distribution c(M) Lamm
+equation model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | continuous c(M) distribution</p>
+</font></b>
+<p><i><a href="#Note">(note when not to use it, and when to use the SEDPHAT 
+models instead)</a></i></p>
+<p>The c(M) distribution is a variant of the distribution of Lamm equation
+solutions:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-19.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02">
+<img src="images/sedfit29.gif" v:shapes="_x0000_i1025" width="321" height="59"></ins></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059652991">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></p>
+<p>A general <a href="sizedistributions.htm">introduction into the theory and
+practice of size-distribution analysis </a>can be found <a href="sizedistributions.htm">here</a>.&nbsp;
+By default, regularization of the distribution by the <a href="sizedistributions.htm#Maximum entropy regularization">maximum
+entropy</a> method is used.&nbsp;&nbsp;</p>
+<p><i>It should be noted that this model is strictly correct only for mixtures of
+non-interacting, ideally sedimenting molecules.&nbsp;&nbsp;</i>It can be applied
+to interacting molecules if the reaction is slow on the time-scale of
+sedimentation, or if for other reasons the species are stable during
+sedimentation (e.g. when working with concentrations much larger than Kd).&nbsp;&nbsp;</p>
+<p>The result of the c(M) model is a differential molar mass distribution,
+scaled such that the area under the c(M) curve from M<sub>1</sub> to M<sub>2</sub>
+will give the loading concentration of macromolecules with sizes between M<sub>1</sub>
+and M<sub>2</sub>.</p>
+<p>In this particular model, the Lamm equation solutions L(M,r,t), are calculated
+with the approximation that all species in solution have the same weight-average
+frictional ratio.&nbsp; For each M value, using an estimate of f/f0 and values
+for the partial-specific volume, buffer density and viscosity, S<span style="font-variant: small-caps">edfit
+</span>calculates the diffusion coefficient for each M via the Stokes-Einstein
+formula</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <ins datetime="1999-11-12T17:02"><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-12.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-14.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">
+<img src="images/sedfit31.gif" v:shapes="_x0000_i1025" width="244" height="45"></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059655397">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></span></ins></p>
+<p>with R denoting the radius of a sphere with the given molar mass and partial
+specific volume.&nbsp; The sedimentation coefficient is then calculated using
+the Svedberg relationship</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-text-raise:-12.0pt;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><ins datetime="1999-11-12T17:02">
+<img src="images/sedfit32.gif" v:shapes="_x0000_i1025" width="177" height="43"></ins></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><ins cite="mailto:Peter%20Schuck" datetime="1999-11-12T17:02"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1059655364">
+ </o:OLEObject>
+</xml><![endif]-->
+</ins></span></p>
+<p>This gives the parameters s(M) and D(M) required for the Lamm equation
+solution.&nbsp; This model is described in detail in <a href="#ref c(s)">ref 1</a>.</p>
+<p><b><font color="#0033CC"><span style="background-color: #C0C0C0">It is very important to note that when analyzing sedimentation velocity data,
+the approximation that all species have the same frictional ratio can lead to
+distortions in the </span><span style="background-color: #C0C0C0">c(M</span><span style="background-color: #C0C0C0">) distributions.&nbsp; In contrast, such distortions are
+in general negligible when using the </span></font> <a href="sedfit_help_cs.htm">
+<span style="background-color: #C0C0C0"><font color="#0033CC">c(s)
+distribution</font></span></a><font color="#0033CC"><span style="background-color: #C0C0C0">, and they are absent in the model for
+</span></font> <a href="sedfit_help_cm_with_other_prior.htm#cofM with prior D">
+<span style="background-color: #C0C0C0"><font color="#0033CC">c(M)
+with invariant D</font></span></a><font color="#0033CC"><span style="background-color: #C0C0C0"> (if the diffusion coefficient of all species is identical).&nbsp;</span></font></b>&nbsp;</p>
+<p><span style="background-color: #FFFF00"><b>For calculating a 
+diffusion-deconvoluted sedimentation coefficient distributions without the 
+scaling relationships of frictional ratios, see the
+<a href="c(s,m)_and_c(s,).htm">c(s,f) and c(s,*)</a> models. These can 
+transformed into a c(s,M) molar mass distribution, free of any frictional ratio 
+assumptions.&nbsp; </b></span></p>
+<p>However, there are several cases for which even this c(M) distribution is a good
+model:&nbsp;</p>
+<p>* when f/f0 is known for all particles to be the same, such as mixtures of
+spherical particles (e.g. in the study of ferritin, emulsion particles, or other
+particles with well-known shape).&nbsp; In this case, a further refinement may
+be made if a <a href="sedfit_help_cm_with_other_prior.htm#cofM with prior vbar">size-dependence
+of the partial-specific volume</a> is present.&nbsp;</p>
+<p>* the c(M) analysis can be a good model for data of the
+approach-to-equilibrium, and&nbsp;</p>
+<p>* it is obviously an appropriate model when analyzing sedimentation
+equilibrium (in this case the kernel of the distribution are sedimentation
+equilibrium exponentials instead of Lamm equation solutions).&nbsp;&nbsp;</p>
+<p>* other prior knowledge can be provided, such as <a href="sedfit_help_cm_with_other_prior.htm#cofM with prior D">c(M)
+with a known diffusion coefficient for all species</a>&nbsp;</p>
+<p>Like with all other direct boundary models, ANY data from the entire
+sedimentation process can be modeled, and should be included into the analysis
+for optimal results.&nbsp; There is no need to clear the meniscus, and no need
+for plateaus or to exclude scans where the boundary is close to the bottom and
+only partially visible.</p>
+<p>&nbsp;</p>
+<p><b><font color="#0033CC"><a name="Note">Once again</a>:&nbsp; Because the 
+molar mass scale is directly tied to the f/f0 ratio, in general the molar mass 
+peaks in c(M) will only be correct when there is either only one main species 
+present, or if it is known that all species have the same f/f0 ratio. Of course, 
+it is also dependent on the correct vbar and solvent density.&nbsp; For samples 
+containing irreversible oligomers (aggregates) this dependence on assumed 
+identical frictional properties means that the apparent mass of the oligomer 
+will in many cases not be an integer multiple of the monomer mass, and that the 
+accuracy may not be sufficient to correctly identify the stoichiometry of the 
+oligomer.&nbsp; This is true, in particular, for higher oligomers because they 
+can deviate more from the shape of the monomer and because the relative mass 
+error that can be tolerated for a correct identification is smaller.&nbsp;
+</font></b></p>
+<p><font color="#FF0000"><b>In such a case, the correct way of proceeding is the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">SEDPHAT method for 
+hybrid c(s) with discrete species</a>.&nbsp; This will allow to enter the 
+monomer mass as prior knowledge, and properly constrain the oligomer masses to 
+be discrete multiples.&nbsp; It will give you the abundance of each oligomer 
+(fitting their s-value).&nbsp; You can use the c(M) results as starting guesses.&nbsp; 
+To get started with this, use the <a href="export_to_sedphat.htm">Export 
+function of SEDFIT to transfer your data into SEDPHAT</a>.</b></font></p>
+<p><b><font color="#FF0000">An alternative is the calculation of the </font>
+<font color="#0033CC"><a href="c(s,m)_and_c(s,).htm"><font color="#FF0000">
+size-and-shape distribution c(s,M)</font></a></font><font color="#FF0000">.
+</font></b></p>
+<p><b><font color="#0033CC">Thus for sedimentation velocity analysis, generally 
+the c(s) distribution and its variants are preferred over c(M), since it is the 
+sedimentation coefficients that can be determined with high accuracy from 
+velocity data, not molar masses. </font></b></p>
+<p><b><font color="#0033CC">This method should not be used in situations where 
+the partial specific volume varies for different components (a secondary 
+analysis to account for this may in some cases be possible), or where the 
+frictional ratio is expected to vary widely (for example a glycoprotein where 
+some non-glycosylated protein is also present, or a PEGylated protein with 
+variable numbers of PEG molecules attached).&nbsp; </font></b></p>
+<p>&nbsp;</p>
+<p>The general strategies recommended for this model are similar to those
+described in the <a href="tutorial_sizedistributions.htm">tutorial on
+size-distribution</a>.&nbsp; When using this model for the analysis of
+sedimentation velocity data of samples with the approximation of a uniform
+frictional ratio, it is recommended to treat the frictional ratio as a fitting
+parameter.&nbsp;&nbsp;This is described in the <a href="tutorial_sizedistributions.htm">tutorial</a>,
+and also how the c(M) distribution can be obtained after <a href="tutorial_sizedistributions.htm#Conversion of c(s) to a molar mass distribution c(M)">converting
+the c(s) distribution</a>.</p>
+<p>The parameters for this model are entered in the parameter input box (<b><font COLOR="#0000ff"><a href="sedfit_help_parameters.htm">Parameters</a></font></b>):</p>
+<p><img border="0" src="images/sedfit30.gif" align="left" width="444" height="300"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">upper section
+specifying&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">the distribution
+range and parameters for the Lamm equation solution</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">middle section
+with experimental conditions</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">lower section with
+Lamm equation and&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">nonlinear
+regression parameters</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>The parameters specifying the distribution range and resolution follow the <a href="sizedistributions.htm#Parameters for size-distribution analysis in Sedfit">general
+parameter outline</a> common to all distributions.&nbsp; In brief, <a href="sizedistributions.htm#s-min">M-min</a>
+and <a href="sizedistributions.htm#s-max">M-max</a> are the smallest and largest
+M-value of the distribution, and the <a href="sizedistributions.htm#parameter resolution">resolution</a>
+value determines how many M-values will be used in between.&nbsp; (In c(M) they
+are spaced non-uniform, but equidistant on a 2/3 power base.)&nbsp;</p>
+<p>The frictional ratio value is the weight-average frictional ratio of all
+species, and if the check-box is marked, this parameter will be optimized when
+executing a <a href="sedfit_help_fit.htm">fit command</a>.&nbsp; The partial
+specific volume, the buffer density, and the buffer viscosity are additional
+parameters needed to calculate s and D for each M-value.&nbsp; It should be
+noted that S<span style="font-variant: small-caps">edfit
+</span>does not use this information to correct to s-values to s<sub>20,w</sub>.&nbsp;
+Also, since the Stokes-Einstein formula above shows that the frictional ratio
+and the viscosity are multiplicative, errors in one can be compensated in the
+other.&nbsp;&nbsp;</p>
+<p>The middle section with the parameters for <a href="sedfit_help_independent_ideal_species.htm#Baseline">baseline</a>,
+<a href="sedfit_help_independent_ideal_species.htm#FIT RI Noise">RI noise</a>,
+and <a href="sedfit_help_independent_ideal_species.htm#FIT TI Noise">time-independent
+noise</a> are the same as in all the other models (explained in detail in the <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete species model</a>).&nbsp; Also, the meaning of <a href="sedfit_help_independent_ideal_species.htm#Tolerance">Tolerance</a>,
+<a href="sedfit_help_independent_ideal_species.htm#Grid Size">Grid Size</a>, <a href="sedfit_help_independent_ideal_species.htm#Meniscus">Meniscus</a>
+and <a href="sedfit_help_independent_ideal_species.htm#Bottom">Bottom</a> is the
+same as usual.&nbsp;</p>
+<p>Important is the <a href="sizedistributions.htm#confidence level (F-ratio)">confidence
+level (F-ratio)</a> setting, which determines the magnitude of the
+regularization.&nbsp; Also, the choice of the regularization method (<a href="sizedistributions.htm#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">Tikhonov-Philips
+2nd derivative versus maximum entropy</a>) is relevant, as explained in the
+introduction on the size-distribution analysis.&nbsp; This setting can be
+changed in the <a href="sedfit_help_size_distribution_options.htm">size-distribution
+options</a>.</p>
+<p>After calculating the distribution, a new plot appears in the lower part of
+the S<span style="font-variant: small-caps">edfit</span> window, showing the distribution.&nbsp;
+Like all distributions, it can be saved to a file (<a href="sedfit_help_datautilities.htm#Save Calculated Distribution">save
+continuous distribution</a>), copied as graphics metafile (<a href="sedfit_help_copy.htm#Copy Graphics of Data and Residuals">copy
+distribution plot</a>) or data table (<a href="sedfit_help_copy.htm#Copy Data Tables">copy
+distribution table</a>) into the clipboard.&nbsp; As described in the <a href="tutorial_sizedistributions.htm">size-distribution
+tutorial</a>, copying the data into another plotting program is recommended in
+particular if possible small contribution of species besides the main peaks are
+of interest.&nbsp; For statistical analysis (provided the fit was
+good, with evenly distributed residuals), the <a href="sedfit_help_monte_carlo_simulations.htm">Monte-Carlo
+analysis</a> can be performed.</p>
+<p><font color="#800080"><b><u>New in version 8.7:</u></b>&nbsp; When using the
+inhomogeneous solvent mode, e.g. to correct for solvent compressibility, please
+read the <a href="file:///C:/peter/website/sedfithelpweb/inhomogeneous_solvent.htm">specific
+instructions</a> for this S<span style="font-variant: small-caps">edfit </span>mode
+first.&nbsp; Mainly, this will mean that the s-values are corrected to standard
+conditions (water 20C), and that the buffer viscosity and density in this input
+box here also refer to standard conditions.&nbsp;</font></p>
+<p>&nbsp;</p>
+<p><font color="#0000ff"><i><u>Please note:</u></i> The
+calculation will be aborted if the distribution contains s-values exceeding the
+maximum s-value that can be observed for the given rotor speed and time of the
+first scan. To fix this problem, either load earlier data, or reduce the entry
+in the M-max field appropriately. It is recommended to stay well below this
+maximal value to avoid artifactual increases of the size-distribution near the
+maximal value.</font></p>
+<i><u><font COLOR="#0000ff">
+<p>Tips:</font></u></i></p>
+<font COLOR="#0000ff">
+<p>1) For best results, it is advisable to start with a relative small range of
+M-values. It is recommended to increase M-max if there is an upward curvature of
+the distribution at the highest M-values, and conversely, to decrease the M-min
+value if there is a significant contribution in the distribution at this lower M
+value.</p>
+<p>2) If the Lamm equation simulations during this method are very slow, the
+value for <a href="sedfit_help_fitting_options.htm#Set s for changing Lamm equation algorithm"> changing
+the finite element methods</a> should be increased
+(e.g. to 10).</p>
+<p>3) In order to achieve smoother distributions, for example when studying
+synthetic polymers that are known to have a broad distribution, the value of P
+should be increased, to values close to 1 (e.g. 0.99), or even to 1.1.&nbsp;
+Also Tikhonov-Philips regularization is usually better than maximum entropy in
+such cases.</p>
+</font>
+<p>&nbsp;</p>
+<font SIZE="2">
+<p>Reference:&nbsp;</p>
+<p><font size="1"> P. Schuck (2000) <a name="ref c(s)"> Size distribution analysis of macromolecules by
+sedimentation velocity ultracentrifugation and Lamm equation modeling.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">
+78:1606-1619</a></font></p>
+</font><!--mstheme--></font></body>
+
+</html>

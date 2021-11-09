@@ -1,0 +1,614 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Inhomogeneous Solvent</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_set_vbarxrho.htm" target="">set&nbsp;vbarxrho</a>&nbsp;]</nobr> <nobr>[&nbsp;Inhomogeneous&nbsp;Solvent&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loading_options.htm" target="">Loading&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fitting_options.htm" target="">Fitting&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_calculator.htm" target="">Calculator</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_size_distribution_options.htm" target="">Size&nbsp;Distribution&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sounds.htm" target="">Sounds</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="18813" -->
+</p>
+<h1 style="line-height: 100%; margin-top: 0; margin-bottom: 0">Inhomogeneous
+Solvents&nbsp;</h1>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Note, starting 
+from version 11.6, the input has been simplified into a parameter box</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/inhomo1.jpg"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">.&nbsp; The 
+required values are the same as explained below.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Several
+different variations of inhomogeneous solvents have been incorporated in S<span style="font-variant: small-caps">edfit</span>    
+for simulation and fitting.&nbsp; They are:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Compressible Solvent"> compressible
+solvents</a> (water and organic solvents)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Dynamic Density Gradient"> dynamic density
+gradients</a>  (generating by high concentrations of sedimenting co-solutes)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Linear Solvent Gradient"> linear gradients</a>
+(e.g. pre-formed gradients in preparative ultracentrifuges)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Constant Solvent"> constant solvent</a>
+(for solvent corrections only, testing)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Using these models
+requires switching S<span style="font-variant: small-caps">edfit</span>    
+ into a different mode.&nbsp; Please read the following instructions
+carefully.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><u><font color="#FF0000"><b>1)
+For </b></font><b><font color="#FF0000"> references</font></b></u> on
+the theoretical background with examples of the use of the inhomogeneous solvent
+models, please see the following two publications:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="3" color="#800080">P.
+Schuck (2003) A model for sedimentation in inhomogeneous media. I. Dynamic
+density gradients from sedimenting co-solutes.&nbsp; <u><a href="images/DynamicDenistyGradients.pdf">Biophysical
+Chemistry</a></u><a href="images/DynamicDenistyGradients.pdf"> 108:187-200</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="3" color="#800080">P.
+Schuck (2003) A model for sedimentation in inhomogeneous media. II.
+Compressibility of aqueous and organic solvents.&nbsp; <u><a href="images/CompressibleSolvents.pdf">Biophysical
+Chemistry</a></u><a href="images/CompressibleSolvents.pdf"> 108:201-214</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">For
+the compressibility of water and organic solvents, please see also the <a href="compressibility_of_water_and_organic_solvents.htm">tutorial
+page</a>.&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Although
+the theory and practice will be developed somewhat below, I recommend to consult
+these references, because the following is more concerned with the organization
+and use of these models <nobr>
+in </nobr> S<span style="font-variant: small-caps">edfit</span><nobr>.&nbsp;</nobr></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font color="#FF0000"><b><u>2)
+Note:&nbsp;
+All these models will make the corrections of density and viscosity to refer to
+water, 20C.&nbsp; </u>This deviates from the convention used throughout the rest of S<span style="font-variant: small-caps">edfit</span>.&nbsp;&nbsp;</b></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This breach of the
+standard convention is required due to the nature of these simulations:&nbsp; In
+essence, the Lamm equation is solved considering a radial-dependent density and
+viscosity</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><span style="mso-text-raise: -15.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+</span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><span style="mso-text-raise: -15.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<img src="images/inhomo20.gif" v:shapes="_x0000_i1025" width="254" height="48"></span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><span style="mso-text-raise: -17.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<img src="images/inhomo21.gif" v:shapes="_x0000_i1025" width="380" height="54"></span></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">(<a href="images/DynamicDenistyGradients.pdf">ref</a>)
+that transform the underlying D<sub>20,w</sub> and s<sub>20,w</sub> values of
+the macromolecular diffusion and sedimentation coefficients from the standard
+conditions <i>locally</i> to experimental values.&nbsp; The local density and
+viscosity corrections are expressed here through the factors <font face="Symbol">a</font><i>(r,t)</i>
+and <font face="Symbol">b</font><i>(r,t)</i>.&nbsp; These can vary throughout
+the solution column, in a way that depends on the specific solvent mode.&nbsp;
+The radial-dependence of <font face="Symbol">a</font><i>(r,t)</i> and <font face="Symbol">b</font><i>(r,t)</i>
+is incorporated into the finite-element solution of the Lamm equation (<a href="images/DynamicDenistyGradients.pdf">ref</a>).&nbsp;
+[For the case where there are density corrections only from compressible
+solvents, analytical solutions of the Lamm equation for non-diffusing species
+are available (<a href="images/CompressibleSolvents.pdf">ref</a>).]</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font color="#FF0000"><b><u>3)
+The
+inhomogeneous solvent mode in S<span style="font-variant: small-caps">edfit
+</span>is either switched on or off</u></b></font>.&nbsp; You can see the current status
+by watching the checkmark on the menu:&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/sedfit3.gif" align="left" width="187" height="163"><img border="0" src="images/inhomo3.gif" width="189" height="163"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+from the first line of text output after fitting, e.g.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo4.gif" width="557" height="76"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><b><font color="#FF0000">4)
+SWITCHING ON: The inhomogeneous solvent models are selected in a sequence of
+yes/no questions. </font></b>(Sorry, that's poor programming style, I know, but
+it works for now...)&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">That
+means that if you make a mistake in the selection, you have to go through with
+it, then switch the inhomogeneous solvent model off (see below), and then start over again
+with selecting the correct inhomogeneous solvent mode.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">This
+is how it looks like:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">this
+will bring to the <a href="#Compressible Solvent">compressible solvent</a>
+mode:&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo5.gif" width="211" height="114"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">to
+the <a href="#Dynamic Density Gradient">dynamic density gradient</a> from a
+sedimenting co-solute:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo6.gif" width="210" height="113"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">to
+a <a href="#Linear Solvent Gradient">linear pre-formed stable gradient</a>:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo7.gif" width="212" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">to
+a <a href="#Constant Solvent">constant solvent</a> (but with buffer corrections)</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo8.gif" width="212" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Selecting
+any of them will terminate this sequence and lead to a series of questions
+regarding the specifics of the particular model (see below or follow the
+bookmark links).&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Even
+if you don't choose any of them, you have switched ON the inhomogeneous solvent
+mode.&nbsp; You will get a warning that the macromolecule are considered
+incompressible,</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo9.jpg" width="421" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">You
+will need to supply the (apparent) partial-specific volume of the macromolecule</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo10.jpg" width="363" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+will be asked if you want to fit for it (i.e. treat the apparent v-bar as a
+floating parameter to be determined by non-linear regression).&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo11.jpg" width="301" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Please
+note that this only makes sense if there's an appreciable density gradient
+across the cell.&nbsp; (Otherwise, this will result in non-sense due to
+correlation with the molar mass parameters - S<span style="font-variant: small-caps">edfit</span>    
+ will not be able to assist you in this judgment other than providing
+statistical tools for error estimation.)&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Finally,
+you will get a warning that you have switched S<span style="font-variant: small-caps">edfit</span>    
+ to the inhomogeneous solvent mode, in which all s and D values are corrected to
+water, 20C values.&nbsp; For convenience, the parameters of the non-interacting
+model are transformed to w,20 values automatically:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo12.jpg" width="309" height="114"></p>
+<p><font color="#008000">Please note that when using c(s) or c(M) in the
+compressible solvent mode, the entries for v-bar, density and viscosity in the
+parameter box refer to normal conditions (water, 20C) and should not be changed.</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><b><font color="#FF0000">5)
+SWITCHING OFF: To switch back to the normal mode for homogeneous solvents
+without any solvent corrections, select the menu again.</font></b></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+menu for Inhomogeneous Solvents is simply a toggle.&nbsp; You switch off this
+mode by selecting it again when it shows the checkmark:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo3.gif" width="189" height="163"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">A
+message will appear that all s and D-values are now back in experimental
+conditions.&nbsp; For convenience, the parameters in the non-interacting
+sedimentation model are automatically transformed back to the experimental
+conditions.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo13.jpg" width="364" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Note
+that after that, the checkmark disappears, indicating the normal S<span style="font-variant: small-caps">edfit</span>    
+ mode.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo14.gif" width="190" height="163"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><b><font color="#FF0000">6)
+The specific operation and required parameters depends on the particular
+model:&nbsp;</font></b></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<a name="Compressible Solvent">Compressible Solvent</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+compressibility of water can cause errors in the s-values and M-values from
+sedimentation velocity of proteins up to a few percent.&nbsp; Larger errors are encountered
+when using organic solvents or proteins with higher than usual v-bar.&nbsp; An overview of this problem and how to
+correct for it can be found in the <a href="compressibility_of_water_and_organic_solvents.htm">tutorial</a>,
+and in this <a href="images/CompressibleSolvents.pdf">reference</a>.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">After
+selecting this solvent mode, a warning will appear:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo15.jpg" width="490" height="147"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">This
+solvent mode is implemented only for use with the non-interacting species model,
+the ls-g*(s) distribution, and the c(s) and c(M) distributions.&nbsp; Use with
+any other models, such as self-association models will produce undefined
+results.&nbsp; (There's no fundamental problem with those models; it just hasn't
+been implemented yet.)&nbsp; When dealing with self-associating species,
+however, what can be done is the strategy of determining weight-average
+sedimentation coefficients from integrating c(s) or ls-g*(s) (see <a href="images/ProteinSelfAssociation_AnalBiochem.pdf">ref</a>).</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">First,
+we need to characterize the solvent.&nbsp; You need to enter it's density under
+normal pressure, which will be assigned the density at the meniscus.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo16.jpg" width="365" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+default value shown here is the density of water at 20C.&nbsp; Please note that
+density and pressure distribution throughout the solution column are calculated
+as&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-33.0pt">
+<img src="images/inhomo17.gif" v:shapes="_x0000_i1025" width="246" height="96"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124041707">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">(<a href="images/CompressibleSolvents.pdf">ref</a>)
+(with <font face="Symbol">r</font><sub>0</sub> the density at 1 atm, <font face="Symbol">k</font>
+the compressibility, <font face="Symbol">w</font> the rotor speed, <i>r</i> the
+radius and <i>m</i> the meniscus position).&nbsp; One question is - how should
+we deal
+with co-solutes that increase the density throughout but where we don't have
+data on how they affect the compressibility?&nbsp; From the equations above we can see that <font face="Symbol">r</font><sub>0</sub>
+is a multiplicative factor for the compressibility.&nbsp; I suggest entering for
+<font face="Symbol">r</font><sub>0</sub> the true density of the solution at 1
+atm (e.g. a value of ~1.005 g/ml for PBS), and then to diminish the
+compressibility value proportionally.&nbsp; Of course, the latter adjustment of
+the compressibility value makes sense only if you know the compressibility with
+a precision better than 1%, and in terms of the overall effect we're talking
+about a &lt; 1% correction of a few percent... probably not worth the
+bother.&nbsp; Therefore, I would probably enter here the density of the solution
+including salt contributions etc.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+solvent compressibility is asked next:&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo18.jpg" width="364" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">When
+reading these values from published tables it's important to note that it has weird
+units, and asked here is the value in 10<sup>-4</sup>/MPa.&nbsp; In
+these units, the numeric value for water is 4.591 (the default, as shown), and
+it is 8.96 for toluene, and can reach up to 15 or so for the more compressible
+organic solvents.&nbsp; Note that the difference between organic solvents and
+water is not very much - only a factor of 2 - 3 !</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">It
+follows the viscosity of the solvent, in units of Poise</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo19.jpg" width="364" height="152"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+default here is again the value for water.&nbsp; There are no corrections made
+in S<span style="font-variant: small-caps">edfit</span>    
+ for pressure-dependence of the viscosity.&nbsp; That's not for any particular
+fundamental reason, but just for a lack of data.&nbsp; (However, for
+non-diffusing species there is a nice analytical solution of the Lamm equation
+if the viscosity changes can be neglected.)&nbsp; Future improvements may
+include pressure-dependent viscosity terms.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+second set of questions are regarding the macromolecule.&nbsp; It is assumed to
+be incompressible.&nbsp; For proteins, this is a good first approximation, as
+their compressibility is generally less than 10% the compressibility of water. </p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo9.jpg" width="421" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Then,
+the (apparent) partial-specific volume of the macromolecule is entered </p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo10.jpg" width="363" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+it will be specified if that is known or should be treated as an unknown
+parameter to be optimized in the fit:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo11.jpg" width="301" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">You
+need to be careful in the compressible solvent mode with fitting for
+v-bar:&nbsp; Although for proteins with common partial-specific volume values
+sedimenting in aqueous solutions, the density gradient can produce significant
+deviations from the ideal boundaries expected for incompressible solvents, the
+effects are very likely far too small to overcome parameter correlation and
+permit a reliable determination of the protein partial-specific volume.&nbsp;
+However, much larger effects are observed with protein complexes that have
+densities closer to water, or with other macromolecules in more compressible
+solvents; this has not been explored yet.&nbsp; </p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font face="Roman" size="6" color="#ff0000"><a name="Dynamic Density Gradient">Dynamic
+Density Gradient</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Dynamic
+self-forming density gradients are somewhat more complicated to deal with.&nbsp; S<span style="font-variant: small-caps">edfit</span>    
+ calculates the sedimentation (non-ideal if necessary) of the co-solute, and
+keeps track of the evolution of the local density and viscosity caused by a
+given local co-solute concentration.&nbsp; It synchronizes the sedimentation of
+the macrosolute(s) with that of the co-solute, applying at each time the locally
+required density and viscosity corrections.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo31.jpg" width="489" height="148"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">This
+message reminds that this sedimentation mode is only implemented for
+non-interacting Lamm equation models, including c(s) and c(M).&nbsp; (No simple
+solution exists for non-diffusing species, which was possible for the
+compressibility corrections.)&nbsp; The possible models also include analytical
+zone centrifugation configurations.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+first set of questions is to characterize the co-solute.&nbsp; It can sediment
+ideally or non-ideally:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo32.gif" width="271" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">For
+ideal sedimentation, what you need to enter then is the sedimentation and the
+diffusion coefficient of the co-solute <strong>under experimental conditions</strong>.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo35.jpg" width="363" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo36.jpg" width="364" height="152"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Where
+do we get these values from?&nbsp; Simply by running a separate experiment in
+the same run with the co-solute only, preferably scanning with the interference
+optics.&nbsp; Modeling of the observed fringe displacement profiles with <strong>a
+single non-interacting species model</strong>, using the option to <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">fit
+s and D</a>.&nbsp; If you use the same co-solute concentration as in the sample
+and can get a reasonably good fit with the single-species model, then these s-
+and D-values are sufficient to describe the redistribution of the
+co-solute.&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<strong>NOTE:&nbsp; One caveat here is that s-values and D-values of very small 
+molecules can be correlated with the loading concentration parameter (even 
+stronger correlation will be observed for continuous distribution models, which 
+are not really useful or appropriate in this case).&nbsp; The best strategy to 
+avoid this correlation is to run a synthetic boundary experiment.</strong></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">If
+you cannot fit the data well with a single-species model, or if you have
+sufficient data on the concentration-dependence of s and D of the co-solute, you
+should use the non-ideal sedimentation model.&nbsp; In theory, for non-ideal
+sedimentation, the concentration-dependence of the diffusion and sedimentation
+coefficients of the co-solute can be described with activity coefficients&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-14.0pt">
+<img src="images/inhomo33.gif" v:shapes="_x0000_i1025" width="146" height="46"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124053514">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-16.0pt">
+<img src="images/inhomo34.gif" v:shapes="_x0000_i1025" width="164" height="46"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124053546">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">(<a href="images/DynamicDenistyGradients.pdf">ref</a>).&nbsp;
+In practice, however, it's straightforward to just use a polynomial
+interpolation of experimentally measured D(c) and s(c) data.&nbsp; For
+convenience, the experimental data for CsCl compiled and interpolated in Biophys.
+Chem. 42 (1992) 13-21 have been implemented.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo37.jpg" width="418" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">If
+you're not working with CsCl as a densifying co-solute, you can specify the
+concentration-dependence of s and D by putting the polynomial coefficients in
+two files in the directory <a href="file:///c:/sedfit">c:\sedfit</a>, one called
+snonid.dat, the other dnonid.dat.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo40.jpg" width="489" height="130"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+format is the following:&nbsp; Consider the dependence of s and D in molar units
+as a power series</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/inhomo41.gif" v:shapes="_x0000_i1025" width="236" height="54"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124055631">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+files should be in ASCII format with 1 column, with the parameters s<sub>1</sub>
+the first, s<sub>2</sub> the second, s<sub>3</sub> the third row, etc. (and
+analogous for D).&nbsp; There can be as many parameters as you need to describe
+the concentration dependence sufficiently well for the relevant concentration
+range.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">In
+any case, if non-ideal or ideal sedimentation of the co-solute, we need to enter
+the loading concentration of the co-solute <font color="#FF0000">in MOLAR UNITS</font>
+(note this is NOT in signal units).</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo38.jpg" width="366" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Having
+specified the sedimentation properties of the co-solute, we need to say how the
+solvent density and viscosity is going to change as a function of co-solute
+concentration.&nbsp; This is done also by writing ASCII files to the directory <a href="file:///c:/sedfit">c:\sedfit</a>.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo39.jpg" width="524" height="164"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+files are also numbers in a single column, with up to 5 rows for the relative
+viscosity in viscosity.dat, and up to 6 rows for density in density.dat.&nbsp;
+Each corresponds to the coefficients a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>,
+a<sub>4</sub>, a<sub>5</sub> (and a<sub>6</sub>) in the formulas&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><br>
+<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/inhomo42.gif" v:shapes="_x0000_i1025" width="434" height="54"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124056830">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">as
+used in John Philo's SEDNTERP.&nbsp; The concentration units are <font color="#FF0000">MOLAR
+UNITS</font>, the relative viscosity is dimensionless (you can take the
+viscosity in Poise and divide by 0.01002 Poise), the density is in g/ml.&nbsp;
+Make sure the exponents do not already incorporate the power of ten factor in 
+the preceding formula - SEDFIT will multiply the the coefficients with the given 
+powers of ten and the powers of the molar concentration to arrive at the local 
+density and viscosity.&nbsp; Examples are the files <a href="images/density.dat">density.dat</a> and <a href="images/viscosity.dat">viscosity.dat</a>.&nbsp;
+If there is other co-solutes in addition to the high-concentration densifying
+one, I would suggest the approximation to consider the viscosity and density
+increments additive.&nbsp; In this case, you can correct the coefficients a<sub>1</sub>
+to account for the additional co-solute (increase the tabulated value of the
+high-concentration co-solute by the density increment of all the other
+co-solutes).&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<strong>Note:&nbsp; the density and viscosity values at concentration 0 should 
+be those under experimental conditions without co-solute, i.e., account for all 
+other (non-sedimenting) co-solutes and temperature effects.</strong></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">In
+order to better understand the simulation, it is possible to plot the molar
+concentration distributions of the sedimenting co-solute</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo43.gif" width="276" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">An
+example of this for 1.5 M CsCl at 50,000 rpm is shown here:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo45.gif" width="715" height="297"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">(note
+the co-solute distribution shown in blue, is plotted only during the simulation)</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">For
+a more permanent record of what the co-solute did during the sedimentation, you
+can save the molar concentration distributions in files (synchronized in time
+with the data files to be modeled) in the directory c:\temp.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo44.jpg" width="450" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Finally,
+to make the sedimentation more precise, we can take into account the
+compressibility of water.&nbsp; This can be significant, for example when
+evaluating buoyant density gradients.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo46.gif" width="219" height="116"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+remaining parameters are for the characterization of the macromolecule. In the
+presence of a high concentration of co-solute, we have to consider that the
+macromolecule may be solvated in a way that adds additional buoyancy or mass to
+the effective sedimenting particle (the latter understood as the solvated
+macromolecule).&nbsp; This is certainly the case for proteins in high salt,
+sucrose, glycerol, etc.&nbsp; To account for this, we distinguish the 'apparent
+partial-specific volume' of the sedimenting solvated particle (which is such
+that 1-vbar(app)*rho = density increment drho/dc) from the partial-specific
+volume of the macromolecule under standard conditions (water, 20C):&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><span style="mso-text-raise: -17.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+<img src="images/inhomo21.gif" v:shapes="_x0000_i1025" width="380" height="54"></span></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo47.jpg" width="559" height="131"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">First,
+we specify the partial-specific volume under standard conditions:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo50.jpg" width="364" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Next,
+we enter the apparent partial-specific volume under the experimental conditions
+(which may be larger, for example, in the presence of preferential hydration):</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo51.jpg" width="364" height="149"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">In
+principle, for example, one could estimate this value for proteins if assuming a
+certain amount of bound water, such as 0.3 g/g.&nbsp; However, dependent on how
+extensive the density gradient from the co-solute is, or if you know the molar
+mass, it should be possible to estimate the apparent partial-specific volume by
+non-linear regression from the data. This option is implemented in the following
+choice:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo60.jpg" width="359" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">If
+chosen to optimize this value, this will be indicated in the display after
+fitting/simulation:</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo62.gif" width="472" height="120"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">This
+completes the input for the dynamic density gradient mode of S<span style="font-variant: small-caps">edfit</span>    
+ .</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font face="Roman" size="6" color="#ff0000"><a name="Linear Solvent Gradient">Linear
+Gradient</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+mode for sedimentation in a linear gradient is probably not realistic in most
+cases for analytical ultracentrifugation data analysis.&nbsp; However, it should
+be a good model for sedimentation in pre-formed density gradients as they are
+used in preparative ultracentrifugation.&nbsp; Also, they can be valuable as
+theoretical tools to simulate the sedimentation in comparison with self-forming
+dynamic density gradients.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">Again,
+this sedimentation mode is currently not available for self-associating or
+concentration-dependent sedimentation models.<img border="0" src="images/inhomo61.jpg" width="490" height="148"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+required inputs for S<span style="font-variant: small-caps">edfit</span>    
+ are comparatively simple - we need to specify the viscosity at the meniscus and
+bottom,&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo62.jpg" width="365" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo63.jpg" width="365" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+for the density at the meniscus and bottom</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo64.jpg" width="364" height="151"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo65.jpg" width="364" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+local density and viscosity at any point in the solution column will then simply
+be a linear interpolation between these extremes.&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">A
+warning will appear that the macromolecule is assumed to be
+incompressible,&nbsp;&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo9.jpg" width="421" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+the standard inputs for partial-specific volume of the macromolecule&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo10.jpg" width="363" height="150"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">and
+the option to optimize it's value will appear.</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo11.jpg" width="301" height="115"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<a name="Constant Solvent">Constant Solvent</a> (with solvent corrections)</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+constant solvent mode is even simpler - there's no gradient at all.&nbsp;
+Nevertheless, it has been incorporated to check the algorithms and
+transformations for consistency.&nbsp; It could also be used routinely to use S<span style="font-variant: small-caps">edfit</span>    
+ in a way to produce results in corrected s-values instead of experimental
+ones.&nbsp; However, I would advise against this and instead recommend S<span style="font-variant: small-caps">edPHAT</span>
+for that purpose (if required).&nbsp; The constant solvent mode is limited to
+work with non-interacting and concentration-independent sedimentation, only
+(also excluding ls-g*(s)).&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<img border="0" src="images/inhomo61.jpg" width="490" height="148"></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">The
+required inputs for S<span style="font-variant: small-caps">edfit</span>    
+ are like the linear gradient mode, only there's a single viscosity and density
+value throughout.&nbsp; Everything else is the same (in fact, for debugging
+purposes, it was built internally on the linear gradient model, setting the
+meniscus and bottom solution properties to be identical).&nbsp; </p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

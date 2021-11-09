@@ -1,0 +1,143 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>FAQs</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="1">[ <a href="sedfit.htm">sedfit</a> ]&nbsp; 
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="download.htm" target="">download</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="getting_started.htm" target="">getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="examples.htm" target="">examples</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorials.htm" target="">tutorials</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help.htm" target="">sedfit&nbsp;help</a>&nbsp;]</nobr> <nobr>[&nbsp;FAQs&nbsp;]</nobr> <nobr>[&nbsp;<a href="references.htm" target="">references</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="links_to_other_auc_sites.htm" target="">links</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="contact.htm" target="">contact</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="AUCsearch.htm" target="">Search</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="9881" endspan --> [ <a href="sedphat/default.htm">sedphat</a> 
+]</font></p>
+<h1>frequently asked questions</h1>
+<p>&nbsp;</p>
+<p><b><a name="when loading data">FAQ: the program keeps crashing when using the
+c(s) or ls-g*(s) analysis</a></b></p>
+<p>This problem has been frequently observed with computers that have less than
+256 MB RAM.&nbsp; The amount of RAM on the computer can be checked in the
+Control Panel, Systems Icon, in the tab &quot;General&quot; in the lower right
+corner.&nbsp; Alternatively, it might be helpful to compare the performance of
+sedfit for the same analysis on a different computer.&nbsp; Sometimes, the
+problem is caused by the default printer driver (even if nothing is being
+printed, because sedfit allocates a print structure at startup), and changing
+the default printer eliminates the problem.&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p><b><a name="when loading data">FAQ: when loading data</a>, a message appears
+asking to restore a previous analysis, but after accepting this, the program
+immediately crashes</b></p>
+<p>This happens if previously the program crashed during a nonlinear
+regression.&nbsp; In case of such a crash, fit information will be saved in a
+temporary file '~tmppars.ip1' (or analogous).&nbsp; This file contains the
+necessary parameters of the previous best fit before the crash and several
+additional control parameters (zeros and ones).&nbsp; Sometimes, however, the
+reason for the crash is in fact a bad parameter, and sneaks into the program
+with the 'restore previous fit' option.&nbsp; This can&nbsp; be remedied by
+opening the file ~tmppars.ip1 with a text-editor (notepad) and changing the bad
+number (see <a href="sedfit_help_fittmppars.htm">format of
+the ~tmppars file</a>).&nbsp; Usually, the bad number is quite obvious in that it is very large
+floating point number.&nbsp; Just overwrite this with '1'.&nbsp; This most of
+the time solves the problem. </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p><b><a name="FAQ:  error message &quot;only use alphanumeric characters in filename&quot;">FAQ:&nbsp;
+error message &quot;only use alphanumeric characters in filename&quot;</a>
+appears when loading data</b></p>
+<p><i><font size="2">This message appears when illegal characters are used in the filename or
+directory name (i.e. anywhere in the entire pathname).&nbsp; For example, 'c:\xla
+data\mydata\00001.ra1' contains an empty space and therefore cannot be
+used.&nbsp; However, 'c:\xladata\mydata\00001.ra1' is OK.&nbsp; Therefore, when
+having this error message, look carefully on the names of the location of the
+file, and eliminate all so-called empty-space characters.&nbsp; Best, use only
+characters in filenames from a to z and 1 to 9.&nbsp;&nbsp;</font></i> </p>
+<p><font color="#FF0000"><b>NEW in version 8.4:&nbsp; This problem has been
+eliminated by a revised filename handling.&nbsp; If this message occurs,
+download version 8.4 or newer!</b></font> </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p><b><a name="FAQ:  error message &quot;possible problem with right limit...&quot;">FAQ:&nbsp;
+error message &quot;possible problem with right limit ...&quot; </a>
+appears when loading data</b></p>
+<p><img border="0" src="images/sedfit15.gif" width="294" height="120"> </p>
+<p>In most cases, this is nothing to worry about, basically only an information to the
+user.&nbsp; This message indicates that the data analysis limits (the green
+lines) span a range that is larger than the data range.&nbsp; Information on the
+first file that does not have this range will be given.&nbsp; Because the
+analysis cannot be done in S<span style="font-variant: small-caps">edfit</span> if not all data sets have data in the analysis
+range, the analysis range (indicated by the green lines) will automatically
+reduced to the maximal possible range, which is the maximal radius range common
+to all data.&nbsp; </p>
+<p>One possible source of this message can be that with absorbance data,
+successive data points with an OD difference larger that what is defined as
+spike will lead to exclusion of a data point, and effectively to a truncation of
+the data set in the steep part of the bottom. </p>
+<p>Another possible source is a bad file.&nbsp; Sometimes, for reasons unknown
+to me a single scan in a set of absorbance scans may only contain very few data
+points.&nbsp; If this message persists and the fitting limits are properly set,
+it is worth looking at the size of the file mentioned in the box&nbsp; (e.g. use
+windows explorer and switch on the details, or use the <a href="sedfit_help_datautilities.htm#Edit Data Files">edit
+function of sedfit</a> to load the file in question into the notepad).&nbsp; If
+the file is much shorter than the others, it needs to be excluded from the
+analysis. </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p><b>FAQ: When saving the fitted sedimentation profiles, I cannot overwrite the
+default filenames.</b>&nbsp; This is a known problem that currently requires the
+user to chose a new data directory for each saved fit.&nbsp; As an alternative,
+it is suggested to save the fits by copying the data to a spreadsheet program
+(using the <a href="sedfit_help_copy.htm">copy commands</a>).</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b>FAQ:</b> <b>The
+<a name="residuals bitmap shows up only in coarse and discrete colors">
+residuals bitmap shows up only in coarse and discrete colors</a>.</b>&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If this is the
+case, the color resolution of the display needs to be increased.&nbsp; This can
+be done using the standard Windows controls.&nbsp; Please note that changing the
+display may not be compatible with other hardware or software on the computer,
+in particular the video board used for the XLI camera!&nbsp; It may be necessary
+to perform the data analysis on another PC.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b>FAQ: How can I
+deal with <a name="flotation">flotation</a>?</b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The way flotation
+can be described depends on the particular analysis model: </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">1) with
+non-interacting discrete species:&nbsp; set v-bar to zero (<a href="sedfit_help_set_vbarxrho.htm">set
+v-bar*rho</a>), and enter negative sedimentation coefficients in the appropriate
+fields of the <a href="sedfit_help_independent_ideal_species.htm#sedimentation coefficient field">parameter
+box</a>.&nbsp; Please note that the molar mass values are then buoyant molar
+mass values (which can be either positive or negative).</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">2) in the c(M)
+distribution model:&nbsp; simply enter a v-bar larger than the reciprocal buffer density in the
+appropriate field of the <a href="sedfit_help_cm.htm">parameter box</a>.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">3) in the c(s)
+distribution model: enter v-bar larger than the reciprocal buffer density in the <a href="sedfit_help_cs.htm">parameter
+box</a>, and use negative sedimentation coefficients (with s-min smaller --
+faster floating -- then s-max, e.g. s-min = -100, s-max = -1) </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">4) with ls-g*(s):
+simply enter negative sedimentation coefficients in the <a href="sedfit_help_ls-gs.htm">parameter
+box</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><u><b>ask a questions</b></u><!--mstheme--></font></h3>
+<form action=/cgi-pub/formmail.pl method=POST>
+your email address&nbsp;<input type=text name=from size="36"><br>
+To&nbsp;&nbsp;<input type=text name=to size="39" value="webmaster@AnalyticalUltracentrifugation.com"><br>
+Subject <input type=text name=subject size="18" value="question"><br>
+<p>your question: <TEXTAREA name="message" rows=4 cols=64 size="400" wrap=physical></TEXTAREA><br>
+<input type=submit value=Submit>
+</p>
+</form>
+
+
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366">&nbsp;<!--mstheme--></font></h3>
+
+<!--mstheme--></font></body>
+
+</html>

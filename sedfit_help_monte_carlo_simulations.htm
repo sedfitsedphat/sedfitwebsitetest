@@ -1,0 +1,110 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Monte Carlo Simulations</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_confidence_intervals.htm" target="">Confidence&nbsp;Intervals</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_error_contours.htm" target="">Error&nbsp;Contours</a>&nbsp;]</nobr> <nobr>[&nbsp;Monte&nbsp;Carlo&nbsp;Simulations&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="37944" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Monte-Carlo simulations</p>
+</font><b><font COLOR="#0000ff">
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0">Statistics | Monte-Carlo for distributions</p>
+</font></b>
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font COLOR="#0000ff">
+Statistics | Monte-Carlo for integrated weight-average s values
+</font></b>
+ </p>
+<p>This function is for studying the statistical confidence limits in <a href="sizedistributions.htm#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">
+distribution analyses</a>. The idea of the Monte-Carlo analysis is the generation of
+a large number (e.g. 100 - 1000) synthetic data sets that are similar to the
+experimental data set, but each with different random normally distributed
+noise. Each of these new data sets is analyzed, and the distributions are
+stored. The resulting set of distributions can then be studied, point by point,
+and the mean and probability contours can be calculated.&nbsp; </p>
+<p>In essence, the Monte-Carlo statistics allows to build up a probability
+distribution function, and allows to study how much the noise of the data is
+translated into the distribution. As a consequence, the Monte-Carlo procedure
+can be useful for investigating what features of the distribution are a result
+of noise in the data, and what features are essential for describing the data.&nbsp;
+Two main features are highlighted in the implementation of S<span style="font-variant: small-caps">edfit</span>:&nbsp;
+The confidence contours of the distribution (i.e., it's shape), and the integral
+(weight-average s-values and loading concentrations across a peak or in a
+region).</p>
+<p>The underlying assumption made in the current implementation is that the
+best-fit distribution represents the 'true' data well enough, so that the
+effects of noise in the simulated data and in the real data are the same.&nbsp;
+A second assumption made is that the error distribution of each data point is
+Gaussian. </p>
+<p>The procedure is implemented here as follows:</p>
+<p>1) with a distribution model, the best fitted values for all data points are
+stored. <i><u><font COLOR="#ff0000">Important:</font></u><font COLOR="#ff0000">
+The best-fit distribution has to be found before executing the Monte-Carlo
+analysis, and the residuals should be random and show no systematics
+</font></i>
+(this may be assessed, for example, by the <a href="sedfit_help_fstatistics.htm#Runs Test">runs
+test</a>, or by looking at the <a href="sedfit_help_residuals_bitmap.htm">residuals
+bitmap</a>).&nbsp; The best-fit found (automatically without regularization) 
+will be taken as reference for generating new distributions.</p>
+<p>2) the number of iterations <i>N</i> must be specified. It is suggested to
+perform a ‘test’ Monte-Carlo with a small (e.g. 10-100) number of
+iterations, first, to check the performance of the procedure, and then make a
+large statistics (100-1000) overnight.</p>
+<p>3) The confidence level: After calculating the <i>N </i>new distributions
+based on the <i>N </i>generated data sets, the distribution plot will show 3
+curves, the mean curve in black, and a blue and a red curve, which enclose a
+specified percentile of the data. For example, if the confidence level is 0.7,
+then the middle 70% is enclosed by the 0.15 (in blue) and the 0.85 (in red)
+quantile. Setting this confidence level changes these percentiles of the display
+and storage.</p>
+<p>4) A directory for the storage of the calculated distributions has to be
+specified. This will contain <i>N</i> distributions, named 1.dat,2.dat,...,N.dat,
+as well as a distribution called &quot;mean.dat&quot;, and different percentiles
+called &quot;lim***.dat&quot;, e.g. lim160.dat for the 16% percentile.</p>
+<p>5) The calculation of the Monte-Carlo iterations follows. Synthetic data sets
+are generated based on the previously found best-fit data (see point 1 above),
+with normally distributed noise added in the same magnitude as was obtained in
+the previous best-fit. Each of these new data sets is analyzed in the same way
+as the original distribution analysis. Each new calculated distribution is
+stored in memory, and in a file (see point 3 above).</p>
+<p>6) The statistics of the curves is analyzed: As described in point 3, the
+mean and specified quantiles of the distributions are shown. For example, if the
+confidence level was 0.68, the curves shown in the display are the mean and 1
+standard deviation contour for each point in the distribution. A continuous loop
+allows to probe new confidence levels, each of which will subsequently be
+displayed and stored in the specified directory. This way, a complete
+statistical analysis can be performed, without any need to re-calculate the
+Monte-Carlo iterations. This loop is stopped by pressing the ‘cancel’
+button.</p>
+<p>&nbsp;</p>
+<p><font color="#008000"><b><a name="MC for sw">New in version 8.7:&nbsp; Monte-Carlo for
+integrated weight-average s values</a></b></font></p>
+<p>This is a better statistics to use for determining the precision of the
+weight-average s-values across a peak or in a region.&nbsp; For example, when
+analyzing low concentrations of aggregate contaminations, the concentration may
+be too low to precisely locate the peak, yet the presence of material in a given
+s-range may be highly significant.&nbsp; In such a case, the confidence contours
+for the distribution may reach zero everywhere in the s-interval, but the
+integral across the region may be precisely determined and non-zero.&nbsp; </p>
+<p>In this variation, after specifying the confidence level, the lower limit for
+the integration range and then the upper limit for the integration range needs
+to be specified. The output message box the will report the average sw value,
+it's 68% confidence interval, the average deviation, and the standard deviation
+of the samples.&nbsp; It will also report the average concentration in the
+integrated interval and its confidence interval. After closing the results
+message box, different integration limits can be chosen (no need to recalculate
+the Monte-Carlo simulations, just different statistical analysis of the result).</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

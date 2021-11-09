@@ -1,0 +1,665 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Fitting Options</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body onload="dynAnimation()" language="Javascript1.2" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_set_vbarxrho.htm" target="">set&nbsp;vbarxrho</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="inhomogeneous_solvent.htm" target="">Inhomogeneous&nbsp;Solvent</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loading_options.htm" target="">Loading&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;Fitting&nbsp;Options&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_calculator.htm" target="">Calculator</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_size_distribution_options.htm" target="">Size&nbsp;Distribution&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sounds.htm" target="">Sounds</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="34604" endspan -->
+</p>
+<h1>fitting options&nbsp;</h1>
+<p>This menu contains the following options for fitting:</p>
+<p><img border="0" src="images/sedfit121.gif"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Fitting M and s vs D and s">fit M and s, or D and s</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* <a href="#Constraints for Fitting of Meniscus and Bottom">set fitting
+limits for meniscus and bottom</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* 
+<a href="#Lamm equation parameters">Lamm equation parameters</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* 
+<a href="#fit updating preferences">change fit 
+updating preferences</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Simplex">Simplex Algorithm</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Simulated Annealing">Simulated Annealing</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">*
+<a href="#Marquardt-Levenberg">Marquardt Levenberg</a></p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Fitting M and s vs D and s">Fitting
+M and s <i>vs</i> D and s</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Fitting Options | Fit M and s</p>
+</font></b>
+<p>This toggles the use of M and s (default) or of D and s as independent
+parameters to be fitted for each of the solutes. Both treatments are equivalent
+and related through the Svedberg equation:</p>
+<p><img SRC="images/Image7.gif" WIDTH="100" HEIGHT="44"></p>
+<p>Dependent on what is chosen, the parameter dialog box will show either M or
+D, and values are being transformed accordingly. If the checkmark is visible, M
+and s are in use. If no data are loaded when switching, the transformation will
+assume 20C as sample temperature, until this value is overwritten by loading
+data.&nbsp;&nbsp;</p>
+<p><b>Please note:&nbsp; if the molar mass is chosen as parameter, the <a href="sedfit_help_set_vbarxrho.htm">partial
+specific volume</a> must be specified.&nbsp; </b>Either it should be set to the
+correct value, or it should be set to zero (making the molar mass to the buoyant
+molar mass M(1-v-bar*rho).&nbsp; Because the diffusion coefficient is the
+primary measured quantity, the partial-specific volume is
+irrelevant.&nbsp;&nbsp;</p>
+<p>When the parameters are switched from (s,M) to (s,D) or vice versa, M or D,
+respectively, are calculated for each species using the current setting of the
+s-value of the particular species, and of the partial-specific volume and buffer
+density.</p>
+<p>Using M as the boundary spreading parameter can allow input of the frequently
+known molar mass, or simpler interpretation of oligomeric stoichiometry, and
+this setting is therefore the default.&nbsp; On the other hand, the diffusion
+coefficients may be known from dynamic light scattering experiments.&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Constraints for Fitting of Meniscus and Bottom">Constraints
+for Fitting of Meniscus and Bottom</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Fitting Options | Set fit limits for meniscus and bottom</p>
+</font></b>
+<p>If the <a href="sedfit_help_parameters.htm#Meniscus"> meniscus</a> or <a href="sedfit_help_parameters.htm#Bottom"> bottom</a> position is treated as a floating parameter to be
+optimized (see <a href="sedfit_help_parameters.htm">parameters</a>),
+it can be very useful to introduce constraints (i.e. limits) for these parameter
+values. For example, while the precise position of the ends of the solution
+columns may not be visible due to optical artifacts, the boundaries of these
+optical artifacts in general represent limits for the possible positions of the
+bottom.</p>
+<p>Always when checking the meniscus or bottom the first time, this menu
+function is automatically invoked to remind the user of the importance of
+entering reasonable limits for these parameters. With this menu function, these
+limits can be changed.</p>
+<i><font COLOR="#008000">
+<p>TIP: If intensity data are collected instead of absorbance data, the bottom
+position is easier to specify. Once the intensity data have been inspected, they
+can be transformed to conventional absorbance data using the loading option for <a href="sedfit_help_loading_options.htm#Save Intensity Data as Absorbance Data">transforming
+intensity to absorbance files</a>.</p>
+</font></i>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Lamm equation parameters">Lamm
+equation parameters</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Fitting Options | Lamm equation parameters</p>
+</font></b>
+<font COLOR="#CC3300">
+<p><b><u>Don't panic!&nbsp; </u>This is a control box that is not usually needed 
+since the default values automatically adjust the Lamm equation parameters to 
+what's best.&nbsp; The box here is just providing opportunities to explore the 
+different numerical methods.&nbsp; Rarely is it necessary to fine-tune numerical 
+parameters to better perform for extreme sedimentation conditions.</p></b>
+</font><b>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1" color="#000000">All 
+numerical details are published in </font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1" color="#000000">*
+</font></b><font size="1"><font color="#000000">P.H. Brown, P. Schuck (2007) A 
+new adaptive grid-size algorithm for the simulation of sedimentation velocity 
+profiles in analytical ultracentrifugation. </font><font COLOR="#CC3300">
+<a href="images/CompPhysComm_LammEq.pdf"><font color="#000000">Computer Physics 
+Communications in press</font></a></font><font color="#000000"><br>
+</font></font><font COLOR="#000000"><font size="1">* P.H. Brown, P. Schuck 
+(2006) Macromolecular size-and-shape distributions by sedimentation velocity 
+analytical ultracentrifugation.
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=16565040&query_hl=5&itool=pubmed_docsum">
+<font color="#000000">Biophysical Journal 90:4651-4661</font></a></font></p>
+</font>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1" color="#CC3300">
+<font COLOR="#000000">
+* J. Dam, C.A. Velikovsky, R.A. Mariuzza, C. Urbanke, P. Schuck (2005) 
+Sedimentation velocity analysis of heterogeneous protein-protein interactions: 
+Lamm equation modeling and sedimentation coefficient distributions c(s).&nbsp;
+</font><font COLOR="#CC3300">
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3">
+<font color="#000000">Biophysical Journal</font></a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3"><font color="#000000"> 
+89:619-634</font></a><font COLOR="#000000">
+</font>
+</font></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font COLOR="#CC3300">
+<font size="1"><font COLOR="#000000">
+* P. Schuck (1998) <a name="ref moving grid Lamm Eq">Sedimentation analysis of 
+non-interacting and self-associating solutes using numerical solutions to the 
+Lamm equation.</a>
+</font><i><u>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=9726952&dopt=Abstract">
+<font color="#000000">Biophysical Journal</font></a></u></i><font COLOR="#000000">
+</font>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=9726952&dopt=Abstract">
+<font color="#000000">75:1503-1512</font></a><font COLOR="#000000">.&nbsp;
+</font></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="1"><font COLOR="#000000">
+* P. Schuck, C.E. McPhee, and G.J. Howlett. (1998)
+<a name="ref sedimentation of peptides">Determination of sedimentation 
+coefficients for small peptides.</a>
+</font><i><u>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=9449347&dopt=Abstract">
+<font color="#000000">Biophysical Journal</font></a></u></i><font COLOR="#000000">
+</font>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&db=PubMed&list_uids=9449347&dopt=Abstract">
+<font color="#000000">74:466-474</font></a><font COLOR="#000000">.&nbsp;
+</font></font></p>
+<font COLOR="#000000">
+<p style="margin-top: 0; margin-bottom: 0">
+<font size="1">* J. Dam, P. Schuck (2004) Calculating sedimentation coefficient distributions
+by direct modeling of sedimentation velocity concentration profiles.&nbsp; <a href="images/methodinenzymology.pdf">
+<font color="#000000">Methods
+in Enzymology 384:185-212</font></a> </font></p>
+<p style="margin-top: 0; margin-bottom: 0">
+</font>
+</font><b><font COLOR="#CC3300">
+<br>
+</font></b><b><font COLOR="#0000ff">
+<img border="0" src="images/LammEqParams.jpg"></p>
+</font></b>
+<p style="margin-top: 0; margin-bottom: 0">There are four major parameter sets:</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
+<a href="#Finite_Element_Algorithm">Finite Element Algorithm</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
+<a href="#Finite_Element_Spatial_Discretization">Spatial Discretization</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
+<a href="#Temporal_Discretization">Temporal Discretization</a></p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;&nbsp;&nbsp;
+<a href="#Backdiffusion:">Backdiffusion</a></p>
+<p style="margin-top: 0; margin-bottom: 0">and the
+<a href="#remaining parameters">remaining parameters</a></p>
+<p>1) <b><a name="Finite_Element_Algorithm">Finite Element Algorithm</a>:&nbsp;
+</b>&nbsp;</p>
+<p>This largely reflects parameters that are important only when not using the 
+spatially optimized finite element discretization.</p>
+<p>The <a href="LammEqSolutions.htm#The moving frame of reference finite element solution"> moving
+frame of reference</a> method for <a href="LammEqSolutions.htm"> solving the Lamm equation</a> is highly recommended for
+simulations at high ratio <font FACE="Symbol">w<sup>2</sup></font>s/D, i.e. for the
+fitting of data sets that exhibit a relative clear and steep sedimentation
+boundary. On the other hand, for small sedimentation coefficients or simulations
+of the approach to equilibrium the <a href="LammEqSolutions.htm#The finite element solution by Claverie"> Claverie method</a> is advantageous because it
+allows the use of an adaptive time increment, which can be made very large for
+slow sedimentation processes (see the <a href="LammEqSolutions.htm">introduction
+to Lamm equation solutions</a>).&nbsp; In order to simplify the use of the program, if the checkbox <a href="sedfit_help_independent_ideal_species.htm#auto method">auto method</a>
+is
+checked, the algorithms can be automatically switched, according to s-value of
+the simulation. This option is <i>on</i> by default.</p>
+<p>The present menu function allows the user to specify the sedimentation
+coefficient at which the algorithms are changed (Claverie below the specified
+value, moving hat above the specified value). The default value is 5. <i><font COLOR="#008000">The
+actual s-value that is used for changing the method is corrected for different
+rotor speeds by the factor (</font><font FACE="Symbol" COLOR="#008000">w </font><font COLOR="#008000">/30000)^2.&nbsp;
+</font></i>It may be useful to change this value if, for example, during the fitting
+procedure error messages show up prompting the user to increase the
+discretization grid size (an error message from the Claverie procedure, if
+negative concentrations occur due to too coarse grids or time-steps).&nbsp; Also, this setting might be changed to a higher value if the Lamm equation
+distributions are initially very slow.&nbsp; In the context of the optimized 
+Lamm equation spatial discretization, the switchover can be done at much higher 
+s-values.&nbsp; </p>
+<p>The field &quot;<a name="auto s hat">automatic s_grid</a>&quot; by default is <u>on</u>: 
+when using the moving hat algorithm this adjusts automatically the movement of the frame of reference to the
+sedimentation coefficient of the simulated solute. This will reduce the
+simulation on the moving frame of reference to diffusion and radial
+dilution.&nbsp; This algorithm also works
+automatically with a fixed time-step, which is determined by the movement of the
+frame of reference. This size of the time-step, however, can be constrained to
+smaller values (not to larger ones).</p>
+<p>2) <b><a name="Finite_Element_Spatial_Discretization">Finite Element Spatial 
+Discretization</a>:</b></p>
+<p>The &quot;default FE grid size&quot; determines the number of radial increments (dividing the
+solution column from meniscus to bottom) on which the numerical <a href="LammEqSolutions.htm">solution
+of the Lamm equation</a> is based. Usually, ~ 100 per mm solution column is a reasonable value. Higher
+accuracy of the Lamm equation solution can be achieved with higher values, but
+generally the experimental noise is much larger than the error at a discretization 
+of 100/mm. Coarser grids are faster for simulation, but less precise.&nbsp; For 
+complicated situations with time-consuming Lamm simulations, it can be a good 
+strategy to use a coarse grid to get the floating parameter values in a good 
+range, and to use a very high number of grid points only in the end as a final 
+refinement step.&nbsp; </p>
+<p>The &quot;automatic dynamic grid size&quot; checkbox allows the setting of the grid 
+size to be automatically adjusted, dependent on s- and D-values, such that a 
+preset precision of the Lamm equation solution will be achieved.&nbsp; </p>
+<p><font size="1"><font color="#000000">P.H. Brown, P. Schuck (2007) A new 
+adaptive grid-size algorithm for the simulation of sedimentation velocity 
+profiles in analytical ultracentrifugation. </font><font COLOR="#CC3300">
+<a href="images/CompPhysComm_LammEq.pdf"><font color="#000000">Computer Physics 
+Communications in press</font></a></font></font></p>
+<p>As described in the paper, accuracy better than 0.001 can be accomplished 
+with a &quot;alpha&quot; value of 5 points per sigma.&nbsp; Larger values produces finer 
+grids with more precise Lamm equation solutions.&nbsp; There are upper and lower 
+limits for the grid size that is going to be used.&nbsp; </p>
+<p>3) <b><a name="Temporal_Discretization">Temporal Discretization</a>:</b></p>
+<p><i><font FACE="Verdana"><a name="Times from w2t">Times
+from </a></font><a name="Times from w2t"><font FACE="Verdana">w</font><sup><font FACE="Verdana">2</font></sup><font FACE="Verdana">t</font></a></i></p>
+<p>This switch allows to calculate the time of scan after start of the
+centrifuge from the <font FACE="Symbol">w</font><sup>2</sup>t entry of the file
+(on, is default), instead of taking it from the t entry. The advantage of this
+is that the time needed for acceleration of the rotor, while the centrifugal
+field is not fully established yet, is not weighted as much. The status of this
+switch is indicated by the checkmark.</p>
+<p>An alternative method, the incorporation of the <a href="#Simulate Rotor Acceleration Phase"> rotor acceleration phase into
+the Lamm equation solution</a> is a little more precise, and recommended
+for larger particles, or if less than the maximum acceleration at the XLA is
+used.</p>
+<i><font COLOR="#008000">
+<p><font size="2">Please Note: The </font> </font><font size="2"><font FACE="Symbol" COLOR="#008000">w</font><sup><font COLOR="#008000">2</font></sup></font><font COLOR="#008000"><font size="2">t
+entry of the centrifuge file format has a limited precision. The errors
+introduced by this in the calculated elapsed seconds can be observed if data are
+simulated, saved, and re-analyzed. For real data, however, this error will be
+insignificant.</font></p>
+</font></i>
+<p><a name="Simulate Rotor Acceleration Phase"><i><font face="Verdana">Simulate
+Rotor Acceleration Phase</font></i></a></p>
+<p>The entries in the file headers saved by the XLA/XLI contains both a <font FACE="Symbol">w</font><sup>2</sup>t
+entry (the integral over <font FACE="Symbol">w<sup>2</sup></font>dt) and an elapsed seconds entry. From the combination of known rotor speed,
+the elapsed seconds, and the elapsed <font FACE="Symbol">w</font><sup>2</sup>t
+can be calculated how long it took to bring the rotor to speed (assuming a
+linear acceleration). This is being calculated when loading files:</p>
+<p>If the rotor gets within the time t<sub>s</sub> to the final rotor speed <font FACE="Symbol">w<sub>0</sub>
+</font>by constant acceleration d<font FACE="Symbol">w</font>/dt, the integral
+over <font FACE="Symbol">w<sup>2</sup></font>dt will have the value&nbsp;</p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src="images/sedfit84.gif" v:shapes="_x0000_i1025" width="108" height="53"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1061217488">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>once it is at speed. Therefore, the difference between the real <font FACE="Symbol">w<sup>2</sup></font>dt
+(as read from the data file) and the <font FACE="Symbol">w<sub>0</sub><sup>2</sup></font>dt
+of an 'ideal' experiment with instantaneous acceleration is 2/3 x <font FACE="Symbol">w<sub>0</sub><sup>2</sup></font>t<sub>s</sub>
+.&nbsp; Since we know the time of the scans t, as well as the real <font FACE="Symbol">w<sup>2</sup></font>dt
+and the rotor speed <font FACE="Symbol">w<sub>0</sub></font>, we can calculate
+the acceleration time as</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/sedfit85.gif" v:shapes="_x0000_i1025" width="137" height="56"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1061218188">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;&nbsp;</p>
+<p>The acceleration follows as d<font FACE="Symbol">w</font>/dt = <font FACE="Symbol">w<sub>0</sub></font>/t<sub>s</sub>.&nbsp;
+With maximum acceleration setting on the Optima XLA/I, this value is usually
+around 200 rpm/sec.&nbsp;</p>
+<p> If the option
+‘ramp rotor speed’ is toggled on (it will then have a checkmark), the
+acceleration phase is incorporated into the <a href="LammEqSolutions.htm#The implementation in sedfit"> finite element solutions of the Lamm
+equation</a>. Technically, this is done by discretizing the time, and recalculating
+after small intervals the matrix intervals related to the rotor speed.</p>
+<p>In theory, ramping the rotor speed for the Lamm equation solution is the most
+precise way to deal with the rotor acceleration, since it can correctly account
+for both diffusion and sedimentation in this phase.</p>
+<i><u><font COLOR="#008000">
+<p><font size="2">Please Note</font></font></u><font COLOR="#008000"><font size="2">: Information about the state of
+this switch is not being stored in the information on the previous best-fit.
+Therefore, when reloading analyses from the hard drive, this feature will not
+automatically be switched to its original state .</font></p>
+</font></i>
+<p><i><font face="Verdana"><a name="fixed dt">fixed dt</a> </font></i>is a checkbox that can be used to constrain the time-step
+size.&nbsp; The effective value (in sec) will be the one entered in the field <a href="#max dc/c (or dt)"> ‘max
+dc/c (or dt)’</a>.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<a name="max dc/c (or dt)"><i><font face="Verdana">max dc/c (or
+dt)</font></i></a> has two different functions, dependent on which
+Lamm simulation algorithm is chosen.&nbsp; In a stationary frame of reference (Claverie
+simulations), an adaptive time-step driver is used.&nbsp; In this case, the max
+dc/c parameter refers to the maximum change in any of the concentration values
+that is desired, and according to which the size of the time-step is
+adjusted.&nbsp; A larger value of max dc/c effectively increases the time-steps,
+while a smaller value decreases the time-steps. The detailed algorithm used is
+slightly more complex, and also depends on the steepness of the simulated
+boundary.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2" style="line-height: 100%; margin-top: 0; margin-bottom: 0">!&nbsp;&nbsp;&nbsp;
+<font size="1">If the desired relative change max dc/c leads to too large
+time-steps, it is automatically reduced.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">For the moving
+frame of reference simulation, this field has no direct function. However, if a fixed dt is chosen, the time-steps in both the Claverie and moving hat algorithm
+are constrained to the value given in this field (in seconds).&nbsp;</p>
+<p>4) <b><a name="Backdiffusion:">Backdiffusion:</a></b></p>
+<p>In many cases, the back-diffusion part of the sedimentation experiment is not 
+of interest.&nbsp; This is true, in particular, for large species, where the 
+gradients become very large, and localized to the bottom of the cell.&nbsp; This 
+raises the following points:</p>
+<p>* the large concentration gradients may cause aggregation of the soluble 
+macromolecules and/or phase transition into a surface film, both of which are 
+processes we do not want to deal with in the experiment</p>
+<p>* the optical detection of large gradients is not possible</p>
+<p>* the fitting of the large gradients will be very sensitive to the bottom 
+position of the cell, which is not directly observed and would need to be a 
+fitting parameter, as well</p>
+<p>* the numerical simulation of the steep concentration increase is very 
+time-consuming and expensive.</p>
+<p><b>In this case, it does not make sense to spend computational time to even 
+model the back-diffusion part (just like we wouldn't attempt to model the 
+formation of a surface film).&nbsp; Therefore, we can use Lamm equation 
+solutions for an infinite solution column.&nbsp; We have published how the 
+boundary conditions of the finite element solutions of the Lamm equation can be 
+adapted for a permeable bottom (<font size="2">J. Dam, et al.,
+<u>
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3">Biophysical Journal</a></u><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15863475&query_hl=3"> 
+89:619-634</a> </font>).&nbsp; </b></p>
+<p>If this option is set, this function estimates for each species the extent of 
+back-diffusion assuming that the final equilibrium distribution has the maximal 
+build-up of back-diffusion.&nbsp; At the currently set fitting limit, if the 
+final equilibrium signal does not exceed 0.0001-fold the loading concentration, 
+back-diffusion will be irrelevant and the Lamm equation will be solved with the 
+permeable bottom model.</p>
+<p>The threshold can be defined by the user, the default value is 1 (as a 
+multiplier to the factor 0.0001).&nbsp; </p>
+<p>For example, within the s-range of a c(s) distribution, some species may be 
+small and exhibit back-diffusion, while others are so large that their 
+back-diffusion is compressed into the (invisible) immediate vicinity of the 
+bottom.&nbsp; If this function is on, the sedimentation of small species will be 
+simulated conventionally, while the sedimentation of the larger species is 
+simplified by using the permeable bottom model.</p>
+<p><font size="2">The assessment of the final equilibrium distribution is made 
+using the analytical solution for ideal sedimentation equilibrium.&nbsp; This 
+may somewhat underestimate the back-diffusion for strongly 
+concentration-dependent repulsive interactions (a situation for which the 
+threshold may be reduced).&nbsp; On the other hand, if aggregation and surface 
+adsorption reduces the amount of back-diffusion, in theory, the threshold could 
+be increased.&nbsp; However, these considerations are second or third-order 
+effects, and in practice likely irrelevant.&nbsp;&nbsp; </font></p>
+<p>5) <a name="remaining parameters"><b>remaining parameters</b>:</a></p>
+<p><i>Experimental <a name="Initial Distribution">Initial Distribution</a>:</i><b> </b>
+The <a href="LammEqSolutions.htm">numerical Lamm equation
+solutions</a> allow for any concentration distribution to be taken as a starting
+point for the simulation of the evolution.&nbsp; Sometimes, it can be very
+useful to load an experimental scan as initial distribution, for example when
+using boundary forming loading techniques, or when convection occurred in the
+initial parts of the experiment.&nbsp; A detailed description of this approach
+is given <a href="sedfit_help_SetInitialData.htm">here</a>.&nbsp; It should be
+noted that with the non-interacting species model, only a single component can
+be used.&nbsp;</p>
+<p><i><a name="Tolerance">Tolerance</a> </i>governs the Simplex non-linear
+regression routine: It determines the (maximum) percent change in the parameter
+values below which a single Simplex is stopped.&nbsp; The Simplex is then repeatedly restarted, until all final parameter values are
+within this tolerance in two sequential simplex runs. Default value is 1.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="fit updating preferences">Change fit updating preferences</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Fitting Options | change fit updating preferences</p>
+</font></b>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><br>
+From version 9.2 and higher, it is possible to observe the improving quality of 
+fit during the optimization process.&nbsp; This function lets you select which 
+graph will be dynamically updated.&nbsp; Considerations are the computational 
+cost of updating the display (dependent on the number of files and perhaps the 
+speed of the video output of your computer). </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<font color="#FF00FF"><b>Note, this function is controlling cosmetic aspects 
+only.&nbsp; You should not be tempted to interrupt the fit just because visually 
+it seems to be sufficiently improved.</b></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<font color="#FF00FF"><b>Also, note that the c(s) distribution during the 
+optimization is without regularization!&nbsp; </b></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Simplex">Simplex Algorithm</a></p>
+</font><font COLOR="#0000ff">
+<b>
+<p>Options | Fitting Options | Simplex Algorithm</p>
+</b>
+</font>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This is an 
+algorithm for optimization of the parameters during fitting that is very robust, 
+because it does not take derivatives.&nbsp; Sometimes a disadvantage is that it 
+does not very well home in to the absolute lowest point of a minimum and may 
+wander around it without converging.&nbsp; </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">It is based on an 
+initial randomized set of trial points around the current parameters.&nbsp; As a 
+result, this method can sometimes jump out of local minimas when restarting. </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><font size="1">see W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery. (1992)
+Numerical Recipes in C. University Press, Cambridge &nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Simulated Annealing">Simulated Annealing</a></p>
+</font><font COLOR="#0000ff">
+<b>
+<p>Options | Fitting Options | Simulated Annealing</p>
+</b>
+</font>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This is 
+implemented similar to the Simplex algorithm, except that it does not need to go 
+strictly downhill, at first.&nbsp; Only parameter values that produce fits worse 
+than a certain threshold ('temperature') are rejected.&nbsp; In successive 
+steps, the threshold is made more stringent after a certain number or trials 
+('annealing').</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This is an 
+excellent algorithm for optimizing many highly correlated parameters, because it 
+permits exploration of a wide section of the parameter space and is not bound by 
+local minimas. </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The first input is 
+the starting threshold </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit136.gif"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">the default value 
+of two is permitting an increase of the chi-square of the fit by two-fold the 
+starting rmsd. </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Next the number of 
+'temperature' steps needs to be entered</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit137.gif"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">and then the 
+number of iterations per step:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit138.gif"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">It is useful to 
+append a final round of optimization with Marquardt-Levenberg (to home in on the 
+minimum), which can be specified next:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit139.gif"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><font size="1">see W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery. (1992)
+Numerical Recipes in C. University Press, Cambridge &nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Marquardt-Levenberg">Marquardt-Levenberg</a></p>
+</font><font COLOR="#0000ff">
+<b>
+<p>Options | Fitting Options | Marquardt-Levenberg</p>
+</b>
+</font>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This algorithm is 
+excellent for very efficiently going downhill in the error surface, based on the 
+slope and curvature of the error surface.&nbsp; A disadvantage can be its 
+susceptibility to local minima. Note that it takes some time to build up the 
+information on the local curvature, which will appear as if the optimization is 
+very slow, but then it will usually proceed with excellent steps, making it 
+overall usually the fastest algorithm.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p><font size="1">see W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery. (1992)
+Numerical Recipes in C. University Press, Cambridge &nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Serialize Fit">Serialize Fit</a></p>
+</font><font COLOR="#0000ff">
+<b>
+<p>Options | Fitting Options | Serialize Fit</p>
+</b>
+</font>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">This function 
+allows the user to perform automatically a series of data analyses on many data 
+sets.&nbsp; This can be, for example, different cells from the same run.&nbsp; 
+This requires </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* the data to be 
+located in specific directories (or in the same directory)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* all analyses are 
+using the same model</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* the desired 
+model must be currently selected</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">* fitting limits 
+must be the same (e.g. when analyzing samples of similar volume)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Each data set will 
+be fitted, and optionally a series of integrations will be performed on 
+distributions.&nbsp; In the end, results are stored in the directory of the 
+original data:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">1)
+<a href="sedfit_help_fittmppars.htm">~tmppars.* files</a>: when loading the 
+data, say YES to reload previous analysis -&gt; this will hold the results of the 
+serialized analysis</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">2)
+<a href="export_to_sedphat.htm">SEDPHAT configuration files</a>: For each 
+analysis, the best-fit model will be exported to SEDPHAT (such that the best-fit 
+model can be retrieved by double-clicking on the *.sedphat file)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">3) files 
+&quot;distribution.*&quot;, &quot;ff0.*&quot; and &quot;integrals.*&quot;, which contain the information on 
+the best-fit distribution, the f/f0 value, and the integration results.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">When using this 
+function, a number of boxes come up:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit123.gif" width="185" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If you are 
+analyzing a series of cells, with cell numbers *.ip1, *.ip2, *.ip3, etc., select
+<b>YES</b>. </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit124.gif" width="189" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">You can automate 
+the analysis of data from cells with the same cell number, if the data are 
+located in specific locations, with the highest subdirectory being a number.&nbsp; 
+Then, data can be drawn sequentially from different subdirectories.&nbsp; </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">For example, </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+c:\aucdata\mysample\1\00001.r01...</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+c:\aucdata\mysample\2\00001.r01...</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">You will have to 
+generate this directory structure and copy the data into these folders.&nbsp; 
+Note that the subdirectory numbers must be sequential.&nbsp; </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If you want to 
+analyze data only from a single run, select <b>NO</b>.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If you answered 
+previously to analyze a series of cells, a question comes</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit125.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">For example, if 
+the first cell is cell2 (e.g., *.ip2 data), enter &quot;2&quot;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit126.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Similarly, the 
+number of the last cell to be analyzed must be entered, e.g. &quot;7&quot;.&nbsp; In this 
+example, cell 2, 3, 4, 5, 6, and 7 will be analyzed sequentially.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If you have 
+previously selected to draw data from different subdirectories, the question </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit127.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">will ask for the 
+lowest number of the subdirectory you want to analyze.&nbsp; This is followed by 
+the number of the highest subdirectory</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit128.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">(If you didn't 
+select this option, these boxes will not appear.)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The next question 
+is </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit129.gif" width="185" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Generally, you'd 
+want to select <b>YES</b> (unless you've already fitted previously).&nbsp; In 
+this case, you can select to restore the previous fits by selecting<b> YES</b> 
+to the question<b> </b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit130.gif" width="204" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Otherwise, select
+<b>NO</b> (i.e. start the analysis from scratch for each data set).</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If your current 
+model is a continuous distribution, you can automatically integrate </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit131.gif" width="185" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">by selecting <b>
+YES</b>.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">If you do so, the 
+integration range will be requested:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit132.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit133.gif" width="276" height="129"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">(e.g., in this 
+example the distribution from 0.5 S to 8 S will be integrated).</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<img border="0" src="images/sedfit134.gif" width="185" height="100"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">You can chose an 
+additional integration range by selecting <b>YES</b>.&nbsp; </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">After this, SEDFIT 
+will go through all the specified data sets, does the fits, and stores the 
+results in the files (see above).</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

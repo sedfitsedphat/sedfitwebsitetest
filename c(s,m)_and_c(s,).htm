@@ -1,0 +1,136 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>c(s,M) and c(s,*)</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;c(s,M)&nbsp;and&nbsp;c(s,*)&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="50372" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Size-and-Shape distributions</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | continuous c(s,ffo) </p>
+<p>Model | continuous c(s,ffo) with 1 discrete component</p>
+<p>&nbsp;</p>
+</font></b>
+<p>A detailed description of this model can be found in the Biophys. J. 2006 
+paper (<a href="http://www.biophysj.org/cgi/content/abstract/biophysj.106.081372v1">preprint</a>).&nbsp; 
+The practical use is illustrated in the getting started tutorial part
+<a href="sizeandshape.htm">c(s,M)</a>. Since most of the computational effort 
+resides in operations dealing with the experimental data points,
+<a href="sedfit_help_loading_options.htm#Set Radial Resolution">reducing the 
+radial density of points</a> can speed up calculation of these distributions 
+significantly.</p>
+<p><b>This model calculates general size-and-shape distributions free of 
+scale-relationship assumptions on the frictional ratio.&nbsp; This can be used 
+to calculate two-dimensional distributions, or general diffusion deconvoluted 
+sedimentation coefficient distributions:</b></p>
+<p><a href="#c(s,ffo)">Size-and-Shape Distributions c(s,ffo), c(s,M), etc.</a></p>
+<p><a href="#General c(s,*)">General c(s,*)</a></p>
+<p>Their application can be indicated, for example, when there is a mixture of 
+macromolecules exhibiting microheterogeneity in s and M, with species of widely 
+different frictional ratios.&nbsp; </p>
+<p>Essentially, both are based on fitting the data with a two-dimensional 
+distribution </p>
+<p><img border="0" src="images/c(s,m)20.gif" width="265" height="29"><span style="font-size: 12.0pt; font-family: Times New Roman">&nbsp;&nbsp;&nbsp;
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1203773698">
+ </o:OLEObject>
+</xml><![endif]--></span></p>
+<p>In contrast to the c(s) distribution, there is no scale-relationship assuming 
+similar frictional ratio values for each s-value.&nbsp; Instead, <b>all</b> 
+frictional ratio values are permitted in the fit for each s-value. Therefore, we 
+have a two-dimensional grid.&nbsp; This will be entered here:</p>
+<p><img border="0" src="images/c(s,m)21.jpg" width="410" height="350"></p>
+<p>This works just like a conventional c(s) (and it's counterpart with the extra 
+discrete species), but instead of fitting for f/f0, we enter a minimum value, a 
+maximum value, and a resolution in f/f0.&nbsp; </p>
+<p>Note that in the bottom there are two fields for regularization.&nbsp; The 
+first one (which currently holds the value 0.95) is the overall P-value for the 
+regularization.&nbsp; The second field is the relative amount of regularization 
+applied to the s-direction, relative to the f/f0-direction of the 
+two-dimensional distribution.&nbsp; Since the resolution in f/f0 is likely much 
+lower than in s, it might be advantageous to increase the regularization in f/f0 
+direction (e.g. enter a value of 10).&nbsp; This does not influence the overall 
+level of regularization.&nbsp; Only Tikhonov-Phillips regularization is 
+currently implemented. </p>
+<p>After calculating the distribution (using the RUN or FIT command), there will 
+be two kinds of outputs:</p>
+<p>&nbsp;</p>
+<b>
+<p><a href="#c(s,ffo)" name="c(s,ffo)">Size-and-Shape Distributions c(s,ffo), 
+c(s,M), etc.</a></p>
+</b>
+<p>These are representations of the two-dimensional distribution.&nbsp; The 
+default representation is c(s,ff0).&nbsp; For example, it may look like this.</p>
+<p><img border="0" src="images/c(s,m)28.gif" width="730" height="248"></p>
+<p>The height of the c(s,ff0) distribution is indicated by the color 
+temperature.&nbsp; The vertical axis is the f/f0 dimension, always automatically 
+scaled from f/f0 min to f/f0 max.&nbsp; The horizontal axis is the s-axis.&nbsp; 
+(The solid line is the <a href="#General c(s,*)">general c(s,*)</a> distribution 
+derived from the two-dimensional c(s,ff0) distribution.)</p>
+<p>The display can be changed by using the buttons on the right-hand side of the 
+parameter box.</p>
+<p><img border="0" src="images/c(s,m)24.gif" width="68" height="116"></p>
+<p>These are all equivalent representations of the same distribution, since the 
+diffusion coefficient, Stokes radius, and molar mass are all automatically 
+determined once s and f/f0 are fixed. Of course that requires proper values for 
+vbar, buffer density, buffer viscosity, etc.&nbsp; (Note the s-values will 
+always remain <b>experimental</b> s-values.).&nbsp; </p>
+<p>For example, as s-M distribution, it looks like this:</p>
+<p><img border="0" src="images/c(s,m)29.gif" width="749" height="243"></p>
+<p>Integration over a region can be done using the conventional integration tool 
+(control-I), but only the s-range can be determined. (The integration tool will 
+not work if the horizontal axis is not showing sedimentation coefficients.)</p>
+<p>For the molar mass, the following average values are reported: </p>
+<p><img border="0" src="images/c(s,m)22.gif" width="165" height="77">&nbsp; </p>
+<p>and</p>
+<p><img border="0" src="images/c(s,m)25.gif" width="172" height="85"></p>
+<p>The two-dimensional distribution can be copied using the copy command, and 
+pasted into a spreadsheet with columns s, M, f, D, R, and c(s,ff0). A MATLAB 
+script for creating publication quality 3d representations is available for
+<a href="images/cofsff0.zip">download here</a> (this assumes linearly spaced 
+s-values). 3d plots can be made also by other 
+commercial plotting programs.</p>
+<p>&nbsp;</p>
+<p><b><a name="General c(s,*)">General c(s,*)</a></b></p>
+<p>In many cases, the molar mass (or f/f0) information is actually not well 
+determined by the sedimentation data, or it may not be of interest.&nbsp; In 
+these cases, it makes sense to give up the second dimension, and integrate along 
+the f/f0 axis to arrive back at a one-dimensional sedimentation coefficient 
+distribution, termed general c(s,*):</p>
+<p><img border="0" src="images/c(s,m)30.gif" width="139" height="29"></p>
+<p>This shown as the black solid line.&nbsp; This is equivalent to the 
+conventional c(s) distribution, except for the absence of scale-relationships in 
+f/f0.</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/c(s,m)28.gif" width="730" height="248"></p>
+<p>It can be copied using the copy command.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

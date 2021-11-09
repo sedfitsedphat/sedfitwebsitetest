@@ -1,0 +1,94 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>subtract calculated noise</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_plot_range.htm" target="">plot&nbsp;properties</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_residuals_bitmap.htm" target="">residuals&nbsp;bitmap</a>&nbsp;]</nobr> <nobr>[&nbsp;subtract&nbsp;calculated&nbsp;noise&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="64803" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Subtract Calculated Systematic Noise From Raw Data</p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | subtract calculated TI noise from raw data</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | subtract calculated RI noise from raw data</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | subtract all systematic noise from raw data
+</font><font color="#FF00FF">(keyboard shortcut ctrl-N)</font></p>
+<font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | restore 
+original TI noise to data
+</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+</b>
+<p>Following the concept of direct boundary modeling to fit directly the raw
+data, all systematic noise components are included into the model (see the page
+on <a href="systematic_noise_analysis.htm">systematic noise analysis</a>, and the <a href="sedfit_help_parameters.htm#FIT TI Noise">fit
+TI Noise</a> and <a href="sedfit_help_parameters.htm#FIT RI Noise">fit RI Noise</a>
+ fields in the parameter box).&nbsp; Therefore, no corrections of the data for any
+integral fringe shifts, vertical displacement of the scans (jitter), or
+time-invariant noise are needed.&nbsp;&nbsp;</p>
+<p>However, it can be very useful to subtract the best-fit estimates of the
+systematic noise components from the data, in order to visualize the
+sedimentation boundary more clearly. This can be achieved using the above
+functions in the display menu, either for the TI or RI noise separately, or for
+both together.&nbsp;&nbsp;</p>
+<p>It should be noted that this does not change the information content of the
+data, nor does it increase the statistical noise.&nbsp; Because the instrumental
+imperfections cause some arbitrary systematic offset to the 'true' sedimentation
+profiles, we can add another arbitrary offset (with the same degrees of freedom)
+without changing any information.&nbsp; In the process, we can try to cancel the
+instrumental offsets by using our best-fit estimates of these offsets.&nbsp; It
+is important, however, <b>not to switch off the systematic noise fitting
+afterwards</b>, because this would eliminate the corresponding degrees of
+freedom, and introduce bias.&nbsp; If we keep these degrees of freedom, there is
+no bias introduced.&nbsp; Also, it should be noted that the graphical estimation
+of the meniscus position is not possible after the systematic noise
+subtraction.&nbsp;</p>
+<p>Sometimes it may be useful to inspect the original TI noise that was 
+contained in the raw data.&nbsp; SEDFIT keeps track of it, and using the 
+function &quot;restore original TI noise to data&quot;, one can go back to the original TI 
+noise.</p>
+<p><u><b>This is an example:</b></u>&nbsp; First, we fit directly the raw data,
+inclusive the obvious integral fringe shifts, the jitter, and the obvious
+time-invariant noise.&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">[Although we could in principle try to correct for some of the
+jitter and integral fringe shift, similar as this is being done for the dcdt
+sedimentation analysis (see loading options <a href="sedfit_help_loading_options.htm#Eliminate Interference Offset">eliminate
+interference offset</a> and <a href="sedfit_help_loading_options.htm#Eliminate Jitter">eliminate
+jitter</a>), this is not necessary in SEDFIT and included for methodological
+comparison only]</font></p>
+<p><img border="0" src="images/sedfit26.gif" width="569" height="411"></p>
+<p>If the fit is satisfactory, we can expect a realistic estimate of the
+systematic noise offset.&nbsp; In the example, the upper black line indicates
+the best-fit TI noise profile. We can subtract this offset, as well as the
+vertical displacements (RI noise) by using the function &quot;subtract all noise
+from raw data&quot; (either using the mouse and clicking at the menu function,
+or by using the keyboard shortcut ctrl-N).&nbsp; This causes the following
+message box to appear,</p>
+<p><img border="0" src="images/sedfit27.gif" width="550" height="126"></p>
+<p>as a reminder that&nbsp;one should not switch off any of the systematic noise
+calculations. As a result, the sedimentation boundaries appear very clear now,
+and can be visually inspected for details.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit28.gif" width="570" height="411"></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

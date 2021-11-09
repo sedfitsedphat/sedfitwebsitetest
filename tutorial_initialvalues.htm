@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tut init vals</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><b><u><a name="Selecting the Model and Setting the Parameters">Selecting the
+model and setting initial values for the parameters</a></u></b></p>
+<p>Next, we select the analysis model and set the parameters. This will be done
+in several steps, each time refining and optimizing the settings.&nbsp;&nbsp;</p>
+<p>First, click on the <a href="sedfit_help_cs.htm">continuous c(s) distribution
+menu</a>.</p>
+<p><img border="0" src="images/tutori5.gif" width="657" height="472"></p>
+<p>Then click on the <a href="sedfit_help_parameters.htm">parameter</a> menu,</p>
+<p><img border="0" src="images/tutori6.gif" width="657" height="473"></p>
+<p>which will bring up the following parameter box with the default settings:</p>
+<p><img border="0" src="images/tutori27.jpg"></p>
+<p>For a quick first overview, we should enter a value of 100 for the <a href="sizedistributions.htm#parameter resolution">resolution
+parameter</a>.&nbsp; For BSA, I would set <a href="sizedistributions.htm#s-min">s-min</a>
+to 1, and <a href="sizedistributions.htm#s-max">s-max</a> to 10, so that we can
+see both smaller fragments (if there was some proteolytic activity), as well as
+the oligomers which are well-known to occur with BSA.&nbsp; As a starting guess,
+a frictional ratio of 1.2 does seem reasonable for a globular protein, but
+BSA is somewhat asymmetric, therefore let's start with a guess of 1.4.&nbsp;
+(This will turn out to be a bad starting guess, but these settings will be refined later.)&nbsp;&nbsp;When
+interpreting the frictional ratio, please note that this is an anhydrous
+frictional ratio, and that it is only a multiplicative factor together with the
+solvent viscosity.&nbsp;</p>
+<p>We could calculate the precise partial-specific volume of BSA, but the v-bar
+and the buffer density and viscosity will be completely correlated with the
+frictional ratio parameter (see the equations in the <a href="sedfit_help_cs.htm">help-page
+of the c(s) model</a>) and will only influence slightly the estimate of
+diffusion. (There will be no correction of s-values to s<sub>20</sub>
+values.)&nbsp; Therefore, I suggest using an estimate of the v-bar of 0.73, and
+for PBS a buffer density of 1.005, and a viscosity of 0.0102.&nbsp;&nbsp;</p>
+<p>Please note that by default all the baseline parameters are checked for
+interference data.&nbsp; We do not need to change anything there.&nbsp; If we
+were looking at absorbance data, in general the Baseline should be allowed to
+float (checked), whereas the Fit RI Noise and the Fit Time Independent Noise
+mostly would stay unchecked.&nbsp;</p>
+<p><font color="#800080" size="2">(Starting from version 8.5 and later, there's
+the possibility in sedfit to control the spacing of the s-values in the
+distribution, either logarithmically or arbitrary, but we use the default, which
+is linear spacing.)</font></p>
+<p>After all these entries, the parameter box should look like this:</p>
+<p><img border="0" src="images/tutori32.jpg"></p>
+<p><font size="1">(The settings for Baseline, Fit RI noise and Fit Time
+Independent Noise are redundant and sedfit may automatically switch off the
+Baseline when RI and TI noise are used.)</font></p>
+<p>If we execute the <a href="sedfit_help_run.htm">Run</a>  command (please
+note: this is <b>not </b> the <a href="sedfit_help_fit.htm">Fit</a>  command,
+which is reserved for non-linear regression)</p>
+<p><img border="0" src="images/tutori15.gif" width="654" height="472"></p>
+<p>we will calculate the first c(s) distribution. During the calculation, we
+will get the information&nbsp;</p>
+<p><font size="1"><b>allocating memory space...</b></font></p>
+<p><font size="1"><b>solving Lamm equation for ... </b></font>(with progress
+indicator)</p>
+<p><font size="1"><b>calculating normal equations ... </b></font>(with progress
+indicator)</p>
+<p><font size="1"><b>regularization ... </b></font>(with progress indicator)</p>
+<p>During the last three steps, pressing the space bar on the keyboard will
+interrupt the calculations. This particular calculation is complete after ~ 1
+min on a 700 MHz Pentium III laptop. In general, it will take longer for
+larger resolution, and with more scans, and it will be faster with absorbance
+data (and obviously it will be faster with a faster computer...).</p>
+<p>As output, fitted curves will be drawn into the data scans, the residuals are
+shown in a smaller plot in the middle, and a new lower plot appears showing the
+c(s) distribution (which at this stage is still very coarse).&nbsp; Also, some
+information will be written to the S<span style="font-variant: small-caps">edfit</span> 
+ window, which will be explained in the next paragraph.&nbsp;</p>
+<p><img border="0" src="images/tutori9.gif" width="620" height="475"></p>
+<p>At this stage of the analysis, the most important information written to the
+screen is the rmsd value of 0.0074 given in the second row.&nbsp; (If the screen
+redraws, the text information disappears, but it can be retrieved by using the <a href="sedfit_help_display.htm#Show Last Fit Info Again">Display-&gt;Show
+Last Fit Info Again</a> command).&nbsp; From the distribution, it can already be
+seen that most of the material sediments with s-values between 4 and 5, and that
+there is some larger oligomers present.&nbsp;</p>
+<p>Another important aspect of the analysis at the current stage is the
+distribution of residuals:</p>
+<p><img border="0" src="images/tutori21.gif" width="846" height="151"></p>
+<p>Although this does not look great, yet, the absence of very large residuals
+at the extreme radius values indicates that the fitting limits (green lines) are
+OK and not too close to meniscus and bottom.&nbsp; A typical picture of residuals
+when the outer fitting limit is too close to the bottom would look like this</p>
+<p><img border="0" src="images/tutori23.gif" width="844" height="149"></p>
+<p>Note that the scale of the residuals plot is dominated by very large
+residuals at the right end of the plot.&nbsp; In such a case, one needs to set
+the outer fitting limit (green line in vicinity of the bottom) to smaller radius
+values.&nbsp; Analogously, if the residuals are dominated by very large
+deviations close to the meniscus, one would see this here in the left side of
+the residuals plot, and would need to place the inner fitting limit (green line
+in vicinity of the meniscus) to larger radius values.&nbsp;</p>
+<p>Back to our analysis.&nbsp; Although the rmsd of 0.0074 seems quite good, the fit is really poor
+and needs to be refined before we can interpret the distribution.&nbsp; Without
+making sure that we have a good fit, artifacts can occur in the c(s)
+distribution (in our analysis, for example the artificial sharp peak at 7.8 S).</p>
+<p>To achieve a better inspection, we can subtract the calculated
+systematic noise from the data with the following command (or by using the
+keyboard shortcut ctrl-N).</p>
+<p><img border="0" src="images/tutori10.gif" width="651" height="473"></p>
+<p>A message box will appear</p>
+<p><img border="0" src="images/tutori11.gif" width="550" height="125"></p>
+<p>that is just a reminder that we are about to modify the original data.&nbsp;
+As explained in the <a href="systematic_noise_analysis.htm">introduction to the
+systematic noise</a>, this does not introduce any bias, as long as we keep in
+all the following analyses the degrees of freedom of the systematic noise, which
+means one should not modify the RI Noise and TI Noise in the parameter input
+boxes (leave them checked).&nbsp; As a result, we get a clear picture of the
+sedimentation process:</p>
+<p><img border="0" src="images/tutori12.gif" width="652" height="473"></p>
+<p>Although this fit looks already promising, it is still very coarse and must
+be refined in order to allow a meaningful interpretation.&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_refiningresults.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,323 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Calculator</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_set_vbarxrho.htm" target="">set&nbsp;vbarxrho</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="inhomogeneous_solvent.htm" target="">Inhomogeneous&nbsp;Solvent</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loading_options.htm" target="">Loading&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fitting_options.htm" target="">Fitting&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;Calculator&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_size_distribution_options.htm" target="">Size&nbsp;Distribution&nbsp;Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sounds.htm" target="">Sounds</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="8379" endspan -->
+</p>
+<h1>
+calculator
+</h1>
+<p><nobr>The calculator currently can perform the following calculations:</nobr></p>
+<p><img border="0" src="images/sedfit141.gif"></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#s20w from sxp">s(20,w) from s(xp)</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#Calculate axial and frictional coefficient ratios">a</a><nobr><a href="#Calculate axial and frictional coefficient ratios">xial and
+frictional coefficient ratios</a></nobr></p>
+<p style="margin-top: 0; margin-bottom: 0"><nobr>
+<a href="#Calculate shapes from frictional ratio">shapes from
+frictional ratio</a></nobr></p>
+<p style="margin-top: 0; margin-bottom: 0"><nobr>
+<a href="#Calculate s for spherical particle">s(M) for spherical particle</a></nobr></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Calculate M(s)">M(s) for 
+spherical or asymmetric particle</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Rh(s)">Rh(s) for spherical 
+particle</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#s(Rh)">s(Rh) for sp<nobr>herical 
+particle</nobr></a></p>
+<p style="margin-top: 0; margin-bottom: 0"><nobr>variance ratio
+<a href="#Calculate F-distribution">F-distribution</a>  (replaces looking up
+tabulated values in textbooks)</nobr></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Calculate Faxen Solution">calculate Faxén solution</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Calculate second moment s">calculate weight average s by second
+moment integration</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#calculate radial dilution">calculate radial dilution</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#calculate hydrodynamic friction force">calculate pressure</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#calculate hydrodynamic friction force">calculate hydrodynamic friction force</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><nobr><a href="#Calculate M(s)">sedimentation coefficient
+for spherical particles</a></nobr></p>
+<p><a href="#Calculate M(s)">molar mass for a particle at given s-value</a></p>
+<p>&nbsp;</p>
+<p><a name="s20w from sxp"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+</font><font face="Roman" size="6" color="#FF0000">s(20,w) from s(xp)</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate s(20,w) from s(xp)</p>
+</font></b>
+<p>All functions in SEDFIT (except for the inhomogeneous density gradient 
+models) will provide s-values in <b>experimental</b> conditions.&nbsp; Since for 
+some models, like c(s), the buffer viscosity, density, and macromolecular 
+partial-specific volume is entered anyway (to scale f/f0 to a meaningful 
+quantity), these entries can be used in this function to convert the 
+experimental s-value into a value under standard conditions (water 20C).</p>
+<p>This will transform the sedimentation coefficient distribution from 
+experimental to standard conditions (water at 20C).&nbsp; The reason why this is 
+not done by default is that for mixtures of different components it is 
+frequently not possible to find a common value for the partial-specific volume.&nbsp; 
+This will affect the spacing in s(20,w) between different peaks containing 
+different components. </p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p><a name="Calculate axial and frictional coefficient ratios"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+axial and frictional coefficient ratios</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate Axial and Frictional Coefficient Ratios</p>
+</font></b>
+<p>For calculation of axial ratios of elliptical shape models, once the Lamm
+equation modeling has revealed <i>s</i> and <i>M</i>.&nbsp; (For calculating
+axial ratios from f/f0 from using c(s), see next function <a href="#Calculate shapes from frictional ratio">below</a>).
+This functionality is
+similar to that of sednterp, but for convenience included here. The calculations
+are based on the formulas from Sednterp.</p>
+<p>Input:</p>
+<p>1) the molar mass of the species</p>
+<p>2) its sedimentation coefficient</p>
+<p>3) the partial-specific volume (this function does not account for hydration)</p>
+<p>4) the hydration&nbsp;</p>
+<p>5) the temperature of the run - <i><font COLOR="#800080">please note: (this
+is for RT - factor in the Svedberg equation, not for any temperature correction
+of v-bar or the viscosity)</p>
+</font></i>
+<p>6) the buffer density</p>
+<p>7) the (absolute) viscosity of the buffer - <i><font COLOR="#800080">please
+note: input is required here in Poise (i.e. 0.01002 for water at standard
+conditions) as is the output from sednterp.</p>
+</font></i>
+<p>Output:</p>
+<p>1) a summary of the conditions specified</p>
+<p>2) the hydrodynamic radius of the species</p>
+<p>3) the diffusion coefficient</p>
+<p>4) the frictional coefficient ratio</p>
+<p>5) axial ratios for oblate and prolate ellipsoid models that would have the
+same frictional coefficient ratio</p>
+<p>&nbsp;</p>
+<p><a name="Calculate shapes from frictional ratio"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+shapes from frictional ratio</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate Shapes from Frictional Ratio</p>
+</font></b>
+<p>This closely related to the function above, except that you don't specify s
+and M, but instead use directly a known frictional ratio (default is the current
+value of c(s)), together with the partial-specific volume, and an estimate for
+hydration.&nbsp; This result in prolate and oblate axial
+ratios.&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Calculate shapes from frictional ratio0"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+shapes from frictional ratio</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate Shapes from Frictional Ratio</p>
+</font></b>
+<p>This closely related to the function above, except that you don't specify s
+and M, but instead use directly a known frictional ratio (default is the current
+value of c(s)), together with the partial-specific volume, and an estimate for
+hydration.&nbsp; This result in prolate and oblate axial
+ratios.&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Calculate s for spherical particle">Calculate
+s(M) for spherical particle</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate s(M) for Spherical Particle</p>
+</font></b>
+<p>Calculates the expected sedimentation coefficient for a spherical particle of
+the given molar mass.&nbsp; This does not take into account the hydration.</p>
+<p>Input required:</p>
+<p>1) the molar mass of the species in Da</p>
+<p>2) its partial specific volume in ml/g</p>
+<p>3) the temperature of the hypothetical experiment - <i><font COLOR="#800080">please
+note: (this is for the RT - factor in the Svedberg equation, and does not take
+into account any temperature correction of v-bar or the viscosity)</p>
+</font></i>
+<p>4) the buffer density</p>
+<p>5) the (absolute) viscosity of the buffer - <i><font COLOR="#800080">please
+note: input is required here in Poise (i.e. 0.01002 Poise for water at standard
+conditions) as is the output from sednterp.</p>
+</font></i>
+<p>Output:</p>
+<p>1) a summary of the conditions specified</p>
+<p>2) the calculated s-value for a spherical particle (without hydration!)</p>
+<p>3) the hydrodynamic radius of the sphere</p>
+<p>4) the diffusion coefficient.</p>
+<p>The calculations are based on the formulas used in Sednterp.</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Calculate M(s)">Calculate
+M(s) for spherical or asymmetric particle</a></font></p>
+<p><b><font COLOR="#0000ff">
+Options | Calculator | Calculate M(s) for spherical or asymmetric particle</font></b></p>
+<p>Calculates the molar mass that belongs to a certain sedimentation coefficient, 
+given a certain frictional ratio.&nbsp; </p>
+<p>Input required:</p>
+<p>1) s-value</p>
+<p>2) hydrated frictional ratio</p>
+<p>other parameters, such as temperature, buffer density, viscosity, and vbar 
+are as specificed in the c(s) parameter input box.</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Rh(s)">Calculate
+Rh(s) for spherical </a></font></p>
+<p><b><font COLOR="#0000ff">
+Options | Calculator | Calculate Rh(s) for spherical particle</font></b></p>
+<p>Calculates the s-value that would be expected for a particle of given Stokes 
+radius under the specified experimental conditions.&nbsp; </p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="s(Rh)">Calculate
+s(Rh) for spherical </a></font></p>
+<p><b><font COLOR="#0000ff">
+Options | Calculator | Calculate s(Rh) for spherical </font></b></p>
+<p>Calculates the Stokes radius that would correspond to the observed s-value of 
+a particle sedimenting under the specified experimental conditions.</p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000"><a name="Calculate F-distribution">Calculate
+F-distribution</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate Variance Ratio (F-Statistics)</p>
+</font></b>
+<p>For statistically comparing the quality of two fits, this function allows to
+calculate the variance (or sum of squares) increase that is associated with a
+given confidence level, for a given number of degrees of freedom. This is done
+using the <a href="sedfit_help_fstatistics.htm">F-statistics</a> (please see
+this page for more information on the distribution).&nbsp; The calculator is
+used in the <a href="sedfit_example.htm">example for using S<span style="font-variant: small-caps">edfit</span></a>
+for testing the significance of a contaminating species, and the confidence
+limit of an s-value.&nbsp;</p>
+<p>It is useful when we want to compare two fits, both dealing with a certain
+number of data points (n1, and n2), and both with a number of fitted parameters
+p1 and p2.</p>
+<p>For this calculator function, information required is the following:</p>
+<p>1) the desired confidence level (e.g. 68% for one standard deviation, or 95%
+for higher confidence)</p>
+<p>2) the 'first degree of freedom' - this is in general the total number of
+data points considered in the fit minus the number of fitting parameters, i.e.
+n1 minus p1</p>
+<p>3) the 'second degree of freedom' - this is n2 minus p2.</p>
+<p>(there are some finer points about degrees of freedom when additional
+constraints are active, such as positivity, or regularization, but when n is
+very large, this can in most cases be neglected)</p>
+<p>Information output:</p>
+<p>1) The minimal increase of the sum of squares that would be required at the
+given confidence limit for deciding that the two fits are different. If the sum
+of squares is lower than this critical value, the fits cannot be considered
+statistically distinguishable.&nbsp; For simplicity, we assume here that all
+data points have the same statistical weight (which is a very good assumption
+for the interference data).&nbsp; </p>
+<p>2) The rmsd that this sum of squares ratio would correspond to, for the given
+fit.</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: The increase in the sum of
+squares should not be mistaken for the increase in the rmsd of the fit. If the
+comparison of the fits is made on the basis of the rmsd ratio, then the square
+root of the critical value given by this routine has to be taken as the cutoff
+value.</p>
+</font></i>
+<p>See also: <a href="sedfit_help_fstatistics.htm">F-statistics</a>, <a href="sedfit_help_confidence_intervals.htm">calculation
+of confidence intervals</a>, and <a href="sedfit_help_error_contours.htm"> error contour maps</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Calculate Faxen Solution">
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+Faxén solution</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Simulate non-interacting species with Faxén solution</p>
+</font></b>
+<p>This function allows to calculate the <a href="LammEqSolutions.htm#Faxén">Faxén</a>
+solutions of the Lamm equation</p>
+<p> <img SRC="images/ImageFaxen.gif" WIDTH="328" HEIGHT="61"></p>
+<p>It can only be used if the model for <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete species</a> is switched selected.&nbsp; Invoking this function executes
+one simulation, but replacing the <a href="LammEqSolutions.htm">finite element
+solutions</a> of the Lamm equation with the <a href="LammEqSolutions.htm#Faxén">Faxén</a>
+solutions.&nbsp; The purpose of this is only to study and compare different Lamm
+equation approximations.&nbsp; This function should not be used to analyze data,
+because large errors are introduced in this approximation. </p>
+<p>&nbsp;</p>
+<p><a name="Calculate second moment s"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+weight average s by second moment integration</font></a></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Calculator | Calculate weight average s by second moment
+integration</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Options | Calculator | Calculate weight average s by
+differential second moment
+integration</p>
+</font></b>
+<p>This function calculates a weight-average s-value by integrating the
+sedimentation profiles between meniscus plateau and solution plateau (similar to
+Fujita, Eq 2.234, see ref Schuck, <a href="images/ProteinSelfAssociation_AnalBiochem.pdf">Anal.
+Biochem. 2003, 320:104-124</a>).&nbsp; This is a
+completely model-free weight-average s-value, valid for interacting or
+non-interacting systems.&nbsp;&nbsp;</p>
+<p>This function requires solution and solvent plateaus to be established at
+bottom and meniscus, respectively.&nbsp; Also, all systematic noise should have
+been eliminated.&nbsp; The right fitting limit (right green line) should be at a
+position such that a plateau exists 0.1 cm inside (i.e. left of, i.e. at radius
+smaller than) the green line.&nbsp;</p>
+<p>Because the weight-average s-value in interacting system is a function of the
+plateau concentration, which will drop with time during sedimentation, the
+weight-average s-values can also drop with time.&nbsp; Although this is usually
+only a small effect, a table of sw-<i>vs</i>-c(plateau) will automatically be
+stored in the clipboard and can be pasted into any spreadsheet program.</p>
+<p>Note that the baseline offsets are not taken into account in this method.</p>
+<p><b><font color="#FF00FF">New in version 8.7:&nbsp; </font></b><a name="Differential second moment integration">Differential
+second moment integration</a> - this is based on the same concept as the second
+moment integration, but analyzes the <i>rate of change </i>of the mass of
+material remaining at radii smaller than the right fitting limit (rather than
+using the absolute values of the remaining mass in relation to the initial
+mass).&nbsp; The advantage of this method is that it is completely independent
+of the location of the meniscus position, and the <b>history of the
+sedimentation experiment prior to the scans considered</b>.&nbsp; This makes it
+the only rigorous analysis for multi-component systems after intermittent
+convection.&nbsp; (The <a href="sedfit_help_independent_ideal_species.htm#Initial Distribution">Lamm
+equation solution with an experimental scan as initial condition</a> does also
+work in this case, but only for single species or for self-associating
+single-component systems.)&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="calculate radial dilution"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+radial dilution</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate radial dilution</p>
+</font></b>
+<p>For the sedimentation times and rotor speed as determined by the currently
+loaded data, and for a species sedimentation with an s-value that can be
+specified, this function calculates the hypothetical position of a non-diffusion
+particle, its % radial dilution in the last scan, and the (time) average radial
+dilution the particle has suffered from time 0 to the time of the last scan. It
+also gives the average plateau concentration (radial dilution) in all scans.</p>
+<p>&nbsp;</p>
+<p><a name="calculate pressure"><font FACE="Roman" SIZE="6" COLOR="#ff0000">Calculate
+pressure</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | Calculate pressure</p>
+</font></b>
+<p>Since it might be useful when considering pressure effects, this function
+calculates the pressure at the bottom and in the middle of the cell (given the
+currently loaded data set).&nbsp; It also uses the current setting for the
+buffer density.</p>
+<p>&nbsp;</p>
+<p><a name="calculate hydrodynamic friction force"><font FACE="Roman" SIZE="6" COLOR="#ff0000">
+Calculate </font><font face="Roman" size="6" color="#FF0000">hydrodynamic 
+friction force</font></a></p>
+<b><font COLOR="#0000ff">
+<p>Options | Calculator | calculate hydrodynamic friction force</p>
+</font></b>
+<p>Sometimes it is worth considering the actual frictional force on the 
+sedimenting molecule.&nbsp; This can be calculated using the formulas </p>
+<p>f = 6*pi*viscosity*StokesRadius</p>
+<p>F(friction) = v*f</p>
+<p>s = v/(omega^2*r) </p>
+<p>[with linear velocity v, friction coefficient f]. This function will 
+calculate the force, given M, s, radius position, and buffer conditions.</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,56 @@
+As many biologists are Mac/Unix users it is worth noting that sedfit / sedphat can now 
+run DIRECTLY from your Intel Mac / Unix machine.
+
+The information below regarding Codeweaver seems outdated. However, there are several more modern (and faster) alternatives, 
+and it seems that most Winodws emulating software should work.  From user reports, this includes "VMware fusion",
+"Parallels Desktop", "Boot-Camp".  In any of these, if you have a choice, assign a large RAM memory and as
+many processing cores as possible.  
+
+April 2010
+
+Addition 12/2010:  "Crossover" does not seem to work well.  Please do not use with SEDFIT or SEDPHAT.
+
+
+
+
+ 
+ 
+How to do it:
+============= 
+1. Download "codeweavers cross over Mac" from http://www.codeweavers.com/
+You have 60 days demo or buy directly for $60.
+ 
+2. After installation of the codeweavers you can download the Sedfit.exe + Sedphat.exe 
+files into you destination folder (such as /Applications).
+ 
+3. Installation of the two is from the 'codeweavers' application. First you will have to 
+create ‘new bottles’ (you can name them as SEDFIT and SEDPHAT).
+ 
+4. To run the sedfit/sedphat, you can put the following lines in your .cshrc file:
+ 
+alias sedfit 'open /Applications/sedfit94.exe'
+alias sedphat 'open /Applications/sedphat.exe'
+ 
+After sourcing the shell (or opening a new shell) you can launch the software by issuing 
+the command  'sedfit' or 'sedphat' in your terminal shell.
+ 
+5. Alternatively, if you do not have .cshrc or other shells configurations, you can make 
+aliases (apple+l) of the sedfit94.exe and sedphat.exe files to your desktop. Double Clicking 
+the alias or the .exe files should start the softwares. 
+ 
+Notes:
+======
+1. Since 'codeweavers' was made to run PC applications on Mac there is a list of supported 
+softwares that one can choose to install, of course Sedfit / Sedphat are not on the list. 
+However you can ignore the notes and the suggestion to consult with the codeweaver team and 
+just continue with the installation.
+ 
+2. You probably need X11 (an X-windows for mac); it comes with the original OS but it is not 
+installed by default, so you will have to install it by yourself from the OSX CD.
+ 
+3. You may not be able to make links for these softwares into your Dock therefore the 
+suggestion of having pointer from your desktop. 
+ 
+4. Should you have further questions/comment please do not hesitate to email me prag@helix.nih.gov
+  
+Good luck, Gali

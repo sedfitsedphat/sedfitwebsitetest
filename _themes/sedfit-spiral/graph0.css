@@ -1,0 +1,94 @@
+.mstheme
+{
+	separator-image: url(spiruled.gif);
+	list-image-1: url(spibul1d.gif);
+	list-image-2: url(spibul2d.gif);
+	list-image-3: url(spibul3d.gif);
+	nav-banner-image: url(spiband.gif);
+	navbutton-horiz-normal: url(spinavhd.gif);
+	navbutton-horiz-hovered: url(spinavhd.gif);
+	navbutton-horiz-pushed: url(spinavhs.gif);
+	navbutton-vert-normal: url(spinavvd.gif);
+	navbutton-vert-hovered: url(spinavvd.gif);
+	navbutton-vert-pushed: url(spinavvs.gif);
+	navbutton-home-normal: url(spihomd.gif);
+	navbutton-home-hovered: url(spihomd.gif);
+	navbutton-home-pushed: url(spihomd.gif);
+	navbutton-next-normal: url(spinxtd.gif);
+	navbutton-next-hovered: url(spinxtd.gif);
+	navbutton-next-pushed: url(spinxtd.gif);
+	navbutton-prev-normal: url(spipred.gif);
+	navbutton-prev-hovered: url(spipred.gif);
+	navbutton-prev-pushed: url(spipred.gif);
+	navbutton-up-normal: url(spiupd.gif);
+	navbutton-up-hovered: url(spiupd.gif);
+	navbutton-up-pushed: url(spiupd.gif);
+}
+.mstheme-bannertxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(0, 51, 102);
+	font-size: 6;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-horiz-navtxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 2;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-vert-navtxt
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(255, 255, 255);
+	font-size: 2;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxthome
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(0, 51, 51);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtnext
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(0, 51, 51);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtprev
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(0, 51, 51);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+.mstheme-navtxtup
+{
+	font-family: Verdana, Arial, Helvetica;
+	color: rgb(0, 51, 51);
+	font-size: 1;
+	font-style: normal;
+	font-weight: normal;
+}
+ul
+{
+	list-style-image: url(spibul1d.gif);
+}
+ul ul
+{
+	list-style-image: url(spibul2d.gif);
+}
+ul ul ul
+{
+	list-style-image: url(spibul3d.gif);
+}

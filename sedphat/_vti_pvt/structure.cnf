@@ -1,0 +1,47 @@
+3.0.0.507
+1044
+1031,sedphat.htm,0,sedphat.htm,0,1080364080,1
+vti_globalpage:BW|true
+1000,index.htm,0,sedphat,0,1080364059,1
+vti_globalpage:BW|false
+1029,references.htm,0,references,1000,1080364059,0
+1028,troubleshooting.htm,0,troubleshooting and questions,1000,1080428582,0
+1008,concepts_for_getting_started.htm,0,Concepts for Getting Started,1000,1080364059,0
+1004,sedphathelp.htm,0,sedphat help,1000,1080446606,0
+1003,download.htm,0,download,1000,1080364059,0
+1043,../AUCsearch.htm,1,Search,1000,1200672912,1
+vti_nonnavpage:BW|false
+1005,experiment1.htm,0,experiments,1008,1063572595,0
+1009,parameters1.htm,0,parameters,1008,1063483277,0
+1011,partspecvols.htm,0,partial specific volumes,1008,1063572595,0
+1027,tutorial_for_getting_started.htm,0,tutorial for getting started,1008,1079973816,0
+1032,configurations.htm,0,configurations,1008,1080438614,0
+1042,sedimentation_equilibrium_for_interacting_systems.htm,0,sedimentation equilibrium,1008,1155661307,0
+1033,sedimentation_velocity_for_reactive_systems.htm,0,sedimentation velocity for reactive systems,1008,1087059233,0
+1035,isotherm_analysis.htm,0,sedimentation isotherm analysis,1008,1127080475,0
+1037,isothermal_titration_calorimetry.htm,0,isothermal titration calorimetry,1008,1127080863,0
+1038,surface_binding_isotherms.htm,0,surface binding isotherms,1008,1127081173,0
+1002,data1.htm,0,data,1004,1063483138,0
+1006,copy.htm,0,copy,1004,1063483181,0
+1007,display.htm,0,display,1004,1063483202,0
+1010,model.htm,0,model,1004,1063483321,0
+1013,global_parameters.htm,0,global parameters,1004,1063511107,0
+1014,local_parameters.htm,0,local parameters,1004,1063511157,0
+1015,experiment_parameters.htm,0,experiment parameters,1004,1063511408,0
+1016,run.htm,0,Run,1004,1063511455,0
+1017,fit.htm,0,Fit,1004,1063511489,0
+1018,statistics.htm,0,statistics,1004,1063511527,0
+1019,options.htm,0,options,1004,1063511573,0
+1036,verifyinginstallation.htm,0,VerifyingInstallation,1003,1107798298,0
+1020,species.htm,0,species and linear fractional boundary model,1010,1127082376,0
+1022,species_with_mass_conservation.htm,0,species with mass conservation,1010,1064158980,0
+1021,discrete_distribution.htm,0,discrete distribution,1010,1064158980,0
+1012,hybrid_local_continuos_global_discrete.htm,0,hybrid local continuos global discrete,1010,1063484056,0
+1034,multi-signal_c(s).htm,0,multi-signal c(s),1010,1107195260,0
+1023,nonideal_species.htm,0,nonideal species,1010,1063511928,0
+1041,single_species_of_interacting_system.htm,0,single species of interacting system,1010,1127084310,0
+1040,conformational_change_model.htm,0,conformational change model,1010,1127084310,0
+1024,self-association.htm,0,Self-association,1010,1063511968,0
+1025,hetero-associations.htm,0,hetero-associations,1010,1063512001,0
+1026,mixedassoc.htm,0,mixedAssoc,1010,1064887578,0
+1039,ternary_systems.htm,0,ternary systems,1010,1127081275,0

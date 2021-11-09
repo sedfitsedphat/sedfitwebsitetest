@@ -1,0 +1,65 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Summary and Conclusions">Summary and Conclusions</a></b></u></p>
+<p>In this example, we have followed the main steps of a c(s) analysis.&nbsp;
+These are:</p>
+<p>1) Loading the data and getting an overview of the s-range with a coarse
+distribution (low resolution)</p>
+<p>2) Refine the analysis by adjusting the s-range, and by using a higher
+resolution.&nbsp; Combine with critical inspection of the fit (e.g. using the
+residuals bitmap to assess systematics in the residuals)</p>
+<p>3) Nonlinear regression of the frictional ratio parameter and the meniscus
+location (if necessary, slightly reduce the number of scans, and switch off the
+regularization for this step only) </p>
+<p>4) Increase the resolution to final value (reload all data, and switch on the
+regularization again), possibly fine-adjustment of s-range. Verify that a good
+fit was achieved.&nbsp; One should generally be cautious to use a wide enough
+s-range, and not interpret peaks close to the extreme values of the
+distribution.</p>
+<p>5) Save and export the c(s) data for plotting, storage, and further analysis.</p>
+<p>In most cases, this allows to achieve a high resolution with
+baseline-resolved oligomers. </p>
+<p>&nbsp;</p>
+<p>For the BSA, in the c(s) analysis we found the presence of a fraction (~1%) of small
+species (probably from proteolytic degradation), as well as 11-12% of dimeric
+BSA, 2-3% of BSA trimer, and probably a total of 0.8% of larger oligomers.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/tutori39.gif" width="409" height="317"></p>
+<p>(Sharper peaks can be obtained using the Bayesian assumption that all species 
+are pure, as shown above)</p>
+<p>As will be shown in the <a href="tutorial_cofm.htm">following chapter</a>,
+conversion to a molar mass distribution c(M) gives good estimates for the
+oligomer molar masses (this may not be true in general for oligomerizing 
+systems, see the <a href="sedfit_help_cm.htm#Note">note about c(M)</a>; the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">SEDPHAT hybrid 
+discrete/continuous</a> model is the most correct and powerful way to analyze 
+such a case):</p>
+<p><img border="0" src="images/tutori45.gif" width="423" height="317"></p>
+<p>The following chapter illustrates how the calculate a two-dimensional 
+size-and-shape distribution c(s,M), which is free of the scale-relationship 
+assumptions:</p>
+<p><img border="0" src="images/defaul38.gif" width="751" height="244"></p>
+<p>Finally, as a comparison with a g*(s) analysis, the final chapter of the
+tutorial will treat the ls-g*(s) analysis, which will result in the following
+distribution:</p>
+<p><img border="0" src="images/tutori50.gif" width="618" height="473"></p>
+<p>This is not recommended, but interesting in comparison with older methods of 
+sedimentation analysis.</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_cofm.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

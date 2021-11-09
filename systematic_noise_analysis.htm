@@ -1,0 +1,366 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Top Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Analysis of Systematic Noise</h2>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#Introduction">Introduction</a></p>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#Mathematical Approach for Systematic Noise Analysis">Algebraic
+Noise Decomposition</a></p>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#Illustration of the Systematic Noise Analysis">A
+More Intuitive Description</a></p>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#Limitation">Limitations</a></p>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#Example of the Noise Decomposition">Examples</a></p>
+<p style="line-height: 100%; margin-left: 0; margin-top: 0; margin-bottom: 0"><a href="#References">References</a></p>
+<p>&nbsp;</p>
+<p><u><b><a name="Introduction">Introduction</a></b></u></p>
+<p>Data from the analytical ultracentrifuge can have two kinds of systematic
+signal offsets:&nbsp;
+1) a background profile that changes with radius but is common to all scans,
+which is referred to as time-invariant (TI noise) (possible sources are dust or scratches on the window in absorbance optics,
+or the systematic optical pathlength variations due to imperfections in some of the optical
+components of the interference optics);&nbsp; 2) a radially constant offset which can
+change in each scan (referred to as radial invariant, or RI, noise), such as the integral fringe shift and 'jitter'
+commonly encountered in interference optical data.&nbsp;&nbsp;</p>
+<p>It has been shown that <a href="sedfit_help_loading_options.htm#Save Intensity Data as Two Pseudo-Absorbance Data Sets">pseudo-absorbance
+data</a> (generated without reference sector from intensity scans, thereby
+allowing to perform two separate sedimentation experiments in each cell) can
+also be described by including these systematic signal offsets (<a href="#4">ref
+4</a>).&nbsp;</p>
+<p>Traditionally, RI noise has been corrected for by 'alignment' of the scans
+over a range of radial values (for example, in the air-to-air region of the
+cell), and TI
+noise was eliminated by analyzing pairwise differences of scans (for example, in the dc/dt
+transformation or in the <font face="Symbol">D</font>c approach).&nbsp; Although these approaches are suitable for
+many cases, sometimes they are not optimal because the alignment over a limited
+radial interval may not completely
+eliminate RI noise, the pairwise scan subtraction slightly increases the statistical noise,
+or because they do not allow to inspect directly the
+raw data versus model data.&nbsp;&nbsp;</p>
+<p>Therefore, S<span style="font-variant: small-caps">edfit</span>  uses an
+algebraic noise decomposition strategy (described in <a href="#(1)">Ref 1</a>)
+that is completely based on direct least-squares modeling of the
+sedimentation data of interest.&nbsp; No increase in the statistical noise is
+produced, and importantly, explicit estimates for the magnitude of the
+systematic noise components are obtained.&nbsp; <b>The best-fit time-invariant
+noise component of the data is shown as a black line in the data plot.&nbsp;
+Also, the estimate of the systematic noise contributions allows to subtract the
+systematic noise from the data</b> for a detailed inspection of the data
+and the fit (see the menu <a href="sedfit_help_subtract_calculated_noise.htm">Display-&gt; subtract all systematic noise from raw data</a>).&nbsp;&nbsp;</p>
+<p>In the following, two derivations for the algebraic systematic
+noise decomposition are introduced.&nbsp; First, a very general <a href="#Mathematical Approach for Systematic Noise Analysis">
+mathematical approach</a>  is described which is based on simple linear least squares.&nbsp;
+Less mathematically inclined readers can jump immediately to a <a href="#Illustration of the Systematic Noise Analysis">more
+intuitive illustration</a>
+of the result from the mathematical treatment.&nbsp;&nbsp;Finally, <a href="#Example of the Noise Decomposition">examples</a>
+ are given of the noise decomposition for interference and absorbance data.&nbsp;&nbsp;</p>
+<p><b>The <a href="tutorial_sizedistributions.htm">step-by-step tutorial</a>
+includes the treatment of systematic noise in interference data, as well as the <a href="sedfit_example.htm">example
+of using S<span style="font-variant: small-caps">edfit</span></a>.&nbsp; </b>In
+general, for using this approach, only the <a href="sedfit_help_parameters.htm#FIT TI Noise">TI</a>
+and <a href="sedfit_help_parameters.htm#FIT RI Noise">RI noise</a> fields need
+to be checked in the <a href="sedfit_help_parameters.htm">parameter box</a>
+(which is the default for analyzing interference data.)</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Mathematical Approach for Systematic Noise Analysis">Mathematical Approach for Systematic Noise Analysis</a></b></u></p>
+<p>First, we consider the least-squares problem of modeling the data points <i>a<sub>s,i</sub></i>
+from a set of scans with radial points <i>r<sub>i</sub></i> taken at times <i>t<sub>s</sub></i>
+(using the shortcut <i>a<sub>s,i</sub></i> for <i>a</i>(<i>r<sub>i</sub></i>,<i>t<sub>s</sub></i>)).&nbsp;&nbsp;
+To show the principle, we assume that we want to fit the data with <i>k</i>
+independent solutions of the Lamm equation L<sup>(k)</sup>, each with a loading concentration c<sub>k</sub> 
+, and we denote the calculated local concentrations as L<sup>(k)</sup><sub>s,i </sub>(at any
+time <i>t<sub>s</sub></i> and radial points <i>r<sub>i</sub></i>  )<font SIZE="2">.</font> Of course, each of the Lamm equation solutions has
+parameters, here just assumed to be sedimentation coefficients s<sub>k</sub> and
+diffusion coefficients D<sub>k</sub>.&nbsp; None of the specifics of the
+sedimentation model matters in the following treatment, and completely analogous
+derivations can be made for other models.&nbsp; Important is only the systematic noise, which we constrain at first to be time-invariant
+(TI) noise.&nbsp; Because TI noise has an unknown value at each radius, but is common to
+each scan, we can denote it in general as <i>b<sub>i </sub></i>(with the index <i>i</i>
+for the different radius values).&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>According to the principle of least-squares modeling, we want to find the
+minimum of the squared difference between the data points and the model, summed over all data
+points (i.e. all radial indices <i>i</i> and all scans <i>s</i>).&nbsp; The
+parameters to be optimized are those of the Lamm equation models (<i>s<sub>k</sub></i>,
+<i>D</i><sub><i>k</i></sub>), the partial concentration of each Lamm equation
+model (<i>c<sub>k</sub></i>), and all the TI noise <i>b<sub>i </sub></i>at each
+radial point:&nbsp;</p>
+<p>(Eq. 1)<font SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img SRC="images/sysnoise1.gif" width="265" height="61"></font></p>
+<p>The key to solving Eq. 1 efficiently is to divide the problem up it into
+separate minimization
+problems for the nonlinear parameters and for each of the linear parameters (<a href="#(3)">Ref
+3</a>). It will be seen that the linear parameters can be directly solved, if we
+assume any particular value for the nonlinear parameters.&nbsp; Because the
+linear parameters are so easy and fast to calculate (as will be seen), we can afford to reevaluate
+them each time when we test any set of the nonlinear parameters.&nbsp; It is
+shown in the next paragraphs how we can eliminate the linear parameters, leaving an
+ordinary non-linear least-squares problem with a reduced number of parameters,
+and importantly, without any systematic noise parameters.</p>
+<p>As in elementary calculus, the minimum of a function is characterized by a
+vanishing derivative.&nbsp; Applying this principle to the double sum of Eq. 1, we can set the
+partial derivative
+of the sums in Eq. 1 with respect to any particular parameter <i>b<sub>j</sub></i> equal to zero.&nbsp; Since
+the baseline parameters are uncorrelated, (<i>db<sub>i</sub>/db<sub>j</sub></i>)
+= <font face="Symbol">d</font><sub>ij</sub> (with the Kronecker symbol <font face="Symbol">d</font><sub>ij</sub>
+meaning 1 for i = j, and 0 else), and we get an equation system&nbsp;</p>
+<p>(Eq. 2)<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font SIZE="2"><img SRC="images/Image33.gif" width="316" height="93"></font></p>
+<p> (note that the
+square has disappeared when taking the derivative, and that we have divided the
+equation by 2).&nbsp; The second equation is obtained by executing the summation,
+using the abbreviations <img SRC="images/Image34.gif" width="108" height="28"> (with the total number
+of scans <i>n<sub>s</sub></i>) and <img SRC="images/Image35.gif" width="122" height="29">.&nbsp; It can
+be seen that <img SRC="images/Image36.gif" width="21" height="26"> corresponds to the average signal at
+a radial point <i>r<sub>j</sub></i> (averaged over all scans) and <img SRC="images/Image37.gif" width="32" height="33">
+is the same average for each Lamm equation solution. We can insert the result of
+Eq. 2 (after renaming our running variable from <i>j</i> to <i>i</i>) into the
+original minimization problem (Eq. 1) and get a simpler problem</p>
+<p>(Eq. 3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image39.gif" width="334" height="61"></p>
+<p>which does not contain any of the original noise parameters.&nbsp;&nbsp;</p>
+<p>In fact, we can apply the same strategy to all linear parameters including
+the Lamm equation loading concentrations <i>c<sub>k</sub></i>: taking the partial
+derivative with respect to any of the concentrations, lets say <i>c<sub>l</sub></i>
+gives an equation system&nbsp;</p>
+<p>(Eq. 4)&nbsp;<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font SIZE="2"><img SRC="images/Image40.gif" WIDTH="448" HEIGHT="106"></font>&nbsp;</p>
+<p>This equation can be directly solved by matrix algebra.&nbsp;&nbsp;This is
+very similar to the size-distribution calculation, where the parameters of the
+entire distribution are linear (this is further developed in the tutorial on <a href="sizedistributions.htm#The implementation in Sedfit">size-distribution
+analysis</a>).&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2"><font size="1">!&nbsp;&nbsp;&nbsp;
+Instead of the standard algebra routines for linear equations, we can make sure that we do not get negative
+concentration values by using the algorithm NNLS from Lawson and Hanson, <a href="#(2)">Ref
+2</a>, which we have modified for use with normal equations.&nbsp;&nbsp;</font></p>
+<p>At this point, we have formally calculated all our linear parameters, but
+their numerical value still depends on the particular set of nonlinear
+parameters, i.e. on the Lamm equation solutions in our sedimentation
+model.&nbsp; We can write the remaining problem of minimizing those nonlinear
+parameters as</p>
+<p>(Eq. 5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font SIZE="2"><img SRC="images/Image41.gif" width="241" height="56">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>with the abbreviation&nbsp;&nbsp;&nbsp;&nbsp;<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>
+<font SIZE="2"><img SRC="images/Image42.gif" width="364" height="42"></font></p>
+<p>What this means is that we optimize the non-linear parameters (<i>s<sub>k</sub></i>,
+<i>D</i><sub><i>k</i></sub>), and for each evaluation of our boundary model L*
+we recalculate all the linear parameters.&nbsp;It also becomes clear here that
+the calculated systematic noise components are not absolute quantities, but also
+best-fit estimates for the systematic noise <i>in conjunction with a particular
+boundary model</i>.&nbsp;</p>
+<p>What about RI noise?&nbsp; Initially, the problem of modeling the boundary
+with both TI noise and RI noise appears more complex, but the problem can be
+reduced to the case of TI noise only.&nbsp; If we denote the baseline offset of
+each scan as <font face="Symbol">b</font><sub>s</sub>, we can include an
+additional term in Eq. 1:&nbsp;</p>
+<p>(Eq. 6)<font size="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="2"><img SRC="images/Image45.gif" width="300" height="57"></font>&nbsp;</p>
+<p>There is a slight complication because the <font face="Symbol">b</font><sub>s</sub>
+and the <i>b<sub>i</sub></i> are not independent: imagine adding a value of 1 to
+all <font face="Symbol">b</font><sub>s</sub> and subtracting 1 from all <i>b<sub>i</sub></i>&nbsp;
+- this does not change the sum in Eq. 6.&nbsp; Therefore, we have to introduce a
+constraint, which can be most conveniently done by requiring the TI noise to
+have an average of zero.&nbsp;&nbsp;&nbsp;</p>
+<p>Like before, we can set the partial derivative of the sum in Eq. 6 with
+respect to <font face="Symbol">b</font><sub>s</sub> zero in order to find the
+minimum.&nbsp; The sum over the scans disappears, since only one term will be
+dependent on any particular <font face="Symbol">b</font><sub>s</sub> , and
+because it is independent of radius, we can pull <font face="Symbol">b</font><sub>s</sub>
+out of the summation as product of the number of radial points (n<sub>r</sub>)
+and <font face="Symbol">b</font><sub>s</sub> .&nbsp; The remaining equation,
+when solved for <font face="Symbol">b</font><sub>s</sub> looks like:</p>
+<p>(Eq. 7)<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font SIZE="2"><img SRC="images/Image46.gif" width="402" height="90"></font></p>
+<p>In the lower equation, we have introduced an abbreviation for the
+'scan-average' (i.e. summation over all radial points and division by the number
+of radial points) for the data and for each of the Lamm equation
+solutions.&nbsp; If we insert this result into Eq. 6, we obtain</p>
+<p>(Eq. 8)<font SIZE="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img SRC="images/Image47.gif" width="345" height="57"></font></p>
+<p>which is identical to Eq. 1 for TI noise only, except that we have
+substituted the data and the boundary model by difference between the data and
+its 'scan-average'.&nbsp; Because Eq. 8 is formally equivalent to Eq. 1, we can
+solve it in the same way.</p>
+<p>It should be noted that the boundary parameters can be optimized either in
+the original data space, such as indicated in Eq. 5, or in a difference
+expression, such as the time-difference in Eq. 3 (where the reference for
+calculating the time-difference is an 'average scan') or a 'scan-difference' in
+Eq. 8.&nbsp; Both ways are mathematically equivalent.&nbsp; In some cases, e.g.
+in the <a href="sizedistributions.htm#The implementation in Sedfit">size-distribution
+analysis</a>, the difference expressions are much easier to handle in subsequent
+calculations (i.e. normal equations and regularization).&nbsp; These difference
+expressions capture the entire available information on the sedimentation.&nbsp;
+Explicit calculations of the systematic noise parameters can be done using Eq. 7
+and 2 after all the sedimentation parameters are optimized.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Illustration of the Systematic Noise Analysis">A more
+intuitive description</a></b></u></p>
+<p>If we look at just the problem of TI noise and simplify the notation, we can
+say that we consider our measured data <b>A</b> as a result of some
+sedimentation process, described by a boundary model <b>L</b>, superimposed by a
+time-invariant noise <b>b</b><sub>r</sub>, plus some statistical noise <b><font face="Symbol">e</font></b>:</p>
+<p>(Eq. 9)&nbsp;&nbsp;&nbsp; <b>A</b> = <b>L</b> + <b>b</b><sub>r</sub> + <b><font face="Symbol">e</font></b></p>
+<p>The time-derivative methods take the strategy of transforming the data into <font face="Symbol">D</font><b>A</b>/<font face="Symbol">D</font>t
+as an approximation of d<b>A</b>/dt, whereas the time-difference method would
+model <font face="Symbol">D</font><b>A</b> with differences <font face="Symbol">D</font><b>L</b>
+of the boundary model.&nbsp; In both, the idea is that the time-invariant
+component vanishes in the difference</p>
+<p>(Eq. 10)&nbsp;&nbsp;&nbsp; <font face="Symbol">D</font><b>A</b>&nbsp; = <b>A</b><sub>1</sub>
+- <b>A</b><sub>2</sub> = <b>L</b><sub>1</sub> - <b>L</b><sub>2</sub> + (<b>b</b><sub>r</sub>
+- <b>b</b><sub>r</sub>) + <font face="Symbol"><b>e</b> + </font><font face="Symbol"><b>e</b>
+= D</font><b>L</b> + 1.4<font face="Symbol"><b>e</b></font></p>
+<p>The statistical noise is increased, and in both cases, we do not gain any
+information on the noise <b>b</b><sub>r</sub>.</p>
+<p>In contrast, if we look at Eq. 2, it becomes clear that S<span style="font-variant: small-caps">edfit</span>
+applies the concept of a 'radial-average' scan and a 'radial-average' boundary
+model (i.e. at each radial value, average all scans and boundary models,
+respectively):</p>
+<p>(Eq. 11)&nbsp;&nbsp;&nbsp; <img border="0" src="images/System1.gif" width="306" height="43"></p>
+<p>(n denotes here the total number of scans).&nbsp; This average scan still
+contains the time-invariant noise <b>b</b><sub>r</sub>.&nbsp; It can be
+determined fairly precise if we have a large number of scans, because by
+averaging the statistical noise is reduced with a factor equal to the inverse
+square-root of the total number of scans.&nbsp;&nbsp;</p>
+<p>Eq. 3 from above now tells us that we should model not pairwise differences
+of scans, but instead the difference between any particular scan and the average
+scan:</p>
+<p>(Eq. 12)&nbsp;&nbsp;&nbsp; <img border="0" src="images/System2.gif" width="182" height="43"></p>
+<p>With a large number of scans, this leaves the statistical noise virtually
+unchanged.&nbsp; (To be more precise, because S<span style="font-variant: small-caps">edfit</span>
+fits directly the raw data, the noise is actually not amplified at all, but
+additional degrees of freedom are introduced by considering the TI noise in the
+model.) Further, once we have determined the best-fit parameters of our model <b>L</b>,
+we can calculate directly the time-invariant noise as difference between the
+average data and the average boundary model:</p>
+<p>(Eq. 13)&nbsp;&nbsp;&nbsp;&nbsp; <img border="0" src="images/System3.gif" width="72" height="23"></p>
+<p>This gives us explicit values for <b>b</b><sub>r </sub>, which - if desired -
+we can subtract from the original data in order to better inspect the measured
+sedimentation process.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Limitation">Limitation</a>s</b></u></p>
+<p>Although the systematic noise decomposition allows us to conveniently perform
+direct boundary modeling on interference data, and to obtain estimates of the
+time-invariant noise which we can subtract this from the data, there are two
+fundamental limitations that should be kept in mind:&nbsp;&nbsp;</p>
+<p>First, the calculated systematic noise is only an estimate, which is model
+dependent (Eq. 2 and 13).&nbsp; For different models, the estimate will be
+different.&nbsp; Only if we have a pretty good fit of the sedimentation data can
+we assume the calculated noise to reflect the true baseline signal, as it might
+be measured, for example, in an experiment with a water blank. This is no
+problem, however, since, except in special cases (<a href="#5">ref 5</a>), the
+true baseline offset is not a meaningful quantity that we want to derive from
+our experiment.&nbsp; The important consequence of this, however, is that after subtracting
+our best-fit systematic noise estimate from the data, we should
+continue to allow for corrections to the systematic noise be made in the course
+of further modeling.</p>
+<p>Second, as outlined above, there is no fundamental difference in the effect of systematic noise
+on the data analysis from a time-difference analysis.&nbsp; Because there is the
+unknown systematic radial-dependent baseline, the only source of information is
+the <i>change of signal with time</i>.&nbsp; In fact, as can be seen in Eq. 3
+and 12, the parameters of the boundary model (L) are fitted to a time-difference
+of the data.&nbsp; In contrast to time-difference (or time-derivative) methods
+previously described, we do not take any particular scan as a reference for
+calculating the boundary movement in time, but we take the average scan as a
+reference, which is statistically advantageous.&nbsp; Nevertheless, by putting
+our equations in a form that is invariant with respect to adding
+the baseline parameters b, we have introduced the degrees of freedom in the
+analysis that make it equivalent to a time-difference method.&nbsp; These
+degrees of freedom can lead to correlation with (and leaving sometimes
+underdetermined) the sedimentation of small molecules.&nbsp; It is obvious, that
+this correlation will be worse for smaller data subsets.&nbsp; (For example, in
+a g*(s) analysis, there can be correlation with the low s-value part of the
+distribution, in particular with small data sets where the meniscus is not
+cleared [this is not as much a problem with other boundary models].)&nbsp;&nbsp;</p>
+<p>It should be noted that this second limitation is separate from the actual
+estimation of the systematic noise b, as modeling of the sedimentation
+parameters with Eq. 12 precedes the calculation of the baseline
+parameters.&nbsp;&nbsp;</p>
+<p>Fortunately, these issues are usually not problematic.&nbsp; In particular,
+if large data sets are used, the baseline is usually well-determined, and the
+correlation of the degrees of freedom with small s-values is low.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Example of the Noise Decomposition">Example of the Noise
+Decomposition</a></b></u></p>
+<p>The following example shows how interference optical data can be decomposed
+into the sedimentation part, the time-invariant noise, the radial-invariant
+noise, and the statistical noise:</p>
+<p><img border="0" src="images/System4.gif" align="left" width="263" height="359"><img border="0" src="images/System5.gif" align="left" width="262" height="287"><img border="0" src="images/System6.gif" align="left" width="258" height="339"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The left figure shows in the top panel (A) the raw sedimentation data from an
+experiment with myoglobin.&nbsp; Panel B below shows the results of fit with a
+single-component Lamm equation solution (black) considering RI noise (shown in
+red as a function of time), and TI noise (blue). The bottom Panel C shows the
+remaining statistical noise, which is nearly random and has an rms value of
+0.0065 fringes.&nbsp; A similar decomposition is shown in the middle Figure for
+the fit of data from an IgG sample with monomeric and dimeric IgG modeled as a
+two-component Lamm-equation fit, with statistical noise of rms = 0.0072
+fringes.&nbsp; In the right Figure is the result from modeling the mixture of the
+myoglobin and IgG sample with a 3 component Lamm equation solution (using the
+pre-determined values for s and M).&nbsp; Here, we get a decomposition with rms
+noise of 0.0051 fringes.&nbsp; More details on these examples are described in <a href="#(1)">Ref.
+1</a>.&nbsp;&nbsp;</p>
+<p>The noise parameters are well-determined, and interference optical data are
+well-described by the combination of TI noise, RI noise, and statistical
+noise.&nbsp; An example of how the systematic noise can be subtracted from the
+data can be found <a href="sedfit_help_subtract_calculated_noise.htm">here</a>.&nbsp;</p>
+<p>TI noise can also be useful when working with absorbance data.&nbsp; In Panel
+A below are sedimentation data of myoglobin, in Panel B the residuals of a
+single-species Lamm equation fit, which has an rms of 0.013.&nbsp; A close
+inspection of the noise in B reveals that it is not entirely random, but has
+some time-invariant features.&nbsp; If we model the data with TI noise (Panel
+C), we arrive at much more random residuals, with an rms value of 0.009.</p>
+<p><img border="0" src="images/System7.gif" width="411" height="503"></p>
+<p>&nbsp;</p>
+<p>More details can be found in <a href="#(1)">Ref. 1</a>.&nbsp;&nbsp;</p>
+<p><b>More examples can be found in the <a href="tutorial_sizedistributions.htm">step-by-step tutorial</a>,
+which includes the treatment of systematic noise in interference data, as well
+as in the <a href="sedfit_example.htm">example of using S<span style="font-variant: small-caps">edfit</span></a>.&nbsp;</b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font size="1"><a name="References">References</a></font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="(1)">(1)</a>
+P. Schuck and B. Demeler (1999) Direct sedimentation analysis of
+interference-optical data in analytical ultracentrifugation. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">
+76:2288-2296</a>.&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="(2)">(2)</a>
+</font><font size="1">C.L. Lawson and R.J. Hanson. (1974) Solving Least Squares Problems.
+Prentice-Hall, Englewood Cliffs, New Jersey</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="(3)">(3)</a>
+Ruhe, A., and P. Å. Wedin. (1980) Algorithms for separable nonlinear least
+squares problems. <i>SIAM Review.</i> 22:318-337.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">(<a name="4">4</a>) S.R. Kar, J.S. Kinsbury, M.S. Lewis, T.M. Laue, and P. Schuck (2000)
+Analysis of transport experiments using pseudo-absorbance data. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10998273&amp;dopt=Abstract">Analytical
+Biochemistry</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10998273&amp;dopt=Abstract">
+285:135-142</a>.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">(<a name="5">5</a>)
+P. Schuck (1999) Sedimentation equilibrium analysis of interference optical
+data by systematic noise decomposition. <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">Analytical Biochemistry</a>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">
+272:199-208</a>.</font></p>
+<!--mstheme--></font></body>
+
+</html>

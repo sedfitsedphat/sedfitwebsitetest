@@ -1,0 +1,96 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Top Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+<style type="text/css">
+.auto-style1 {
+	text-decoration: underline;
+}
+</style>
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>&nbsp; </h2>
+<h2>Tutorial For Size Distribution Analysis </h2>
+<p>This page describes an example for the analysis of sedimentation velocity data by
+Lamm equation distributions c(s).&nbsp; Other pages contain <a href="sizedistributions.htm">introduction
+in the theory</a>  and information on how to use the <a href="sedfit_help_cs.htm"> S<span style="font-variant: small-caps">edfit</span> 
+menu for c(s)</a>, and both are recommended for reading before proceeding with
+this tutorial.&nbsp; Goal of this page is to provide a data set that can be
+downloaded, and give step-by-step instructions with screenshots on how to use S<span style="font-variant: small-caps">edfit</span> 
+ to do a c(s) analysis, which can be reproduced on your own computer.</p>
+<p>For more detailed and up-to-date information, see the book </p>
+<p>
+<a href="https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948">
+https://www.crcpress.com/Sedimentation-Velocity-Analytical-Ultracentrifugation-Discrete-Species/Schuck/p/book/9781498768948</a></p>
+<p>which as a chapter dedicated to practical data analysis questions.</p>
+<p><span class="auto-style1"><strong>update October 2018: </strong></span>For 
+information on the new nonideal c(s), see the step-by-step protocols at
+<a href="https://sedfitsedphat.nibib.nih.gov/tools/Protocols/Forms/AllItems.aspx">
+https://sedfitsedphat.nibib.nih.gov/tools/Protocols/Forms/AllItems.aspx</a> </p>
+<p>&nbsp;For tutorials, can also consult the step-by-step protocol
+<a href="https://www.nature.com/articles/nprot.2017.064">
+https://www.nature.com/articles/nprot.2017.064</a> (this is using fluorescence 
+optical data, but the data analysis applies equally to other optical systems).</p>
+<p>The present tutorial contains several parts:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">1) <a href="tutorial_ExperimentalConditions.htm">Experimental considerations</a>
+(and location to download the data files of the BSA example)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">2) <a href="tutorial_loaddata.htm">Loading the data
+and preparing the analysis</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">3) <a href="tutorial_initialvalues.htm">Selecting the
+model and setting the initial values for the parameters</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">4) <a href="tutorial_refiningresults.htm">Interpreting and refining
+the results</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">5) <a href="tutorial_displaydistribution.htm">Displaying and
+exporting the distribution</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">6) <a href="tutorial_summary.htm">Summary and Conclusion</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">It also has two parts for related
+analyses in an Appendix:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">7) <a href="tutorial_cofm.htm">Conversion
+of a c(s) distribution to a molar mass distribution c(M)</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">8)
+<a href="sizeandshape.htm">Size-and-Shape distribution c(s,M) and general c(s,*)</a> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">9) <a href="tutorial_lsgofs.htm">The
+use of the apparent sedimentation coefficient distribution ls-g*(s)</a></p>
+<p>Because of the many screenshots, the tutorial would be too large to download
+as a single web page.&nbsp; Therefore, it is organized in several
+sections.&nbsp; However, the different parts are strictly building onto each
+other and cannot be read independently.</p>
+<p>A second <a href="sedfit_example.htm"> example of a data analysis with S<span style="font-variant: small-caps">edfit</span> 
+</a> 
+ is shown <a href="sedfit_example.htm">here</a>.&nbsp; It does not have
+the level of detail given in the tutorial, but the data can be downloaded and
+the analysis can be reproduced and compared.&nbsp;&nbsp;</p>
+<p><font color="#800080"><b><u>New in version 8.7:</u></b>&nbsp; Please note
+that corrections for solvent compressibility are now available.&nbsp; For using
+those, please read the <a href="file:///C:/peter/website/sedfithelpweb/inhomogeneous_solvent.htm">specific
+instructions</a> for this S<span style="font-variant: small-caps">edfit </span>mode.
+They have not been included in the above tutorial, yet.&nbsp; For the c(s)
+distribution with solvent compressibility, this will mean that the s-values are
+corrected to standard conditions (water 20C), and that the buffer viscosity and
+density in the input boxes will refer to standard conditions.&nbsp;</font></p>
+<p><font color="#800080">Note for version 11.0 (December 2007) and later: the 
+user interface has been extended to include new functionalities, as indicated in 
+the different steps.</font></p>
+<p>Other tutorial sites:</p>
+<p><a href="LammEqSolutions.htm">Solving the Lamm equation</a></p>
+<p><a href="systematic_noise_analysis.htm">Systematic noise analysis</a></p>
+<p><a href="sizedistributions.htm">Introduction in size-distribution analysis</a></p>
+<p><a href="lsgofs_distribution.htm">Introduction to ls-g*(s)</a></p>
+<p><a href="vhw_analysis.htm">van Holde-Weischet analysis</a></p>
+<p style="line-height: 150%; margin-top: 0; margin-bottom: 0"><a href="compressibility_of_water_and_organic_solvents.htm">Compressibility
+of water and organic solvents</a></p>
+<p style="line-height: 150%; margin-top: 0; margin-bottom: 0"><a href="dynamic_density_gradients.htm">Sedimentation
+in dynamic self-forming density gradients</a></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

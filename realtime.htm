@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>realtime</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2">
+<!--webbot bot="Navigation" S-Type="parent"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="7317" endspan -->
+</font></p>
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loadnewdata.htm" target="">Load&nbsp;New&nbsp;Files</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_setinitialdata.htm" target="">Set&nbsp;Initial&nbsp;Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_datautilities.htm" target="">Data&nbsp;Housekeeping</a>&nbsp;]</nobr> <nobr>[&nbsp;realtime&nbsp;]</nobr> <nobr>[&nbsp;<a href="export_to_sedphat.htm" target="">Export&nbsp;to&nbsp;SEDPHAT</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_exit.htm" target="">Exit</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="4111" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="File Load">Realtime Functions</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="margin-top: 0; margin-bottom: 0">Data | Realtime Update of Files</p>
+<p style="margin-top: 0; margin-bottom: 0">Data | Stop Realtime Update</p>
+</font></b>
+<p>The realtime functions allow a quick analysis of the available data while the
+centrifuge is still running and acquiring data.&nbsp; </p>
+<p><b><font color="#FF00FF" size="4">Please note that these functions are still
+in an experimental stage, and no guarantee can be given that running sedfit in
+this mode does not interfere with the data acquisition!</font></b></p>
+<p>My first experiments did not show any detrimental effects on the data
+acquisition or interference with the XLA program, even when sedfit was brought
+to a crash.&nbsp; However, these things may be dependent on the particular
+computer running the XLA, and I have no experience with this on other machines,
+yet.</p>
+<p>The basic idea is the
+following:&nbsp; After starting the scans of a velocity run, one can start
+Sedfit and do an analysis of the first few scans (2 minimum).&nbsp; After
+switching to the realtime mode, sedfit then automatically incorporates any new
+files into the analysis, and updates the results and the display of the
+available data. </p>
+<p>&nbsp;</p>
+<p><font color="#0000FF"><b>The anticipated advantages:&nbsp; </b></font></p>
+<p><font color="#0000FF"><b>* one can quickly assess if the material is OK, and
+perhaps stop the run if it is not, and/or if the basic question of the
+experiment can already be answered by the available data.</b></font></p>
+<p><font color="#0000FF"><b>* the display of the data is continuously updated
+and the calculated time-invariant noise is removed.&nbsp; This allows quick
+visual assessment of the sedimentation boundaries also for the interference
+optical data.</b></font></p>
+<p><font color="#0000FF"><b>* it can be a lot of fun to see more clearly how the
+run is progressing with the realtime analysis</b></font></p>
+<p>&nbsp;</p>
+<p><font color="#FF00FF"><b>There are clear disadvantages:</b></font></p>
+<p><font color="#FF00FF"><b>* dependent on the speed and memory of the computer,
+sedfit could potentially slow down the data acquisition. </b></font><font size="2">(I
+have not noticed this on our machine, though, even when running multiple copies
+of Sedfit.)</font></p>
+<p><font color="#FF00FF"><b>* worse, sedfit could crash, and in the process
+potentially interfere with the data acquisition, resulting possibly in the loss
+of the run.&nbsp; </b></font><font size="2">(Have not seen this, so far.)</font></p>
+<p><font color="#FF00FF"><b>* even if sedfit doesn't interfere, the resulting
+analyses are based on a limited number of data sets, which may not reflect well
+the final analysis when all the data of the complete run are considered. </b></font><font size="2">(Sometimes,
+the calculated distributions from very early data <b>do</b> look strange.)</font></p>
+<p><font color="#FF00FF"><b>* collecting the maximum number of sedimentation
+velocity scans until everything has disappeared is always best.</b></font></p>
+<p>&nbsp;</p>
+<p>This is how it works in practice:</p>
+<p>1) load a few scans (minimum two), locate the meniscus and bottom and the
+fitting limits, as usual.</p>
+<p>2) select an analysis -- this can be multiple species, c(s), or ls-g*(s)
+(perhaps even van Holde-Weischet, I haven't tried this yet) and execute like
+usual one analysis with the Run or the Fit command.</p>
+<p>3) Switch the Realtime Update of Files on.&nbsp; In order to keep the
+computation time down, Sedfit calculates only with a certain maximum number of
+files, the default is 20.&nbsp; As soon as more than 20 scans are available,
+Sedfit will automatically choose every second, third, etc., scan such that the
+total number of files remains lower than the predefined limit.&nbsp; In this
+way, despite reducing the number of scans, the complete time range of available
+scans will be utilized.</p>
+<p>4) Clicking on the Realtime Update of Files menu initiates a re-analysis of
+the scans at that time.&nbsp; From now on, Sedfit sets a timer and will look
+every 20 seconds into the data directory to find out if there are any new scans
+showing up.&nbsp; If there are, it will beep and reload the data including the
+new ones, and reanalyze the available data using the current model.&nbsp; If
+there are no new data, Sedfit will only update the screen.&nbsp; </p>
+<p>Sedfit makes a special operation for the distribution models (c(s) or
+ls-g*(s)) - if it turns out that the s-range was too small or too large, Sedfit
+will readjust the s-max value and recalculate the distribution every 20 sec,
+irrespective if there are new data or not.&nbsp; This feature can be turned on 
+by answering 'yes' to 'auto adjust distribution range?'.&nbsp; </p>
+<p>5) The realtime mode can be stopped by pressing any key, or by using the menu
+function. (This can be done, for example, in order to change manually the
+analysis model.)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

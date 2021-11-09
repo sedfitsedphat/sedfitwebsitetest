@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>generate</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;Generate&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="28993" endspan -->
+</font></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<h2>generate sedimentation profiles</h2>
+</font><b><font COLOR="#0000ff">
+<p><a name="Generate from scratch">Generate</a> </p>
+</font></b>
+<p><b>See the Tutorial on <a href="generating_simulated_data.htm">Generating New 
+Simulated Data</a> for more information how to use this function.</b></p>
+<p>This tool allows to simulate the sedimentation process and generate data
+files formatted like Beckman Optima XL-A.&nbsp; In contrast to the <a href="sedfit_help_run.htm">Run</a>
+and <a href="sedfit_help_fit.htm">Fit</a> commands which require data files to
+be <a href="sedfit_help_loadnewdata.htm">loaded</a> (and compare the loaded with 
+the simulated data), the Generate Data function creates new data files of the 
+sedimentation process with user-specified time-increments.&nbsp;</p>
+<p>Before invoking this function, the appropriate <a href="sedfit_help_model.htm"> model</a> has to be selected.
+Then, after using this ‘Generate Data’ function, the user is prompted to
+give the following information (some of which is similar to the data acquisition
+software in the AUC):</p>
+<p>1) <i><b>Fit with M and s or D and s</b></i>. This allows to use either diffusion
+coefficients or - via the Svedberg equation - molar masses as input.&nbsp; For
+the partial
+specific volume, the default value of 0.73 ml/g is used unless a new value is
+entered in the <a href="sedfit_help_set_vbarxrho.htm">Options-&gt;Set vbar*rho
+menu</a>.&nbsp; (This questions sets and overwrites the switch <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Options-&gt;Fitting
+Options-&gt;Set M and s</a>)</p>
+<p>2) <i><b>density of points (cm)</b></i>. This will be the radial increment for the
+data to be saved.&nbsp; Typical,
+0.003 cm seems realistic, corresponding to the entry in the .scn file of the XLA
+software.&nbsp; (This parameter here is not identical with the discretization of the Lamm
+equation, which will be governed by the <a href="sedfit_help_parameters.htm#Grid Size">GridSize
+parameter</a>.)</p>
+<p>3) <i><b>rotor speed (rpm)</b></i>. This is the rotor speed in rpm for the simulated
+sedimentation.</p>
+<p>4) <i><b>simulate with rotor acceleration phase?</b></i> This means that the Lamm
+equation can be solved with or without simulating an initial linear increase in
+rotor speed.&nbsp; If choosing yes, a value for the rotor <b>acceleration</b> is
+required -- typical experimental values on the XLA with maximal acceleration
+settings are about 200rpm/sec.</p>
+<p>5) <i><b>time interval of scans</b>.</i> Time interval in seconds of the
+distributions to be stored in files (similar as the entry in the method dialog
+of the XLA software).</p>
+<p>6) <i><b>number of simulated scans</b>. </i>Similar to the entries in the XLA software.</p>
+<p>7) <i><b>std of noise</b>. </i>To make the simulation realistic, Gaussian noise can be added to the simulated distributions.&nbsp;
+This is useful, in particular, when studying the resolution or sensitivity of a
+given data analysis method.&nbsp; A conservative estimate of the noise would be 0.01.</p>
+<p><i><font color="#FF0000">NEW:&nbsp; For self-association models, one can
+enter now the loading concentration and association constant in molar units,
+which together with a molar extinction coefficient (per cm) will be transformed
+to the proper log10(Ka) and apparent ctot values. (These can still be modified
+in the following parameter box, if desired.)</font></i></p>
+<p>8) <i><b>Fit and Simulation Parameters</b>.</i> This is the same dialog box as
+described in <a href="sedfit_help_parameters.htm">Parameters</a>; the details
+will depend on the sedimentation model used.&nbsp; Please note here that the meniscus is automatically suggested to be at
+6.2 cm,
+and the bottom at 7.2 cm. Change these entries as needed in the simulation.</p>
+<p>9) <i><b>Save generated data as</b>. </i>Requests filenames for the distributions to
+be saved. The calculations have to be saved, otherwise the simulation will be
+aborted. Files will be saved in the XLA format.</p>
+<p>After this, the simulation will be calculated, and the calculated profiles
+are shown in the upper plot, as if the data had been loaded.&nbsp;&nbsp;</p>
+<p><b>If the fit limits have not been set before, a warning message may appear
+about a possible problem with the right fit limit (see <a href="sedfit_faqs.htm#FAQ:  error message &quot;possible problem with right limit...&quot;">FAQ</a>).&nbsp;
+This can be ignored, or the <a href="sedfit_help_loadnewdata.htm#3) Setting the data range suitable for analysis">fitting
+limits</a> can be properly set.&nbsp; Dependent on the concentration close to
+the bottom, the sedimentation boundaries may not be visible without setting the
+fit limits and <a href="sedfit_help_plot_range.htm">rescaling the data plot</a>.&nbsp;</b></p>
+<p>In the current version, data can only be
+generated for constant initial distribution. (No experimental file can be taken
+to initialize the propagation).&nbsp; This limitation could be circumvented, however,
+loading data files with the right time intervals, and using the <a href="sedfit_help_run.htm">Run</a> function
+and <a href="sedfit_help_datautilities.htm#Save Fits"> saving the fits</a>.&nbsp;
+For
+generating sedimentation data with <a href="sizedistributions.htm">model
+size-distributions</a>, essentially the
+same procedure as described above can be used.&nbsp; The model distribution should be
+placed in a ASCII file called &quot;distrib.dat&quot; and should be copied to
+the folder &quot;c:\temp&quot;. The format of the file is simple two-column
+matrix (it should be copied best from the saved results of a previous
+distribution analysis).</p>
+<font COLOR="#008000">
+<u>
+<i>
+ </i></u> </font>
+<font COLOR="#ff0000">
+<p>If the data are reloaded, note that the selected loading options will affect
+the details of how the data appear.&nbsp; In particular, the treatment of the rotor acceleration phase will lead
+to errors in the <i>Elapsed Seconds</i>, which translate to very small
+discrepancies if
+re-analyzing the saved data.&nbsp; Also, small deviations can occur when
+reloading noise-free simulated data because of the limited precision of the <font FACE="Symbol">w</font><sup>2</sup>t
+entry of the files. </p>
+</font><!--mstheme--></font></body>
+
+</html>

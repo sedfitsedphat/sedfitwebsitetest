@@ -1,0 +1,345 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Dynamic Density Gradients</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>Macromolecular Sedimentation&nbsp; in Dynamic Self-forming Density
+Gradients&nbsp;</h2>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Introduction">Introduction</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Example 1:  A protein in CsCl">Example
+1: Isopycnic density gradient sedimentation of a protein in 2.5 M CsCl</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Example 3: Experimental Data">Example
+2: Protein sedimentation in lower co-solute concentrations (1 M CsCl)</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Example 3: Experimental Data">Example
+3: Experimental data of a protein in 1.4 M CsCl</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Example 4: Analytical zone centrifugation with isopycnic conditions">Example
+4: Analytical zone centrifugation with isopycnic conditions</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The numerical simulation">The
+numerical simulation</a></p>
+<p>&nbsp;</p>
+<p><b><a name="Introduction">Introduction</a></b></p>
+<p>Sedimentation experiments are rarely performed in pure two-component systems
+with a macromolecule and a pure solvent.&nbsp; This has many reasons, one of
+which when dealing with proteins is commonly the need to stabilize the pH and
+add salts to screen long-range electrostatic forces.&nbsp; Normally, at low
+concentrations of small co-solutes such as the buffer components, this does not
+pose any further complication, as long as we take into account the effect of the
+co-solutes on the density and viscosity of the solvent.&nbsp;&nbsp;</p>
+<p><font size="2">In rare cases of very high co-solute concentrations, we may
+have to consider preferential hydration issues, and correct the buoyancy factor
+(either in form of an 'apparent' partial-specific volume (1-<font face="Symbol">F</font>'<font face="Symbol">r</font>)
+or in form of a density increment d<font face="Symbol">r</font>/dc).&nbsp;
+Usually, for example with proteins in PBS, these effects are negligible.&nbsp;</font></p>
+<p>Sometimes, however, the sedimentation of the co-solutes themselves creates a
+dynamically evolving co-solute gradient and, as a consequence, a density
+gradient.&nbsp; Exploiting this effect has a long history.&nbsp; One such case
+is traditional isopycnic density gradient sedimentation, where a high
+concentration of, for example, CsCl has been used to create a self-forming
+density gradient that includes conditions of neutral buoyancy for macromolecules
+like nucleic acids (<a href="#ref1">1</a>), protein, protein-lipid complexes,
+carbohydrates, viral particles, etc.&nbsp; Another example is analytical zone
+centrifugation (band centrifugation), where a dynamic density gradient is formed
+by layering a lamella of lower density solution (containing the macromolecule)
+on top of a higher density solution.&nbsp;&nbsp;</p>
+<p>A self-forming density gradient may also be created inadvertently, for
+example, when sedimenting proteins at high rotor speed in the presence of
+glycerol, sucrose, or high salt concentrations.&nbsp;&nbsp;</p>
+<p>The significance of redistributing buffer components can be assessed by
+looking at the interference optical fringe displacement data when the reference
+solution is replaced by water.&nbsp;&nbsp;</p>
+<p>It can be of interest to analyze what happens with the macromolecular
+sedimentation in the presence of such dynamic density gradients.&nbsp; This is
+of long history in the theory of sedimentation (<a href="#ref6">6</a>,<a href="#ref7">7</a>,<a href="#ref8">8</a>,<a href="#ref9">9</a>,<a href="#ref10">10</a>).&nbsp;
+The coupled co-solute and macromolecular sedimentation process has been included
+in S<span style="font-variant: small-caps">edfit</span>    
+ for simulating and modeling of experimental data.&nbsp; Details of the approach
+are published in (<a href="#ref2">2</a>) and practical aspects of these analysis
+in S<span style="font-variant: small-caps">edfit</span>    
+ can be found <a href="inhomogeneous_solvent.htm#Dynamic Density Gradient">here</a>.&nbsp;&nbsp;&nbsp;</p>
+<p>To illustrate some basic features, let us look at three examples.</p>
+<p>&nbsp;</p>
+<p><b><a name="Example 1:  A protein in CsCl">Example 1:&nbsp; Isopycnic density
+gradient sedimentation of a protein in 2.5 M CsCl</a></b></p>
+<p>The first example is the simulated sedimentation of a protein of 500 kDa in a
+buffer with 2.5 M CsCl at 60,000 rpm.&nbsp; The density of a 2.5 M CsCl solution
+is 1.31 g/ml.&nbsp; However, the salt will redistribute with time and cause
+regions of lower density close to the meniscus, and regions of higher density
+closer to the bottom.&nbsp; The following graph shows the evolution of the
+density gradient with time.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/dynami4.gif" width="960" height="720"></p>
+<p>Initially homogeneous, the distribution will approach a steady-state gradient
+after longer time.&nbsp; Indicated in the graph as a bold lines is the density
+where a protein would float (it is shown as intersection with the density data <font face="Symbol">r</font>(r,t)
+and again in a projection to the radius-time plane).&nbsp; An interesting
+feature is that the neutral buoyancy condition does initially not exist anywhere
+in the solution, which means that sedimentation of protein takes place
+everywhere, but that the neutral buoyancy point slowly peels of from the bottom
+of the cell, causing proteins to concentrate around this point (they will
+sediment or float, respectively, towards this point).</p>
+<p>The protein distribution at different times is shown in the next plot:&nbsp;
+You can see it starts initially like ordinary sedimentation, but then slowly
+moves back out.&nbsp; After long times, the protein distributes like a Gaussian,
+with a width determined by the molar mass. 
+<img border="0" src="images/dynami5.gif" width="960" height="720"></p>
+<p>(For details, see ref <a href="#ref2">2</a>). An interesting detail is that
+the 'plateau' regions can have two maxima - the main peak moving towards the
+neutral buoyancy point, but there's a second small peak just after the boundary
+(see below).</p>
+<p>&nbsp;</p>
+<p><b><a name="Example 2: Protein sedimentation in lower co-solute concentrations (1 M CsCl)">Example
+2: Protein sedimentation in lower co-solute concentrations (1 M CsCl)</a></b></p>
+<p>We don't need to go to extreme conditions of neutral buoyancy in order to
+observe significant effects of the co-solute redistribution on the
+macromolecular sedimentation.&nbsp; The second example is for a 200 kDa protein
+in 1 M CsCl at 60,000 rpm.&nbsp; The initial density is 1.126 g/ml, and neutral
+buoyancy will never be reached.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/dynami6.gif" width="398" height="529"></p>
+<p>The blue lines show the calculated protein distributions, which can be
+compared with the red ones calculated assuming the CsCl would NOT sediment
+itself.&nbsp; There's a couple of clear differences:</p>
+<p>1)&nbsp; The sedimentation boundary tends to move slightly faster (as
+compared to the homogeneous 'non-sedimenting' co-solute conditions) in the upper
+half of the solution column, because the co-solute is gradually being depleted
+from there.&nbsp; The boundary then slows down and moves slower, because of the
+co-solute accumulation here providing higher density (with some solvents also
+higher viscosity).&nbsp; The extent of this deceleration/acceleration pattern
+depends on the combination of s and D of the co-solute and the s-value of the
+protein.</p>
+<p>2) The shape of the boundary is steeper than usual.</p>
+<p>3) There's no flat 'plateau' region.&nbsp; The protein piles up toward the
+bottom due to the higher CsCl concentration increasing the buoyancy and
+decreasing the sedimentation rate.&nbsp; This is similar to the <a href="compressibility_of_water_and_organic_solvents.htm">effect
+of solvent compressibility</a> (<a href="#ref3">3</a>) - towards the bottom, the
+increasing density causes the flux into any volume element to be slightly larger
+than the flux out, therefore causing some continuous accumulation and sloping
+plateaus.</p>
+<p>4) An additional inversion effect can show up just after the boundary:&nbsp;
+Because of the depletion of the co-solute from the meniscus region, the
+sedimentation here is faster than in the middle of the cell or at the
+bottom.&nbsp; Therefore, the macromolecules 'pile up' towards the middle of the
+cell (somewhere in the middle is the hinge-point for the co-solute, i.e. the
+point of little change in solvent properties).&nbsp; Note that this effect also
+will depend on the relative sedimentation rate of the protein and the
+co-solute.&nbsp; It is gravitationally stable because of the much larger
+co-solute concentration than macromolecule concentration.</p>
+<p>&nbsp;</p>
+<p><a name="Example 3: Experimental Data"><b>Example 3:&nbsp; Experimental data
+of a protein in 1.4 M CsCl</b></a></p>
+<p>In order to see if this effect of boundary inversion can be experimentally
+observed, we did an experiment with a ~ 80 kDa protein (<a href="#ref5">5</a>)
+in PBS with 1.43 M CsCl, at 60,000 rpm.&nbsp; Below are the data and the
+best-fit distributions, simulating the CsCl redistribution using the tabulated
+sedimentation properties of CsCl from (<a href="#ref4">4</a>).&nbsp; <a href="compressibility_of_water_and_organic_solvents.htm">Water
+compressibility</a> was considered in the model.&nbsp;</p>
+<p><img border="0" src="images/dynami7.gif" width="396" height="528"></p>
+<p>Overall, the features are consistent with the predicted ones. The boundary
+inversion is expected to be a small effect, but I think it was reproducibly
+visible.&nbsp; The lower plot shows two boundaries with the best-fit theoretical
+lines (offset for clarity).&nbsp; The best-fit apparent partial specific volume
+was 0.762 ml/g, indicating the preferential hydration of the protein in high
+CsCl concentration.&nbsp; For details, see (<a href="#ref2">2</a>).&nbsp;</p>
+<p>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><a name="Example 4: Analytical zone centrifugation with isopycnic conditions">Example
+4: Analytical zone centrifugation with isopycnic conditions</a></b></p>
+<p>The last illustration is the simulation in the configuration of analytical
+zone centrifugation: A solution of an 83 kDa protein (s = 5 S, v-bar = 0.77
+ml/g) is layered on top of a solution of 2.5 M CsCl.&nbsp; Because there's no
+CsCl in the 1mm lamella on top, there will be initially a large density gradient
+at the boundary, which due to diffusion slowly approaches an equilibrium
+sedimentation profile of the co-solute similar to the homogeneous loading
+condition (see example 1).&nbsp; Shown below are the CsCl concentration
+distribution (molar units).</p>
+<p><img border="0" src="images/dynami8.gif" width="771" height="596"></p>
+<p>At the same time, the protein concentration distributions evolve as follows
+(times in multiples of 3000 sec, except the first distribution which is at 300
+sec; starting distribution is shown as dotted line).</p>
+<p><img border="0" src="images/dynami9.gif" width="771" height="596"></p>
+<p>As you can see, the protein forms a lamella that moves down toward the point
+of neutral buoyancy.&nbsp; An interesting detail is that the protein initially
+reaches concentrations higher than the loading concentration.&nbsp; This is an
+effect of the protein piling up in the steep initial density gradient formed by
+the CsCl.&nbsp; Under some conditions, this effect can even produce a series of
+scans with initially increasing heights of the bands.&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="The numerical simulation">The numerical simulation</a></b></p>
+<p>In order to describe the sedimentation of a macromolecule in an inhomogeneous
+solvent, we can use the Lamm equation</p>
+<p><span style="font-size:10.0pt;mso-bidi-font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-text-raise:-14.0pt;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;mso-bidi-font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-text-raise:-14.0pt;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><img src="images/compre13.gif" v:shapes="_x0000_i1025" width="186" height="46"></span><span style="font-size:12.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118373">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>but have to consider that the sedimentation and diffusion coefficients are
+not constant, but change locally due to the local solvent density.&nbsp; In
+general, this requires local corrections for solvent viscosity</p>
+<p><span style="mso-text-raise:-15.0pt">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-15.0pt">
+<img src="images/compre14.gif" v:shapes="_x0000_i1025" width="254" height="48"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118438">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with normal viscosity <font face="Symbol">h</font><sub>20,w</sub>, local
+viscosity <font face="Symbol">h</font><i>(r,t)</i>) and for solvent density</p>
+<p><span style="mso-text-raise:-17.0pt">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt">
+<img src="images/compre15.gif" v:shapes="_x0000_i1025" width="374" height="54"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118519">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>(with normal solvent density <font face="Symbol">r</font><sub>20,w</sub>,
+local density <font face="Symbol">r</font><i>(r,t)</i>, normal partial-specific
+volume <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-3.0pt">
+</span><span style="mso-text-raise: -3.0pt">v-bar</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124118739">
+ </o:OLEObject>
+</xml><![endif]-->
+</span> and apparent partial-specific volume <font face="Symbol">F</font>').&nbsp;
+The corrections can be conveniently expressed with the factors <font face="Symbol">a</font>
+and <font face="Symbol">b</font> of relative viscosity and buoyancy,
+respectively.&nbsp; Constants are the diffusion coefficient D<sub>20,w</sub> and the sedimentation
+coefficient s<sub>20,w</sub> under normal conditions.&nbsp;&nbsp;</p>
+<p>This approach neglects cross-diffusion terms in the general flux equations,
+which theoretically requires the absence of preferential hydration.&nbsp;
+However, in a first approximation we neglect those dynamic effects from the
+cross-diffusion terms (but not the preferential solvation effect for the
+buoyancy), assuming that the relative co-solute fluxes are small and that the
+preferential solvation is in a first order approximation does not change across
+the range of co-solute concentrations generated in the sedimentation process.</p>
+<p> The problem of Eq. 1-3 is solved in a general way in ref <a href="#ref2">2</a>.&nbsp; The strategy
+used takes the finite element Lamm equation method described in the <a href="LammEqSolutions.htm#The moving frame of reference finite element solution">Lamm
+equation tutorial</a>, but extends it to expand the factors <font face="Symbol">a</font>
+and <font face="Symbol">b</font> also in terms of combination of elements P<sub>k</sub>(r,t)</p>
+<p><span style="mso-text-raise:-34.0pt">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-34.0pt">
+<img src="images/compre16.gif" v:shapes="_x0000_i1025" width="162" height="98"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119093">
+ </o:OLEObject>
+</xml><![endif]-->
+</span>&nbsp;</p>
+<p>The additional terms from the expansion Eq. 10 cause the matrix elements <b>A</b><sup>(1)
+</sup>and <b>A</b><sup>(2)</sup> 
+ to become sums over tensor elements</p>
+<p><span style="mso-text-raise: -8.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+</span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+11a)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-8.0pt">
+<img src="images/compre17.gif" v:shapes="_x0000_i1025" width="142" height="30"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119682">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+</span><span style="mso-text-raise:-8.0pt">
+</span></span><span style="mso-text-raise: -33.0pt; font-size: 12.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">(Eq.
+11b)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-9.0pt">
+<img src="images/compre18.gif" v:shapes="_x0000_i1025" width="166" height="30"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1124119693">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>, which leads us to the new matrices <b>A</b><sup>(1*) </sup>and <b>A</b><sup>(2*)</sup>.&nbsp;
+Analytical expressions for the tensors are derived in ref <a href="#ref2">2</a>.&nbsp;&nbsp; </p>
+<p>The problem remains of determining the relative viscosity and buoyancy
+coefficients <font face="Symbol">a</font>(r,t)
+and <font face="Symbol">b</font>(r,t).&nbsp; This is done through a separate
+finite element simulation of the co-solute re-distribution.&nbsp; The time-steps
+of the co-solvent simulation are synchronized with the macromolecular Lamm
+equation solution.&nbsp; Sedimentation parameters for the co-solvent can be
+taken from tabulated values of s, D, and activity coefficients (<a href="#ref2">2</a>,<a href="#ref4">4</a>),
+or may simply be determined experimentally by modeling of interference optical
+sedimentation data.&nbsp; Currently implemented in S<span style="font-variant: small-caps">edfit</span>
+are ideal and non-ideal sedimentation for a single co-solute component.&nbsp;
+Having the local co-solute concentration, tabulated coefficients (such as from S<span style="font-variant: small-caps">ednterp</span>)
+are used to calculate the local solvent density and viscosity.</p>
+<p>&nbsp;</p>
+<p><b>References</b></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref1">(1)</a>
+ M. Meselson and F.W. Stahl (1958) The replication of DNA in Escherichia coli.
+PNAS 44:671</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref2">(2)</a>
+P. Schuck (2003) A model for sedimentation in inhomogeneous media. I. Dynamic
+density gradients from sedimenting co-solutes.&nbsp; <u><a href="images/DynamicDenistyGradients.pdf">Biophysical
+Chemistry</a></u><a href="images/DynamicDenistyGradients.pdf"> 108:187-200</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref3">(3)</a>
+P. Schuck (2003) A model for sedimentation in inhomogeneous media. II.
+Compressibility of aqueous and organic solvents.&nbsp; <u><a href="images/CompressibleSolvents.pdf">Biophysical
+Chemistry</a></u><a href="images/CompressibleSolvents.pdf"> 108:201-214</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref4">(4)</a>
+A.P. Minton (1992) Simulation of the time-course of macromolecular separations
+in an ultracentrifuge. I. Formation of a cesium chloride density gradient at
+25C.&nbsp; Biophys. Chem 42:13-21</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref5">(5)</a>
+M.J. Rosovitz, P. Schuck, M. Varughese, A.P. Chopra, Y. Singh, L.J. McGinnis,
+and S.H. Leppla.&nbsp; (2003) Alanine scanning mutations in anthrax toxin
+protective antigen domain 4 reveal residues important for binding to the
+cellular receptor and to a neutralizing monoclonal antibody. <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=12771151&amp;dopt=Abstract">Journal
+of Biological Chemistry (papers in press)</a></font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref6">(6)</a>
+R. Bruner and J. Vinograd. (1965) The evaluation of standard sedimentation
+coefficients of sodium RNA and sodium DNA from sedimentation velocity data in
+concentrated NaCl and CsCl solutions.&nbsp; BBA 108:18-29</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref7">(7)</a>
+C.R. McEwen (1967) Tables for estimating sedimentation through linear
+concentration gradients of sucrose solution.&nbsp; Anal. Biochem. 20:114-149</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref8">(8)</a>
+R.W. Clark (1976) Calculation of s20,w values using ultracentrifuge
+sedimentation data from linear sucrose gradients, an improved, simplified
+method. BBA 428:269-274</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref9">(9)</a>
+M. Dishon, G.H. Weiss, and D. Yphantis (1976) Kinetics of sedimentation in a
+density gradient. Biopolymers 10:2095-2111</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6"><font size="2"><a name="ref10">(10)</a>
+W.K. Sartory, H.B. Halsall, and J.P. Breillatt (1976) Simulation of gradient and
+band propagation in the centrifuge. Biophys. Chem. 5:107-135</font></p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0; line-height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 6">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

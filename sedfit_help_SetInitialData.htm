@@ -1,0 +1,119 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Set Initial Data</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loadnewdata.htm" target="">Load&nbsp;New&nbsp;Files</a>&nbsp;]</nobr> <nobr>[&nbsp;Set&nbsp;Initial&nbsp;Data&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_datautilities.htm" target="">Data&nbsp;Housekeeping</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="realtime.htm" target="">realtime</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="export_to_sedphat.htm" target="">Export&nbsp;to&nbsp;SEDPHAT</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_exit.htm" target="">Exit</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="22437" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Loading Initial Data">Loading Initial Data</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Set Initial Data</p>
+</font></b>
+<p><u>Background:</u>&nbsp; The Lamm equation does not specify concentration
+distribution at time zero.&nbsp; In fact, it only predicts the evolution in time
+<i>given</i> an initial distribution.&nbsp; Usually this is taken to be a
+uniform distribution.&nbsp; However, it is perfectly valid to take any other
+distribution at any time as the starting point for modeling the evolution.&nbsp;
+In particular, this can be an experimentally measured distribution from an
+actual scan (referred to here as initial data).&nbsp; This has the advantage that
+<b> imperfections in the
+sedimentation before the initial scan was taken become irrelevant</b>. These can be,
+for example, artifacts from imperfect synthetic boundary experiments, from
+acceleration of the rotor, or from an initial temperature-driven convection.&nbsp;
+(Please note that the effects of convection cannot be remedied by restriction of
+the analysis to the later scans...) This approach is described in <a href="#Biophysical Journal 74:466-474">Ref 1</a>.&nbsp;&nbsp;The
+only other rigorous method for transient convection or other imperfections is
+the <a href="sedfit_help_calculator.htm#Differential second moment integration">differential
+second moment method</a>.</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<u>Drawbacks of this approach:</u> 1) Mathematically, we need an initial
+condition for each component present, therefore this approach is limited to single
+component (i.e. single species and self-association) models. 2) The inclusion of any noise and baseline
+parameters as unknowns in the initial scan would be a highly non-linear
+problem.&nbsp; Therefore, experimental initial data are not compatible with TI
+and RI noise calculations, and the baseline should be set to the correct value <i>before
+loading</i> the initial scan.&nbsp; This restricts this feature essentially to
+absorbance data, or experimentally blank-corrected interference data.</p>
+<p><u>In practice</u>, the random noise in the initial data is not
+translated into the later model functions, because of the diffusion term in the
+Lamm equation (<a href="#Biophysical Journal 74:466-474">Ref 1</a>). However,
+the usable information from a scan is not complete, because the optical artifacts near the
+meniscus and bottom cannot be included in the calculated evolution.&nbsp; This
+makes necessary the extrapolation from the analysis limits (green lines) to the meniscus and bottom,
+respectively (<a href="#Biophysical Journal 74:466-474">Ref 1</a>).&nbsp;&nbsp;</p>
+<p><u>Using this approach in S<span style="font-variant: small-caps">edfit</span>:</u></p>
+<p>By default when loading files, constant initial distribution at time <i>t = 0
+</i>is assumed, and this setting has to be switched to experimental initial
+condition in the parameter dialog box <b>before loading the initial data </b>(see
+<a href="sedfit_help_parameters.htm#Initial Distribution">Experimental Initial
+Distribution</a> option in the parameter box;
+check this option and press <i>Enter.</i> A warning message may appear
+indicating that the correction for rotor acceleration phase will be switched off
+- this is OK here, but should be changed back after the analysis session). Then, chose <font COLOR="#0000ff"><b>Data | Set Initial Data</b></font>
+and select the experimental scan that should initialize the
+calculated evolution (e.g., the first of the series of sedimentation velocity
+scans). The initial data will be shown by a green line.</p>
+<p>The experimental data between meniscus and left analysis limit, and between
+the right analysis limit and the bottom, which may contain optical artifacts,
+will be replaced by a polynomial extrapolation. The parameters of this
+polynomial can be changed in the following function (see below). The results of the extrapolations should be
+inspected and the parameters optimized.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Extrapolation of Initial Data">Extrapolation of Initial Data</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Options | Loading Options | Set Polynomial Order for Initial Extrapolation</p>
+</font></b>
+<p>An experimental scan can be used as an initial condition for the simulated
+sedimentation (e.g. if using synthetic boundary techniques) (see <u><font FACE="Modern"><a href="#Loading Initial Data">load
+initial data</a></font></u>). However, the experimental
+scan will not yield reliable data in the regions of the optical artifacts near
+the meniscus and bottom of the cell. In order to prevent these optical artifacts
+from ‘sedimenting’ into the analysis range, an extrapolation procedure is
+used replacing the original data in the unreliable region, and estimating
+absorbance values in the region between the meniscus and the left fitting limit, and between the right fitting limit and the
+bottom of the cell.&nbsp;</p>
+<p>The extrapolation procedure used is a polynomial extrapolation, based on a
+data interval within the reliable region next to the fitting limit. The user has
+two parameters for possible adjustment in case the default extrapolation does
+not generate satisfying results:</p>
+<p>1) the polynomial order, where the default value of 1, and</p>
+<p>2) the extrapolation distance factor, with a default value of 1.</p>
+<p>The distance factor determines the size of the data basis that is used for
+the extrapolation, in multiples of the distance meniscus - left fit limit (or
+right fit limit - bottom, respectively). A value of 1 means that the data basis
+for extrapolation has the same size as the region excluded from the fit.</p>
+<p>The polynomial order determines the highest power of the polynomial used for
+the extrapolation. For example, the value of 1 will calculate the best-fit
+straight line through the data used as basis for extrapolation, and then just
+extrapolates linearly into the regions of artifacts. A value of 2 would take a
+parabolic fit through the data basis and extrapolate with that, etc.</p>
+<p>&nbsp;</p>
+<p style="line-height: 1; margin-bottom: 0"><font size="1"><b>Reference:</b></font></p>
+<p style="margin-top: 0"><font size="1"><b><a name="Biophysical Journal 74:466-474">1</a>) P. Schuck, C.E. McPhee, and G.J. Howlett. (1998) Determination of
+sedimentation coefficients for small peptides. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9449347&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> 74:466-474</b></font></p>
+
+<!--mstheme--></font></body>
+
+</html>

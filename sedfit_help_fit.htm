@@ -1,0 +1,87 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>fit</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2"><!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;Fit&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="30571" -->
+</font></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<h2>start fit</h2>
+</font><b><font COLOR="#0000ff">
+<p>Fit <font color="#FF00FF">(keyboard
+shortcut ctrl-</font></font><font color="#FF00FF">F</font><font COLOR="#0000ff"><font color="#FF00FF">)</font></font></p>
+</b>
+<p>This function performs non-linear regression of all the parameters that have
+been marked to be floated (see <a href="sedfit_help_parameters.htm">parameters</a>).&nbsp;
+As always in non-linear regression, good starting guesses are essential (for the
+<a href="sedfit_help_run.htm#nonlinear parameters">nonlinear parameters</a>).&nbsp;
+Therefore, before executing the fit command, it is essential that parameter
+estimates are entered into the <a href="sedfit_help_parameters.htm">parameter </a>box.&nbsp;
+It is best to use the <a href="sedfit_help_run.htm">Run</a> command first to
+simulate the sedimentation with these starting guesses, and if necessary,
+improve them manually.&nbsp;&nbsp;</p>
+<p>The fitting strategy implemented in S<span style="font-variant: small-caps">edfit</span>
+is the simplex procedure.&nbsp; Although this is not always the most efficient
+approach, it is known to be very stable.&nbsp; Starting from the initial
+parameter estimates, a set of random variations of the parameters are
+generated.&nbsp; The sum of squared residuals is calculated for each of the
+variations, and the simplex algorithm performs a series of optimization steps,
+in each of which the worst parameter set is eliminated and a better one is
+introduced.&nbsp; The algorithm is known to be susceptible to 'circling' the
+optimum, i.e. it can get trapped in a path of parameter values close to the
+optimum without converging.&nbsp; As convergence criterion, the sum of squared
+residuals and all of the parameters have to be within the pre-determined
+Tolerance (in %) value (see <a href="sedfit_help_parameters.htm#Tolerance">parameter</a>
+box).&nbsp; After convergence, the simplex is repeatedly restarted (using
+randomly selected variations around the previously found optimal values), until
+the parameters and the rmsd value are within the tolerance.&nbsp; Two
+consecutive simplex procedures are required to converge to the same rmsd and to
+the same parameter values for the fit to stop.&nbsp; After the simplex has
+converged, S<span style="font-variant: small-caps">edfit</span>
+ will beep.&nbsp;&nbsp;</p>
+<p>If a nonlinear regression is not required because only <a href="sedfit_help_run.htm#linear parameters">linear
+parameters</a> are floated, the Fit command only consists of a single
+simulation, and is identical to the <a href="sedfit_help_run.htm">Run</a>
+command.&nbsp;&nbsp;</p>
+<p>The text output during the fitting procedure shows the number of simulations
+of the sedimentation process in the first line (&quot;sim#...&quot;), and the
+simplex number, the simplex step # and the finite element gridsize in the second
+line (e.g. &quot;s2, step#20, gridsize = 1000&quot;).&nbsp; The remaining lines
+show the rmsd and the parameter values from the current simulation.&nbsp; The
+last line shows a <a href="sedfit_help_fstatistics.htm#Runs Test">Runs test</a>
+of the residuals from the current simulation.&nbsp;</p>
+<p>Convergence can be observed if the rmsd value does change only very little,
+and when the parameter values stay virtually the same.&nbsp; As a minimum, 2
+simplex procedures are required for S<span style="font-variant: small-caps">edfit</span>
+to stop.&nbsp; If the simplex routine does get trapped in a path around the
+optimum, <b>the fit can be interrupted by hitting the space bar <font color="#FF0000">ONCE</font>
+during the
+simulation of sedimentation.</b>&nbsp; <b>After interrupting the fit, the sedimentation with
+the so far best-fit parameters will be simulated.&nbsp; Do not interrupt this
+final simulation, as this may result in loss of the best-fit parameters.&nbsp;</b></p>
+<p>&nbsp;&nbsp;</p>
+<p><font size="2"><u>Please Note:</u> The fitting procedure will store temporary best-fit parameters
+in the file <a href="sedfit_help_fittmppars.htm">~tmppars</a>.* (in the data directory, with the same extension as the
+data files) to allow restoring the analysis in case of a crash of the program.
+Sometimes, the cause of the crash is a floating parameter that does not
+influence the quality of the fit, and therefore can assume an unlimited number,
+causing the crash.&nbsp; In this case, when reloading the data, the attempt to
+restore the fit will fail.&nbsp; However, the tmppars file can be edited with
+the notepad, and the parameter with the very large number can be set to 1.000000
+(see <a href="sedfit_faqs.htm#when loading data">FAQs</a>).</font></p>
+<p><font size="2">This tmppars file can be copied to a different directory and
+renamed for a convenient way to store results of a fit. </font></p>
+<!--mstheme--></font></body>
+
+</html>

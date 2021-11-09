@@ -1,0 +1,127 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Generating Simulated Data</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p><font size="5">Generating New Simulated Sedimentation Data</font></p>
+<p>There are a number of different ways in SEDFIT to simulate the sedimentation 
+process and save the result in a sequence of files with the XLA format.&nbsp; 
+The first two take utilize the function <a href="sedfit_help_generate.htm">
+Generate</a> that allows generate from scratch a series of simulated scans for 
+specific models.&nbsp; The last uses existing data as a template with regard to 
+rotor speed, data range, and time interval.&nbsp; For simulating data of 
+interacting systems, you can use SEDFIT to generate a template from scratch, and 
+then simulate the distributions in SEDPHAT.</p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#Simulating Discrete Species">Simulating Discrete Species</a></p>
+<p style="margin-top: 0; margin-bottom: 0"><a href="#Simulating Distributions">
+Simulating Distributions</a> </p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#Alternative Simulation using Existing Data as a Template">Alternative 
+Simulation using Existing Data as a Template</a></p>
+<p style="margin-top: 0; margin-bottom: 0">
+<a href="#Simulating Interacting Systems">Simulating Interacting Systems</a></p>
+<p>&nbsp;</p>
+<p><b><a name="Simulating Discrete Species">Simulating Discrete Species</a></b></p>
+<p>This is probably the quickest way to simulate sedimentation of a single 
+species, or if you have a mixture of a few (&lt; 4) discrete species.&nbsp; For 
+example, one can use this to predict the minimum time to reach equilibrium and 
+the shape of the equilibrium profiles at a certain rotor speed.&nbsp; </p>
+<p>Make sure you select the Non-Interacting Discrete Species model.&nbsp; This 
+works also with the <a href="inhomogeneous_solvent.htm">inhomogeneous solvent</a> 
+options switched on (but you will need to familiarize yourself with these 
+features first, and have the necessary parameters already set; I suggest to 
+explore these options with existing data before attempting to simulate them).</p>
+<p>It is best to set the parameters already to the values you want to simulate.&nbsp; 
+Note that the first concentration is the<b> total</b>, the following are <b>
+fractions. </b>For example, with the concentration entry in the first component 
+being 1 and the second concentration entry 0.05, will make the total loading 
+signal 1, the first species 0.95, and the second species 0.05 loading 
+concentration.&nbsp; Be careful also to set meniscus and bottom to describe the 
+proper solution column.</p>
+<p>For studying the approach to equilibrium, I would suggest to request scans in 
+a few h intervals, over a time period of a couple of days.&nbsp; That will help 
+you to explore the shape of equilibrium, and by counting the number of scans to 
+attain equilibrium, you can figure out the minimum time (e.g. assuming no 
+chemical reaction) to attain equilibrium.</p>
+<p>Another frequent application is the prediction of c(s) resolution and 
+faithful recovery of quantities of trace components. In this case, simply 
+simulate the distribution of discrete species (optionally with dynamic density 
+gradients, if that model is selected), specifying the mixture of interest.</p>
+<p>Follow the instructions for the <a href="sedfit_help_generate.htm">Generate</a> 
+function.</p>
+<p>&nbsp;</p>
+<p><b><a name="Simulating Distributions">Simulating Distributions</a></b> </p>
+<p>This is more complicated than the simulation of discrete species, and should 
+be used only if either the number of species of interest exceeds 4, or if you 
+are truly interested in continuous distributions.&nbsp; There are several steps. </p>
+<p>1) Select the c(s) distribution model.&nbsp; </p>
+<p>2) Use any existing data, load the data, set up the c(s) parameters as you 
+wish your simulated distribution to look like, with regard to: s-min, smax, 
+resolution, f/f0, vbar, viscosity, density), and fit a c(s) distribution (never 
+mind if it is a good fit or not).&nbsp; Use the function Data-&gt; Save Continuous 
+Distribution to save the c(s) distribution into a file.&nbsp; As a filename, use 
+c:\temp\distrib.dat. This will be a template to modify.&nbsp; Note: You can 
+generate such a file from scratch, using the notepad.&nbsp; But it cannot be an 
+empty file.</p>
+<p>3) Use the Windows Explorer to locate this file, open it with notepad, and 
+edit. You will see a 2-column matrix, with the first column the s-values, and 
+the second column the distribution values.&nbsp; You can delete as many lines as 
+you like, or enter new ones.&nbsp; This will be your sedimentation coefficient 
+distribution.&nbsp; </p>
+<p>4) Use the <a href="sedfit_help_generate.htm">Generate</a> function.&nbsp; 
+(Make sure the c(S) model is still switched on.)&nbsp; In the parameter box, use 
+the desired settings for f/f0, vbar, viscosity, density.&nbsp; You can ignore 
+the s-min, s-max, and f/f0 entries, since it'll take this from the file 
+c:\temp\distrib.dat.&nbsp; </p>
+<p>5) A question will appear if the distribution is normalized (a true 
+differential sedimentation coefficient distribution, where the integral 
+corresponds to concentrations), or not.&nbsp; If not, the second column of the 
+distrib.dat file will be interpreted directly as loading concentration values.&nbsp; </p>
+<p>Note:&nbsp; Even though you use the distrib.dat entries directly as loading 
+concentrations, the distribution displayed after simulating will be a 
+differential distribution, which will appear distorted.&nbsp; However, the data 
+loaded and saved are perfectly fine.&nbsp; </p>
+<p>&nbsp;</p>
+<p><b><a name="Alternative Simulation using Existing Data as a Template">
+Alternative Simulation using Existing Data as a Template</a></b></p>
+<p>You can easily simulate sedimentation data for which you have already a 
+template regarding time-intervals, rotor speed, and radial data range.&nbsp; 
+Simply load these data as a template, select your model, and do a RUN.&nbsp; Be 
+sure to switch of the baseline parameters and the concentration parameters.&nbsp; 
+Obviously, the &quot;fitted&quot; traces may have nothing to do with the loaded data 
+template.&nbsp; However, they describe the distribution from the model you've 
+specified.&nbsp; </p>
+<p>Use the function <a href="sedfit_help_datautilities.htm#Save Fits">Data-&gt;Save 
+Fit Data</a> to store the simulated distributions on the harddisk in XLA format.</p>
+<p>The disadvantage of this approach is that it doesn't have flexibility with 
+regard to the rotor speed and time-interval of scans.&nbsp; Also, the radial 
+range of the saved data is the fitting range specified.&nbsp; Although you can 
+make sure that the &quot;fitting range&quot; is as wide as the template data permit, it 
+cannot exceed the radial range of the template.</p>
+<p>&nbsp;</p>
+<p><b><a name="Simulating Interacting Systems">Simulating Interacting Systems</a></b></p>
+<p>This is also a three-step process.&nbsp; </p>
+<p>1) Use the Generate function with a discrete species model to generate a 
+template with regard to rotor speed, time-interval of scans, and radial range.&nbsp; 
+Save the data somewhere in a temporary directory.&nbsp; Export the to SEDPHAT, 
+and launch SEDPHAT.&nbsp; </p>
+<p>2) Within SEDPHAT, use the experiment parameter box to set the extinction 
+coefficients, meniscus, bottom as desired, and switch off baseline parameters.&nbsp; 
+Then select the interaction model, set the global parameters, set the loading 
+concentrations, and do a <b>RUN</b>.&nbsp; </p>
+<p>3) Use the function Data-&gt;Save Fit Data within SEDPHAT to save the fitted 
+curves containing the simulated distributions to the harddisk. </p>
+<h2>&nbsp;</h2>
+
+<!--mstheme--></font></body>
+
+</html>

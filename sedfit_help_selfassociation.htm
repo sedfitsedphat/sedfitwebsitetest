@@ -1,0 +1,225 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>self-association</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;self-association&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="32864"
+--></p>
+<p>&nbsp;</p>
+<p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+ Self-Association Models
+</font></p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model |
+Self-Association Models | Monomer-Dimer instant.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model |
+Self-Association Models | Monomer-Trimer instant.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model |
+Self-Association Models | Monomer-Dimer-Tetramer instant.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model |
+Self-Association Models | Monomer-Tetramer-Octamer instant.</p>
+</font></b>
+<p>These model describes the ideal sedimentation of one component that is in rapid
+self-association equilibrium (instantaneous on the time scale of the centrifugation). It is assumed that the buoyant molar masses
+of monomer and all oligomeric species are
+additive, which allows to calculate the oligomer diffusion coefficient using the
+Svedberg equation from sedimentation coefficients and oligomer molar masses.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The following
+models are currently implemented:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><img border="0" src="images/selfassocmenu.gif" align="left" width="478" height="74"><a href="#Monomer-Dimer">monomer-dimer</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Monomer-Trimer">monomer-trimer</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Monomer-Dimer-Tetramer">monomer-dimer-tetramer</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Monomer-Tetramer-Octamer">monomer-tetramer-octamer</a>&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">(a <a name="monomer-tetramer">monomer-tetramer</a>
+model is implicit, by using the monomer-tetramer-octamer model with log(K18) =
+-10)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">In all models, the
+sedimentation is calculated by use of a concentration dependent weight-average
+sedimentation coefficient and gradient-average diffusion coefficient.&nbsp; The
+concentration dependency is treated as a radial-dependency and incorporated into
+the finite-element algorithms (see <a href="LammEqSolutions.htm">Lamm equation
+solutions</a> and the <a href="LammEqSolutions.htm#self-assoc equations">self-association</a>
+section).&nbsp; The model and the information that can be extracted from
+sedimentation velocity data has been described and discussed in (<i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9726952&amp;dopt=Abstract">
+75:1503-1512</a>).&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">The
+self-association models contain many parameters, and can be difficult to
+apply.&nbsp; In order to avoid an ill-conditioned analysis (i.e. obtain at
+meaningful parameters), the monomer molar mass should be known and not treated
+as fitting parameter.&nbsp; Further, it might be necessary to enter one or more
+association constants as prior knowledge and keep them fix during the analysis,
+in order to circumvent correlation with the sedimentation coefficients.&nbsp; In
+some cases, the association constants can be measured by sedimentation
+equilibrium.&nbsp; (Please note, that because this usually requires experiments
+at lower rotor speeds, using the equilibrium constant for the velocity analysis
+implies the absence of pressure effects on the self-association).&nbsp;Alternatively,
+the monomer and dimer sedimentation coefficients might be known, in which case
+the equilibrium constant can be determined from sedimentation velocity
+analysis.&nbsp; Problems of ill-conditioned analysis can be more serious when using the absorbance optics at low
+loading concentrations, as compared to the interference optics (which allows
+detection of a larger concentration range in a single run).&nbsp;&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">When the
+association constants are known from sedimentation equilibrium, then the best
+experimental conditions are those with very high rotor speed, long solution
+column, and high loading concentration.&nbsp;&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2"><font size="1">!&nbsp;&nbsp;&nbsp;
+Previous versions of S<span style="font-variant: small-caps">edfit</span>  had
+the option of simultaneous analysis of a second data set, which is particularly
+useful for self-association models.&nbsp; Because of the difficult
+user-interface and the limitation to two datasets, it was discontinued.&nbsp;
+Instead, currently, a more general extension of S<span style="font-variant: small-caps">edfit</span> 
+is being written (S<span style="font-variant: small-caps">edphat</span>) for
+global analyses, which will allow simultaneous analysis of data from high and
+low rotor speeds, and high and low concentrations.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">Most controls in
+this parameter box are the same as the <a href="sedfit_help_independent_ideal_species.htm#parameters common to many models">common
+parameters</a> explained in the non-interacting discrete species model (users
+unfamiliar with S<span style="font-variant: small-caps">edfit</span>  should
+consult the <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete species</a> help site for common conventions).</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">All models have in
+common that the association constants are entered as log<sub>10</sub>(Ka)&nbsp;
+(e.g. Ka = 100,000 would be entered as '5'), and in signal units.&nbsp; These
+signal units depend on the optical system used for data acquisition, as well as
+on the optical path length.&nbsp; This will be described in more detail
+below.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">The field ctot in
+all models is the <a name="total loading concentration"> total loading concentration</a> in signal units.&nbsp; It should
+be noted that ctot is a non-linear parameter (like the sedimentation
+coefficients, the molar masses, and the association constants), and is optimized
+only with the <a href="sedfit_help_fit.htm">fit</a> command.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 1">&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Monomer-Dimer">Monomer-Dimer</a> Self-Association Model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Self-Association Models | Monomer-Dimer instant.</p>
+</font></b>
+<p><img border="0" src="images/modiparams.gif" width="444" height="300"></p>
+<p>Special here are the only the parameters in the upper third, which are those
+for the monomer and dimer molar masses and sedimentation coefficients.&nbsp;
+Because the dimer molar mass is twice the monomer molar mass, it cannot be
+changed.&nbsp;&nbsp;</p>
+<p>The field
+for the <a name="dimerization constant"> dimerization (association) constant</a> will contain the base 10
+logarithm of the binding constant in signal units. Assuming, for
+example absorbance data (with signal <i>a</i> for concentration <i>c</i>), the binding constants
+in absorbance and molar units would be</p>
+<p><img SRC="images/Image12.gif" width="298" height="49"></p>
+<p>and consequently, the binding constants would transform according to</p>
+<font SIZE="2">
+<p><img SRC="images/Image13.gif" width="129" height="49"></p>
+</font>
+<p>(please note that the extinction coefficients should correct for the
+pathlength 1.2 cm).</p>
+<p>If s and D are chosen as parameters instead of s and M (<a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>), an analogous box with monomer diffusion coefficient instead of
+monomer molar mass is used.</p>
+<p><font color="#008000">New in version 8.7: Hydrodynamic non-ideality has been
+added to this sedimentation model.&nbsp; The new parameter box for monomer-dimer
+rapid self-association has an additional check-box to switch ON or OFF
+(unchecked is OFF, default) concentration-dependent sedimentation, similar to
+the <a href="sedfit_help_nonideal_sedimentation.htm">non-ideal sedimentation
+model</a> (there's no concentration-dependence of D here).&nbsp; This is for
+theoretical simulations, fitting of ks can be accomplished in the analogous
+model in S<span style="font-variant: small-caps">EDPHAT</span>  </font>.&nbsp;</p>
+<p><img border="0" src="images/sedfit2.jpg" width="589" height="361"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Monomer-Trimer">Monomer-Trimer</a> Self-Association Model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Self-Association Models | Monomer-Trimer instant.</p>
+</font></b>
+<p><img border="0" src="images/monomer_trimer_params.gif" width="444" height="301"></p>
+<p>Like in the monomer-dimer model, special here are the only the parameters in
+the upper third, which are those for the monomer and trimer molar masses and
+sedimentation coefficients.&nbsp; Because the trimer molar mass is three times
+the monomer molar mass, it cannot be changed.&nbsp; The field ctot is the total
+loading concentration in signal units.&nbsp;&nbsp;&nbsp;</p>
+<p>The field
+for the trimerization (association) constant will contain the base 10
+logarithm of the binding constant in signal units. Assuming, for
+example absorbance data (with signal <i>a</i> for concentration <i>c</i>), the binding constants
+in absorbance and molar units would be</p>
+<p><img SRC="images/Image14.gif" WIDTH="296" HEIGHT="49"></p>
+<p>and consequently, the binding constants would transform according to</p>
+<font SIZE="2">
+<p><img SRC="images/Image15.gif" WIDTH="141" HEIGHT="52"></p>
+</font>
+<p>(please note that the extinction coefficients should correct for the
+pathlength 1.2 cm).</p>
+<p>If s and D are chosen as parameters instead of s and M (<a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>), an analogous box with monomer diffusion coefficient instead of
+monomer molar mass is used.</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Monomer-Dimer-Tetramer">Monomer-Dimer-Tetramer</a> Self-Association Model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Self-Association Models | Monomer-Dimer-Tetramer instant.</p>
+</font></b>
+<p><img border="0" src="images/moditeparams.gif" width="510" height="301"></p>
+<p>Like the previous self-association models, special here are the only the
+parameters in the upper third, which are those for the monomer and oligomer
+molar masses and sedimentation coefficients.&nbsp; Because the oligomer molar
+masses are calculated as the integral multiples of the monomer molar mass, it
+cannot be changed.&nbsp; The field ctot is the total loading concentration in
+signal units.&nbsp;&nbsp;&nbsp;</p>
+<p>The field
+for the dimerization (K12) and tetramerization (K14) association constant will
+contain the base 10
+logarithm of the binding constant in signal units. Transformation from molar to
+signal association constants works similar as in the monomer-dimer and
+monomer-trimer model. (The optical pathlength 1.2 cm should be considered.)</p>
+<p>If s and D are chosen as parameters instead of s and M (<a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>), switching to the monomer-dimer-tetramer model will automatically
+change the parameters to s and M.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Monomer-Tetramer-Octamer">Monomer-Tetramer-Octamer</a> Self-Association Model</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Self-Association Models | Monomer-Tetramer-Octamer instant.</p>
+</font></b>
+<p><img border="0" src="images/moteoctparams.gif" width="509" height="301"></p>
+<p>Like the previous self-association models, special here are the only the
+parameters in the upper third, which are those for the monomer and oligomer
+molar masses and sedimentation coefficients.&nbsp; Because the oligomer molar
+masses are calculated as the integral multiples of the monomer molar mass, it
+cannot be changed.&nbsp; The field ctot is the total loading concentration in
+signal units.&nbsp;&nbsp;&nbsp;</p>
+<p>The field
+for the tetramerization (K12) and octamerization (K14) association constant will
+contain the base 10
+logarithm of the binding constant in signal units. Transformation from molar to
+signal association constants works similar as in the monomer-dimer and
+monomer-trimer model. (The optical pathlength 1.2 cm should be considered.)</p>
+<p>If s and D are chosen as parameters instead of s and M (<a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>), switching to the monomer-dimer-tetramer model will automatically
+change the parameters to s and M.</p>
+<p>&nbsp;</p>
+<!--mstheme--></font></body>
+
+</html>

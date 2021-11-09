@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tut cofm</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>Appendix:</p>
+<p><u><b><a name="Related analyses:">Related analyses:</a></b></u></p>
+<p><b>Refine the analysis by <a href="export_to_sedphat.htm">exporting to S<span style="font-variant: small-caps">edphat</span></a>.</b></p>
+<p>&nbsp;</p>
+<p><b><a name="A quick overview of molar mass values:">A quick overview of molar 
+mass values:</a></b></p>
+<p>After calculating c(s), we can use the function
+<a href="sedfit_help_display.htm#Show Peak Mw in c(s)">&quot;Show Peak Mw in c(s)&quot;</a> 
+to automatically print out molar mass estimates for each peak. </p>
+<p><img border="0" src="images/tutori62.gif"></p>
+<p>This is information is similar to the transformation of c(s) to c(M) 
+described in the following.&nbsp; Accordingly, the molar mass estimate &quot;Mf&quot; is 
+based on the best-fit frictional ratio (or other relationships for s and D if a 
+specialized variant of c(s) is used).&nbsp; The value in parenthesis is the 
+minimum molar mass of a spherical particle of given density.</p>
+<p>As described above, these are clickable boxes that produce more information 
+on each peak and how it relates to the raw data.</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Conversion of c(s) to a molar mass distribution c(M)">Conversion
+of c(s) to a molar mass distribution c(M)</a></b></u> </p>
+<p>After calculating the c(s) distribution and optimizing the parameters for the
+frictional ratio and meniscus, we can transform the c(s) distribution into a <a href="sedfit_help_cm.htm">c(M)
+distribution</a>.&nbsp; This can be done because in the calculation of c(s), for
+each s-value a diffusion coefficient D(s) was estimated (with the s-D
+relationship based on the optimal weight-average frictional ratio).&nbsp; Since s and
+D directly determines M, we also have M for each species, and in this way we can
+directly convert
+c(s) into c(M).&nbsp; </p>
+<p><img border="0" src="images/tutori46.jpg"></p>
+<p>This leads to </p>
+<p><img border="0" src="images/tutori47.jpg"></p>
+<p>which we need to rescale by drawing a rectangle with the right mouse button 
+so as to show us the peaks:</p>
+<p><img border="0" src="images/tutori63.gif"></p>
+<p>resulting in </p>
+<p><img border="0" src="images/tutori48.jpg"></p>
+<p>If we export the distribution again
+(using the <a href="sedfit_help_copy.htm#Copy Data Tables">copy command</a>)
+into Origin, we can generate the following graph, which shows the oligomers of
+BSA with reasonable estimates of the molar mass:</p>
+<p><img border="0" src="images/tutori45.gif" width="423" height="317"></p>
+<p>This may in general not work as well if the frictional ratio of the monomer differs much from the frictional ratios of the oligomers.&nbsp;
+In this case, the c(M) distribution will appear distorted. </p>
+<p><i><font color="#008000" size="2">New in version 8.7:&nbsp; It is sometimes possible, in particular if there is a
+substantial amount of oligomeric material with well-separated s-values, to use
+the model of a <a href="sedfit_help_cs_with_other_prior.htm#c(s) with bimodal ff0">bi-modal
+c(s) distribution</a> and to optimize two separate f/f0 values.&nbsp; For
+example, one could be the monomer, one for the higher oligomers.&nbsp; This is
+also useful if there are two different macromolecular compounds with widely
+differing s-ranges.&nbsp;&nbsp;</font></i> </p>
+<p>The best way to treat oligomerizing system is the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">SEDPHAT model for 
+hybrid discrete/continuous distributions</a>, in which the molar mass ratio of 
+the oligomers can be constraint to be multiples.&nbsp; To get started with this, 
+use the <font color="#FF0000"> <a href="export_to_sedphat.htm">Export 
+function of SEDFIT to transfer your data into SEDPHAT</a></font>.</p>
+<p>Further information, and comparison with other models can be found
+<font size="2"><a href="images/SedimentationCoefficientDistributions.pdf">(here)</a></font> 
+. </p>
+<p><a href="sizeandshape.htm">next page</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

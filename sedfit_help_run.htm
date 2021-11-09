@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>run</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2"><!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_parameters.htm" target="">Parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;Run&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="56083" -->
+</font></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<h2>simulate sedimentation</h2>
+</font><b><font COLOR="#0000ff">
+<p>Run&nbsp; <font color="#FF00FF">(keyboard
+shortcut ctrl-</font></font><font color="#FF00FF">R</font><font COLOR="#0000ff"><font color="#FF00FF">)</font></p>
+</font></b>
+<p>&nbsp;</p>
+<p>This command executes a boundary model, i.e. it performs a simulation of the
+sedimentation process, using the parameters that were entered in the <a href="sedfit_help_parameters.htm">parameter</a>
+box.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="The difference between the Run and the Fit command:"><b>The
+difference between the Run and the Fit command:</b></a><!--mstheme--></font></h3>
+<p><b>The Run function does not make a nonlinear regression of the data.&nbsp; </b>As
+always in nonlinear regression, one needs to provide starting guesses that are
+reasonably close to the optimal parameters.&nbsp; This can be trivial in simple
+models, but it can be quite difficult for complex models.&nbsp; Therefore, it is
+necessary to test a given set of parameter manually, and compare the data with
+the model functions for these parameters.&nbsp; This is precisely the function
+of the Run command.&nbsp;&nbsp;</p>
+<p>However, the Run command is slightly more advanced:&nbsp; Several parameters
+of a boundary model are always trivial to optimize mathematically, but are
+difficult to guess manually.&nbsp; These are <b>linear parameters </b>-- for
+those there is a unambiguous best-fit value.&nbsp; (This best-fit value is
+calculated by an algebraic equation.)&nbsp; In order to make the
+estimation of the <b>nonlinear parameters</b> easier, and the assessment of the
+quality of starting guesses more transparent, <b>S<span style="font-variant: small-caps">edfit</span>
+optimizes the linear parameters already in the Run command</b>.&nbsp;&nbsp;</p>
+<p>These <a name="linear parameters"> linear parameters</a> are:&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; <a href="sedfit_help_parameters.htm#Baseline">baseline</a>, <a href="systematic_noise_analysis.htm">systematic noise
+parameters</a>, <a href="sedfit_help_independent_ideal_species.htm#concentration field">loading
+concentrations</a> (except for the self-association models), and <a href="sizedistributions.htm">size-distributions</a></p>
+<p><b>The fit command is used only to optimize the nonlinear parameters, which
+requires non-linear regression.</b></p>
+<p>Examples for <a name="nonlinear parameters"> nonlinear parameters</a> are:</p>
+<p>&nbsp;&nbsp;&nbsp; <a href="sedfit_help_independent_ideal_species.htm#sedimentation coefficient field">sedimentation
+coefficients</a>, <a href="sedfit_help_independent_ideal_species.htm#molar mass or diffusion coefficient field">diffusion
+coefficients</a>, <a href="sedfit_help_independent_ideal_species.htm#molar mass or diffusion coefficient field">molar
+masses</a>, <a href="sedfit_help_cs.htm#frictional ratio">frictional ratio</a>, <a href="sedfit_help_parameters.htm#Meniscus">meniscus</a>,
+<a href="sedfit_help_parameters.htm#Bottom">bottom</a>, <a href="sedfit_help_selfassociation.htm#dimerization constant">binding
+constants</a>, <a href="sedfit_help_selfassociation.htm#total loading concentration">loading
+concentration in self-association models</a>.&nbsp;</p>
+<p><font color="#FF0000"><b>This means that in general, after setting up the <a href="sedfit_help_parameters.htm">parameters</a>
+in the parameter box, one will first execute a Run command, possibly readjust
+manually some of the nonlinear parameters, and then use the <a href="sedfit_help_fit.htm">Fit</a>
+command to let the parameters converge.&nbsp;</b></font></p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><b>After the simulation is done:</b><!--mstheme--></font></h3>
+<p> The calculated concentration distributions at the times of the loaded scans are displayed as lines in the
+data graphics, and the new residuals are displayed in the residuals plot.&nbsp;
+For the distribution models, a distribution plot appears.&nbsp;</p>
+<p>All the information of the calculated concentration, residuals,
+size-distributions can be retrieved in different forms using the <a href="sedfit_help_copy.htm">copy
+commands</a>.&nbsp;</p>
+<p>Additional information will be given in the left
+hand side of the S<span style="font-variant: small-caps">edfit</span> window, including the rms error (rmsd), the number of
+data points (n) and the sum of squared residuals (SSR). This information can be
+restored with the menu function <a href="sedfit_help_display.htm#Show Last Fit Info Again">show
+last fit info again</a>.</p>
+<i><font COLOR="#008000">
+<p>&nbsp;</p>
+<p>Please Note:</font> </i>This function requires data to be loaded.&nbsp; For
+generating simulated data, use the function <a href="sedfit_help_generate.htm">generate</a>.
+</p>
+<!--mstheme--></font></body>
+
+</html>

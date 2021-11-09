@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>sedimentation equilibrium</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;sedimentation&nbsp;equilibrium&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="23297" --></font></p>
+
+<h2>Sedimentation Equilibrium analysis in SEDPHAT</h2>
+<p>For carrying out sedimentation equilibrium experiments in significantly 
+shortened time, see the TOSE video tutorials at
+<a href="https://sedfitsedphat.nibib.nih.gov/tools/Protocols/Forms/AllItems.aspx">
+https://sedfitsedphat.nibib.nih.gov/tools/Protocols/Forms/AllItems.aspx</a> </p>
+<p>S<span style="font-variant: small-caps">edphaT</span> has several levels of 
+sedimentation equilibrium support.&nbsp; They are all based on loading the raw 
+scan data into the experiment structures for a
+<a href="data1.htm#Load New Sedimentation Equilibrium Data">single 
+&quot;Sedimentation Equilibrium&quot; </a>xp-file and &quot;<a href="data1.htm#Load New Multi-Speed Equilibrium Data">Multi-Speed 
+Equilibrium</a>&quot; xp-files.&nbsp; </p>
+<p>In order to generate these xp-files, it may be convenient to use S<span style="font-variant: small-caps">edfit</span> 
+as a tool to automatically generate the xp-files from a sequence of scan files 
+(if you use the scan mode for 'equilibrium method' on the ultracentrifuge).&nbsp; 
+Relevant S<span style="font-variant: small-caps">edfit </span>tools include:
+<a href="../sedfit_help_loading_options.htm#Save Intensity Data as Absorbance Data">
+Loading Options--&gt;Save Intensity as Absorbance</a>, and
+<a href="../sedfit_help_loading_options.htm#sorting equilibrium data">Loading 
+Options--&gt;Sort Eq Data</a>.&nbsp; For working with data from 6-channel 
+centerpieces, separate the individual channels using the
+<a href="../sedfit_help_loading_options.htm#Save Raw Data In 3 Subsets">Loading 
+Options--&gt;Save 6-channel Raw Data in 3 Subsets</a> function (for more 
+information on 6-channel data see here).</p>
+<p>Dealing with 6-channel data is no problem, just use the function
+<a href="../sedfit_help_loading_options.htm#Save Raw Data In 3 Subsets">Loading 
+Options--&gt;Save 6-channel Raw Data in 3 Subsets</a> prior to any other.&nbsp; 
+[There is an old <a href="../images/092805_6Channel.ppt">powerpoint presentation
+</a>that illustrates how to assemble data directly into xp-files in S<span style="font-variant: small-caps">edphat</span>, 
+but this has become obsolete from version S<span style="font-variant: small-caps">edfit9.4</span> 
+which allows carrying through the 6-channel data to all other data sorting 
+functions in S<span style="font-variant: small-caps">edfit.]</span>&nbsp; </p>
+<p>Models that can be used are those for non-interacting species, for example, 
+in the
+<a href="hybrid_local_continuos_global_discrete.htm#Using this model for equilibrium analysis">
+hybrid discrete/continuous model</a>, or any of the interacting species models (<a href="self-association.htm">self-association</a>,
+<a href="hetero-associations.htm">hetero-association</a>,
+<a href="mixedassoc.htm">mixed associations</a>, and
+<a href="ternary_systems.htm">ternary systems</a>).&nbsp; For the interacting 
+models, incompetent fractions can be accounted for.&nbsp; Additionally one 
+non-participating species can be described (for example, from a known impurity 
+of molar mass different from all the species of interest). </p>
+<p>If experiments are combined where the solvent density is significantly 
+different, it is possible to fit for vbar of the macromolecule. For 
+protein-detergent systems, the vbar of the free detergent micelle can be fitted 
+separately (if the detergent micelle is treated as the non-participating 
+species), thus eliminating the need for a complete density match and 
+simultaneously solving for vbar of detergent and protein/detergent complex.</p>
+<p>Typically, fitting models for interacting systems to sedimentation 
+equilibrium data is done with 10 - 20 experimental scans.&nbsp; In this 
+situation, the error surface can be very complicated, and it can be difficult to 
+verify that the fit has converged in the global minimum.&nbsp; There will be 
+many local minima.&nbsp; Therefore, it is highly advisable to take advantage of 
+all different fitting methods (in particular, simulated annealing and Marquardt-Levenberg, 
+see the page on <a href="fit.htm">Fit</a> information).</p>
+<p>It is also very important, and in many cases essential for getting a 
+well-defined answer, that mass conservation models be used.&nbsp; This can be 
+done most conveniently in the form of multi-speed sedimentation equilibrium 
+experiments, where the same cell is attaining sedimentation equilibrium at 
+different speeds.&nbsp; When using mass conservation, it is usually advisable to 
+treat the bottom of the solution column as a floating parameter, as described in </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 6">
+<font size="2">J. Vistica, J. Dam, A. Balbo, E. Yikilmaz, R.A. Mariuzza, T.A. 
+Rouault, P. Schuck (2004) Sedimentation equilibrium analysis of protein 
+interactions with global implicit mass conservation constraints and systematic 
+noise decomposition.&nbsp;
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15003564">
+Analytical Biochemistry 326:234-256</a>&nbsp; </font>
+<font size="2" face="Verdana">(<a href="../images/SedimentationEquilibriumAnalysis.pdf">preprint</a>)</font></p>
+<p>Finally, it is very advantageous to scan at several wavelengths and sometimes 
+in combination of interference optics and absorbance optics.&nbsp; Having 
+several signals can greatly improve the ability to distinguish species and to 
+obtain a large dynamic range of concentrations.</p>
+<p><b>There is a complete <a href="DNATutorial_2.htm">step-by-step tutorial</a> 
+for a protein-DNA interaction.</b></p>
+<p>A screenshot from a typical sedimentation equilibrium analysis is this:</p>
+<p><img border="0" src="menubilder/sedime36.jpg" width="504" height="428"></p>
+
+<!--mstheme--></font></body>
+
+</html>

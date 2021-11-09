@@ -1,0 +1,257 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Top Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>&nbsp; </h2>
+<h2>An example for the sedimentation velocity analysis with S<span style="font-variant: small-caps">edfit</span> </h2>
+<p>The example given here highlights the potential of sedimentation velocity
+analysis with S<span style="font-variant: small-caps">edfit</span>.&nbsp; Data
+can be downloaded, and the results can be compared with those displayed, but
+this will require basic familiarity with S<span style="font-variant: small-caps">edfit</span>
+functions as described in the <a href="tutorial_sizedistributions.htm">step-by-step
+tutorial</a>.&nbsp; <b>For readers who want to get familiar with how to do these
+analyses, the <a href="tutorial_sizedistributions.htm">step-by-step tutorial</a>
+should be consulted first.&nbsp; </b>Much more detailed introductions in
+the theory of the analysis techniques are available in the S<span style="font-variant: small-caps">edfit
+</span>help web, and will be referenced below.&nbsp; Similarly, references to
+the websites explaining the S<span style="font-variant: small-caps">edfit</span>
+functions applied will be given.&nbsp;&nbsp;The analysis can be refined by
+<a href="export_to_sedphat.htm">exporting the data and the model to S<span style="font-variant: small-caps">edphat</span></a>.</p>
+<p>The data were acquired as described in the <a href="tutorial_ExperimentalConditions.htm#Experimental considerations">tutorial
+section on experimental considerations</a>.&nbsp; It is a sample of IgG
+molecules in PBS, run at 40,000 rpm.&nbsp; (In principle, a higher rotor speed
+(55,000 rpm) could be used for studying a molecule of this size of IgG, but the
+main concern in this experiment was to quantify the extent of aggregation.&nbsp;
+Because possible aggregates might sediment much faster, the lower rotor speed
+was chosen.)</p>
+<p>A zip archive with the data (2,541kb) can be <a href="images/IgGdata.zip">downloaded
+here</a>.&nbsp; In the following, for clarity we only load every third scan (of
+a total of 226 scans), but for a full analysis, the complete set of scans should
+be loaded.&nbsp;&nbsp;</p>
+<p>After <a href="sedfit_help_loadnewdata.htm">loading the data</a> (<a href="sedfit_help_loadnewdata.htm#every n-th file">every
+third</a> of 1 - 226), we see the raw data,</p>
+<p><img border="0" src="images/sedfit86.gif" width="572" height="216"></p>
+<p>which shows the typical time-invariant noise pattern, jitter, and integral
+fringe shifts.&nbsp; S<span style="font-variant: small-caps">edfit</span> will
+calculate these offsets by <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a>, and we do not need to do anything about that here.&nbsp;</p>
+<p><font size="1">(Please note the large boundary movement in this set of
+scans.&nbsp; This is useful for a high precision analysis.&nbsp; In fact,
+ls-g*(s) should not be applied to small sets of interference scans where the
+boundary has not yet cleared the meniscus, because of correlations of the small
+s-values with the unknown time-invariant baseline.)&nbsp;</font></p>
+<p>First, we select meniscus, bottom, outer and inner fitting limit (<a href="sedfit_help_loadnewdata.htm#3) Setting the data range suitable for analysis">as
+described here</a>):</p>
+<p><img border="0" src="images/sedfit87.gif" width="595" height="474"></p>
+<p>&nbsp;</p>
+<p>In this example, we might want to look first at the g*(s) distribution, to
+get an overview of the range of s-values.&nbsp; After getting used more to c(s) 
+you probably want to move directly to the c(s) model described below.&nbsp; The 
+point of this preliminary analysis is to provide a simple entry point for 
+novices.&nbsp; </p>
+<p>We might first select the <a href="sedfit_help_ls-gs.htm">ls-g*(s)
+model</a>, with a range from 1 to 15 S (resolution 100, P = 0.68).&nbsp; After
+executing the <a href="sedfit_help_run.htm">Run</a> command, this results in the
+following output:</p>
+<p><img border="0" src="images/sedfit88.gif" width="595" height="474"></p>
+<p>It is clear that most of the material is ~ 6.5 S, with a small amount
+sedimenting at 9-10 S.&nbsp; We can <a href="sedfit_help_subtract_calculated_noise.htm">subtract
+the systematic noise</a> by pressing ctrl-N, which will show the sedimentation
+data clearer:</p>
+<p><img border="0" src="images/sedfit89.gif" width="597" height="475"></p>
+<p>&nbsp;</p>
+<p><b>Please note:&nbsp; If the fit is bad, this reflects the diffusional fluxes 
+which are not taken into account in the ls-g*(s) model.&nbsp; </b>(This means
+that there is a lot more information in the data that we didn't extract yet.)<b>&nbsp; 
+At this stage, we can get a rough overview of the sedimenting species, but a 
+serious ls-g*(s) analysis would require constraining the fit to a subset of the 
+data.&nbsp; For more details, read the <a href="lsgofs_distribution.htm">
+tutorial on ls-g*(s)</a>.&nbsp; </b></p>
+<p>&nbsp;</p>
+<p>Next, we perform a c(s) <a href="sizedistributions.htm">size-distribution
+analysis</a> with <a href="LammEqSolutions.htm">solutions of the Lamm equation</a>,
+which takes diffusion into account by means of a weight-average frictional
+ratio.&nbsp; Switch to <a href="sedfit_help_cs.htm">c(s) model</a>, and enter in
+the parameter box a
+range from 0.1 to 15 S (resolution 150, P = 0.68), with an estimate for the
+frictional ratio of 1.5.&nbsp; This gives a good fit with rmsd 0.003
+fringes.&nbsp; Subtract the systematic noise (<a href="sedfit_help_subtract_calculated_noise.htm">ctrl-N</a>),
+and we see this picture:</p>
+<p><img border="0" src="images/sedfit90.gif" width="596" height="474"></p>
+<p>We can already see the main peak and some contaminations.&nbsp; The <a href="sedfit_help_residuals_bitmap.htm">residuals
+bitmap</a>,&nbsp;</p>
+<p><img border="0" src="images/sedfit92.gif" width="1478" height="76"></p>
+<p>shows a faint diagonal stripe, which indicates that it may be possible to
+improve the fit further.&nbsp;&nbsp;&nbsp;</p>
+<p>If we <a href="sedfit_help_plot_range.htm">expand the view</a>&nbsp;</p>
+<p><img border="0" src="images/sedfit93.gif" width="582" height="164"></p>
+<p>we can see some deviations in the fit of the first couple of scans:</p>
+<p><img border="0" src="images/sedfit94.gif" width="578" height="254"></p>
+<p>which is the cause of the large residuals in the vicinity of the
+meniscus.&nbsp; Therefore, in a second stage, we try to refine the analysis by
+including the <a href="sedfit_help_loading_options.htm#Simulate Rotor Acceleration Phase">rotor
+acceleration</a> in the solution of the Lamm equations, and we use the <a href="sedfit_help_fit.htm">Fit
+command</a> to optimize the frictional ratio and the position of the meniscus
+(we can temporarily switch off the regularization during fitting).&nbsp;
+Ignoring effects of partial-specific volume and solvent viscosity, this
+converges to a value of f/f0 of ~1.6 and a meniscus at ~ 6.071 cm<a href="#**">**</a>.&nbsp;
+This optimization takes between 20 and 30 min on a 900 MHz PC (it takes less
+time with fewer scans, e.g. every 10th).&nbsp; The rms
+error is ~ 0.0026 fringes</p>
+<p><img border="0" src="images/sedfit95.gif" width="596" height="475"></p>
+<p>The residuals bitmap is now virtually free of systematic deviations:</p>
+<p><img border="0" src="images/sedfit96.gif" width="1478" height="76"></p>
+<p><a href="sedfit_help_copy.htm#Copy Data Tables">Exporting the distribution</a>
+and plotting with Origin shows more details (with break in the axis):</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/sedfit91.gif" width="518" height="423"></p>
+<p>The s-values of the contaminating oligomeric species are slightly correlated
+with the f/f0 value.&nbsp; However, they are very significant, as well as the
+small fragment at ~ 0.5S.&nbsp; Relative concentrations can be obtained by
+integrating the area under the peaks.</p>
+<p>After <a href="sedfit_help_subtract_calculated_noise.htm">removing the
+systematic noise</a>, we can <a href="sedfit_help_plot_range.htm">expand the
+view</a> with the mouse,</p>
+<p><img border="0" src="images/sedfit99.gif" width="560" height="142"></p>
+<p>and see in lower part of the boundary close to the meniscus the presence of
+the small amount of low molecular weight contamination:</p>
+<p><img border="0" src="images/sedfit100.gif" width="563" height="150"></p>
+<p>as well as the slight back-diffusion caused by the small molecular weight in
+the later scans close to the meniscus</p>
+<p><img border="0" src="images/sedfit101.gif" width="556" height="146"></p>
+<p>(note the positive slope towards the bottom).&nbsp; Similarly, we can zoom in
+to the upper part of the boundary&nbsp;</p>
+<p><img border="0" src="images/sedfit102.gif" width="560" height="144"></p>
+<p>and verify the small portion of rapidly sedimenting material in the slightly
+skewed shape of the shoulder.&nbsp; Finally, we can look at the middle part of
+the boundaries</p>
+<p><img border="0" src="images/sedfit103.gif" width="563" height="146"></p>
+<p>and see that the diffusional spreading (decreasing slope) is well modeled.</p>
+<p><b>It should be noted that the full analysis of these data will have threefold
+higher density of scans (left out here for clarity).&nbsp; This shows the level
+of detailed information that can be extracted from sedimentation velocity analysis by
+direct boundary modeling.</b></p>
+<p>Switching to the <a href="sedfit_help_cm.htm">c(M) distribution</a> gives a
+gross estimate of molar mass distribution, which is valuable predominantly for
+the main species (as this governs the weight-average f/f0), less so for the
+oligomeric species:</p>
+<p><img border="0" src="images/sedfit97.gif" width="575" height="165"></p>
+<p><font color="#FF0000"><i><b>NEW:&nbsp; The distribution plot can now be
+expanded in sedfit by using the new command for <a href="sedfit_help_display.htm#Rescale Distribution Plot">rescaling
+the distribution plot</a> in the distribution menu. Also, using the new <a href="sedfit_help_size_distribution_options.htm#Integrate Distribution">integration
+tool</a>, we can calculate the loading concentration and weight-average s-value
+under each of the peaks.</b></i></font></p>
+<p>After having identified the number of the components, we can now make use of
+our knowledge that we have actually discrete species in solution.&nbsp; We can
+switch to the <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete
+species model</a>, and use the s-values of the peaks from the c(s) analysis as
+starting guesses.&nbsp; We can fix the monomer, dimer and trimer molar masses
+(for simplicity approximating the effective monomer molar mass by 150kDa -- of
+course if known, this should be substituted by the true molar mass of the
+monomer, and the <a href="sedfit_help_set_vbarxrho.htm">partial-specific volume
+and buffer density</a> should be entered), and float the s-values and
+concentrations of all species, as well as the molar mass of the small
+species.&nbsp; For this analysis, we load the complete set of 226 scans (in this
+model, a large number of scans does not slow the analysis down much, as in the
+distribution models - although it slows down the display).&nbsp; Also, we
+include the meniscus position as a floating parameter.&nbsp; </p>
+<p>[For a more general method to analyze discrete species in combination with 
+continuous segments, or for discrete species the unknown molar masses of known 
+oligomeric series, see the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">SEDPHAT hybrid 
+discrete/continuous model</a>]. </p>
+<p>We get the following fit, which suggests we have a total loading
+concentration of 0.359 fringes, and of this ~ 3% dimer, ~1% trimer, and 6%
+small Mw contamination.&nbsp;</p>
+<p><img border="0" src="images/sedfit104.gif" width="722" height="556"></p>
+<p>The rms error is 0.002612 <a href="#***">***</a>, very close to that of the
+c(s) analysis, which confirms that the peaks found in c(s) are indeed
+macromolecules that sediment as discrete species.&nbsp; Like before, the
+residuals bitmap shows very little systematics,</p>
+<p><img border="0" src="images/sedfit105.gif" width="1503" height="226"></p>
+<p>even if we use a scale of 0.01 for max black to white (instead of the default
+0.05 max scale).</p>
+<p>&nbsp;<img border="0" src="images/sedfit106.gif" width="1503" height="226"></p>
+<p><font size="1">The remaining patterns of vertical and horizontal lines are
+due to small vibrations and very small drifts in the interference optics
+producing systematic errors that are not described by RI and TI noise, showing
+limitations of stability of the commercial instrument.</font>&nbsp;</p>
+<p>At this point, we could ask if the 1% trimer is really statistically
+significant.&nbsp; For this, we can use the S<span style="font-variant: small-caps">edfit</span>
+<a href="sedfit_help_calculator.htm#Calculate F-distribution">calculator</a> to
+get from <a href="sedfit_help_fstatistics.htm">F-statistics</a> the rmsd cutoff
+for the 340,000 data points that corresponds to one standard deviation (P =
+0.68).&nbsp; We find that all fits with an rmsd higher than 0.002614 is
+statistically significantly worse (on a confidence level of one standard
+deviation).&nbsp; If we switch off the
+trimer component and refit the data, the fit converges at an rms value of
+0.002686, which shows that the 1% of trimer is statistically highly
+significant.&nbsp; <i>Note that this does not apply to the s-value, which is not
+well-determined, but the existence of an oligomer larger than the dimer</i>.&nbsp;</p>
+<p>The next question one might ask is what is the
+precision of the s-value of the main component.&nbsp; We use the '<a href="sedfit_help_confidence_intervals.htm">confidence
+interval for s</a>' function of S<span style="font-variant: small-caps">edfit</span>,
+which performs a series of fits constraining s1 to non-optimal values (we choose
+a test interval of 0.002, and a confidence level of 68%).&nbsp; The cutoff
+s-value will be reached when the rmsd of the fit is larger than 0.002614.&nbsp;
+For this analysis, we also should let the meniscus position float, as this
+parameter will be correlated with the sedimentation coefficients (and we don't
+know for sure that the previous best-fit meniscus is the true one).&nbsp; If the
+molar mass has some uncertainty, it should also been floated (for simplicity, we
+assume in this example that we know the molar masses of all but the small
+component).&nbsp; This takes a while because of the large number of scans and
+floating parameters (after a few tests to make sure everything is running OK, I
+did this analysis overnight).&nbsp; In the end, we get a confidence interval of [6.572 -
+6.623] (or approximately +/- 0.026 with a slight asymmetry), which corresponds
+to a relative error of&nbsp; ~0.4%.</p>
+<p>&nbsp;</p>
+<p><font color="#800080"><b><u>New in version 8.7:</u></b>&nbsp; Please note
+that corrections for solvent compressibility are now available.&nbsp; For using
+those, please read the <a href="file:///C:/peter/website/sedfithelpweb/inhomogeneous_solvent.htm">specific
+instructions</a> for this S<span style="font-variant: small-caps">edfit </span>mode.
+They have not been included in the above tutorial, yet.&nbsp; For the c(s)
+distribution with solvent compressibility, this will mean that the s-values are
+corrected to standard conditions (water 20C), and that the buffer viscosity and
+density in the input boxes will refer to standard conditions.&nbsp;</font></p>
+<p>&nbsp;</p>
+<p>An alternative analysis for cases where we do not want to make the assumption 
+of discrete species, we can look at the c(s,f/f0) analysis.&nbsp; This produces 
+the following result:</p>
+<p><img border="0" src="images/sedfit26.jpg" width="936" height="641"></p>
+<p>In the absence of the knowledge of discrete species, the molar mass 
+assignment to the trace components cannot be made, but the molar mass of the 
+major component can be well-determined without any scale-relationship 
+approximation:</p>
+<p><img border="0" src="images/sedfit27.jpg" width="671" height="562"></p>
+<p>&nbsp;</p>
+<p><b><font size="1">Footnotes:</font></b></p>
+<p><font size="1"><a name="**">**</a>&nbsp; At first, this meniscus position seems
+to be a little bit
+outside the range where it would be graphically estimated at this stage based on
+the appearance of the optical artifacts.&nbsp; However, it should be noted that
+after systematic noise has been subtracted, no judgment about the meniscus
+position can be made.&nbsp; If we take the best-fit meniscus position and
+compare it with the raw data, it does indeed look like a possible value:&nbsp; </font></p>
+<p><font size="1"><img border="0" src="images/sedfit98.gif" width="528" height="197"></font></p>
+<p><font size="1">Only the fact that this part of the meniscus artifact is
+similar in all scans has made it 'disappear' when subtracting the best-fit TI
+noise.&nbsp; In my experience, the analysis with floating meniscus yields
+reliable results, in particular when the data are acquired over the complete
+sedimentation process.&nbsp; </font></p>
+<p><font size="1"><a name="***">***</a> If the rms error is not exactly
+reproduced, this is due to the statistical nature of the simplex fit.&nbsp;
+However, essentially identical results should be obtained. </font></p>
+
+<!--mstheme--></font></body>
+
+</html>

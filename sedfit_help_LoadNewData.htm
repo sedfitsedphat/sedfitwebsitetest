@@ -1,0 +1,324 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Load New Files</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" language="Javascript1.2" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;Load&nbsp;New&nbsp;Files&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_setinitialdata.htm" target="">Set&nbsp;Initial&nbsp;Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_datautilities.htm" target="">Data&nbsp;Housekeeping</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="realtime.htm" target="">realtime</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="export_to_sedphat.htm" target="">Export&nbsp;to&nbsp;SEDPHAT</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_exit.htm" target="">Exit</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="64354" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="File Load">File Load</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="margin-top: 0; margin-bottom: 0">Data | Load New Files <font color="#FF00FF">(keyboard
+shortcut ctrl-</font></font><font color="#FF00FF">L</font><font COLOR="#0000ff"><font color="#FF00FF">)</font></p>
+<p style="margin-top: 0; margin-bottom: 0">Data | Load DLS Data</p>
+<p style="margin-top: 0; margin-bottom: 0">Data | Load Equilibrium Data</p>
+</font></b>
+<p>Loading data consists of a few simple steps. It is strongly recommended to
+read these instructions carefully, as most difficulties in first using S<span style="font-variant: small-caps">edfit</span> 
+arise from incorrect loading of data.&nbsp; According to the principle of direct
+boundary modeling, <b>there is no need for any data
+transformation, alignment, or any other operation</b>.&nbsp; (Systematic noise
+will be calculated algebraically, see <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a>.)<b>&nbsp;&nbsp;</b></p>
+<p>Some information on <a href="tutorial_ExperimentalConditions.htm">experimental
+conditions</a> is given in the <a href="tutorial_sizedistributions.htm">tutorial
+on size-distribution analysis</a>.&nbsp; Also, <a href="tutorial_loaddata.htm">considerations
+for setting the meniscus and the fitting limits</a> are described in the
+tutorial.&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="1) Opening the data files">1) Opening the data files</a></b></p>
+<p>When loading data, the dialog box for selecting a number of data files
+appears. Selection follows the usual Windows conventions (i.e. navigation to the
+directory, selection of filters, marking files either by holding ctrl-key and
+click on each file, or (better) by holding the shift key and clicking on the
+first and last)</p>
+<p><img border="0" src="images/sedfit8.gif" width="426" height="285"></p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">(in a real example, for <a href="sedfit_help_model.htm">direct
+boundary modeling</a> it is always
+recommended to analyze as large a data set as possible, which usually is the
+entire available data. Exceptions are the <a href="sedfit_help_van_holde-weischet.htm">van
+Holde-Weischet</a> procedures for diagnostic purpose)</font></p>
+<p><i>New in version 9.2:&nbsp; Drag-and-drop loading of files into SEDFIT is 
+possible.&nbsp; This substitutes the use of the menu function Data-&gt;Load New 
+Files and the use of the file selection box.&nbsp; Everything else that follows 
+is the same.</i></p>
+<p>This is straightforward, but there are a few rules:&nbsp;</p>
+<p>* make sure that by use of the appropriate filters, e.g. by typing *.ip1,
+only scans from a single cell are loaded <font color="#FF0000">(New: Please note
+the new preset file filters in the &quot;files of type&quot; menu.)</font></p>
+<p>* it is not necessary to select by hand '<a name="every n-th file">every n-th
+file</a>', as this can be
+selected later in a box that will pop up:</p>
+<p><img border="0" src="images/sedfit9.gif" width="275" height="129"></p>
+<p>entering 1 will load all files, 2 every second, 10 every tenth, etc. This can
+allow to speed up a first rough analysis of interference data.</p>
+<p>* permission to write to the drive containing the data is required.&nbsp;
+This means that data cannot directly loaded from a CD, or certain network drives
+(in this case, the data should be temporarily copied to a drive with write
+permission, such as a local hard drive).&nbsp; The reason is that several new files will be written into the
+data directory.</p>
+<p>* more than one file has to be loaded</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">instead of a selection of multiple files, a file 'list.ip1' (or
+analogous) previously generated by SEDFIT can be selected.&nbsp; This file
+contains all information about the complete previous set of files, and can be
+edited by a text-editor such as notepad.&nbsp; (After moving the data to a
+different location,&nbsp; the first line in the list-file may have to be edited
+to reflect the correct new pathname.&nbsp; Further editing can be done by
+inserting a '%' at the beginning of a line with a particular filename, this will omit the following file
+from being loaded)&nbsp;</font></p>
+<p>* if files are loaded from a previously analyzed experiment, a box appears</p>
+<p><img border="0" src="images/sedfit10.gif" width="185" height="121"></p>
+<p>'yes' will <a name="restore the previous analysis">restore the previous analysis</a>, including meniscus
+and bottom setting. Currently, this will work for c(s), c(s,f), c(s) with 
+discrete component, and c(s,f) with discrete component models. </p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">the parameters from a previous fit are stored in a file
+'~tmppars.ip1' (or analogous).&nbsp; This file can be inspected and edited with
+a text editor (see <a href="sedfit_help_fittmppars.htm">format
+of the ~tmppars file</a>).&nbsp; When the program previously crashed during the fit, the
+best fit up to the time of the crash will be reloaded (see <a href="sedfit_faqs.htm#when loading data">FAQs</a>)</font></p>
+<p>* there are a large number of <a href="sedfit_help_loading_options.htm">loading
+options</a>, including elimination of spikes, filename convention, file formats,
+handling of rotor acceleration, data transformations, etc.&nbsp; Some of these
+can have an influence on the numerical details of the data loaded. Another
+function allows to <a href="sedfit_help_loading_options.htm#invert data">multiply
+the data by -1</a>, in case the sample and reference side of the centrifuge cell
+have been inadvertently switched.&nbsp;</p>
+<p>* there will be an automatic check if the temperature was stable during the
+run.&nbsp; If there was a drift by more than 1 degree, the <a href="sedfit_help_display.htm#TemperaturePlot">temperature
+plot</a> a warning message will appear.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><a name="2) Inspecting the data plot and setting limits">2) Inspecting the data plot and setting
+meniscus and bottom</a>&nbsp;</b></p>
+<p>After successful reading of the data files, the S<span style="font-variant: small-caps">EDFIT</span>
+window will show two plots, the upper one for the data and fit, the lower one
+the residuals.&nbsp;&nbsp;The appearance of these plots can be changed in the <a href="sedfit_help_display.htm">display
+menu</a> and additional information (data filenames, residuals bitmap, etc. can
+be retrieved).&nbsp;&nbsp;</p>
+<p>However, initially there's no fit and therefore the residuals plot shows the
+entire data (unless a previous fit is being restored):</p>
+<p><img border="0" src="images/sedfit11.gif" width="649" height="521"></p>
+<p>Note the red and the blue lines in the upper plot.&nbsp; They denote meniscus
+and bottom of the solution column, respectively.&nbsp; By default, after loading
+the data, they are just set to the innermost and outermost radius of the
+data.&nbsp; Because Lamm equation analysis requires knowledge of the boundaries
+of the solution column, <b>the meniscus and bottom must be set by the user</b>.&nbsp;&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">later on, the meniscus and bottom position can also be entered
+numerically, and be refined by
+nonlinear regression (see <a href="sedfit_help_parameters.htm#Meniscus">fit
+parameters</a>).</font></p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">if a previous analysis has been performed already after starting
+SEDFIT, the window will already have meniscus and bottom positions, as well as
+green lines indicating the radial range for fitting.&nbsp; These values can be
+accepted, if they represent good values for the new data, or new positions can
+be entered, ignoring the old location.&nbsp; Sometimes, if the previous data
+span a completely different range than the new data, the meniscus and bottom may
+be out of range of the data plot.&nbsp; In this case, it can be easier to enter
+the meniscus and bottom numerically (see <a href="sedfit_help_parameters.htm#Meniscus">fit
+parameters</a>)&nbsp;</font></p>
+<p>Graphically entering the meniscus is done the following way:&nbsp;&nbsp;</p>
+<p>a) <b> hold the control-button pressed, and left-double click with the mouse at
+the radial position where the meniscus likely is located</b>.&nbsp; This will
+generate a black line, and the radius value of the location will be
+printed.&nbsp;</p>
+<p><img border="0" src="images/sedfit12.gif" width="647" height="519"></p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">if not satisfied with the position of the black line, it can be re-entered
+in the same way (by ctrl-left-double-click), or by shifting it with the arrow keys.&nbsp;
+For better inspection of the data, the view can be changed, e.g. spanning
+a view rectangle with the right mouse button, as described in the <a href="sedfit_help_plot_range.htm">display
+menu</a>.&nbsp; If the process of graphical entry of a data limit shall be
+aborted, press the Esc key.</font></p>
+<p>To confirm the current position, <b>press the Enter-key</b> (or the tab key). This will make a new red line at the new meniscus position. Note that
+the old red line, for economic reasons, will not immediately erased, but only
+after the windows is redrawn. (This can be forced using the <a href="sedfit_help_display.htm#Update all Graphics">display
+update</a> menu function.)</p>
+<p><img border="0" src="images/sedfit13.gif" width="648" height="520"></p>
+<p>Please note that the graphical determination of the meniscus position should
+always be done with the raw data! (Systematic noise subtraction can obscure the
+meniscus artifacts.)</p>
+<p>b) we set the bottom position in the same way:&nbsp; <b>ctrl-left-double-click
+to the position where the bottom is located</b>.&nbsp; This will also
+generate a black line at the new position (here at 7.2 cm).&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit14.gif" width="646" height="520">&nbsp;</p>
+<p>If satisfied, we <b> confirm the position with the Enter key </b>or the tab key. This
+will set the new bottom position, and a new blue line will appear:</p>
+<p><img border="0" src="images/sedfit16.gif" width="618" height="497"></p>
+<p>you can ignore the old red and blue lines, or else force a redraw of the
+screen.</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">SEDFIT distinguishes meniscus and bottom because of their
+relative position, and it interprets any new limit as a relocation of the
+solution boundary it is closest to.&nbsp; This is very convenient and works well
+in most cases.&nbsp; Sometimes, however, when the data span a much larger radial
+range than the actual solution column, some confusion between meniscus and
+bottom can appear.&nbsp; In this case, it can be necessary to set the meniscus
+position in several steps.&nbsp; For example, if the data were recorded from 5.8
+cm to 7.2 cm, but the actual solution is only from 6.9 cm to 7.2 cm, then
+entering a limit at 6.9 cm will be interpreted wrongly as a new <i>bottom</i>
+location.&nbsp; This can be avoided by setting first an intermediate meniscus
+position to 6.2 cm, then to 6.5 cm, 6.8 cm, and finally to 6.9 cm.&nbsp; This
+sequence does not move the meniscus more than 50% of the distance meniscus -
+bottom in any single step, and therefore SEDFIT does not get confused.&nbsp;&nbsp;&nbsp;</font></p>
+<p><font color="#800080"><b>Note in version 11.0 (December 2007) and later: All 
+limits can now be moved around by dragging with the mouse</b></font></p>
+<p>&nbsp;</p>
+<p><b><a name="3) Setting the data range suitable for analysis">3) Setting the
+data range suitable for analysis</a></b></p>
+<p>Because not all the data between meniscus and bottom can be analyzed, due to
+the unavoidable optical artifacts close to the solution boundaries, we have to
+set the inner and outer data analysis limit.&nbsp; This is done very similar to
+the meniscus and bottom, but <i>without</i> the control-key.&nbsp; The sequence
+here is relevant:&nbsp; <b>First set the outer analysis limit by
+left-double-click </b>at the maximum radius position that contains artifact-free
+data.&nbsp; This will generate a black line:&nbsp;</p>
+<p><img border="0" src="images/sedfit17.gif" width="614" height="469"></p>
+<p>If necessary, relocate with the arrow keys, or re-enter it with the mouse
+left double-click at a new place. <b>Accept the position</b> <b>with the Enter
+key</b> (or tab key).&nbsp; This will generate a green line indicating the outer
+fitting limit:</p>
+<p><img border="0" src="images/sedfit18.gif" width="616" height="468"></p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">In the Lamm equation analysis procedures of SEDFIT, the
+back-diffusion from the bottom can be included in the analysis.&nbsp; In fact,
+for small molecules this part contains a lot of information.&nbsp; One should be
+aware, however, that this makes the bottom position of the solution column an
+important parameter, and sometimes it is important to optimize the bottom
+position during the fit (see <a href="sedfit_help_parameters.htm#Meniscus">fit
+parameters</a>).&nbsp; If the sample contains only large molecules, however, the
+back-diffusion regime is very steep and can conveniently be excluded from the
+analysis.&nbsp; (If the back-diffusion range is as steep in as in the data
+shown, for example, the residuals in this range would tend to dominate the
+overall fit, but not carry a lot of reliable information.)</font></p>
+<p>Note that a second green line has been generated close to the meniscus.&nbsp;
+<font color="#FF0000"><b>This is only a default position, and in general, next, the inner analysis
+limit should be set by the user.</b></font> <b>Left-double-click at the desired radial
+position</b>.</p>
+<p><img border="0" src="images/sedfit19.gif" width="614" height="469"></p>
+<p>Here, for example, we have moved the inner analysis limit a little bit
+further away from the meniscus to make sure there are no meniscus artifacts in
+the data range for the analysis. <b>Accept the position with the Enter key</b>
+(or tab key).&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">The data range in between the green lines must be common to all
+data sets.&nbsp; If there's a data set that does not span the same data range,
+an error message will be generated (see <a href="sedfit_faqs.htm#FAQ:  error message &quot;possible problem with right limit...&quot;">FAQs</a>),
+and the green lines will be adjusted to the maximal possible range.&nbsp;</font></p>
+<p>At this point, I recommend to force a screen redraw, for example by using the
+<a href="sedfit_help_display.htm#Update all Graphics">Display-&gt;Update</a>
+command.</p>
+<p><img border="0" src="images/sedfit20.gif" width="613" height="450"></p>
+<p>Please note that we have now have (from left to right) a red line at the
+meniscus, followed by a green line indicating from where we trust the data being
+artifact free, followed by another green line indicating the end of our fitting
+range, and finally a blue line indicating the bottom position. The residuals
+plot (lower plot) now only shows data in between of the green lines, i.e. in the
+data analysis range.&nbsp;&nbsp;</p>
+<p>That's all that is required for loading data.&nbsp; More data files of the same experiment can be loaded by using the function
+<a href="#Adding Files">Add More Files</a>.&nbsp;</p>
+<p><font color="#800080"><b>Note in version 11.0 (December 2007) and later: All 
+limits can now be moved around by dragging with the mouse</b></font></p>
+<p><font color="#800080"><b>Further, the different filenames associated with the 
+scans appear when moving the mouse across the scan or residual, here, for 
+example, scan #34.</b></font></p>
+<p><img border="0" src="images/tutori39.jpg"></p>
+<p>clicking the left mouse button then makes a menu appear with clickable 
+buttons</p>
+<p><img border="0" src="images/tutori40.jpg"></p>
+<p>The &quot;edit&quot; button allows to either edit the scan in the notepad, or simply 
+delete a single data point.</p>
+<p><img border="0" src="images/tutori41.jpg"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<i>
+<b>
+<p>Variants:&nbsp;</b></i> S<span style="font-variant: small-caps">edfit</span> can also work with data from dynamic light
+scattering, and&nbsp; XLA/XLI sedimentation
+equilibrium data files.</p>
+<b><i><p>1) <a name="Loading DLS data:">Loading DLS data:</a></i></b> For DLS
+data, first several raw autocorrelation data sets from Protein Solutions 99
+(version 5.20.05), Brookhaven Instruments, or ALV are transformed into a new data
+format (g(2)-1 as ASCII with header). This is described in <font FACE="Modern"><a href="sedfit_help_loading_options.htm#Generating DLS Data Files">generate DLS data file</a></font>.
+The generated data format *.dlsdat can then be loaded with <b><font COLOR="#0000ff">Data
+| Load DLS Data</font></b>. Of course, the lines for meniscus
+and bottom become meaningless, but the green lines for the data analysis range
+keep their function.&nbsp; The data will be transformed into
+field autocorrelation functions by using the relationship g(1)<sup>2</sup> + 1 =
+g(2). DLS data can be analyzed in terms of size-distribution,
+diffusion coefficient distribution, or single species (described <a href="sedfit_help_dls.htm">here</a>), all using the same
+framework and in analogy to the sedimentation velocity analyses.</p>
+<b><i><p>2) <a name="Sedimenation Equilibrium Data:">Sedimentation Equilibrium Data:</a></i></b>
+Equilibrium data can be loaded into S<span style="font-variant: small-caps">edfit</span> (<b><font COLOR="#0000ff">Data | Load Sedimentation Equilibrium Data</font></b>), mainly to allow the use of
+the size-distribution formalism <a href="sedfit_help_cm.htm">c(M)</a> for equilibrium analysis.&nbsp;
+The <a href="sedfit_help_cm.htm">c(M)</a> and the <a href="sedfit_help_independent_ideal_species.htm">independent
+species model</a> can be used; both will automatically use the appropriate
+equilibrium model functions.&nbsp; In contrast to
+loading of sedimentation velocity data, here only a single file should be
+loaded. It should be noted that the analysis of molar mass distributions can be
+very ill-conditioned. When analyzing equilibrium data, concentrations are referring to
+effective loading concentrations,
+making use of the specified meniscus and bottom position to integrate through
+the solution column.</p>
+<b><i>
+<p>3) <a name="Electrophoresis data:">Electrophoresis data:</a></i></b>
+Electrophoresis data (with ‘E’ as a type character in the
+file header) can be loaded in the same way as sedimentation velocity data. The data can be
+analyzed in analogy to the sedimentation velocity analyses, substituting the
+s-value by velocities v (in <font FACE="Symbol">m</font>m/sec), and making use
+of the fact that the electrophoresis is a process that resembles sedimentation
+with a constant force and linear geometry. From the velocities and the known
+field, electrophoretic mobilities can be calculated.&nbsp; Only the models
+labeled as electrophoresis analysis can be used.&nbsp; They are described <a href="sedfit_help_other_geometries.htm">here</a>.&nbsp;</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Adding Files">Adding Files</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Add More Files</p>
+</font></b>
+<p>This function allows to increase the number of scans that are included into
+the analysis, by loading additional data files.&nbsp; This is straightforward,
+but it should be noted that no provision is made to eliminate duplication of
+files.&nbsp; Single files can here be selected.</p>
+<p>The additional data files
+will not be added to the files documented in the file &quot;list.*&quot;. If no
+data previously have been loaded, this will invoke the same function as <a href="#File Load">Data-&gt;Load
+New Files</a>.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Changing Cells">Changing Cells</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Change Cell (Same Selection)</p>
+</font></b>
+<p>This function loads the same selection of scans as currently loaded, but 
+taken from the data of another cell.&nbsp; This is a convenient way to switch to 
+the analysis of similar data in the other cell.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

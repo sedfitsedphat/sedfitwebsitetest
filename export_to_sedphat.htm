@@ -1,0 +1,69 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Export to SEDPHAT</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loadnewdata.htm" target="">Load&nbsp;New&nbsp;Files</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_setinitialdata.htm" target="">Set&nbsp;Initial&nbsp;Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_datautilities.htm" target="">Data&nbsp;Housekeeping</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="realtime.htm" target="">realtime</a>&nbsp;]</nobr> <nobr>[&nbsp;Export&nbsp;to&nbsp;SEDPHAT&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_exit.htm" target="">Exit</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="27995" endspan --></p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="File Load">Export Data to SEDPHAT</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="margin-top: 0; margin-bottom: 0">Data | Export Data to SEDPHAT</p>
+</font></b>
+<p>This function provides a more seamless interface between S<span style="font-variant: small-caps">edfit</span> 
+and <a target="_blank" href="sedphat/sedphat.htm">S<span style="font-variant: small-caps">edphat</span></a>.&nbsp; 
+It does the following:</p>
+<p>1) It generates a <a href="sedphat/experiment1.htm">S<span style="font-variant: small-caps">edphat</span> 
+xp-file</a> from the currently loaded data.&nbsp; This eliminates the need to 
+re-select the data, enter the fitting limits and other parameters.&nbsp; It also 
+automatically generates the correct data type.&nbsp; This xp-file can be saved 
+and stored for further use.</p>
+<p>2) When using the c(s) model in S<span style="font-variant: small-caps">edfit</span>, 
+it automatically generates a
+<a target="_blank" href="sedphat/configurations.htm">S<span style="font-variant: small-caps">edphat</span> 
+configuration file</a> and <a target="_blank" href="sedphat/data1.htm#Model">
+model parameters file</a> in the
+<a target="_blank" href="sedphat/hybrid_local_continuos_global_discrete.htm">
+hybrid discrete/continuous distribution model</a>.&nbsp; The parameters are 
+transferred, so that the settings are equivalent to the current c(s) analysis.&nbsp; 
+In this way, the data and the model are ready for a refined analysis by 
+inserting discrete species.&nbsp; Optionally, all peaks in c(s) can be converted 
+into discrete species in S<span style="font-variant: small-caps">edphat .</span></p>
+<p>3)&nbsp; S<span style="font-variant: small-caps">edphat </span>will be 
+spawned automatically in a new analysis window. (Note that S<span style="font-variant: small-caps">edphat </span>
+needs to be located in c:\sedfit\sedphat.exe)</p>
+<p>&nbsp;</p>
+<p>The different steps requiring input are:</p>
+<p>1) enter the directory and filename for the xp-file to be generated.</p>
+<p>2) verify the buffer density</p>
+<p>3) verify the buffer viscosity</p>
+<p>4) verify the partial-specific volume</p>
+<p>5) confirm the optical pathlength of 1.2 cm</p>
+<p>6) specify the rotor type as 4 (4-hole) or 8 (8-hole) </p>
+<p>7) launch S<span style="font-variant: small-caps">edphat </span>(yes/no)</p>
+<p>&nbsp;</p>
+
+<p>An example for testing the correct installation and communication of S<span style="font-variant: small-caps">edfitT</span> 
+and S<span style="font-variant: small-caps">edphaT</span>&nbsp; can be found
+<a target="_blank" href="sedphat/verifyinginstallation.htm#3) Testing the communication between SedfiT and SedphaT">
+here</a>.</p>
+
+<p>&nbsp;</p>
+<p><font color="#FF00FF"><b><a name="import xp-files">Import xp-filies:</a></b></font></p>
+<p>New in version 9.2: SEDFIT can now receive xp-files via drag-and-drop.&nbsp; 
+This has the advantage that an analysis can be repeated easily using exactly the 
+same settings. </p>
+
+<!--mstheme--></font></body>
+
+</html>

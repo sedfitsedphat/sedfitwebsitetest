@@ -1,0 +1,31 @@
+Analyzing DLS data from the Wyatt, DynaPro Titan using Sedfit:
+These instructions deal with data taken using Wyatt version 6.12.0.3
+The data must be presented to Sedfit in the proper way.
+1. DynaPro software is called Dynamics. You are in Dynamics V6 and      have taken data. The company recommends taking 10 acquisitions      at 10 seconds per acq. If you take 40 acq, you double the precision      of your measure. If you take 160, you double the precision once      again. Judge whether your desire for precision outweighs your      impatience. If it does not, just use the Dynamics software for      analysis! (NB. Peter Schuck did not write this.)
+2. Go to the correlation graph. Remove all fitting limits.
+3. Remove all check marks; this leaves the intensity autocorrelation vs      time.
+4. Mouse on the curve, left click. Right click and export data as *.csv      file. You have no choice.
+5. Open the Xcel file and save it as a Tab delimited *.txt file. Close 
+6. Open the new *.txt file in Notepad.
+7. Remove the first line. Save file and exit.
+5. Open Sedfit.
+6. Options, Loading Options, Import DLS data, 
+     Make DLS data (Protein Solutions 99, ver 6.2.05 for our system)
+7. Sedfit will ask for file name. Type in the *.txt name. The program will      ask you to save it: SAVE
+8. It will then ask you to save it as *.dlsdat: SAVE
+     It will then ask you about conditions. 
+     Enter viscosity, Refractive Index (if you know it), Our laser is      831.15, 90 degrees, temp
+9. After last entry file is automatically saved.
+10. Close Sedfit and reopen. This may not be necessary on your      computer but it saves us some grief. Go to DATA, Load DLS data.      Chose your *.DLSDAT file.
+11. Set limits.  
+     LEFT side, position cursor on the green line. CNTL double click. 
+     RIGHT side, position cursor on green line. CNTL double click. (I      like to have as much data included as possible. It may turn out that      some of your data, at the extremes is not free from artifacts in      which case you will want to adjust the fitting limits to other      values.) If you are happy with the quality of your data, do not      adjust the green bar fitting limits.
+     In any event, set the green bars if you want to avoid bad data at the      extrema. Use most of the data if possible.
+12. Model: Discreet Stokes' Radii. Set viscosity
+13. Parameters: Check component 1, I, and R. Set "I" at 0.5. Set R at 5. 
+14. Hit Run and then FIT.
+15. Go back to the parameters box and check component 2. I, R. Set I at 0.5 and R at 10. Hit run and then fit.
+16. Go back to the parameters box and check component 3. Repeat the process with the checks and the fitting. Repeat the process with component 4......
+17. After you have added in all the components, continue to hit the fit button until the radii, the rmsd and the fractions no longer change. 
+18. You'll find that the resolution and final data are beautiful.  
+File is My Docs\Analyzing DLS ......

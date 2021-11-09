@@ -1,0 +1,109 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>model</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="data1.htm" target="">data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="display.htm" target="">display</a>&nbsp;]</nobr> <nobr>[&nbsp;model&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment_parameters.htm" target="">experiment&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="options.htm" target="">options</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="19013" endspan -->
+</font></p>
+<h2>Model</h2>
+<p><img border="0" src="menubilder/model.1.gif" width="444" height="437"></p>
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a></nobr><br> <nobr><a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a></nobr><br> <nobr><a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a></nobr><br> <nobr><a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a></nobr><br> <nobr><a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a></nobr><br> <nobr><a href="nonideal_species.htm" target="">nonideal&nbsp;species</a></nobr><br> <nobr><a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a></nobr><br> <nobr><a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a></nobr><br> <nobr><a href="self-association.htm" target="">Self-association</a></nobr><br> <nobr><a href="hetero-associations.htm" target="">hetero-associations</a></nobr><br> <nobr><a href="mixedassoc.htm" target="">mixedAssoc</a></nobr><br> <nobr><a href="ternary_systems.htm" target="">ternary&nbsp;systems</a></nobr><!--webbot bot="Navigation" i-checksum="50790" endspan --></font></p>
+<p>These are the models for global analysis.&nbsp; The list of models is planned
+to be continuously extended.&nbsp; (If you don't find the model you need, you
+could inquire for advance sharing of newer S<span style="font-variant: small-caps">edphaT</span>
+versions with extended models - even if it doesn't exist, feedback on what users
+would like to have could be useful for me.)</p>
+<p>Note that you can modify the default model S<span style="font-variant: small-caps">edphaT</span> 
+starts up with, and also for each model the default parameters.&nbsp; Further, 
+you can store the global parameters of the models into files.&nbsp; These are *.sedphat_PAR 
+files.&nbsp; They can be loaded or imported by drag-and-drop and applied to the 
+currently loaded data.&nbsp; For more 
+details, see <a href="global_parameters.htm">Global Parameters</a>, and the
+<a href="experiment_parameters.htm">Data-&gt;Model</a> functions.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>Generally, you can distinguish the models in three major classes:&nbsp;
+non-interacting macromolecular species and mixtures, self-associating protein
+systems, and hetero-association systems.</p>
+<p><a name="Non-interacting models"><b>Non-interacting models</b></a>&nbsp;</p>
+<p>The non-interacting models come in greater variety in global modeling than in
+the single experiment modeling of S<span style="font-variant: small-caps">edfiT</span>.&nbsp;
+The reason is the different assumptions made as to whether the partial
+concentrations of the different species may be different, or if they are
+identical in the different experiments.&nbsp; First, one could imagine that
+because of different sample concentrations, the fractional concentration of a
+particular component of a mixture could be differently populated.&nbsp;
+Likewise, different populations may simply show up with higher or lower signal
+contributions in the different experiments.&nbsp; An example of the latter could
+be labeled mixtures with variable labeling efficiency for the different
+experiments, or dynamic light scattering experiments where the signal
+contribution is proportional to the molar mass of the particles.&nbsp; Second,
+it is possible that although all the fractional concentrations of all
+sub-populations are the same in different experiments, the total loading
+concentration might be different.&nbsp; This could be the case, for example, if
+different experiment employ different dilutions of the otherwise identical
+mixture.&nbsp; Third, a difference may occur in sedimentation equilibrium
+analysis as to whether mass conservation can be assumed or not.</p>
+<p>Global modeling of mixtures of non-interacting species can be very useful,
+for example, combining sedimentation equilibrium data, sedimentation velocity
+data at different rotor speeds, and/or dynamic light scattering data.</p>
+<p><font color="#0000FF">The model of the sedimentation coefficient distribution 
+of non-interacting species c(s) can also be applied to rapidly interacting 
+species, if the peaks are interpreted in the framework of asymptotic boundary 
+shapes in Gilbert-Jenkins theory.&nbsp; In this way, isotherms for the reaction 
+boundary can be derived in this way.&nbsp; </font></p>
+<p><font color="#0000FF">Further, the model of component sedimentation 
+coefficient distribution c<sub>k</sub>(s) can enable the determination of the 
+composition of complexes formed by interacting proteins.&nbsp; </font></p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><a name="Self-association models"><b>Self-association models</b></a>&nbsp;</p>
+<p>For sedimentation velocity data, these models include models for both slow 
+chemical kinetics, as well as rapid chemical kinetics
+on the time-scale of sedimentation.&nbsp; They are straightforward, although the two-step association models
+are not implemented yet.&nbsp; No self-association model is implemented yet for
+dynamic light scattering.&nbsp;&nbsp;&nbsp;</p>
+<p>Self-association models are studied best in a global analysis of several
+experiments conducted at a range of protein concentrations.&nbsp;&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><a name="Heterogeneous association models"><b>Heterogeneous association
+models</b></a></p>
+<p>Models for rapid chemical equilibrium as well as slow chemical reactions are 
+available.&nbsp; The more complex mixed association models are currently available only for sedimentation
+equilibrium.&nbsp;  Note the comments on how to deal with the <a href="partspecvols.htm#heterogeneous interactions">partial-specific
+volume for heterogeneous associations</a>.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><font color="#FF0000"><b>Note from version 4.0 and up:&nbsp; The appearance 
+of the parameter input boxes for interacting systems will depend on the data 
+type loaded.&nbsp; The goal is to simplify the parameter entry by eliminating 
+irrelevant parameters . For example, enthalpy number are only required in ITC 
+experiments, and kinetic rate constants currently only for sedimentation 
+velocity.</b></font></p>
+<p>&nbsp;</p>
+<p>Follow these links for more detailed information on the particular
+models:&nbsp;</p>
+<p>
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a></nobr><br> <nobr><a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a></nobr><br> <nobr><a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a></nobr><br> <nobr><a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a></nobr><br> <nobr><a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a></nobr><br> <nobr><a href="nonideal_species.htm" target="">nonideal&nbsp;species</a></nobr><br> <nobr><a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a></nobr><br> <nobr><a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a></nobr><br> <nobr><a href="self-association.htm" target="">Self-association</a></nobr><br> <nobr><a href="hetero-associations.htm" target="">hetero-associations</a></nobr><br> <nobr><a href="mixedassoc.htm" target="">mixedAssoc</a></nobr><br> <nobr><a href="ternary_systems.htm" target="">ternary&nbsp;systems</a></nobr><!--webbot bot="Navigation" i-checksum="50790" endspan -->
+</p>
+<p>&nbsp;</p>
+
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

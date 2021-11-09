@@ -1,0 +1,235 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>parameters</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><font size="2">[ <a href="sedfit_help.htm">sedfit help home</a> ]</font></p>
+<p><font size="2"><!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="FALSE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_copy.htm" target="">Copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Model</a>&nbsp;]</nobr> <nobr>[&nbsp;Parameters&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_generate.htm" target="">Generate</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_statistics.htm" target="">Statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_notes.htm" target="">Notes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_options.htm" target="">Options</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_help.htm" target="">Help</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="44613" -->
+</font></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<h2>fitting parameters and controls</h2>
+</font><b><font COLOR="#0000ff">
+<p>Parameters <font color="#FF00FF">(keyboard
+shortcut ctrl-</font></font><font color="#FF00FF">P</font><font COLOR="#0000ff"><font color="#FF00FF">)</font></p>
+</font></b>
+<p>This menu item invokes a parameter input dialog box, which will be slightly
+different dependent on the model used.&nbsp; Each of the parameter boxes are
+shown in the website of the particular model.&nbsp;&nbsp;</p>
+<p>The following information is based on the non-interacting discrete species
+model, but several elements will be identical for all models.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/noninteractingbox.gif" align="left" width="443" height="301"></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">upper section
+specifying&nbsp;model-specific parameters,&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">here c, s and M
+values of up to 4 components</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">middle section
+with experimental conditions</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">lower section with
+Lamm equation and&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">nonlinear
+regression parameters</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">The upper sections
+specifies the parameter specific for the model (see the <a href="sedfit_help_independent_ideal_species.htm">non-interacting
+discrete species model</a> for more details on the particular parameter box
+shown).&nbsp; <b>A convention used in all parameter boxes is that a check-mark
+next to a parameter field will cause this parameter to be optimized when using
+the <a href="sedfit_help_fit.htm">Fit</a> command (for non-linear parameters) or
+the <a href="sedfit_help_run.htm">Run</a> command (for linear parameters).</b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>The middle section contains controls that depend on the experiment, which are
+common to many models:</p>
+<p>1) a checkbox ‘<b><a name="FIT TI Noise">FIT TI Noise</a></b>’.&nbsp; If
+checked, the boundary analysis is combined with an unknown radial-dependent
+background profile that remains constant in time (<b>T</b>ime <b>I</b>nvariant).&nbsp;
+This is calculated algebraically and explicit background profiles are used for
+direct boundary modeling (see <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a>, and <a href="#ref1"> ref 1</a>).&nbsp;
+Mostly, this function will be used when analyzing interference optical data,
+although application to absorbance data can occasionally be useful, too (<a href="#ref1">ref
+1</a>).&nbsp;
+It is switched on for interference data by default.&nbsp; After the
+time-invariant background is calculated, it can be <a href="sedfit_help_subtract_calculated_noise.htm">subtracted</a>
+from the data for better inspection of the fit.&nbsp; Because this TI noise
+consists of linear parameters, it will be calculated in both the <a href="sedfit_help_run.htm">run</a>
+and the <a href="sedfit_help_fit.htm">fit</a> command.</p>
+<p>2) a check box ‘<b><a name="FIT RI Noise">FIT RI Noise</a></b>’.&nbsp; If
+checked, this adds to the model the possibility of a baseline offset that is constant in radial direction, but different for each scan.&nbsp;
+Like the TI noise, this is calculated algebraically (see <a href="systematic_noise_analysis.htm">systematic
+noise analysis</a> and ref <a href="../sedfitweb/references.htm#ref noise analysis">3</a>),
+each time when the <a href="sedfit_help_run.htm">run</a> and the <a href="sedfit_help_fit.htm">fit</a>
+command are used.&nbsp; It is switched on for interference data by default,
+because of the small up-and-down displacement (jitter) always involved in
+sequences of interference scans.&nbsp; Also, the integral fringe displacement
+sometimes encountered in interference data can count as RI noise.&nbsp; <b>Please
+note:&nbsp; </b>No correction for jitter or fringe displacement should be
+performed before the analysis.&nbsp; The best-fit displacements will be result
+of the analysis, and can be <a href="sedfit_help_subtract_calculated_noise.htm">subtracted</a>
+from the data after the boundary modeling.</p>
+<p>3) the field <b><a name="Baseline">Baseline</a></b> allows to enter and
+optimize a constant baseline
+that is common to all scans and that is constant in radial direction. If this is
+checked, it will be optimized with each simulation. It is recommended to keep
+the baseline parameter floated for absorbance data (except when working with
+very small molecules and small sedimentation rates, when some correlation with
+the molar mass can be possible if simultaneously floating the bottom
+parameter).&nbsp;</p>
+<p>4) the <b><a name="Meniscus">Meniscus</a></b>&nbsp; position of the solution
+column will generally show the radius value that has been graphically determined
+when loading the files.&nbsp; However, the value can also be entered or changed here. The value of the meniscus
+position is very important for measuring the sedimentation velocity.&nbsp; When
+the field is marked, the meniscus is treated as a nonlinear fitting parameter,
+to be optimized in the <a href="sedfit_help_fit.htm">fit</a> command.&nbsp; In this case, constraints for a
+the lowest and highest possible values are necessary (as judged from graphical
+inspection of the data), and a prompt will
+automatically ask for these values when closing the parameter box. They should be carefully entered, since the
+default interval could be off.&nbsp; The range constraints can also be set through
+the <a href="sedfit_help_fitting_options.htm#Constraints for Fitting of Meniscus and Bottom">fitting
+options</a>.</p>
+<p>5) the <b><a name="Bottom">Bottom</a> </b>position of the cell is shown here,
+as graphically entered.&nbsp; Analogous to the meniscus field, it can be entered
+or modified here.&nbsp; Also, the bottom value can be treated as a fitting
+parameter (when checked) to be optimized in the <a href="sedfit_help_fit.htm">fit</a>
+command. Also,
+constraints for a the lowest and highest possible values are necessary when
+floated, and a
+prompt will automatically ask for these values (which can be modified through
+the <a href="sedfit_help_fitting_options.htm#Constraints for Fitting of Meniscus and Bottom">fitting
+options</a>).&nbsp; Fitting for the bottom position is very important when
+back-diffusion of the species from the bottom is modeled, because the exact
+bottom position is very difficult to locate graphically.&nbsp; Analysis with
+floating bottom will mostly be required for small molecules with high diffusion
+constants, at low rotor speeds, or in approach-to-equilibrium analyses.&nbsp; It
+should be noted, though, that in approach-to-equilibrium analyses at low rotor
+speed the simultaneous floating of the three parameters bottom, baseline, and
+molar mass can lead to slight correlation (although generally any two will be
+well-determined).&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>6) the radio buttons <b>Experimental <a name="Initial Distribution">Initial Distribution</a> </b>and
+<b>Constant Initial Distribution</b>.&nbsp; The constant initial distribution is
+the default, because it corresponds to the conventional loading of the
+cell.&nbsp; However, the <a href="LammEqSolutions.htm">numerical Lamm equation
+solutions</a> allow for any concentration distribution to be taken as a starting
+point for the simulation of the evolution.&nbsp; Sometimes, it can be very
+useful to load an experimental scan as initial distribution, for example when
+using boundary forming loading techniques, or when convection occurred in the
+initial parts of the experiment.&nbsp; A detailed description of this approach
+is given <a href="sedfit_help_SetInitialData.htm">here</a>.&nbsp; It should be
+noted that with the non-interacting species model, only a single component can
+be used.&nbsp; (An alternative remedy for initial convection is the use of the <a href="sedfit_help_calculator.htm#Differential second moment integration">differential
+second moment method</a>.).&nbsp; <font color="#FF0000">Please note that when switching to the
+experimental initial distribution, a warning message may appear, because the corrections for rotor
+acceleration phase are switched off.&nbsp; This is OK, but it should be
+remembered that they should be switched on after the analysis session.</font></p>
+<p>&nbsp;</p>
+<p>The lower section determines the values of parameters that control the
+solution of the Lamm equation and fitting. <b><i><u><font COLOR="#ff0000">Please
+note: The following control parameters do not have to be changed for the
+majority of all problems.</font></u></i></b></p>
+<p>In the lower left corner is a series of parameter fields:</p>
+<p>1) <b><a name="Tolerance">Tolerance</a></b>  governs the Simplex non-linear
+regression routine: It determines the (maximum) percent change in the parameter
+values below which a single Simplex is stopped (see <a href="sedfit_help_fit.htm">Fit</a>
+command).&nbsp; The Simplex is then repeatedly restarted, until all final parameter values are
+within this tolerance in two sequential simplex runs. Default value is 1.</p>
+<p>2) <b><a name="Grid Size">Grid Size</a></b> determines the number of radial increments (dividing the
+solution column from meniscus to bottom) on which the numerical <a href="LammEqSolutions.htm">solution
+of the Lamm equation</a> is based. Usually, ~ 100 per mm solution column is a reasonable value. Higher
+accuracy of the Lamm equation solution can be achieved with higher values, but
+generally the experimental noise is much larger than the error at a discretization of
+100/mm. Coarser grids are faster for simulation, but less precise.&nbsp; For
+complicated situations with time-consuming Lamm simulations, it can be a good
+strategy to use a coarse grid to get the floating parameter values in a good
+range, and to use a very high number of grid points only in the end as a final
+refinement step.&nbsp; This idea is automated if the fitting option of <a href="sedfit_help_fitting_options.htm#Speed Up First Simplex Fit">speeding
+up first Simplex</a> is used; in this case half of the grid size specified here is used for the first round of
+Simplex optimization only.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">3) <b><a name="max dc/c (or dt)">max dc/c (or
+dt)</a></b> has two different functions, dependent on which
+Lamm simulation algorithm is chosen.&nbsp; In a stationary frame of reference (Claverie
+simulations), an adaptive time-step driver is used.&nbsp; In this case, the max
+dc/c parameter refers to the maximum change in any of the concentration values
+that is desired, and according to which the size of the time-step is
+adjusted.&nbsp; A larger value of max dc/c effectively increases the time-steps,
+while a smaller value decreases the time-steps. The detailed algorithm used is
+slightly more complex, and also depends on the steepness of the simulated
+boundary.&nbsp;&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2" style="line-height: 100%; margin-top: 0; margin-bottom: 0">!&nbsp;&nbsp;&nbsp;
+<font size="1">If the desired relative change max dc/c leads to too large
+time-steps, it is automatically reduced.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">For the moving
+frame of reference simulation, this field has no direct function. However, if a fixed dt is chosen, the time-steps in both the Claverie and moving hat algorithm
+are constrained to the value given in this field (in seconds).&nbsp;</p>
+<p>&nbsp;</p>
+<p>In the middle of the lower section are the controls the choice of the Lamm solution
+algorithm.&nbsp; Details on these algorithms can be found <a href="LammEqSolutions.htm">here</a>.</p>
+<p>1) <b><a name="Claverie simulation">Claverie simulation</a></b> toggles on the use of the finite element method
+with stationary equidistant grid as described by Claverie. This works best for
+small s or low rotor speed (i.e. in cases where diffusion influences are high
+relative to sedimentation).</p>
+<p>2) <b><a name="move hat">move hat</a></b> toggles on the use of a finite element algorithm with a
+moving frame of reference. This method is preferred for cases of high influence
+of sedimentation versus diffusion, i.e. for high rotor speed and larger
+molecules. The input field next to the radio button allows to change the
+sedimentation coefficient of the frame of reference. However, this input will be
+effective only if the next check box<b></p>
+<p></b>3) <b><a name="auto s hat">auto s hat</a></b> is not marked.&nbsp; The default configuration is auto s hat <u>on</u>,
+which adjusts automatically the movement of the frame of reference to the
+sedimentation coefficient of the simulated solute. This will reduce the
+simulation on the moving frame of reference to diffusion and radial
+dilution.&nbsp; This algorithm also works
+automatically with a fixed time-step, which is determined by the movement of the
+frame of reference. This size of the time-step, however, can be constrained to
+smaller values (not to larger ones).</p>
+<p>4) <b><a name="fixed dt">fixed dt</a></b> is a checkbox that can be used to constrain the time-step
+size.&nbsp; The effective value (in sec) will be the one entered in the field <a href="#max dc/c (or dt)"> ‘max
+dc/c (or dt)’</a> (see above).</p>
+<p>5) <b><a name="auto method">auto method</a></b> is by default <u>on</u>. This automatically switches
+during an optimization from the Claverie method at low s to the moving hat
+method at higher s. The transition point is by default 5 S at 30,000 rpm, with
+automatic adjustment at higher and lower centrifugal field, but it can be
+changed using the <a href="sedfit_help_fitting_options.htm#Set s for changing Lamm equation algorithm">fitting
+options</a>.&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font size="1">references</font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref1">(1)</a>
+P. Schuck and B. Demeler (1999) <a name="ref noise analysis"> Direct sedimentation analysis of
+interference-optical data in analytical ultracentrifugation.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10096923&amp;dopt=Abstract">
+76:2288-2296</a>.&nbsp;</font></p>
+<!--mstheme--></font></body>
+
+</html>

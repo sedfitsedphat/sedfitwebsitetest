@@ -1,0 +1,111 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>residuals bitmap</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_plot_range.htm" target="">plot&nbsp;properties</a>&nbsp;]</nobr> <nobr>[&nbsp;residuals&nbsp;bitmap&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_subtract_calculated_noise.htm" target="">subtract&nbsp;calculated&nbsp;noise</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="15523" endspan --></p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Display Residuals as Bitmap</p>
+</font><b><font COLOR="#0000ff">
+<p>Display | Show Residuals Bitmap</p>
+<p style="margin-top: 0; margin-bottom: 0">Options | Bitmaps | black and white</p>
+<p style="margin-top: 0; margin-bottom: 0">Options | Bitmaps | continuous shading</p>
+</font></b>
+<p>&nbsp;</p>
+<p><b><u>The concept:</u></b></p>
+<p>In order to gain a more detailed representation of the residuals, the
+residuals can be displayed as a (RGB) picture.</p>
+<p> Each
+horizontal line of screen pixels corresponds to one scan (ordered according to
+time), and each pixel within that line corresponds to a radial position. The
+values of the residuals between data and fit are transformed into a color or
+grayscale.&nbsp; For perfect residuals, this will result in a picture that is
+completely uniform, while any residuals will appear as structures in the
+picture.&nbsp; This makes use of the exquisite sensitivity human eye for
+recognizing structures and patterns.&nbsp;&nbsp;</p>
+<p>Typically, three different kinds of patterns can be distinguished:&nbsp;
+1)&nbsp; diagonal stripes, which are indicative of imperfect fitting of the
+sedimentation process;&nbsp; 2) vertical stripes, caused by (almost)
+time-invariant features and imperfections in the data acquisition; 3) horizontal
+lines, cause by bad scans (outlier scans, which sometimes occur particularly
+with the interference optics with 'rocking' instabilities).&nbsp;&nbsp;</p>
+<p>When judging fits, it should be kept in mind that the criterion of a
+completely unstructured bitmap may not be possible to achieve. For example, the
+following fit of the sedimentation of an IgG sample (95% monomer and 5% dimer,
+using a two-component Lamm equation model) has an rms error of &lt; 0.0028
+fringes, which is probably as good as the commercial interference optics
+configuration is able to produce.&nbsp; Nevertheless there is all three typical
+systematics visible.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit22.gif" width="800" height="59"></p>
+<p>(max scale 0.02 for bitmap).&nbsp; Importantly, however, the diagonal pattern
+is relatively faint, and the instrumental systematic noise patterns appear at
+least equally strong.&nbsp; This is the corresponding residuals overlay, from
+which much less information can be extracted:</p>
+<p><img border="0" src="images/sedfit23.gif" width="708" height="187"></p>
+<p>If the same data are analyzed leaving out the 5% dimer, a fit with 0.0038 rms
+fringes is achieved, which is still very good, and the residuals overlay looks
+OK:</p>
+<p><img border="0" src="images/sedfit24.gif" width="708" height="184"></p>
+<p>However, the residuals bitmap now shows a clear diagonal pattern that
+dominates the picture.&nbsp; This is indicative of insufficient boundary
+modeling, showing that there is more information in the sedimentation boundary.</p>
+<p><img border="0" src="images/sedfit25.gif" width="800" height="59"></p>
+<p>&nbsp;</p>
+<p>If, for example, a single disctinct <i>horizontal </i>line is observed in the 
+bitmap, this may be the result of a single bad scan.&nbsp; This can be excluded 
+using the utility function
+<a href="sedfit_help_loading_options.htm#exclude worst scan">'exclude worst 
+scan'</a>. </p>
+<p>&nbsp;</p>
+<p><u><b>Some technical details:</b></u></p>
+<p>How the bitmap actually looks will also depend on
+the color settings of your display, therefore there are two switches:
+black/white <i>vs.</i> color, and continuous shading (brightness of pixel
+corresponds to magnitude of residual) vs. discrete shading (only sign of the
+residual is regarded and translated into a brightness, analogous to a runs
+test).&nbsp; In my experience, the best results are obtained with a continuous
+shading in black and white.&nbsp;&nbsp;&nbsp;</p>
+<p><font color="#FF00FF"><b>Also, it should be noted that because the bitmap is
+scaled in absolute pixels, the bitmap may not be visible entirely if the S<span style="font-variant: small-caps">edfit</span> 
+window is too small, or if a display with too low resolution is used.</b></font></p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">in order to see continuous shading of the RGB bitmap, it may be
+necessary to set the display to a higher color resolution.&nbsp; However, if S<span style="font-variant: small-caps">edfit</span> 
+is run on the data acquisition computer for the XLI (as supplied by Beckman), a
+higher color resolution may not be compatible with the video board used for data
+acquisition.&nbsp; In this case, it may be necessary to perform the data
+analysis on a separate PC.</font></p>
+<p>When toggling the bitmap on, the user can enter the magnitude of the
+residuals corresponding to the full scale color.&nbsp; The default value is
+0.05, meaning that all residuals &lt; - 0.05 are completely black, and all
+residuals &gt; 0.05 are completely white.&nbsp; A value of 0 will scale
+according to the largest residual in the fit (this may not be the best scale for
+visualizing low-level systematic deviations, therefore the default is
+0.05).&nbsp; For changing this scale, the bitmap has to be toggled off
+first.&nbsp; </p>
+<p>For documentation, the residuals bitmap can be <a href="sedfit_help_copy.htm#Copy Residuals Bitmap">copied
+as an RGB picture</a> to the clipboard, from which it can be pasted into a
+variety of different programs.</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

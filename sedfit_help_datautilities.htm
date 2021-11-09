@@ -1,0 +1,230 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Edit Data Files</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script language="JavaScript" fptype="dynamicanimation">
+<!--
+function dynAnimation() {}
+function clickSwapImg() {}
+//-->
+</script>
+<script language="JavaScript1.2" fptype="dynamicanimation" src="animate.js">
+</script>
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body onload="dynAnimation()" background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_data.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_loadnewdata.htm" target="">Load&nbsp;New&nbsp;Files</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_setinitialdata.htm" target="">Set&nbsp;Initial&nbsp;Data</a>&nbsp;]</nobr> <nobr>[&nbsp;Data&nbsp;Housekeeping&nbsp;]</nobr> <nobr>[&nbsp;<a href="realtime.htm" target="">realtime</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="export_to_sedphat.htm" target="">Export&nbsp;to&nbsp;SEDPHAT</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_exit.htm" target="">Exit</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="24146" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Edit Data Files">Edit Data Files</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Edit Data Files</p>
+</font></b>
+<p>This function will start the notepad and allows loading and inspecting a data
+file in text mode. This allows changes, such as the manual elimination
+of spikes, reading the comment line, run parameters, etc.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Save Fits">Save Fits</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Save Fit Data</p>
+</font></b>
+<p>Fitted distributions, residuals and fitting parameters can be stored on the
+hard disk.</p>
+<p>For some models (c(s), c(s,f), and c(s) or c(s,f) with discrete component) 
+this automatically writes the ~tmppars.* file to the directory where the data 
+are located, such that the current fit can be
+<a href="sedfit_help_LoadNewData.htm#restore the previous analysis">restored</a> 
+when loading the data.</p>
+<p>First, the calculated best-fit radial distributions can be saved in files
+with filenames that can be specified in the ‘<i>save fitted data as</i>’
+dialog box. The filenames of the fitted curves proposed depend on the <a href="sedfit_help_loading_options.htm#Filename Conventions"> filename
+convention</a> that was specified (newer Windows Beckman software assumed as default).  For
+the newer convention (Windows XLA software), the first character of the original data filename
+will be replaced with a
+‘f’ - for ‘fitted’ and the rest of the name will be kept the same. This way,
+for each data file (e.g., 00006.ra2) a new file (f0006.ra2) is created.&nbsp; For the older convention (old
+DOS software for 4-hole rotors), where the file extension identifies the
+scan sequence, the extensions are kept for the saved distributions, but filename
+can be changed (e.g., ‘fitcell1.r01’). <font color="#FF00FF">Please note
+that it is currently not possible to deviate from this rule.&nbsp; Therefore, a
+new directory should be chosen to save multiple alternative fits!</font></p>
+<p>The saved data will contain the calculated best-fit distributions as shown
+between the green lines in the upper plot in S<span style="font-variant: small-caps">edfit</span>.&nbsp; The files will be in
+XLA format and compatible to re-analysis with S<span style="font-variant: small-caps">edfit</span> or other software.
+Analogously, the residuals will be saved with a 'r' as first character in the
+filenames, and be saved in XLA format.&nbsp; For the parameters, a file like ‘fitparams.ra2’ will be
+generated. Information saved in this file will include,
+for example,</p>
+<b><font SIZE="1">
+<p>component 1 included:<br>
+M	=	65000.000000 g/Mol	(floated)<br>
+s	=	4.514 S			(floated)<br>
+<br>
+<br>
+component 2 included:<br>
+M	=	130000.000000 g/Mol	(floated)<br>
+s	=	6.510 S			(floated)<br>
+<br>
+<br>
+component 3 included:<br>
+M	=	200000.000000 g/Mol	(floated)<br>
+s	=	8.468 S			(floated)<br>
+<br>
+<br>
+component 4 included:<br>
+M	=	10000.000000 g/Mol	(floated)<br>
+s	=	2.005 S			(floated)<br>
+<br>
+<br>
+concentrations = 2.194 | 0.108 | 0.041 | 0.025 | (first is total, next are fractions)<br>
+<br>
+meniscus at 	6.2299 cm		(fixed)<br>
+bottom at 	7.2206 cm		(fixed)<br>
+<br>
+baseline at 	0.00000 OD		(floated)<br>
+		(time independently fitted)<br>
+fitted from 6.2532 to 7.1550 cm<br>
+with constant initial distribution<br>
+simulation start time 0.000000 sec		(fixed)<br>
+<br>
+rmsd=0.006015 (n=54309,SSR=1.965085)<br>
+</p>
+</font></b>
+<p>If ‘<i>cancel’</i> is pressed in one of the dialog boxes, the respective
+operation is skipped.</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">There is an alternative procedure for saving data, which involves
+<a href="sedfit_help_copy.htm">copying the data and fits</a> to the clipboard
+and pasting them into a spreadsheet program.&nbsp; This has the advantage that
+they can also be plotted and saved in a single file.&nbsp; Since the fit
+parameters are not complete, separate notes should be taken of the main
+results.&nbsp;&nbsp;&nbsp;</font></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Save Systematic Noise">Save Systematic Noise</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Save Systematic Noise | Save Noise in File</p>
+</font></b>
+<p>If the data analysis has been performed with the options for <a href="sedfit_help_parameters.htm#FIT TI Noise">time-invariant
+(TI) noise</a> (i.e. the systematic offset in radial direction superimposed to all scans)
+and/or the <a href="sedfit_help_parameters.htm#FIT RI Noise">radial-invariant
+(RI) noise</a> (i.e. a
+systematic noise component that causes an offset to each scan which is constant
+in radial direction, but different for each scan) , these files can be stored to the
+hard disk using this menu item. Filenames for the time-independent
+noise are &quot;*.TIN&quot;, filenames for the radial-independent noise are &quot;*.RIN&quot;.
+Time-invariant noise is saved for the data analysis range (between the green
+lines) only, and in XLA file format.&nbsp; Radial-invariant noise is saved as
+simple two-column ASCII file, with elapsed seconds in first column RI offset in
+the second column.</p>
+<font COLOR="#ff0000">
+<i>
+<p>Note that once the systematic noise has been subtracted from the data
+displayed in the sedfit window, any information about the original TI and RI
+noise is lost!&nbsp; Therefore, this function should be used only when the true
+raw data are visible.&nbsp;&nbsp;</p>
+<u>
+<p>&nbsp;</p>
+</u></i></font>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Correct Equilibrium Scan for TI Noise">Correct Equilibrium Scan for
+TI Noise</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Save Systematic Noise | Subtract Noise from Eq. Data</p>
+</font></b>
+<p>If the data analysis has been performed with the time-independent noise
+option, the calculated systematic TI noise can be subtracted from an equilibrium
+scan.</p>
+<p>The strategy would be the following: First, load as set of scans from the approach to
+equilibrium (should cover a substantial part of the visible sedimentation
+process), and analyze them allowing for TI noise.&nbsp; The model used is
+secondary, but it is of highest importance that an excellent fit is achieved
+without any systematic residuals.&nbsp; Second, use this menu to load a scan
+from sedimentation equilibrium and subtract the previously calculated TI noise. Save the new
+file with a new name (suggested extension: is &quot;*.RTI&quot;). This new file
+contains equilibrium data corrected for the systematic noise contribution, as identified by
+the sequence of approach to equilibrium scans. This should improve the quality
+of the equilibrium profile and of their analysis. In particular, this can
+eliminate or reduce the errors in the equilibrium scans resulting from
+imperfections in the window. The radial grid points of the equilibrium data are
+not changed for the subtraction. The method seems to work best for low loading
+concentrations.&nbsp; It has bee described in detail in&nbsp;</p>
+<p> P. Schuck (1999) Sedimentation equilibrium analysis of interference optical
+data by systematic noise decomposition. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">Analytical Biochemistry</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">
+272:199-208</a>.&nbsp;&nbsp;</p>
+<p>The experimental procedure for eliminating the time-invariant noise
+contribution from equilibrium scans is the use of external loading cells and the
+acquisition of before and after-blanks. This is described in detail in&nbsp;</p>
+<p> Ansevin
+et al., Anal Biochem 1970, 237-261.</p>
+<p dynamicanimation="fpAnimformatRolloverFP1" fprolloverstyle="border-style: dotted; border-color: #FF0000" onmouseover="rollIn(this)" onmouseout="rollOut(this)" language="Javascript1.2">!&nbsp;&nbsp;&nbsp;
+<font size="1">Great care should be taken that the TI
+noise component does not contain systematic patterns, resulting from a the use
+of an insufficient model in the approach to equilibrium analysis.&nbsp; The quality of fit of the approach to equilibrium data should be
+optimal, and the use of a very large model is recommended, which not necessarily
+has to reflect properties of the true solutes.&nbsp; After all, the modeling of the
+approach to equilibrium could be considered here an informed smoothing operation
+employing all possible solutions of the Lamm equation, without any further
+interpretation beyond the extraction of TI noise. For example, with absorbance
+data, fitting with a <a href="sedfit_help_sedimentation_time_offset.htm">floating
+starting time</a> was occasionally found to be very useful.&nbsp; If the TI noise contains any systematic drift, this
+can introduce systematic bias into the new equilibrium data.&nbsp; If the TI noise does
+not contain a systematic pattern or drift, but looks randomly distributed, it
+should provide a good correction.&nbsp;&nbsp;&nbsp;</font></p>
+<font COLOR="#ff0000">
+<i>
+<p>Note that once the systematic noise has been subtracted from the data
+displayed in the sedfit window, any information about the original TI and RI
+noise is lost!&nbsp; Therefore, this function should be used only when the true
+raw data are visible.&nbsp;&nbsp;</p>
+<u>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</u>
+<p></i></font></p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Save Calculated Distribution">Save Calculated Distribution</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Data | Save Continuous Distribution</p>
+</font></b>
+<p>This feature allows to save the calculated distribution (e.g. c(s), ls-g*(s),
+c(M), or van Holde-Weischet) to a file, as a two-column
+tab-delimited ASCII text.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Printing">Printing</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="margin-top: 0; margin-bottom: 0">Data | Print</p>
+<p style="margin-top: 0; margin-bottom: 0">Data | Page Setup</p>
+</font></b>
+<p>Only limited options for printing are currently available, which allows only
+to get a quick screenshot for documentation of the data, fit, and results.&nbsp;
+For publication quality graphics, it is recommended to use the <a href="sedfit_help_copy.htm">copy
+commands</a> to place the data in the clipboard, and to paste the data into a
+spreadsheet of a
+commercial graphics program. With Microcal Origin, for example, one can setup
+worksheet and figure templates that allow quickly generating publication quality
+figures.</p>
+<p>Using the print command, S<span style="font-variant: small-caps">edfit</span> can only print the contents of the current S<span style="font-variant: small-caps">edfit</span> Window
+(similar to a print screen operation). The position and size of the graphics on
+the paper will somewhat dependent on the position and size of the S<span style="font-variant: small-caps">edfit</span> Window
+in the desktop.&nbsp;&nbsp;</p>
+<p>For better results, the residuals or the data plot, respectively may be
+toggled off (see <a href="sedfit_help_display.htm">display commands</a>). The
+printout can be made in color or black and white, and with or without the fit
+information section from the upper left corner of the S<span style="font-variant: small-caps">edfit</span> window.</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

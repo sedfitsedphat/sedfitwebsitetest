@@ -1,0 +1,623 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>intro to vHW analysis</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>van Holde-Weischet Analysis </h2>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Introduction">Introduction</a> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The principle for a single species">The principle for a single
+species</a> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Boundary diagnosis">Boundary diagnosis</a>&nbsp; </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The limitation for multiple species">The limitation for multiple
+species</a> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Implementation in sedfit">Implementation in S<span style="font-variant: small-caps">edfit</span></a> </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The extrapolation of ls-g*(s)">The extrapolation of ls-g*(s)</a> </p>
+<p>&nbsp; </p>
+<p><u><b><a name="Introduction">Introduction</a></b></u> </p>
+<p>The analysis method by van Holde and Weischet (<a href="#ref1">ref 1</a>) is
+a graphical extrapolation method for deconvoluting diffusion in sedimentation
+boundaries.&nbsp; The strength of this method is that it is fast and allows
+easily to diagnose qualitatively different types of sedimentation processes (<a href="#ref2">ref
+2</a>).&nbsp;&nbsp;</p>
+<p>The basic idea is that diffusion proceeds on a square-root of
+time scale, while sedimentation is linear in time.&nbsp; In theory, after
+infinite time, all species with different s-values will be separated.&nbsp; In
+practice, the data analysis starts with a graphical inversion of different parts
+of the sedimentation boundary (boundary fractions), which is combined with an
+extrapolation to infinite time on a 1/sqrt(time) scale.&nbsp; This gives an
+integral sedimentation coefficient distribution G(s) which reflects the relative
+amounts of species sedimenting with different s-values.&nbsp; Although there are
+practical and theoretical limits in the resolution of heterogeneous mixtures of
+small or intermediate-sized molecules, it is an elegant approach to extract qualitative information
+on the sedimentation process, because the graphical extrapolation allows to compare the sedimentation velocity
+of different parts of the boundary.&nbsp; The presence of non-ideal
+concentration dependent sedimentation and heterogeneity can be diagnosed this
+way.&nbsp;&nbsp;</p>
+<p>On the other hand, such a diagnosis can also be made in a more
+quantitative way, though with more computation time, by using direct boundary models for <a href="sedfit_help_nonideal_sedimentation.htm">non-ideal
+sedimentation</a> or <a href="sedfit_help_cs.htm">size-distributions c(s)</a> (<a href="#ref3">ref
+3</a> and <a href="#ref4">ref 4</a>).&nbsp;&nbsp;In particular for the analysis
+of non-interacting heterogeneous mixtures including small to medium sized
+species, the c(s) method has shown higher resolution and sensitivity.&nbsp;</p>
+<p>Because of the graphical inversion of the sedimentation boundary required,
+this method cannot be applied to interference optical data where the observed
+data are only obtained in superposition with systematic noise.&nbsp; In order to
+overcome this limitation, one can exploit the equivalence between boundary
+fractions and area fractions of <a href="lsgofs_distribution.htm">ls-g*(s)</a>.&nbsp;
+By analyzing different sets of sedimentation boundaries with ls-g*(s), which can
+take into account systematic noise, one can arrive at boundary divisions from
+interference optical data, which can then be extrapolated to infinite time with
+the usual van Holde-Weischet scheme (see <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
+of ls-g*(s) to infinite time</a>, <a href="#ref3">ref 3</a>).&nbsp; Better
+results are obtained, however, by using a <a href="sedfit_help_cs.htm">c(s)
+analysis</a>.&nbsp;</p>
+<p>In the following, the principle is described in more detail, followed by the
+boundary diagnosis, and a description of the limitations for heterogeneous
+mixtures that do not show clearly separated sedimentation boundaries.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="The principle for a single species">The principle for a single
+species</a></b></u></p>
+<p>In brief, the basis of the method is the <a href="exampleFaxen.htm"> Faxén
+approximation</a> of the Lamm equation,
+which can be written as</p>
+<p>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img SRC="images/ImageFaxen.gif" WIDTH="328" HEIGHT="61"></p>
+<p>with the meniscus position <i>r<sub>m</sub></i>, the boundary position of a
+non-diffusing species <i>r*(t)=r<sub>m</sub>exp(</i><font face="Symbol">w</font><sup>2</sup>st)
+and the error function <font FACE="Symbol">F</font>.&nbsp; It has a first term
+describing radial dilution, a second term (1-<font FACE="Symbol">F)</font> for
+the diffusional spreading, and the movement of r*(t) describes the boundary
+movement.&nbsp; If we scale each individual scan from 0 to 100% (100%
+corresponding to the plateau of each scan), we can ignore the effects of radial
+dilution, and we deal only with the fractional&nbsp;plateau concentration: </p>
+<p>(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:173.25pt;
+ height:38.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an1.gif" v:shapes="_x0000_i1025" width="231" height="51"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060585636">
+ </o:OLEObject>
+</xml><![endif]-->
+</span> </p>
+<p><b>Although this transition to fractional plateau values simplifies the
+theory, on the experimental side this requires us to establish
+both the solvent and the solution plateau for each scan</b> (see below).&nbsp;
+If we divide the boundary in N fractions (i.e. divide the plateau concentration
+into N concentrations c<sub>i</sub> = ic<sub>p</sub>/N), we can measure the
+radial position R<sub>i</sub> at which any of these fractional plateau
+concentration c<sub>i</sub> are observed. Each of these radial positions R<sub>i</sub>
+can then be transformed to an apparent sedimentation coefficient according to s*<sub>app,i</sub>
+= <i>ln</i>(R<sub>i</sub>/r<sub>m</sub>)/<font face="Symbol">w</font><sup>2</sup>t.&nbsp;
+With Eq. 2 we can predict where this fractional concentration c<sub>i</sub>
+should occur:</p>
+<p>(3) <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-18.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:159.75pt;
+ height:42pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/vhw_an2.gif" v:shapes="_x0000_i1025" width="213" height="56"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060586077">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>This equation can be inverted, by using the inverse error function <font face="Symbol">F</font><sup>-1</sup>:</p>
+<p>(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:174pt;
+ height:39pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an3.gif" v:shapes="_x0000_i1025" width="232" height="52"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060586336">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>The key of Eq.&nbsp; 4 is that s*<sub>app,i</sub> of each fraction is equal
+to the true sedimentation coefficient of the species plus an extra contribution
+from the diffusion term.&nbsp; This extra contribution depends on the fraction
+of the boundary: For example, for the molecules in the leading edge of the
+sedimentation boundary diffusion was mainly in the same direction of the
+sedimentation, while in the trailing end of the boundary, diffusion occurred
+mainly in the opposite direction.</p>
+<p>Knowing that for a single species (in the <a href="exampleFaxen.htm"> Faxén
+approximation</a>) the s*<sub>app,i</sub> of each fraction should behave this
+way, we can analyze our data by determining graphically the s*<sub>app,i</sub>
+values of each fraction, and then fitting the time-course of the s*<sub>app,i</sub>
+(t) with a straight line on a 1/sqrt(t) scale.&nbsp;</p>
+<p>This procedure is illustrated here (simulated data for a single species with
+10 S):</p>
+<p><img border="0" src="images/vhw_an4.gif" width="626" height="188"></p>
+<p>We divide the sedimentation boundaries in fractions (here visible in the 10
+vertical steps), and convert these to apparent sedimentation coefficients s*<sub>app,i</sub>
+values of each fraction.&nbsp;</p>
+<p><img border="0" src="images/vhw_an5.gif" width="629" height="305"></p>
+<p>The s*<sub>app,i</sub> values for each fraction are shown here in a different
+color, and the straight lines are the best-fit straight line on the 1/sqrt(t)
+scale.&nbsp; If we plot the s-value that we obtain in this extrapolation to
+infinite time (zero intercept in the above curve) as a function of boundary
+fraction, we get the integral sedimentation coefficient distribution:</p>
+<p><img border="0" src="images/vhw_an6.gif" width="630" height="199"></p>
+<p>Please note the scale of this graph (9.92 to 10.08) -- this is essentially a vertical line
+with a precision of approximately 0.5%&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit53.gif" width="512" height="423"></p>
+<p>&nbsp;</p>
+<p><u><b><a name="Boundary diagnosis">Boundary diagnosis</a></b></u></p>
+<p>The use of the G(s) analysis for boundary diagnosis is described in <a href="#ref1">ref
+1</a> and <a href="#ref2">ref 2</a>.&nbsp; Empirically, we can observe that if
+there is (repulsive) concentration-dependent sedimentation, the upper part of
+the boundary sediments slower than predicted for an ideal species, and we get
+the following extrapolation picture:</p>
+<p><img border="0" src="images/vhw_an10.gif" width="633" height="299"></p>
+<p>(the sedimentation data were the same as for the ideal species above, but
+using finite element Lamm equation solutions simulated for <a href="sedfit_help_nonideal_sedimentation.htm">non-ideal
+concentration dependent sedimentation</a> with repulsive interactions, with a
+coefficient ks = 0.1).</p>
+<p>On the other hand, if the upper part of the boundary sediments faster,
+because of heterogeneity or attractive interactions between species, we get</p>
+<p><img border="0" src="images/vhw_an11.gif" width="628" height="300"></p>
+<p>(this is based on the same simulation as above, but simulating attractive
+interactions).&nbsp;&nbsp;</p>
+<p>It is clear that this picture of the nonlinear regression has diagnostic
+value:&nbsp; if the lines cross at zero, the sedimentation is ideal, if they
+cross to the right there is <b>repulsive non-ideality</b>, if they have an
+imaginary cross point left of the zero, it indicates <b>either heterogeneity of
+ideal species or attractive interactions between the macromolecules (attractive
+non-ideality)</b>.&nbsp; This diagnostics can also be made from the G(s) curves
+obtained:&nbsp;</p>
+<p><img border="0" src="images/vhw_an12.gif" width="519" height="423"></p>
+<p>with the repulsive case in red, the ideal in black, and the attractive (or
+heterogeneous) case in blue.</p>
+<p>Again, this diagnosis can also be made by direct boundary modeling and
+comparison of the data and the fit with different models.&nbsp; This may not be
+as fast and convenient as the van Holde-Weischet method, but it can be
+interpreted quantitatively.</p>
+<p>&nbsp;</p>
+<p><b><u><a name="The limitation for multiple species">The limitation for
+multiple species</a></u></b>&nbsp;</p>
+<p>Let's consider a mixture of two ideally sedimenting species.&nbsp;
+Following the scheme above, we can describe this situation by the sum of two Faxén
+approximations&nbsp;</p>
+<p><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-22.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:477.75pt;
+ height:50.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/vhw_an13.gif" v:shapes="_x0000_i1025" width="637" height="67"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060589108">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>We can write this formally equivalent to Eq. 2:&nbsp;</p>
+<p>(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-47.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:172.5pt;
+ height:71.25pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+</span><span style="mso-text-raise:-45.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:195pt;
+ height:87pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an14.gif" v:shapes="_x0000_i1025" width="260" height="116"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060589931">
+ </o:OLEObject>
+</xml><![endif]-->
+<!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060589598">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>which shows that the fractional plateau concentration is now dependent on two
+instead of one error function.&nbsp; The ratio of the two will be slightly
+time-dependent (because of the faster radial dilution of the faster sedimenting
+species), and we can abbreviate the fractional plateau concentrations as <font face="Symbol">a</font><sub>1</sub>
+and <font face="Symbol">a</font><sub>2</sub>.&nbsp;&nbsp;&nbsp;</p>
+<p>(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:150.75pt;
+ height:36pt' o:ole="">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:177pt;
+ height:36pt' o:ole="">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an16.gif" v:shapes="_x0000_i1025" width="236" height="48"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060590067">
+ </o:OLEObject>
+</xml><![endif]-->
+</span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060589962">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>For our boundary divisions analogous to Eq. 3, we get&nbsp;</p>
+<p>(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-17.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:356.25pt;
+ height:39.75pt' o:ole="" fillcolor="window">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an18.gif" v:shapes="_x0000_i1025" width="475" height="53"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060590129">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>&nbsp;</p>
+<p>If we try to invert the error function, we get stuck at this point:</p>
+<p>(9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-19.0pt"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:384pt;
+ height:44.25pt' o:ole="">
+ <v:imagedata src="file:///C:/TEMP/msoclip1/01/clip_image001.wmz" o:title=""/>
+</v:shape><![endif]-->
+<img src="images/vhw_an19.gif" v:shapes="_x0000_i1025" width="512" height="59"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060590299">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>The problem is that the simple inversion of the error function is not
+possible any more.&nbsp; This inversion gives only the simple result expected in case either one of
+the error function terms is negligible.&nbsp; <b>In practice, this means that only boundary
+divisions give a true s-value that originate from positions in the solution
+where the sample is homogeneous!</b>&nbsp; This is fulfilled at infinite time,
+when all species with different s-values have separated, but this is not
+fulfilled for many real experiments with small solutes (large diffusion), finite
+solution columns, and finite observation times.&nbsp;&nbsp;</p>
+<p>What is the consequence of that?&nbsp; Let us consider the sedimentation
+profiles of two species with 5S and 7S at equal concentration at 50,000
+rpm.&nbsp; If we assume a diffusion coefficient of 3x10<sup>-7</sup>cm<sup>2</sup>/sec
+for both, we get the following boundaries:</p>
+<p><img border="0" src="images/vhw_an22.gif" width="559" height="469"></p>
+<p>If we apply the van Holde-Weischet analysis to this data, we get the
+following:</p>
+<p>&nbsp;<img border="0" src="images/vhw_an23.gif" width="458" height="355"></p>
+<p>Instead of one piecewise vertical line with one section at 5S and one at 7S,
+we get a <b>continuous transition of s-values</b>.&nbsp; The extreme values are
+correct at 5S and 7S, because the lowest and the highest part of the boundary
+represent nearly pure material.&nbsp; In the intermediate, however, we have a
+mixture, and because the inversion of the error function breaks down in this
+case, we only get an intermediate value that cannot be quantitatively
+interpreted.</p>
+<p>This effect is strongly dependent on the relative magnitude of the difference
+in the sedimentation coefficient and the diffusion coefficient:&nbsp; If we
+assume a diffusion coefficient of only 1x10<sup>-7</sup>cm<sup>2</sup>/sec, the
+sedimentation boundaries are visually separated, and the G(s) approaches the
+ideal of two vertical sections (green line). On the other hand, if the diffusion
+coefficient is 10x10<sup>-7</sup>cm<sup>2</sup>/sec, no separation is visible at
+all, and we get the blue line, which contains only limited information.</p>
+<p><img border="0" src="images/vhw_an24.gif" width="524" height="441"></p>
+<p><b>We find that the G(s) method can deconvolute the effects of diffusion, but
+only for well-separated species.&nbsp; Heterogeneity can be diagnosed, but
+diffusion cannot be taken into account at the same time (except for very small
+ratio of D/s, i.e. large species).</b>&nbsp; In theory, with infinite long
+solution columns, this limitation could be overcome, but not under
+experimentally practical conditions.&nbsp;&nbsp;</p>
+<p>It should be noted, however, that in contrast to the G(s) method
+the <a href="sedfit_help_cs.htm">c(s) method</a> can still identify the two
+species, even in the worst-case scenario shown here
+(the blue line):</p>
+<p><img border="0" src="images/vhw_an25.gif" width="374" height="294"></p>
+<p>Due to the maximum entropy regularization used, the difficulty of resolving
+the species translates into in relatively broader peaks. However, they are clearly
+baseline-separated and the area under the peaks can be analyzed quantitatively
+(here with area ratios of 53% and 47%, respectively).&nbsp;</p>
+<p>There are three main reasons for the ability of c(s) to resolve species where
+G(s) fails:&nbsp; 1) the theoretical difficulty of G(s) in the inversion of multiple
+error functions; 2) the much larger data set that can be analyzed with c(s) as
+compared to G(s) (in c(s) the data are not constrained to the scans where meniscus or solution plateaus
+are established); 3) the neglect of information on the plateau heights in G(s). These issues are discussed in
+more detail in <a href="#ref3">ref 3</a>.&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Implementation in sedfit">Implementation in sedfit</a></b></u> </p>
+<p>The implementation in S<span style="font-variant: small-caps">EDFIT</span>
+ is described in <a href="#ref3">ref 3</a> and <a href="#ref4">ref 4</a>.&nbsp;
+Briefly, the plateau is determined from the average signal in the 0.05 cm next
+to the right fitting limit.&nbsp; The solvent plateau is determined by the
+average signal of the last scan in the 0.05 cm next to the left fitting limit.
+The boundary is then divided in N fractions, with concentration increment
+dh.&nbsp; The radial positions of the boundary fractions is determined as the
+mean value of all data within 0.5xdh of the concentration c<sub>i</sub>:&nbsp;&nbsp;
+R<sub>i</sub> = mean {r, with dh(i-0.5)&lt; c(r) &lt; dh(i+0.5)}.&nbsp; This
+method of calculating the position of the boundary fraction is designed for a
+high number of fractions, where the boundary increment dh for each fraction are
+comparable in size to the noise of the data, and it extracts the boundary
+positions in a least-square sense, not requiring smoothing of the data.&nbsp;
+Because of the error introduced from the data in the plateau region, the first
+and last boundary fraction are excluded.&nbsp; In the least-squares algorithm
+implemented in S<span style="font-variant: small-caps">EDFIT</span>, it is
+ensured that all boundary fractions in all scans have at least one data point,
+otherwise the number of boundary fractions N is automatically reduced. This is
+followed by the calculation of the apparent sedimentation coefficients&nbsp; s*<sub>app,i</sub>
+= <i>ln</i>(R<sub>i</sub>/r<sub>m</sub>)/<font face="Symbol">w</font><sup>2</sup>t,
+and linear regression according to Eq. 4.&nbsp;&nbsp; </p>
+<p>In addition to the plot of boundary fraction extrapolation and the
+distribution G(s), S<span style="font-variant: small-caps">EDFIT</span> also
+calculates from the linear regression Eq. 4 the best-fit s<sub>app</sub> values
+for each boundary fraction.&nbsp; This is then converted into a series of
+step-functions (similar as those in the ls-g*(s) method), which are displayed
+with the raw data, and residuals can be assessed.&nbsp; Although the van-Holde-Weischet
+method is not a direct boundary model, the representation of the 'best-fit'
+boundary fractions in comparison with the original data still displays which
+features of the original data are well-described, or which features were
+neglected. </p>
+<p>&nbsp; </p>
+<p><u><b><a name="The extrapolation of ls-g*(s)">The extrapolation of ls-g*(s)</a></b></u> </p>
+<p>The differential apparent sedimentation coefficient distribution can be used
+to define boundary fractions.&nbsp; This is apparent from the fact that it is
+derived from modeling the data by superpositions of step-functions (see the <a href="lsgofs_distribution.htm">ls-g*(s)
+tutorial</a>).&nbsp; Therefore, the same extrapolation can be used for the <span style="color:windowtext">s*<i style="mso-bidi-font-style:normal"><sub>app,i</sub></i>
+values derived from </span>area fractions of ls-g*(s) as for the <span style="color:windowtext">s*<i style="mso-bidi-font-style:normal"><sub>app,i</sub></i>
+values derived from division of the sedimentation boundary</span>.&nbsp; The
+advantage of the ls-g*(s) extrapolation is that this is applicable to
+interference optical data.&nbsp;&nbsp;</p>
+<p>Because the same fundamental limitations apply to the ls-g*(s) extrapolation
+as described above, this model is included in S<span style="font-variant: small-caps">EDFIT</span>
+ mainly for methodological exploration.&nbsp; For a detailed data analysis, I
+would recommend in most cases the <a href="sedfit_help_cs.htm">c(s) analysis</a>.&nbsp;</p>
+<p>This <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
+of ls-g*(s) to infinite time</a> is implemented in the following way:&nbsp; T<span style="color:windowtext">he
+total set of scans used for analysis is subdivided in sequential sets of scans,
+each taken at a time interval centered at <i style="mso-bidi-font-style:
+normal">t<sub>i </sub></i>.<span style="mso-spacerun: yes">&nbsp; </span>For
+each set, a differential sedimentation coefficient distribution <i style="mso-bidi-font-style:normal">ls-g*(s)<sub>i</sub>
+</i>is calculated, and divided into <i style="mso-bidi-font-style:normal">N </i>equal
+area fractions <i style="mso-bidi-font-style:normal">A<sub>j</sub></i>.<span style="mso-spacerun: yes">&nbsp;
+</span>The s-value <i style="mso-bidi-font-style:
+normal">s<sub>ij</sub>(A<sub>j</sub>)</i> at which the area under <i style="mso-bidi-font-style:normal">ls-g*(s)<sub>i</sub></i>
+equals <i style="mso-bidi-font-style:normal">A<sub>j</sub></i> corresponds to
+the s*<i style="mso-bidi-font-style:normal"><sub>app,i</sub></i> values defined
+in the vHW method via the boundary position.<span style="mso-spacerun: yes">&nbsp;
+</span>It should be noted that the area under the <i style="mso-bidi-font-style:
+normal">ls-g*(s)</i> curves corresponds to the loading concentration (Eq. 4),
+and therefore, these fractional areas are equivalent to boundary fractions, and
+the average sedimentation coefficient <i style="mso-bidi-font-style:normal">s<sub>ij</sub></i>
+in a given area fraction at time <i style="mso-bidi-font-style:normal">t<sub>i</sub>
+</i>directly corresponds to the s-values calculated for each boundary fractions
+in the van-Holde Weischet method.<span style="mso-spacerun: yes">&nbsp; </span>As
+a consequence, the same extrapolation procedure can be applied.<span style="mso-spacerun: yes">&nbsp;&nbsp;</span></span></p>
+<p><span style="mso-spacerun: yes; color: windowtext">Details of the theory and
+practical application of this method are described in <a href="#ref3">Ref 3</a>.&nbsp;</span></p>
+<p>&nbsp;</p>
+<p><b><font size="1">References</font></b></p>
+<p><font size="1">(<a name="ref1">1</a>) K.E. van Holde and W.O. Weischet. (1978) Boundary analysis of sedimentation
+velocity experiments with monodisperse and paucidisperse solutes. Biopolymers
+17:1387-1403</font></p>
+<p><font size="1">(<a name="ref2">2</a>) B. Demeler, H. Saber, J.C. Hansen.
+(1997) Identification and interpretation of complexity in sedimentation velocity
+boundaries.&nbsp; <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=8994626&amp;dopt=Abstract">Biophys.
+J. 72:397-407</a></font></p>
+<p><font size="1">(<a name="ref3">3</a>) P. Schuck, M.S. Perugini, N.R.
+Gonzales, G.J. Howlett, and D. Schubert. (2002) Size-distribution analysis of proteins
+by analytical ultracentrifugation: strategies and application to model systems <a href="http://www.biophysj.org/cgi/content/abstract/82/2/1096"><i>Biophysical Journal</i>
+ 82:1096-1111</a></font></p>
+<p><font size="1">(<a name="ref4">4</a>) <a name="ref c(s)">P. Schuck (2000) Size distribution analysis of macromolecules by
+sedimentation velocity ultracentrifugation and Lamm equation modeling.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">Biophysical
+Journal</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10692345&amp;dopt=Abstract">
+78:1606-1619</a>.</font></p>
+<p>&nbsp; </p>
+<!--mstheme--></font></body>
+
+</html>

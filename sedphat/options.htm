@@ -1,0 +1,153 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>options</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="data1.htm" target="">data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="display.htm" target="">display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="model.htm" target="">model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment_parameters.htm" target="">experiment&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="fit.htm" target="">Fit</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;options&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="6821" endspan -->
+</font></p>
+<h2>Options</h2>
+
+<p><img border="0" src="menubilder/option9.gif" width="157" height="127"></p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Set v*rho">Set v*rho</a><!--mstheme--></font></h3>
+<p>This is where you can set the global partial-specific under standard
+conditions.&nbsp; For details, see the <a href="partspecvols.htm">Partial-specific
+volume page of the Concepts</a>.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Fit vbar20 = vbar(T)">Fit vbar20 = vbar(T)</a> <!--mstheme--></font></h3>
+<p>Under suitable conditions of two or more experiments with sufficiently
+different solvent density, it is possible to treat the partial-specific volume
+as a fitting parameter.&nbsp; For details, see the <a href="partspecvols.htm">Partial-specific
+volume page of the Concepts</a>.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Mass Action Law">Mass Action Law</a><!--mstheme--></font></h3>
+<p>The mass action law calculator will use the currently selected model, ask for 
+total concentrations of A, B, and/or C (dependent on the model), and will report 
+the partial concentrations of all species.</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Loading options">Loading options</a>&nbsp;<!--mstheme--></font></h3>
+<p><img border="0" src="menubilder/option7.gif" width="307" height="43"></p>
+<p>Two loading options are available that permit&nbsp;&nbsp;&nbsp;</p>
+<p>1) ignoring spikes in sedimentation data; for details see the <a href="../sedfit_help_loading_options.htm#Elimination of Spikes" target="_blank">corresponding
+S<span style="font-variant: small-caps">edfiT</span> help website</a>.&nbsp; To
+utilize features that are available in S<span style="font-variant: small-caps">edfiT</span>
+but not in S<span style="font-variant: small-caps">edphat</span>, load the data
+in S<span style="font-variant: small-caps">edfiT</span> and use the '<a href="../sedfit_help_loading_options.htm#Save Raw Data Set">Save
+Raw Data</a>' command to save the preprocessed experimental data into a new
+directory.&nbsp; Load those in S<span style="font-variant: small-caps">edphat</span>.&nbsp;</p>
+<p>2) utilizing the combined elapsed seconds and the <font face="Symbol">w</font><sup>2</sup>t
+entry of the centrifuge files to calculate the rotor acceleration. Rotor acceleration
+will built into the Lamm equation solutions.&nbsp; See the <a href="../sedfit_help_loading_options.htm#Simulate Rotor Acceleration Phase" target="_blank">corresponding
+S<span style="font-variant: small-caps">edfiT</span> help website</a>.</p>
+<p>Both are by default switched on.&nbsp;</p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Fitting options">Fitting options</a><!--mstheme--></font></h3>
+<p><img border="0" src="menubilder/option8.gif" width="324" height="66"></p>
+<p>S<span style="font-variant: small-caps">edPHaT</span> has two fitting options:</p>
+<p>1) <a name="Fit M and s">Fit M and s</a></p>
+<p>This switches the non-interacting species model from (M,s) as free parameters
+to (D,s).&nbsp; Either way, the Svedberg equation predicts the third parameter
+of the triple (M,D,s).&nbsp; For details, see <a href="../sedfit_help_fitting_options.htm#Fitting M and s vs D and s" target="_blank">the
+corresponding function in S<span style="font-variant: small-caps">edfiT</span></a>.
+</p>
+<p>2) <a name="Marquardt-Levenberg">Marquardt-Levenberg</a></p>
+<p>This switches from Marquardt-Levenberg to Nealder-Mead simplex optimization.&nbsp; 
+Note that the different algorithms can perform differently for different tasks.&nbsp; 
+If you're not familiar with them, I recommend using them both to make sure that 
+a global minimum has been attained.&nbsp; See the <a href="fit.htm">Fit</a> 
+section.</p>
+
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<h3><!--mstheme--><font color="#003366"><a name="Lamm equation options">Lamm equation options</a><!--mstheme--></font></h3>
+<p><img border="0" src="menubilder/option6.jpg" width="473" height="340"></p>
+<p><b>general settings:</b></p>
+<p>1) <a name="Set s for changing methods">Set s for changing methods:</a> By default, Lamm equations are solved with the moving frame of reference 
+finite element method for s-value higher than a threshold.&nbsp; Default value 
+if 5.&nbsp; Dependent on the specific problem, infrequently, this value may have 
+to be changed to ensure optimal performance of the Lamm equation solution.&nbsp; 
+For details, see
+<a target="_blank" href="../sedfit_help_fitting_options.htm#Set s for changing Lamm equation algorithm">the
+corresponding function in S<span style="font-variant: small-caps">edfiT</span></a>.</p>
+<p>2) <a name="Set grid size">Set grid size</a>: This refers to the number of radial increments on which the finite element 
+Lamm equation solver is based.&nbsp; This as a factor determining the precision 
+of the simulation of the sedimentation.&nbsp; The higher the number, the more 
+precise and slower the calculations.&nbsp; A value of 1000 should in most cases 
+give a precision far below experimental errors.&nbsp; Usually, 500 is still an 
+excellent value.&nbsp;&nbsp; In some cases it can be useful to go to lower 
+values.&nbsp; The <a target="_blank" href="../LammEqSolutions.htm">S<span style="font-variant: small-caps">edfiT </span>tutorial</a> 
+on solving the Lamm equation gives more information.<a target="_blank" href="../sedfit_help_fitting_options.htm#Set s for changing Lamm equation algorithm">
+</a></p>
+<p>3) <a name="Maximal relative increase per step">Maximal relative increase per 
+step</a>: This controls the adaptive time-step for the Lamm equation simulation. 
+Default is the value 1.&nbsp; Smaller values lead to finer discretization in 
+time.&nbsp; If a negative value is entered, it has the meaning of a fixed 
+time-step.&nbsp; For example, -1 will fix the time increments to 1 sec, -5 to 5 
+sec, etc. (Fixing the time-step is usually not recommended.)</p>
+<p><b><a name="Lamm equation options for sedimentation/reaction systems">Lamm 
+equation options for sedimentation/reaction systems</a>:</b></p>
+<p>1) <a name="maximum relative sedimentation per step">maximum relative 
+sedimentation per step</a>:&nbsp; This number controls the adaptive step-size in 
+time of the Lamm equation simulation so that the sedimentation per step across 
+the cell does not exceed a certain value.&nbsp; If the numerical simulation is 
+instable, lower this value.&nbsp; For speeding up the numerical solution, 
+increase this value.&nbsp; A good range is between 0.1 and 1.</p>
+<p>2) <a name="maximum chemical reaction per step">maximum relative chemical 
+reaction per step</a>:&nbsp; This number controls the adaptive step-size in time 
+of the Lamm equation simulation so that the chemical conversion of species per 
+step across the cell does not exceed a certain value.&nbsp; If the numerical 
+simulation is instable, lower this value.&nbsp; For speeding up the numerical 
+solution, increase this value.&nbsp; A good range is between 0.1 and 1.</p>
+<p>3) <a name="correction level">correction level</a>: This controls the level 
+of refinement of the predictor-corrector scheme.&nbsp; Possible numbers are 1, 
+2, and 3.&nbsp; Recommended is the level 1.&nbsp; Higher levels produce slightly 
+higher accuracy, but this is usually not significant.&nbsp; Higher levels also 
+are more computationally intensive.</p>
+<p>4) <a name="fix timestep">fix timestep</a>: This provides the possibility to 
+circumvent part of the the adaptive time-step control, and to fix the time-step 
+to a pre-defined value.&nbsp; For example, enter 1 will make the time-increments 
+uniformly 1 sec. (Default is switched off.)</p>
+<p>5) <a name="limit stepsize control to fitting limits">limit stepsize control 
+to fitting limits</a>: The adaptive control of time-steps can optionally be 
+scanning the whole solution column, or only the range between the fitting 
+limits. (Default is the whole range.)</p>
+<p>6) <a name="shut off back-diffusion">shut off back-diffusion</a>: For the 
+analysis of high-speed sedimentation velocity data that does not include 
+back-diffusion from the bottom of the cell, the back-diffusion can also be 
+eliminated from the numerical simulation.&nbsp; This substantially increases the 
+stability and efficiency of the Lamm equation solution. Shutting off the 
+back-diffusion here will eliminate back-diffusion for all experiments loaded.&nbsp; 
+It can also be specified for each experiment separately, in the '<a href="experiment_parameters.htm#no backdiffusion necessary">no 
+back-diffusion necessary</a>' field of the sedimentation velocity parameter box. </p>
+<p>7) <a name="testing mode">testing mode</a>:&nbsp; allows to specify the molar 
+mass and extinction coefficients of the complexes for each simulation.&nbsp; This can be useful to examine 
+special cases of the Lamm equation solution.&nbsp; (Default is OFF.)&nbsp;
+<font color="#FF00FF"><b>Also, setting selectively the extinction coefficient of 
+different species to zero allows to visualize (and copy the data to the 
+clipboard from) the 
+contributions of each species to the fit.</b></font>&nbsp; <b>--&gt; don't use this 
+setting for fitting; only use it with the Run command.</b></p>
+<p>8) <a name="save intermediate results to c:\temp:">save intermediate results 
+to c:\temp:</a>&nbsp; When this checkbox is checked, for sedimentation velocity 
+simulations of interacting species, the individual concentration distributions 
+of each species in molar units is saved to the harddrive.&nbsp; <b>Only use with 
+the Run command</b>.&nbsp; In conjunction with isotherms using Gilbert-Jenkins 
+theory, the asymptotic boundaries will be saved.&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,11 @@
+vti_encoding:SR|utf8-nl
+vti_timelastmodified:TR|01 Jul 2010 15:45:29 -0000
+vti_extenderversion:SR|6.0.2.6551
+vti_backlinkinfo:VX|
+vti_nexttolasttimemodified:TW|29 Jun 2009 20:03:16 -0000
+vti_author:SR|pschuck
+vti_modifiedby:SR|NIH\\schuckp
+vti_timecreated:TR|14 Sep 2003 03:28:23 -0000
+vti_lineageid:SR|{D5DDB5DF-8E7C-408B-B761-596F5CE1C0A3}
+vti_cacheddtm:TX|01 Jul 2010 15:45:29 -0000
+vti_filesize:IR|17011

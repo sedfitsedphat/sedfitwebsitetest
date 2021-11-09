@@ -1,0 +1,242 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>van Holde-Weischet</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;van&nbsp;Holde-Weischet&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="34868"
+--></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>van Holde-Weischet analysis</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | van Holde-Weischet</p>
+<p>Model | extrapolate ls-g*(s) vs 1/sqrt(time)</p>
+</font></b>
+<p>&nbsp;</p>
+<p>An introduction to the theory and practice of the analysis method by van
+Holde and Weischet (<a href="#ref1">ref 1</a>) can be found <a href="vhw_analysis.htm">here</a>.&nbsp;
+Reading of this website is suggested before use of the method.&nbsp;&nbsp;As
+described in this <a href="vhw_analysis.htm">introduction</a>, it is an elegant
+extrapolation method for boundary diagnostics.&nbsp; For quantitative analysis
+of the sedimentation data, these method are surpassed in many respects by direct boundary models, especially by Lamm equation
+solutions and <a href="sedfit_help_cs.htm">size-distributions c(s)</a>.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>A) <b><font COLOR="#0000ff"><a name="Model | van Holde-Weischet">Model | van Holde-Weischet</a></p>
+</font></b>
+<p>Very important for the use of the van Holde-Weischet method is the selection
+of appropriate data subsets.&nbsp; As explained in the <a href="vhw_analysis.htm">tutorial</a>,
+we need for each scan plateaus to be established, and we need the solvent
+plateau near the meniscus.&nbsp;&nbsp;</p>
+<p><b>This model is only good for absorbance data.</b></p>
+<p><b>The convention in S<span style="font-variant: small-caps">edfit</span>  is
+that the plateau must be established for all scans within the 0.05 cm left to
+the outer fitting limit (take the right green line and go back 0.05 cm -- this
+should all be flat in all scans).&nbsp; The solvent plateau must be established
+within the 0.05 cm right to the inner fitting limit of the last scan (look at
+the left green line, go 0.05 cm to larger radii -- this should be flat for the
+last scan).&nbsp;</b></p>
+<p>The following data set fulfills this condition:</p>
+<p><img border="0" src="images/sedfit54.gif" width="695" height="248"></p>
+<p>When switching on the van Holde-Weischet model, a message box appears:</p>
+<p><img border="0" src="images/sedfit55.gif" width="293" height="98"></p>
+<p>The analysis can be performed for sedimentation data and for flotation
+data.&nbsp; Usually, you can simply press Enter key here, unless when studying
+floatation processes (the analysis is the same, but S<span style="font-variant: small-caps">EDFIT</span>
+ must be told which one to use).&nbsp; In case of flotation, all the information about required plateaus is understood
+in reverse, i.e. solution plateau near the meniscus for all scans and solvent
+plateau near the bottom required for the last scan.</p>
+<p>Next, the resolution N (i.e. the number of boundary divisions) must be
+entered:</p>
+<p><img border="0" src="images/sedfit56.gif" width="275" height="128"></p>
+<p>By default, a value of 50 is recommended.&nbsp; This value is probably too
+high in most cases, because it leads to very narrow increments of boundary
+fractions.&nbsp; Dependent on the noise level of the data, there may be scans
+that actually do not have any data points in one or more of the boundary
+slices.&nbsp; If this is the case, the resolution will be automatically reduced,
+until every scan has at least one data point in all fractions.&nbsp; This will
+be a good value for the resolution, appropriate for the least-squares
+determination of the radial position of the boundary fractions (see <a href="vhw_analysis.htm#Implementation in sedfit">the
+implementation</a>).</p>
+<p>Optionally, the well-known plot of the linear regression of the boundary
+fractions will be shown, if yes (or press Enter key)</p>
+<p><img border="0" src="images/sedfit57.gif" width="280" height="112"></p>
+<p>Please note that the Parameters command does not apply here (there will be no
+action when clicking on this menu), because there are no further parameters to
+set.&nbsp; If the resolution parameter is to be changed, click with the mouse no
+the <b><font COLOR="#0000ff">
+Model | van Holde-Weischet </font></b>menu again.&nbsp;&nbsp;</p>
+<p>The analysis will be executed by a <a href="sedfit_help_run.htm">Run</a>
+command.&nbsp; If necessary, the number of boundary fractions will be reduced,
+indicated by a text output:</p>
+<p><font size="1"><b>dividing data in .. boundary fractions</b></font></p>
+<p>and finally a message box:</p>
+<p><img border="0" src="images/sedfit58.gif" width="280" height="98"></p>
+<p>Press OK (or hit the Enter key), and two new graphs will appear instead of
+the data and residuals plot: In the upper plot the apparent sedimentation
+coefficient values for each boundary fraction versus inverse square root of
+time, and in the lower plot the integral sedimentation coefficient distribution
+G(s).&nbsp;</p>
+<p><img border="0" src="images/sedfit51.gif" width="655" height="559"> </p>
+<p> This s(app,i) plot and its
+data can be copied using the <font FACE="Modern"><a href="sedfit_help_copy.htm#Copy Graphics of Data and Residuals">copy
+data plot</a></font> and the <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+data table</a>  command. (The copy data table command will give a table with 1/sqrt(t)
+in the first column, followed by the best-fit values for each fraction (one
+column is one fraction), followed by the experimental data for each fraction
+[ignore the 0 at the 1/sqrt(t) of 0]).&nbsp; The G(s) distribution can be exported using the <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+distribution table</a> command.&nbsp;</p>
+<p>Please note that the scale in the G(s) plot is determined by the minimum and
+maximum s-value occurring.&nbsp; The above example, the distribution is actually
+very precise, as can be seen in a different axis scale (after exporting): </p>
+<p><img border="0" src="images/sedfit53.gif" width="512" height="423"> </p>
+<p>Pressing the ESCAPE key will return to the usual display of the data and
+residuals, and in the bottom part of the window, the
+integral distribution G(s).&nbsp;&nbsp; </p>
+<p>It should be noted that here, S<span style="font-variant: small-caps">edfit</span> shows the best-fit position of each of the boundary
+fractions directly in the raw data space, i.e. it calculates backwards from the
+linear regression of s(app,i) vs 1/sqrt(time) to best-fit s(app) values, and
+best-fit positions of the boundary fractions.&nbsp; This has the advantage that it allows to judge how well the data
+are described by the van Holde-Weischet analysis. </p>
+<p>&nbsp; </p>
+<p><img border="0" src="images/sedfit52.gif" width="656" height="559"> </p>
+<p>&nbsp;</p>
+<p><b>Troubleshooting:</b></p>
+<p>If aberrant boundary fractions occur near the upper or lower end of the G(s)
+distribution, I recommend recalculation of the analysis (click with the mouse no
+the <b><font COLOR="#0000ff">
+Model | van Holde-Weischet </font></b>menu again) with a significantly lower
+resolution.&nbsp; (Aberrant fractions are usually a result of noise of the data
+being larger than the concentration increment of the boundary division.&nbsp;
+This averages out somewhat in the middle fractions, but noise from the plateaus
+reaching into close-by boundary fractions gives a one-sided bias.)&nbsp;
+Alternatively, if the resolution in the middle fractions shall not be
+sacrificed, the distribution can be exported, and the aberrant extreme fractions
+removed.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>B) <b><font COLOR="#0000ff"><a name="Model | extrapolate ls-g*(s) vs 1/sqrt(time)">Model | extrapolate
+ls-g*(s) vs 1/sqrt(time)</a></p>
+</font></b>
+<p>In this variant, the position of the boundary fractions are not obtained
+directly from the data.&nbsp; Instead, apparent s-values for boundary fractions are
+obtained via equivalent area fractions of a series of ls-g*(s) curves, which
+then are subjected to the same 1/sqrt(time) extrapolation.&nbsp; This allows working
+in the presence of time-invariant and radial invariant noise. This model is
+presented in more detail in the <a href="vhw_analysis.htm#The extrapolation of ls-g*(s)">tutorial</a>.&nbsp;</p>
+<p><b>Because of a constant total area under all the ls-g*(s) curves is needed,
+similar constraints on the selection of data sets are imposed.&nbsp; To avoid
+correlation of the baseline parameters with small s-value part of ls-g*(s), all
+scans should be well clear of the meniscus.&nbsp; For a well-determined high
+s-value limit of ls-g*(s), all scans should have a clearly established
+plateau.&nbsp;&nbsp;</b></p>
+<p><b>It was found to work best when RI noise has been eliminated, for example
+by manual <a href="sedfit_help_loading_options.htm#Eliminate Jitter">removal of
+jitter</a>, and switching of RI noise in the parameter box.&nbsp; (This does not
+apply to the TI noise, as TI noise can be taken into account.) This model can be applied equally to absorbance or
+interference data.&nbsp;</b></p>
+<p>After selecting this model, a warning message appears,</p>
+<p><img border="0" src="images/sedfit59.gif" width="601" height="139"></p>
+<p>as a reminder to the experimental character this model still has.&nbsp;
+Although very good results have been obtained (<a href="#ref2">ref 2</a>),
+overall very little experience with this approach is available.&nbsp; Further,
+the extrapolation of ls-g*(s) has the same fundamental limitations in resolution
+and sensitivity as the van Holde-Weischet method (see <a href="vhw_analysis.htm#The limitation for multiple species">the
+limitations</a>), and is surpassed by the <a href="sedfit_help_cs.htm">c(s)
+model</a>.&nbsp;</p>
+<p>After selecting the model, a message box</p>
+<p><img border="0" src="images/sedfit57.gif" width="280" height="112"></p>
+<p>appears, similar to the van Holde-Weischet model.&nbsp; However, more input is required for
+calculating ls-g*(s) which can be done by clicking on the <a href="sedfit_help_parameters.htm">Parameters</a>
+menu:</p>
+<p><img border="0" src="images/sedfit60.gif" width="358" height="303"></p>
+<p>The top portion of the parameters box determines the ls-g*(s) parameters
+(familiarity with the <a href="sedfit_help_ls-gs.htm">ls-g*(s) model</a> and the
+<a href="lsgofs_distribution.htm">tutorial</a> is required).&nbsp; The fields
+for <a href="sizedistributions.htm#parameter resolution">resolution</a> ('gofs
+resolution'), <a href="sizedistributions.htm#s-min">s-min</a>, <a href="sizedistributions.htm#s-max">s-max</a>,
+and <a href="sizedistributions.htm#confidence level (F-ratio)">confidence level</a>
+are the same as in the other <a href="sizedistributions.htm">size-distribution
+models</a>.&nbsp; A relatively low value for the gofs resolution (50) can be
+sufficient.&nbsp;</p>
+<p>Because
+we need to calculate ls-g*(s) curves at different times, the total number of scans is
+subdivided in subsets, which are input in the field &quot;<b><a name="#scans for g*(s)">#scans for
+g*(s)</a></b>&quot;. Some care has to be taken that this number is not too small,
+resulting in instable ls-g*(s) curves, and not too large, resulting in poor time
+resolution.&nbsp; I have good experience with a value of 10, but since I have not
+systematically optimized this to the stage of developing a general
+rule for good default values, some testing with different numbers may have to be
+done.&nbsp;</p>
+<p> Connected to this is the way in which the sets of scans are made,
+either by combining the scans in sequences like [1,2,3] [4,5,6], etc. or like a moving box [1,2,3],
+[2,3,4], [3,4,5], etc. Check ‘<a name="slide frame"><b>slide frame</b></a>’ box for this second
+method, leave it unchecked for the first.&nbsp; Obviously, the sliding frame has the advantage of providing more ls-g*(s)
+curves, but it also will take much more time.&nbsp;&nbsp;</p>
+<p>The middle part is concerned with the parameters for the extrapolation of the
+area (corresponding to the boundary) fractions.&nbsp; The only parameter
+required is the number of boundary divisions.&nbsp; I recommend here a not too
+high number (&lt; 50), although due to the smoothness of the ls-g*(s)
+distribution a larger number can be used than in the van Holde-Weischet
+method.&nbsp;</p>
+<p>The lower part, finally, consists of the usual baseline parameters and the
+meniscus position.&nbsp; <b>Please note that it is possible to include
+systematic noise in this model</b>, because each of the ls-g*(s) can be
+calculated considering <a href="systematic_noise_analysis.htm">systematic
+time-invariant or radial-invariant noise</a>.</p>
+<p>When the parameters have been specified, click on the <a href="sedfit_help_run.htm">Run</a>
+command to start the analysis.&nbsp; This will cause the series of ls-g*(s)
+distributions to be calculated.&nbsp; They are shown superimposed, and it can be
+observed how the g*(s) distribution gets sharper with time (i.e. for the sets of
+later scans).&nbsp; The result is shown in a similar representation as in the
+van Holde-Weischet analysis:&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit61.gif" width="722" height="556"></p>
+<p>The extrapolation of the area fractions of ls-g*(s) on top, and the original
+ls-g*(s) with the extrapolation G(s) in the lower graphics.&nbsp; Again, they
+can be copied using the <font FACE="Modern"><a href="sedfit_help_copy.htm#Copy Graphics of Data and Residuals">copy
+data plot</a></font> and the <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+data table</a> command. The G(s) distribution and the ls-g*(s) distributions can
+be exported using the <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+distribution table</a> command.&nbsp; When using this <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+distribution table</a> command, a message box appears&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit62.gif" width="122" height="99"></p>
+<p>prompting for a selection if either the complete set of ls-g*(s) or the G(s)
+distribution should be placed into the clipboard.&nbsp;</p>
+<p>Pressing the ESCAPE key will return to the usual display of the data and
+residuals, and in the bottom part of the window, the
+integral distribution G(s) together with the ls-g*(s) distributions.&nbsp;</p>
+<p><img border="0" src="images/sedfit63.gif" width="722" height="557"></p>
+<p>Similar to the van Holde-Weischet analysis, from the linear regression of the
+apparent sedimentation coefficients s(app,i) of the boundary/area fractions, we
+can get the best-fit s(app,i) values, and as a consequence, the best-fit radial
+positions of the boundary fractions.&nbsp; These best-fit boundary fractions can
+be composed into an explicit boundary model, which allows calculating the
+overall best-fit <a href="systematic_noise_analysis.htm">systematic noise</a>
+contributions.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p>Some experimenting with optimal parameters may be required, as the G(s)
+distribution can be sensitive to outlier g*(s) distributions.&nbsp; It seems
+advantageous if the systematic noise can be reduced to either RI noise or TI
+noise, as I have observed that both together can lead to poor extrapolation in
+the lower boundary fractions.</p>
+<p>&nbsp;</p>
+<p><b><font size="1">References</font></b></p>
+<p><font size="1">(<a name="ref1">1</a>) K.E. van Holde and W.O. Weischet. (1978) Boundary analysis of sedimentation
+velocity experiments with monodisperse and paucidisperse solutes. Biopolymers
+17:1387-1403</font></p>
+<p><font size="1">(<a name="ref2">2</a>) P. Schuck, M.S. Perugini, N.R.
+Gonzales, G.J. Howlett, and D. Schubert. (2002) Size-distribution analysis of proteins
+by analytical ultracentrifugation: strategies and application to model systems. <a href="http://www.biophysj.org/cgi/content/abstract/82/2/1096"><i>Biophysical Journal</i>
+ 82:1096-1111</a></font></p>
+<!--mstheme--></font></body>
+
+</html>

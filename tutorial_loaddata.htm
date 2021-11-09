@@ -1,0 +1,87 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><u><b><a name="Loading the data and preparing the analysis">Loading the data and preparing the analysis</a></b></u></p>
+<p>Load the complete data set into S<span style="font-variant: small-caps">edfit</span>.&nbsp; A detailed description on how
+to load data can be found <a href="sedfit_help_loadnewdata.htm">here</a>.&nbsp;
+Initially, the S<span style="font-variant: small-caps">edfit</span> 
+ window will look like this:</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/tutori1.gif" width="656" height="472"></p>
+<p>with the data plot on top, and the residuals plot below initially showing the
+same data.</p>
+<p><font color="#800080">NEW in version 11.0 and higher: The default color 
+scheme is scaled such that the first scans are black/blue and the last scans are 
+deep red.&nbsp; </font></p>
+<p><font color="#800080" size="2">All colors should be visible after loading the 
+scans.&nbsp; (When loading other data sets where some of the scans are very late 
+in the run such that virtually only superimposing baselines are scanned in the 
+final scans, the red colors will all superimpose and be hardly visible.)<br>
+&nbsp;</font></p>
+<p><img border="0" src="images/tutori29.jpg"></p>
+<p>Please note that the sedimentation was not recorded to completion; for this
+sample under the conditions of this run, approximately 200 scans instead of only
+130 would be
+required for an optimal analysis.&nbsp; In general, it is highly recommended to
+include a data set as large as possible.&nbsp;&nbsp;</p>
+<p>As a next step, <a name="select the bottom, meniscus, and the outer and inner fitting limits">select
+the bottom, meniscus, and the outer and inner fitting limits</a>.&nbsp; How to
+do this is described in very detail in the help section for the menu on <a href="sedfit_help_loadnewdata.htm">how
+to load new files</a>.&nbsp;&nbsp;</p>
+<p>For this particular sample, I would set the limits as shown here:</p>
+<p><img border="0" src="images/tutori2.gif" width="655" height="474"></p>
+<p>(After entering the fitting limits, the residuals plot switches to show all
+the data between the fitting limits.)</p>
+<p>By <a href="sedfit_help_plot_range.htm#Setting the Display Range with the Right Mouse Button">spanning
+a rectangle with the right mouse button</a>, we can zoom into the meniscus
+region, and take a closer look at the position of the meniscus:</p>
+<p><img border="0" src="images/tutori4.gif" width="627" height="211"></p>
+<p>In my experience, the red line is the <a name="best estimate for the meniscus">best
+estimate for the meniscus</a> of the sample column.&nbsp; Just 0.01 cm to the
+left of the red line, the scans show diagonal lines pointing down from left to
+right -- this is a sign that the sample solution column is a little bit shorter
+than the reference column (if the reference column was shorter, the lines would
+be diagonally increasing (instead of decreasing), and the proper meniscus position would be on the left
+of the diagonal section). Right mouse double-click goes back to the previous
+view.</p>
+<p>For the bottom region, please note that the outer fitting limit was set at approximately 7.15 cm, in
+order to exclude the <a name="back diffusion">back-diffusion</a> from the
+bottom.&nbsp; This is not necessary, in principle, and should not be done when
+dealing with small molecules that show a significantly larger
+back-diffusion.&nbsp; In this case, the back-diffusion, does contain significant
+information and should not be ignored.&nbsp; Because the Lamm equation describes
+back-diffusion, there is no problem modeling it as long as the gradient is not
+too steep and optical detection is reliable.&nbsp; However, modeling
+back-diffusion does give the bottom position a great importance for the
+model.&nbsp; Because we rarely know the bottom position with good precision, it
+should be treated as a floating parameter when modeling back-diffusion.&nbsp; In
+cases like shown here for the BSA, however, we can simply exclude this range
+from the analysis, which has the advantage that we do not need to worry much
+about the exact bottom position.&nbsp;</p>
+<p>At this point, it is very convenient to use the keyboard short-cut Ctrl-D,
+which magnifies the <a href="sedfit_help_plot_range.htm#Setting the Display Range">data
+range</a> .&nbsp;&nbsp;</p>
+<p><img border="0" src="images/tutori3.gif" width="657" height="473"></p>
+<p>So far, in contrast to other analysis software, no correction for any of the
+integral fringe shifts, the jitter or the time-invariant noise has been
+made.&nbsp; In fact, this will be part of the model, as explained in the <a href="systematic_noise_analysis.htm">introduction
+to the systematic noise analysis</a>.&nbsp; After the analysis, we can subtract
+the best-fit systematic noise contributions, and focus on the sedimentation
+signal.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_initialvalues.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

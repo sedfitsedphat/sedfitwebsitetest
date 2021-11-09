@@ -1,0 +1,528 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>multi-signal c(s)</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a>&nbsp;]</nobr> <nobr>[&nbsp;multi-signal&nbsp;c(s)&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hetero-associations.htm" target="">hetero-associations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="mixedassoc.htm" target="">mixedAssoc</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="ternary_systems.htm" target="">ternary&nbsp;systems</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="20718" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Multi-signal c<sub>k</sub>(s) analysis for multi-component mixtures<!--mstheme--></font></h3>
+
+<p>This model is for multi-component mixtures, and designed to take advantage of 
+different extinction coefficient of the sedimenting protein components, in order 
+to determine c(s) sedimentation coefficient distributions for each component in 
+solution.&nbsp; This can enable to determine the <font color="#FF0000"><b>
+composition of protein complexes</b></font>, which can be highly useful in order 
+to determine the association scheme and resolve multiple co-existing complexes.</p>
+
+<p>In the simplest form, multiple signals are globally fitted as component 
+sedimentation coefficient distributions</p>
+<p><img border="0" src="menubilder/multi-2.gif" width="623" height="75"><span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1168687375">
+ </o:OLEObject>
+</xml><![endif]--></span></p>
+
+<p>For stable mixtures on the time-scale of sedimentation, the interpretation is 
+straight-forward, as the c<sub>k</sub>(s) distributions are simply <b>molar<i>
+</i>sedimentation coefficient distributions of each component</b>.&nbsp; This 
+can be extended by applying constraints for minimal stoichiometries of larger 
+species.&nbsp; For rapidly reversible interactions the complexes must be 
+stabilized via mass action law, i.e. sufficiently high saturation of complexes 
+in the reaction boundary must be maintained (e.g. loading concentrations &gt; 5fold 
+Kd).&nbsp; </p>
+
+<p>A more detailed description of the theory and applications can be found in: </p>
+
+<p>A. Balbo, K.H. Minor, C.A. Velikovsky, R.A. Mariuzza, C.B. 
+Peterson, P. Schuck.&nbsp; Studying multi-protein complexes by multi-signal 
+sedimentation velocity analytical ultracentrifugation.&nbsp;
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15613487">
+PNAS 102 (2005) 81-86</a></p>
+
+<p>For the practical application in S<span style="font-variant: small-caps">edphaT</span>, 
+please familiarize yourself thoroughly with the
+<a href="hybrid_local_continuos_global_discrete.htm">hybrid discrete/continuous 
+global c(s) model</a>, as the multi-signal analysis is based on the same 
+structure.&nbsp; </p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><b><u><a name="STEP 1: Planning">STEP 1: Planning of the Experiment</a></u></b></p>
+
+<p>This analysis requires data acquisition at multiple signals.&nbsp; At least 
+as many signals should be used as protein components are present.&nbsp; 
+(Inclusion of a larger number of signals than of protein components is possible, 
+and may have advantages.)&nbsp; Examples for possible configurations are:</p>
+
+<p>* interference optical data + a single absorbance signal at either 230, 250, 
+or 280 nm or VIS (for proteins), or 260 nm (nucleic acids)</p>
+
+<p>* absorbance 280 nm + absorbance 250 nm</p>
+
+<p>* absorbance 280 nm + absorbance 230 nm</p>
+
+<p>* interference optical data + absorbance 280 nm + absorbance 250 nm</p>
+
+<p>I found problematic the combination of absorbance 280, 250, and 230 due to 
+the limited dynamic range of concentrations that can be observed, and also the 
+use of far UV &lt; 250 nm other than 230 nm (exploiting the UV lamp emission peak 
+to improve the monochromaticity of the light).</p>
+
+<p>Time required to scan multiple absorbance wavelengths is not a problem, and 
+neither is the wavelength accuracy of the XLA/I as long as the wavelengths 
+chosen are on a maximum or minimum of the extinction profile.&nbsp; Usually it 
+is not necessary to drop the rotor speed in order to get a larger numbers of 
+scans. </p>
+
+<p>Obviously, the choice of the detection is dictated by the extinction 
+coefficients of the components to be studied, which must be sufficiently 
+different.&nbsp; Many proteins differ significantly in the signal increments of 
+IF/UV280/UV250 due to different numbers of tryptophan and tyrosine residues, 
+which can be used to distinguish them.&nbsp;&nbsp;&nbsp; </p>
+
+<p>For the equivalent of the molar extinction coefficient for IF detection, use 
+a value of of 3.3Mw/1.2, if Mw is the molar mass of the protein, and 1.2 cm is 
+the pathlength of the cell.&nbsp; This is true, only, if there's no non-amino 
+acid component in the protein:&nbsp; for example, glycosylation would change the 
+IF signal increment of the protein.&nbsp; </p>
+
+<p>For each protein component, the molar signal increment at one signal must be 
+known.&nbsp; This can be either the IF signal increment, or (if the protein is 
+modified) an extinction coefficient at a wavelength used in the data 
+acquisition.</p>
+
+<p>For discrimination of the protein components, the signal increments must be 
+different at characteristic wavelengths.&nbsp; A simple test for unmodified 
+proteins can be to calculate the weight-based extinction coefficient with 
+SEDNTERP (OD/mg/ml), which should be &gt;&gt; 10% different for successful 
+discrimination with IF/ABS280 signal combination.&nbsp; Alternatively, one can 
+use SEDNTERP to plot the theoretical extinction spectrum, and estimate the ratio 
+of extinction at 280 versus 250 nm.&nbsp; Again, two proteins can be 
+distinguished by ABS280/ABS250 dual-wavelength detection if they differ in their 
+extinction ratio. </p>
+
+<p><b>Run each protein separately, in the same run with the the mixtures,&nbsp; 
+in order to determine the extinction coefficients experimentally in the 
+ultracentrifuge.&nbsp; See
+<a href="#STEP 3: Analysis of Extinction Coefficients">Step 3</a>.</b></p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><b><u><a name="STEP 2: Loading Data Sets">STEP 2: Loading Data Sets</a></u></b></p>
+
+<p>Load the data for each wavelength/signal separately as a new SV experiment.&nbsp; </p>
+
+<p>When using multiple absorbance wavelength, it can be inconvenient to select 
+the files of a certain wavelength only, because they are named by the XLA/I 
+operating software in strict sequence of data acquisition, irrespective of 
+wavelength.&nbsp; In this case, load all absorbance data and apply the S<span style="font-variant: small-caps">edfiT</span> 
+tool
+<a target="_blank" href="../sedfit_help_loading_options.htm#Save Raw Data Set">
+Save Raw Data Set</a> (a function in the Loading Options) to write a copy of the 
+absorbance files with altered filenames to the hard disk.&nbsp; The filenames 
+will have information on the data acquisition wavelength (e.g. 
+'50k280_001.ra2'), and this facilitates the selection of the velocity scans from 
+each signal.&nbsp; </p>
+
+<p>In my experience, a shift of wavelength by 1 or 2 nm is not detrimental to 
+the data, and I would recommend loading all scans within a narrow range of 
+wavelengths.&nbsp; As usual, load files from the beginning to the end of 
+sedimentation, but avoid including a large number of scans that only show a 
+completely depleted cell (this would slow down the calculations a lot).</p>
+
+<p>You do <b>not </b>need to enter the extinction coefficients in the
+<a href="experiment_parameters.htm#Sedimentation Velocity Box">Experiment 
+Parameter Box</a>, as the extinction coefficients will be part of the global 
+model.&nbsp; However, all other information, including meniscus, bottom, optical 
+pathlength and links will be recognized and entered as usual.&nbsp; Usually, I 
+consider TI noise components also for absorbance optical data.&nbsp;&nbsp;&nbsp; </p>
+
+<p>In this way, create an xp file for each signal of each cell, and save each 
+experiment to the hard disk with a characteristic name (e.g. 
+'ProteinA_cell1_IF.xp' and 'ProteinA_cell1_abs280.xp').&nbsp;&nbsp; (Do not use 
+empty spaces in any part of the data path or filename.)</p>
+
+<p>After that, remove all experiments, and load only the xp-files corresponding 
+to the different signals acquired for <b>one cell</b>.&nbsp; For example, load 
+the IF and absorbance xp file of cell 1.&nbsp; The xp-files that belong to the 
+same cell will constitute one <b><a name="SET">'SET'</a></b>.&nbsp; </p>
+
+<p><i><font size="2">It is possible to load several SETS, for example, you could 
+load the sequence cell1_IF.xp, cell1_ABS.xp, cell2_IF.xp, cell2_ABS.xp.&nbsp; 
+Note that all files corresponding to the different signals included in a single 
+SET have to be loaded in sequence, and that the sequence for all SETS has to be 
+the same.&nbsp; When multiple SETS are loaded, in analogy to
+<a href="hybrid_local_continuos_global_discrete.htm">hybrid discrete/continuous 
+model</a>, global parameters to all SETS will be s and D, the frictional ratios,
+<b>and the extinction coefficients</b>. Local parameters will be the c<sub>k</sub>(s) 
+distributions and concentrations.&nbsp; This will allow to utilize data from 
+more than one cell in a global analysis. This can be used, for example, for a 
+more precise determination of the extinction coefficients.&nbsp; </font></i></p>
+
+<p>Consider <b><a name="linking meniscus and bottom for the multi-signal sets">
+linking meniscus and bottom for the multi-signal sets</a></b>:&nbsp; Since the 
+data are acquired from the same solution column, in principle the meniscus and 
+bottom value should be the same.&nbsp; This is certainly true for different 
+absorbance optical signals.&nbsp; It may not be true (and usually is not) 
+between absorbance and interference optical data, due to the difficulty of a 
+perfect radial calibration.&nbsp; Imperfect radial calibration of the IF system 
+will create small offsets in the radius values, which (can usually be ignored in 
+their effect on the measured s-value, but) require consideration of different 
+apparent menisci positions for the IF and ABS data.&nbsp; This will create no 
+further problem.&nbsp; After establishing links, make sure you update the xp-files 
+with the function &quot;<a href="data1.htm#Save All Experiments">Save All Experiments</a>&quot; 
+(or control-A).</p>
+
+<p>Next, go to the Model menu and click on 'multi-wavelength continuous/discrete 
+distribution analysis'.</p>
+
+<p><img border="0" src="menubilder/model.1.gif" width="444" height="437"></p>
+
+<p>This will switch the multi-signal analysis on.&nbsp; A question will appear 
+requesting the number of signals used in the analysis:</p>
+
+<p><img border="0" src="menubilder/multi-2.jpg" width="213" height="106"></p>
+
+<p>An algorithm is used to anticipate the number of signals - only two or three 
+are currently implemented in S<span style="font-variant: small-caps">edphaT</span>.&nbsp; 
+(With commercial instruments, theoretically 4 signals can be acquired 
+simultaneously, which may be included in the future.)&nbsp; It will be assumed 
+that the experiments are in 'standard configuration', i.e. sequences of signals 
+for each set are appended. If only one set is loaded (the example shown here), 
+they are in 'standard configuration' by default.</p>
+
+<p><img border="0" src="menubilder/multi-3.jpg" width="470" height="120"></p>
+
+<p>Note that the signal of the first xp-file will be designated wl1, the next 
+one wl2 etc.&nbsp; This numbering scheme for the signals will be used in the 
+following as a designation for referring to the different signals .</p>
+
+<p>Save this state of S<span style="font-variant: small-caps">edphaT</span> by
+<a href="data1.htm#Configuration Functions">saving current configuration</a> to 
+the hard disk.&nbsp; This way, everything done up to this point can be 
+reproduced by double-clicking the corresponding .sedphat file.&nbsp; </p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><u><b><a name="STEP 3: Analysis of Extinction Coefficients">STEP 3: Analysis 
+of Extinction Coefficients</a></b></u></p>
+
+<p>Make sure only the xp-files are loaded from the different signals of the cell 
+containing one protein component alone, and that the multi-signal c(s) model is 
+active.&nbsp; Click on Global Parameters.&nbsp; This will show the following 
+parameter box:</p>
+
+<p><img border="0" src="menubilder/multi-4.jpg" width="934" height="775"></p>
+
+<p>Note that most of the sections of this parameter box are very similar to 
+those of the <a href="hybrid_local_continuos_global_discrete.htm">hybrid 
+discrete/continous global c(s) model</a>.&nbsp; Make sure you are familiar with 
+those.&nbsp; </p>
+
+<p>The different parts are:</p>
+
+<p>1) the <a name="fields for the discrete species">fields for the discrete 
+species</a>, for example species 1.&nbsp; s and M of the discrete species are 
+treated as global parameters, while their concentration is local to each set.</p>
+
+<p><img border="0" src="menubilder/multi-6.gif" width="141" height="150"></p>
+
+<p>Checking the box next to 'species 1' means it is utilized, unchecking takes 
+it out of the fit.&nbsp; M and S fields are like in the hybrid 
+discrete/continuous c(s) model.&nbsp; New are the fields &quot;xt wl1&quot; and &quot;xt wl2&quot;, 
+which are the molar signal increments (i.e. extinction coefficients) of this 
+species for the signal designated &quot;1&quot; (the signal of the first xp file) and &quot;2&quot; 
+(the signal of the second xp file).&nbsp; </p>
+
+<p>2) The <a name="unit of the extinction coefficients">unit of the extinction 
+coefficients</a> to be entered depends on the state of the box in the new 
+section:</p>
+
+<p><img border="0" src="menubilder/multi-11.gif" width="327" height="129"></p>
+
+<p>This allows to define 'chromophors' or better 'chromophoric units' which are 
+characterized by certain signal increments for both signals.&nbsp; For example, 
+usually the chromophoric units will be the monomeric protein.&nbsp; The utility 
+of the 'chromophor' is derived from the fact that it fixes the relative 
+contributions to both signals, and that all possible species have signal 
+contributions in multiples of these 'chromophoric units'.&nbsp; </p>
+
+<p>For example, assume working with purified proteins that have different ratio 
+of tryptophan and tyrosine, both proteins have a non-zero extinction coefficient 
+at 280 nm, and data are acquired at 280 nm and in IF system.&nbsp; Assuming pure 
+preparation, no species can occur that has signal contributions in the IF system 
+only, and no species can have absorbance signal only.&nbsp; Further, the ratio 
+of ABS280/IF signal cannot be lower than that of the protein with the smallest 
+extinction coefficient at 280 nm.&nbsp; This requirement is a strong constraint 
+for the analysis.&nbsp; </p>
+
+<p>However, there can be exceptions.&nbsp; Consider that the IF data acquisition 
+was superimposed by unmatched buffer salts.&nbsp; These obviously do not have UV 
+signals.&nbsp; Therefore, it is possible to determine for the discrete species 
+and the continuous distributions if their respective species extinction 
+coefficients are expressed in multiples of chromophors, or not.&nbsp; In the 
+case shown, the discrete species ARE NOT in multiples of chromophor extinction, 
+while the continuous distributions ARE.&nbsp; </p>
+
+<p>If you go back to species 1 above, you notice the effective M and s-values as 
+they are usually observed for buffer salts.&nbsp; Signal 1 will be the IF 
+signal, and the extinction coefficient entered is arbitrarily set to a value of 
+1000000, which will arbitrarily scale the signal of the buffer salt (we're not 
+interested in this magnitude).</p>
+
+<p>&nbsp;</p>
+
+<p>3) the sections for the <a name="segments of continuous distribution">
+segments of continuous distribution</a> - There are up to three segments that 
+can be used, and they are switched on with the check-mark in the upper left 
+corner (e.g., next to 'segment 1'):</p>
+
+<p><img border="0" src="menubilder/multi-8.gif" width="520" height="141"></p>
+
+<p>The parameters for the sedimentation coefficient distribution are like in the
+<a href="hybrid_local_continuos_global_discrete.htm">hybrid discrete/continuous 
+global c(s) model</a>.&nbsp; </p>
+
+<p>New is the matrix for specifying the spectral properties of the c(s) 
+components for this segment.&nbsp; For each segment, as many distributions can 
+be calculated as there are different signal types.&nbsp; In the example for IF 
+and ABS280 detection, that's two distributions.&nbsp; However, at this stage in 
+the analysis we have data loaded from the cell with only a single component, and 
+therefore there will only be one distribution needed.&nbsp; Therefore, the c(s) 
+segment with component 'spectrum 1' is switched on, and the c(s) segment with 
+component 'spectrum 2' is switched off.&nbsp; </p>
+
+<p>For each c(s) component, we need to specify how the species will contribute 
+to the different signals.&nbsp; This is what goes into these fields:&nbsp; for 
+each c(s) component (row) we will enter the signal contribution to signal 1 
+(abbreviated here 'xt1') and signal 2 ('xt2').&nbsp; This can be EITHER directly 
+in the units of molar signal increments (i.e. molar extinction coefficients), OR 
+in multiples of the chromophoric units ('chr1' and 'chr2') as defined above.&nbsp; </p>
+
+<p>In this particular example, the unit of extinction coefficients is set for 
+the continuous segments to be multiples of chromophores (<a href="#unit of the extinction coefficients">see 
+above</a>).&nbsp; Therefore, the value '1.000' in the column of 'xt1/chr1' 
+indicates the fact that all species in this component of this segment absorbs 
+exactly like the chromophore 1.&nbsp; The value '0.000' in 'xt2/chr2' indicates 
+that there is no contribution of the kind of chromophore 2 (there's only one 
+protein in the solution considered so far).&nbsp; </p>
+
+<p>&nbsp;</p>
+
+<p>4) <a name="Fitting the extinction coefficient">Fitting the extinction 
+coefficient</a>:&nbsp; Notice that the definition of the chromophores and their 
+signal increment includes check-marks for all fields.&nbsp; </p>
+
+<p><img border="0" src="menubilder/multi-10.gif" width="327" height="129"></p>
+
+<p>These permit the signal increments to be treated as floating parameters.&nbsp; 
+Although apparently all signal increments can be floated, at least one signal 
+increment has to be known and remain constant (otherwise the signal increments 
+will be completely correlated with the concentrations).&nbsp; </p>
+
+<p>Since we only use a single chromophore in the analysis of this single protein 
+component, only the first row of entries is used.&nbsp; In the following 
+example, we have loaded the data such that the first xp file is IF data and the 
+second is absorbance 280 nm data (abbreviated ABS280).&nbsp; Therefore, the 
+first column will correspond to the interference signal increments.&nbsp; The 
+protein considered in the example it an IgG, and with Mw = 150 kDa, we get 
+3.3x150000/1.2 = 412500 molar signal increment.&nbsp; The value of 100,000 is 
+our starting estimate of the molar extinction coefficient at 280 nm, and the 
+checkmark indicates that this will be floated in the analysis.</p>
+
+<p>You can execute a <a href="run.htm">run</a> command to verify that no error 
+message occurs.&nbsp; Also, different values for the extinction coefficient can 
+be entered and the quality of fit compared.&nbsp; The <a href="fit.htm">fit</a> 
+is done best in two stages:&nbsp; a) switch OFF the meniscus and bottom 
+variation for all xp files, and DO NOT float the f/f0 value of the continuous 
+segment.&nbsp; In this way, only the discrete species and the extinction 
+coefficient are non-linear unknowns, and the fit will converge rapidly to a very 
+good value for the extinction coefficient; b) fine-tune by switching ON the 
+meniscus and bottom variation for all xp files, as well as the f/f0 value of the 
+continuous segment.&nbsp; Both parts work better with the
+<a href="fit.htm#Nelder-Mead simplex">Simplex algorithm</a> (i.e. in the
+<a href="options.htm#Marquardt-Levenberg">fitting options</a>, switch Marquardt-Levenberg 
+OFF).&nbsp; </p>
+
+<p>My result is the following:</p>
+
+<p><img border="0" src="menubilder/multi-12.jpg" width="973" height="770"></p>
+
+<p>with xt280 = 206,740/Mcm .&nbsp; The green discrete species describes the 
+buffer salt, and the red distribution all protein species with on average have a 
+signal increment of 412,500/Mcm for IF and 206,740/Mcm in absorbance at 280 nm.&nbsp; 
+In this determination we find that the main species is the IgG, but there are 
+also substantial amount of aggregates and decay products.&nbsp; The information 
+on the extinction coefficient is taken, conceptually, from the relative boundary 
+heights in IF and absorbance detection.</p>
+
+<p>One could wish for a determination of the extinction coefficients that 
+excludes the decay products (&lt; 6 S) and aggregates (&gt; 9 S) from the 
+determination of the IgG extinction coefficient.&nbsp; In this case, we set the 
+fit up as following:</p>
+
+<p><img border="0" src="menubilder/multi-13.jpg" width="934" height="775"></p>
+
+<p>The discrete species is the IgG monomer, and now discrete species only are 
+expressed in multiples of chromophore signal contributions.&nbsp; The continuous 
+segments are specified directly in the form of molar extinction coefficients.&nbsp; 
+Notice there are two continuous segments:&nbsp; segment 1 from 0.3 to 6 S for 
+all species smaller than the IgG, and segment 2 for everything larger.&nbsp; 
+Each segment has two separate component c(s), each one contributing only to one 
+of the signals.&nbsp; This means that the two components now refer to IF and 
+ABS280 signals only, which means that in this s-range the signal are essentially 
+analyzed separately in conventional c(s) segments from analysis of the IF data, 
+and from ABS280 data, respectively.&nbsp; The factor 100,000 is only introduced 
+in order to scale the distributions.&nbsp; The result is shown here:</p>
+
+<p><img border="0" src="menubilder/multi-14.jpg" width="973" height="770"></p>
+
+<p>The red lines are the conventional c(s) segments from IF data (just scaled by 
+100,000) and the green lines those from absorbance data.&nbsp; Only the discrete 
+species at 7.2 S is considered to contribute to both data sets, which results in 
+an extinction coefficient at 280 nm of 210,754.&nbsp; This is only slightly 
+different from the value obtained before, showing that the degradation products 
+did not significantly bias the spectral analysis (most likely because they have 
+very similar spectral properties).&nbsp; </p>
+
+<p><i><font size="2">This second, alternative analysis also spotlights another 
+feature of the multi-signal analysis.&nbsp; Although not relevant for the 
+determination of the IgG extinction coefficient, a close inspection of the c(s) 
+segments for the IF and ABS data reveals a number of differences.&nbsp; The 
+presence of a small species only contributing to IF signal was anticipated as 
+the unmatched buffer salt.&nbsp; However, the 6S and 10 S species also only 
+appear in the IF detection, while a 5.5 S peak is only visible in ABS detection.&nbsp; 
+It is highly unlikely that such species really exist in solution, and they are a 
+result of the insufficient information in the raw data on the precise s-values 
+of these trace components.&nbsp; This will make their identification difficult.&nbsp; 
+In contrast, in the multi-signal analysis above the IF and abs contributions of 
+these trace components were constrained to the same ratio overall, with the 
+result of a slightly worse but still acceptable fit, which utilizes both signals 
+to arrive at a globally consistent picture.&nbsp; </font></i></p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><b><u>
+<a name="STEP 4:  Analysis of Component Sedimentation Coefficient Distributions">
+STEP 4:&nbsp; Analysis of Component Sedimentation Coefficient Distributions</a></u></b></p>
+
+<p>After the extinction coefficients are determined for each protein component, 
+the mixture can be analyzed.&nbsp; The xp files from the different signals of 
+the cell containing the mixture are loaded in the same way as described above.&nbsp; </p>
+
+<p>In the following example, absorbance data at 280 nm are designated 'wl1' and 
+IF data 'wl2', and we study a protein component with extinction coefficients 
+220,000 and 657,433/Mcm for ABS280 and IF, respectively, binding to a protein 
+component with extinction coefficients 217,000 and 466,130/Mcm for ABS280 and 
+IF, respecitvely.&nbsp; This can be specified as follows:</p>
+
+<p><img border="0" src="menubilder/multi-16.jpg" width="934" height="775"></p>
+
+<p>Note that there is only a single segment, consisting of two components.&nbsp; 
+The spectrum of component 1 is identical to chromophore 1, and the spectrum of 
+component 2 is identical to chromophore 2.&nbsp; Both are assumed to have the 
+same frictional ratio.&nbsp; </p>
+
+<p>Alternatively, they could have different frictional ratio if they were 
+defined as two different segments with 1 component each, like this:</p>
+
+<p><img border="0" src="menubilder/multi-18.gif" width="517" height="273"></p>
+
+<p>The global analysis gives two distributions, with the red line corresponding 
+to component 1 and the green line to component 2, as indicated in the legend.</p>
+
+<p><img border="0" src="menubilder/multi-17.jpg" width="973" height="770"></p>
+
+<p>In this example, the protein designated component 1 consists of a monomer at 
+6 S and a dimer at 8 S, and very little higher s-value if studied by itself.&nbsp; 
+Component 2 has a peak at 9 S if studied by itself, and some larger aggregates.&nbsp; 
+Clearly, in the mixture here the protein 1 is co-sedimenting with protein 2, in 
+approximately equimolar ratio for the peaks at 10 and 12 S. </p>
+
+<p>The distributions can be integrated using the shortcut control-I, and zoomed 
+in and out using the right mouse button.&nbsp; This is completely analogous to 
+the integration and zoom functions for distributions in SEDFIT.</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><b><u><a name="STEP 5: Application of Constraints for Stoichiometry">STEP 5: 
+Application of Constraints for Stoichiometry</a></u></b></p>
+
+<p>It is possible to apply additional constraints that reflect our hypothesis 
+that all species &gt; 10 S are complexes, which have stoichiometries of at least 
+1:1 or higher.&nbsp; For example, if we hypothesize from our knowledge of these 
+proteins that there can only be species with molar ratios of 1:1, 1:2, up to 
+1:3, this can be expressed as follows: </p>
+
+<p><img border="0" src="menubilder/multi-19.gif" width="518" height="273"></p>
+
+<p>The first segment up to 9S describes the free components only.&nbsp; 
+Everything larger is considered a complex, described in segment 2.&nbsp; Here, 
+there are two component distributions - one for the 1:1 stoichiometry of 
+chromophoric units (i.e. 1:1 protein complex, since the chromophoric unit was 
+taken as the protein spectrum), and one for a 1:3 stoichiometry of chromophoric 
+units.&nbsp; If there was a 1:2 complex, it could not be distinguished from an 
+equal amount of 1:1 and 1:3 stoichiometry.&nbsp;&nbsp; </p>
+
+<p>More generally, these constraints are expressed as a change of the basis 
+spectra as </p>
+<p><img border="0" src="menubilder/multi-1.gif" width="632" height="78"><span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1168706653">
+ </o:OLEObject>
+</xml><![endif]--></span></p>
+
+<p>(see
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=15613487">
+PNAS 102 (2005) 81-86</a> for details).</p>
+
+<p>In our example, the result shows four lines, two distributions from 0.5 to 9 
+S, and two from 9.5 to 25 S.&nbsp; </p>
+
+<p><img border="0" src="menubilder/multi-20.jpg" width="973" height="770"></p>
+
+<p>Note that the protein concentration is the area under the curve.&nbsp; The 
+transition point for the first and second segment is 9S.&nbsp; Since this is 
+just where the protein 1 had a peak before, the red line is now rising to a 
+positive value at the maximum of 9S, and the area under the red curve from 8 - 9 
+S will approximately equal the area in the peak we saw before.&nbsp; Note that 
+in this case, the appearance of a positive value of the distribution at the 
+maximal s-value of the segment is not a problem, because larger sedimenting 
+species are described in the fit.&nbsp; (They are just assumed to be complexes.)&nbsp; 
+The second segment from 9.5 S to 25 S is almost exclusively populated by red 
+species, which are the 1:1 complexes.&nbsp; Only a&nbsp; small trace of 1:3 
+complex at 10.5 S appears.&nbsp; Considering that the fit is virtually equally 
+good as the one before, it can be said that the data is consistent with the 
+hypothesis that all species &gt; 10 S are a sequence of complexes, all with 
+equimolar composition. </p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+
+<p><b><u><a name="STEP 6: Documenting the Fit">STEP 6: Documenting the Fit</a></u></b></p>
+<p>As in the <a href="hybrid_local_continuos_global_discrete.htm">hybrid 
+discrete/continuous global c(s) model</a>, one can retrieve the local concentrations 
+of the discrete and the component c(s) segments via the <a href="copy.htm">copy
+command</a>.&nbsp; If you copy the distribution, you will be asked:</p>
+<p>1) for the discrete species </p>
+<p><img border="0" src="menubilder/hybrid7.gif" width="213" height="115"></p>
+<p>2) for each segment</p>
+<p><img border="0" src="menubilder/multi-21.jpg" width="213" height="106"></p>
+<p>and within each segment for each component:</p>
+<p><img border="0" src="menubilder/multi-22.jpg" width="366" height="153"></p>
+<p>etc., which will put the corresponding section of the hybrid distribution into the
+clipboard for pasting into your spreadsheet software.&nbsp; </p>
+<p>Note that the component number when copying will not be the number specified 
+in the parameter box, but they will be in sequence.&nbsp; For example, if 
+component 1 was not utilized, and only component 2 was switched on, this will be 
+copied by 'WL or Chromophore #' 1, instead of 2.</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

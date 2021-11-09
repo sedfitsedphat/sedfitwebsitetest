@@ -1,0 +1,272 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>c(s) with other prior</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;c(s)&nbsp;with&nbsp;other&nbsp;prior&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="36248" endspan --></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">continuous distribution c(s) Lamm
+equation model with other prior knowledge</p>
+</font><p>These models are very similar to the standard c(s) distribution.&nbsp;
+However, there are some differences in the prior knowledge.&nbsp; While the
+'normal' c(s) distribution estimates the diffusion coefficients that belong to
+each s-value based on a weight-average frictional ratio, some additional or
+modified information can be entered in the following special cases:</p>
+<p><img border="0" src="images/sedfit122.gif" width="263" height="123"></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Model | Continuous c(s) Conformational Change Model">conformational 
+change</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Model | Continuous c(s) with constant D">invariant D</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#Continuous c(s) with 1 discrete component">with 1 discrete component</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#c(s) for wormlike chain">bimodal f/f0</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#c(s) with fix f/f0 and floating vbar">fix f/f0 and floating vbar</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#c(s) for wormlike chain">wormlike chain</a></font></p>
+<p style="margin-top: 0; margin-bottom: 0"><font size="2">
+<a href="#c(s) with M(s) table">with M(s) table</a></font></p>
+<p>&nbsp;</p>
+<p><b><font color="#FF00FF">Note:&nbsp; for a generalization of c(s) with other
+prior knowledge, look at the <a href="sedphat/hybrid_local_continuos_global_discrete.htm" target="_parent"> S<span style="font-variant: small-caps">edPHaT</span>
+hybrid continuous/discrete model</a>.&nbsp;</font></b></p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="Model | Continuous c(s) Conformational Change Model"> Continuous c(s) Conformational Change Model</a></p>
+</b>
+</font>
+<p>The conformational change model allows to incorporate <b>additional prior knowledge on
+one species with a known molar mass</b>.&nbsp; This model is useful simply if
+one knows the molar mass of the main species.&nbsp; Because this species may undergo a conformational change, and
+therefore sediment with different s-values under different conditions, this
+model is suitable for such species with conformational change.&nbsp;&nbsp;</p>
+<p>Essentially, this model assumes a constant molar mass for
+all species sedimenting in a specified range of s-values.&nbsp; Outside this range, a
+constant weight-average frictional ratio is assumed just like in the 'normal'
+c(s).&nbsp; The advantage of this model is an enhanced precision in
+the distribution analysis by making use of the known molar mass value, which
+allows to calculate a precise diffusion coefficient via the Svedberg equation
+for each s-value within the pre-defined range.</p>
+<p>The parameters for this model look very much the same as in the normal c(s),
+except for the additional field in the top left corner, which contains the
+information on the single species with known molar mass:</p>
+<p><img border="0" src="images/sedfit46.gif" width="659" height="300"></p>
+<p>The Mw field is for the molar mass (in Dalton, with buoyancy factor as
+specified in the v-bar and buffer density setting).&nbsp; The s-min and s-max
+directly under the Mw field determine the sedimentation coefficient range for
+which the molar mass value should be used.&nbsp; The meaning of all the other
+fields is exactly the same as in the normal <a href="sedfit_help_cs.htm">c(s)
+model with constant frictional ratio</a>.</p>
+<p>In practice, it is probably necessary to run a normal c(s) first, in order to
+determine the s-range of the peak for the main species (or the one with the
+known molar mass, respectively).&nbsp; After that, this conformational change
+model can be used to produce a refined analysis.</p>
+<p><font color="#FF00FF"><u><b>New in version 8.5:</b></u> </font><font color="#800080">There
+is the option to space the s-values logarithmically, which can be useful if a
+very large range of s-values has to be covered.&nbsp; Alternatively, a file
+containing a desired number and spacing of s-values can be read.&nbsp; The
+filename should be named 'sdist.ip1' (e.g., for scans series *.ip1) and be
+placed in the directory where the scans are located. Each time a distribution
+analysis is performed, such a file is automatically created, which can serve as
+a template for modification.</font></p>
+<p>&nbsp;</p>
+<b>
+<font COLOR="#0000ff">
+<p><a name="Model | Continuous c(s) with constant D"> Continuous c(s) with constant D</a></p>
+</font></b>
+<p>The c(s) with constant D model is very similar to the normal c(s) model, but
+instead of using the approximation of similar shape (constant frictional ratio)
+for all molecules in the distribution, it uses the approximation of a constant
+diffusion coefficient.&nbsp;</p>
+<p> This could be the approximately the case for narrow distributions, e.g.
+after fractionation by size-exclusion chromatography,
+or for molecules like ferritin, where the hydrodynamic radius of the molecules
+is constant throughout the distribution.&nbsp; An average D could be known from dynamic
+light scattering experiments, or the weight-average D can also be fitted to the data.</p>
+<p>The parameter box looks very much like the one from c(s) analysis, but with
+two differences:&nbsp;</p>
+<p><img border="0" src="images/sedfit47.gif" width="443" height="299"></p>
+<p>First, instead of the frictional ratio field we have now a field
+&quot;D&quot; for entering the diffusion coefficient (in 10<sup>-7</sup> cm<sup>2</sup>/sec).&nbsp;
+As usual, if the check-box left to the D field is marked, this parameter will be
+fitted in a non-linear regression if the Fit command is used.&nbsp; The second
+difference is that the fields for the partial-specific volume, buffer density
+and viscosity are disabled, because they are not needed (these parameters were
+only used in the normal c(s) model to give us D from the combination of s and
+the frictional ratio).</p>
+<p><font color="#FF00FF"><u><b>New in version 8.5:</b></u> </font><font color="#800080">There
+is the option to space the s-values logarithmically, which can be useful if a
+very large range of s-values has to be covered.&nbsp; Alternatively, a file
+containing a desired number and spacing of s-values can be read.&nbsp; The
+filename should be named 'sdist.ip1' (e.g., for scans series *.ip1) and be
+placed in the directory where the scans are located. Each time a distribution
+analysis is performed, such a file is automatically created, which can serve as
+a template for modification.</font></p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="Continuous c(s) with 1 discrete component"> Continuous c(s) with 1
+discrete component</a></p>
+</b>
+</font><p>This special case of the c(s) distribution analysis makes use of the
+knowledge of s and M for one particular molecule in solution.&nbsp; Imagine that
+we acquire interference optical data, but have more sodium chloride in the
+sample than in the reference solution. (Obviously, it would be better to do a
+dialysis, but this may not always be possible.)&nbsp; Such data may look like
+this:</p>
+<p><img border="0" src="images/sedfit49.gif" width="523" height="164"></p>
+<p>where clearly the sedimentation of a small component is superimposed to the
+macromolecular sedimentation.&nbsp; This model allows to include one additional
+discrete component that can take into account one such extra small molar mass
+component.&nbsp; </p>
+<p>The parameter box looks like the normal c(s) parameters, but with two extra
+fields in the middle right:&nbsp; one for the sedimentation coefficient of the
+small component, and one for the molar mass (this refers to an 'effective' molar
+mass using the buoyancy as specified in the partial-specific volume and the
+buffer density field).&nbsp;&nbsp; </p>
+<p><img border="0" src="images/sedfit48.gif" width="440" height="295"></p>
+<p>It is clear that allowing for the additional discrete small species will make
+the c(s) distribution dependent on the s and M of that species.&nbsp; In some
+situations, it may be possible to determine such an s and M value from
+independent experiments.&nbsp; More likely, however, the s and M of the discrete
+component has to be fitted by nonlinear regression (as usual, put a mark in the
+check-box to the left of the parameter and use the Fit command).&nbsp; This can
+be done similar to the optimization of the frictional ratio as shown in the <a href="tutorial_sizedistributions.htm">tutorial</a>,
+and should include as additional parameters to be optimized the meniscus and the
+bottom position of the solution column. </p>
+<p>The resulting c(s) distribution of such a fit may look like this:</p>
+<p><img border="0" src="images/sedfit50.gif" width="546" height="493"></p>
+<p>Please note the very large value at the first s-value - this is a result of
+the way the distribution is internally organized:&nbsp; <b>The first data point
+of the c(s) distribution will be replaced by the discrete species.&nbsp; </b>Therefore,
+export to a spreadsheet program (using the <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+command</a>, as described in the tutorial) is highly recommended for displaying
+the result.&nbsp; There, the first data point should be removed (or
+disregarded). </p>
+<p><font color="#FF00FF"><u><b>New in version 8.5:</b></u> </font><font color="#800080">There
+is the option to space the s-values logarithmically, which can be useful if a
+very large range of s-values has to be covered.&nbsp; Alternatively, a file
+containing a desired number and spacing of s-values can be read.&nbsp; The
+filename should be named 'sdist.ip1' (e.g., for scans series *.ip1) and be
+placed in the directory where the scans are located. Each time a distribution
+analysis is performed, such a file is automatically created, which can serve as
+a template for modification.</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="c(s) with bimodal ff0"> Continuous c(s) with bi-modal f/f0</a></p>
+</b>
+</font><p>This special case of the c(s) distribution applies to systems where
+there are two clearly separated regions in the sedimentation coefficient
+distribution.&nbsp; In that case, it is usually possible to optimize two
+separate f/f0 parameters.&nbsp; The structure of the input box is similar as
+that for conformational change above:&nbsp; An area in the upper left corner
+specifies the f/f0 value for a particular region of the c(s) distribution.&nbsp;
+This f/f0 value can be fitted.&nbsp; Outside this special region, the
+distribution is calculated as usual using the frictional ratio in the middle
+section of the box.&nbsp; </p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/sedfit3.jpg" width="875" height="364"></p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="c(s) with fix f/f0 and floating vbar">Continuous c(s) with fix f/f0 
+and floating vbar</a></p>
+</b>
+</font><p>The idea of this model is that we may know relatively well the overall 
+shape of a particle, but not its density.&nbsp; Imagine, for example, a 
+protein-detergent complex where the detergent micelle is large compared to the 
+protein, and/or where the protein is known not to be highly extended.&nbsp; In 
+such a case, the frictional ratio may be close to unity (or the value for the 
+detergent micelle alone, respectively).&nbsp; As a consequence, from the 
+experimentally observed ratio of sedimentation relative to diffusion, the 
+buoyancy factor can be extracted, i.e. the density increment (partial specific 
+volume) of the protein-detergent complex.&nbsp; </p>
+<p><img border="0" src="images/sedfit4.jpg" width="422" height="307"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="c(s) for wormlike chain">Continuous c(s) for wormlike chain</a></p>
+</b>
+</font><p>This model is for flexible macromolecules that can be described as 
+wormlike chains of subunits, where the subunits have known molar mass ('monomer 
+Mw (Da)'), a known cross-section ('dehydrated cross-section (nm^2'), and an 
+estimated hydration.&nbsp; It is envisioned to describe the sedimentation 
+coefficient distributions of a mixture of long chains (much longer than 
+monomer), which for a given molar mass distribution depends on the persistence 
+length of the chains.&nbsp; </p>
+<p>The persistence length can be either fixed or floated in the analysis.&nbsp; 
+However, most likely for the envisioned application to long chains, the 
+diffusion on the time-scale of sedimentation may be fairly small, such that the 
+precision of the estimate of the persistence length from the fit may be 
+relatively poor.&nbsp; </p>
+<p><img border="0" src="images/sedfit5.jpg" width="432" height="353"></p>
+<p>The mathematical formulas used are based on equations presented by Yamakawa-H 
+and Fuji-M H [Yamakawa, M. Fujii (1973) Translational Friction coefficient of 
+wormlike chains. Macromolecules 6 407-415] with the corrections given by 
+Koenderink et al. [Gijsberta H. Koenderink, Karel L. Planken, Ramon 
+Roozendaal,1, Albert P. Philipse (2005) Monodisperse DNA restriction fragments 
+II. Sedimentation velocity and equilibrium experiments.
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=pubmed&cmd=Retrieve&dopt=AbstractPlus&list_uids=15993888&query_hl=2&itool=pubmed_docsum">
+Journal of Colloid and Interface Science 291 (2005) 126–134</a>], implemented 
+after code kindly provided by Christopher MacRaild and Geoffrey Howlett (see 
+also MacRaild et al
+<a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?db=pubmed&cmd=Retrieve&dopt=AbstractPlus&list_uids=12668464&query_hl=7&itool=pubmed_docsum">
+Biophys J. (2003) 2562-2569</a> ).</p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p><a name="c(s) with M(s) table">Continuous c(s) with M-s table</a></p>
+</b>
+</font><p>There are situations where we know a priori the relationship of the 
+sedimentation coefficient as a function of molar mass.&nbsp; In this case, it is 
+unnecessary and unproductive to make any assumptions.&nbsp; Instead, the known 
+relationship can be used in SEDFIT.&nbsp; (Knowing s and M, obviously allows to 
+calculate D, which will be used in the Lamm equation solution for the particular 
+s-value.)</p>
+<p>To do this, you need to create a file &quot;mofs.dat&quot; in the folder &quot;c:\sedfit&quot;. 
+This file may be created, for example, with the notepad.&nbsp; It must contain 
+two columns, where the first is the s-value (s20w in S), the second is the molar 
+mass (kDa) that belongs to this s-value.&nbsp; It may look like this:</p>
+<p>1 1<br>
+2 5<br>
+3 20<br>
+4 50<br>
+5 80<br>
+6 100<br>
+7 150<br>
+8 180<br>
+9 200<br>
+10 250<br>
+15 400<br>
+20 800<br>
+25 1500</p>
+<p>Note, there's no need to have any specific spacing (except the s-values must 
+be monotonically increasing).&nbsp; SEDFIT will use linear interpolation to 
+derive Mw-values for intermediate s-values as appropriate.</p>
+<p><img border="0" src="images/sedfit12.jpg" width="440" height="360"></p>
+<p>&nbsp;</p>
+<p>Important:&nbsp; The s-values are in s20w!&nbsp; SEDFIT will assume that the 
+v-bar, buffer density and viscosity have been set properly in this box.&nbsp; 
+The final output will be the usual experimental s-value scale.&nbsp; Only for 
+using the lookup table, internally a conversion to s20w is made.&nbsp; But for 
+consistency with the other models, the output is done in experimental s-values.</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

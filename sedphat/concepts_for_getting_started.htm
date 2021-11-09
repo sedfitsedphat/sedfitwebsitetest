@@ -1,0 +1,298 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Concepts for Getting Started</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="index.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="references.htm" target="">references</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="troubleshooting.htm" target="">troubleshooting&nbsp;and&nbsp;questions</a>&nbsp;]</nobr> <nobr>[&nbsp;Concepts&nbsp;for&nbsp;Getting&nbsp;Started&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedphathelp.htm" target="">sedphat&nbsp;help</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="download.htm" target="">download</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="../AUCsearch.htm" target="">Search</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="34473" endspan -->
+</font></p>
+<h1>Concepts for Getting Started</h1>
+
+<p>This tutorial assumes general familiarity with the experimental setup.&nbsp; 
+For detailed information, see the
+<a href="http://www.nih.gov/od/ors/dbeps/PBR/Applications/Protocols.pdf">experimental 
+protocols</a> on the website of the
+<a href="http://www.nih.gov/od/ors/dbeps/PBR/AUC.htm">PBR/DBEPS</a> at NIH. </p>
+
+<p>As in S<span style="font-variant: small-caps">edfit</span>, the basic
+sequence of using S<span style="font-variant: small-caps">edphat</span> is&nbsp;</p>
+
+<p>1) load data</p>
+
+<p>2) select the analysis model</p>
+
+<p>3) enter starting guesses and fit&nbsp;</p>
+
+<p>4) save and document results, save S<span style="font-variant: small-caps">edphat</span> 
+configuration </p>
+
+<p>5) make statistical analysis of confidence</p>
+
+<p>perhaps 6) re-analyze the data with alternative model</p>
+
+<p>A little bit more detailed tutorial for the workflow with S<span style="font-variant: small-caps">edphat</span> 
+is available <a href="tutorial_for_getting_started.htm">here</a>, but I strongly 
+encourage you to familiarize yourself first with the following terminology and 
+concepts.</p>
+
+<p>S<span style="font-variant: small-caps">edphat</span> is a very flexible
+platform for global modeling. Global modeling is very powerful but requires some
+more thought about the different data sets, how to assemble them, and about the
+fitting parameters.&nbsp;&nbsp;</p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font color="#FF0000">New in version 
+1.9b:&nbsp; Two tools for enabling the storage and reproduction of results have 
+been implemented:</font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font color="#FF0000">* saving global model 
+parameters into files</font></p>
+
+<p style="margin-top: 0; margin-bottom: 0"><font color="#FF0000">* saving the 
+complete configuration of S<span style="font-variant: small-caps">edphat</span></font></p>
+
+<p>Note also that there are a some possibilities to customize startup defaults and model 
+defaults. </p>
+
+<p>Following are basic introductions to the general concepts.&nbsp; For more 
+detailed information, see</p>
+
+<p><font size="2">
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="experiment1.htm" target="">experiments</a></nobr><br> <nobr><a href="parameters1.htm" target="">parameters</a></nobr><br> <nobr><a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a></nobr><br> <nobr><a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a></nobr><br> <nobr><a href="configurations.htm" target="">configurations</a></nobr><br> <nobr><a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a></nobr><br> <nobr><a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a></nobr><br> <nobr><a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a></nobr><br> <nobr><a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a></nobr><br> <nobr><a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a></nobr><!--webbot bot="Navigation" i-checksum="12737" endspan --></font></p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Data Channels ('Experiments')">Data Channels ('Experiments')</a><!--mstheme--></font></h3>
+
+<p>The major principle of organization is to use different data channels, or
+'experiments'.&nbsp; They can be data from analytical ultracentrifugation or
+dynamic light scattering, and be of different type:&nbsp;</p>
+
+<p>* a <a href="data1.htm#Load New Sedimentation Equilibrium Data">single
+sedimentation equilibrium</a> profile</p>
+
+<p>* multiple sedimentation equilibrium profiles from the same cell at different
+rotor speeds ('<a href="data1.htm#Load New Multi-Speed Equilibrium Data">multi-speed
+equilibrium</a>')&nbsp;</p>
+
+<p>* a set of <a href="data1.htm#Load New Sedimentation Velocity Data">sedimentation
+velocity</a> data</p>
+
+<p>* an autocorrelation function from <a href="data1.htm#Load New DLS Data">dynamic
+light scattering</a></p>
+
+<p>* an <a href="data1.htm#Load New Isotherm Data">isotherm </a>of 
+weight-average sedimentation coefficients or molar masses</p>
+
+<p><font size="2" color="#0000FF"><b>Please note:&nbsp; </b>The term 'data
+channel' is more accurate than the term 'experiment' which is used in S<span style="font-variant: small-caps">edphat</span>
+synonymous to 'data channel'.&nbsp; The reason is that multiple data sets can be
+obtained from a single sedimentation experiment, because the ultracentrifugal
+cell can be scanned at different wavelengths or with different data acquisition
+systems.&nbsp; The data at each wavelength would be loaded in a separate data
+channel, i.e. a separate 'experiment' in S<span style="font-variant: small-caps">edphat</span>,
+although they are acquired from the same physical system.&nbsp; Similarly, in
+dynamic light scattering autocorrelation functions from could be collected from
+the same sample but at different angles - they are physically the same
+experiment, but would be considered different data channels or 'experiments' in S<span style="font-variant: small-caps">edphat</span>.</font></p>
+
+<p>Each data channel in S<span style="font-variant: small-caps">edphat</span>
+requires information on the experimental parameters, such as buffer density,
+viscosity, extinction coefficient, meniscus, bottom, fitting limits, expected
+baseline parameters, etc.&nbsp; The complete set of this information can be
+stored in an experiment file (*.xp), and later retrieved, thus simplifying the
+process of reloading and reproducing the analysis, or re-assembling data
+channels in different combinations.</p>
+
+<p>Typically, several 'experiments' (*.xp files) are then loaded into different
+data channels and combined in for a global analysis.&nbsp; (S<span style="font-variant: small-caps">edphat</span>
+also functions well for single analysis.)</p>
+
+<p>More details on how to deal efficiently with different experiments, load,
+save, and remove them, and some examples can be found <a href="experiment1.htm">here</a>.</p>
+
+<p>Obviously, many of the house-keeping operations, like copying data or setting
+local parameters, etc., require specific user input to direct them to the
+desired experiment.</p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Local Parameters and Shared Local Parameters">Local Parameters,
+Global Parameters, and Shared Local Parameters</a><!--mstheme--></font></h3>
+
+<p>Some of the experiments come with unknown parameters.&nbsp; For example for a
+sedimentation velocity experiment, the meniscus position may not be known and
+best treated as a floating fitting parameter.&nbsp; Other examples for
+parameters that are specific to an individual experiment may be the baseline (or
+radial-baseline profile), or the loading concentration.&nbsp; Such parameters
+are referred to as <b>Local Parameters</b>, because they describe aspects of the
+particular experiment (they are 'local' to that experiment), as opposed to the <b>Global
+Parameters</b>, which describe overall aspects of the model independent of any
+particular experiment.&nbsp; Examples of Global parameters are binding
+constants, sedimentation coefficients, molar mass values, etc.</p>
+
+<p>It is very useful to introduce a third kind of parameters - <b>Shared Local
+Parameters</b>.&nbsp; These describe aspects of the experiments, like local
+parameters, but they are shared by more than one experiment.&nbsp; For example,
+if two data channels consist of sedimentation data from the same cell, but
+acquired at different wavelengths, it is certain that the meniscus and bottom
+position of the solution column are the same.&nbsp; Treating the meniscus and
+bottom as a local parameter constrained to be the same in each data channel,
+i.e. a shared local parameter, is very helpful to tighten up the model.&nbsp;
+Another example of shared local parameters might be the loading concentration -
+since the analysis is using molar concentrations, it has to be the same if the
+data in two channels are from the same cell but at different wavelength.&nbsp;
+(This permits to keep the extinction coefficient in one of the data channels a
+floating parameter.)&nbsp;</p>
+
+<p>More details and examples of parameters and their combinations can be found <a href="parameters1.htm">here</a>.</p>
+
+<p>Note that part of the global model is the partial-specific volume of the
+macromolecules under standard conditions.&nbsp; This is because the
+partial-specific volume may be concentration dependent, or dependent on buffer
+conditions.&nbsp; More no this issue is described under <a href="partspecvols.htm">partial-specific
+volumes</a>.</p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Selecting the Model">Selecting the Model</a><!--mstheme--></font></h3>
+
+<p>There are a variety of models, which can be grouped in three
+categories:&nbsp; Those for non-interacting species, self-association, and
+hetero-association.&nbsp; Note that not all models are implemented yet for all
+data types.&nbsp;&nbsp;</p>
+
+<p>The non-interacting models come either as continuous distributions, with
+discrete species, or in hybrid models combining both continuous distributions
+and discrete species.&nbsp;&nbsp;</p>
+
+<p>Global analysis also raises the possibility for the models to be
+distinguished as to whether they require the local concentrations of the species
+to be the same in all data channels, or if the concentrations are local to each
+experiment.&nbsp; The latter could be the case, for example, when different
+physical experiments or different techniques are used, whereas the former could
+apply if we're looking at different wavelength data acquisitions of the same
+physical experimental configuration.&nbsp;&nbsp;</p>
+
+<p><font color="#FF0000">Sedimentation equilibrium data have the additional
+possibility to be
+analyzed with mass conservation constraints, or without.&nbsp; They are fully
+capable of global multi-wavelength or multi-signal analysis.</font></p>
+
+<p>Model parameters can be <a href="data1.htm#Model">saved and restored</a>, and 
+their default parameters can be changed.&nbsp; More on models can be found <a href="model.htm">here</a>.</p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Local Fits and Global Fits">Local and Global Runs and Fits</a>&nbsp;<!--mstheme--></font></h3>
+
+<p>After you select the model, you can apply it globally to all loaded data
+channels, or you may want to look just at a single experiment.&nbsp;
+Accordingly, the <a href="run.htm">Run</a> and the <a href="fit.htm">Fit</a>
+commands split up into local and global versions.&nbsp;&nbsp;</p>
+
+<p>For example, when you decide to include an additional data set into the
+analysis, you may want to first get the local parameters of this experiment into
+a good range. This could be achieved without moving your global parameters if
+you constrain the global parameters, float the local parameters, and then do a
+local fit.&nbsp; This will adjust the local parameters to the best possible
+values that is most consistent with your prior estimates of the global
+parameters.&nbsp; After that, you may want to perform the global fit with
+floating the local and global parameters in order to get the best overall and
+utilize the information of the additional data set.&nbsp; This procedure will
+avoid having bad local parameter values for the new data move your good global
+estimates too far away from the optimal values.&nbsp;&nbsp;</p>
+
+<p>As in S<span style="font-variant: small-caps">edfit</span>, S<span style="font-variant: small-caps">edphat</span>
+distinguishes the 'Run' and 'Fit' commands:&nbsp; 'Run' will simply execute a
+model and not optimize any of the parameters, except some of the linear local
+parameters, like radial-dependent baseline profiles.&nbsp; This is in order to
+allow you to test your initial estimates, and manually set them to reasonable
+starting estimates.&nbsp; The 'Fit' command then does the non-linear
+regression.&nbsp; This is important because the global models can be complex,
+and the error surface may contain many local minima.&nbsp; As always in
+non-linear regression, having good starting estimates is essential.&nbsp;&nbsp;</p>
+
+<p>For fitting, both the Nelder-Mead simplex algorithm and the
+Marquardt-Levenberg algorithms are implemented (and can be selected in the
+<a href="options.htm#Marquardt-Levenberg">options</a>).&nbsp; This is useful because the error surface of the
+global model may be complicated, and non-linear regression non-trivial.&nbsp;
+Having two algorithms helps to ensure that a global minimum has been
+found.&nbsp; Usually, I use both optimizers sequentially to make sure they
+converge to the same optimum and no further improvement is possible.</p>
+
+<p>See also the reference site for the <a href="fit.htm">Fit</a> command.</p>
+
+<p>For the statistical analysis of the results, both Monte-Carlo analysis and
+covariance matrix is available.&nbsp; Dependent on the data and the models, both
+have their problems and potential pitfalls (see the <a href="statistics.htm">statistics
+menu</a>).</p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Configurations">Saving the Configuration</a><!--mstheme--></font></h3>
+
+<p>The term configuration stands for the combination of a set of experiments, 
+the model, the model parameters, and the links between the experiments and 
+shared parameters.&nbsp; It is useful to save the configuration of S<span style="font-variant: small-caps">edphat</span> 
+in order to document the results, and in order to enable the precise 
+reproduction of the current state of the analysis.&nbsp; Once a configuration 
+has been saved to the disk, it's name appears in the S<span style="font-variant: small-caps">edphat </span>
+window title bar, and it can be updated as the analysis proceeds.</p>
+
+<p>A configuration on the disk is a ANSI text file, which can be edited with any 
+text editor.&nbsp; For more details see <a href="configurations.htm">
+Configurations</a>.</p>
+
+<p>&nbsp;</p>
+
+<h3><!--mstheme--><font color="#003366"><a name="Documentation of the Fit">Documentation of the Fit</a><!--mstheme--></font></h3>
+<p>There are no sophisticated printing or plotting capabilities in S<span style="font-variant: small-caps">edphat</span>.&nbsp;
+This is because everybody usually has his own favorite layout and plotting
+program.&nbsp; Like in S<span style="font-variant: small-caps">edfit</span>,
+therefore, publication-quality graphs should be made by <a href="copy.htm">copying</a>
+the data, fit, residuals, and/or distributions and pasting them into
+spreadsheets in your favorite plotting software.&nbsp; (I have made templates in
+Origin, but probably SigmaPlot or Excell can work nicely as well.)</p>
+<p>An important tool to store results is to save the S<span style="font-variant: small-caps">edphat</span> 
+configuration (see above).&nbsp; </p>
+<p>For documenting the detailed fitting results, S<span style="font-variant: small-caps">edphat</span>
+displays all relevant information as text output in the S<span style="font-variant: small-caps">edphat</span>
+window after fitting.&nbsp; I recommend maximizing the S<span style="font-variant: small-caps">edphat</span>
+window, and using the 'Prnt Scrn' button to put a screendump bitmap in the
+clipboard.&nbsp; Then, paste it into any word processing or other software as a
+picture (I use Powerpoint, shrinking the bitmap to fit into a slide).&nbsp; Make additional notes there and save the whole
+document.&nbsp; In this way, you can get all the details on different
+alternative models saved.&nbsp;</p>
+<p>There are two tools for visualizing separately the contributions of each 
+species to the total fit. They are controlled in the
+<a href="options.htm#Lamm equation options for sedimentation/reaction systems">
+Lamm equations option box</a> in the Options menu.&nbsp; They permit to 
+temporarily manipulate extinction coefficients of species (and the profiles can 
+then be extracted with the &quot;copy fit data&quot; function), or to save the molar 
+distributions of each species to the harddrive.&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>&nbsp;</p>
+<p>More specific information on the concepts and organization of S<span style="font-variant: small-caps">edphat</span>
+is available for the topics:</p>
+<p>
+<!--webbot bot="Navigation" S-Type="children" S-Orientation="vertical"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr><a href="experiment1.htm" target="">experiments</a></nobr><br> <nobr><a href="parameters1.htm" target="">parameters</a></nobr><br> <nobr><a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a></nobr><br> <nobr><a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a></nobr><br> <nobr><a href="configurations.htm" target="">configurations</a></nobr><br> <nobr><a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a></nobr><br> <nobr><a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a></nobr><br> <nobr><a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a></nobr><br> <nobr><a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a></nobr><br> <nobr><a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a></nobr><!--webbot bot="Navigation" i-checksum="12737" endspan -->
+</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

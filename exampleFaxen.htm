@@ -1,0 +1,55 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Top Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><u><b><font size="4">Faxén solutions of the Lamm equation</font></b></u></p>
+<p>The simplest approximation of the <a href="LammEqSolutions.htm">Lamm equation
+solution</a> is that by <a name="Faxén"> Faxén</a>
+(1929),
+which can be written as</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/ImageFaxen.gif" WIDTH="328" HEIGHT="61"></p>
+<p>with the meniscus position <i>r<sub>m</sub></i>, the boundary position of a
+non-diffusing species <i>r*(t)=r<sub>m</sub>exp(</i><font face="Symbol">w</font><sup>2</sup>st)
+and the error function <font FACE="Symbol">F</font>.&nbsp; It has a first term
+describing radial dilution, a second term (1-<font FACE="Symbol">F)</font> for
+the diffusional spreading, and the movement of r*(t) describes the boundary
+movement.&nbsp; This solution describes qualitatively many features of Lamm
+equation solutions, in particular curves of the type in example (a).&nbsp;
+However, it is quantitatively not very precise, and it does not describe many
+features of the Lamm equation, such as the accumulation of material at the
+bottom of the cell, or the interdependence of the effects of diffusional
+spreading, radial dilution and the radial-dependence of the force.&nbsp; </p>
+<p>Faxén solutions according to can be calculated with the <a href="sedfit_help_calculator.htm#Calculate Faxen Solution">calculator
+function of S<span style="font-variant: small-caps">edfit</span></a><span style="font-variant: small-caps">.</span></p>
+<p>The following is sedimentation profiles simulated with finite element methods
+(dots), compared with the Faxén solutions (lines) in the top graph, and the
+residuals in the lower graph.&nbsp;</p>
+<p>This is for a species with 100kDa, 7S, at 30,000 rpm:</p>
+<p><img border="0" src="images/exampl2.gif" width="778" height="597"></p>
+<p>this the same at 50,000 rpm:</p>
+<p><img border="0" src="images/exampl3.gif" width="779" height="598"></p>
+<p>this is for 800kDa, 20S, 50,000 rpm</p>
+<p><img border="0" src="images/exampl4.gif" width="778" height="597"></p>
+<p>&nbsp;</p>
+<p>Clearly, the precision of the <a name="Faxén"> Faxén</a> solution is not
+sufficient for the analysis of experimental data.</p>
+<p>&nbsp;</p>
+<p>A different way of using the <a name="Faxén"> Faxén</a> approximation is to 
+extract the displacement and the central slope of the sedimentation boundaries 
+from the equation above, and to fit it to a central percentile of the 
+sedimentation boundaries (e.g., fitting only the boundary from 10% - 90% of the 
+plateau value).&nbsp; This is implemented in SEDPHAT, in the
+<a href="sedphat/species.htm#Linear Fractional Boundary Model">Linear Fractional 
+Boundary model</a>.&nbsp; </p>
+
+<!--mstheme--></font></body>
+
+</html>

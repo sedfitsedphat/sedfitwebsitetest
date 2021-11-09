@@ -1,0 +1,161 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>hetero-associations</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;hetero-associations&nbsp;]</nobr> <nobr>[&nbsp;<a href="mixedassoc.htm" target="">mixedAssoc</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="ternary_systems.htm" target="">ternary&nbsp;systems</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="40837" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Hetero-association models<!--mstheme--></font></h3>
+
+<p><font color="#FF0000"><b>Note from version 4.0 and up:&nbsp; The appearance 
+of the parameter input boxes for interacting systems will depend on the data 
+type loaded.&nbsp; The goal is to simplify the parameter entry by eliminating 
+irrelevant parameters . For example, enthalpy number are only required in ITC 
+experiments, and kinetic rate constants currently only for sedimentation 
+velocity.</b></font></p>
+<p><b><font color="#FF0000">NEW version 2.0:&nbsp; All hetero-association models 
+for sedimentation velocity can incorporate both slow and fast reaction kinetics.</font></b></p>
+
+<p>This is in addition, to the previous implementation for sedimentation equilibrium
+experiments (single and multi-speed) and for isotherms.&nbsp;&nbsp;</p>
+
+<p><b>Points to keep in mind:</b></p>
+<p>* concentrations are in micromolar units, utilizing the extinction
+coefficient A and B values from the <a href="experiment_parameters.htm">Experimental
+Parameters box</a>.&nbsp;&nbsp;</p>
+<p>* association constants are directly in log10 of molar units (for example,
+for a value of log10(Kab) = 5 means K<sub>D</sub> = 10 <font face="Symbol">m</font>M)</p>
+<p>* local parameter menu will be the effective loading concentration for each
+experiment in micromolar units.</p>
+<p>* incompetent fractions can be considered for component A and for B</p>
+<p>* component B can be specified in molar concentration or in molar ratio</p>
+<p>* a species not participating in the association can be specified (check the 
+'add non-participating species' field) This is simply an additional component, 
+perhaps an impurity, which has nothing to do with the associating molecules.</p>
+<p><font color="#FF00FF">Note: because there is only input of a single
+partial-specific volume, the molar mass values will have to be adjusted
+accordingly to produce the correct buoyant molar mass.&nbsp; This is outlined in
+detail in the <a href="partspecvols.htm#heterogeneous interactions">Partial-specific
+volume page of the concepts</a>.&nbsp;</font></p>
+<p>All models provide the possibility of adding an additional species that is 
+unrelated to the reactive species.&nbsp; </p>
+<p><img border="0" src="menubilder/self-a34.gif" width="150" height="115"></p>
+<p>This can be used to describe, for example, a contaminant, or IF signals from 
+sedimenting buffer salts.&nbsp; The presence of such components, and their 
+estimated molar mass and s-value may be obtained from c(s) analysis with sedfit.&nbsp; 
+The purpose of the vbar in this section allows this species to be used in a 
+flexible way in density contrast experiments (e.g. to describe the free 
+detergent micelle). </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>&nbsp;</p>
+<p>Currently (version 1.5) there are only 2 models: A + B &lt;-&gt; AB for the
+reversible association of two components which don't self-associate and have a
+single site, and a two-site model A + B + B &lt;-&gt; AB + B &lt;-&gt; ABB. </p>
+<p>&nbsp;</p>
+<h4><a name="Single-site heterogeneous association">Single-site heterogeneous
+association</a></h4>
+<p><img border="0" src="menubilder/hetero1.jpg" width="392" height="285"></p>
+<p>There are separate fields for component A and B.&nbsp; If you check atot (or
+btot, respectively), the loading concentrations of A will be floated in the
+analysis.&nbsp; You need to determine the molar mass of A and B
+separately.&nbsp; The extinction coefficient is shown here (taken from the first
+experiment), but it will have to be entered in the <a href="experiment_parameters.htm">Experimental
+Parameters box</a>.&nbsp; The fileds 'incfA' and 'incfB' are for the fraction of
+incompetent A and B. </p>
+<p>On the right, you can switch on mass conservation (if fulfilled) for the 
+sedimentation equilibrium analysis.&nbsp; (I suggest to use this in multi-speed 
+long-column sedimentation equilibrium experiments in conjunction with floating 
+bottom positions.).&nbsp; </p>
+<p>On the right is also the entry association constant; note that the default 
+value for log10(Ka) is at 1, essentially switching off any interaction.</p>
+<p><b>Obviously, the log(k-) entry only gains meaning for the sedimentation 
+velocity models.</b> The log(k-) is the base-10 log of the chemical off-rate 
+constant of the complex. Values of &gt; -1 (k- is faster than 0.1/sec) will switch 
+the simulation to instantaneous equilibrium with mass action law fulfilled at 
+all times and positions throughout the cell.&nbsp; Values smaller than -6 (koff 
+&lt; 1x10(-6)/sec) will lead to sedimentation profiles nearly identical to those of 
+independently sedimenting populations of the free and complex species of the 
+loading mixture.&nbsp;&nbsp; </p>
+<p>Below, you can switch to either have both A and B specified in micromolar
+concentrations (this will be done in the local parameters menu), or A in
+micromolar units combined with B being the molar ratio B/A.&nbsp; Dependent on
+how the experiment is setup, you may have different cells with the same molar
+ratio, hence in the global analysis you might be able to share molar ratio
+parameters.&nbsp; Alternatively, if you have in different cells component A at a
+constant concentration, you will be able to share the loading concentration of A
+among these cells.</p>
+<p>Everything else is the same as usual.</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p>
+<p>&nbsp;</p>
+<h4><a name="Two-site heterogeneous association">Two-site heterogeneous
+association</a></h4>
+<p><img border="0" src="menubilder/hetero2.jpg" width="393" height="324"></p>
+<p>This is a good model for a component A which as two equivalent (or two
+different) sites for a
+component B.&nbsp; There can be cooperativity between the sites.</p>
+<p>This is pretty much like the model before, except that there are two
+association constants:&nbsp; Ka1 for the binding of a first molecule B to A, and then
+Ka2 for the
+addition of a second B to the pre-existing AB complex.&nbsp; Instead of using
+two separate association constants, the model is expressed here in terms of a
+macroscopic association constant Ka1 for the first binding, and the ratio
+Ka2/Ka1 for the second.&nbsp;&nbsp;</p>
+<p>Likewise, the off-rate constant of the ABB complex is expressed as the 
+base-10 log of the ratio of the off-rate constant of first and second complex.
+<b>Obviously, the log(k-) entry only gains meaning for the sedimentation 
+velocity models.</b>&nbsp; If both off-rate constants are &gt; 0.1/sec, this will 
+switch the simulation to instantaneous equilibrium with mass action law 
+fulfilled at all times and positions throughout the cell.&nbsp; Values smaller 
+than -6 (koff &lt; 1x10(-6)/sec) will lead to sedimentation profiles nearly 
+identical to those of independently sedimenting populations of the free and 
+complex species of the loading mixture.&nbsp;&nbsp; </p>
+<p>Otherwise, the model works very similar as all the others.</p>
+<p> For <b> equivalent sites </b> with no cooperativity, the log10 of this 
+factor Ka2/Ka1 is -0.602.&nbsp; This is because of the statistical factors, 
+which for equal microscopic constants produces a factor 1/4 for the macroscopic 
+constants.&nbsp; Any deviation from this means that there is cooperativity 
+between the equivalent sites.&nbsp; For the stability of the complexes, 
+equivalent sites will lead to a factor 2 for the koff(ABB) versus koff(AB), 
+because of the two possibilities to dissociate one of the ligands.</p>
+<p><font size="2">In this way, you can make the analysis with the constraint that the sites are
+equivalent (by fixing the log10(Ka2/Ka1) to the default -0.602, and by fixing 
+the log(k-2/k-1 to 0.301).</font></p>
+<p><font size="2">Note:&nbsp; Because Ka1 is the macroscopic constant and A has
+two equivalent sites, the Ka1 is a factor of 2 larger than the microscopic Ka of
+the simple A+B&lt;-&gt;AB model.&nbsp; Therefore, to get to the microscopic
+binding constant divide Ka1 by 2, and to get to the microscopic cooperativity,
+multiply Ka2/Ka1 with a factor 4. </font></p>
+<p> Examples for equivalent sites are
+antibodies binding up to two antigen molecules, or a receptor dimer binding one
+or two ligand molecules.</p>
+<p> For <b>non-equivalent sites</b> with no cooperativity, we determine the 
+macroscopic constants Ka1 and Ka2 (Ka2 = Ka1*10^(log10(Ka2/Ka1)).&nbsp; The 
+microscopic constants Kmic1 and Kmic2 are given by Ka1 = Kmic1 + Kmic2 and Ka2 = 
+Kmic1*Kmic2/(Kmic1 + Kmic2).&nbsp; This will lead to macroscopic constants that 
+are at least a factor 4 apart, i.e. our parameter log10(Ka2/Ka1) must be smaller 
+than -0.602.&nbsp; This leads to Kmic1 = (1/2)*(Ka1*{1-sqrt[(Ka1-4*Ka2)/Ka1]}, 
+and Kmic2 = (1/2)*(Ka1*{1+sqrt[(Ka1-4*Ka2)/Ka1]}.&nbsp; </p>
+<p>Examples for distinguishable sites are proteins that just have to happen to
+different binding sites for the same ligand, but the sites are at different
+places of the same protein and have different types of binding interfaces for
+the ligand.&nbsp;&nbsp;</p>
+<p>For <b>non-equivalent sites with cooperativity</b>, the situation is more 
+difficult and one will not be able to determine the binding site heterogeneity 
+and microscopic cooperativity.&nbsp; Please consult Enrico DiCera's book 
+&quot;Thermodynamic Theory of Site-Specific Binding Processes in Biological 
+Macromolecules&quot;, chapter 3.&nbsp; &nbsp; </p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10" alt="horizontal rule"></p><!--mstheme--></font></body>
+
+</html>

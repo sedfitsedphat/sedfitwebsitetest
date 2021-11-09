@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>troubleshooting and questions</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<blockquote type="cite" class="cite" cite="../yes">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="index.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="references.htm" target="">references</a>&nbsp;]</nobr> <nobr>[&nbsp;troubleshooting&nbsp;and&nbsp;questions&nbsp;]</nobr> <nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Concepts&nbsp;for&nbsp;Getting&nbsp;Started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedphathelp.htm" target="">sedphat&nbsp;help</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="download.htm" target="">download</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="../AUCsearch.htm" target="">Search</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="18557" endspan -->
+</font></p>
+<h1>Troubleshooting and Frequent Questions</h1>
+
+  <p>&nbsp;</p>
+  <p><b>Troubleshooting:</b></p>
+  <p><font color="#0000FF">--&gt; Curves are far from the data, although binding 
+  constants, molar masses, and/or s-values are reasonably initialized:&nbsp;
+  </font></p>
+  <p><font size="2">Check that the concentration starting guesses are 
+  appropriate.&nbsp; Note that interacting models are in micromolar units, and 
+  some of the species models in signal units.&nbsp; See the particular selected 
+  model for details on the units.</font></p>
+  <p><font color="#0000FF">--&gt; Cannot load data:&nbsp; </font></p>
+  <p><font size="2">* Make sure that no 'white space character' is at any place 
+  of the directory name.&nbsp; Don't use names like 'c:\XLA DATA\...' or 'C:\My 
+  Documents', and don't use the Desktop.&nbsp; </font></p>
+  <p><font size="2">* After moving files to a different computer, you need to 
+  copy <b>both </b>the xp-files and the raw data.&nbsp; Further, you need to 
+  restore the precise directory structure, because the xp-files contain an entry 
+  with the original path, which is where </font>S<span style="font-variant: small-caps">edphat</span>
+  <font size="2">will expect the raw data files to be located. If you cannot 
+  restore the same path, you need to edit the xp file (see
+  <a href="experiment1.htm">experiments</a> for details).&nbsp; </font></p>
+  <p><font color="#0000FF">--&gt; Cannot reproduce fit:&nbsp; </font></p>
+  <p><font size="2">* Make sure that no 'white space character' is at any place 
+  of the directory name of either the data, xp-file, or sedphat file.&nbsp; 
+  Don't use names like 'c:\XLA DATA\...' or 'C:\My Documents', and don't use the 
+  Desktop.</font></p>
+  <p><font size="2">* After moving files to a different computer, make sure you 
+  have all files - the xp-files, the sedphat-files and the sedphat_PAR files in 
+  the correct locations.&nbsp; </font></p>
+  <p><font size="2">* After moving files, you need to restore the precise 
+  directory structure, because the xp-files contain an entry with the original 
+  path, which is where </font>S<span style="font-variant: small-caps">edphat</span>
+  <font size="2">will expect the raw data files to be located. If you cannot 
+  restore the same path, you need to edit the xp file (see
+  <a href="configurations.htm">configuration</a> for details).&nbsp; </font></p>
+  <p><font size="2">* the interval of minimum and maximum meniscus position do 
+  not bracket the meniscus position.&nbsp; This will produce an OK 'Run', but 
+  the constraint of minimum and maximum meniscus will be enforced during the 
+  'Fit', moving the meniscus away from its previous position.&nbsp; Same can 
+  happen with the bottom.&nbsp; If meniscus or bottom are floating parameters, 
+  uncheck them to keep them fixed.&nbsp; Then Go to experimental parameter box, 
+  check the meniscus and/or bottom again to be floated, close the experiment 
+  box, and enter better minimum and maximum values when prompted.&nbsp; By 
+  toggling the floating option for the meniscus, you can force the prompt for 
+  minimum or maximum values.</font></p>
+  <p><font color="#0000FF">--&gt; Results from S<span style="font-variant: small-caps">edfit</span> 
+  and S<span style="font-variant: small-caps">edphat</span> are inconsistent</font></p>
+  <p><font size="2">* </font>S<span style="font-variant: small-caps">edphat</span>
+  <font size="2">calculates in paramters under standard conditions (s<sub>20,w</sub>), 
+  whereas </font>S<span style="font-variant: small-caps">edfit</span>
+  <font size="2">is in experimental conditions.</font></p>
+  <p>&nbsp;</p>
+  <p><b>Questions:</b></p>
+  <p><font color="#0000FF">--&gt; When modeling multiple sedimentation equilibrium 
+  profiles taken from the same cell at different rotor speeds, can I constrain 
+  the baseline to be the same?</font></p>
+  <p><font size="2">Yes, this can be done if the profiles are loaded as a single
+  <a href="data1.htm#Load New Multi-Speed Equilibrium Data">multi-speed 
+  equilibrium</a> experiment.</font></p>
+  <p>&nbsp;</p>
+  <p><font color="#0000FF">--&gt; How can I calculate errors for the parameters?</font></p>
+  <p><font size="2">Errors can be calculated in three ways:<br>
+  <br>
+  1) Use the <a href="../sedfit_help_fstatistics.htm">F-statistics calculator of
+  </a></font><a href="../sedfit_help_fstatistics.htm">S<span style="font-variant: small-caps">edfit</span></a>
+  <font size="2">just for calculating the critical increase of the chi-square of a fit, based 
+  on the number of data points you have.&nbsp;
+  With this in hand, go back to </font>S<span style="font-variant: small-caps">edphat</span>
+  <font size="2">and calculate the best-fit. Fix the 
+  parameter of interest to a value slightly different from the best-fit value, 
+  while floating all others, and observe the increase in the chisquare of the 
+  fit that this constraint causes.&nbsp; (In cases of complicated error 
+  surfaces, you may find an even better fit than the initial one - in this case 
+  you need to start over from the new best fit.)&nbsp; Do that in a series of fit, walking your 
+  parameter of interest away, until you hit the critical value that on a given 
+  confidence level is considered statistically significant worse.
+  This procedure is essentially like the one in </font>S<span style="font-variant: small-caps">edfit</span><font size="2">, 
+  described <a href="../sedfit_help_confidence_intervals.htm">here</a>.<br>
+  <br>
+  2) In </font>S<span style="font-variant: small-caps">edphat</span><font size="2">, if you use Marquardt-Levenberg optimization, the 
+  <a href="statistics.htm#covariance matrix">covariance 
+  matrix</a> is generated. Go to the statistics function and pull up the covariance 
+  matrix.&nbsp; It has information on the error of the parameters, estimated from the 
+  local curvature of the error surface at the best-fit minimum.<br>
+  <br>
+  3) Another possibility in </font>S<span style="font-variant: small-caps">edphat</span><font size="2"> is to do a 
+  <a href="statistics.htm#Monte-Carlo analysis">Monte-Carlo analysis</a>. This is 
+  also described in<br>
+  <a _base_href="https://helix.nih.gov/mail/src/" href="http://www.analyticalultracentrifugation.com/sedphat/statistics.htm" eudora="autourl" target="_new">
+  http://www.analyticalultracentrifugation.com/sedphat/statistics.htm</a>.&nbsp;&nbsp; <br>
+  <br>
+  The errors from the covariance matrix (method 2) are usually pretty good, 
+  although frequently slightly underestimating the true errors. The errors from 
+  Monte-Carlo are rigorous in theory, but in practice suffer from the fact that 
+  the fitting procedure must be automated, which for many models just doesn't 
+  work well. Therefore, I usually prefer the method 1 - although manually 
+  laborious, it is rigorous, and gives you the best feel for how the parameters 
+  are correlated with each other.<br>
+  </font>
+  <br>
+  &nbsp;</p>
+</blockquote>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

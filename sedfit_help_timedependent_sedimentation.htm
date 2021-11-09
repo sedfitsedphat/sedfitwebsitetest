@@ -1,0 +1,99 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="parent" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="48160"
+--></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">time-dependent s and M</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Special | Fit time-dependent s, M (e.g. in Archibald Analysis)</p>
+</font></b>
+<p>Sometimes it can be useful to allow for (apparent) changes in M and s with
+time. In Archibald-type analyses, for example, where only the initial depletion at
+the meniscus is analyzed in the context of a Lamm equation model, heterogeneity
+can be detected by a drop of M and s with time, because the larger species are
+depleted more rapidly, therefore lowering the average observed in the vicinity
+of the meniscus (<a href="#ref1">ref 1</a>).</p>
+<p>New in version 8.7:&nbsp; Note the new <a href="sedfit_help_calculator.htm#Differential second moment integration">(differential)
+second moment methods </a>that can also reveal sw(t) data.&nbsp;&nbsp;</p>
+<p>While a normal Archibald-type analysis can be performed by a straight-forward
+application of the model for <a href="sedfit_help_independent_ideal_species.htm">noninteracting
+discrete species</a>, analyses of the time-dependence can be done with this
+special function.&nbsp; The idea for analyzing the time-dependence is that in a sequence of
+analyses, different subsets of the available scans are considered, either in a
+moving time-window approach, or by continually increasing the time-window.</p>
+<p>This procedure consists of the following steps:</p>
+<p>1) The analysis mode needs to be switched to ‘experimental initial
+conditions’ in the <a href="sedfit_help_parameters.htm#Initial Distribution">parameters</a>
+box,
+and an initial scan - most likely the first available scan - must be loaded (see
+<a href="sedfit_help_SetInitialData.htm#Loading Initial Data">load initial data</a>
+and <a href="sedfit_help_SetInitialData.htm#Extrapolation of Initial Data">extrapolation
+of initial data</a>).&nbsp; A message box will remind of this step:</p>
+<p><img border="0" src="images/sedfit80.gif" width="425" height="98"></p>
+<p>(Select the <a href="sedfit_help_independent_ideal_species.htm">noninteracting
+discrete species</a> model, click on the <a href="sedfit_help_parameters.htm">parameter</a>
+menu and switch to the <a href="sedfit_help_parameters.htm#Initial Distribution">experimental
+initial distribution</a>. A warning message may appear that reminds that the
+rotor acceleration corrections are switched off; this can be ignored here. )</p>
+<p>2) Select <b><font COLOR="#0000ff">Model | Special | Fit time-dependent s, M.&nbsp;
+</font></b>The number of scans <i>n </i>that are pooled in the time-dependence
+analysis must be specified:</p>
+<p><img border="0" src="images/sedfit81.gif" width="274" height="127"></p>
+<p>The best value here will depend on the number of
+scans available, the desired resolution in time, and the level of noise in the
+scans. Usually, the best number can be empirically determined. It should not be
+too small, though, because this increases the noise and decreases the stability
+of the procedure.</p>
+<p>3) The choice of a moving average 1 to <i>n</i>, 2 to (<i>n+</i>1), 3 to (<i>n</i>+2),...
+or an increasing window 1 to <i>n</i>, 1 to (<i>n</i>+1), 1 to (<i>n</i>+2),
+etc. appears.&nbsp;</p>
+<p><img border="0" src="images/sedfit82.gif" width="213" height="99"></p>
+<p><img border="0" src="images/sedfit83.gif" width="202" height="99"></p>
+<p> Because of the increasing number of scans in the second option,
+this is numerically more stable and leads to slightly higher precision, although
+smaller changes with time.</p>
+<p>4) A series of fits is made, each to a subset of the scans.&nbsp;</p>
+<p> <i><font COLOR="#800080"><b>Please
+Note:&nbsp;</b></font></i></p>
+<p> <i><font COLOR="#800080"><b> Sometimes during the course of this series of fits, bad parameters are
+encountered in the Simplex routines. If the gridsize is slightly reduced (e.g.
+to 250), and if the number of scans per set is increased, this can improve the
+stability of the method.</b></font></i></p>
+<p><i><font color="#800080"><b>This procedure has not been fully
+optimized.&nbsp; In my hands, the increasing window gives generally better
+results.&nbsp;</b></font></i></p>
+<p>5) The results are stored in two files: mwdcdt.dat and sdcdt.dat (if the
+moving average was selected) or
+Mw(t).dat and s(t).dat (if the increasing time-window option is selected).&nbsp;
+Each file contains two-column ASCII text with the average times of the scan subsets
+considered, and the best-fit M and s, respectively. <i><u>The files are located
+in the directory with the data.</p>
+</u></i>
+<p>&nbsp;</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: This analysis works only with
+model for </font><a href="sedfit_help_independent_ideal_species.htm">noninteracting
+discrete species</a>.</p>
+</i>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font size="1"><b>References:</b></font></p>
+<p><font size="1">(<a name="ref1">1</a>) P. Schuck and D.B. Millar. (1998) Rapid determination of molar mass in
+Archibald experiments by direct analysis using the Lamm equation. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9606142&amp;dopt=Abstract">Analytical
+Biochemistry</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=9606142&amp;dopt=Abstract">
+259:48-53</a></font></p>
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Fit</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="sedphathelp.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="data1.htm" target="">data</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="copy.htm" target="">copy</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="display.htm" target="">display</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="model.htm" target="">model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="global_parameters.htm" target="">global&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="local_parameters.htm" target="">local&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment_parameters.htm" target="">experiment&nbsp;parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="run.htm" target="">Run</a>&nbsp;]</nobr> <nobr>[&nbsp;Fit&nbsp;]</nobr> <nobr>[&nbsp;<a href="statistics.htm" target="">statistics</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="options.htm" target="">options</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="57402" endspan -->
+</font></p>
+<h2>Fit</h2>
+
+<p><img border="0" src="menubilder/fit.ht3.gif" width="170" height="65"></p>
+
+<p>In S<span style="font-variant: small-caps">edPHaT</span>, you can start the
+non-linear regression for a single experiment or for all of them.&nbsp; Limiting
+the regression can sometimes be useful at a first stage in order to converge
+parameters for which a particular data set has very significant information
+without swamping it with the data from all other experiments.&nbsp; It can also
+be useful to converge the local parameters (such as local concentrations),
+before doing a global fit, to avoid poor initial estimates of local parameters
+throw off the global parameters.&nbsp;</p>
+
+<p>You can interrupt a fit by pressing any key. This will execute the model for
+the so far best parameters found. (Don't press a key twice in a short interval,
+in order not to abort the calculation of the so far best model.)</p>
+
+<p>If you have specified a configuration filename, then a new set of &quot;*.sedphat&quot; 
+files and &quot;*.sedphat_PAR&quot; files (and copies of the xp-files) will be generated 
+that stores the so far best intermediate results during the optimization (the 
+names will be preceded by '~').&nbsp; 
+This enables the <a href="data1.htm#Configuration Functions">restoration</a> of 
+the so far best fit in case the optimization crashes lateron or is lost for some 
+reason.</p>
+
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>There are three fitting algorithms: Marquardt-Levenberg, Nelder-Mead simplex, 
+and simulated annealing.</p>
+<p>You can switch between them using the
+<a href="options.htm#Marquardt-Levenberg">Options-&gt;Fitting Options</a> 
+functions. They behave differently.&nbsp; If all algorithms converge to the same solution, then this is
+likely the overall best-fit (for fundamental reasons, there's no such thing as a
+guarantee in non-linear regression).</p>
+<p>For a description of what exactly is being optimized, i.e. what the 
+goodness-of-fit criterion is, see the <a href="statistics.htm">statistics page</a>. </p>
+<p>&nbsp;</p>
+<h4><a name="Marquardt-Levenberg">Marquardt-Levenberg</a> optimization </h4>
+<p>Marquardt-Levenberg is based on numerical derivatives of the error surface, 
+which makes it usually fast.&nbsp; It is typically also very good for final 
+convergence, i.e. to home in a fit that is already close to a minimum.&nbsp; It 
+is also good in complicated error surfaces.&nbsp; However, it is susceptible to 
+being trapped by local minima.&nbsp; </p>
+<p>Because of the property to home-in well to the minimum close-by, this method 
+can be the method of choice in conjunction with Monte-Carlo error analysis.</p>
+<p><b><a name="Nelder-Mead simplex">Nelder-Mead simplex </a>optimization</b> </p>
+<p>is
+based on geometrically generating a series of down-hill points in the error
+surface.&nbsp; It starts out with seed points randomly generated around the 
+starting values.&nbsp; It's usually more stable but a bit slower than Marquardt-Levenberg.&nbsp; Disadvantage of Nelder-Mead 
+is that it sometimes can go in circles around a minimum and get stuck.&nbsp; An 
+advantage is that it can be more tolerant of local minima.&nbsp; </p>
+<p>I like using both Nelder-Mead and Marquardt-Levenberg sequentially.&nbsp; If
+you're caught in a local minimum, the random initialization of the Nelder-Mead
+can help you jump out and get free.&nbsp; Likewise, you can make sure that the
+Nelder-Mead doesn't merely circle the minimum by executing the
+Marquardt-Levenberg.</p>
+<p>&nbsp;</p>
+<p><b><a name="Simulated annealing">Simulated annealing</a></b></p>
+<p>This method is particularly well-suited to explore complex error surfaces 
+with many local minima.&nbsp; In practice, for example, sedimentation 
+equilibrium models of interacting systems may benefit from this algorithm.</p>
+
+<p>The basic idea of simulated annealing is to start out with an ensemble of 
+randomly chosen points (initialized around the starting guesses).&nbsp; Much 
+like in the Nelder-Mead simplex, trials are made to test if each point can be 
+improved by moving it to a different position.&nbsp; Different from Nelder-Mead, 
+however, points will be accepted even if they are actually <i>worse </i>than the 
+original points, but not more than a certain 'temperature factor'.&nbsp; This 
+allows the points to spread in the parameter space. Since this procedure will 
+not lead to convergence, after a fixed number of optimization steps, the 
+temperature factor will be lowered.&nbsp; This will be done in several rounds of 
+lower and lower temperature (annealing), until the temperature factor is 0 - 
+meaning strict optimization. </p>
+
+<p>Input is required for the following:</p>
+
+<p><img border="0" src="menubilder/fit.ht28.jpg" width="275" height="129"></p>
+
+<p>The initial temperature factor (this is simply the tolerated relative 
+increase of the global chi-square).&nbsp; Next, the number of temperatures used 
+needs to be specified</p>
+
+<p><img border="0" src="menubilder/fitht30.jpg" width="275" height="129"></p>
+
+<p>The temperatures will be spaced logarithmically decreasing in the specified 
+number of steps.</p>
+
+<p><img border="0" src="menubilder/fitht31.jpg" width="275" height="129"></p>
+
+<p>The number of iterations per temperature are the number of simplex steps 
+executed until the temperature is lowered.</p>
+
+<p><img border="0" src="menubilder/fitht32.jpg" width="275" height="129"></p>
+
+<p>Finally, it can be specified if automatically a final Marquardt-Levenberg 
+step shall be executed (to home in no the minimum), or another simplex at zero 
+temperature.</p>
+
+<p>The implementation used is a combination of Nelder-Mead simplex with 
+simulated annealing as described in Press et al. Numerical Recipes in C.&nbsp; </p>
+
+<!--mstheme--></font></body>
+
+</html>

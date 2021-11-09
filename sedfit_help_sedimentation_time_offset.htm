@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>sedimentation time offset</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="parent" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="FALSE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="48160"
+--></p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>&nbsp;</p>
+<p><a name="Sedimentation Time Offset">Sedimentation Time Offset</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Special | Sedimentation Time Offset</p>
+</font></b>
+<p>In some cases, it can be useful to introduce an offset time of simulated
+sedimentation. This will set the start of the sedimentation to a specified time <i>t</i>
+(in sec).</p>
+<p>One possible use of this function is an alternative, ad hoc way of treating
+the time necessary for the acceleration of the rotor (alternative to the
+preferred functions<font FACE="Modern"> <a href="sedfit_help_loading_options.htm#Times from w2t">scan
+times for </a></font><a href="sedfit_help_loading_options.htm#Times from w2t"> <font FACE="Symbol">w</font><sup>2</sup>t</a>
+or <font FACE="Modern"><a href="sedfit_help_loading_options.htm#Simulate Rotor Acceleration Phase">ramp
+rotor speed</a></font>).&nbsp; </p>
+<p> Most likely, however, this function will be useful for
+cases where temperature-driven convection causes mixing in the initial part of
+the experiment, and an empirical modeling of the profiles is still desired. The
+results of such an empirical velocity analysis should be interpreted with
+greatest care.&nbsp;(If you have convection, the only rigorous analysis methods
+possible are the <a href="sedfit_help_SetInitialData.htm">Lamm equation
+initialized with an experimental scan</a> [single macromolecular component
+only], or the <a href="sedfit_help_calculator.htm#Differential second moment integration">differential
+second moment method </a>[gives sw only].) </p>
+<p>Occasionally, the sedimentation parameters may not be those of
+greatest interest, e.g. when attempting to calculate the time-invariant noise
+from an approach to equilibrium run (<a href="#ref1">ref 1</a>).&nbsp;&nbsp; </p>
+<p>After clicking on the menu, a entry box appears&nbsp;</p>
+<p><img border="0" src="images/sedfit79.gif" width="275" height="130"></p>
+<p>in which an offset means that the experimental scans will be treated as if
+they have a time entry that is by the specified time (in this example 500 sec)
+too large.&nbsp; As a consequence, the modeled curves will move to earlier times
+compared to the data.&nbsp;&nbsp;</p>
+<p>Note that 'Cancel' does not switch this function off.&nbsp; The way to switch
+this function off is to press the menu function again (-- this is a
+toggle).&nbsp; In order to change this value, click on this menu function
+twice.&nbsp; If a nonzero offset time is a floating fitting parameter, a checkmark appears
+at this menu item.</p>
+<p>This function can be useful in conjunction with <a href="#Fit t0 of Sedimentation">fit
+t<sub>0</sub> of sedimentation</a> (see below). </p>
+<p>If a nonzero offset time is being used, a checkmark appears at this menu
+item.</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: This feature only works with
+the non-interacting Lamm equation modeling and should be switched off when using
+other models.</p>
+</font></i>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Fit t0 of Sedimentation">Fit t<sub>0</sub> of Sedimentation</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Special | fit t0 of sedimentation</p>
+</font></b>
+<p>This function is an extension of the <a href="#Sedimentation Time Offset">sedimentation
+time offset</a> introduced above, in that it allows to treat the time offset as
+a floating parameter to be optimized during the <a href="sedfit_help_fit.htm">Fit</a>
+command.</p>
+<p>A situation where this option can be useful is the calculation of <a href="systematic_noise_analysis.htm">systematic
+noise</a> through approach to equilibrium scans, with the intent to <a href="sedfit_help_subtract_calculated_noise.htm"> subtract the
+systematic noise</a> from the equilibrium data. Floating the offset time may
+not make direct sense for the interpretation of the approach to equilibrium in
+terms of s-values of the components, but it can be helpful to find Lamm equation
+solutions that &quot;fit and smooth&quot; the data appropriately with <b>any</b>
+Lamm equation solution to extract the systematic noise. (The offset time, for example,
+may be able to adapt to the effects of convection caused by temperature
+gradients, which would effectively delay the sedimentation process.)&nbsp; (Note:
+If you have convection, the only rigorous analysis methods possible are the <a href="sedfit_help_SetInitialData.htm">Lamm
+equation initialized with an experimental scan</a> [single macromolecular
+component only], or the <a href="sedfit_help_calculator.htm#Differential second moment integration">differential
+second moment method </a>[gives sw only].)</p>
+<p>While the function <a href="#Sedimentation Time Offset">sedimentation time
+offset</a> sets a specific time as starting time, this function determines this time as a
+floating parameter to be optimized.</p>
+<p>If t<sub>0</sub> is an active fitting parameter, this menu function will have
+a checkmark.&nbsp; When executing the <a href="sedfit_help_fit.htm">Fit</a>
+command next time, text output in the S<span style="font-variant: small-caps">edfit
+</span> window will display the current
+value of t<sub>0</sub> during the optimization of the fit.&nbsp;</p>
+<p>This function can be switched off by toggling off the <a href="#Sedimentation Time Offset">sedimentation
+time offset</a> function (see above).&nbsp; When it is switched off, the
+checkmark disappears.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<i><u><font COLOR="#008000">
+<p>Please Note</font></u><font COLOR="#008000">: This feature only works with
+the non-interacting Lamm equation modeling and should be switched off when using
+other models.</p>
+</font></i>
+<p>&nbsp;</p>
+<p><font size="1"><b>References</b></font></p>
+<p><font size="1">(<a name="ref1">1</a>) P. Schuck (1999) Sedimentation equilibrium analysis of interference optical
+data by systematic noise decomposition. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">Analytical Biochemistry</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10415089&amp;dopt=Abstract">
+272:199-208</a></font></p>
+<!--mstheme--></font></body>
+
+</html>

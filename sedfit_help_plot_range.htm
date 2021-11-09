@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>plot range</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_display.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;plot&nbsp;properties&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_residuals_bitmap.htm" target="">residuals&nbsp;bitmap</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_subtract_calculated_noise.htm" target="">subtract&nbsp;calculated&nbsp;noise</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="5748"
+--></p>
+<p>&nbsp;</p>
+<p>The easiest way to change the data plot is to</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Setting the Display Range with the Right Mouse Button">Zoom and
+Unzoom
+with the Right Mouse Button</a></p>
+</font>
+<p>This can be done by pressing the right mouse button while spanning a
+rectangle that describes the region of interest, like this:&nbsp;</p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/sedfit21.gif" width="612" height="449"></p>
+<p>&nbsp;</p>
+<p>After releasing the right mouse button, the region in the rectangle will be
+the display range.&nbsp; In order to get back to the previous display window,
+just double-click with the right mouse button.&nbsp; Internally, S<span style="font-variant: small-caps">edfit</span> keeps
+track of the 10 last display ranges, and double-clicking with the right mouse
+button gets one back sequentially.&nbsp; The last range is always the
+full-scale.</p>
+<p><i><b><font color="#FF00FF">New in version 8.5 and higher: The zoom operation
+and double click operations should be done in the range of the data graphics.
+When a size-distribution plot is displayed, a similar functionality exists for
+zooming in and out of the distribution plot, if the mouse operations are applied
+to the area of the distribution plot.</font></b></i></p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Setting the Display Range">Setting the Display Range</a></p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | Set Range</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | Full Range</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Display | Data Range
+<font color="#FF00FF">(keyboard shortcut ctrl-</font></font><font color="#FF00FF">D</font><font COLOR="#0000ff"><font color="#FF00FF">)</font></p>
+</font></b>
+<p>As an alternative to the mouse input, the plot range of the data graphics can be
+changed by numerical input of
+the minimum and maximum radius and signal, respectively.&nbsp; Double click with the right mouse button changes back to the last display
+range.&nbsp;</p>
+<p> Full data range can be achieved using the menu function.</p>
+<p>For convenience, the displayed range can also be adjusted to include only the
+data within the fitting limits. This is done with the function ‘data range’,
+which can also be invoked by the keyboard shortcut Ctrl-D.</p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p><a name="Changing the Data Mark Size">Changing the Data Mark Size</a></p>
+</font><b><font COLOR="#0000ff">
+<p>Display | Data Mark Size</p>
+</font></b>
+<p>Since the display of a large number of data points contained in the sequence
+of sedimentation velocity scans can be problematic and time-consuming, this function allows to
+optimize the data mark size for the screen that is being used.&nbsp; This may help
+inspection of the quality of the fit.&nbsp;</p>
+<p> The default size for absorbance data are circles with 2 pixel radius,
+whereas for interference data it is a single pixel per data point.&nbsp;&nbsp;</p>
+<p>These settings can be changed to single screen pixels (values 0 or 1), or to larger
+circles. The entry -1 changes the presentation of the data from points to lines
+for each data set.</p>
+<p>If working with interference data, changing the data representation to lines
+may accelerate the drawing of the data to the screen.</p>
+<!--mstheme--></font></body>
+
+</html>

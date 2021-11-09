@@ -1,0 +1,193 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>experiments</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;experiments&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="58751" endspan -->
+</font></p>
+
+<h2><b>EXPERIMENTS</b></h2>
+<p> S<span style="font-variant: small-caps">edphat</span>
+ organizes the data in 'Experiments', which are objects that consist
+of the information of the experiment type, location of the data and list of data
+filenames, buffer conditions, sample extinction coefficients, some centrifugal
+parameters like meniscus, bottom, fitting limits, expected standard deviation,
+etc. They can be of different type (see the <a href="concepts_for_getting_started.htm#Data Channels ('Experiments')">overview</a>,
+and the specific instructions for loading a <a href="data1.htm#Load New Sedimentation Equilibrium Data">single
+sedimentation equilibrium</a> profile, <a href="data1.htm#Load New Multi-Speed Equilibrium Data">multi-speed
+equilibrium</a>, <a href="data1.htm#Load New Sedimentation Velocity Data">sedimentation
+velocity</a>, <a href="data1.htm#Load New DLS Data">dynamic
+light scattering</a> and <a href="data1.htm#Load New Isotherm Data">isotherm</a> data).&nbsp;&nbsp;</p>
+<p><font color="#0000FF" size="2">Note: Multiple sedimentation equilibrium
+profiles from the same ultracentrifugal cell and acquired at the same wavelength
+should be loaded as a single multi-speed equilibrium experiment, in particular
+if mass conservation will be used.&nbsp;
+They could also be loaded as several single sedimentation equilibrium profiles,
+but this would have significant drawbacks and provide less flexibility in
+sharing the baseline parameters.&nbsp;&nbsp;</font></p>
+<p><font size="2" color="#0000FF">New in version 2.0: </font>S<span style="font-variant: small-caps">edphat</span>
+<font size="2" color="#0000FF">experiments can be created automatically by 
+exporting data from </font><a target="_blank" href="../export_to_sedphat.htm">S<span style="font-variant: small-caps">edfit</span></a><font size="2" color="#0000FF">.</font></p>
+<p>For global analysis, currently up to 20 (version 1.9b) such experiments can be loaded and
+analyzed jointly.&nbsp; Relationships between some parameters of the different
+experiments can be established (see this <a href="concepts_for_getting_started.htm#Local Parameters and Shared Local Parameters">overview</a>
+and the details <a href="parameters1.htm">here</a>).</p>
+<p>Once an experiment has been defined, the complete information can be
+saved (in a file *.xp) and reloaded.&nbsp; The functions for the manipulation of
+the experiments are in the <a href="data1.htm"> Data menu</a>.&nbsp;&nbsp;</p>
+<p><img border="0" src="menubilder/data1.1.gif" width="299" height="454"></p>
+<p>The general strategy is as follows:&nbsp;&nbsp;</p>
+<p>1) load the data for a new experiment (use one of the functions <a href="data1.htm#Load New Sedimentation Velocity Data">Load
+New Sedimentation Velocity Data</a>, <a href="data1.htm#Load New Sedimentation Equilibrium Data">Load
+New Sedimentation Equilibrium Data</a>, <a href="data1.htm#Load New Multi-Speed Equilibrium Data">Load
+New Multi-Speed Equilibrium Data</a>,&nbsp; <a href="data1.htm#Load New DLS Data">Load
+New DLS Data</a> or <a href="data1.htm#Load New Isotherm Data">Load New Isotherm 
+Data</a>)</p>
+<p>2) enter information on the experimental details in the <a href="experiment_parameters.htm">Experiment Parameters</a> box, 
+which may look like this </p>
+<p><img border="0" src="menubilder/experi2.jpg" width="590" height="471"></p>
+<p>for sedimentation velocity data, but slightly different for the other data 
+types.&nbsp; For information on these boxes see
+<a href="experiment_parameters.htm">here</a>.</p>
+<p>3) specify graphically the fitting limits.&nbsp; This follows the same
+conventions as in S<span style="font-variant: small-caps">edfit</span>, and
+detailed instructions can be found in the S<span style="font-variant: small-caps">edfit</span>
+help web for <a href="../sedfit_help_LoadNewData.htm" target="_blank">loading
+data</a>.&nbsp;&nbsp;</p>
+<p>4) save the experiment as an xp-file with the menu function <a href="data1.htm#Save Experiment">Data-&gt;Save
+Experiment</a>.&nbsp; For reloading a previously saved experiments, this simplifies to a single
+step of loading the xp-file (<a href="data1.htm#Load Experiment">Data-&gt;Load
+Experiment</a>).&nbsp; A reminder will
+appear to specify the partial-specific volume under standard conditions.&nbsp;</p>
+<p>After loading an experiment, the data will be shown in the S<span style="font-variant: small-caps">edphat</span>
+window.&nbsp; Note that graphical input can be made directly in the graphs for
+each experiment.&nbsp; However, a more detailed view is possible using the '<a href="display.htm">Display-&gt;Zoom Into 1 Data
+Set</a>' function.&nbsp;&nbsp;</p>
+<p><font color="#FF0000">Note that you can use mouse functions to zoom and
+unzoom into particular regions of any data set.</font></p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><a name="Experiment Number:"><font color="#FF0000"><b>Experiment Number:</b></font></a><b><font color="#FF0000">&nbsp;
+Each experiment has a number
+associated, which is the order of loading.</font></b> This will be the same as the order
+of the plots from left to right in the S<span style="font-variant: small-caps">edphat</span>
+window (upper row before lower row).&nbsp; Many S<span style="font-variant: small-caps">edphat</span> functions operate
+on specific experiments, and the user has to specify the corresponding
+experiment number.&nbsp;&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>The data analysis models permit global fitting to all active experiments
+jointly, or alternatively, they permit a local fit to only a single
+experiment.&nbsp; Experiments can be excluded from the analysis in two different
+ways:&nbsp; They can be permanently removed from the S<span style="font-variant: small-caps">edphat</span> memory by using the
+function <a href="data1.htm"> Data-&gt;Remove Experiment</a>, or they can be temporarily deactivated in
+the <a href="experiment_parameters.htm"> Experiment Parameters box</a>.&nbsp;After
+a fit, the xp-files can be updated with the current local parameters using the <a href="data1.htm#Save All Experiments">Data-&gt;Save
+All Experiments</a> function.</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>It should be noted that not all parameters are specified in the experiment
+file:&nbsp; the <a href="../../../../temp/sedphat/sedphat/PartSpecVol.htm">partial-specific volume</a> at
+standard condition (water, 20C) is defined separately and is part of the global
+model.&nbsp;&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><a name="Storage of the xp-files:">Storage of the xp-files:</a>&nbsp; Sometimes it is necessary to edit the information of the xp-file of an
+experiment.&nbsp; It is a text file, which can be opened and changed with any
+text editor, such as the MS Notepad.&nbsp; The format of an xp-file is shown
+below.&nbsp;&nbsp;</p>
+<p><font size="1">4 (ExperimentType:  MULTISEDEQ)<br>
+<br>
+&quot;C:\xladata\DC-SIGN\RR5B\XLADA302\eq&quot;
+&quot; 25k250_084.Ra1 20k251_052.ra1 15k250_030.ra1&quot;<br>
+1.002200 (fBufferDensity)<br>
+0.001002 (fBufferViscosity)<br>
+0.712000 (VBAR)<br>
+6.693300 (Meniscus)<br>
+7.204400 (Bottom)<br>
+0.000000 (MAXMENISCUS)<br>
+0.000000 (MINMENISCUS)<br>
+7.212900 (MAXBOTTOM)<br>
+7.152900 (MINBOTTOM)<br>
+6.712811 (FitLeftLim)<br>
+7.134190 (FitRightLim)<br>
+0.000000 (WeightExperiment)<br>
+0.005000 (ExperimentalNoise)<br>
+0 (blocalFitTimeIndepNoise)<br>
+1 (blocalFitRINoise)<br>
+1 (blocalAutoVaryBaseline)<br>
+1 (blocalVaryBottom)<br>
+0 (blocalVaryMeniscus)<br>
+1 (blocalVaryMeniscusWarned)<br>
+0.000000 (xBaseline)<br>
+1.000000 (xConcentrationFactor)<br>
+12157.466797 (xExtinctionCoeffA)<br>
+0 (bVaryExtinctionCoeffA)<br>
+1.000000 (xExtinctionCoeffB)<br>
+0 (bVaryExtinctionCoeffB)<br>
+2 (Centerpiece)<br>
+1.000000e-06 (pLocalConcentrations[1])<br>
+1.000000e-06 (pLocalConcentrations[2])<br>
+1.000000e-06 (pLocalConcentrations[3])<br>
+1.000000e-06 (pLocalConcentrations[4])<br>
+3 (NFILES)<br>
+1 (ppMultiLocalConcentrations follow)<br>
+2.318014e-06 (ppMultiLocalConcentrations[1][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[1][4])<br>
+1.777017e-06 (ppMultiLocalConcentrations[2][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[2][4])<br>
+1.261792e-06 (ppMultiLocalConcentrations[3][1])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][2])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][3])<br>
+5.000000e-06 (ppMultiLocalConcentrations[3][4])<br>
+0.712000 (global VBAR20)<br>
+0.300000 (global HYDRATION)<br>
+1.200000 (pathlength)<br>
+</font></p>
+<p>The individual entries are self-explanatory, except for a few entries.&nbsp;
+The most important one, and maybe the only one that may require manual change is
+the third line:</p>
+<p><font size="1">&quot;C:\xladata\DC-SIGN\RR5B\XLADA302\eq&quot;
+&quot; 25k250_084.Ra1 20k251_052.ra1 15k250_030.ra1&quot;
+</font> </p>
+<p>This is the location of the actual raw data files.&nbsp; When moving the data
+to a different computer or a different directory, it is usually necessary to
+change the directory information appropriately.&nbsp; The directory is followed by the data filenames to be
+loaded.&nbsp; If you want to remove some data from the set, they can be simply
+deleted here, but an according change in line 34 specifying the total number of
+files is necessary.&nbsp; </p>
+<p><b><font color="#FF00FF">New in version 4.0:&nbsp; </font>
+<a href="configurations.htm#Path-Independent Configurations">
+<font color="#FF00FF">Path-Independent xp-files and configuration files </font>
+</a><font color="#FF00FF">can be generated.&nbsp; </font></b> </p>
+<p><font color="#0000FF"><b>New in version 1.5:</b> Note that the format of the
+xp-file has changed a little, in particular the line specifying the data
+directory and the files. You may need to adjust it to the new format.</font> </p>
+<p>Most other parameters can be changed with the <a href="experiment_parameters.htm"> Experiment Parameter box</a>
+from
+within S<span style="font-variant: small-caps">edphat</span>
+ (although you may want to save the experiment after the
+changes).&nbsp; Exceptions are the values for MAXMENISCUS and MINMENISCUS etc.,
+which are the constraints for the meniscus location when floating this
+parameter.&nbsp; They can be changed from within S<span style="font-variant: small-caps">edphat</span>
+ by switching the
+fitting mark off, closing the Experiment Parameter box, reopening the Experiment
+Paramter box, and switching the fitting mark on again.&nbsp; This will cause S<span style="font-variant: small-caps">edphat</span>
+ to ask for the constraints for this parameter.&nbsp; </p>
+<p>The concentration values in the xp-file are just the best-fit local
+concentration at the time of the last save (they are not updated automatically).&nbsp; They are model-dependent, and are only partially used
+automatically.&nbsp; </p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p><!--mstheme--></font></body>
+
+</html>

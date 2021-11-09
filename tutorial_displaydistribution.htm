@@ -1,0 +1,150 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>tut disp</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Displaying and exporting the distribution">Displaying and
+exporting the distribution</a></b></u></p>
+<p>At this point, we can also <a href="sedfit_help_subtract_calculated_noise.htm">remove
+the best-fit systematic noise</a>, by either pressing ctrl-N, or using the
+display command, or using the button on the right upper corner of the scan plot.&nbsp; 
+This will show us </p>
+<p><img border="0" src="images/tutori33.gif" width="620" height="474"></p>
+<p>In a final optimization step, we can increase the distribution range a little
+more (s-min = 0.1 and s-max = 12), as there is still a peak at s-min and s-max,
+and we can also increase the resolution to a value of 200:</p>
+<p><img border="0" src="images/tutori34.gif" width="443" height="299"></p>
+<p>Click on the <a href="sedfit_help_run.htm">Run</a> command (note that this
+will take a little longer now because of the higher resolution), and we get:</p>
+<p><img border="0" src="images/tutori49.jpg"></p>
+<p>At first, this may seem like a worse analysis because the peaks almost
+disappeared. However, the c(s) plot only appears this way because of the
+rescaling to accommodate the very large peak at 0.1 S (which may not be a real
+species but a result of correlation of small s-values with the baseline
+parameters, see below).&nbsp; The fit has really
+improved, as visible by the further decrease in the rmsd to 0.00449.</p>
+<p><font color="#FF0000"><i><u><b><a name="usage of new rescale distribution function">NEW:</a></b></u></i><a name="usage of new rescale distribution function">
+In order to visualize the distribution better, we can use the new function
+'Rescale Distribution Plot' in the sedfit versions 8.3 and higher.&nbsp; (In
+version 8.5 and higher, this is further simplified, see below).</a></font> </p>
+<p><img border="0" src="images/tutori51.gif" width="689" height="494"> </p>
+<p>A message box will appear that reminds how this function works: </p>
+<p><img border="0" src="images/tutori52.gif" width="405" height="96"> </p>
+<p>The mouse arrow will change into a crosshair, and by pressing the right mouse
+button, we can pull a rectangle while keeping the right mouse button pressed: </p>
+<p><img border="0" src="images/tutori53.gif" width="689" height="493"> </p>
+<p>This rectangle will contain the s-Range of the new plot (the vertical
+dimensions of our mouse rectangle are irrelevant, the plot will automatically
+scaled): </p>
+<p><img border="0" src="images/tutori54.gif" width="688" height="494"> </p>
+<p>If you keep the control-key pressed while double-clicking with the right 
+mouse-button at the peak locations, you will get output about the estimated 
+molar mass values from the c(s) analysis:&nbsp; </p>
+<p><img border="0" src="images/tutori24.gif" width="809" height="238"></p>
+<p>Here, Mf means the molar mass taking into account the current best-fit 
+frictional ratio f/f0. In parenthesis, the minimum molar mass value is given, 
+which is based on the hydrodynamic law that f/f0 &gt; 1 for any macromolecule.</p>
+<p>We can apply the same function again to zoom in on the species between 5 and
+10 S:&nbsp; </p>
+<p><img border="0" src="images/tutori55.gif" width="688" height="494"> </p>
+<p>which results in a better view that visualizes clearly the third peak at
+~8.5S.&nbsp; </p>
+<p><img border="0" src="images/tutori56.gif" width="688" height="495"> </p>
+<p>We can go back by using the Fullscale Distribution Plot command: </p>
+<p><img border="0" src="images/tutori57.gif" width="689" height="495"> </p>
+<p>which leads back to the original view of the distribution. </p>
+<p><font color="#FF00FF"><i><b>New: Please note that in version 8.5 and later,
+we can now directly draw a rectangle in the area of the distribution plot,
+without invoking the menu function.&nbsp; The distribution plot can be switched
+back to fullscale with a right mouse button click into the distribution
+plot.&nbsp;</b></i></font> </p>
+<p>As a more flexible alternative, I recommend to copy the
+distribution data into the clipboard by using the following <a href="sedfit_help_copy.htm#Copy Data Tables">copy
+command</a>: </p>
+<p><img border="0" src="images/tutori36.gif" width="620" height="475"></p>
+<p>Then, we can open a spreadsheet program for plotting, such as Origin, and
+paste the distribution data into a worksheet.&nbsp; (Alternatively, the
+distribution data can be <a href="sedfit_help_datautilities.htm#Save Calculated Distribution">saved</a>
+to the hard disk as an ASCII file, and imported into the plot program.)&nbsp;
+There, we can conveniently rescale the distribution axis to inspect the final
+c(s) result, for example </p>
+<p>&nbsp;</p>
+<p><img border="0" src="images/tutori37.gif" width="415" height="317"></p>
+<p>Please note the axis break at 1.0.&nbsp; Here, we can also use numerical
+integration functions to get the partial loading concentrations of the different
+peaks (area under the peaks, see below). </p>
+<p>What does the apparent peak at 12 S mean?&nbsp; Since 12 S was our maximum
+value allowed for the distribution, it does <b>not </b>mean that the
+distribution includes species at 12 S.&nbsp; In fact it mostly indicates that
+there are species larger than the maximum s-value.&nbsp; This can be verified by
+increasing s-max to 15, which leads to the following distribution:</p>
+<p><img border="0" src="images/tutori39.gif" width="409" height="317"></p>
+<p>Here, the peak at 12 S has disappeared, and a very small abundance of species
+with &gt; 15S is apparent.&nbsp; The rmsd value of this fit has slightly
+improved to a value of 0.004578. </p>
+<p>While the peak at the value of s-min can in general indicate the
+presence of material with smaller s-value, it is possible that it is simply a
+result of the correlation between the baseline and systematic noise parameters
+and species with 0.1 S, in which case it may be ignored.&nbsp; This situation would be slightly improved if later scans
+could be included into the data analysis. </p>
+<p>Note in version 11.0 or higher, this correlation is by default suppressed 
+using Bayesian expectation for the absence of a peak at s-min. The fact that it 
+still appears partially indicates that there may be a small buffer mismatch in 
+the sample and reference sector that leads to a signal contribution from buffer 
+salts.&nbsp; </p>
+<p>At this stage, using our knowledge of BSA, we can interpret the c(s)
+curve.&nbsp; First, we can integrate the areas under the peaks, either in the
+plotting program (such as Origin), or within sedfit: </p>
+<p><font color="#FF0000"><i><b><a href="sedfit_help_size_distribution_options.htm#Integrate Distribution" name="usage of new integration tool for distributions">NEW:&nbsp;
+Also, using the new integration
+tool, we can calculate the loading concentration and weight-average s-value
+under each of the peaks:</a></b></i></font></p>
+<p>With the menu function &quot;integrate distribution&quot; located in the
+Options-&gt; Size-Distribution Options menu (or using the keyboard shortcut
+ctrl-i [version 8.5 and later])</p>
+<p><img border="0" src="images/tutori58.gif" width="266" height="102"> </p>
+<p>a message box will appear that reminds that this function works exactly as
+the zooming tool for the distribution plot: </p>
+<p><img border="0" src="images/tutori52.gif" width="405" height="96"> </p>
+<p>The mouse arrow will change into a crosshair, and by pressing the right mouse
+button, we can pull a rectangle while keeping the right mouse button
+pressed.&nbsp; Again, the y-value of the rectangle is irrelevant.&nbsp; For
+example, if we want to analyze the ~6.7S peak, we can specify the following
+range </p>
+<p><img border="0" src="images/tutori59.gif" width="690" height="495"> </p>
+<p>Releasing the right mouse button after spanning the rectangle will
+immediately display the information </p>
+<p><img border="0" src="images/tutori60.gif" width="304" height="120"> </p>
+<p>on the integration range, the loading concentration (0.25 fringes) of the
+material under the specified peak and it's fraction of the total loading
+concentration (3.8%), as well as the weight-average s-value of the material,
+which is 6.68S. It should be noted, however, that the fraction of the total
+material (the 3.8%) in our example does include the artificial peak at 0.1 S. In
+order to get the true fraction of the <i>sedimenting </i>material, we need to
+integrate over that range (e.g. from 1 - 15S, including all true peaks), which
+gives a total loading concentration of 2.17 fringes. Therefore, the loading
+concentration of 0.25 fringes from the 6.68S species corresponds to 11.5% of the
+total loading concentration.&nbsp; </p>
+<p>This analysis shows that, in addition to the main
+peak from the BSA monomer, there is present a fraction (~1%) of small
+species (probably from proteolytic degradation), as well as 11-12% of dimeric
+BSA, 2-3% of BSA trimer, and probably a total of 0.8% of larger oligomers.&nbsp;
+The statistical accuracy of the s-values and the abundance of all species could
+be studied using the <a href="sedfit_help_monte_carlo_simulations.htm">Monte-Carlo
+statistics</a> function. </p>
+<p>&nbsp;</p>
+<p><a href="tutorial_summary.htm">next chapter</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>hybrid local continuos global discrete</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete&nbsp;]</nobr> <nobr>[&nbsp;<a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hetero-associations.htm" target="">hetero-associations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="mixedassoc.htm" target="">mixedAssoc</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="ternary_systems.htm" target="">ternary&nbsp;systems</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="53391" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Hybrid local continuous and global discrete model<!--mstheme--></font></h3>
+
+<p>This is the most flexible model to ask questions of the type 'what species
+are in the mixture'.&nbsp; It has up to 10 discrete species which are modeled
+similar as the <a href="species.htm">species analysis</a>:&nbsp;&nbsp;</p>
+<p>* the discrete species can have different amplitudes in the different
+experiments</p>
+<p>* for multi-speed equilibrium experiments, mass conservation is used</p>
+<p>* units are signal units</p>
+<p>This is combined with continuous distributions, which are local to each
+experiment.&nbsp; The background of this model is that you can have different
+experiments of protein mixtures which could have different degrees of impurities
+(like degradation products and aggregates), and you want to focus on the
+discrete species that are common to all experiments.</p>
+<p>The local distributions are similar to <a href="../sedfit_help_cs.htm" target="_blank">c(s)
+distributions</a> in S<span style="font-variant: small-caps">edfiT</span>, and
+could be regarded as an significant extension of the <a href="../sedfit_help_cs_with_other_prior.htm#Model | Continuous c(s) Conformational Change Model" target="_blank">c(s)
+conformational change model</a>, <a href="../sedfit_help_cs_with_other_prior.htm#c(s) with bimodal ff0" target="_blank">bimodal
+c(s) model of S<span style="font-variant: small-caps">edfiT</span></a> or the <a href="../sedfit_help_cs_with_other_prior.htm#Continuous c(s) with 1 discrete component" target="_parent">c(s)
+with one discrete component</a>.&nbsp;&nbsp;</p>
+<p><font size="1">
+An example of it's use can abe found in:&nbsp;
+H. Boukari, R. Nossal, D.L. Sackett, P. Schuck. (2004) Hydrodynamics of 
+nanoscopic tubulin rings in dilute solution. Physical Review Letters (in press). </font></p>
+<p>An extension for <a href="multi-signal_c(s).htm">multi-signal c(s) analysis</a> 
+of interacting systems is available.</p>
+<p><img border="0" src="menubilder/hybrid6.jpg" width="563" height="412"></p>
+<p>You can link the molar mass values:&nbsp; 1) switch it on with the check-box
+on the left; 2) enter the species # that contains the monomer molar mass; 3)
+enter the range of species numbers for which the entry in the mass field will be
+re-interpreted to mean multiples of the monomer mass.&nbsp; For example, if it
+reads: &quot;<i>link molar mass in multiples of #1 for species from #2 to #4</i>&quot;
+, and you have entries in the molar mass fields above of M1: 100,000, M2: 2, M3:
+4, M4: 8, the molar mass values will be M1 = 100,000, M2 = 200,000, M3 =
+400,000, M4 = 800,000.&nbsp;&nbsp;</p>
+<p>Similar links can be established for the s-values.&nbsp;</p>
+<p><b><font color="#0000FF">Note, from version 4:</font></b><font color="#0000FF"> 
+the checkbox &quot;neg.&quot; next to the first discrete component permits to count the 
+signal of this component <i>negative</i>. This can make sense, for example, if 
+this species is in the reference solution.&nbsp; For example, unmatched buffer 
+components, such as excess salt, in the reference sector can be modeled this 
+way. (This still requires the meniscii to match.)</font></p>
+<p><font color="#800080">This model is redundant with the multi-signal c(s) if 
+the number of wavelengths is set to 1.&nbsp; The difference is that the 
+multi-signal c(s) model allows to scale the different signals via extinction 
+coefficients, whereas the hybrid continuous/discrete model here is in signal 
+units.</font></p>
+<p><font color="#FF0000"><b>The distributions can be integrated using the 
+shortcut control-I, and zoomed in and out using the right mouse button.&nbsp; 
+This is completely analogous to the
+<a href="../sedfit_help_size_distribution_options.htm#Integrate Distribution">
+integration and zoom functions for distributions in SEDFIT</a>.</b></font></p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>Examples for using this model:</p>
+<p>1)&nbsp; You have oligomerization process and you're not sure of the monomer
+molar mass, but obviously the oligomers are in multiples of the monomer molar
+mass.&nbsp; (For a monomer-dimer system, you could constrain M2 = 2xM1).&nbsp;</p>
+<p>2) You have aggregates (different extent in different experiments) you don't
+care about, but you need to describe them in order not to bias the
+analysis.&nbsp; Move the limits of one of the c(s) distribution so that they are
+outside the discrete species of interest, and cover the range of the aggregates</p>
+<p>3) You have degradation products - use one c(s) distribution to cover the
+range of low s-values.</p>
+<p>4) You have a bimodal c(s) distribution and want to optimize f/f0 separately
+for the different sections.&nbsp; You could use the <a href="../sedfit_help_cs_with_other_prior.htm#c(s) with bimodal ff0" target="_blank">bimodal
+c(s) model of S<span style="font-variant: small-caps">edfiT</span></a>, but you
+have an extra buffer component present that you need to model.</p>
+<p>5) you have more than 4 discrete species (set the resolution of the c(s) to
+zero to switch them off)</p>
+<p>An example for the use of this model can be found in </p>
+<p>
+<font size="2">P. Schuck. (2005) Diffusion-deconvoluted sedimentation 
+coefficient distributions for the analysis of interacting and non-interacting 
+protein mixtures. In: Modern Analytical Ultracentrifugation: Techniques and 
+Methods (D.J. Scott, S.E. Harding, A.J. Rowe, Editors) The Royal Society of 
+Chemistry, Cambridge (in press)
+<a href="../images/SedimentationCoefficientDistributions.pdf">(preprint)</a></font></p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+<p>You can retrieve the local concentrations and c(s) distributions via the <a href="copy.htm">copy
+command</a>.&nbsp; If you copy the distribution, you will be asked</p>
+<p><img border="0" src="menubilder/hybrid7.gif" width="213" height="115"></p>
+<p>If you select <b>YES</b>, immediately paste it to your destination, before 
+continuing. </p>
+<p><img border="0" src="menubilder/hybrid8.gif" width="212" height="116"></p>
+<p>If you select <b>YES</b>, the previous clipboard content will be replaced by 
+the continuous distribution segment.</p>
+<p><img border="0" src="menubilder/hybrid9.gif" width="213" height="116"></p>
+<p>etc., which will put the corresponding section of the hybrid distribution into the
+clipboard for pasting into your spreadsheet software. </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p><b>HINT for <a name="Using this model for equilibrium analysis">Using this 
+model for equilibrium analysis</a>:</b>&nbsp; Generally, just ignore the 
+s-values, or set them to convenient values to have a nice display (they have no 
+meaning). When working with continuous distributions, make sure to use the 
+option <b>not</b> to normalize the distribution (otherwise it'll be normalized 
+according to the spacing of the s-vaues).&nbsp; You can access the 
+M-distribution using copy and paste - you get three columns in the spreadsheet: 
+s, M, and c.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

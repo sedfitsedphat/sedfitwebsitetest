@@ -1,0 +1,132 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>ls-g*(s)</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;ls-g*(s)&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="3443" endspan --></p>
+<p>&nbsp;</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">ls-g*(s) distribution by
+least-squares boundary modeling</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | ls-g*(s)</p>
+</font></b>
+<p>The ls-g*(s) approach is described in the <a href="lsgofs_distribution.htm">introduction
+to ls-g*(s)</a>.&nbsp; It is also part of the <a href="tutorial_sizedistributions.htm">step-by-step
+practical tutorial</a> (see the <a href="tutorial_lsgofs.htm">last chapter</a>).&nbsp;
+The ls-g*(s) distribution is also used as an example in the <a href="sizedistributions.htm">introduction
+to size-distributions</a>, from which some aspects of regularization can be
+learned.&nbsp; The application of the ls-g*(s) distribution is also shown in the
+<a href="sedfit_example.htm">example application of S<span style="font-variant: small-caps">edfit</span></a>.&nbsp;Related
+models are the <a href="sedfit_help_lsgs1comp.htm">ls-g*(s) with a superimposed
+diffusing species</a>, and the <a href="extrapolate_ls-g(s).htm">extrapolation
+of ls-g*(s) to infinite time</a>.</p>
+<p>In brief, this model describes the sedimentation of a distribution of non-diffusing
+species.&nbsp; It is closely related to the results of g(s*) by dcdt, but in the
+form of a direct boundary model.&nbsp; When applied to a data set where the dcdt
+method is applicable (i.e. a not too much boundary displacement and a limited
+number of scans), ls-g*(s) and g(s*) by dcdt give the same results.&nbsp;
+However, ls-g*(s) has several advantages that make it more versatile:</p>
+<p>1) As a direct boundary model, there is no differentiation step and no
+approximation of dc/dt by <font face="Symbol">D</font>c/<font face="Symbol">D</font>t.
+As a consequence, we <b>do not need to take data from small time-intervals</b>
+only.&nbsp; There is no extra broadening caused by having too many scans!&nbsp; 
+However, a limitation in the number of scans is the requirement that the model 
+fits the data reasonably well. </p>
+<p>2) Ability to work with scans that have large displacement is highly useful
+when analyzing <b>absorbance data</b>, but the method works <b>equally well for
+interference data</b>, where <a href="systematic_noise_analysis.htm">systematic
+noise decomposition</a> is used.&nbsp;</p>
+<p>3)&nbsp; Because large boundary displacement is not an issue, experiments can
+be run at <b>higher rotor speeds</b>, which can translate to <b>higher
+resolution</b>.&nbsp;</p>
+<p>4) It is suitable for <b>combination with non-linear regression</b>, for
+example for determining the exact meniscus position.</p>
+<p>In many cases when using this model, it should be considered if the <a href="sedfit_help_cs.htm">c(s)
+distribution</a> is not a better way to analyze the data, because with c(s) 
+diffusion effects are deconvoluted, giving substantially higher resolution and 
+sensitivity.&nbsp; If the determination of a species
+molar mass is the goal, the <a href="sedfit_help_independent_ideal_species.htm">independent
+species</a> model should be used, or the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">hybrid 
+discrete/continuous distribution in S<span style="font-variant: small-caps">edphat</span></a><span style="font-variant: small-caps"> 
+.</span></p>
+<p>It should be noted that S<span style="font-variant: small-caps">EDFIT</span>
+ has a model or the <a href="sedfit_help_van_holde-weischet.htm#Model | extrapolate ls-g*(s) vs 1/sqrt(time)">extrapolation
+of ls-g*(s) to infinite time</a>, as a variant of the <a href="sedfit_help_van_holde-weischet.htm">van
+Holde-Weischet method</a>.</p>
+<p>&nbsp;</p>
+<p><b>Parameters</b></p>
+<p>As mentioned above, the ls-g*(s) approach is described in the <a href="lsgofs_distribution.htm">introduction
+to ls-g*(s)</a>.&nbsp; It is also part of the <a href="tutorial_sizedistributions.htm">step-by-step
+practical tutorial</a> (see the <a href="tutorial_lsgofs.htm">last chapter</a>).&nbsp;
+The <a href="sedfit_help_parameters.htm">parameter</a> box of the ls-g*(s) model
+is:</p>
+<p><img border="0" src="images/tutori49.gif" width="332" height="303"></p>
+<p>The meaning of the parameters is the same as with the <a href="sedfit_help_cs.htm"> c(s) distribution</a>, except that there are much fewer parameters.&nbsp; Basically, we need to
+adjust the <a href="sizedistributions.htm#parameter resolution">resolution</a>, <a href="sizedistributions.htm#s-min">s-min</a> and
+<a href="sizedistributions.htm#s-max"> s-max</a> to give the proper s-range.&nbsp;
+The <a href="sizedistributions.htm#confidence level (F-ratio)">confidence level</a>
+field determines the magnitude of the regularization.&nbsp; The default
+regularization is Tikhonov-Phillips (although it can be <a href="sedfit_help_size_distribution_options.htm#Regularization by maximum entropy principle">changed</a>),
+and I would recommend confidence levels of one (enter 0.68 in the confidence
+level field) or two (enter 0.9) standard deviations.&nbsp; In some cases, the
+distribution may have some oscillations or spikes, which can be suppressed by
+using higher regularization (F-ratio of 0.95 or even 0.99).&nbsp;&nbsp;</p>
+<p>The other parameters are as usual; a floating baseline should be allowed, and
+when working with interference data, the time-invariant and radial-invariant
+noise (jitter) should also be allowed for (i.e. checked).&nbsp; It is possible
+to optimize the meniscus position in a non-linear regression; if this is
+desired, check the box left to the meniscus field.&nbsp;&nbsp;</p>
+<p>Simply executing a <a href="sedfit_help_run.htm">Run</a> command will give us
+the ls-g*(s) distribution in the lower plot.&nbsp; For optimizing the position
+of the meniscus, use the <a href="sedfit_help_fit.htm">Fit</a>
+command.&nbsp;&nbsp;</p>
+<p>Some message boxes may appear, as described in the <a href="tutorial_lsgofs.htm">tutorial</a>.&nbsp;
+As described in the tutorial, peaks at either extremes of the s-range can not be
+trusted, and if they occur, the range should be enlarged.&nbsp; Peaks at low
+s-values may indicate either a correlation with the baseline parameters, or that
+s-min should be further reduced.&nbsp; Peaks at s-max always indicate the
+presence of faster sedimenting material.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>Tips:</b></p>
+<p>1) For best results, it is advisable to start with a relative small range of
+s-values. It is recommended to increase s-max if there is an upward curvature of
+the distribution at the highest s-value, and conversely, to decrease the s-min
+value if there is a significant contribution in the distribution at this lower
+s-value.&nbsp; The problem of peaks at s-min and s-max is the same as with the
+c(s) distribution (described in the <a href="tutorial_sizedistributions.htm">tutorial</a>).</p>
+<p>2) The
+distribution will automatically clipped to the maximal s-value that can be
+observed for the given rotor speed and time of the first scan.</p>
+<p>3) When used in conjunction with time-invariant noise analysis, there can be
+a correlation of the low s-value part of the distribution with the <a href="systematic_noise_analysis.htm#Limitation">degrees
+of freedom from time-invariant noise</a>.&nbsp; To avoid this problem, it is
+recommended to use a larger data set, and scans that have cleared the meniscus.</p>
+<p>4) increase the resolution number and check if the fit quality changes.&nbsp; 
+If so, use the higher resolution setting to judge how many scans to include.</p>
+<p><font color="#800080"><b><u>New in version 8.7:</u></b>&nbsp; When using the
+inhomogeneous solvent mode, e.g. to correct for solvent compressibility, please
+read the <a href="file:///C:/peter/website/sedfithelpweb/inhomogeneous_solvent.htm">specific
+instructions</a> for this S<span style="font-variant: small-caps">edfit </span>mode
+first.&nbsp; For the ls-g*(s) model, this will mean that the s-values are
+corrected to standard conditions (water 20C).&nbsp;</font></p>
+<font SIZE="2">
+<p>Reference</font>: <font SIZE="2">P. Schuck and P. Rossmanith. (2000)
+Determination of the sedimentation coefficient distribution g*(s) by
+least-squares boundary modeling. <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">Biopolymers</a></u></i> <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract"> 54:328-341</a>
+</font>
+</p>
+
+<!--mstheme--></font></body>
+
+</html>

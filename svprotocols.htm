@@ -1,0 +1,966 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>svprotocols</title>
+<link rel="File-List" href="svprotocols_files/filelist.xml">
+<style>
+<!--
+h2
+	{margin-bottom:.0001pt;
+	page-break-after:avoid;
+	font-size:16.0pt;
+	font-family:"Times New Roman";
+	font-weight:normal; margin-left:0in; margin-right:0in; margin-top:0in}
+-->
+</style>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><a href="sedphat/experimental_protocols.htm">back to Protocols webpage</a></p>
+<p class="MsoNormal" style="text-align:justify"><span style="font-size: 16.0pt">
+Experimental Protocol for Sedimentation Velocity Analytical 
+Ultracentrifugation</span></p>
+<p class="MsoNormal" style="text-align:justify">Andrea Balbo, Patrick Brown, and 
+Peter Schuck</p>
+<p class="MsoNormal" style="text-align:justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align:justify">Last updated in January 2008</p>
+<p class="MsoBodyText3" align="left" style="text-align: left">&nbsp;</p>
+<p class="MsoBodyText3" align="left" style="text-align: left">This protocol 
+describes a typical SV experiment that can be used for proteins to study the 
+number of species in solution, the oligomeric state, and the self-association 
+and hetero-association properties.&nbsp; Optimally, a few hundred micrograms at 
+greater than 90 % purity would be used: however, this much material is not 
+necessary for some possible experimental configurations.&nbsp;Typically, it takes 
+about 3 to 4 hours to prepare and start the SV experiment, and 2 to 12 hours run 
+time of sedimentation, depending on the protein size.&nbsp; </p>
+<p class="MsoBodyText3" align="left" style="text-align: left">Because of the 
+tight integration of the experiment and the analysis, the considerations that 
+enter the data analysis are also outlined as part of the protocol, as well as 
+the typical workflow of the analysis.&nbsp; More detailed information on the 
+background of the mathematical methods embedded in the software can be found at 
+in the <a href="tutorials.htm">tutorials</a> and <a href="references.htm">SEDFIT references</a> 
+and <a href="sedphat/references.htm">SEDPHAT references</a> sections of our website.&nbsp; Other resources that 
+can be found there are a <a href="images/FlowChartAUC.pdf">flow-chart for AUC experiments</a>, as well as tables 
+containing a grid for <a href="images/criteria%20for%20buffer%20selections.pdf">
+buffer selection with different optical systems</a>, 
+<a href="images/Grid%20for%20SV%20Run%20Conditions%20with%20Different%20Optics.pdf">configurations for SE and SV experiments with different optical systems</a>, as well 
+as <a href="images/tpyical%20strageties%20for%20common%20problems.pdf">AUC strategies</a> commonly employed for selected typical problems.&nbsp; 
+Finally, hands-on workshops regarding the practical planning, conduct and 
+analysis of SV experiments are held semi-annually at the National Institutes of 
+Health.</p>
+<p class="MsoBodyText3" align="left" style="text-align: left">The protocols may 
+have to be modified and adapted to the special system under study based on the 
+principles above, and should be understood only as a guide which in our 
+experience will be successful in the large majority of cases.&nbsp;The basic 
+familiarity with the ultracentrifuge equipment and the cell components as 
+provided through the manufacturer’s instruction manual is required to follow the 
+protocol.&nbsp; The manufacturer's website provides 
+<a href="http://www.beckman.com/resourcecenter/labresources/sia/cellassy_video.asp">video instructions of the cell 
+assembly</a> and a description of the terminology.&nbsp; <u><span style="font-size: 16.0pt; font-family: Times New Roman">
+<br clear="all" style="page-break-before: always">
+&nbsp;</span></u></p>
+<h1 style="margin-left: 0in"><span style="font-size: 15.0pt">0. Instrumentation 
+needed</span></h1>
+<p class="MsoNormal" style="text-indent: -.3in; margin-left: .3in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+* Analytical Ultracentrifuge (Beckman Coulter) equipped with absorption optical 
+scanner (ABS) and optionally Rayleigh laser interferometer (IF) imaging system</p>
+<p class="MsoBodyTextIndent" style="margin-top:0in;margin-right:0in;margin-bottom:
+6.0pt;margin-left:.3in;text-indent:-.3in">* Spectrophotometer (preferably 
+dual-beam, any supplier) may be required for the determination of the protein 
+concentration via UV absorbance</p>
+<p class="MsoBodyTextIndent" style="margin-top:0in;margin-right:0in;margin-bottom:
+6.0pt;margin-left:.3in;text-indent:-.3in">* Densitometer and viscosimeter (Anton Paar) may be 
+required for measuring the solvent density if non-tabulated buffer components 
+are used (tabulated values are available for most common buffers and salts)</p>
+<p class="MsoNormal" style="text-indent: -.3in; margin-left: .3in">* Computer 
+(PC) equipped with software to perform the data analysis (this should not be a 
+PC simultaneously running the ultracentrifugal data acquisition to avoid 
+interference): </p>
+<p class="MsoNormal" style="margin-left: .3in">(1) <a href="download.htm">SEDFIT</a> (version 11.1 or 
+later) and <a href="sedphat/download.htm">SEDPHAT</a> (version 5.02 or later) for transforming and analyzing the 
+sedimentation equilibrium data; </p>
+<p class="MsoNormal" style="margin-left: .3in">(2) SEDNTERP for calculating the protein partial-specific volumes 
+and extinction properties, as well as buffer density; </p>
+<p class="MsoNormal" style="margin-left: .3in">(3) general purpose software to 
+store screenshots for documentation (MS Word, powerpoint or equivalent)</p>
+<p class="MsoNormal" style="margin-left: .3in">(4) internet connection to 
+consult the SEDPHAT getting started tutorials, the step-by-step tutorials for 
+sedimentation equilibrium analysis, the command reference manual, and the SEDFIT/SEDPHAT 
+search bar.&nbsp;
+</p>
+<h1><span style="font-size: 15.0pt">I.&nbsp; Planning the Experiment</span>&nbsp;</h1>
+<p class="MsoNormal" style="text-indent: -.2in; margin-bottom: 6.0pt">1.&nbsp; 1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;
+</span><b><a name="I.1. Buffer Conditions">Consider the buffer conditions</a></b>.&nbsp; 
+Phosphate buffers are transparent in the far UV and are suitable for both ABS 
+and IF detection.&nbsp; For example, PBS (phosphate buffered saline) will work well.&nbsp; 
+When using other buffers, see Tables 1 and 2.&nbsp; If the buffer conditions and the 
+protein extinction properties do not govern the choice of the detection system, 
+use the IF system.&nbsp; Make sure you know <u>all</u> the components of the buffer 
+being used.&nbsp; Then, measure the density and viscosity of the buffer, at the 
+actual AUC run temperatures, with the densitometer and viscosimeter, 
+respectively, or in most cases these values can be calculated with software such 
+as the program SEDNTERP.&nbsp; As a preliminary step, it might be necessary to 
+examine sedimentation/optical properties of the buffer itself before analyzing 
+the actual proteins, if for example, detergents are to be added, or potentially 
+absorbing buffer components are present when using the absorbance optics.</p>
+<p class="MsoNormal" style="text-align: justify">2.<span style="font-style:normal; font-variant:normal; font-weight:normal">&nbsp;&nbsp;&nbsp;
+</span><span style="font-size: 12.0pt; "><b>
+<a name="I.2. Know the Purification Steps">Familiarize yourself with the 
+purification steps</a></b> of the protein sample leading up to the AUC study.&nbsp; 
+SV detects aggregates generated by filter concentration or freeze/thaw cycles 
+with higher sensitivity than most other techniques, which may interfere with the 
+detection and analysis of <i>bona fide</i> protein complexes.&nbsp; The purification 
+of a sample to be analyzed by size-exclusion chromatography (SEC, Chapter X) as 
+the last step prior to AUC is strongly recommended.&nbsp; For refining the data 
+analysis, it is useful to have the SEC elution profile at hand, as well as a 
+standard SDS-PAGE gel. The amino acid composition of the proteins being studied 
+is required to assess the partial-specific volume, using SEDNTERP.&nbsp; If one or 
+more of the proteins is glycosylated, a measurement of the carbohydrate content 
+by mass spectrometry is advantageous.</span></p>
+<p class="MsoNormal" style="text-align: justify">3.<span style="font-style:normal; font-variant:normal; font-weight:normal">&nbsp;&nbsp;</span><span style="font-size: 12.0pt; "><b><a name="I.3. Buffer_exchange:">Buffer 
+exchange:</a></b> In preparation for the IF system, bring the protein sample 
+into chemical equilibrium with the reference buffer either by over-night 
+equilibrium dialysis or by gel-filtration after exhaustive equilibration of the 
+column.&nbsp; (If this is not possible, or buffer matching will be very difficult to 
+achieve, for example, when working with very high concentrations of co-solutes, 
+be prepared to model buffer signals as extra components.)&nbsp; For the ABS system, 
+this step is not required.&nbsp; Have available at least 10 ml of the dialysate or 
+running buffer of the column, for use in dilutions and as an optical reference 
+buffer</span>.&nbsp; </p>
+<p class="MsoNormal" style="text-align: justify">4.<span style="font-style:normal; font-variant:normal; font-weight:normal">&nbsp;&nbsp;&nbsp;
+</span><span style="font-size: 12.0pt; "><b>
+<a name="I.4. Amounts and Concentrations of Stock">Establish the amounts 
+(volumes) and concentrations</a></b> of the stock proteins to be studied. The 
+determination of concentration with a dual-beam absorption spectrophotometer is 
+advantageous (scan from 210 to 350 nm ) to assess possible aggregation and 
+nucleic acid contamination:&nbsp; nucleic acid will be detected at 260 nm, aggregates 
+as a broad signal in the range of 320 – 350 nm).&nbsp; Theoretical extinction 
+coefficients can be calculated based on the amino acid composition using 
+SEDNTERP.&nbsp; If the stock protein amount is limited for the ideal setup described 
+in the following step, reduce the volume from 400 microliters to 200 or 300 
+microliters (sacrificing some hydrodynamic resolution).</span></p>
+<p class="MsoNormal" style="text-align: justify">
+<span style="font-family: Times New Roman">5a. </span><b>
+<a name="I.5a. To_study_self-association_of_a_single_pure_protein:">To study 
+self-association of a single pure protein:</a></b>&nbsp; Plan for 3 samples of 400 
+microliters each in a 3 – 4 fold dilution series. The highest concentration 
+should usually not exceed 1 – 2 mg/ml to minimize non-ideal sedimentation, and 
+the lowest concentration should be 2 – 3 fold above the detection limit.&nbsp; For 
+example, for the IF system, use 2, 1, 0.3 and 0.07 mg/ml.&nbsp; For the ABS system, 
+dependent on the protein extinction and not exceeding 2 mg/ml, use three samples 
+at concentrations producing 1.2 OD at 250 nm, 0.5 OD at 280 nm, and 0.2 OD at 
+230 nm, respectively.&nbsp; The individual Beckman AUC instruments differ in their 
+precision and reproducibility of the monochromator covering multiple wavelengths 
+in the same experiment.&nbsp; A problem with reproducibility can be detected by large 
+jumps in the wavelengths for subsequent scans, causing instable amplitudes of 
+the signals from the sedimentation boundaries.&nbsp; If a problem is observed, 
+instead, chose 280 nm as the detection wavelength, and use samples at 1.2 OD, 
+0.5 OD, and 0.1 OD.&nbsp; (The OD numbers given here are for an optical pathlength of 
+1 cm such as would be commonly measured in the spectrophotometer.&nbsp; Taken into 
+account is that the pathlength is 20% longer in the ultracentrifuge when using a 
+12 mm centerpiece, 1.2 OD in 1 cm pathlength would lead to a signal of ~ 1.4 OD 
+at the highest concentration.&nbsp; Make sure the loading signal in the AUC is below 
+1.5 OD, and above 0.05 OD.)&nbsp; To permit the study of the self-association, the 
+concentration range chosen should cover the expected K<sub>D</sub> in order to 
+determine the binding constant.&nbsp; </p>
+<p class="MsoNormal" style="text-indent: -.2in; margin-bottom: 6.0pt">&nbsp;&nbsp;&nbsp;&nbsp; Use 
+an expected value for the binding constants (if available from previous or other 
+types of experiments) and use the SEDPHAT calculator functions for the mass 
+action law to make sure that the different loading concentrations planned will 
+lead to different <i>relative</i> concentrations of all species.</p>
+<p class="MsoNormal" style="text-indent: -.2in; margin-bottom: 6.0pt">&nbsp;&nbsp;&nbsp;&nbsp; If 
+the available sample amounts are limiting, plan for using 3 mm centerpieces for 
+the cells at the highest concentrations.&nbsp; This will give 4fold lower signal, but 
+also require a factor 4 less sample.&nbsp; These centerpieces can be used for either 
+absorbance or interference data acquisition. </p>
+<p class="MsoNormal" style="text-align: justify">
+<span style="font-family: Times New Roman">5b. </span><b>
+<a name="I.5b. To_study_hetero-association">To study hetero-association</a></b> 
+of two proteins ‘A’ and ‘B’ of already known (or absent) self-association 
+properties:&nbsp; Plan one sample of each of the interacting proteins alone, and at 
+least 3 samples of mixtures.&nbsp; All samples should have a final volume of 400 
+microliters.&nbsp; Different schemes for preparing the concentration series of A and 
+B are common.&nbsp; However, especially for interactions with unknown stoichiometry, 
+use a constant concentration of A at 3 – 5 fold of the expected K<sub>D</sub>, 
+and vary the concentration of B from 0.1 to 10-fold K<sub>D</sub>.&nbsp; </p>
+<p class="MsoNormal">Note that the IF system does not require a red calibration 
+counterbalance during the experiment, allowing 4 and 8 samples to be run in the 
+4-hole and 8-hole rotors, respectively.<font color="#0000FF">*</font>&nbsp; The rotor 
+still has to be balanced.&nbsp; A red calibration counterbalance is required for the 
+ABS system, reducing the number of sample to 3 and 7, respectively. &nbsp;</p>
+<blockquote>
+	<p class="MsoNormal"><font size="2" color="#0000FF">* We have routinely 
+	found this method to work well on our instruments for ABS detection also, 
+	providing the delay calibration option is deselected after having first 
+	performed the calibration without protein sample in the same rotor.&nbsp; 
+	However, the utility of this option may be instrument-dependent and user’s 
+	should therefore explore this with individual instruments. &nbsp;Feasibility of 
+	this method for ABS detection relies on capabilities of the AUC better than 
+	the ‘official specs’. Critical also are the condition of the rotor magnet 
+	and the overspeed disk, as well as cell alignment.&nbsp;&nbsp; </font></p>
+</blockquote>
+<p class="MsoNormal">As for self-associating systems, use an expected value for 
+the binding constants (if available from previous or other types of experiments) 
+and use the SEDPHAT calculator functions for the mass action law to make sure 
+that the different loading concentrations planned will lead to different <i>
+relative</i> concentrations of all species.</p>
+<p class="MsoNormal" style="text-indent: 0in; margin-bottom: 6.0pt">&nbsp;&nbsp;&nbsp;&nbsp; Again, 
+if the available sample amounts are limiting, plan for using 3 mm centerpieces 
+for the cells at the highest concentrations.&nbsp; This will give 4fold lower signal, 
+but also require a factor 4 less sample.&nbsp; These centerpieces can be used for 
+either absorbance or interference data acquisition. </p>
+<p class="MsoNormal" style="text-indent: 0in; margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+6.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="I.6. Select_the_rotor_speed:">Select the rotor speed:</a></b>&nbsp; For 
+proteins or anticipated protein complexes with molar mass between 30 and 300 
+kDa, a rotor speed of 50,000 rpm should be chosen.&nbsp; For larger complexes, use a 
+lower rotor speed (30,000 to 40,000 rpm), and for smaller proteins a higher 
+rotor speed (60,000 rpm).&nbsp; Use a rotor temperature of 20
+<span style="font-family: Euclid Symbol">°</span>, unless the known 
+temperature-dependence of the interaction or the limited stability of the 
+protein dictates another choice. </p>
+<p class="MsoNormal" style="text-indent: 0in; margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+7.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="I.7. Optionally:&nbsp;_simulate_the_experiment">Optionally:&nbsp; simulate 
+the experiment</a></b> with the ‘generate’ function of SEDFIT, using the planned 
+protein concentrations, known extinction properties and molar mass values of the 
+protein species, sedimentation coefficients based on estimated frictional ratios 
+(e.g., 1.3), different values for the K<sub>D</sub> of the interaction, and a 
+typical value of random noise (0.005 OD or fringes, respectively).&nbsp; This can 
+help to predict if information on certain aspects of the system under study can 
+be extracted under optimal conditions from the experiment, and allows the 
+optimization of the loading concentrations and the rotor speed.</p>
+<p class="MsoNormal" style="margin-left: -.2in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+&nbsp;</p>
+<h1 style="margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 15.0pt">II.&nbsp; Preparing the Analytical Ultracentrifuge 
+and the Cell Assembly</span></h1>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="II.1. Assemble_the_components_of_the_cell_assembly.">Assemble the 
+components of the cell assembly.</a></b>&nbsp; 
+<a href="http://www.beckman.com/resourcecenter/labresources/sia/cellassy_video.asp">Video instructions at the 
+manufacturer's website</a> describe the terminology and the assembly. (Note that the 
+mark of the windows should be aligned with the keyway of the window holder).&nbsp; 
+Also consider the information on storage, cleaning and assembly in section IV. 
+3. below.&nbsp; Use charcoal filled Epon centerpieces.&nbsp; Make sure that the 
+centerpiece and the windows are free of dust.&nbsp; In our laboratory the charcoal 
+filled Epon centerpieces are routinely taken to rotor speeds up to 60,000 rpm 
+without breakage despite the manufacturer’s lower rating.&nbsp; (Caution: A leak will 
+damage the Epon centerpiece at the high speeds – how to check for leaks is 
+described in Step III.4.)&nbsp; Sufficiently high rotor speeds are important to 
+ensure optimal resolution.&nbsp; For the IF system, use sapphire windows, and for the 
+ABS system, use quartz windows.&nbsp; Grease the screw ring and its washer 
+occasionally (we use Spinkote, from Beckman Coulter, wiping off any excess to 
+leave only a virtually invisible surface film) to ensure the torque can be 
+correctly adjusted to 120 – 140 inch-pounds.&nbsp; Exceeding the torque will cause 
+breakage of the windows, while insufficient torque causes leaks and mechanical 
+instability of the assembly.&nbsp; Check the reflection of the divider between 
+reference and sample sector for a tight seal:&nbsp; Hand-tightened it should show 
+colorful Newton-rings and after torquing it should be solid black.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+2.&nbsp; <b>Optional <a name="II.2.Test_Run:">Test Run:</a></b> When studying 
+very large particles that sediment so fast that there will not be sufficient 
+time to adjust the optics before significant depletion has taken place, do a 
+test run.&nbsp; Do a test run also when you are not sure about possible leakage and 
+when you may need extra time to adjust the optics.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: .3in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+For the test run, fill both the reference and sample sector with 400 microliters 
+of the selected buffer, using long tapered pipette tips.&nbsp; (If the cell is 
+oriented such that the screw ring is facing you, the reference sector is on the 
+left, the sample sector is on the right).&nbsp; Seal each cell by placing two red 
+polyethylene plug gaskets over each filling hole, and hand-tighten the housing 
+plug screws.&nbsp; Insert the cell assemblies into the rotor according to the 
+manufacturer’s instructions with a properly balanced counterbalance.&nbsp; Note the 
+orientation of the cells (the screw ring facing up and the filling holes facing 
+the center of rotation), and carefully align the cells and the counterbalance 
+using the scribe marks on the cells and rotor.&nbsp; The alignment is critical to 
+avoid convection during the experiment.&nbsp; If the cells fit too loosely in the 
+rotor, make sure the filling hole plug is tight, and if necessary, insert a 
+spacer (of the thickness and stability of, e.g., a human hair) between the cell 
+and the rotor hole.</p>
+<p class="MsoNormal" style="margin-left: .3in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+Then start a test AUC run.&nbsp; Insert the rotor in the rotor chamber, and install 
+the optical arm according to manufacturer’s instructions.&nbsp; Make sure the UV 
+filter is not in the light path for UV ABS detection.&nbsp; The optics must be 
+attached firmly so that the light source will be reproducibly aligned with the 
+detection system.&nbsp; Push the vacuum button on the ultracentrifuge and wait until 
+vacuum is established (&lt; 100 ‘micron’).&nbsp; Check if the AUC has in recent previous 
+runs undergone a radial calibration for the optical system to be used.&nbsp; This 
+calibration has to be performed at low rotor speed (e.g., 4,000 rpm) to avoid 
+significant rotor stretching.&nbsp; If necessary, perform the radial calibration:&nbsp; 
+For the ABS system, select the absorption optics for cell 1 in a velocity mode, 
+choose the radial calibration in the ‘Options’, and start a single scan.&nbsp; For 
+the IF system, set up the laser interferometer configuration for the 
+counterbalance, and proceed as specified by the manufacturer’s instructions.&nbsp; 
+(It is not advisable to do the calibration and the test run with the proteins 
+loaded, as they will already sediment during the procedure, generating 
+systematic errors in the data analysis.&nbsp; In this case, the run should be 
+stopped, the proteins re-suspended by careful mixing of the cells, and restarted 
+as described below.)&nbsp; </p>
+<p class="MsoNormal" style="margin-left: .3in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+At the end of the test run, take out the cell assemblies, and re-insert the 
+empty rotor and the optical arm into the AUC chamber.&nbsp; Set the temperature to 2 
+– 3 <span style="font-family: Euclid Symbol">°</span>C below the intended run 
+temperature and evacuate (turn on the vacuum pump):&nbsp; if the vacuum pump is off, 
+the rotor chamber will heat up.&nbsp; This will pre-equilibrate the temperature of 
+the rotor and the AUC.&nbsp; Carefully remove the buffer completely from both sectors 
+of the cell assembly (for example, by applying suction through a small tube 
+connected to a vacuum flask).&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+3.&nbsp; <b><a name="II.3. Temperature_equilibration.">Temperature 
+equilibration.</a></b> Because the sample cells must be temperature EQ to the 
+run temp for at least one hour before starting the run, it is a good idea to 
+begin with and maintain throughout setting up the run a cool AUC chamber along 
+with the rotor and optics arm.&nbsp;&nbsp; A few hours before run time, even the night 
+before, turn on the AUC and load the chamber with the run rotor, counterbalance 
+(if being used), and optics arm.&nbsp; Set the AUC temperature to 2-3 degrees below 
+the run temperature and turn on the vacuum.&nbsp; For example, if the run temperature 
+is 20c, pre-cool to 17c.&nbsp; This will shorten the pre-run temperature 
+equilibration time, since the rotor temperature (indicated when the vacuum drops 
+below 100 microns) will already be closer to the run temperature.&nbsp; It will also 
+cut down on large temperature gradients within the rotor.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="II.4. Prepare_the_scan_settings_file:">Prepare the scan settings file:</a></b>&nbsp; 
+Enter the planned rotor, rotor speed and temperature.&nbsp; Set the centrifugation 
+time to ‘hold’ mode.&nbsp; In the section for each cell, set the scan mode to 
+‘velocity’ and check the optical system (IF or ABS).&nbsp; In the ‘Options’ menu, 
+uncheck all options and set the overlay to 2. The ‘Methods’ menu controls the 
+timing of the scans:&nbsp; choose no delay, request nominal time increments of 1 min, 
+and 900 scans (300 for the ABS system).&nbsp; The real time for the sedimentation 
+experiment will need to be adjusted depending on the system under study.&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">5a. <b>
+<a name="II.5a. For_the_ABS_system">For the ABS system</a></b>, for each cell 
+set ‘Rmin’ to 6.0 (this assumes 400 microliter samples) and ‘Rmax’ to 7.2, 
+avoiding excess scanning but ensuring that both menisci and the bottom of the 
+solution column are covered.&nbsp; Set the desired wavelength (e.g. 280).&nbsp; In the 
+‘Details’, choose no other wavelength, radial step size of 0.003 cm, 1 
+replicate, and the continuous scanning mode.&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">5b. <b>
+<a name="II.5b. For_the_IF_system">For the IF system</a></b>, for each cell go 
+into the ‘Details’ parameter box and choose no blank scan subtraction, no 
+alignment of data.&nbsp; Do not change the default pixel per fringe setting, and do 
+not do the blank setup.&nbsp; (Blank scans are not needed in SV as the 
+radial-dependent baseline can be computed with higher precision, see below.)&nbsp; 
+The radial range as well as the fine-adjustment of the laser setup will be 
+entered later, at the start of the run.&nbsp; Choose the 2 channel centerpiece, and 
+enter a new directory name for data storage.&nbsp; Save the scan settings file.&nbsp; </p>
+<p class="MsoNormal">6.&nbsp;&nbsp; At this point, the rotor and optics arm are in the 
+chamber under vacuum and the temperature is reading 2-3 degrees below the actual 
+run temperature.&nbsp; The scan file is set up and saved.&nbsp; Now, it is time to prepare 
+the samples, load the cells and start the run.</p>
+<p class="MsoNormal" style="text-indent: -.25in">&nbsp;</p>
+<h1 style="margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 15.0pt">III. Sample Preparation and Starting the Run</span></h1>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>For each cell,
+<b><a name="II.1. prepare_the_protein_mixtures">prepare the protein mixtures</a></b> 
+and/or dilutions in separate Eppendorf tubes.&nbsp; If dilutions are necessary to 
+reach the planned experimental concentrations, use the reference buffer.&nbsp; For 
+slow interactions, consider an incubation period of several hours at the planned 
+experimental temperature prior to starting the SV experiment (provided the 
+proteins are sufficiently stable).&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+2.&nbsp; <b><a name="III.2. Fill_the_cells:">Fill the cells:</a></b>&nbsp; If 
+the cell is oriented such that the screw ring is facing you and the filling 
+holes are on top, the reference sector is on the left, the sample sector is on 
+the right.&nbsp; Fill the reference sector of the empty cell assembly with buffer, 
+using a long tapered pipette tip, very carefully and fully aspirating the 
+precise volume.&nbsp; Then fill the sample sector with the sample, using the same tip 
+(this helps to prevent small volume differences that could occur when changing 
+tips).&nbsp; Avoid air locks which would cause the solution to bubble over the top.&nbsp; 
+For the IF optics, the volumes in the reference and the sample sectors should 
+exactly match.&nbsp; Note that this cannot be visually adjusted, but can be achieved 
+with reliable pipetting.&nbsp; When using the ABS optics only, the reference volume 
+should exceed the sample volume by 5 – 10 microliters.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="III.3. Seal_the_cell_assemblies">Seal the cell assemblies</a></b>, and 
+insert them into the rotor. &nbsp;Seal each cell by placing two red polyethylene plug 
+gaskets over each filling hole, and hand-tighten the housing plug screws. Insert 
+the cell assemblies into the rotor according to the manufacturer’s instructions 
+with a properly balanced counterbalance.&nbsp; Note the orientation of the cells (the 
+screw ring facing up and the filling holes facing the center of rotation).&nbsp; Very 
+carefully adjust the angular alignment of the cell assemblies using the scribe 
+marks on the rotor and cell barrels, such that the walls of the centerpiece 
+sectors are concentric with the rotor axis. &nbsp;The alignment is critical to avoid 
+convection during the experiment.&nbsp; If the cells fit too loosely in the rotor, 
+make sure the filling hole plug is tight, and if necessary, insert a spacer (of 
+the thickness and stability of, e.g., a human hair) between the cell and the 
+rotor hole.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+4.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="III.4. Insert_the_rotor_">Insert the rotor </a></b>into the 
+ultracentrifuge and mount the optical arm.&nbsp; Evacuate the rotor chamber and 
+observe the vacuum.&nbsp; Once the pressure has reached a level of several hundred 
+microns, leaks may become evident:&nbsp; If a sudden rise of pressure by one or two 
+hundred microns is encountered, it is usually a sign of sample evaporation, and 
+the run should be stopped, the leaking cells cleaned, and re-filled.&nbsp; During 
+this time with pressures above 100 micron, the temperature reading of the 
+ultracentrifuge only imprecisely reflects the true rotor temperature, and it is 
+usually advisable to adjust the temperature set point on the centrifuge control 
+panel to a value below the current temperature reading, so as to maintain 
+cooling of the chamber. </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="III.5. When_the_pressure_drops_below_100_microns">When the pressure 
+drops below 100 microns</a></b>, adjust the temperature set point to the desired 
+temperature of the run.&nbsp; Observe the actual temperature reading and notice when 
+the actual temperature coincides with the desired run temperature.&nbsp; Counting 
+from this time, let the rotor temperature equilibrate an additional hour.&nbsp; This 
+is important to avoid temperature driven convection during the experiment, which 
+would introduce systematic errors in the results.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+6.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="III.6. To_this_point,_the_rotor_is_still_at_rest:">To this point, the 
+rotor is still at rest:</a></b>&nbsp; Indeed, any rotation prior to this point will 
+lead to partial sedimentation and introduce errors in the data interpretation.&nbsp; 
+The pressure gauge should read 0 microns.&nbsp; Make sure the rotor acceleration 
+control is set to the highest value.&nbsp; From the control of the ultracentrifuge 
+accelerate the rotor to reach the required rotor speed for the experiment.&nbsp; A 
+slight drop in temperature is usually noticeable, resulting from adiabatic 
+stretching of the rotor.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+7.&nbsp; <b><a name="IIi.7. Prepare_for_data_acquisition:">Prepare for data 
+acquisition:</a></b>&nbsp; On the computer controlling the data acquisition of 
+the analytical ultracentrifuge, retrieve the scan settings file (see above).&nbsp; 
+Confirm the desired rotor speed and rotor temperature.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+8.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>For the IF 
+system, for each cell select the ‘<b><a name="III.8. Details">Details</a></b>’ 
+section to adjust the ‘<b><a name="III.8. Laser_Setup">Laser Setup</a></b>’ 
+according to the manufacturer’s instructions.&nbsp; Some details are dependent on the 
+particular AUC models.&nbsp; The fine-adjustment of the laser delay should adjust the 
+timing of the laser pulse to the center of the visible compartment, which can be 
+achieved by slowly exploring the limits of the range of delay angles that 
+produce a fringe pattern, followed by centering the delay.&nbsp; Some small 
+deviations from this optimal position are possible in order to avoid clearly 
+visible surface features.&nbsp; For the camera exposure, the overall goal is to have 
+a fringe pattern that has a sinusoidal (not rectangular) vertical intensity 
+profile, with bright and dark stripes of similar width, and not oversaturating 
+or underexposing the camera..&nbsp; After closing the ‘Laser Setup’ menu, enter the 
+radial range for which the IF data will be collected.&nbsp; Make sure the minimal 
+(inside) radius is in the air-to-air region and the maximum (outside) radius is 
+well below the bottom of the cell.&nbsp; In this way, the information from the 
+complete solution column will be stored.&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">These adjustments should be 
+performed as quickly as possible, remember, the rotor is spinning at run speed 
+and the molecules are sedimenting. It is possible to pre-adjust these setting 
+and in addition, test for leaking cells, in a test run using water filled cells 
+(see above), which requires only make final minimal adjustments when the samples 
+are loaded.&nbsp; In the absence of a test-run, it is also possible to do this in two 
+steps: a pre-adjustment while the rotor is still accelerating, followed by final 
+fine-adjustments at full speeds.&nbsp; &nbsp;&nbsp;</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+9.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="III.9. Start_the_data_acquisition">Start the data acquisition</a></b> 
+with the ‘Start Methods Scan’ button.&nbsp; Verify that the speed and temperature 
+settings of the computer and of the ultracentrifuge controls match.&nbsp; Observe the 
+first several scans, which will take approximately 10 minutes, and apply 
+corrections to the settings of the ABS or IF settings if necessary (usually, 
+stopping and restarting the scans can be done while the centrifugation 
+continues).&nbsp; The goal of the data acquisition is to observe the sedimentation 
+from the beginning of the first deviation from uniform loading concentration.&nbsp; 
+Even the initial partial depletion at the meniscus contains significant 
+information (on the average molar mass, as well as the presence or absence of 
+larger species).</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+10.&nbsp; <b><a name="III.10. Preliminary Analysis">Preliminary Analysis During 
+The Run:</a></b>&nbsp; When the sedimentation boundary has cleared the meniscus, 
+which might be the case after an hour (although this is strongly dependent on 
+protein size) sufficient information has accumulated for a first, very 
+preliminary analysis (see below).&nbsp; At this point gross discrepancies from the 
+expected sedimentation behavior can be detected and, if necessary, corrections 
+in the experimental conditions can be made.&nbsp; If the run is stopped at this 
+stage, the samples may be re-used after resuspending them uniformly (see IV.2.), 
+for example, by carefully turning the rotor perpendicular to the centrifugal 
+axis of rotation, to ensure uniform distribution before restarting the run at 
+Step III.4. (a new temperature equilibration period will be required).&nbsp; </p>
+<p class="MsoNormal" style="margin-left: -.2in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+&nbsp;</p>
+<h1 style="margin-top: 6.0pt"><span style="font-size: 15.0pt">&nbsp;</span></h1>
+<h1 style="margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 15.0pt">IV.&nbsp; Stopping the Run and Cleaning Cell 
+Assemblies</span></h1>
+<p style="margin-top: 6.0pt; margin-bottom: .0001pt">
+&nbsp;</p>
+<p class="MsoNormal" style="text-indent: 0in; margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+1.&nbsp; <b><a name="IV.1. The_end_of_the_run:">The end of the run:</a></b>&nbsp; 
+Continue the run until no further sedimentation is visible. (With the IF optics, 
+the assessment whether or not sedimentation is still visible may require a 
+preliminary data analysis while the run is still going, in order to eliminate 
+the systematic noise contributions and visualize macromolecular sedimentation 
+only.)&nbsp; For example, for proteins large enough to form a migrating sedimentation 
+boundary, the run should be stopped when the trailing edge of the diffusionally 
+broadened boundary disappears.&nbsp; Dependent on the protein size and rotor speed, 
+this may take typically between 2 to 12 hours.&nbsp; When signals from small 
+degradation products or buffer salts are present, it may be necessary to conduct 
+the run somewhat longer such that the small species’ sedimentation can be better 
+characterized (not biasing the analysis of the species of interest)</p>
+<p class="MsoNormal" style="text-indent: 0in; margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="IV.2. After_stopping_the_run">After stopping the run</a></b>, the 
+samples may be recovered from the cell assembly, but it should be noted that in 
+many cases the protein may be altered or aggregated from the extremely high 
+local concentration near the bottom of the solution column.&nbsp; Although some 
+proteins can be successfully resuspended for further study, this is not 
+recommended in general. </p>
+<p class="MsoNormal" style="text-indent: 0in; margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+3.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="IV.3. Cleaning">Cleaning</a></b> of the windows and centerpieces is 
+necessary.&nbsp; Different procedures are possible, one of them is this:&nbsp; First rinse 
+the windows and centerpieces with distilled water, and then sonicate for 30 
+minutes in a warm solution of diluted, low residue detergent (such as Conrad 
+70).&nbsp; After several rinses with water, they should finally be rinsed in either 
+methanol or ethanol.&nbsp; (Caution: Familiarize yourself with the appropriate 
+pre-cautions necessary for working with these solvents.)&nbsp; The centerpieces are 
+dried in air, avoiding contact to their surfaces.&nbsp; The cell components can be 
+reassembled for storage.&nbsp; Before assembly, the windows are rinsed with methanol 
+and wiped with optical grade tissue (or Kimwipes) to remove dust.&nbsp; The outer 
+surfaces of the centerpieces that will be in contact with the windows can also 
+be wiped with optical grade tissue slightly moistened with methanol before 
+reassembly.&nbsp; The assembly follows the manufacturer’s instructions.&nbsp; The 
+assembled AUC cell can be stored wrapped in optical grade tissue, but should be 
+retorqued before use.&nbsp; It is advantageous to maintain the components together as 
+a unit, and not to interchange parts during cleaning and assembly.&nbsp; This helps 
+to identify, trace, and eliminate malfunctioning parts that may obviously or 
+subtly degrade the data quality.</p>
+<p style="margin-top: 6.0pt; margin-bottom: .0001pt">
+&nbsp;</p>
+<h1 style="margin-top: 6.0pt; margin-bottom: .0001pt">
+<span style="font-size: 15.0pt">V.&nbsp; </span><span style="font-size: 15pt">
+Data Analysis</span></h1>
+<p style="margin-top: 6.0pt; margin-bottom: .0001pt">
+Before conducting a data analysis for the first time, it may be useful to also 
+go through the step-by-step guide of the website, which has screenshots of a 
+simple c(s) analysis.</p>
+<p class="MsoNormal" style="margin-bottom:6.0pt"><i><u>Calculating a c(s) 
+sedimentation coefficient distribution</u> </i></p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+1.&nbsp; <b><a name="V.1. Loading_Scans:">Loading Scans:</a></b>&nbsp; Transfer 
+the data to the computer dedicated to data analysis.&nbsp; Initially, load a data 
+subset of ~50 scans in SEDFIT, covering the complete sedimentation process in 
+equal time-intervals.&nbsp; This can be achieved, for example, by loading every 10<sup>th</sup> 
+scan and counting the profiles that show a sedimentation boundary; 
+alternatively, the choice of scans can be refined after a preliminary analysis.&nbsp; 
+When the scans are loaded, they are shown with the color temperature (blue to 
+red) scaled proportionally from first to the last scan.&nbsp; The transition green to 
+red is the color of scans roughly in the middle of the loaded set.&nbsp; It is not 
+advisable to load too many late scans where the sedimentation is already over: 
+this situation can be diagnosed by seeing only blue or blue/green boundaries, 
+and the lines from the later scans being compressed near the baseline.&nbsp; (To pick 
+the right number of scans may require loading the scans first to survey which of 
+the scans is the last with meaningful sedimentation information.&nbsp; Note that 
+moving the mouse across the scan will reveal its filename and number.)&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.2. Specify_graphically_a_tentative_meniscus_and_bottom_position">
+Specify graphically a tentative meniscus and bottom position</a></b>, as well as 
+fitting limits that exclude the region of artifacts close to the meniscus and, 
+if possible, the region of back-diffusion close to the bottom.&nbsp; (Back-diffusion 
+has to be included into the fit if it extends far into the solution column, for 
+example, for small proteins &lt; 5 kDa and for peptides.)&nbsp; Optical artifacts from 
+reflections and refraction at the ends of the solution column dominate the 
+signal typically within 0.05 cm of the meniscus and a slightly larger range at 
+the bottom.&nbsp; Setting the meniscus (red) and bottom (blue) can be achieved with 
+left double-clicking the mouse while the control key is pressed, and the fitting 
+limits (green) can be set by left double-clicking without control-key.&nbsp; 
+Alternatively, existing limits can be adjusted by grabbing and dragging with the 
+mouse.&nbsp; A detailed software tutorial for this procedure can be found in the 
+SEDFIT 'Getting Started' section of its homepage.&nbsp; In particular, the 
+websites for loading data and the step-by-step practical application will 
+explain this step.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+3.&nbsp; <b><a name="V.3. First_c(s)_analysis:">First c(s) analysis:</a></b>&nbsp; 
+As a first overview of the sedimentation properties of the sample, select the <i>
+c</i>(<i>s</i>) distribution model, and specify in the parameter box the<span style="position: relative; top: 3.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1025" type="#_x0000_t75" style='width:11.25pt;
+ height:12.75pt'>
+ <v:imagedata src="svprotocols_files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=15 height=17
+src="svprotocols_files/image002.gif" v:shapes="_x0000_s1025"><![endif]></span><!--[if gte mso 9]><![endif]-->of 
+the protein, as well as the buffer density and viscosity at the experimental 
+temperature.&nbsp; When working with IF optics, the systematic time-invariant noise 
+(TI, the radial-dependent baseline offset) will be switched on by default, as 
+well as the radial-invariant (RI) offsets.&nbsp; This requires no action for IF 
+data.&nbsp; With the ABS optics, switch on the TI noise.&nbsp;
+<span style="background-image: none; background-repeat: repeat; background-attachment: scroll; background-position: 0% 0%">
+A video tutorial is available at </span>the getting started site of the SEDFIT 
+homepage.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+4.&nbsp; <b><a name="V.4. c(s)_parameters:">c(s) parameters:</a></b>&nbsp; Set 
+the resolution to 100, the minimum <i>s</i>-value of the distribution to a value 
+of 0.5, and the maximum <i>s</i>-value to a value well above the maximally 
+expected value.&nbsp; For proteins of &lt; 100 kDa, a reasonable initial value can be 
+10.&nbsp; Enter a starting value for the frictional ratio <i>f/f<sub>0</sub> </i>of 
+1.3 for globular proteins, or 1.5 for glycoproteins or known highly 
+asymmetrically shaped proteins.&nbsp; Specify <i>f/f<sub>0</sub></i> and the meniscus 
+to be fitted.&nbsp; If back-diffusion is part of the analysis, also select the bottom 
+position to be fitted.&nbsp; Set the confidence level to a value of 0.7.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+5.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span>Use <b>
+<a name="V.5. the_‘Run’_command">the ‘Run’ command</a></b> to get an initial 
+assessment of the fit.&nbsp; Subtract all systematic noise components (control-N or 
+use the function in the ‘Display’ menu) and select the residuals bitmap to be 
+displayed (if it is not already showing).&nbsp; You should see the data and fit in 
+the upper graph, the residuals bitmap and graph in the middle, and the 
+distribution in the bottom graph.&nbsp; If the data show a large number of scans with 
+complete depletion throughout the solution column, or if the sedimentation 
+boundary does not appear to sediment through the entire solution column, 
+reselect a new data subset.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+6.&nbsp; <b><a name="V.6. Some_initial_adjustment_may_be_needed:">Some initial 
+adjustment may be needed:</a></b>&nbsp; If the distribution is non-zero at the 
+minimum or maximum <i>s</i>-value, chose a higher value for s-max and a lower 
+value for s-min, respectively, and execute the ‘Run’ command again.&nbsp; Repeat this 
+until the <i>c</i>(<i>s</i>) distribution at the maximum and minimum <i>s</i>-value 
+vanishes and all peaks are displayed within the distribution range.&nbsp; If there is 
+a large half-peak at s-min, this usually indicates signals from buffer.&nbsp; In this 
+case, it is possible to get a better fit with the model of c(s) with an extra 
+discrete species, using the default values for s and M of the discrete species 
+to describe sedimentation signal of buffer salts, and checking these values to 
+be optimized later. </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+7.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.7. Refine_the_model_by_using_the_‘Fit’_command">Refine the model by 
+using the ‘Fit’ command</a></b>, which will optimize the weight-average <i>f/f<sub>0</sub></i> 
+value and the meniscus position.&nbsp; A visualization of this process can be found 
+in the step-by-step tutorial at the ‘getting started’ website of SEDFIT.</p>
+<p class="MsoHeading7" style="margin-left:0in"><u><i>The initial interpretation 
+and assessing the quality of the fit</i></u> </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+8.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.8. Assess_the_quality_of_the_fit">Assess the quality of the fit</a></b> 
+by considering the rms deviation (this should be well below 0.01, except for 
+very high loading concentrations, or noisy ABS data), the randomness of the 
+superposition of the residuals, and the structures in the residuals bitmap.&nbsp; 
+Another factor is the best-fit meniscus position which should be consistent with 
+the graphical display of the range of optical artifacts (if it is not, restrict 
+the range of minimum and maximum positions to reflect the experimental 
+uncertainty and re-fit).&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+9.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.8. If_a_good_fit_is_achieved">If a good fit is achieved</a></b>, the
+<i>c</i>(<i>s</i>) distribution displays the most parsimonious distribution that 
+is consistent with the data under the assumption that all species are stable on 
+the time-scale of the sedimentation.&nbsp; If this is true, the peaks reflect 
+sedimenting species (on the level of resolution provided by the signal/noise 
+ratio of the data).&nbsp; The assessment whether some detailed features are 
+statistically significant can be made, for example, by re-executing the analysis 
+(‘Run’ command) with a higher confidence level.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+10.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.10. If_no_good_fit_is_achieved,_there_are_many_possible_reasons">If 
+no good fit is achieved, there are many possible reasons</a></b>.&nbsp; A wizard 
+function may indicate possible problems.&nbsp; Among the most common are:&nbsp; 1) 
+residual convection (for example, this would typically produce very large 
+systematic residuals in the first few scans close to the meniscus). Take a look 
+at the temperature plot in Sedift to see if the temperature of the run 
+fluctuated significantly after starting acquisition.&nbsp; Explore the possibility of 
+the cell being misaligned in the rotor or of scratches along the inside walls of 
+the centerpiece.&nbsp; 2) with IF optics, a chemical mismatch of the buffer and the 
+sample solvent.&nbsp; (To correct this, excess small Mw solutes like buffer salts can 
+be taken into account as a separate species in the ‘<i>c</i>(<i>s</i>) with 1 
+discrete component’ model with an apparent <i>s </i>of ~ 0.2 – 0.3 S, and an 
+apparent <i>M</i> of ~ 200 – 300 Da). 3) with IF optics, a mismatch of the 
+volume of sample or reference may have occurred (this can be diagnosed by the 
+observation of diagonal sections of the experimental scans between sample and 
+reference meniscus, pointing down to the sample meniscus).&nbsp; To address this 
+problem at the stage of the data analysis, use the buffer mismatch model of 
+SEDFIT.&nbsp; 4) A fast chemical reaction may occur during the sedimentation 
+process.&nbsp; In this case, the analysis can continue: this factor will be more 
+apparent in the comparison of the samples at different loading concentrations, 
+see below.&nbsp; If the fit is not good, it is useful to examine the bitmap and the 
+residual plots, and to determine if the deviation originates from certain 
+regions of the cell or if it persists systematically migrating with the 
+sedimentation boundary, which may be helpful to differentiate between technical 
+problems in the detection system (e.g., local loss of fringe contrast due to 
+scattering), and systematic errors in modeling the migration of the proteins.&nbsp; 
+5) The standard assumption of a single weight-average frictional ratio 
+representing the distribution well does not apply within the errors of the 
+experimental data.&nbsp; This is uncommon, but can be addressed either by (1) using 
+the model for bimodal c(s), such that two different <i>f/f<sub>0</sub></i> 
+values are used for different segments of c(s) – this is promising only if 
+multiple boundaries corresponding to the different s-regions are clearly visible 
+from the data; or (2) by supplying SEDFIT with more detailed information about 
+the relationship between s and M, if available, using one of the “c(s) with 
+prior knowledge” models, such as that of a worm-like chain, proteins with 
+conformational change, or that using a freely user-defined table.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+11.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.11. The_f/f0_value">The <i>f/f<sub>0</sub></i> value</a></b> 
+displayed after the fit should also be noted:&nbsp; It should be consistent with the 
+known properties of the sample (folded/unfolded chains), and should always be &gt; 
+1.&nbsp; Values &lt; 1 indicate extra boundary broadening not originating from 
+diffusion, but likely from rapid (<i>k<sub>off</sub></i> &gt; 0.01/sec) chemical 
+reactions.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+12.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.12. Press_control-M_for_obtaining_the_molecular_weight">Press 
+control-M for obtaining the molecular weight</a></b> estimates associated with 
+all peaks. This will produce buttons in the vicinity of each peak.&nbsp; Press the 
+button of a peak of interest, and the coloring in the sedimentation profiles 
+window will change to highlight the signal contributions of that species.&nbsp; Also, 
+a box will appear with some available information about the estimated average 
+properties of the particle within that peak, including molecular weight, 
+weight-average s-value, and signal contribution in units of loading 
+concentration.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+13.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.13. Document_the_fit_and_the_parameters">Document the fit and the 
+parameters</a></b> displayed in the SEDFIT window (for example, by copying and 
+storing an image of the SEDFIT window), and copy the distribution table into a 
+spreadsheet for further analysis.&nbsp; From “Display” select “show peak MW (in cS)”.&nbsp; 
+Note the MW value appears above each peak.&nbsp; Click on each MW box to display an 
+Integration window containing MW, weight-average <i>s-</i>value,&nbsp; S, &nbsp;and 
+concentration in signal units. &nbsp;As described in the introduction to SV above and 
+in more detail in Appendix 1, this can give only an orientation for the 
+corresponding molar mass values.&nbsp; It is frequently within 5 – 10 % of the 
+correct molar mass if there is a clearly defined main peak, and the data quality 
+sufficient to establish a well-defined determination of <i>f/f<sub>0</sub></i>.
+</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+14.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span>Repeat steps 
+V.1 to V.12 for all cells.&nbsp; The obtained c(s) curves will be the basis for the 
+further analysis.</p>
+<p class="MsoNormal" style="margin-left: -.2in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+&nbsp;</p>
+<p class="MsoHeading7" style="margin-left: 0in"><u><i>Refining the analysis of 
+independently sedimenting species </i></u></p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+15.&nbsp; <b><a name="V.15. Bayesian_pure_species_analysis">Bayesian pure 
+species analysis</a></b>:&nbsp; Assuming each peak represents a monodisperse, 
+independently sedimenting species, use the Bayesian analysis model to implement 
+this hypothesis into the regularization.&nbsp; This is achieved by pressing 
+control-X, which will use the automatic integration to locate the best estimate 
+for the single species, and then run another c(s).&nbsp; Finally, a notepad window 
+will appear that documents how much signal contribution was found in each of the 
+sharp peaks, as well as outside these peaks.&nbsp; The latter may represent 
+impurities, or indicate that the hypothesis of hydrodynamic monodispersity is 
+not fully consistent with the data</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+16.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp; </span><b>
+<a name="V.16. Export_the_data_to_SEDPHAT">Export the data to SEDPHAT</a></b>, 
+saving an xp-file containing the experimental data files and related 
+information, and switch to the hybrid discrete/continuous model.</p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+17.&nbsp; <b><a name="V.17. Molar_mass_values_in_SEDPHAT:">Molar mass values in 
+SEDPHAT:</a></b>&nbsp; Under the assumption that the <i>c</i>(<i>s</i>) peaks 
+represent stable sedimenting species, substitute the peaks with discrete species 
+with the same <i>s</i>-value and an estimated molar mass (for example, as 
+derived from the automatic integration in Step V.12) surrounded (with a spacer 
+of&nbsp; ~ 1 S) by segments of continuous distributions.&nbsp; Fit for the molar mass and
+<i>s</i>-value of the discrete species.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+18.&nbsp; <b><a name="V.18. Hydrodynamic_shapes:">Hydrodynamic shapes:</a></b>&nbsp; 
+If the molar mass of a species can be identified as that of a known molecular 
+species, such as the monomer, or a particular oligomer, use the calculator 
+function of SEDFIT to calculate axial ratios of hydrodynamically equivalent 
+ellipsoids, using the <i>s­</i>-value, along with the known molar mass (from 
+sequence or mass spectroscopy) and&nbsp; <span style="position: relative; top: 3.0pt"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1026" type="#_x0000_t75" style='width:11.25pt;height:12.75pt'>
+ <v:imagedata src="svprotocols_files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=15 height=17
+src="svprotocols_files/image002.gif" v:shapes="_x0000_s1026"><![endif]></span><!--[if gte mso 9]><![endif]-->.&nbsp; 
+If the <i>s­</i>-value was determined in SEDPHAT, buffer corrections are already 
+applied, and the buffer density in the calculator function should be that of 
+water at 20<span style="font-family: Euclid Symbol">°</span>C (0.99823 g/ml) and 
+the same for the viscosity (0.01002 Poise).&nbsp; In contrast, SEDFIT normally does 
+not do provide buffer corrections (unless requested with the specific calculator 
+function) and the experimental values should be entered.&nbsp; </p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+19.&nbsp; <b><a name="V.16 Global_analysis:">Global analysis:</a></b>&nbsp; For 
+species that cannot be readily identified, more detailed information may be 
+obtained from global analyses of the data from different cells, and/or from 
+different rotor speeds.&nbsp; To accomplish this, load several xp files (one 
+from each cell) into a single SEDPHAT window and search for a model that 
+globally fits all data sets. </p>
+<p class="MsoHeading7" style="margin-left:0in"><u><i>Detecting Interactions</i></u></p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">20. <b>
+<a name="V.20. In_SEDFIT,_integrate_(control-I)_">In SEDFIT, integrate 
+(control-I) </a></b>over the s-range comprising all species possibly 
+participating in an interaction.&nbsp; This will give you the weight-average 
+s-value.&nbsp; For the data from all cells at different concentrations, if the 
+weight-average s-value does not change with concentration, an interaction is 
+absent or too weak to be detectable.&nbsp; If the weight-average s-value increases 
+with concentration, there is a binding reaction taking place.&nbsp; If the 
+weight-average s-value decreases with concentration, there is repulsive 
+non-ideality taking place.&nbsp; Non-ideality is usually observed only at high 
+concentrations &gt; 1 – 2 mg/ml or with very elongated molecules.&nbsp; (There is the 
+possibility of combined non-ideality and binding reactions, in which case the 
+weight-average s-value could be constant and decrease.) </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">21.&nbsp; <b>
+<a name="V.21. Plot_the_superposition_of_the_c(s)_distributions_for_all_cells">
+Plot the superposition of the <i>c</i>(<i>s</i>) distributions for all cells</a></b>.&nbsp; 
+Alternatively, load the xp-files of all experiments into SEDPHAT and execute the 
+hybrid discrete/continuous model with a single continuous segment covering the 
+entire range of s-values.&nbsp; This will display all independent <i>c</i>(<i>s</i>) 
+distributions superimposed.&nbsp; Decide on the likelihood that one of the following 
+different types of characteristic behavior applies, taking into account that the 
+distributions will naturally broaden with lower concentration:&nbsp; a) peaks that 
+are proportional in area to the loading concentration and do not change in 
+position; b) peaks that are constant in position but different in area ratio; c) 
+peaks at changing positions.&nbsp;&nbsp;&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">22. Option a: <b>
+<a name="V.22. Constant_peak_positions with proportional areas">Constant peak 
+positions with proportional areas</a></b> (allowing for some broadening within 
+the signal-noise limits of the detection*) would be expected for a protein 
+mixture in the absence of interactions.&nbsp; In this case, a global analysis can be 
+performed identifying the <i>c</i>(<i>s</i>) peaks with discrete species with 
+global <i>s</i> and <i>M</i> valid for all data, and with surrounding continuous 
+segments for trace impurities that may be different for different cells.&nbsp; This 
+is the most rigorous determination of <i>s</i> and <i>M</i> by SV, but relying 
+on the mono-dispersity of each species.&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt"><font size="2">&nbsp;&nbsp;&nbsp; 
+*A refined approach is to use the c(s) distribution obtained at the highest 
+concentration as a prior expectation in the analysis of the lower concentration 
+data, and execute a Bayesian analysis.&nbsp; If there is any deviation in terms 
+of additional peaks or peak shifts, there is some interaction present.</font></p>
+<p class="MsoBodyTextIndent2" style="margin-left: 0in; margin-right: 0in; margin-top: 0in; margin-bottom: 6.0pt">
+23.&nbsp; <b><a name="V.23. Option_b_and_c_-_Interactions">Option b and c - 
+Interactions</a></b>:&nbsp; Peaks that are constant in position but different in 
+area ratio indicate a slow association.&nbsp; In contrast, changing peak positions 
+indicate associations which are fast on the time-scale of sedimentation.&nbsp; A 
+first back-of-the-envelope order of magnitude estimate of the <i>K<sub>D</sub></i> 
+of the interaction can be obtained as the concentration range with the steepest 
+change.&nbsp; In particular for small proteins, where diffusion is dominating the 
+sedimentation profiles, it can be useful to consider – if available – 
+independent information from other techniques on the reaction kinetics (stopped 
+flow methods, optical biosensors, gel permeation chromatography).&nbsp; For 
+interactions, the first and most important assignment is the reaction scheme.&nbsp; 
+For slow interactions, but not for fast interactions, the <i>c</i>(<i>s</i>) 
+analysis above may give valuable insights in the number and size of 
+participating species.&nbsp; Also consider the results on the average molar mass 
+values measured in SE at different loading concentrations, and assess if the 
+covered range of average molar mass values is consistent with the population of 
+free and complex species expected for a particular reaction scheme.&nbsp; </p>
+<p class="MsoBodyTextIndent2" style="margin-bottom:6.0pt"><i><u>Determining 
+binding parameters for interacting systems in </u>SV</i></p>
+<p class="MsoNormal" style="margin-left: 0in; margin-right: 0in; margin-top: 12.0pt; margin-bottom: 6.0pt">
+24. <b><a name="V.24. Weight-average_s-values:">Weight-average s-values:</a></b>&nbsp; 
+After identifying the presence of protein interactions in the preceding Steps 
+V.18 – 20, binding parameters, such as the binding energy, and the gross shape 
+of the complex can be determined. Independent of the reaction kinetics, the 
+weight-average <i>s</i>-value that was determined in Step V.12 from integration 
+of the entire distribution of the associating species (excluding 
+non-participating impurities, such as aggregates or small molecular weight 
+fragments) can be analyzed in the form of an isotherm of <i>s<sub>w</sub></i>(<i>c</i>) 
+as a function of the loading concentration/composition.&nbsp; This can be done, for 
+example, by generating a two or three-column ASCII file and loading the isotherm 
+in SEDPHAT (see this website for further information: http://www.analyticalultracentrifugation.com/sedphat/isotherm_analysis.htm).&nbsp; 
+After specifying the interaction model, the <i>s<sub>w</sub></i>(<i>c</i>) 
+isotherm can be fitted, optimizing the <i>s</i>-values of the individual 
+associating species, as well as the equilibrium constant(s).&nbsp; For 
+self-associations, any prior knowledge on the <i>s­</i>-values of the smallest 
+species or a complex derived either from available crystal structures and 
+hydrodynamic bead modeling, or from experiments under solvent conditions 
+promoting or prohibiting the interaction can be highly valuable for increasing 
+the precision of the K<sub>D</sub> of the interaction.&nbsp; This is true, in 
+particular, if a very large concentration range (and thus the plateaus of the 
+isotherms) cannot be reached in the SV experiments.&nbsp; For hetero-associations, 
+the <i>s</i>-values of the individual components can be fixed to those 
+determined from separate experiments.</p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">25. <b>
+<a name="V.24.  More_detailed_analysis_strategies:">More detailed analysis 
+strategies:</a></b>&nbsp; If the isotherm model leads to an acceptable fit of <i>
+s<sub>w</sub></i>(<i>c</i>) with realistic estimates of the <i>s</i>-values of 
+the free species and the complexes (this can be assessed via the calculator 
+functions of SEDFIT), a more detailed boundary model may follow.&nbsp; (If not, 
+alternative models for <i>s<sub>w</sub></i>(<i>c</i>) should be considered.)&nbsp; 
+This allows determination of more precise binding constants and s-values 
+(hydrodynamic shapes) of the complexes.&nbsp; The first approach exploits the 
+peak-structure of c(s) to gain more information.&nbsp; This is a robust and quick 
+approach.&nbsp; Finally, for the most detailed analysis of the sedimentation boundary 
+shapes, direct Lamm equation modeling can be performed.&nbsp; It is useful for the 
+latter to do the isotherm analysis, first, in order to get good starting values 
+for better convergence of the fit. </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">26. <b>
+<a name="V.26. Isotherm_analyses:">Isotherm analyses:</a></b>&nbsp; For the 
+isotherm analysis of the peak structure obtained in c(s), we need to distinguish 
+again slow from fast interactions (see above).&nbsp; For slow interactions, each 
+species shows its own peak always at the same s-value but at a 
+concentration-dependent magnitude.&nbsp; From integration, read the signal magnitude 
+of these peaks and write them into a text-file, along with the loading 
+concentrations, in the required format for the isotherm (see website).&nbsp; Then 
+load all available isotherm files (e.g., from different signals or different 
+runs) as population isotherms into a single SEDPHAT window, supply each with the 
+required information, such as extinction coefficients and optical pathlengths, 
+and fit the isotherms with the appropriate model.&nbsp; For fast two-component 
+heterogeneous interactions, there should be two boundary components – the 
+undisturbed boundary and the reaction boundary (the latter being at a higher 
+s-value and usually shifting with concentration).&nbsp; Identify and integrate each 
+peak from all concentration data, and assemble the signals along with the 
+loading concentrations into a text-file (see website for formatting 
+requirements).&nbsp; Load all available isotherms into a single SEDPHAT window as 
+Gilbert-Jenkins isotherms, supply the respective ancillary information, and fit 
+with the appropriate model.</p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">27. For the most detailed 
+boundary shape analysis with <b><a name="V.27. direct_Lamm_equation_modeling">
+direct Lamm equation modeling</a></b>, sequentially load the xp-files of all SV 
+experiments of the interaction into a single SEDPHAT window.&nbsp; Supply the molar 
+starting concentrations, and add information on the molar extinction coefficient 
+for each experiment (save the xp-file with this new information).&nbsp; Select the 
+model, enter the starting values for the species <i>s</i>-values and the 
+equilibrium constant from the isotherm analysis, and estimate the chemical 
+off-rate constant (for example, log<sub>10</sub>(<i>k<sub>off</sub></i>) = – 3 
+for rapid interactions, or – 4 to – 5 for slow interactions on the time-scale of 
+sedimentation, as assessed above.)&nbsp; Fit this model, first floating (i.e. 
+allowing the optimization algorithm to adjust) only the starting concentrations, 
+but subsequently also floating the equilibrium binding and reaction rate 
+constants and the species <i>s</i>-values.&nbsp; This will exploit the complete 
+information from the boundary shapes, and an estimate for <i>k<sub>off</sub></i> 
+, if the reaction rate constant is between 10<sup>-2 </sup>and 10<sup>-5</sup>/sec.&nbsp; 
+Note that this last stage may not be possible or advisable if impurities 
+contribute significantly to the sedimentation profiles.&nbsp; The quality of the fit, 
+considering both the rms deviation and the residuals distribution, should be 
+taken as a criterion for the validity of this model.&nbsp; </p>
+<p class="MsoNormal" style="margin-bottom: 6.0pt">28. For any of the analysis 
+methods, <b><a name="V.28. error_analyses">error analyses</a></b> should be 
+applied to the quantitative analysis of <i>s</i>-values, molar masses, and 
+binding constants.&nbsp; This can be done by Monte-Carlo techniques, or by mapping 
+projections of the error surface using F-statistics, as specified in the 
+software manual.&nbsp; An example for using the error surface projection method is 
+given in the SE Protocol Step IV.11.</p>
+<h2>&nbsp;</h2>
+<h2><span style="color:red">&nbsp;</span></h2>
+
+<p><a href="sedphat/experimental_protocols.htm">back to Protocols webpage</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

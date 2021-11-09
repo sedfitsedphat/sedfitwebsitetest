@@ -1,0 +1,404 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>apparent sedimentation coefficient distribution</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="sedfit_help.htm">back to sedfit help web</a>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>&nbsp; </h2>
+<h2>ls-g*(s) Size Distribution Analysis </h2>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#introduction">Introduction to g*(s) analysis</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#The definition of ls-g*(s)">The definition of ls-g*(s) and the
+solution of the integral equation</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Illustration of the principle">Illustration of the principle</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Equivalence of ls-g*(s) and g(s*)">Equivalence of ls-g*(s) and
+g(s*)</a>&nbsp;</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Examples">Examples</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">
+<a href="#On boundary shape analysis">On boundary shape analysis</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><a href="#Summary:">Summary</a></p>
+<p>&nbsp;</p>
+<p><u><a name="introduction"><b>Introduction to g*(s) analysis</b></a></u></p>
+<p>The g*(s) analysis has been very popular over the last several years in the
+form of a data transform derived from dcdt.&nbsp; One of the virtues of this
+method (as opposed to the calculation of g*(s) from the radial derivative dc/dr)
+is that the time-difference dc/dt eliminates the time-invariant noise usually
+encountered in interference optical data.&nbsp; One difficulty in practice is
+that dcdt is approximated by <font face="Symbol">D</font>c/<font face="Symbol">D</font>t,
+which imposes the well-known constraints on the number of scans, steepness of
+the sedimentation boundary analyzed, and the magnitude of the displacements
+between scans, and which can even lead to distortions of the distribution for
+small molecular weights.&nbsp; With the development of&nbsp; <a href="systematic_noise_analysis.htm">systematic
+noise decomposition</a> we can calculate the same g*(s) distribution
+differently, in the form of a direct boundary model and using least-squares
+principles.&nbsp; This will be described in the following, and it will be shown
+below that this approach eliminates some of the constraints. </p>
+<p>The distribution is termed ls-g*(s) to indicate the least-squares basis of
+the analysis.&nbsp; In contrast to the dcdt strategy, there is no transformation
+of the radial variable into a s*, therefore we call it ls-g*(s) instead of
+g(s*).&nbsp; The star in g*(s) indicates that it is an <i>apparent</i>
+sedimentation coefficient distribution, meaning that diffusion is not taken into
+account.&nbsp; This is certainly a good model for very large molecules when
+diffusion is negligible on the time-scale of the velocity experiment.&nbsp; For
+smaller molecules, diffusion can be taken into account by using the <a href="sedfit_help_cs.htm">c(s)
+method</a>, but this is not done in the ls-g*(s) approach.&nbsp; As a
+consequence, the sedimentation coefficient distribution is broadened by
+diffusion.&nbsp;&nbsp; </p>
+<p>Diffusional broadening can, in principle, be analyzed at a later stage by
+fitting Gaussians to the g*(s) distribution.&nbsp; However, this is not always very
+precise, as the Gaussians are based on the <a href="exampleFaxen.htm">Faxén
+approximation</a> of the Lamm equation (see the discussion in <a href="#ref number 1">ref
+1</a>).&nbsp; For quantitative analysis, more precise is modeling of the
+original sedimentation data on the basis of numerical <a href="LammEqSolutions.htm">Lamm
+equation solutions</a> (for example, using the <a href="sedfit_help_independent_ideal_species.htm">independent
+species model</a> of S<span style="font-variant: small-caps">edfit)</span>, or
+modeling dc/dt using the approximate analytical solutions of the Lamm equation
+(e.g. with <a href="http://www.jphilo.mailway.com/"> John Philo's
+software</a> (<a href="#ref 4">ref 4</a>)).&nbsp; However, in my view, the strength of the apparent sedimentation
+coefficient distribution is not so much the quantitative analysis, but that it
+can be very descriptive.&nbsp; </p>
+<p>If we understand the g*(s) distribution as a data transformation (this
+attribute can be assigned with equal justification to the g(s*) and the ls-g*(s)
+distribution), then we can apply it in a descriptive sense to any sedimentation
+data, even if there are chemical reactions or other concentration-dependent
+sedimentation processes.&nbsp; Comparison of the g*(s) distributions from
+different experiments at different loading concentrations can give some
+information about the underlying processes.&nbsp;&nbsp;&nbsp; </p>
+<p>Sometimes, the g*(s) distribution is considered to be a 'model-free'
+representation of the sedimentation data.&nbsp; It is very important to keep in
+mind, however, that g*(s) is based on a specific model - that of non-diffusing
+particles.&nbsp; In fact, this model is in most cases very poor.&nbsp; If we
+compare it with the <a href="sedfit_help_cs.htm">c(s) distribution</a>, where we
+use the model that all molecules have the same weight-average frictional ratio,
+g*(s) would be equivalent with the assumption of all species having an infinite frictional
+ratio (and in fact, the results of c(s) with f/f0 = 10 and ls-g*(s) are very
+similar).&nbsp; This is not very realistic, and this is the reason for the much
+lower resolution of g*(s) as compared to c(s).&nbsp; However, in some cases the
+sedimentation process is very complex (e.g. non-ideal concentration dependent
+sedimentation or complex heterogeneous chemical reactions), and currently,
+diffusion can not be taken into account properly.&nbsp; This is where the model
+of non-diffusing particles and g*(s) is highly useful.&nbsp; Obviously, it is
+also the appropriate model if diffusion can be neglected (such as for very large
+particles). </p>
+<p>Note the new feature introduced in version 8.7 of S<span style="font-variant: small-caps">edfit
+</span>which allows to use the framework of the ls-g*(s) to generate a <a href="sedfit_help_size_distribution_options.htm#back-transform g(s*) to boundary model">back-transform
+of the g(s*) distribution </a>[from dc/dt] into the original data space.&nbsp;
+This eliminates the drawback of the g(s*) by dc/dt transform of not providing
+any control over how well the original data are represented.&nbsp; </p>
+<p>&nbsp; </p>
+<p><u><b><a name="The definition of ls-g*(s)">The definition of ls-g*(s) and the
+solution of the integral equation</a></b></u> </p>
+<p>The apparent sedimentation coefficient distribution g*(s) can be defined as
+the differential distribution of non-diffusing species&nbsp;</p>
+<p>(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/lsgofs1.gif" width="188" height="33">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p> where c(r,t) is the measured sedimentation profile, and U(s,r,t) is the
+sedimentation profile of a non-diffusing species:&nbsp;&nbsp;</p>
+<p>(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/size-d12.gif" width="295" height="66"></p>
+<p>Bridgman has shown how to calculate g*(s) from the radial derivative dc/dr (<a href="#ref 2">ref
+2</a>), and Stafford has described the calculation of g*(s) from the
+time-derivative dc/dt (<a href="#ref 3.">ref 3</a>).&nbsp; S<span style="font-variant: small-caps">edfit</span>
+uses a different approach - the direct solution of the integral equation (Eq. 1)
+(<a href="#ref number 1">ref 1</a>).&nbsp;</p>
+<p>This can be done by discretization of Eq. 1, very similar to the approach
+described in the <a href="sizedistributions.htm#The implementation in Sedfit">introduction
+to the size-distribution analysis</a>.&nbsp; We approximate Eq. 1 by&nbsp;</p>
+<p>(3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/lsgofs2.gif" width="193" height="66"></p>
+<p>which can be solved as a least-squares problem:</p>
+<p>(4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/lsgofs3.gif" width="284" height="75"></p>
+<p>(where the summation over r and t is over all experimental data points).&nbsp;
+The coefficients <i>g*<sub>i</sub>(s<sub>i</sub>) </i>represent a discretized
+approximation of the size-distribution g*(s).&nbsp; As shown in the <a href="sizedistributions.htm#The implementation in Sedfit">general
+case</a>, we can introduce additional terms for the description of the <a href="systematic_noise_analysis.htm">systematic
+noise</a>, including the time-invariant noise as well as jitter and integral
+fringe shifts.&nbsp;</p>
+<p>One technical difficulty in the discretization of the integral equation Eq. 1
+is the choice of the grid of s-values <i>s<sub>i</sub></i>.&nbsp; As described
+in the <a href="sizedistributions.htm#An example from the calculation of apparent sedimentation coefficient distributions ls-g*(s)">introduction
+to regularization</a>, too fine discretization can lead to high artificial
+oscillations, while too coarse discretization may not provide sufficient
+detail.&nbsp; Therefore, regularization is used, and a penalty term for
+oscillations is added to the minimization problem:</p>
+<p>(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/lsgofs5.gif" width="505" height="78"></p>
+<p>The second term serves to stabilize the solution by Tikhonov-Phillips
+regularization, and like the <a href="sizedistributions.htm#Maximum entropy regularization">maximum
+entropy regularization</a>, it is adjusted to give the most parsimonious
+solution within a predefined confidence limit (see the <a href="sizedistributions.htm">introduction
+to size-distributions</a>, <a href="sizedistributions.htm#The principle of regularization">regularization</a>,
+and the paragraph on <a href="sizedistributions.htm#The difference between smoothing and regularization">the
+difference between regularization and smoothing</a>).&nbsp;</p>
+<p>The important property of Eqs. 4 and 5 is that they are <b>linear</b>.&nbsp;
+Therefore, we can easily calculate the distribution <i>g*<sub>i</sub>(s<sub>i</sub>)</i>,
+as there exists a unambiguous minimum that can be calculated directly by
+well-known algebraic methods.&nbsp; Because of the 1:1-relationship between the
+data and the <i>g*<sub>i</sub>(s<sub>i</sub>)</i> distribution, this can be
+considered a 'data transformation'. Similar to the other size-distributions, Eq.
+5 is solved by normal equations, using Cholesky decomposition and a variant of
+the dual-vector method NNLS by Lawson and Hanson for excluding negative values
+for <i>g*<sub>i </sub></i>(more information can be found <a href="sizedistributions.htm#The implementation in Sedfit">here</a>).&nbsp;</p>
+<p>The analysis in S<span style="font-variant: small-caps">edfit</span> requires
+some user input about the discretization, i.e. <a href="sizedistributions.htm#parameter resolution">resolution</a>,
+<a href="sizedistributions.htm#s-min">s-min</a>, <a href="sizedistributions.htm#s-max">s-max</a>,
+and the <a href="sizedistributions.htm#confidence level (F-ratio)">confidence
+level</a>, these are common to all size-distributions and described <a href="sizedistributions.htm#Parameters for size-distribution analysis in Sedfit">here</a>.&nbsp;</p>
+<p>&nbsp; </p>
+<p><u><b><a name="Illustration of the principle">Illustration of the principle</a></b></u> </p>
+<p>The meaning of the definition of ls-g*(s) in Eq. 1 and the discretization Eq.
+3 can be visualized in the following way:&nbsp; The sedimentation profiles
+U(s,r,t) are series of step-functions, describing the evolution of an infinitely
+sharp boundary with radial dilution:</p>
+<p>&nbsp;&nbsp;&nbsp; <img border="0" src="images/lsgofs6.gif" width="246" height="129"></p>
+<p>The different U(s<sub>i</sub>,r,t) describe families of such step-functions with different sedimentation rate s<sub>i</sub>.&nbsp; In
+essence, calculating g*(s) according to Eq. 3 is asking the question of what superposition of
+step-functions can be found that describes the data c(r,t) best.&nbsp; This is
+illustrated here:</p>
+<p><img border="0" src="images/size-d13.gif" width="538" height="319"></p>
+<p>In gray are sedimentation profiles c(r,t) (here simulated sedimentation
+profiles of a single species with added noise), and in blue is
+shown the best-fit discretization into step-functions.&nbsp; It is obvious that
+we need smaller steps with lower sedimentation rate (green), larger steps with
+intermediate sedimentation rate (red), and small steps again with high
+sedimentation rate (black), in order to describe the data well.&nbsp; The magnitude of the steps
+plotted as a function of the sedimentation rate&nbsp;</p>
+<p><img border="0" src="images/size-d14.gif" width="486" height="288"></p>
+<p> is identical to the apparent
+sedimentation coefficient distribution ls-g*(s).</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Equivalence of ls-g*(s) and g(s*)">Equivalence of ls-g*(s) and
+g(s*)</a></b></u>&nbsp;</p>
+<p>The distribution ls-g*(s) is equivalent to the distribution g(s*) derived
+from dcdt, because both distributions are based on an equivalent definition of
+g*(s) as the distribution of non-diffusing particles.&nbsp; If we apply both
+methods to the same data set</p>
+<p><img border="0" src="images/lsgofs7.gif" width="364" height="347"></p>
+<p>we get essentially the same results from dcdt (dashed blue, with confidence
+bands in gray) and ls-g*(s) (red):</p>
+<p><img border="0" src="images/lsgofs8.gif" width="444" height="420"></p>
+<p><font color="#008000">New:&nbsp; We also can take the results from dcdt,
+build up a boundary model with step-functions as in ls-g*(s), determine the
+best-fit TI noise, and compare this with the original data - this represents a <a href="sedfit_help_size_distribution_options.htm#back-transform g(s*) to boundary model">back-transform
+of dcdt</a> (see <font size="3"> <u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">Analytical
+Biochemistry </a></u><a href="images/ProteinSelfAssociation_AnalBiochem.pdf">320:104-124</a></font>).</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><u><b><a name="Examples">Examples</a></b></u></p>
+<p>For the same sedimentation data shown above, ls-g*(s) allows to incorporate a
+much larger time-interval without compromising the resolution: </p>
+<p><img border="0" src="images/lsgofs11.gif" width="306" height="411"> </p>
+<p><font color="#FF0000">NOTE:&nbsp; The time-interval should not be so large 
+that the quality of fit decreases.&nbsp; This is true, in particular, for </font>
+<font color="#0000FF"><a href="#On boundary shape analysis">
+<font color="#FF0000">boundary shape analysis</font></a></font><font color="#FF0000"> 
+and when interpreting details of the distribution.&nbsp; For example, for 
+moderately-sized proteins &lt; 100 kDa, this usually leads to a time-interval 
+approximately 2 - 3 fold that recommended in DCDT+.&nbsp; However, this is 
+purely dependent on the extent of diffusion, which means that a larger rotor 
+speed can increase the permissible range of boundary displacement.&nbsp; Also, 
+the permissible time-interval increases with larger species.&nbsp; </font> </p>
+<p>&nbsp;</p>
+<p>Another example is from the analysis of a dispersion: </p>
+<p><img border="0" src="images/lsgofs12.gif" width="296" height="426"> </p>
+<p>Here, the model of no diffusion is a very good approximation, and we get a
+good fit.&nbsp; The size-distribution is very broad.&nbsp; Nevertheless, it is
+well-defined and does not suffer from a dependence on the choice of the data
+subset.&nbsp; More information about this example, and the comparison with the
+results from dcdt are given in <a href="#ref number 1">ref 1</a>.&nbsp; </p>
+<p>The following shows large boundary displacement as it might occur in an
+absorbance experiment with two species with 31 and 35 S, at 50,000 rpm (top) and
+30,000 rpm (middle).&nbsp;&nbsp; </p>
+<p><img border="0" src="images/lsgofs13.gif" width="546" height="632"> </p>
+<p>The fit of the 50,000 rpm data by ls-g*(s) (magenta) gives two well-separated
+peaks.&nbsp; However, because of the large boundary displacement, we cannot analyze
+the 50,000 rpm data with dcdt.&nbsp; This is possible if we run the same
+experiment at a lower speed and take a data subset (blue circles).&nbsp; This
+gives a g(s*) from dcdt as shown in the lower figure as blue dotted line, which
+is essentially identical with the results of ls-g*(s) of the same data, or the
+complete data shown at this speed.&nbsp; However, it is clear that the ability
+to run species at higher speeds does produce much better separation, and as a
+consequence, resolution in ls-g*(s). </p>
+<p>&nbsp;</p>
+<p><b><a name="On boundary shape analysis">On boundary shape analysis in g*(s)</a></b></p>
+<p>Historically, the quantitative analysis of g*(s) profiles by Gaussian fitting 
+has been used to determine the diffusion coefficient D and therefore the molar 
+mass M of a species.&nbsp; This approach is outdated, because it is based on 
+relatively simple analytical approximation of the Lamm equation, where now more 
+precise solutions are available.&nbsp; </p>
+<p>The optimal procedure within the S<span style="font-variant: small-caps">edfit/</span>S<span style="font-variant: small-caps">edphat</span> 
+package for determining the molar mass of a species is the use of the
+<a href="sedphat/hybrid_local_continuos_global_discrete.htm">hybrid 
+discrete/continuous distribution in S<span style="font-variant: small-caps">edphat</span></a>, 
+which models the species of interest with a discrete finite element Lamm 
+equation solution, and allows for other species to be modeled by continuous 
+segments.&nbsp; This is more precise than the molar mass values from the
+<a href="sedfit_help_cm.htm">c(M) distribution</a>, because the latter is based 
+on a weight-average f/f0, where the weight-average may be biased by other 
+species in the sample.&nbsp; However, a c(s) or c(M) distribution is usually 
+extremely helpful because it can take advantage of the data from the complete 
+run and - due to the deconvolution of diffusion - reveal if there is 
+heterogeneity <i>within</i> the diffusion-broadened boundary.&nbsp; Unrecognized 
+heterogeneity would lead to artificially low molar mass estimates.</p>
+<p><u>Background:</u> The analysis of boundary spreading can be based on the
+<a href="exampleFaxen.htm">Faxén solution of the Lamm equation</a>, which can be 
+written approximately as</p>
+<p>(5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="images/ImageFaxen.gif" width="379" height="72"></p>
+<p>with the meniscus position <i>r<sub>m</sub></i>, the boundary position of a
+non-diffusing species <i>r*(t)=r<sub>m</sub>exp(</i><font face="Symbol">w</font><sup>2</sup>st)
+and the error function <font FACE="Symbol">F</font>.&nbsp; It has a first term
+describing radial dilution, a second term (1-<font FACE="Symbol">F)</font> for 
+the diffusional spreading, and the movement of r*(t) describes the boundary 
+movement.&nbsp; The radial derivative can be expressed as a Gaussian</p>
+<p>(6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1180877755">
+ </o:OLEObject>
+</xml><![endif]--></span><!--[if gte mso 9]><![endif]--><!--[if gte mso 9]><![endif]-->
+<img border="0" src="images/lsgofs18.gif" width="480" height="64"><!--[if gte mso 9]><![endif]--><!--[if gte mso 9]><![endif]--></p>
+<p>&nbsp;If we use the picture of non-diffusing species where at a given time each 
+radius position corresponds to a particular s-value, we can use the 
+transformation</p>
+<p>(7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="images/lsgofs9.gif" width="95" height="40"></p>
+<p>to express the radial profile of dc/dr in the space of apparent sedimentation 
+coefficients, leading to </p>
+<p>(8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]>
+<xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1180877774">
+ </o:OLEObject>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1180877831">
+ </o:OLEObject>
+</xml><![endif]--></span><img border="0" src="images/lsgofs19.gif" width="395" height="61"><!--[if gte mso 9]><![endif]--></p>
+<p>, i.e. the diffusional spread translates into a Gaussian distribution of 
+apparent sedimentation coefficients.</p>
+<p><u>How does this apply to ls-g*(s)?</u> As indicated in Eq. 1 and 2 above, ls-g*(s) 
+is defined as</p>
+<p>(9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/lsgofs1.gif" width="188" height="33"></p>
+<p>with </p>
+<p>(10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img border="0" src="images/size-d12.gif" width="295" height="66"></p>
+<p>Taking the radial derivative, we get </p>
+<p>(11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="images/lsgofs15.gif" width="257" height="52"></p>
+<p>where the derivative of the Heaviside function turns into the Dirac 
+delta-function:</p>
+<p>(12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img border="0" src="images/lsgofs16.gif" width="425" height="52"></p>
+<p>and in combination with (11) and (8) we arrive at</p>
+<p>(13)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="font-size: 12.0pt; font-family: Times New Roman"><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1180878513">
+ </o:OLEObject>
+</xml><![endif]--></span><img border="0" src="images/lsgofs22.gif" width="227" height="49"><!--[if gte mso 9]><![endif]--></p>
+<p>which means g*(s) is a Gaussian distribution.&nbsp; </p>
+<p>In summary, this shows that the definition of ls-g*(s) faithfully represents 
+the radial derivative of the concentration distribution, which leads to a 
+Gaussian distribution for a single diffusion species in the approximation of the
+<a href="exampleFaxen.htm">Faxén solution of the Lamm equation</a>.</p>
+<p><u>From theory to practice:</u>&nbsp; The preceding derivation was for a 
+single point in time, i.e. for a single scan.&nbsp; Although one could in 
+principle calculate such a ls-g*(s) distribution from a single scan, this is not 
+implemented in S<span style="font-variant: small-caps">edfit</span>, as it would 
+not allow to distinguish systematic signal offsets from the interference 
+offsets, and exhibit poor signal-to-noise characteristics.</p>
+<p>For more than one scan, the resulting g*(s) distribution represents something 
+like an average of Gaussians for the individual scans, which one can expect to 
+lead to deformations of the Gaussian, and the problem of determining the correct 
+time-point for evaluating the diffusion constant in Eq. 13.&nbsp; As a 'naive' 
+assumption, which I would favor, one could take the average time-point of the 
+scans considered, but it has not been shown that this is indeed correct.&nbsp; 
+(This problematics exists in similar form also for the DCDT approach, which also 
+relies on at least two scans taken at different points in time, but the point of 
+averaging appears in a different space.)&nbsp; Although it follows that any 
+deviation from a single scan or infinitesimal time-range is problematic, it 
+should be noted that even then there are errors resulting from the underlying
+<a href="exampleFaxen.htm">Faxén approximation of the Lamm equation</a>.&nbsp;&nbsp; </p>
+<p>A handle to this problem can be obtained from considering the quality of fit 
+of the ls-g*(s) model to the raw data.&nbsp; If the residuals are random within 
+the noise of the signal, it could be argued that the time-points of any of the 
+scans is just as good as another.&nbsp; Although the particular choice would 
+lead to different D values, this should be understood as a translation of the 
+noise in the signal into the range of D values.&nbsp; The requirement for a good 
+fit excludes large time-intervals for data where the diffusional fluxes are high 
+(in particular, for small molecules and low rotor speeds).&nbsp; If, on the 
+other hand, diffusional fluxes are small and a correspondingly larger 
+time-interval can be chosen without compromising the quality of the fit 
+(translating to a larger relative range of D-values), this would satisfy our 
+expectation that in experiments with high s and low D the diffusion constant is 
+not very well determined.&nbsp;&nbsp;&nbsp; </p>
+<p><font color="#0033CC">For boundary shape analysis by secondary modeling of ls-g*(s), 
+therefore, it is essential that the fit is of good quality.&nbsp; This is just a 
+reflection of the fact that if the fit of a model is not good, not a lot of 
+trust can be placed in the details of the parameters obtained.&nbsp; For small 
+species and low rotor speeds (i.e. at high diffusional fluxes) this requires 
+smaller time-intervals than larger species or higher rotor speeds. </font> </p>
+<p><font color="#0033CC">As outlined above, I would strongly recommend the use 
+of more precise Lamm equation solutions for analyzing the molar mass.</font></p>
+<p>&nbsp;</p>
+<p><b><u><a name="Summary:">Summary:</a></u></b></p>
+<p>In brief, this model describes the sedimentation of a distribution of non-diffusing
+species.&nbsp; It is closely related to the results of g(s*) by dcdt, but in the
+form of a direct boundary model.&nbsp; When applied to a data set where the dcdt
+method is applicable (i.e. a not too much boundary displacement and a limited
+number of scans), ls-g*(s) and g(s*) by dcdt give the same results.&nbsp;
+However, ls-g*(s) has several advantages that make it more versatile:</p>
+<p>1) As a direct boundary model, there is no differentiation step and no
+approximation of dc/dt by <font face="Symbol">D</font>c/<font face="Symbol">D</font>t.
+As a consequence, we <b>do not need to take data from small time-intervals</b>
+only.&nbsp; There is <b> no artificial broadening caused by having too many
+scans</b>! (A mathematical analysis of the broadening that occurs due to the
+approximation of dc/dt by <font face="Symbol">D</font>c/<font face="Symbol">D</font>t
+is included as an appendix to <a href="#ref number 1">ref 1</a>.)&nbsp;
+<font color="#0033CC">Limitations are imposed by the requirement to have a good 
+fit of the data.</font>&nbsp; </p>
+<p>2) Ability to work with scans that have large displacement is highly useful
+when analyzing <b>absorbance data</b>, but the method works <b>equally well for
+interference data</b>, where <a href="systematic_noise_analysis.htm">systematic
+noise decomposition</a> is used.&nbsp;</p>
+<p>3)&nbsp; Because large boundary displacement is not an issue, experiments can
+be run at <b>higher rotor speeds</b>, which can translate to <b>higher
+resolution</b>.&nbsp;</p>
+<p>4) It is suitable for <b>combination with non-linear regression</b>, for
+example for determining the exact meniscus position.</p>
+<p>The practical use of the method is described as a <a href="tutorial_lsgofs.htm">chapter</a>
+of the step-by-step <a href="tutorial_sizedistributions.htm">tutorial on </a> <a href="tutorial_sizedistributions.htm">size distributions</a>,
+and can also be seen in the <a href="sedfit_example.htm">example of using S<span style="font-variant: small-caps">edfit</span></a>.&nbsp;&nbsp;</p>
+<p>When working with interference optical data (or other data requiring
+time-invariant noise analysis), the method works best with large data sets, and
+with data where the boundary has cleared the meniscus.&nbsp; This minimizes a
+fundamental problem of correlation of small s-values of the distribution with
+the degrees of freedom from the unknown <a href="systematic_noise_analysis.htm#Limitation">time-invariant
+noise</a>.</p>
+<p>&nbsp;</p>
+<p><b><font size="1">References</font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref number 1">1.</a>
+P. Schuck and P. Rossmanith (2000) <a name="ref ls-g*(s)"> Determination of the sedimentation
+coefficient distribution g*(s) by least-squares boundary modeling.</a> <i><u><a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">Biopolymers</a></u></i>
+<a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10935973&amp;dopt=Abstract">
+54:328-341</a>.&nbsp;&nbsp;</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref 2">2.</a>
+W.B. Bridgman (1942) J. Am. Chem. Soc. 64:2349-2356</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref 3.">3.</a>
+W.F. Stafford (1992) <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=1416025&amp;dopt=Abstract"> Anal. Biochem. 203:295-301</a></font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="ref 4">4</a>.
+J.S. Philo (2000) A method for directly fitting the time-derivative of
+sedimentation velocity data and an alternative algorithm for calculating
+sedimentation coefficient distribution functions. <a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=10706784&amp;dopt=Abstract">Anal.
+Biochem. 279:151-163</a></font></p>
+
+<!--mstheme--></font></body>
+
+</html>

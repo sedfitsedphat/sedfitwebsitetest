@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>parameters</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;parameters&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="44777" endspan -->
+</font></p>
+<h2><b>Parameters</b></h2>
+
+<p>As described in the general introduction, parameters come in three
+types:&nbsp; </p>
+<p><a name="Global Parameters"><b>Global Parameters</b></a> --&gt; those that belong to the macromolecular system under
+study, such as properties of the protein, binding constants, etc.&nbsp; They are
+accessed using the menu function <a href="global_parameters.htm">Global
+Parameters</a>.&nbsp; It will bring up different boxes according to the
+particular selected <a href="model.htm">model</a>.&nbsp;&nbsp; </p>
+<p>Note that they are parameters under standard conditions (i.e., s<sub>20,w</sub>,
+D<sub>20,w</sub>, <a href="partspecvols.htm">standard partial-specific volume</a>),
+and concentrations and binding constants are in molar units.&nbsp; The
+transformations to experimental conditions is performed using the <a href="experiment_parameters.htm">experimental
+parameters</a> (i.e., density, viscosity, partial-specific volume, extinction
+coefficients, and optical path lengths).&nbsp;&nbsp; </p>
+<p>Global parameters must be under standard conditions in order to permit global
+analysis of data acquired under different conditions.&nbsp; For example, if you
+have sedimentation data at different solvent densities, it is possible to <a href="options.htm#Fit vbar20 = vbar(T)">fit
+the partial-specific volume</a>.&nbsp;&nbsp; </p>
+<p>Global parameters can be floated in the analysis and optimized by non-linear
+regression.&nbsp; This indicated by checking them in the global parameter box
+(except for the partial-specific volume, which is done by menu function).&nbsp; </p>
+<p>Global parameters can be saved in files (<a href="data1.htm#Model">Data-&gt;Models</a>).</p>
+<p>&nbsp; </p>
+<p><a name="Local Parameters"><b>Local Parameters</b></a> --&gt; those that describe properties of a particular
+experiment, like loading concentration, baseline parameter, meniscus position,
+but also the extinction coefficient at the particular wavelength used.&nbsp;&nbsp;</p>
+<p>In S<span style="font-variant: small-caps">edPHaT</span>, the local
+parameters are subdivided in the concentration parameters, accessed in the <a href="local_parameters.htm">Local
+Parameters</a> menu, and the <a href="experiment_parameters.htm">Experiment
+Parameters</a>, which contain those related to the physical setup of the
+experiment.&nbsp;&nbsp;</p>
+<p>Some of the local parameters can be floated.&nbsp; The concentration
+parameters can be checked in the <a href="model.htm">parameter box of the model</a>,
+which causes them to be optimized in the non-linear regression.&nbsp; Also some
+of the experimental parameters can be checked to be floated and optimized in the
+non-linear regression.&nbsp; These are physical parameters that can carry
+significant uncertainties:&nbsp; meniscus and bottom position of the solution
+column, baseline parameters (<a href="#Baseline parameters">see below</a>), and
+extinction coefficients.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="Share Local Parameters"><b>Shared Local Parameters</b></a> --&gt;
+parameters that are local to a data channel, but through prior knowledge can be
+constrained to be the same in two or more data channels.&nbsp; Such shared local
+parameters can be optimized in non-linear regression.&nbsp; <b><font color="#FF0000">Sharing
+local parameters is an important concept, since it is a very safe way to
+sometimes considerably simplify the non-linear regression.&nbsp;</font></b>&nbsp;</p>
+<p>Internally, this organized in the program by using for each type of parameter
+an array, which redirects the access to the parameter of a particular experiment
+to the parameter of another experiment.&nbsp; It is important, therefore, to be
+aware of the <a href="experiment1.htm#Experiment Number:">Experiment Number</a>
+(the number in which it was loaded and is plotted).&nbsp;</p>
+<p>If the redirection of a particular experiment points to the same experiment,
+the parameter is a proper model parameter.&nbsp; If the redirection is to
+another experiment, it will only be a copy the parameter value of the experiment
+pointed to.&nbsp;&nbsp;</p>
+<p>Four types of local parameters can be re-directed or shared:</p>
+<p>1) Meniscus and bottom positions:&nbsp; If you have data acquired with
+different optical systems or different wavelengths but from the same
+ultracentrifugal cell, we know for sure that there is only one unique meniscus
+and bottom position.&nbsp; Sharing is specificed in the <a href="experiment_parameters.htm">Experimental
+Parameter</a> box.</p>
+<p>2) Extinction coefficients:&nbsp; This is a property of the protein under
+study, therefore cannot be different in different experiments.&nbsp; To share
+this parameter allows to float it in non-linear regression (e.g. in
+multi-wavelength analysis where one extinction coefficient is known and
+concentration parameters are shared, see <a href="#Examples for global analysis and shared local parameter configurations:">examples
+below</a>). Sharing is specificed in the <a href="experiment_parameters.htm">Experimental
+Parameter</a> box.</p>
+<p>3) Concentration parameters:&nbsp; are ordinarily useful to be shared always
+when the same ultracentrifugal cell is scanned with different signals (i.e.
+different wavelengths or optical systems).&nbsp; For analyses of heterogeneous
+interactions with mass conservation constraints, the concentrations of the
+components A or B (or their molar ratio) can also be shared.&nbsp; This can be
+highly useful, if the concentrations in different cells are loaded as dilution
+series, or by keeping the concentration of one component the same in all cells.</p>
+<p><font size="1" color="#0000FF">Note:&nbsp; Multi-speed equilibrium data
+sets can have disadvantages when mass conservation is not used and concentration
+parameters are to be shared.&nbsp; In this case, the concentration parameters are
+shared between pairs of files (1st in exp. #1 with 1st in exp. #2, 2nd in exp.
+#1 with 2nd in exp. #2, etc.).&nbsp; Therefore, two multi-speed equilibrium
+experiments without mass conservation but with shared concentrations have to be
+equivalent in the number and sequence of loaded scans.&nbsp; Because of these
+complications, sharing in this situation is currently not enabled between
+multi-speed equilibrium experiments.</font></p>
+<p>4) Baseline parameters: have a special status.&nbsp; They can be shared only
+for different sedimentation equilibrium profiles within the same <a href="data1.htm#Load New Multi-Speed Equilibrium Data">'multi-speed'
+equilibrium</a> data channel (i.e. same ultracentrifugal cell scanned at the
+same wavelength (or all interference data), but acquired at different rotor
+speeds.)&nbsp; Usually, this is the only condition under which it is safe to
+assume the baselines can be the same.&nbsp; [Of course, the baseline can also be
+shared among the data within a set of sedimentation velocity profiles.]&nbsp;
+Sharing of the baseline parameters is indicated in the <a href="experiment_parameters.htm">Experiment
+Parameter</a> box, not with re-direction arrays.</p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>&nbsp;</p>
+<h3><!--mstheme--><font color="#003366"><a name="Examples for global analysis and shared local parameter configurations:">Examples
+for global analysis and shared local parameter configurations:</a><!--mstheme--></font></h3>
+
+<p>1) Let's say you want to characterize a self-associating protein.&nbsp; You
+have three cells at different concentrations:&nbsp; cell 1 is medium
+concentration, which can be scanned at 280 nm (the known extinction
+coefficient), at 250 nm, and at 230 nm; cell 2 is at lower concentration,
+scanned at 230 nm; cell 3 is at high concentration, scanned at 250 nm.&nbsp; You
+acquire data at three rotor speeds.&nbsp;</p>
+
+<p>You might load them into the following experiment data channels:</p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">channel
+1: cell 1 scanned at 280 nm, all rotor speeds are loaded as multi-speed sedimentation
+equilibrium experiment</font></p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">channel
+2: cell 1 scanned at 230 nm, all rotor speeds are loaded as multi-speed sedimentation
+equilibrium experiment</font></p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">channel
+3: cell 1 scanned at 250 nm, all rotor speeds are loaded as multi-speed sedimentation
+equilibrium experiment</font></p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">channel
+4: cell 2 scanned at 230 nm (from lower loading concentration), all rotor speeds
+are loaded as multi-speed sedimentation
+equilibrium experiment</font></p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1">channel
+5: cell 3 scanned at 250 nm (the highest concentration), all rotor speeds are loaded as
+multi-speed sedimentation
+equilibrium experiment</font></p>
+
+<p style="word-spacing: 0; line-height: 100%; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">You could have the
+following configuration of shared parameters:</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; share
+concentration of 1, 2, and 3 (link concentration 2 to 1, and 3 to 1), since this
+is the same cell.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; share the
+meniscus and bottom of 1, 2, and 3 (link meniscus and bottom of 2 to 1, and 3 to
+1), since again this is the same cell.</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; keep the
+extinction coefficient at 230 nm in channel 2 a floating parameter </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; keep the
+extinction coefficient at 250 nm in channel 3 a floating parameter </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; share the
+extinction coefficient of channel 4 and 2 (redirect 4 to 2)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; share the
+extinction coefficient of channel 5 and 3 (redirect 5 to 3)</p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">--&gt; share the
+baselines of all equilibrium profiles at the same wavelength but multiple rotor
+speeds:&nbsp; this will be done automatically since they are loaded as
+multi-speed equilibrium</p>
+<p>2) An example for hetero-associating proteins: you have loaded three cells by
+diluting a stock solution of a mixture of A and B.&nbsp; The analysis is
+performed with mass conservation constraints, floating the bottom position of
+the solution columns.&nbsp; You can calculate the extinction coefficients for
+each individual protein by running an extra cell with each component separately,
+using the same multi-wavelength approach with shared concentrations as
+illustrated above.&nbsp; For the cells of the mixture, you could share the molar
+ratio B/A between the three cells of the serial dilution.&nbsp; </p>
+<p>3) Another example for hetero-associating proteins: you have loaded three
+cells with a mixture, but keeping the concentration of A constant and increasing
+the concentration of B.&nbsp; You can use the same strategies as above, with
+mass conservation and floating bottom position, but constrain in the
+concentration of A to be the same for all cells, while floating the
+concentration of B.</p>
+<p>4) You have sedimentation equilibrium profiles of the same cell acquired with
+the same wavelength, at different rotor speeds.&nbsp; The buffer contains some
+component that changes absorbance with oxidation state, resulting in an
+increasing baseline.&nbsp; Therefore, you cannot share the baseline
+parameter.&nbsp; There are two options: the data could be loaded separately as
+single sedimentation equilibrium profiles, sharing the concentration parameter,
+and floating the baseline for each experiment.&nbsp; Also, of course meniscus
+and bottom position, as well as extinction coefficient should be shared.&nbsp;
+It is more efficient, however, to load the data into one multi-speed
+sedimentation equilibrium experiment, and to use in the <a href="experiment_parameters.htm">Experimental
+Parameter</a> box the Baseline option &quot;<a href="experiment_parameters.htm#fit RI Noise">fit
+RI Noise</a>&quot;.&nbsp; This will assign each profile at each speed its own
+vertical offset.&nbsp; Also, in this way, if desired, the radial-dependent
+baseline profile (&quot;<a href="experiment_parameters.htm#fit TI Noise">fit TI
+Noise</a>&quot;) can still be extracted from the set of equilibrium data. </p>
+<p>&nbsp;</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p><!--mstheme--></font></body>
+
+</html>

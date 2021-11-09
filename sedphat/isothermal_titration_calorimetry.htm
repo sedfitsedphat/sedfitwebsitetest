@@ -1,0 +1,452 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>isothermal titration calorimetry</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 12.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="partspecvols.htm" target="">partial&nbsp;specific&nbsp;volumes</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;isothermal&nbsp;titration&nbsp;calorimetry&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="60274" --></font></p>
+
+<h2>ITC analysis in SEDPHAT</h2>
+<p>S<span style="font-variant: small-caps">edphaT</span> allows to load and 
+analyze data from isothermal titration calorimetry.&nbsp; This can be in the 
+context of a single titration data set, or as a global analysis of several 
+titrations, or as part of a global analysis of different data types.</p>
+<p>The preferred method for data import is via NITPIC 
+(http://www.ncbi.nlm.nih.gov/pubmed/22530732, see
+<a href="http://biophysics.swmed.edu/MBR/software.html">
+http://biophysics.swmed.edu/MBR/software.html</a>).&nbsp; This will ensure the 
+highest precision of integration, is completely unbiased, and provides error bar 
+estimates to be used in the SEDPHAT analysis.</p>
+<p>In addition, data can be manually imported from software packages that come 
+with the instruments, such as Microcal Origin 
+and the CSC Bindoworks, after pre-processing the raw data of heats versus time 
+into a table of normalized heats per injection.&nbsp; For example, from the Microcal Origin software, find the window that contains a 
+multi-column data table, the first column termed &quot;dh&quot;.&nbsp; Export the table of 
+integrated heats per injection into an ASCII file with the extension &quot;*.dat&quot;.&nbsp; 
+It will look somewhat like the one shown below.&nbsp; [Make sure the format is 
+tab-delimited like the example below; regional differences in Origin may create 
+comma delimited text files.] From Bindworks, go to the 
+&quot;Area&quot; tab, and use the button to save the table into a file with default 
+extension &quot;bnw&quot;.
+</p>
+<p>In either case, the information provided is similar to the following table:</p>
+<!--mstheme--></font><table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="909" bordercolordark="#000000" bordercolorlight="#000000">
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">DH&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;INJV&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;Xt&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;Mt&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;XMt&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;NDH&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;DY&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;Fit<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-0.23725&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;2&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.0045&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.01562&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;--&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;--&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-29237.19319<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-11.93808&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;7.01951E-5&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00449&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.07832&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-27545.21246&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1362.23253&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-28907.44499<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-12.85444&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;3.49989E-4&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00447&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.14138&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-29836.11227&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1607.73097&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-28228.38131<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-12.12782&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;6.28203E-4&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00444&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.20478&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-28019.54619&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-751.64313&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-27267.90306<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-11.23063&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;9.04839E-4&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00442&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.26854&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-25776.5644&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;115.47887&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-25892.04327<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-10.10172&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00118&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00439&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.33264&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-22954.28978&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;974.37451&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-23928.66428<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-9.42282&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00145&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00437&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.3971&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-21257.05173&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-31.41723&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-21225.6345<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-7.81856&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00173&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00434&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.46191&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-17246.39202&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;560.63236&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-17807.02438<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-6.7935&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.002&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00432&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.52707&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-14683.75699&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-646.07408&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-14037.68291<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-5.12402&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00226&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.0043&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.59258&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-10510.04268&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.06277&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-10511.10545<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-3.96208&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00253&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00427&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.65844&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-7605.19219&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;56.99754&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-7662.18973<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-3.319&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.0028&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00425&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.72465&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-5997.49472&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-422.87428&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-5574.62044<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-2.72054&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00306&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00422&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.79121&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-4501.35924&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-387.94407&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-4113.41517<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-2.38265&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00332&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.0042&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.85812&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-3656.6266&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-556.39922&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-3100.22738<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-1.81935&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00358&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00418&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.92539&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-2248.37383&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;141.9495&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-2390.32333<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-1.43325&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00384&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00415&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.993&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1283.13357&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;600.1347&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1883.26827<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-1.282&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.0041&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00413&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.06097&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-905.00719&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;608.03931&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1513.0465<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-1.12649&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00436&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00411&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.12929&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-516.21851&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;720.5327&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1236.75121<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-1.02346&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00461&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00408&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.19795&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-258.65884&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;767.61415&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-1026.27299<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-0.89437&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00486&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00406&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.26697&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;64.08199&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;926.97654&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-862.89455<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">-0.91621&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;8&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00512&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00404&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;1.33634&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="139"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;9.48372&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="127"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;743.39161&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="133"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-733.90789<!--mstheme--></font></td>
+  </tr>
+  <tr>
+    <td width="108"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="68"><!--mstheme--><font face="Verdana, Arial, Helvetica">--&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="132"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00537&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="100"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;0.00402&nbsp;&nbsp; <!--mstheme--></font></td>
+    <td width="93"><!--mstheme--><font face="Verdana, Arial, Helvetica">&nbsp;-- <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p style="margin-top: 0; margin-bottom: 0">In the above example, we find 21 
+titration steps, with the following columns:</p>
+<p style="margin-top: 0; margin-bottom: 0">1) DH, the raw measured enthalpy 
+change for each injection. This column is ignored in S<span style="font-variant: small-caps">edphaT</span>.&nbsp;
+</p>
+<p style="margin-top: 0; margin-bottom: 0">2) <b>INJV</b>, the injected volume 
+in microliters. </p>
+<p style="margin-top: 0; margin-bottom: 0">3) <b>Xt</b>, the cell concentration 
+of the titrant (the binding partner initially loaded in the syringe) <b>in mM
+</b>(NOT micromolar)<b> before</b> the injection.&nbsp; This value is used by 
+SEDPHAT in the option &quot;use stored concs&quot; (see below), otherwise the entries are 
+not being used. </p>
+<p style="margin-top: 0; margin-bottom: 0">4) <b>Mt</b>, the cell concentration 
+of the ligand (the binding partner initially in the cell)<b> in mM before the 
+injection</b>. This value is used by SEDPHAT in the option &quot;use stored concs&quot; 
+(see below), otherwise the entries are not being used.</p>
+<p style="margin-top: 0; margin-bottom: 0">5) XMt, the molar ratio of titrant to 
+ligand. [This value is read into S<span style="font-variant: small-caps">edphaT</span>, 
+but will be used for plotting purpose, only.]</p>
+<p style="margin-top: 0; margin-bottom: 0">6) <b>NDH</b>, the normalized heat 
+per injection.&nbsp; <b>This normaliized heat is used as the data that need to 
+be modeled.</b></p>
+<p style="margin-top: 0; margin-bottom: 0">all following columns are ignored.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">The last line contains the cell 
+concentration of the titrant and the ligand <b>after the last injection</b>.&nbsp; 
+The last line is indicated by two dashes '--', which has to precede the final 
+value for Xt, as indicated above.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p style="margin-top: 0; margin-bottom: 0">The data in this table for the 
+concentration and the normalized heats are corrected for the effects of dilution 
+of the cell contents due to the addition of the ligand, and the problem that the 
+total volume increases beyond the heat-sensitive volume of the cell.</p>
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
+<p>Use the function <a href="data1.htm#Load New ITC Data">Data-&gt;Load New ITC 
+Data</a> to generate an xp-file for the ITC experiment.&nbsp; Select the 
+appropriate ASCII file generated above. Then, you will arrive at the <a href="experiment_parameters.htm#ITC data box">ITC parameter box</a></p>
+<p><img border="0" src="menubilder/experi7.jpg" width="422" height="444"></p>
+<p>where we have to specify what is titrated in what, as well as the 
+concentrations of all components.&nbsp; </p>
+<p>The cell volume if the 
+VP-ITC is 1414.1 microliters, and this is currently assumed as the default for 
+all ITC data.&nbsp; However, it can be changed here.&nbsp; (From the bindworks 
+file, it should automatically adjust to the cell volume information stored in 
+the bnw file.)&nbsp;&nbsp;&nbsp;
+</p>
+<p><i><font size="2">Other optional input fields:&nbsp; The &quot;fit baseline&quot; field 
+is straightforward - if checked this adds a floating baseline for this 
+experiment to the parameters.&nbsp; The <a name="ITCslope">slope </a>field will 
+determine whether or not a slope will be fitted, in units of kcal/mol per 
+injection.&nbsp; The button &quot;<a name="ITClocal incompetent ...">local 
+incompetent ...</a>&quot; will make the incompetent fraction of A, B, or C, 
+respectively a local parameter for this particular experiment only.&nbsp; This 
+can make sense if several experiments are fitted globally with data that were 
+collected from different preparations or batches of proteins.&nbsp; If the box 
+below the button is checked, the incompetent fraction will be a fitting 
+parameter.&nbsp; The value given in the field is in fractions of total (i.e. 
+enter a value of 0.05 instead of 5%).&nbsp; The max field is a possibility to 
+limit the incompetent fraction.&nbsp; For example, if you know that at most 10% 
+of material is incompetent, enter a value 0.1 here.&nbsp; This constraint for 
+the upper limit of incompetent fraction is active only if the incompetent 
+fraction is determined to be a local parameter.</font></i></p>
+<p>As can be seen above, the concentrations exported by the VP-ITC software are in millimolar, which generates a truncation error in the cell concentrations, which 
+will lead to apparent noise in the calculated isotherms, in particular at high 
+molar ratios.&nbsp; S<span style="font-variant: small-caps">edphaT </span>provides the 
+option to either use those truncated concentration values and tolerate the 
+noise, or to recalculate the cell concentration values based on the provided 
+cell and syringe concentrations.&nbsp; This will result in a smooth fitted 
+curve, as can be expected.&nbsp; The formula for calculating the concentration 
+of ligand L(i) and titrant T(i) at the start of the i-th titration step with 
+volume dV(i) and the syringe concentration Ts is:</p>
+<p>T(1) = 0; L(1) = L0; Vtot(1) = V0;</p>
+<p>C(i+1) = C(i)*(1-dV(i)/Vtot(i));</p>
+<p>T(i+1) = (T(i)*Vtot + Ts*dV)/(dV+Vtot(i));</p>
+<p>Vtot(i+1) = Vtot(i)+dV(i);</p>
+<p>For ternary interactions, it is possible to analyze experiments where either 
+the cell or the syringe contains a mixture of molecules.&nbsp; If the syringe 
+contains a mixture of reacting molecules, the heat of pre-existing complexes is 
+taken into account.</p>
+<p>&nbsp;</p>
+<p><u><b><a name="ITC EXAMPLE:">ITC EXAMPLE:</a></b></u></p>
+<p>The following is an example for the analysis of the above titration.&nbsp; 
+The data can be downloaded from <a href="images/ITCdhTable.DAT">here</a>.&nbsp; 
+Use the function <a href="data1.htm#Load New ITC Data">Data-&gt;Load New ITC Data</a>, 
+select the downloaded file, enter the loading concentrations of 4.5uM for the 
+cell, and 50 uM for the syringe, let SEDPHAT recalculate the concentrations, fit 
+baseline, and specify that this titration is <b>A into B</b>.&nbsp; </p>
+<p><img border="0" src="menubilder/isothe11.jpg" width="422" height="444"></p>
+<p>If you peek at the data below, you can see that the inflection point is at a 
+molar ratio of ~ 0.5.&nbsp; This indicates a two-site interaction, which we know 
+is appropriate for the molecules studied.&nbsp; </p>
+<p>Note:&nbsp; If we knew that this was a 1:1 interaction, the location of the 
+inflection point obviously would indicate that the loading concentrations are 
+quite a bit off.&nbsp; It is possible to take this into account in SEDPHAT.&nbsp; 
+However, instead of floating an 'n-value', we float the parameters describing 
+the &quot;incompetent fraction of A&quot; and, separately, the &quot;incompetent fraction of 
+B&quot;.&nbsp; This requires the model to selected correctly, and we directly obtain 
+the fractional activity separately of A and B.&nbsp; If this was a 1:1 
+interaction, then we would expect the incompetent fraction of either A or B to 
+be approximately 0.5.&nbsp; </p>
+<p>However, let us consider the present titration that of a stable, symmetric 
+dimer into a solution of ligand. Each protomer of the dimer has one site for the 
+ligand, and the sites are identical.&nbsp; In this case we have a two-site interaction of the type A+B+B 
+&lt;--&gt; AB+B &lt;--&gt; ABB (A symbolizing the dimer, B the ligand in the 
+cell). Switch to this model, and look at the parameter box.&nbsp; We can enter 
+an initial guess of the logKa1 to a value 6 (we know it has to be at least in 
+the micromolar range), and the delta-H to about -15 kcal/mol (for high affinity 
+interactions, this is approximately the y-axis intersect divided by the number 
+of sites).&nbsp; We assume that the second site is microscopically identical to 
+the first, which means we leave the value of log(Ka2/Ka1) unchanged at the 
+statistical factor of -0.6 (or 1/4) and keep this fix.&nbsp; Likewise, we set 
+the difference of delta-H from second site and first site to be zero, and we 
+keep it fixed, since there won't be enough information from a single titration 
+to determine any difference in delta-H from the first to the second site.&nbsp; 
+Essentially, we assume that this is a non-cooperative interaction.&nbsp; </p>
+<p>(Many models are available in SEDPHAT, to be chosen according to what's known 
+about the system under study.)</p>
+<p>&nbsp;</p>
+<p>The following is the parameter box after the fit has converged:</p>
+<p><img border="0" src="menubilder/isothe12.jpg" width="397" height="312"></p>
+<p>Next, close this box and invoke the <a href="fit.htm">Fit</a> function on the 
+SEDPHAT menu.&nbsp; [The fitting algorithm can be selected in the
+<a href="options.htm#Fitting options">Fitting Options</a> between Simplex, 
+Marquardt-Levenberg, and simulated annealing.]</p>
+<p>This the screen output after the fit has converged:</p>
+<p><img border="0" src="menubilder/isothe22.jpg" width="615" height="428"></p>
+<p>The best-fit estimates for the global parameters are indicated as printed out 
+on the screen.&nbsp; It is a good idea to store this analysis by using the 
+function <a href="data1.htm#save current configuration">Data-&gt;Save Configuration</a>.&nbsp; 
+This will allow to exactly restore this fit later to the same stage we're at 
+now.</p>
+<p>More detailed information can be found in the parameter box:</p>
+<p><img border="0" src="menubilder/isothe20.jpg" width="397" height="312"></p>
+<p>or by pressing control-T (or menu function Display-&gt;<a href="display.htm#Display Thermodynamic Information">Display 
+Themodynamic Information</a>), which will write to the hard disk and display an 
+ASCII file containing the full thermodynamic characterization of the system 
+based on the current best-fit estimates.</p>
+<p><img border="0" src="menubilder/isothe24.jpg" width="638" height="149"></p>
+<p>As with all other data analysis in S<span style="font-variant: small-caps">edphaT</span>, 
+the actual values for the fitted line and the residuals are accessible with
+<a href="copy.htm">copy</a> and paste to any spreadsheet.</p>
+<p>If you use the function &quot;<a href="data1.htm#Save Fit Data">Save Fit Data</a>&quot;, 
+a new ASCII file will be generated in the same format as the *.DAT file exported 
+from Origin.&nbsp; </p>
+<p>&nbsp;</p>
+<p>[It may be of interest to inspect how the fit would look like if we use the 
+'stored concentrations' from the original DAT-file exported by Origin: We'll 
+find that the global parameters are virtually identical, but the fit looks 
+'noisy' - this is a result of the stored concentration values having significant 
+round-off error.].</p>
+<!--msthemeseparator--><msthemeseparator align="center"><img alt="horizontal rule" height="10" src="_themes/sedfit-spiral/spirulea.gif" width="600"></p>
+<p>&nbsp;</p>
+<p>This example illustrated how to use SEDPHAT for a single data file analysis.&nbsp; 
+However, greatly improved parameters can be obtained, and much more complicated 
+models can be fit once we take advantage of the potential of SEDPHAT to perform 
+global modeling to multiple data sets.&nbsp; For example, this can look like the 
+following:</p>
+<p><img border="0" src="menubilder/isothe25.jpg" width="632" height="428"></p>
+<p>(this is two titrations A into B and B into A, as well as a dilution 
+experiment AB into buffer).&nbsp; Generally, one would want to combine 
+titrations at different concentrations and orientations (for example, binary 
+subsets of ternary systems, as well as ternary titrations like A into mixture 
+BC, etc.)</p>
+<p>&nbsp;</p>
+<p>For more examples, see </p>
+<p><span style="font-size: 12.0pt; font-family: Times New Roman">J.C.D. Houtman, 
+P.H. Brown, B. Bowden, H. Yamagushi, E. Appella, L.E. Samelson, P. Schuck.&nbsp; 
+(2006) Studying multi-site binary and ternary protein interactions by global 
+analysis of isothermal titration calorimetry data in SEDPHAT: Application to 
+adaptor protein complexes in cell signaling. <i><u>Protein Science</u> </i>(in 
+press)</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

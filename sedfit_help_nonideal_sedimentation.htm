@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Concentration Dependent Sedimentation</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;Nonideal&nbsp;Sedimentation&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="25498"
+-->
+</p>
+<p><font FACE="Roman" SIZE="6" COLOR="#ff0000">Concentration Dependent
+Sedimentation</p>
+</font><b><font COLOR="#0000ff">
+<p>Model | Nonideal Sedimentation</p>
+</font></b>
+<p>This model is for a single non-ideal sedimenting component.&nbsp; (A
+non-ideal component in the presence of other ideally sedimenting components is
+possible from version 8.5, see <a href="#non-ideal and ideal species">below</a>). Hydrodynamic and
+thermodynamic nonideality is taken into
+account in a linear approximation as&nbsp; </p>
+<p>s = s<sub>0</sub>/(1+k<sub>s</sub> x c)&nbsp; and D = D<sub>0</sub>  (1+ k<sub>d</sub> x c)
+for the repulsive case, and&nbsp;</p>
+<p>s = s<sub>0</sub>/(1-k<sub>s</sub> x c)&nbsp; and D = D<sub>0</sub>  (1 - k<sub>d</sub> x c)
+for attractive nonideality,&nbsp;</p>
+<p>where s<sub>0</sub> and D<sub>0</sub> are the sedimentation and diffusion
+coefficients at infinite dilution (uncorrected for density and viscosity), and k<sub>s</sub>
+and k<sub>d</sub> are non-ideality coefficients.&nbsp; Details of the numerical
+procedures of the finite element routine are described <a href="LammEqSolutions.htm#self-assoc equations">here</a>.&nbsp;
+Numerical accuracy was tested with a limiting case described by <a href="#1)">Ref
+1</a>.&nbsp; </p>
+<p>From both non-ideality coefficients, the second virial coefficient can be
+calculated as <font SIZE="2">k<sub>D </sub><font FACE="Symbol" size="2">»</font><sub>
+</sub>2 A<sub>2</sub>M - k<sub>s</sub></font> (<a href="#2)">Ref 2</a>). The
+application of the model with S<span style="font-variant: small-caps">EDFIT</span>
+and S<span style="font-variant: small-caps">EDPHAT</span> is described in <a href="#2)">Ref
+2</a>, also including a general strategy how to use this model best.&nbsp; </p>
+<p>The parameter box has many of the <a href="sedfit_help_independent_ideal_species.htm#parameters common to many models">common
+parameters</a> described in the independent species model.&nbsp; All
+model-specific parameters are nonlinear, and optimized only in a <a href="sedfit_help_fit.htm">fit</a>
+command.&nbsp; </p>
+<p><img border="0" src="images/nonidparams.gif" width="340" height="351"></p>
+<p>The first model-specific field is for the total loading concentration (in
+signal units).&nbsp; Below is the field for the sedimentation coefficient at
+infinite dilution (uncorrected for density and viscosity), and its nonideality
+coefficient.&nbsp; The diffusion coefficient at infinite dilution follows and
+the respective nonideality coefficient.&nbsp;&nbsp;</p>
+<p>The input of both coefficients ks and kd is in the form of the base 10
+logarithm of this parameter (i.e. -2 for 0.01). The units of these coefficients
+are inverse signal units (e.g. 1/OD<sub>280</sub> or 1/fringe), and for further
+interpretation should be converted by using appropriate extinction coefficients
+(taking into account the pathlength 1.2 cm) or refractive index increments.</p>
+<p>The concentration dependence can be either due to repulsive or attractive
+interactions. In the repulsive case (default, mark in the checkbox 'repulsive'), ks and kd are positive, whereas
+the attractive case (checkbox 'repulsive' not marked) is implemented where both ks and kd are negative.&nbsp;&nbsp;</p>
+<p>This function will be further extended shortly and implemented in for global
+modeling in S<span style="font-variant: small-caps">EDPHAT</span>.&nbsp; </p>
+<p><font color="#FF00FF">Please note: <b>Starting from version 8.5</b>, there is
+a new option of using arbitrary polynomial expressions or s(c) and D(c).&nbsp;</font> </p>
+<p><img border="0" src="images/sedfit115.gif" width="337" height="347"> </p>
+<p>This provides more freedom for describing highly concentration dependent
+sedimentation, where the usual corrections with ks and kd do not hold
+anymore.&nbsp; Examples are the sedimentation of CsCl at concentrations that
+establish significant density gradients.&nbsp; The units for the concentration
+are signal units (i.e., interference fringes, or absorbance values), except for
+the CsCl data, which are hardwired and taken from Allen Minton's paper in
+Biophys. Chem. 42 (1992) 13-21. For the polynomials, Sedfit reads two files
+&quot;<a href="file:///c:/sedfit/snonid.dat">c:\sedfit\snonid.dat</a>&quot; and
+&quot;<a href="file:///c:/sedfit/dnonid.dat">c:\sedfit\dnonid.dat</a>&quot; ,
+which are simply a 1 column ASCII text file with the polynomial
+coefficients.&nbsp; The number of coefficients is not predetermined, and will
+simply be taken from the file.&nbsp;&nbsp; </p>
+<p>Also, <font color="#FF00FF"><b>Starting from version 8.5</b>, a <a name="non-ideal and ideal species">non-ideal
+species can be modeled in the presence of up to three ideally sedimenting
+species</a>. </font>To do that, switch to the <a href="sedfit_help_independent_ideal_species.htm">ideal
+independent species model</a>, and make sure the fitting parameters are set to <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">s
+and D</a>. Then, the parameter box will look like this: </p>
+<p><img border="0" src="images/sedfit116.gif" width="443" height="299"> </p>
+<p>Notice the &quot;c1 nonideal&quot; switch on the right below the parameter
+sections.&nbsp; If this is switched on, component 1 will sediment nonideally,
+and the user will be prompted to enter the non-ideal parameter ks and kd, and
+specify if they are fixed or should be fitted for. </p>
+<p>&nbsp; </p>
+<p><font color="#008000"><b>New in version 8.7:</b></font> The
+concentration-dependence of the sedimentation coefficient from hydrodynamic
+non-ideality has been combined with the concentration dependence of s in a <a href="sedfit_help_selfassociation.htm#Monomer-Dimer">rapid
+monomer-dimer self-associating system</a>. </p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><b><font size="1">References</font></b></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="1)">1)</a>
+Dishon, M., G. H. Weiss, and D. A. Yphantis. 1967. Numerical solutions of the
+Lamm equation. III. Velocity centrifugation. <i>Biopolymers.</i> 5:697-713.</font></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0"><font size="1"><a name="2)">2)</a>
+Solovyova, A., P. Schuck, L. Costenaro, C. Ebel (2001) Non-ideality by
+sedimentation velocity of halophilic malate dehydrogenase in complex
+solvents.&nbsp; Biophys. J. 81:1868-1880</font></p>
+<!--mstheme--></font></body>
+
+</html>

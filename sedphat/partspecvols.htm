@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>partial specific volumes</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1"><!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="concepts_for_getting_started.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="experiment1.htm" target="">experiments</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="parameters1.htm" target="">parameters</a>&nbsp;]</nobr> <nobr>[&nbsp;partial&nbsp;specific&nbsp;volumes&nbsp;]</nobr> <nobr>[&nbsp;<a href="tutorial_for_getting_started.htm" target="">tutorial&nbsp;for&nbsp;getting&nbsp;started</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="configurations.htm" target="">configurations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_equilibrium_for_interacting_systems.htm" target="">sedimentation&nbsp;equilibrium</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedimentation_velocity_for_reactive_systems.htm" target="">sedimentation&nbsp;velocity&nbsp;for&nbsp;reactive&nbsp;systems</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isotherm_analysis.htm" target="">sedimentation&nbsp;isotherm&nbsp;analysis</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="isothermal_titration_calorimetry.htm" target="">isothermal&nbsp;titration&nbsp;calorimetry</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="surface_binding_isotherms.htm" target="">surface&nbsp;binding&nbsp;isotherms</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="40972" -->
+</font></p>
+<h2><b>Partial-specific volumes</b></h2>
+
+<p>Since sedimentation experiments take place in solvent, the buoyancy of the
+particles is an important factor, and therefore we need to know their
+volume.&nbsp; As long as we are in dilute buffered solutions, two-component
+theory applies and we can describe the buoyant molar mass as M<sub>b</sub> =
+M(1-v<font face="Symbol">r</font>), with M the particle mass, v it's
+partial-specific volume, and <font face="Symbol">r</font> the density of the
+solvent.&nbsp;&nbsp; </p>
+<p><font color="#0000FF" size="1">(If you are dealing with a three-component
+system in the presence of preferential solvation, you could describe the
+buoyancy as M<sub>b</sub> = Md<font face="Symbol">r</font>/dc with the density
+increment d<font face="Symbol">r</font>/dc, or you could use an 'effective
+partial-specific volume' for the solvated particle under the given solvent
+conditions, M<sub>b</sub> = M(1-<font face="Symbol">F</font>'<font face="Symbol">r</font>)).&nbsp;&nbsp;</font> </p>
+<p>In S<span style="font-variant: small-caps">edPHaT,</span> there are three
+issues important to know with regard to the partial-specific volume: </p>
+<p>1)&nbsp; Each experiment has a <a name="local partial-specific volume">local
+partial-specific volume</a>, to be entered in the <a href="experiment_parameters.htm">Experimental
+Parameters</a> box.&nbsp; This is valid only for the particular experiment,
+referring to the parameter v or <font face="Symbol">F</font>' for the solvent
+composition and temperature of this particular experiment.&nbsp; This may be
+different from the <a href="options.htm">global partial-specific volume</a>,
+which refers to the conditions of water at 20C, and is entered in the <a href="options.htm#Set v*rho">options
+menu</a>.&nbsp; Ordinarily, for proteins in dilute buffered salt solution, this
+distinction is usually not critical, because the temperature dependence of the
+partial-specific volume is relatively small.&nbsp;&nbsp; </p>
+<p>Obviously, if all experiments in the global analysis are performed at the
+same temperature and buffer composition, this is not be an issue.&nbsp; However,
+this may not always be the case. In order to permit global analysis of data
+obtained at different solvent conditions (or temperature), this distinction is
+made.&nbsp;&nbsp; </p>
+<p>In order to avoid inadvertent errors in the analysis of data from using wrong
+global v<sub>20,w</sub> values, this parameter is stored along with the other
+local parameters in the <a href="experiment1.htm#Storage of the xp-files:">experiment</a>.&nbsp;
+After loading an experiment, this stored v<sub>20,w</sub> value is proposed as a
+value for the global parameter.&nbsp;&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>2)&nbsp; If there are several experiments at different density, the
+partial-specific volume can be treated as a <a name="fitting parameter">fitting
+parameter</a>, but only under the assumption that the v value is the same for
+all experiments (<a href="options.htm#Fit vbar20 = vbar(T)">fit vbar20 = vbar(T)</a>).&nbsp;&nbsp; </p>
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<p>3) For studies of <a name="heterogeneous interactions">heterogeneous
+interactions</a> where we have two protein components A and B, there is a
+problem when using only one v-value.&nbsp; Obviously, the partial-specific
+volume of the two proteins in general are different.&nbsp;&nbsp;</p>
+
+<p>In the future, it is planned to incorporate into S<span style="font-variant: small-caps">edPHaT
+</span>two different partial-specific volumes, one for each component.&nbsp; In
+the meantime, however, you have to resort to the mathematical equivalent
+solution of using apparent molar mass values for one component. This is how this
+works:</p>
+
+<p>Set all the partial-specific volume values to that of component A (call it v<sup>A</sup>).&nbsp;
+The buoyant molar mass values M<sup>A</sup><sub>b</sub> will then be, as usual,
+M<sup>A</sup><sub>b</sub> = M<sup>A</sup>(1-v<sup>A</sup><font face="Symbol">r</font>).&nbsp;
+Similarly, the buoyant molar mass of component B will be M<sup>B</sup><sub>b</sub>
+= M<sup>B</sup>(1-v<sup>B</sup><font face="Symbol">r</font>).&nbsp; We can now
+calculate the apparent molar mass value M<sup>B</sup>* which would give the
+correct M<sup>B</sup><sub>b</sub> value if we use the partial-specific volume of
+component A: M<sup>B</sup><sub>b</sub> =&nbsp; M<sup>B</sup>*(1-v<sup>A</sup><font face="Symbol">r</font>).&nbsp;
+Since the measured quantities are the buoyant molar mass values, it doesn't
+matter if we use M<sup>B</sup>* as molar mass value with a partial-specific
+volume v<sup>A</sup>, or if we use the real molar mass M<sup>B </sup>with the
+real partial-specific volume of component B, v<sup>B</sup>.&nbsp; Therefore, we
+can simply use instead of M<sup>B</sup> the apparent molar mass value M<sup>B</sup>*
+= M<sup>B</sup>(1-v<sup>B</sup><font face="Symbol">r</font>)/(1-v<sup>A</sup><font face="Symbol">r</font>).&nbsp;
+</p>
+
+<p>Correcting the molar mass of B with the factor (1-v<sup>B</sup><font face="Symbol">r</font>)/(1-v<sup>A</sup><font face="Symbol">r</font>)
+may look strange and appear incorrect, since you may know the molar mass
+precisely, but it is entirely correct and mathematically equivalent to using a
+second partial-specific volume v<sup>B</sup>.&nbsp; </p>
+
+<p>Hopefully, future implementations will eliminate this inconvenience.&nbsp; </p>
+
+<!--msthemeseparator--><p align="center"><img src="_themes/sedfit-spiral/spirulea.gif" width="600" height="10"></p>
+<!--mstheme--></font></body>
+
+</html>

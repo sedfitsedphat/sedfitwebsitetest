@@ -1,0 +1,182 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>DLS</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 0011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p>
+<!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_analytical_zone_centrifugation.htm" target="">Analytical&nbsp;Zone&nbsp;Centrifugation</a>&nbsp;]</nobr> <nobr>[&nbsp;DLS&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="42103" endspan --></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>DLS analyses: Fitting Autocorrelation Data by Diffusion Coefficient and
+Hydrodynamic Radius Distributions</p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model | <a href="#Non-Interacting Discrete Species"> Non-Interacting Discrete Species</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model | Dynamic Light Scattering | <a href="#DLS: Continuous I(Rh)-Distribution"> DLS: Continuous I(Rh)-Distribution</a></p>
+<p style="line-height: 100%; margin-top: 0; margin-bottom: 0">Model | Dynamic Light Scattering | <a href="#DLS: Continuous I(D)-Distribution"> DLS: Continuous
+I(D)-Distribution</a></p>
+</font></b>
+<p>&nbsp;</p>
+<p>It can be useful to analyze data from dynamic light scattering in the same
+framework as the sedimentation velocity analysis.&nbsp; Three models are
+available with S<span style="font-variant: small-caps">EDFIT</span>:&nbsp; that
+of <a href="#Non-Interacting Discrete Species">superpositions of non-interacting
+species</a>, <a href="#DLS: Continuous I(Rh)-Distribution">hydrodynamic radius
+distributions</a>, and <a href="#DLS: Continuous I(D)-Distribution">diffusion
+coefficient distributions</a>.&nbsp;&nbsp;</p>
+<p>Currently, DLS data from Protein Solution and Brookhaven Instruments can be <a href="sedfit_help_loading_options.htm#Generating DLS Data Files">transformed
+into a S<span style="font-variant: small-caps">edfit</span> format</a>, and then <a href="sedfit_help_loadnewdata.htm#Loading DLS data:">loaded
+into S<span style="font-variant: small-caps">EDFIT</span></a>. After loading,
+they might look like this:</p>
+<p><img border="0" src="images/sedfit70.gif" width="581" height="444"></p>
+<p>with a plot of the autocorrelation coefficients versus log<sub>10</sub>(<font face="Symbol">t</font>)
+in the upper half, and the usual residuals plot in the lower.&nbsp; Obviously,
+the entries for the meniscus and bottom are meaningless, but the position of the
+green lines still determines the range of the data to be analyzed.</p>
+<p>All the models are based on the exponential expression for a single species
+field
+autocorrelation function.</p>
+<p>(1)&nbsp;<font SIZE="2">&nbsp;&nbsp;&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp; <font SIZE="2"><img SRC="images/Image10.gif" width="146" height="28">
+</font>
+</p>
+<p>where t is the decay time and <font FACE="Times"> <i>q</i>=(4</font><font FACE="Symbol">p</font><i><font FACE="Times">n</font></i><font FACE="Times">/</font><font FACE="Symbol">l</font><font FACE="Times">)sin(<font FACE="Symbol">Q</font>
+/2)</font>, with the solvent refractive index <i>n</i>, the wavelength of the
+incident light <font FACE="Symbol">l</font>, and the scattering angle <font FACE="Symbol">Q</font><font face="Times">.&nbsp;
+</font>Because the Lamm equation requires the diffusion coefficient, in
+principle, all Lamm equation models contain enough information to determine the
+autocorrelation functions.&nbsp;&nbsp;</p>
+<p> It should be noted that the scattering
+amplitude is proportional to the molar mass of the species, and the scattering
+intensity I replaces the concentration c.&nbsp;&nbsp;</p>
+<p> &nbsp;</p>
+<p> <b>New 08/10/10: please see Jack Kornblatt's more detailed
+<a href="images/Analyzing%20DLS%20data%20in%20Sedfit.txt">instructions</a> for 
+analyzing data from a Wyatt DynaPro Titan instrument.</b></p>
+<p> <b>New 08/10/10: more recently, models working directly with intensity 
+autocorrelation functions are available, as well as cumulant analysis.</b></p>
+<p> &nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p>Model | <a name="Non-Interacting Discrete Species">Non-Interacting Discrete
+Species</a></p>
+</b>
+</font><p>In this model, the diffusion coefficients are calculated in the same
+way as in the model for <a href="sedfit_help_independent_ideal_species.htm">ideally
+sedimenting discrete species</a>.&nbsp; The same parameter input box is
+used.&nbsp; Dependent on the setting of S<span style="font-variant: small-caps">EDFIT
+</span>to use as fitting parameters (s,D) or (s,M) (see <a href="sedfit_help_fitting_options.htm#Fitting M and s vs D and s">Fit
+M and s</a>), the diffusion coefficient can either be directly determined or
+fitted, or <b>the diffusion coefficient can be specified in terms of
+sedimentation coefficient and molar mass</b>.&nbsp; In this case, the Svedberg equation</p>
+<p>(2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img SRC="images/Image7.gif" WIDTH="100" HEIGHT="44"></p>
+<p>is used to calculate D, and it should be noted that the <a href="sedfit_help_set_vbarxrho.htm">partial-specific
+volume</a> and the buffer density needs to be properly adjusted.&nbsp;</p>
+<p>The analysis of DLS data in terms if molar mass and sedimentation coefficient
+can be advantageous if either the molar mass or the sedimentation coefficient is
+known.&nbsp;&nbsp;</p>
+<p><b>Great care should be taken to float only one parameter. </b>Only either s,
+D, or M are determined by the data.&nbsp; There is no check in S<span style="font-variant: small-caps">EDFIT
+</span>for this, and correlated parameters may cause the program to crash.</p>
+<p>&nbsp;</p>
+<font COLOR="#0000ff">
+<b>
+<p>Model | Dynamic Light Scattering | <a name="DLS: Continuous I(Rh)-Distribution"> DLS: Continuous I(Rh)-Distribution</a></p>
+<p>Model | Dynamic Light Scattering | <a name="DLS: Continuous I(D)-Distribution"> DLS: Continuous
+I(D)-Distribution</a></p>
+</b>
+</font><p>These models are variants of the distribution
+analyses for sedimentation.&nbsp; The light-scattering model is analogous to
+those presented in the <a href="sizedistributions.htm">introduction to
+size-distributions</a>, but the kernel (i.e. the single-species model function)
+is
+adapted for DLS data analysis, by using Eq. 1 above.&nbsp; In case of the diffusion coefficient distribution, D is directly used in
+the model for the autocorrelation function, in case of Rh-distribution, D is
+calculated via Stokes-Einstein equation.&nbsp; All other parameters and distribution
+methods are similar to those for the continuous Lamm equation modeling, which
+makes this analysis very similar to the one performed in CONTIN described by
+Stephen Provencher (<a href="#ref1">ref1</a>).&nbsp; Both the <a href="sedfit_help_size_distribution_options.htm#Tikhonov-Phillips regularization using 2nd derivative">Tikhonov-Phillips</a>
+and the <a href="sedfit_help_size_distribution_options.htm#Regularization by maximum entropy principle">maximum
+entropy regularization</a> (default) can be used.&nbsp;&nbsp;</p>
+<p>The parameter box for the I(Rh) distribution looks like this:&nbsp;</p>
+<p><img border="0" src="images/sedfit71.gif" width="443" height="299"></p>
+<p>The meaning of the <a href="sizedistributions.htm#parameter resolution">resolution</a>,
+<a href="sizedistributions.htm#s-min">Rh min</a>, <a href="sizedistributions.htm#s-max">Rh
+max</a> and the <a href="sizedistributions.htm#confidence level (F-ratio)">confidence
+level</a> is the same as in other <a href="sizedistributions.htm#Parameters for size-distribution analysis in Sedfit">distribution
+models</a>.&nbsp; It is useful to set the confidence level to a relatively small
+value (e.g. 0.55 ; but values below 0.5 are interpreted as no
+regularization).&nbsp; The meaning of this parameter is strictly not a valid
+confidence level any more, because of the relatively small number of data points
+(compared to the resolution of the distribution).&nbsp; [In the distribution
+calculations in S<span style="font-variant: small-caps">EDFIT</span>, the
+degrees of freedom in the F-statistics are taken as equal to the number of data
+points, because of the large number of data points involved in sedimentation
+velocity data.&nbsp; This approximation is not very good any more for small data
+sets such as DLS data when using the distribution model.]</p>
+<p>When using the hydrodynamic radius distribution, of the field on the
+right-hand side only the viscosity is important, because the diffusion
+coefficients for each species is calculated using the Stokes-Einstein equation</p>
+<p>(3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:12.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span style="mso-text-raise:-14.0pt">
+<img src="images/sedfit73.gif" v:shapes="_x0000_i1025" width="73" height="44"></span><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Equation.3" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1060687053">
+ </o:OLEObject>
+</xml><![endif]-->
+</span></p>
+<p>When using the diffusion coefficient distribution, none of the fields at the
+right-hand side is of any importance.</p>
+<p>One difference to the c(s) and other distribution models is that here the Rh
+or D grid are spaced (and displayed) logarithmically, as this relates better to the
+resolution of the method.&nbsp; However, one difficulty arises from the fact
+that the
+differential distribution functions can be either defined on a logarithmic
+scale, which displays the area under the curves in log units proportional to the
+scattering intensity of the subpopulations, or it can be defined in linear
+units, in which case the area under the curve does NOT correspond to the
+scattering intensity of the subpopulations.&nbsp; However, in the latter case, if the data
+are (exported and) displayed on a linear scale, this relationship is restored.&nbsp;
+[In short, this problem comes from the nonlinearity of the integration variable
+in log units.]&nbsp; Therefore, which units are better depends on the framework of the
+desired interpretation.&nbsp; For this reason, there is a switch in the parameter box
+allowing to change the integration variable between linear and log units.</p>
+<p>A second switch is included for determining the spacing of the grid.&nbsp;
+According to Livesey (<a href="#ref2">ref 2</a>), the best spacing of the grid
+when using maximum entropy regularization is equidistant on a log
+scale.&nbsp;&nbsp;</p>
+<p>The calculations are started with the <a href="sedfit_help_run.htm">Run</a>
+command, and everything in the calculations is analogous to the other
+distribution models.&nbsp;&nbsp;</p>
+<p><img border="0" src="images/sedfit72.gif" width="520" height="442"></p>
+<p>&nbsp;</p>
+<p>A typical result is shown above.&nbsp; Again, it should be noted that this
+the size-distribution here is in units of scattering intensity, not
+concentration.&nbsp;&nbsp;</p>
+<p>The DLS data result in significantly lower resolution than sedimentation
+velocity experiments, because of the smaller size-dependence of the diffusion
+coefficient (as compared to the sedimentation coefficients), and because of the
+ill-conditioned nature of the exponential functions (as opposed to the Lamm
+equation solutions). Nevertheless they can contribute very valuable
+complementary information to the study of complex mixtures of macromolecules.</p>
+<p>&nbsp;</p>
+<p><font size="1"><b>References</b></font></p>
+<p><font size="1">(<a name="ref1">1</a>) S.W. Provencher. (1982) A constrained regularization method for inverting
+data represented by linear algebraic or integral equations. Comp. Phys. Comm.
+27:213-227</font></p>
+<p><font size="1">(<a name="ref2">2</a>)&nbsp; A.K. Livesey, P. Licinio, M.
+Delaye. (1986)&nbsp; Maximum entropy analysis of quasielastic light scattering
+from colloidal dispersions. J. Chem. Phys. 84:5102-5107</font></p>
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

@@ -1,0 +1,911 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Mixture of DNA and protein</title>
+</head>
+
+<body>
+
+<p class="MsoBodyText"><font face="Arial">
+<a href="DNATutorial_2.htm">back to 
+the start of the tutorial</a></font></p>
+
+<p class="MsoBodyText">&nbsp;</p>
+
+<p class="MsoBodyText"><font face="Arial"><u><b>
+<a name="IV) Analysis of the mixture">IV) Analysis of the mixture</a></b></u></font></p>
+
+<p align="left"><font face="Arial">The fourth step of this tutorial is the 
+global analysis of the DNA and Protein mixture using data from the remaining 
+cells of the AUC run.&nbsp; (Please refer to the
+<a href="DNATutorial_2.htm#1) Experimental Details and Downloading Data">Experimental Details</a> to see the loading concentrations of the different 
+cells)</font></p>
+
+<p><font face="Arial">We will use data obtained from the individual analysis of 
+the DNA and the protein as fixed parameters in the analysis of the mixture to 
+save fitting time.&nbsp; </font></p>
+<p class="MsoNormal"><font face="Arial"><u>For the DNA</u>, the <b>apparent mass
+</b>of 
+23.9 kDa will be the value we use, in conjunction with the v-bar value of the 
+protein of 0.743.&nbsp; (Again, the true molar mass is different, and so is the 
+v-bar, but the buoyant molar mass determined by the product M*(1-vbar*rho) is 
+correct (this is the important quantity), and by doing it this way we can work 
+with the same apparent vbar for the protein and the DNA.)&nbsp; The <b>extinction coefficients </b>are 449100 OD/Mcm at 
+260 nm (this was fixed to the theoretical value), 186,400 OD/Mcm at 230 nm, and 
+269,600 OD/Mcm at 280 nm.&nbsp; These values will also be used as fixed prior 
+knowledge for the multi-wavelength analysis of the mixture of DNA with protein.&nbsp;
+</font> </p>
+
+<p><font face="Arial"><u>For the protein</u>, the <b>Mw value </b>is 9.3 kDa.&nbsp; 
+This 
+is within the usual range of precision, and we will accept the value of 9.3 kDa (and use it in the analysis of the mixture), continuing to use 0.743 ml/g as 
+our vbar scale.&nbsp; The <b>extinction coefficient </b>are 4868 OD/Mcm at 
+260 nm, and 8480 OD/Mcm at 280 nm (the latter was fixed to the theoretical value).&nbsp; These values will also be used as fixed prior 
+knowledge for the multi-wavelength analysis of the mixture of DNA with protein.&nbsp;
+</font> </p>
+
+<p><font face="Arial">Based on the protein analysis, we have decided to use only 2 wavelengths, 
+280 and 260 nm.&nbsp; </font> </p>
+
+<p>&nbsp;</p>
+
+<p><b><font face="Arial">
+<a name="Step 12:  Selecting the .xp files from Cells 3-7 and opening them in Sedphat.">
+Step 12:&nbsp; Selecting the .xp files from Cells 3-7 and opening them in <span style="font-variant: small-caps">
+Sedphat.</span></a></font></b></p>
+
+<p><font face="Arial">We also have already used <span style="color: black"> <span style="font-variant: small-caps">Sedfit</span> </span>
+to prepare the SE raw data files and generate the xp-files for all cells.&nbsp; 
+We don't need to redo this.&nbsp; Therefore, we jump directly to the next step, 
+loading the data from the mixture of DNA and the protein into a new <span style="color: black"> <span style="font-variant: small-caps">Sedphat</span> 
+window.</span>&nbsp; Begin loading files in the same manner as before.&nbsp; Use 
+the function Data-&gt;Load 
+Experiment</font></p>
+
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProLoadExp.png" width="274" height="61"></font></p>
+
+<p>
+<font face="Arial">, and find and load the .xp files from cells 3 through 7 at 280 and 260 
+nm.&nbsp; Remember they will be lined up in the
+<span style="font-variant: small-caps">Sedphat</span> window in the order that 
+they are loaded, and they will be referred to according to their number, 
+therefore it's useful to load them systematically.&nbsp; In this tutorial, we 
+choose the sequence: cell 3 at 280, cell 3 at 260, cell 4 at 280, cell 4 at 260, 
+etc.</font></p>
+
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixLoadxpFiles.png" width="554" height="394"></font></p>
+
+<p><font face="Arial">After loading all the .xp files, we end up with 10 experiments.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixAllLoaded.png" width="698" height="558"></font></p>
+<p><font face="Arial">With the function &quot;Show last fit info again&quot;, 
+the information about each 
+experiment will appear.&nbsp; Notice that the .xp file names are listed on the 
+4th line from the top.&nbsp; (The other information is not meaningful at this 
+point.)&nbsp; Now, before parameters are entered,&nbsp; is a good time to make 
+sure that the experiments are in the order that you want them to be.&nbsp;
+</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixAllwDisplay.png" width="697" height="557"></font></p>
+<p>
+&nbsp;</p>
+<p>
+<font face="Arial">
+<b>
+<a name="Step 13:  Choosing a model and setting up parameters for a first fit">Step 13:&nbsp; <span style="color: black">
+Choosing a model and setting up global, local and experimental parameters and 
+the constraints for a first fit</span></a></b></font></p>
+<p><font face="Arial">We are going to start with a Hetero-Association, single site model (A+B). 
+Generally, for a mixture, it is a good idea to begin with this model.&nbsp; 
+Even though, we do have evidence that the two site model (A+B+B) would be the 
+correct model, we will begin here with the single-site model, in order to demonstrate why this model is not as good 
+as the two-site model.&nbsp; This will give us more confidence for using the two-site model 
+later.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixFrstModel.png" width="412" height="305"></font></p>
+<p>
+<font face="Arial">Open the global parameters window.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProGlobParaTop.png" width="262" height="42"></font></p>
+<p>
+<font face="Arial">It will open with default parameters.&nbsp; </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABglbParDefltWin.png" width="386" height="277"></font></p>
+<p>
+<font face="Arial">Considering &quot;A&quot; component to be DNA and &quot;B&quot; component as Protein, we will leave 
+most of these default parameters in place at this point, but will enter the MW 
+of A and B, fit with Mass Conservation and set the Log(Ka) value for binding 
+constant to a good initial estimate.&nbsp; Association constants are in Log(10) of molar 
+units, so to get into a range where the fitting algorithm will be able to 
+optimize it,&nbsp;we will take into 
+account our concentration range of microM (10<sup>-6</sup> ) and enter 6 here.&nbsp; 
+sA,&nbsp; sB and sAB are sedimentation coefficients and are insignificant here.&nbsp; The 
+concentrations (atot and btot) and extinction coefficients will be entered for 
+each experiment when the experiment parameters are entered.&nbsp; Incompetent 
+fractions of A and B (incfA and incfB) will be left alone initially.&nbsp; In 
+the end, our window 
+should look like this now:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/mxABgbpa.png" width="385" height="277"></font></p>
+<p>
+<font face="Arial">After hitting Ok, this window appears</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABattentionMass.png" width="204" height="109"></font></p>
+<p>
+<font face="Arial">...hit Ok.</font></p>
+<p>
+<font face="Arial">A note with regard to the default parameters.&nbsp; If you work with the same 
+molecules and repeatedly use a particular model, you can set your own parameters 
+and then go to Data-&gt; Model-&gt; &quot;save current parameters as default&quot; and have your 
+parameters in place each time you open that particular model.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixModelDefaults.png" width="517" height="421"></font></p>
+<p>
+&nbsp;</p>
+<p><font face="Arial">Next, set up the local parameters.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProLocalPara.png" width="250" height="41"></font></p>
+<p><font face="Arial">This can get very complicated, so make sure you have the correct 
+concentrations available for reference.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font> </p>
+<p><font face="Arial">Begin with exp # 1.&nbsp; This is AUC cell #3 scanned at 280.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local1.png" width="273" height="126"></font></p>
+<p><font face="Arial">Concentration A of exp #1 is DNA at 0.3uM.&nbsp; Link it to exp #1 
+(this means there is no redirection (or link) of this parameter).</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local2.png" width="272" height="125"></font></p>
+<p><font face="Arial">Enter the concentration of DNA, component A (ca), </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1LocalA.png" width="270" height="125"></font></p>
+<p><font face="Arial">Then to component B, the protein.&nbsp; It is also not 
+redirected, i.e. linked to itself.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local6.png" width="272" height="124"></font></p>
+<p><font face="Arial">Enter the concentration of protein, component B (cb), in the next&nbsp; window.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1LocalB.png" width="270" height="126"></font></p>
+<p><font face="Arial">Experiment #2 is the same cell, only scanned at wave length 260,
+</font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp2Local1.png" width="271" height="123"></font></p>
+<p><font face="Arial">&nbsp;so we can link the concentration of A to exp #1,</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp2Local2.png" width="272" height="123"></font></p>
+<p><font face="Arial">and the same is true for B: link it to exp #1. Hit OK.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp2Local3.png" width="272" height="124"></font></p>
+<p>
+<font face="Arial">On to exp #3.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp3Local1.png" width="270" height="124"></font></p>
+<p>
+<font face="Arial">Link the DNA concentration to exp #3 </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxXp3co1.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Enter the DNA concentration of experiment # 3.&nbsp; </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxXp3co2.png" width="270" height="120"></font></p>
+<p>
+<font face="Arial">(Actually, since the concentration is the same as in xp1 
+(cell 1), it could have been linked, but this was not done for consistency with 
+the following screenshots.)</font></p>
+<p>
+<font face="Arial">Also, link the protein concentration to exp #3.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp3Local3.png" width="272" height="124"></font></p>
+<p><font face="Arial">Then, enter&nbsp; the concentration of B in exp #3.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp3LocalB.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Next:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp4Local1.png" width="270" height="123"></font></p>
+<p>
+<font face="Arial">Experiment #4 is cell4 at a 260 wavelength so we can link&nbsp; conc.A , to exp 
+#3</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxXp4co1.png" width="271" height="118"></font></p>
+<p>
+<font face="Arial">and conc. B to exp #3.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp4Local3.png" width="270" height="125"></font></p>
+<p>
+<font face="Arial">Exp #5 is cell5 at 280.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp5Local1.png" width="271" height="125"></font></p>
+<p>
+<font face="Arial">We aren't able to link the DNA concentration to any of the previous experiments.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp5Local2.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Enter the DNA concentration here as 1.0</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp5LocalA.png" width="271" height="123">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</p>
+<p>
+<font face="Arial">We also are not able to link the protein concentration to a previous experiment, 
+so hit Ok here.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font>
+</p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp5Local6.png" width="272" height="126"></font></p>
+<p>
+<font face="Arial">The protein concentration of cell5 is 0.5</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp5LocalB.png" width="271" height="122"></font></p>
+<p>
+<font face="Arial">Exp #6 is cell 5 scanned at 260 wavelength so all concentrations can be linked 
+to exp #5.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp6Local1.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">First the DNA</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp6Local2.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Then the protein.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp6Local3.png" width="273" height="125"></font></p>
+<p>
+<font face="Arial">On to Exp #7 </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp7Local1.png" width="271" height="125"></font></p>
+<p>
+<font face="Arial">This is our cell 6, where the DNA concentration  is the same as in Cell5, so link it to exp #5</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp7Local3.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">The concentration of protein is not the same so it can't be linked.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp7Local2.png" width="270" height="124"></font></p>
+<p>
+<font face="Arial">Enter the concentration of protein in cell6 here.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp7LocalB.png" width="271" height="123"></font></p>
+<p>
+<font face="Arial">Exp #8 is cell6 at 260 wavelength so:&nbsp; </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp8Local1.png" width="270" height="124"></font></p>
+<p>
+<font face="Arial">link conc.A to exp #5 </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp8Local2.png" width="270" height="125"></font></p>
+<p>
+<font face="Arial">and link conc.B to exp #7</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp8Local3.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Exp #9 is cell7</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp9Local1.png" width="271" height="123"></font></p>
+<p>
+<font face="Arial">The DNA concentration is the same as in exp #5, so they can be linked</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp9Local2.png" width="270" height="122"></font></p>
+<p>
+<font face="Arial">the protein concentration is not linked to any other experiments.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp9Local3.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Enter protein concentration</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp9LocalB.png" width="270" height="123"></font></p>
+<p>
+<font face="Arial">Exp #10 is cell7 at 260 wavelength so,</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp10Local1.png" width="269" height="124"></font></p>
+<p>
+<font face="Arial">link the DNA concentration to exp #5</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp10Local2.png" width="271" height="125"></font></p>
+<p>
+<font face="Arial">and link the protein concentration to exp #9</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp10Local3.png" width="271" height="125"></font></p>
+<p><font face="Arial">If we &quot;display fit info again&quot; the concentrations will now be displayed along 
+with the Exp# of the links in the last line of each experiment's window.&nbsp; 
+Take the time now to make sure all is in order.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABDisIinfo.png" width="697" height="563"></font></p>
+<p><font face="Arial">For the current experiment, we have no indication that 
+mass conservation is violated.&nbsp; We would have noticed that when analyzing 
+the protein and the DNA by itself, we would not have been able to get a good fit 
+with mass conservation.&nbsp; Therefore, we can expect that it will be conserved 
+as well in the mixture.&nbsp; This may not necessarily always be the case, for 
+example, some protein may slowly precipitate or form a surface film at the 
+bottom of the cell, slowly depleting the mass suspended in the solution column.&nbsp; 
+In this case, mass conservation would not be valid.&nbsp; [Notice that the mass 
+conservation only assumes that the material that was soluble at the time of the 
+first equilibrium will still be soluble at the time of the last equilibrium, but 
+it does not require the absence of some initial loss, for example, adsorption to 
+the window etc.]</font></p>
+<p><font face="Arial">But even if mass is not conserved, it is a good idea to use the Mass conservation 
+function in the global parameters.&nbsp; This will eliminate the reference 
+concentration for each component and each equilibrium scan, and therefore 
+considerably simplify setting up the global analysis and fitting it.&nbsp; If 
+you don't use mass conservation, you have to provide initial estimates for the 
+concentration of A and B at the bottom of the cell for <b>each rotor speed</b>.&nbsp; An example of that is in the 5 windows 
+below as the local parameters are set up for exp # 1.&nbsp;&nbsp;&nbsp; [Don't 
+do that yourself when you're following the tutorial...]</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local1.png" width="273" height="126"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local2.png" width="272" height="125"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local3.png" width="271" height="125"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local4.png" width="272" height="124"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixExp1Local5.png" width="271" height="124"></font></p>
+<p>
+<font face="Arial">Clearly, this would be very cumbersome [and difficult to 
+estimate since the concentration at the bottom of the cell is usually much 
+different from the initial loading concentration].&nbsp; If you need to fit 
+without mass conservation, you can use an initial fit <b>with </b>mass 
+conservation (and floating the bottom of the cell).&nbsp; After this has 
+converged, switch mass conservation off, and you'll find that concentrations at 
+the bottom of the cell have automatically been calculated based on your first 
+fit, and you won't need to initialize them.&nbsp; </font></p>
+<p>
+<font face="Arial">Back to our analysis.&nbsp; </font></p>
+<p>
+<font face="Arial">Now, begin setting up the experiment parameters</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/heading.png" width="497" height="21"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/editexp1.png" width="272" height="127"></font></p>
+<p>
+<font face="Arial">Exp #1 window appears.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp1para.png" width="442" height="396"></font></p>
+<p>
+<font face="Arial">Common parameters for all 10 experiments will be the v-bar of the protein, 
+0.7439, the buffer density, 1.003790, fitting&nbsp; for RI noise and mass 
+conservation with rotor stretching.&nbsp; Here in exp# 1, we will fit for the 
+bottom and enter the extinction coefficients for this wavelength (listed on 
+line 2 of this window), values we determined from the single component analysis 
+of DNA and protein.&nbsp; In theory, we could link the extinction coefficients 
+throughout all of these experiments and fit for them, but if we enter them for each experiment 
+and keep them fixed, it will be one less parameter we have to fit for, since we 
+have determined them already.&nbsp; 
+Also, these values are easier to fit for in the simplex fitting of the single 
+component analysis.&nbsp; Note that we're making the approximation here that 
+there's no hyper- or hypo-chromicity at the wavelengths used.&nbsp; [If that 
+would be a bad assumption in the present case, one might be able to do an 
+experiment with dual-signal analysis combining interference data with an 
+absorption wavelength where the spectrum does not change.]</font></p>
+<p>
+<font face="Arial">More about the baseline options will follow below.&nbsp;
+</font> </p>
+<p>
+<font face="Arial">Hit Ok and the following 2 windows appear, asking for limits 
+of the variation of the bottom parameter.&nbsp; I would usually accept the 
+default range (although this could be refined partially, through visual 
+inspection of the scans).&nbsp; </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProWin1.png" width="270" height="125"></font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProRangWin2.png" width="269" height="125"></font></p>
+<p>
+<font face="Arial">Hit Ok for both, then the experiment #2 window appears.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/editexp2.png" width="273" height="128"></font></p>
+<p>
+<font face="Arial">In exp #2, redirect the bottom to exp # 1, since it is the same cell,  only a 
+different wavelength.&nbsp; Enter the extinction coefficients for this 
+wavelength and keep them fixed.&nbsp; 
+Check other parameters so they match with exp#1.&nbsp; You may notice, after you 
+redirect the bottom (after closing and opening this box again), the meniscus also becomes redirected even though we fixed 
+the meniscus in the previous experiment - this is OK, since it is the same cell, 
+and should also have the same meniscus value.&nbsp; With mass conservation, we are 
+mostly concerned with where the protein ends up as it sediments away from the 
+meniscus and lands at the bottom of the solution column.&nbsp; The meniscus 
+position becomes insignificant and slight changes are tolerated.&nbsp; 
+Therefore, the meniscus position does not need to be fitted for (in contrast to 
+sedimentation velocity data, the meniscus position is frequently ill-defined by 
+the data within our analysis range).&nbsp; Again, the meniscus is redirected, 
+but it will not be fitted, since the value in experiment 1 was fixed.&nbsp;
+</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp2para2.png" width="436" height="390"></font></p>
+<p>
+<font face="Arial">Exp #3 begins cell4.&nbsp; Fit for the bottom, enter and fix the extinction 
+coefficients for this wavelength,</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp3para.png" width="436" height="391"></font></p>
+<p>
+<font face="Arial">Accept the limit here&nbsp; </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp3limits.png" width="272" height="125"></font></p>
+<p>
+<font face="Arial">and here</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp3limitb.png" width="271" height="123"></font></p>
+<p>
+<font face="Arial">then start with exp #4</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp4edit.png" width="272" height="125"></font></p>
+<p>
+<font face="Arial">Meniscus and bottom can be redirected to exp #3 (same cell, but wavelength 
+is 260 nm).&nbsp; Enter extinction coefficients for the wave length here and keep them 
+fixed.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp4Para.png" width="435" height="391"></font></p>
+<p>
+<font face="Arial">Exp #5 is cell5.&nbsp; Fit for the bottom, enter and fix the extinction 
+coefficients for this wavelength,</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp5para.png" width="437" height="390"></font></p>
+<p>
+<font face="Arial">Again, redirect meniscus and bottom in exp #6 to exp #5, but don't forget to 
+enter and fix the extinctions coefficients.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp6para.png" width="438" height="398"></font></p>
+<p>
+<font face="Arial">Exp #7 is cell6.&nbsp; Again, fit for the bottom, enter and fix the extinction 
+coefficients.&nbsp; </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp7para.png" width="438" height="394"></font></p>
+<p>
+<font face="Arial">Exp #8 is also cell6 but at wavelength 260 nm, so redirect bottom and meniscus to 
+exp #6 and enter extinction coefficients.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp8para.png" width="437" height="389"></font></p>
+<p>
+<font face="Arial">Exp #9 is the last cell in the AUC experiment, cell7.&nbsp; Fit for the bottom, 
+enter and fix the extinction coefficients for this wavelength.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp9para.png" width="439" height="390"></font></p>
+<p>
+<font face="Arial">Exp #10 is the same cell as exp #9.&nbsp; Redirect bottom and meniscus, enter 
+and fix extinction coefficients.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABexp10para.png" width="437" height="391"></font></p>
+<p>
+&nbsp;</p>
+<p>
+<font face="Arial"><b><span style="color: black">
+<a name="Step 14:  Save configuration">Step 14:&nbsp; Save configuration</a></span></b></font></p>
+<p>
+<font face="Arial">Now that all the experiment parameters are entered, display the latest 
+information and take a few minutes to check the parameters and the links.&nbsp;
+</font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABdisInfoFinal.png" width="697" height="558"></font></p>
+<p>
+<font face="Arial">If all is in order, save the experiments.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABsaveExps.png" width="274" height="115"></font></p>
+<p>
+<font face="Arial">And, save this configuration</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/Saveconfig.png" width="278" height="401"></font></p>
+<p>
+<font face="Arial">Find the correct directory and name it.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixInitConfigs.png" width="553" height="390"></font></p>
+<p>
+<font face="Arial">Answer &quot;yes&quot; to this questions.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/newXPfiles.png" width="180" height="97"></font></p>
+<p>
+<font face="Arial">Now, notice the name in the title heading.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixHeading.png" width="691" height="41"></font></p>
+<p>
+&nbsp;</p>
+<p>
+<font face="Arial"><b><a name="Step 15: Run and Fit the Single-Site Model">Step 
+15:&nbsp; Run and Fit the Single-Site Model</a></b></font></p>
+<p>
+<font face="Arial">Now that everything is in place, lets see how this one site 
+model fits the data. </font></p>
+<p>
+<font face="Arial">Begin with a global run:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalrun.png" width="156" height="59"></font></p>
+<p>
+<font face="Arial">The purpose of this is to check that our initial estimates 
+for all parameters have been reasonable.&nbsp;
+Run results in the following picture:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixRun1.png" width="689" height="554"></font></p>
+<p>
+<font face="Arial">Obviously, this is a lousy match of the data, but it appears 
+close enough for the fitting routine to optimize.&nbsp; Switch the fitting 
+routine to Simplex by making sure the &quot;Marquardt-Levenbert&quot; is <b>not</b> 
+checked. </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MandSfit.png" width="303" height="107"></font></p>
+<p>
+<font face="Arial">Now execute the Global Fit</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalFit.png" width="147" height="58"></font></p>
+<p>
+<font face="Arial">This results in (the simplex algorithm is based on an initial 
+seeding using a random number generator, so your results may look slightly 
+different, perhaps in the 4th or 5th decimal place).:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABft1.png" width="729" height="567"></font></p>
+<p>
+<font face="Arial">On closer inspection now, it appears that some of the fitting 
+limits are not optimally set.&nbsp; (For example, look at exp 3, 9, and 10.)&nbsp;
+Lets bring in the bottom fitting limits a bit and repeat the fit.&nbsp; 
+(Initially one can adjust the limits, even before doing any fits, such that the 
+data do not exceed 1.5 OD.&nbsp; Having done a fit enables us sometimes to see a 
+bit better where the data run into the region of optical artifacts close to the 
+bottom, and should be discarded for that reason, even though they may have OD 
+values smaller than 1.5OD.)</font></p>
+<p><font face="Arial">Do a fit again.&nbsp; The following looks better:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABft2.png" width="730" height="565"></font></p>
+<p>
+&nbsp;</p>
+<p>
+<font face="Arial">Next, turn on the Marquardt-Levenberg fit option </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MLtoggle.png" width="307" height="109"></font></p>
+<p>
+<font face="Arial">and fit again.&nbsp; Switching to Marquardt-Levenberg helps 
+to make sure that we are really in an optimum for the fit.&nbsp; </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABft3.png" width="729" height="564"></font></p>
+<p>
+<font face="Arial">This fit is a good as we can make it with this model, but notice that the concentrations of the 
+components are way off....sometimes even at 0.038.&nbsp; This is an indication 
+that this model is possibly not ideal for this interaction.&nbsp; Also, notice 
+that the for experiment 9 and 10, where we used the highest protein 
+concentration in cell 7, the residuals are really poor.&nbsp; So, we are going 
+to change to a 2 site model A+B+B, but before we switch we want to save the 
+results of this fit, anyway.&nbsp; This will help us later to compare the two 
+models.&nbsp; </font></p>
+<p>
+<font face="Arial">In order not to overwrite our previous configuration &quot;Mix 
+Initial Configuration&quot; which contained our initial estimates for the loading 
+concentrations, we will save it under a new name:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABfit.png" width="555" height="392"></font></p>
+<p>
+<font face="Arial">Always check yes when asked this question.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixConfXP.png" width="179" height="88"></font></p>
+<p>
+<font face="Arial">(this will keep the experimental parameters that belong to 
+this configuration.).&nbsp; </font></p>
+<p>
+&nbsp;</p>
+<p>
+<font face="Arial"><b><a name="Step 16: Run and Fit the Two-Site Model">Step 
+16:&nbsp; Run and Fit the Two-Site Model</a></b></font></p>
+<p><font face="Arial">When we set up an alternative model for the analysis which 
+we'll end up comparing with the first analysis, we should make sure that we are 
+really looking at the same data, with the same fitting limits.&nbsp; </font></p>
+<p><font face="Arial">If you have decided to adjust the fitting limits during 
+the optimization of the first model, as we did here, then you need to keep these 
+fitting limits.&nbsp; In this case, the new model will start from where we left 
+off, but you will need to re-initialize the loading concentrations.&nbsp; Use 
+the function </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ProLocalPara.png" width="250" height="41"></font></p>
+<p><font face="Arial">and follow the sequence outlined above in
+<a href="#Step 13:  Choosing a model and setting up parameters for a first fit">
+Step 13</a> to enter the loading concentrations.&nbsp; </font> </p>
+<p><font face="Arial">Alternatively, if you did set up initially the fitting 
+limits satisfactorily and didn't change it after saving the initial 
+configuration, then you can simply open the initial configuration:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixInCon.png" width="553" height="391"></font></p>
+<p>
+<font face="Arial">This
+brings up this model window.&nbsp; Hit Ok here.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxICwin.png" width="705" height="545"></font></p>
+<p>
+&nbsp;</p>
+<p><font face="Arial">In either case, after establishing the fitting limits for 
+fair comparison with the previous model, as well as backing up to the initial 
+loading concentration estimates, we proceed by changing the model to two binding sites</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABBmod.png" width="534" height="358"></font></p>
+<p><font face="Arial">Notice that when you change models, the&nbsp; title heading becomes blank.</font></p>
+<p><font face="Arial"><img border="0" src="0510Tutorial2_files/MixHed.png" width="710" height="44"></font></p>
+<p><font face="Arial">Open the global parameters window.</font></p>
+<p><font face="Arial">Make sure to enter the correct molar mass values.&nbsp; 
+For the two binding constants, we will start with the assumption that both sites are 
+equivalent.&nbsp; With this in mind, we enter for the first site &quot;6&quot; indicating 
+a Kd in the micromolar range, and will float this value.&nbsp; For the second 
+site, we leave the value log10(Ka2/Ka1) as it is...fixed at -0.6.&nbsp; In this way we will 
+constraint the 2nd site to a macroscopic binding property of 1:4 with the first 
+site, which is correct if the second site is microscopically equivalent to the 
+first.&nbsp; This may not be perfect, but it is the most parsimonious assumption 
+in the absence of any other knowledge.&nbsp; We can try to refine this later. Don't forget to check Mass Conservation.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABB2.png" width="385" height="310"></font></p>
+<p><font face="Arial">This window comes up.&nbsp; Just hit Ok.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixConAt.png" width="205" height="108"></font></p>
+<p><font face="Arial">One way to check that the local and experiment parameters are still in place 
+is to &quot;display the last fit info&quot; as below.&nbsp; Another way is to just open 
+each window and double-check.&nbsp;&nbsp;&nbsp; Everything looks okay.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABBdis.png" width="730" height="565"></font></p>
+<p><font face="Arial">Lets do a global run</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalrun.png" width="156" height="59"></font></p>
+<p><font face="Arial">to verify that the starting estimates are reasonable 
+(which they are).&nbsp; This will be followed by a global fit.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/globalFit.png" width="147" height="58"></font></p>
+<p><font face="Arial">Below is the fit for 2 equivalent sites.&nbsp; Notice the change in ChiSq 
+from the previous fit ( from 5.301906 to 3.152908) and the residuals at the 
+higher concentration, where we would see the biggest difference, are much better.&nbsp;&nbsp; 
+Also, the best-fit values of the concentrations are getting closer to what we 
+think we've loaded.&nbsp; Therefore, we will 
+accept this model as better, and save this configuration as a fair comparison to&nbsp; 
+the A+B model to support our decision to change to a 2 site model.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABBEq1.png" width="725" height="562"></font></p>
+<p><font face="Arial">Lets save this best fit as a new configuration 
+&quot;MixABBeqFit1&quot; (as described above).</font></p>
+<p><font face="Arial">We can improve the fit somewhat be switching to the 
+Marquardt-Levenberg optimization.&nbsp; Also, we can readjust the fitting limits 
+slightly, in order to eliminate data that may look suspicious.&nbsp; [We already 
+made the decision that the two-site model was the correct one.&nbsp; For further 
+refinement, we can justify truncating the data slightly for the further 
+refinement and error analysis, as a conservative approach not to include data 
+that are possibly affected by optical artifacts from too steep gradients or too 
+radii too close to the bottom of the cell.&nbsp; Obviously, you don't want to 
+exclude good data, and not exlcude reliable data that simply does not fit to the 
+present model very well - this is a difficult judgment you have to determine for 
+your given data.]&nbsp; </font></p>
+<p><font face="Arial">We end up with the following best fit of 2 equivalent binding sites.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MixABBeqFit3.png" width="730" height="564"></font></p>
+<p>
+<font face="Arial">and save it as MixABBeqFit2, for further reference and 
+comparison.</font></p>
+<p><font face="Arial"><img border="0" src="0510Tutorial2_files/MxABBft2.png" width="556" height="393"></font></p>
+<p><font face="Arial">including the new corresponding xp-files.</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/newXPfiles.png" width="180" height="97"></font></p>
+<p>&nbsp;</p>
+<p>
+<font face="Arial"><b>
+<a name="Step 17: Two-site model with non-equivalent sites or cooperativity">Step 
+17:&nbsp; Two-Site Model with non-equivalent or cooperative sites</a> </b></font></p>
+<p><font face="Arial">To change this same model to 2 non-equivalent binding sites, we simply 
+let the association constant for the second site float, by floating the 
+parameter log10(Ka2/Ka1).&nbsp; In doing this, the second binding site 
+is no longer constrained to the 1:4 binding ratio and is left to find its own 
+value.&nbsp;&nbsp; We could begin with our &quot;MixInitialConfig&quot;&nbsp; 
+configuration, but it is more efficient to begin from where we left off with the 
+model for two equivalent sites, since the parameters 
+ 
+are expected to be already close.&nbsp; </font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/MxABBneM.png" width="387" height="312"></font></p>
+<p><font face="Arial">A global run produces these results: </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ABBnEQr.png" width="741" height="592"></font></p>
+<p><font face="Arial">&nbsp;Then, finally,&nbsp; fitting with the ML fitting option on produces 
+this fit below:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ABBnef1.png" width="728" height="566"></font></p>
+<p><font face="Arial">This is the best fit so far, lets save it: </font> </p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ABBnEqSv.png" width="556" height="388"></font></p>
+<p>&nbsp;</p>
+<p><font face="Arial">We find that the chi-square of the fit from the previous 
+equivalent site model is higher by 0.14 (always make fair comparison, i.e. same 
+fitting limits, same constraints, and same baseline options).&nbsp; Is this 
+significant?&nbsp; To assess this, use the function &quot;Statistics-&gt;Critical 
+chi-square for error surface projection&quot;.&nbsp; If the difference in chi-square 
+is larger than the value displayed, we have a statistically distinguishably 
+better (or worse) fit.&nbsp; </font> </p>
+<p><font face="Arial">What we cannot decide from the data, however, is if the 
+sites are equivalent and exhibit positive cooperativity, which would lead to Ka 
+= 10^(7.993) for each site, with positive cooperativity estimated by the 
+macroscopic enhancement factor of 10^(-0.473) = 0.34 divided by the statistical 
+factor of 0.25, leading to 1.34fold enhancement, i.e. the macroscopic Ka2 = 
+10^(7.52).&nbsp; Alternatively, we may have two distinguishable sites, for which 
+binding constants Ka1* and Ka2* can calculate from Ka1 and Ka2 as indicated on 
+the SEDPHAT website.&nbsp; </font> </p>
+<p>&nbsp;</p>
+<p>
+<font face="Arial"><b><a name="Step 18: Making different baseline assumptions">Step 
+18:&nbsp; Making different baseline assumptions</a> </b></font></p>
+<p><font face="Arial">So far, we have chosen for all experiment to fit the data 
+with RI noise, i.e. a baseline that is radially constant, but may change for 
+each rotor speed.&nbsp; There are instrumental imperfections that may require 
+you to use this option.&nbsp; However, frequently, a simple baseline ('fit 
+baseline' only) will do.&nbsp; Further, sometimes you may need to use the 'fit 
+TI noise' option, as well, which assumes that there as a radial-dependent 
+baseline profile.&nbsp; The latter is good, in particular, when dealing with 
+interference optical data [and very effective in the global analysis with 
+absorbance data, as described in Anal Biochem 326 (2004) 234-256].&nbsp; You may 
+want to do different analyses exploring the different options.</font></p>
+<p><font face="Arial">It can be a good idea to do the analysis with alternate 
+baseline options, in order to verify that our conclusion of which is the right 
+model, and the value of the best-fit parameters does not depend on the 
+particular baseline treatment.&nbsp; </font></p>
+<p><font face="Arial">For example, we can turn on the radially-dependent baseline 
+option (Ti noise) for each experiment:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ABBfitTi.png" width="438" height="391"></font></p>
+<p><font face="Arial">In the present case, this results in:</font></p>
+<p>
+<font face="Arial">
+<img border="0" src="0510Tutorial2_files/ABBnEqTi.png" width="731" height="564"></font></p>
+<p><font face="Arial">Obviously, the fit is much better, since all the blips in 
+the data produced by tiny scratches in the window are eliminated.&nbsp; As 
+described in more detail in Anal Biochem 326 (2004) 234-256, we should make sure 
+that the calculated TI noise (the black lines) are not systematically sloping, 
+which would be unrealistic, and indicate compensation of an imperfect model.&nbsp; 
+Also, we should make sure that the TI noise option does not introduce much 
+flexibility in the parameter estimates, which can be done by inspecting the 
+results of the covariance matrix (Statistics-&gt;Covariance Matrix).&nbsp; </font></p>
+<p>&nbsp;</p>
+<p>
+<font face="Arial"><b><a name="Step 19: On the statistical error analysis">Step 
+19:&nbsp; On the Statistical Error Analysis</a> </b></font></p>
+<p><font face="Arial">If we are convinced we have the correct model, and whish 
+to extract error estimates, for example, for the binding constants, there are 
+three different approaches.&nbsp; </font></p>
+<p><font face="Arial">1) We could accept the estimate from the covariance 
+matrix.&nbsp; This is usually not a good choice, since the errors are usually 
+underestimated.&nbsp; (The minimum of the error surface is approximated by a 
+paraboloid, which is usually not a good approximation for highly non-linear 
+problems such as sedimentation equilibrium modeling.)</font></p>
+<p><font face="Arial">2) Monte-Carlo Analysis:&nbsp; This is seemingly the most 
+rigorous approach, and implemented in SEDPHAT in the menu function 
+&quot;Statistics-&gt;Monte Carlo for Nonlinear Regression&quot;.&nbsp; However, for each 
+iteration step an automatic optimization to the new best-fit parameters is 
+necessary.&nbsp; But strictly, there is no way to ensure that any optimization 
+algorithm will really converge to the best possible parameters, which, 
+unfortunately, makes this approach not rigorous at all.&nbsp; In particular for 
+global non-linear models of exponentials, the error surface can be quite flat, 
+and the automatic optimization may not be successful at all.&nbsp; Although it 
+is possible to 'fix' that problem for interations where the best-fit results in 
+obviously diverging parameters, but there's no way to ensure that the parameters 
+that are seemingly close to the previous best-fit values are indeed the optimal 
+parameters for the given iteration.&nbsp; This goes back to the well-known 
+fundamental problems of non-linear regression algorithms that they cannot 
+guarantee to give the overall best fit.&nbsp;&nbsp; <b>As a result, the apparent 
+rigor of the Monte-Carlo approach is invalid, and there is no way rigorous way 
+to ensure that the returned error estimates are indeed correct.&nbsp; The more 
+complicated the fit is, the more questionable the Monte-Carlo result will be.</b></font></p>
+<p><font face="Arial">3) For a truly rigorous error estimation, there's no 
+alternative to the manual exploration of the projections of the error surface.&nbsp; 
+Find the best-fit, fix the parameter of interest to a value slightly off the 
+optimal value, and fit to let all other parameters float and compensate the 
+constraint.&nbsp; (If you find a better fit than previous, you know what I mean 
+with the difficulties of fitting algorithm guaranteeing success - try to use a 
+combination of Simplex and Marquardt-Levenberg fitting steps to further improve, 
+and start over from the new best fit.)&nbsp; Observe the chi-square of the fit, 
+which should slightly increase.&nbsp; Step by step, move the parameter of 
+interest further away from the optimal value, and do this until the chi-square 
+exceeds the critical value calculated by F-statistics.&nbsp; This is described 
+in more detail on the SEDPHAT website.</font></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font face="Arial">&nbsp; </font></p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

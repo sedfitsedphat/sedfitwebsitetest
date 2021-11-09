@@ -1,0 +1,131 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>ternary systems</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+
+<p><font size="1">
+<!--webbot bot="Navigation" S-Type="siblings"
+S-Orientation="horizontal" S-Rendering="text" B-Include-Home="FALSE"
+B-Include-Up="TRUE" U-Page S-Target startspan --><nobr>[&nbsp;<a href="model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species.htm" target="">species&nbsp;and&nbsp;linear&nbsp;fractional&nbsp;boundary&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="species_with_mass_conservation.htm" target="">species&nbsp;with&nbsp;mass&nbsp;conservation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="discrete_distribution.htm" target="">discrete&nbsp;distribution</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hybrid_local_continuos_global_discrete.htm" target="">hybrid&nbsp;local&nbsp;continuos&nbsp;global&nbsp;discrete</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="multi-signal_c(s).htm" target="">multi-signal&nbsp;c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="nonideal_species.htm" target="">nonideal&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="single_species_of_interacting_system.htm" target="">single&nbsp;species&nbsp;of&nbsp;interacting&nbsp;system</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="conformational_change_model.htm" target="">conformational&nbsp;change&nbsp;model</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="self-association.htm" target="">Self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="hetero-associations.htm" target="">hetero-associations</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="mixedassoc.htm" target="">mixedAssoc</a>&nbsp;]</nobr> <nobr>[&nbsp;ternary&nbsp;systems&nbsp;]</nobr><!--webbot bot="Navigation" i-checksum="1368" endspan -->
+</font></p>
+<h3><!--mstheme--><font color="#003366">Ternary Association Models<!--mstheme--></font></h3>
+
+<p>Three ternary association models are available:</p>
+
+<p><a href="#A+B+C -- AB + C -- AC + B -- ABC">A+B+C &lt;--&gt; AB + C &lt;--&gt; AC + B 
+&lt;--&gt; ABC</a></p>
+
+<p><a href="#A+B+B+C -- AB +B+C -- BAB + C -- AC + B+B -- ABC + B -- BABC">
+A+B+B+C &lt;--&gt; AB +B+C &lt;--&gt; BAB + C &lt;--&gt; AC + B+B &lt;--&gt; ABC + B &lt;--&gt; BABC</a></p>
+
+<p>
+<a href="#A+B+B+C+C -- A + BC + BC -- AB +B+C+C -- BAB + C +C -- BABC +C -- CBABC">
+A+B+B+C+C &lt;--&gt; A + BC + BC &lt;--&gt; AB +B+C+C &lt;--&gt; BAB + C +C &lt;--&gt; BABC +C &lt;--&gt; 
+CBABC</a></p>
+
+<p>&nbsp;</p>
+
+<p><b><a name="A+B+C -- AB + C -- AC + B -- ABC">A+B+C &lt;--&gt; AB + C &lt;--&gt; AC + B 
+&lt;--&gt; ABC</a></b></p>
+
+<p>The model implemented is that of a molecule A with two binding sites, one for 
+B and one for C.&nbsp; It can also be used for A with only a single site for 
+which both B and C compete (in this case you need to specify that there's very 
+large negative cooperativity).&nbsp; </p>
+
+<p>There is the possibility of cooperativity, which is 
+expressed quantitatively as the difference in the binding constant of C binding 
+to A, as compared to C binding to AB (with pre-bound B).&nbsp; The number 
+controlling this interaction is the base-10 log of K[AB-C]/K[A-C]. If this 
+cooperativity is regarded as a change of free energy of binding of C to A or AB, 
+there may be an enthalpic component to this cooperativity, which is expressed 
+here as ddHABC, meaning delta-delta H[ABC] = delta H[ABC] - (delta H[AB]+delta 
+H[AC]).&nbsp; Finally, there can be differences in the binding kinetics, 
+expressed here in the form of a coupling constant describing the ratio of rate 
+constants of C dissociating like ABC -&gt; AB + C versus the binary dissociation AC 
+-&gt; A+C, and the ratio of these coupling constants for C and B, respectively.&nbsp; </p>
+
+<p>These numbers are formally necessary to describe all possible forms of 
+interactions between these sites, but I doubt that they can be extracted from 
+sedimentation velocity experiments.&nbsp; In the absence of information to the 
+contrary, at least initially, it is possible to use the parsimonious assumption 
+that the forms of cooperativity are absent, in which case the numeric value of 
+these fields for the ratio of rate constants can be set to zero.</p>
+
+<p>&nbsp;</p>
+
+<p><img border="0" src="menubilder/ternar8.jpg" width="764" height="305"></p>
+
+<p>&nbsp;</p>
+
+<p>Like in the other models, the values for the parameters that are irrelevant 
+should not be floated.&nbsp; For example, all enthalpy values should not be 
+fitted except when analyzing ITC data (in which case the kinetic rate constant 
+fields become meaningless).</p>
+
+<p>&nbsp;</p>
+
+<p><b><a name="A+B+B+C -- AB +B+C -- BAB + C -- AC + B+B -- ABC + B -- BABC">
+A+B+B+C &lt;--&gt; AB +B+C &lt;--&gt; BAB + C &lt;--&gt; AC + B+B &lt;--&gt; ABC + B &lt;--&gt; BABC</a></b></p>
+
+<p>This is a variation on the previous model where A has two binding sites for 
+B.</p>
+
+<p><img border="0" src="menubilder/ternar5.jpg" width="896" height="386"></p>
+
+<p>The two binding sites for B on A can have different affinity (expressed 
+through the ratio KBA/KAB, where equal sites would have log(KAB/KBA) = 0), and 
+additionally there may be cooperativity (for macroscopic constants, the 
+statistical factor for non-cooperative binding would be log(coopB1-2) = -0.6 
+[remember these are base 10 logs, and log10(1/4) = -0.6021]).&nbsp; </p>
+
+<p>Further, there can be cooperativity of the first binding site for B on 
+binding of C, same for the second site for B on binding of C, and finally for 
+double ligand A by B on binding of C.</p>
+
+<p>&nbsp;</p>
+
+<p><b>
+<a name="A+B+B+C+C -- A + BC + BC -- AB +B+C+C -- BAB + C +C -- BABC +C -- CBABC">
+A+B+B+C+C &lt;--&gt; A + BC + BC &lt;--&gt; AB +B+C+C &lt;--&gt; BAB + C +C &lt;--&gt; BABC +C &lt;--&gt; 
+CBABC</a></b></p>
+
+<p>This model is different from the previous in that C is not interacting with A 
+directly, but only with B.&nbsp; </p>
+
+<p><img border="0" src="menubilder/ternar1.jpg" width="933" height="457"></p>
+
+<p>The binding constant of B&lt;--&gt;C can depend on whether B is bound to A or not.&nbsp; 
+This can be different for the first site for B on A and the second site for B on 
+A, as well as when both sites are occupied.</p>
+
+<p>&nbsp;</p>
+
+<p>All models provide the possibility of adding an additional species that is 
+unrelated to the reactive species.&nbsp; </p>
+<p><img border="0" src="menubilder/self-a34.gif" width="150" height="115"></p>
+<p>This can be used to describe, for example, a contaminant, or IF signals from 
+sedimenting buffer salts.&nbsp; The presence of such components, and their 
+estimated molar mass and s-value may be obtained from c(s) analysis with sedfit.&nbsp; 
+The purpose of the vbar in this section allows this species to be used in a 
+flexible way in density contrast experiments (e.g. to describe the free 
+detergent micelle). </p>
+<p class="MsoNormal" style="text-indent: -15; line-height: 100%; margin-left: 15; margin-right: 0; margin-top: 0; margin-bottom: 0">&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<!--mstheme--></font></body>
+
+</html>

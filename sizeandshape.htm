@@ -1,0 +1,63 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>sizeandshape</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta content="sedfit-spiral 0011, default" name="Microsoft Theme">
+<meta content="none, default" name="Microsoft Border">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><a href="tutorial_sizedistributions.htm">back to the tutorial main page</a></p>
+<p>&nbsp;</p>
+<p><u><b><a name="calculating c(s,M)">Calculating c(s,M)</a></b></u></p>
+<p>An alternative approach, which is entirely free of any assumptions regarding 
+f/f0 is the <a href="c(s,m)_and_c(s,).htm">two-dimensional size-and-shape 
+distribution c(s,ff0)</a>.</p>
+<p>First, we load a little less of the data, which makes the computational 
+effort significantly smaller:&nbsp; Reload the data, select every 2nd data file.&nbsp; 
+Then go the the Loading Options-&gt;Set Radial resolution:</p>
+<p><img border="0" src="images/tutori38.gif" width="460" height="510"></p>
+<p>Enter a value of 0.003:</p>
+<p><img border="0" src="images/tutori43.gif" width="276" height="129"></p>
+<p>This will speed up the calculations, since the computation time goes with the 
+square of the number of data points.&nbsp; Since the boundaries are smooth, we 
+don't need all data points to describe the sedimentation process.&nbsp; However, 
+the full data set can be used again for a final analysis.&nbsp; </p>
+<p>Switch to the model c(s,f/f0) with one discrete component.&nbsp; </p>
+<p><img border="0" src="images/tutori61.gif" width="295" height="403"></p>
+<p>Use the following parameters:</p>
+<p><img border="0" src="images/tutori33.jpg" width="419" height="405"></p>
+<p>Do a run command, and you will get something similar to this:</p>
+<p><img border="0" src="images/tutori34.jpg" width="767" height="662"></p>
+<p>This shows the c(s,ff0) distribution as a two-dimensional representation by 
+color temperature, with the vertical axis showing ff0-values, from ff0min to 
+ff0max, and the horizontal axis the s-values.&nbsp; The solid line is the 
+general c(s,*) distribution, which is similar to the c(s), except that it does 
+not make any assumptions on the frictional ratio.&nbsp;&nbsp; </p>
+<p>Go back to the parameter box, and push the button s-M on the right-hand side.&nbsp; 
+This will lead to the transformation to show the molar mass in the vertical 
+axis:</p>
+<p><img border="0" src="images/tutori36.jpg" width="767" height="662"></p>
+<p>It shows the molar mass values associated with each pair of s-ff0.&nbsp; 
+Clearly, the molar mass of the monomer is well-determined, and the dimer is in 
+the right ballpark, but there's not enough information in the data to determine 
+the mass of the higher oligomers. </p>
+<p>Push the button to show the M-ff0 distribution:</p>
+<p><img border="0" src="images/tutori37.jpg" width="767" height="662"></p>
+<p>Here you can read the molar mass values on the horizontal axis and the ff0 
+values on the vertical axis.&nbsp; In this graph (as in the s-f/f0 graph), it 
+becomes clear that the f/f0 values for each species are not very much different.&nbsp; 
+This is the reason why c(s) works well.&nbsp; </p>
+<p>This c(s,ff0) analysis can be used to check if the scale relationship 
+assumptions of a single weight-average frictional ratio is warranted or not, or 
+there it is known not to hold.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="tutorial_lsgofs.htm">next page</a></p>
+
+<!--mstheme--></font></body>
+
+</html>

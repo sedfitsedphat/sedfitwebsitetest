@@ -1,0 +1,147 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta name="Microsoft Theme" content="sedfit-spiral 011, default">
+<meta name="Microsoft Border" content="none, default">
+</head>
+
+<body background="_themes/sedfit-spiral/spitxtr.jpg" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#CC3300"><!--mstheme--><font face="Verdana, Arial, Helvetica">
+<p><!--webbot bot="Navigation" S-Type="siblings" S-Orientation="horizontal"
+S-Rendering="text" B-Include-Home="FALSE" B-Include-Up="TRUE" U-Page S-Target startspan
+--><nobr>[&nbsp;<a href="sedfit_help_model.htm" target="">Up</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_independent_ideal_species.htm" target="">noninteracting&nbsp;discrete&nbsp;species</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_selfassociation.htm" target="">self-association</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_nonideal_sedimentation.htm" target="">Nonideal&nbsp;Sedimentation</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm.htm" target="">c(M)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cm_with_other_prior.htm" target="">c(M)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs.htm" target="">c(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_cs_with_other_prior.htm" target="">c(s)&nbsp;with&nbsp;other&nbsp;prior</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="c(s,m)_and_c(s,).htm" target="">c(s,M)&nbsp;and&nbsp;c(s,*)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_ls-gs.htm" target="">ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_van_holde-weischet.htm" target="">van&nbsp;Holde-Weischet</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_lsgs1comp.htm" target="">ls-g*(s)&nbsp;with&nbsp;1&nbsp;discrete&nbsp;LE&nbsp;component</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="extrapolate_ls-gs.htm" target="">extrapolate&nbsp;ls-g*(s)</a>&nbsp;]</nobr> <nobr>[&nbsp;Analytical&nbsp;Zone&nbsp;Centrifugation&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_dls.htm" target="">DLS</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_other_geometries.htm" target="">electrophoresis&nbsp;and&nbsp;other&nbsp;geometries</a>&nbsp;]</nobr> <nobr>[&nbsp;<a href="sedfit_help_special.htm" target="">Special</a>&nbsp;]</nobr><!--webbot bot="Navigation" endspan i-checksum="13331"
+--></p>
+<p>&nbsp;</p>
+<font FACE="Roman" SIZE="6" COLOR="#ff0000">
+<p>Analytical Zone Centrifugation</p>
+</font><b><font COLOR="#0000ff">
+<p style="line-height: 1; margin-top: 0; margin-bottom: 0">Model | Analytical
+Zone Centrifugation | <a href="#Analytical Zone Centrifugation Indep. Species"> Analytical Zone Centrifugation Indep. Species</a></p>
+<p style="line-height: 1; margin-top: 0; margin-bottom: 0">Model | Analytical
+Zone Centrifugation | <a href="#Analytical Zone Centrifugation c(s)"> Analytical Zone Centrifugation c(s)</a></p>
+<p style="line-height: 1; margin-top: 0; margin-bottom: 0">Model | Analytical
+Zone Centrifugation | <a href="#Analytical Zone Centrifugation ls-g*(s)"> Analytical Zone Centrifugation
+ls-g*(s)</a></p>
+<p>&nbsp;</p>
+</font></b>
+<p>Analytical zone centrifugation is a technique in which a small volume of
+sample (typically 20 <font face="Symbol">m</font>l) is layered on top of solvent
+(e.g. 330 <font face="Symbol">m</font>l of solvent with slightly higher
+density), and the sedimentation process of the macromolecules is observed.&nbsp;
+For technical details on the experiment, see <a href="#ref1">ref 1</a>.&nbsp;&nbsp;</p>
+<p>Typical data may look like Gaussians that move and broaden with time (these
+data are from an experiment with BSA).</p>
+<p><img border="0" src="images/sedfit64.gif" width="603" height="305"></p>
+<p>The sedimentation process is described by the Lamm equation, just like
+ordinary sedimentation velocity experiments.&nbsp; The only difference is the
+starting condition:&nbsp; Usually, the sedimentation starts with macromolecular
+concentration uniform across the cell, while in the analytical zone
+centrifugation the starting condition is a small lamina of uniform concentration
+near the meniscus up to the interface, and then zero concentration from the
+interface to the cell bottom.</p>
+<p>There are two different approaches for the quantitative analysis of these
+data by direct boundary modeling: First, one could chose the first scan as
+initial condition, and use the conventional Lamm equation model.&nbsp; In more
+detail, this can be done by using the <font COLOR="#0000ff"><b>Data | Set
+Initial Data</b></font> command.&nbsp; As described on the <a href="sedfit_help_SetInitialData.htm">help
+website of the experimental initial function</a>, first select the <a href="sedfit_help_independent_ideal_species.htm">model
+for non-interacting discrete species</a>, then invoke the <a href="sedfit_help_parameters.htm">parameter</a>
+box and switch on the <a href="sedfit_help_parameters.htm#Initial Distribution">experimental
+initial condition</a>.&nbsp; Then <a href="sedfit_help_SetInitialData.htm">load
+the initial data</a>.&nbsp; The advantage of this method is that any
+imperfections in the overlaying process is irrelevant, as only the evolution
+after the time of the first scan will be modeled.&nbsp; Disadvantage is that
+this model can strictly be only used with a single species model, or with
+self-association models. (The reason is that for multiple macromolecular
+components, we would need separate initial conditions for all of them.)</p>
+<p><b>As an alternative, we can assume that the overlaying process is ideal and
+instantaneous.&nbsp; </b>This means that we can build into the Lamm equation
+solutions the initial condition of a homogeneously loaded layer of a certain
+thickness.&nbsp; This is the strategy the specialized analytical zone
+centrifugation models are for.&nbsp;&nbsp;</p>
+<p>The lamina thickness will be an additional parameter, but we will be able to
+use any of the direct boundary sedimentation models.&nbsp; The lamina thickness
+(e.g. ~ 0.09 - 0.10 cm for 20 <font face="Symbol">m</font>l over 330 <font face="Symbol">m</font>l
+buffer) will introduce some correlation with the sedimentation or diffusion
+parameters.&nbsp; I would recommend to keep the lamina thickness a floating parameter
+in the analysis, together with the meniscus position.&nbsp;</p>
+<p>It should be kept in mind that the <a href="sedfit_help_set_vbarxrho.htm">solvent
+density and partial-specific volume</a> of the macromolecules should be entered
+in S<span style="font-variant: small-caps">EDFIT</span>, in particular if D<sub>2</sub>O
+was used in the solvent, the buoyancy of the molecules can be much
+different.&nbsp; (Also there is a large viscosity effect of D<sub>2</sub>O).&nbsp;
+For tabulated data, see <a href="#ref1">ref 1</a> and <a href="#ref2">ref 2</a>.&nbsp;&nbsp;</p>
+<p>Because of the difference in composition of the sample and the solvent
+required for formation of the diffusional density gradient, only absorbance
+optics can be used in this experiment.</p>
+<p>&nbsp;</p>
+<b><font COLOR="#0000ff">
+<p style="line-height: 1; margin-top: 0; margin-bottom: 0">Model | Analytical
+Zone Centrifugation | <a name="Analytical Zone Centrifugation Indep. Species"> Analytical Zone Centrifugation Indep. Species</a></p>
+</font></b>
+<p>This model works like the <a href="sedfit_help_independent_ideal_species.htm">model
+for independent and ideally sedimenting species for conventional loading</a>.&nbsp;
+The parameter box is slightly different:</p>
+<p><img border="0" src="images/sedfit65.gif" width="442" height="298"></p>
+<p>It allows only for 3 components instead of four, but it has an additional
+parameter for the lamella width.&nbsp; As mentioned above, I recommend keeping
+the lamella width a floating parameter (check the box left to &quot;lamella
+width&quot;), as well as the meniscus. For the BSA data shown above, we can fit
+the data well with the three main species:</p>
+<p><img border="0" src="images/sedfit66.gif" width="748" height="560"></p>
+<p>With consideration of TI noise (because of the clear dust spikes on the
+data), we get ~ 15% dimer, and 1-2% trimer, with a rmsd of the fit 0.0043 OD.</p>
+<p>&nbsp;</p>
+<p><b><font COLOR="#0000ff">
+Model | Analytical
+Zone Centrifugation | <a name="Analytical Zone Centrifugation c(s)"> Analytical Zone Centrifugation c(s)</a>
+</font></b>
+</p>
+<p>This model is very analogous to the <a href="sedfit_help_cs.htm">c(s)
+distribution</a> for conventional loading, but there are some
+differences.&nbsp;&nbsp;</p>
+<p>Because of the higher correlation, I recommend the use of the <a href="sizedistributions.htm#Tikhonov-Phillips versus maximum entropy regularization, and the use of Monte-Carlo statistics">Tikhonov-Phillips
+regularization</a>, and the use of a higher <a href="sizedistributions.htm#confidence level (F-ratio)">confidence
+level</a>, such as 0.95.&nbsp; Otherwise, I suggest using the same optimization
+procedure as described in the <a href="tutorial_sizedistributions.htm">step-by-step
+tutorial</a>, with <b>floating meniscus, lamella thickness, and frictional ratio</b>.&nbsp;</p>
+<p>The best-fit distribution might look like this:</p>
+<p><img border="0" src="images/sedfit67.gif" width="748" height="558"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b><font COLOR="#0000ff">
+Model | Analytical
+Zone Centrifugation | <a name="Analytical Zone Centrifugation ls-g*(s)"> Analytical Zone Centrifugation
+ls-g*(s)</a>
+</font></b>
+</p>
+<p>Like the other models, also the ls-g*(s) model can be modified to take the
+initial layer into account.&nbsp; As described in the <a href="lsgofs_distribution.htm">introduction
+to ls-g*(s)</a>, this model is based on step-functions that describe the
+sedimentation in the absence of diffusion.&nbsp; The modification required for
+analytical zone centrifugation is that the basic step-function is actually two
+steps (with concentrations zero - c<sub>plat</sub> - zero).&nbsp; Details of the
+model will be described elsewhere (<a href="#ref2">ref 2</a>).&nbsp;</p>
+<p>The complete analysis can be done analogous to the <a href="sedfit_help_ls-gs.htm">ls-g*(s)
+model</a> for conventional loading, similar to the procedure shown in the <a href="tutorial_lsgofs.htm">tutorial</a>.
+The parameter box will have the additional parameter for the lamella width:</p>
+<p><img border="0" src="images/sedfit69.gif" width="319" height="305"></p>
+<p>and fitting for the meniscus position is not implemented.&nbsp; I do not
+recommend fitting for the lamella width here, as there can be some slight
+correlation with the distribution shape.&nbsp;&nbsp;</p>
+<p>As described in the <a href="lsgofs_distribution.htm">introduction to the
+ls-g*(s) method</a>, we can use a very large data set, and the result may look
+like this:</p>
+<p><img border="0" src="images/sedfit68.gif" width="601" height="487"></p>
+<p>&nbsp;</p>
+<p><b><font size="1">References</font></b></p>
+<p><font size="1">(<a name="ref1">1</a>) J. Lebowitz, M. Teale, P. Schuck (1998)
+Analytical band centrifugation of proteins and protein complexes.&nbsp; Biochem.
+Soc. Trans. 26:745-749 </font></p>
+<p><font size="1">(<a name="ref2">2</a>) manuscript in preparation</font></p>
+<!--mstheme--></font></body>
+
+</html>

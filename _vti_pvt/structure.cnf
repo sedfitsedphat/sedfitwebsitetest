@@ -1,0 +1,100 @@
+3.0.0.507
+1108
+1084,sedfit.htm,0,sedfit,0,999981055,1
+vti_globalpage:BW|true
+1093,thanks.htm,0,thanks,0,1000157046,1
+vti_globalpage:BW|true
+1000,default.htm,0,sedfit.htm,0,1000310803,1
+vti_globalpage:BW|true
+1102,workshop.htm,0,workshop,0,1087074355,1
+vti_globalpage:BW|true
+1087,download.htm,0,download,1084,999980812,0
+1089,getting_started.htm,0,getting started,1084,999990415,0
+1086,examples.htm,0,examples,1084,999981251,0
+1085,tutorials.htm,0,tutorials,1084,999981251,0
+1001,sedfit_help.htm,0,sedfit help,1084,999989978,0
+1064,sedfit_faqs.htm,0,FAQs,1084,999990215,0
+1088,references.htm,0,references,1084,999981251,0
+1091,links_to_other_auc_sites.htm,0,links,1084,1139402490,0
+1090,contact.htm,0,contact,1084,999981251,0
+1107,AUCsearch.htm,0,Search,1084,1200672750,1
+vti_nonnavpage:BW|false
+1067,sedfit_help_strategy.htm,0,strategy,1089,999990215,0
+1070,tutorial_sizedistributions.htm,0,tutorial for size-distribution,1086,999990215,0
+1083,sedfit_example.htm,0,IgGanalysis,1086,999990215,0
+1069,sizedistributions.htm,0,Size-Distributions,1085,999990215,0
+1081,vhw_analysis.htm,0,vHW analysis,1085,999990215,0
+1080,lsgofs_distribution.htm,0,ls-gofsdistribution,1085,999990215,0
+1068,systematic_noise_analysis.htm,0,Systematic Noise,1085,999990215,0
+1066,lammeqsolutions.htm,0,SolvingLammEq,1085,999990215,0
+1038,sedfit_help_fstatistics.htm,0,F-statistics,1085,999990215,0
+1071,exampleFaxen.htm,0,example Faxen,1085,999990215,0
+1099,compressibility_of_water_and_organic_solvents.htm,0,Compressibility of Water and Organic Solvents,1085,1062544775,0
+1100,dynamic_density_gradients.htm,0,Dynamic Density Gradients,1085,1062628517,0
+1103,generating_simulated_data.htm,0,Generating Simulated Data,1085,1134412383,0
+1002,sedfit_help_data.htm,0,Data,1001,988164693,0
+1003,sedfit_help_copy.htm,0,Copy,1001,988164693,0
+1004,sedfit_help_display.htm,0,Display,1001,988164693,0
+1005,sedfit_help_model.htm,0,Model,1001,988164693,0
+1006,sedfit_help_parameters.htm,0,Parameters,1001,988164693,0
+1007,sedfit_help_run.htm,0,Run,1001,988164693,0
+1008,sedfit_help_fit.htm,0,Fit,1001,988164693,0
+1009,sedfit_help_generate.htm,0,Generate,1001,988164693,0
+1010,sedfit_help_statistics.htm,0,Statistics,1001,988164693,0
+1011,sedfit_help_notes.htm,0,Notes,1001,988164693,0
+1012,sedfit_help_options.htm,0,Options,1001,988164693,0
+1013,sedfit_help_help.htm,0,Help,1001,988164693,0
+1092,pspublications.htm,0,pspublications,1090,1000154646,0
+1072,tutorial_ExperimentalConditions.htm,0,tut exp cond,1070,998868570,0
+1073,tutorial_loaddata.htm,0,tut load data,1070,998868604,0
+1074,tutorial_initialvalues.htm,0,tut init vals,1070,998868879,0
+1075,tutorial_refiningresults.htm,0,tut refining,1070,998869033,0
+1076,tutorial_displaydistribution.htm,0,tut disp,1070,998869170,0
+1077,tutorial_summary.htm,0,tut summary,1070,998869356,0
+1078,tutorial_cofm.htm,0,tut cofm,1070,998869367,0
+1106,sizeandshape.htm,0,sizeandshape,1070,1142291701,0
+1079,tutorial_lsgofs.htm,0,tut lsgofs,1070,1142291701,0
+1014,sedfit_help_loadnewdata.htm,0,Load New Files,1002,1087070235,1
+vti_nonnavpage:BW|false
+1016,sedfit_help_setinitialdata.htm,0,Set Initial Data,1002,1087070235,1
+vti_nonnavpage:BW|false
+1018,sedfit_help_datautilities.htm,0,Data Housekeeping,1002,1087070235,1
+vti_nonnavpage:BW|false
+1097,realtime.htm,0,realtime,1002,1087070235,1
+vti_nonnavpage:BW|false
+1101,export_to_sedphat.htm,0,Export to SEDPHAT,1002,1087070265,1
+vti_nonnavpage:BW|false
+1024,sedfit_help_exit.htm,0,Exit,1002,1087070249,1
+vti_nonnavpage:BW|false
+1057,sedfit_help_plot_range.htm,0,plot properties,1004,991087742,0
+1055,sedfit_help_residuals_bitmap.htm,0,residuals bitmap,1004,991087742,0
+1056,sedfit_help_subtract_calculated_noise.htm,0,subtract calculated noise,1004,989292251,0
+1058,sedfit_help_independent_ideal_species.htm,0,noninteracting discrete species,1005,991593050,0
+1062,sedfit_help_selfassociation.htm,0,self-association,1005,998331797,0
+1036,sedfit_help_nonideal_sedimentation.htm,0,Nonideal Sedimentation,1005,991271755,0
+1052,sedfit_help_cm.htm,0,c(M),1005,996393947,0
+1050,sedfit_help_cm_with_other_prior.htm,0,c(M) with other prior,1005,996393961,0
+1051,sedfit_help_cs.htm,0,c(s),1005,996393974,0
+1049,sedfit_help_cs_with_other_prior.htm,0,c(s) with other prior,1005,996393984,0
+1104,c(s\,m)_and_c(s\,).htm,0,c(s\,M) and c(s\,*),1005,1142278598,0
+1048,sedfit_help_ls-gs.htm,0,ls-g*(s),1005,996394107,0
+1061,sedfit_help_van_holde-weischet.htm,0,van Holde-Weischet,1005,991271849,0
+1095,sedfit_help_lsgs1comp.htm,0,ls-g*(s) with 1 discrete LE component,1005,1038080678,0
+1096,extrapolate_ls-gs.htm,0,extrapolate ls-g*(s),1005,1038081761,0
+1065,sedfit_help_analytical_zone_centrifugation.htm,0,Analytical Zone Centrifugation,1005,991271960,0
+1060,sedfit_help_dls.htm,0,DLS,1005,991272057,0
+1059,sedfit_help_other_geometries.htm,0,electrophoresis and other geometries,1005,989380353,0
+1046,sedfit_help_special.htm,0,Special,1005,991271830,0
+1082,sedfit_help_fittmppars.htm,0,tmppars,1008,999702269,0
+1039,sedfit_help_confidence_intervals.htm,0,Confidence Intervals,1010,988340455,0
+1040,sedfit_help_error_contours.htm,0,Error Contours,1010,988342198,0
+1045,sedfit_help_monte_carlo_simulations.htm,0,Monte Carlo Simulations,1010,989287652,0
+1063,sedfit_help_set_vbarxrho.htm,0,set vbarxrho,1012,1062554073,0
+1098,inhomogeneous_solvent.htm,0,Inhomogeneous Solvent,1012,1062543213,0
+1042,sedfit_help_loading_options.htm,0,Loading Options,1012,1062554099,0
+1044,sedfit_help_fitting_options.htm,0,Fitting Options,1012,1062554099,0
+1037,sedfit_help_calculator.htm,0,Calculator,1012,1062554111,0
+1041,sedfit_help_size_distribution_options.htm,0,Size Distribution Options,1012,988342944,0
+1105,sounds.htm,0,Sounds,1012,1142279102,0
+1054,sedfit_help_sedimentation_time_offset.htm,0,sedimentation time offset,1046,999204704,0
+1047,sedfit_help_timedependent_sedimentation.htm,0,time-dependent sedimentation,1046,998331826,0
